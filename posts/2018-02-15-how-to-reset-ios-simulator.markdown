@@ -1,11 +1,9 @@
----
-layout: post
-title: "How to reset iOS simulator"
-date: 2018-02-15 16:07
-categories: ["ios"]
-tags: ["ios", "simulator", "development", "reset"]
-source: https://stackoverflow.com/questions/16195859/reset-ios-simulator-application-data-to-run-app-for-first-time#16195931
----
+# How to reset iOS simulator
+
+- PUBLISHED_DATE: 2018-02-15T16:07
+- KEYWORDS: ios, simulator, development, reset
+
+[source]: https://stackoverflow.com/questions/16195859/reset-ios-simulator-application-data-to-run-app-for-first-time#16195931
 
 I ran into an issue recently where I was trying to debug a problem in
 a project, but had a problem accessing the right data server since I
@@ -24,4 +22,4 @@ I found it on the Simulator
 (Version 10.0 (SimulatorApp-835.2.1) seen in the following screen
 shot:
 
-![Reset IOS Simulator Screenshot]({{ 'images/reset-ios-simulator.png' | relative_url }})
+![Reset IOS Simulator Screenshot](../images/reset-ios-simulator.png)
