@@ -1,1 +1,0 @@
-A perturbing bug in El Cap and how to fix it.

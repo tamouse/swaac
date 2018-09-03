@@ -1,2 +1,0 @@
-This article illustrates a great Tiny Best Practice: use your commit
-messages to communicate well to the rest of your team.

@@ -1,0 +1,52 @@
+---
+layout: post
+title: "A Set of ReactJS Demos"
+date: 2016-05-13 13:02
+categories: ["javascript", "reactjs"]
+tags: ["videos", "javascript", "reactjs", "demos", "sam-slotsky"]
+
+videos:
+- ytid: MMr5y4VHNtg
+  title: "React-Redux Demo 1: Hello World in React & Webpack"
+
+- ytid: oHyYF44I3-U
+  title: "React-Redux Demo 2: Add Props And State"
+
+- ytid: v9jtYQDNKcI
+  title: "React-Redux Demo 3: Manage State with Redux"
+
+- ytid: kaavQHio5sU
+  title: "React-Redux Demo 4: Adding a Sass Theme"
+
+- ytid: mFa0cSV3vCc
+  title: "Redux Demo 5: Client side routing with redux-simple-router"
+
+- ytid: E-3M-hMZrfU
+  title: "Redux Demo 6: Building a Blog - Supporting Snippets"
+
+- ytid: eOWk3-phbq8
+  title: "Redux Demo 7: Building a Blog - Supporting Markdown"
+
+
+---
+
+Recently, a friend and former co-worker of mine,
+[Sam Slotsky](https://www.youtube.com/user/samowamoboy),
+put
+together a set of intro demos and tutorials into using
+[ReactJS](http://reactjs.com). They're really pretty good at giving
+someone experienced in JavaScript and web development a leg up on
+learning ReactJS quickly.
+
+Give them a watch and like them!
+
+{% for video in page.videos %}
+<h3>{{video.title}}</h3>
+<iframe
+  width="853"
+  height="480"
+  src="https://www.youtube.com/embed/{{ video.ytid }}?rel=0"
+  frameborder="0"
+  allowfullscreen>
+</iframe>
+{% endfor %}

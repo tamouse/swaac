@@ -1,0 +1,110 @@
+---
+layout: post
+title: "What's Falsy in JavaScript?"
+date: 2017-11-23 09:05
+categories: ["javascript"]
+tags: ["javascript", "falsy", "coercion"]
+---
+
+This is a question that comes up from time to time, and is sometimes a
+surprising answer.
+
+"Falsy" is a term that generally means "These terms act as if they are
+`false` when used in comparisons". There's a corresponding term
+"Truthy" which generally means "everything else acts like
+`true`". These terms are used across many different languages, both
+typed and untyped.
+
+In JavaScript, there is sometimes confusion and surprise. For clarity,
+I turn to [You Don't Know
+JS](https://github.com/getify/You-Dont-Know-JS "You don't know JS on
+Github") by one of my master teachers, [Kyle Simpson
+(@getify)](https://github.com/getify/You-Dont-Know-JS).
+
+In [Types & Grammar: Falsy Values](https://github.com/getify/You-Dont-Know-JS/blob/master/types%20%26%20grammar/ch4.md#falsy-values),
+Kyle explains how things get defined as Falsy:
+
+> All of JavaScript's values can be divided into two categories:
+>
+> * values that will become `false` if coerced to `boolean`
+> * everything else (which will obviously become `true`)
+>
+> I'm not just being facetious. The JS spec defines a specific, narrow list of values that will coerce to `false` when coerced to a `boolean` value.
+>
+> How do we know what the list of values is? In the ES5 spec, section 9.2 defines a `ToBoolean` abstract operation, which says exactly what happens for all the possible values when you try to coerce them "to boolean."
+>
+> From that table, we get the following as the so-called "falsy" values list:
+>
+> - `undefined`
+> - `null`
+> - `false`
+> - +0, -0, and `NaN`
+> - ""
+>
+> That's it. If a value is on that list, it's a "falsy" value, and it will coerce to `false` if you force a `boolean` coercion on it.
+>
+> By logical conclusion, if a value is not on that list, it must be on another list, which we call the "truthy" values list. But JS doesn't really define a "truthy" list per se. It gives some examples, such as saying explicitly that all objects are truthy, but mostly the spec just implies: **anything not explicitly on the falsy list is therefore truthy**.
+
+If the term "coersion" is new to you, read [the whole chapter on Coercion](https://github.com/getify/You-Dont-Know-JS/blob/master/types%20%26%20grammar/ch4.md#falsy-values)
+for a deeper understanding. Briefly, "coercion" means when you try to
+change the type of an expression into another in a programming
+language. We do this a lot in JavaScript when you might not realize
+it. A *very* common
+(<span style="color:red;font-weight:bold">but somewhat dangerous</span>)
+JS idiom is:
+
+{% highlight javascript %}
+function blah(foo) {
+  // a guard clause; `foo` is coerced to a boolean by the `!` operator
+  if (!foo) return null;
+
+  // carry on with the rest of blah
+
+}
+{% endhighlight %}
+
+and `foo` is not explicitly a `boolean` value, such as `null`
+or `undefined`, when checking to make sure you're not operating on
+such a value, it is *coerced* into one (using that `.ToBoolean` Kyle
+mentions above.) This idiom is used a lot in functions as a guard
+clause to prevent mischief from callers.
+
+You might also see this instead of an early return:
+
+{% highlight javascript %}
+function blah(foo) {
+  // a guard clause, `foo` is coerced to a boolean by the `if`
+  // statement directly
+  if (foo) {
+    // carry on with `blah` knowing that `foo` is not `null` or `undefined`
+  }
+}
+{% endhighlight %}
+
+Of course, with both of these idioms, there can be problems with some
+of the other definitions for falsy: what happend when you intend to
+pass in a value of `false` for `foo`?
+
+In such a case, I step back and stop using coercion and go for
+explicitness, and the idiom becomes:
+
+{% highlight javascript %}
+function blah(foo) {
+  // a guard clause, explicit checking
+  if (foo !== null && foo !== undefined) {
+    // carry on with `blah` knowing *exactly* that `foo` is not `null` or `undefined`
+  }
+}
+{% endhighlight %}
+
+
+So there we have it. The ECMAScript specification Kyle refers to above
+is at <http://www.ecma-international.org/ecma-262/6.0/#sec-toboolean>
+if you're interested in reading it.
+
+-------
+
+If you found this useful, please go visit Kyle's site
+[You-Dont-Know-JS](https://github.com/getify/You-Dont-Know-JS "You
+Don't Know JS Series by Kyle Simpson (@getify) on Github.com") and
+give him some love. Buy the books, become a patreon!

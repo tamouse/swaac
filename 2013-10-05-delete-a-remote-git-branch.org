@@ -1,8 +1,0 @@
-Perform a push to your remote using : before the name of the branch
-
-#+BEGIN_EXAMPLE
-    $ git push origin :mybranchname
-#+END_EXAMPLE
-
-where =origin= is the name of your remote and =mybranchname= is the name
-of the branch about to be deleted.

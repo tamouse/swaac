@@ -1,0 +1,25 @@
+---
+layout: post
+title: "TIL: Setting input value in React determines controlled vs uncontrolled "
+date: 2018-05-04
+categories: ["react"]
+tags: [react, controlled, uncontrolled, input, value]
+---
+
+Setting the input value on a React input element ultimately determines
+whether it's a controlled or uncontrolled element.
+
+There's isn't much guidance on this, but this is what I've learned:
+
+- to make an input value *controlled*, set the value to a string. To
+  initialize it with "No Value" set it to the empty string: `""`.
+
+- leaving the input value `undefined` makes the element *uncontrolled*.
+
+- if the input value is `null`, then React complains that it can't
+  tell whether it should be controlled or not, and tells you to set it
+  to `undefined`.
+
+**Beware** when you input values come from someplace else.
+
+Note that this works fine when Rails is your backend, usually.

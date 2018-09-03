@@ -1,0 +1,358 @@
+---
+layout: post
+title: "Self-referential Models: Categories"
+date: 2015-12-15 19:37
+categories: ["rails"]
+tags: ["examples", "howtos", "self-referencing-models"]
+source: https://github.com/tamouse/example_nested_category
+---
+A series of questions from the IRC #RubyOnRails channel on Freenode prompted this example about doing nested, self-referential models.
+
+* content item
+{:toc}
+
+## Self-referential Models
+
+The Ruby on Rails Guide
+[Association Basics](http://guides.rubyonrails.org/association_basics.html)
+has a short segment on doing
+["self joins"](http://guides.rubyonrails.org/association_basics.html#self-joins)
+that provides an example of doing this.
+
+For my example (and the example the OP was working on), the model was
+categories, which could have parent categories, child categories and
+sibling categories.
+
+## Category Tree
+
+<a name="diagram"></a>
+
+![Category Tree]({{ site.baseurl }}/images/category-tree.gif)
+
+In the figure above, a tree of categories show the concept of parents,
+children, and siblings. "Category Root" has no parent, and is the root
+of the tree. "Category A" has one parent, "Category Root", 2 siblings
+"Category B" and "Category C", and 2 children, "Category A.1" and
+"Category A.2".
+
+## Designing the Model and the database table.
+
+Representing this in a Rails model gets interesting.
+
+We need some way of saying a category has a parent. This is a
+**foreign key** that points back to the category's table's `id` field.
+
+It turns out this is the only specific addition we'll need to make to
+the table, and rest will be done by the Model class.
+
+Keeping it simple, we'll call that field `parent_id` following Rails's
+naming conventions for putting the `_id` on the foreign key and the
+name of the relationship as the foreign key.
+
+### The migration
+
+Here's what the migration might look like:
+
+{% highlight ruby %}
+class CreateCategories < ActiveRecord::Migration
+  def change
+    create_table :categories do |t|
+      t.string :name
+      t.integer :parent_id, index
+      t.timestamps null: false
+    end
+    add_foreign_key :categories, :categories, column: :parent_id, primary_key: :id
+  end
+end
+{% endhighlight %}
+
+(N.B.: you need to create the foreign key after the table it's
+referencing has been created, so make sure the foreign key definition
+is outsite the `create_table` block.)
+
+### The model
+
+Turning to the model now, we have to put in the directives that tell
+Rails how to use this self-referecing foreign key.
+
+{% highlight ruby %}
+class Category < ActiveRecord::Base
+  belongs_to :parent, class_name: "Category"
+  has_many :children, class_name: "Category", foreign_key: :parent_id
+end
+{% endhighlight %}
+
+This is all we need to be able to be able to link up a category with
+it's parent, and to be able to find the children of a parent.
+
+When the parent is nil, the category has no parent. As of yet, there
+is nothing to prevent many root nodes as nothing forces a category
+node to have a parent.
+
+Let's try a few of these out:
+
+{% highlight ruby %}
+root = Category.create name: "Root"
+# => #<Category:0x007fd0d983cc08 id: 326, name: "Root", parent_id: nil, created_at: Wed, 16 Dec 2015 02:15:18 UTC +00:00, updated_at: Wed, 16 Dec 2015 02:15:18 UTC +00:00>
+a = Category.create name: "A", parent: root
+# => #<Category:0x007fd0dd9e3d50 id: 327, name: "A", parent_id: 326, created_at: Wed, 16 Dec 2015 02:17:01 UTC +00:00, updated_at: Wed, 16 Dec 2015 02:17:01 UTC +00:00>
+a1 = Category.create name: "A.1", parent: a
+# => #<Category:0x007fd0dd91e3c0 id: 328, name: "A.1", parent_id: 327, created_at: Wed, 16 Dec 2015 02:17:53 UTC +00:00, updated_at: Wed, 16 Dec 2015 02:17:53 UTC +00:00>
+a1.parent
+# => #<Category:0x007fd0dd9e3d50 id: 327, name: "A", parent_id: 326, created_at: Wed, 16 Dec 2015 02:17:01 UTC +00:00, updated_at: Wed, 16 Dec 2015 02:17:01 UTC +00:00>
+root.parent
+# => nil
+root.children
+# => [#<Category:0x007fd0dc6a3010  id: 327,  name: "A",  parent_id: 326,  created_at: Wed, 16 Dec 2015 02:17:01 UTC +00:00,  updated_at: Wed, 16 Dec 2015 02:17:01 UTC +00:00>]
+{% endhighlight %}
+
+We can see that "A.1"'s parent is "A", and the "ROOT" has no parent at all, as we expect.
+
+## Extending a class with "nice" methods.
+
+It's easy enough to use something like `if category.parent.nil?`
+to find out if the current category is the root of the tree. We could
+make it a bit more clear though by adding in some predicate methods on
+the instances:
+
+{% highlight ruby %}
+def is_parent?
+  !!self.parent.nil?
+end
+{% endhighlight %}
+
+### Aside: what's up with that bang-bang?
+
+`!!` is the double negative, which ensures that whatever result of the
+expression, it **always** evaluates to `true` or `false` only, i.e.,
+not `nil`, and not some other value. This is somewhat of a debate;
+some people absolutely hate the `!!` because it's a bit jarring,
+others want to be absolutely sure no other values leak through. Leave it
+off if it bothers you.
+
+Besides parent, you might want to know if the node is *not* a
+parent. You can always say `!category.parent?`, but there's a solitary
+bang operator again waiting to be missed. If we use another method
+here we can obtain more readability.
+
+{% highlight ruby %}
+def has_parent?
+  !!self.parent.present?
+end
+{% endhighlight %}
+
+## You promised me a sister!
+
+What about siblings? This also turns out to be fairly easy.
+
+{% highlight ruby %}
+def siblings
+  if parent
+    parent.children.where.not(id: self.id)
+  else
+    Category.top_level.where.not(id: self.id)
+  end
+end
+{% endhighlight %}
+
+This gives all the children of the current node's parent without
+itself.  In addition, there is the special case where the current node
+has no parent, so we get all the *other* nodes without parents.
+
+## Ensuring there is only one root node
+
+Earlier I made mention that this model so far doesn't guarantee there
+will only ever be one root of the category tree. It is *perfectly* okay to have
+multiple root nodes if that fits your need.  In this particular
+instance I only want one root.
+
+To do this, we will ensure that any new category added to the class
+will always have it's parent set to the root node, unless the parent
+is passed in. But what about setting the very first category where
+there are no other nodes? It turns out this is rather simple to
+accomodate as well without doing a lot of conditionals.
+
+
+{% highlight ruby %}
+def ensure_one_root
+  self.parent = self.class.root if parent_id.nil?
+end
+{% endhighlight %}
+
+This looks at the current object `self` and sees if the parent id is
+presently nil. If it is, it then searches for the current root of the
+class and returns it. The "magic" happens when there is no root,
+i.e. the first one in the class, `self.class.root` returns nil,
+setting the parent ID to `nil`, just what we want.
+
+Subsequent saves will make sure that the category will at least point
+to the root.
+
+## Ensuring that root stays root
+
+"But wait!" you say, "what happens if I set the root's parent to a
+specific category id? What happens then, mousegirl?"
+
+It's true, with that method `ensure_one_root` up there, you can *lose*
+the root of the tree if there is no root. Let's add a guard and stop
+the save if that's tried:
+
+
+{% highlight ruby %}
+def ensure_one_root
+  return false if self == self.class.root
+  self.parent = self.class.root if parent_id.nil?
+end
+{% endhighlight %}
+
+The guard clause will find out if the current object `self` is the
+same as the root by fetching the root via the class method. Returning
+false from the callback ends the save operation.
+
+## Changing the root
+
+Sometimes you do want to change the root. For this, we will need to
+create an *atomic* operation because we need to change two values
+simultaneiously, and step around the before save callback, which is
+some trickiness.
+
+First we will make a class method that will do the actual swap. In
+this sort of operation, we'd probably be as likely to want to use the
+class method as the instance method, so we'll define it in one
+place. My personal preference is to put these sorts of things up in
+the class, but there's no hard-and-fast rule about it, to my
+knowledge. (Please comment if you find otherwise?)
+
+{% highlight ruby %}
+def self.make_root(other)
+  self.transaction do
+    old_root = self.root
+    old_root.update_column(:parent_id, other.id)
+    other.update_column(:parent_id, nil)
+  end
+end
+{% endhighlight %}
+
+We're using `update_column` (which calls `update_columns` underneath)
+in order to bypass the `before_save` callback. <small>[(reference)](http://api.rubyonrails.org/classes/ActiveRecord/Persistence.html#method-i-update_column)</small>
+
+Next we'll add an instance method that just calls the class method:
+
+{% highlight ruby %}
+ def make_root
+   self.class.make_root(self)
+ end
+{% endhighlight %}
+
+And we can see it works:
+
+
+{% highlight ruby %}
+root = Category.create name: "ROOT"
+# => #<Category:0x007f9cbb792480 id: 4, name: "ROOT", parent_id: nil, created_at: Wed, 16 Dec 2015 03:27:01 UTC +00:00, updated_at: Wed, 16 Dec 2015 03:27:01 UTC +00:00>
+other = Category.create name: "OTHER"
+# => #<Category:0x007f9cbd9ca408 id: 5, name: "OTHER", parent_id: 4, created_at: Wed, 16 Dec 2015 03:27:12 UTC +00:00, updated_at: Wed, 16 Dec 2015 03:27:12 UTC +00:00>
+other.make_root
+#   (0.1ms)  begin transaction
+#  Category Load (0.1ms)  SELECT  "categories".* FROM "categories" WHERE "categories"."parent_id" IS NULL  ORDER BY "categories"."id" ASC LIMIT 1
+#  SQL (0.3ms)  UPDATE "categories" SET "parent_id" = 5 WHERE "categories"."id" = ?  [["id", 4]]
+#  SQL (0.4ms)  UPDATE "categories" SET "parent_id" = NULL WHERE "categories"."id" = ?  [["id", 5]]
+#   (1.7ms)  commit transaction
+# => true
+#
+# NOTE: the transaction is doing both updates safely. if one fails,
+# they both fail
+
+other.is_root?
+# => true
+
+# Because root was changed in the database, but our local instance of
+# it hasn't been updated, we need to reload it. This can often be a
+# problem if you don't remember to do this!
+root.reload
+root.is_root?
+# => false
+{% endhighlight %}
+
+## Siblings, redux
+
+For a single-root system, we don't need the special case of
+`siblings`, but it turns out it works anyway, returning an empty
+relationship because there can be no other top-level ndoes. I think
+it's a better solution to return an empty relationship in this case as
+it unifies the expected return with a non-root node with no
+siblings. (For example, Category C.1 in the [diagram](#diagram) at the
+top.)
+
+
+## The class code:
+
+Here's our final code:
+
+
+{% highlight ruby %}
+class Category < ActiveRecord::Base
+  belongs_to :parent, class_name: "Category"
+  has_many :children, class_name: "Category", foreign_key: :parent_id
+
+  scope :with_children, ->() { joins(:children).distinct }
+  scope :top_level, ->() { where(parent_id: nil) }
+
+  before_save :ensure_one_root
+
+  ##
+  # CLASS METHODS
+  ##
+
+  def self.root
+    self.top_level.first
+  end
+
+  def self.make_root(other)
+    self.transaction do
+      old_root = self.root
+      old_root.update_column(:parent_id, other.id)
+      other.update_column(:parent_id, nil)
+    end
+  end
+
+  ##
+  # INSTANCE METHODS
+  ##
+
+  def siblings
+    if parent
+      parent.children.where.not(id: self.id)
+    else
+      Category.top_level.where.not(id: self.id)
+    end
+  end
+
+  def has_parent?
+    self.parent.present?
+  end
+
+  def is_leaf?
+    self.children.empty?
+  end
+
+  def is_root?
+    self.parent.nil?
+  end
+
+  def make_root
+    self.class.make_root(self)
+  end
+
+  private
+
+  def ensure_one_root
+    return false if self == self.class.root
+    self.parent = self.class.root if parent_id.nil?
+  end
+
+end
+{% endhighlight %}
+
+You can see this application with tests at the
+[Github Repository]({{page.source}}).

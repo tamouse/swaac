@@ -1,5 +1,0 @@
-Great collection of resources available for implementing accessibility
-(a11y) over on github:
-
-[[file:%7B%7B%20page.source%20%7D%7D][{{ page.title }}]]
-([[https://github.com/brunopulis/aweasome-a11y][Github repo]])

@@ -1,6 +1,0 @@
-This turns out to be pretty simple.
-
-{% highlight shell %} $ diskutil list # find the disk you want to eject
-$ diskutil eject /dev/disk2 # eject it # wait... {% endhighlight %}
-
-=diskutil eject= by itself will give help on the verb.
