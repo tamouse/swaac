@@ -1,9 +1,7 @@
----
-layout: post
-title: "Gerald Wienberg: My most challenging experience as a software developer"
-date: 2017-10-29 17:13
-categories: ["people"]
-tags: ["jerry", "weinberg", "people"]
+# Gerald Wienberg: My most challenging experience as a software developer
+
+- PUBLISHED_DATE: 2017-10-29T17:13
+- KEYWORDS: Gerald "Jerry" Wienberg, people, most challenging experience, software development, masters
 source: http://secretsofconsulting.blogspot.com/2017/10/my-most-challenging-experience-as.html
 ---
 
@@ -17,7 +15,7 @@ He's always proven faithful to my vision of how the field of software
 development should be run, in a humane, thoughtful, and intelligent
 fashion.
 
-[Here's his answer]({{post.source}}) to the question: "What was your most challenging
+[Here's his answer](http://secretsofconsulting.blogspot.com/2017/10/my-most-challenging-experience-as.html) to the question: "What was your most challenging
 experience in software development?"
 
 The moral at the end is really the most important take-away for all of
