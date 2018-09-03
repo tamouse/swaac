@@ -1,10 +1,7 @@
----
-layout: post
-title: "TIL: emacs toggle-debug-on-exit"
-date: 2017-12-03 21:54
-categories: ["emacs"]
-tags: ["emacs", "debugging"]
----
+# TIL: emacs toggle-debug-on-exit
+
+- date: 2017-12-03 21:54
+- keywords: emacs, debugging
 
 Today, I learned there's a `toggle-debug-on-exit` emacs function.
 

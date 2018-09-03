@@ -1,10 +1,7 @@
----
-layout: post
-title: "What's Falsy in JavaScript?"
-date: 2017-11-23 09:05
-categories: ["javascript"]
-tags: ["javascript", "falsy", "coercion"]
----
+# What's Falsy in JavaScript?
+
+- date: 2017-11-23 09:05
+- keywords: javascript, falsy, coercion
 
 This is a question that comes up from time to time, and is sometimes a
 surprising answer.
@@ -53,7 +50,7 @@ it. A *very* common
 (<span style="color:red;font-weight:bold">but somewhat dangerous</span>)
 JS idiom is:
 
-{% highlight javascript %}
+``` javascript
 function blah(foo) {
   // a guard clause; `foo` is coerced to a boolean by the `!` operator
   if (!foo) return null;
@@ -61,7 +58,7 @@ function blah(foo) {
   // carry on with the rest of blah
 
 }
-{% endhighlight %}
+```
 
 and `foo` is not explicitly a `boolean` value, such as `null`
 or `undefined`, when checking to make sure you're not operating on
@@ -71,7 +68,7 @@ clause to prevent mischief from callers.
 
 You might also see this instead of an early return:
 
-{% highlight javascript %}
+``` javascript
 function blah(foo) {
   // a guard clause, `foo` is coerced to a boolean by the `if`
   // statement directly
@@ -79,7 +76,7 @@ function blah(foo) {
     // carry on with `blah` knowing that `foo` is not `null` or `undefined`
   }
 }
-{% endhighlight %}
+```
 
 Of course, with both of these idioms, there can be problems with some
 of the other definitions for falsy: what happend when you intend to
@@ -88,15 +85,14 @@ pass in a value of `false` for `foo`?
 In such a case, I step back and stop using coercion and go for
 explicitness, and the idiom becomes:
 
-{% highlight javascript %}
+``` javascript
 function blah(foo) {
   // a guard clause, explicit checking
   if (foo !== null && foo !== undefined) {
     // carry on with `blah` knowing *exactly* that `foo` is not `null` or `undefined`
   }
 }
-{% endhighlight %}
-
+```
 
 So there we have it. The ECMAScript specification Kyle refers to above
 is at <http://www.ecma-international.org/ecma-262/6.0/#sec-toboolean>

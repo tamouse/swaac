@@ -1,21 +1,9 @@
----
-layout: post
-title: "TIL: Some Jest testing tricks"
-date: 2018-01-19 22:12
-categories: ["testing"]
-tags:
-  - jest
-  - testing
-  - react
-  - instance
-  - beforeEach
-  - beforeAll
-  - setup-teardown
----
-Deeper learning after much pondering and RTFM for Jest
+# TIL: Some Jest testing tricks
 
-* Contents
-{:toc}
+- date: 2018-01-19 22:12
+- keywords: jest, testing, react, instance, beforeEach, beforeAll, setup & teardown
+
+Deeper learning after much pondering and RTFM for Jest
 
 ## TIL: using beforeAll and beforeEach in jest tests
 
@@ -26,7 +14,7 @@ couldn't quite figure out how to get them in the `it` calls.
 Turns out to be stupid simple. All you need to do is set the items
 on the `global` context, like so:
 
-{% highlight javascript %}
+```javascript
 beforeAll(()=>{
   global.TagsInstance = new Tags({
     item: item,
@@ -35,21 +23,21 @@ beforeAll(()=>{
     mutate: noop
   })
 })
-{% endhighlight %}
+```
 
 After the suite finishes, clear out the item:
 
-{% highlight javascript %}
+```javascript
 afterAll(()=>{
   global.TagsInstance = undefined
 })
-{% endhighlight %}
+```
 
 I suppose that pollutes the global space, so one might want to do
 it in a namespace, and then clear that every time, too:
 
 
-{% highlight javascript %}
+```javascript
 
 beforeEach(()=>{
   global.beforeEach.actual = mount(
@@ -60,9 +48,9 @@ beforeEach(()=>{
 afterEach(()=>{
   global.beforeEach = undefined
 })
-{% endhighlight %}
+```
 
-# TIL: you can call instance variables and functions on an Enzyme wrapper
+## TIL: you can call instance variables and functions on an Enzyme wrapper
 
 Okay, this is very cool. I didn't know this would work BUT IT DOES!
 
@@ -72,11 +60,11 @@ This involves a few different things:
 - putting an expect on a callback
 - interogating a mounted component's state
 
-{% highlight javascript %}
+``` javascript
 it("can i call stuff directly?", ()=>{
   const actual = mount(<MyComponent />)
   actual.instance().setState({ boo: "boo"}, () => {
     expect(actual.instance().state.boo).toEqual("boo")
   })
 })
-{% endhighlight %}
+```

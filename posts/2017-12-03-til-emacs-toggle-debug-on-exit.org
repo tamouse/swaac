@@ -1,0 +1,21 @@
+* TIL: emacs toggle-debug-on-exit
+  :PROPERTIES:
+  :CUSTOM_ID: til-emacs-toggle-debug-on-exit
+  :PUBLISHED_DATE: 2017-12-03T21:54
+  :KEYWORDS: emacs, debugging
+  :END:
+
+- date: 2017-12-03 21:54
+- keywords: emacs, debugging
+
+Today, I learned there's a =toggle-debug-on-exit= emacs function.
+
+To use it:
+
+#+BEGIN_EXAMPLE
+    M-x toggle-debug-on-exit
+#+END_EXAMPLE
+
+then reproduce the problem when trying to exit emacs, and use the debugger / study the backtrace.
+
+H/T =#emacs= channel on Freenode.

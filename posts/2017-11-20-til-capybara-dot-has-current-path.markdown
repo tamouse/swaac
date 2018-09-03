@@ -1,11 +1,9 @@
----
-layout: post
-title: "TIL: Capybara.has_current_path"
-date: 2017-11-20 09:54
-categories: ["testing"]
-tags: ["testing", "rails", "capybara", "wait-time"]
-source: http://www.rubydoc.info/github/jnicklas/capybara/Capybara/SessionMatchers#has_current_path%3F-instance_method
----
+- #+title: "TIL: Capybara.has_current_path"
+- #+date: 2017-11-20 09:54
+- #+keywords: testing, rails, capybara, wait time
+- #+source: http://www.rubydoc.info/github/jnicklas/capybara/Capybara/SessionMatchers#has_current_path%3F-instance_method
+
+# TIL: Capybara.has_current_path
 
 I'm an infrequent user of Capybara, preferring other means to
 test. But I reach for it when it's needed. That being said, I haven't
@@ -23,23 +21,22 @@ test than inserting sleeps.
 
 This:
 
-
-{% highlight ruby %}
+``` ruby
 scenario "item is deleted when clicked" do
   modal.click_on("Delete This Item")
   sleep 2
   expect(page.current_url).to match(%r{/items$})
 end
-{% endhighlight %}
+```
 
 becomes:
 
-{% highlight ruby %}
+``` ruby
 scenario "item is deleted when clicked" do
   modal.click_on("Delete This Item")
   expect(page).to have_current_path(%r{/items$})
 end
-{% endhighlight %}
+```
 
 (Note that `has_current_path?` will take either a string or a regexp.)
 
