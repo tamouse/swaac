@@ -1,7 +1,7 @@
 * Frontend Masters: Javascript: The Hard Parts (Part 1)
 
 Created: 2018-07-11
-Last updated: Time-stamp: <2018-09-03 00:29:24 tamara>
+Last updated: Time-stamp: <2018-09-03 00:34:43 tamara>
 
 Recently watching [[file:%7B%7B%20page.source%20%7D%7D][this video]]
 with a study group, and working through a few of the coding challenges.
@@ -152,12 +152,12 @@ The main structure will still be the same:
 
 #+BEGIN_SRC javascript
   function mapWith(arr, cb) {
-    let mapped = [] // step 1
+      let mapped = [] // step 1
 
-    // forEach providing our loop
-      ... mapped.push(cb(item)) // step 2
+      // forEach will be providing our loop, which will contain:
+      // mapped.push(cb(item)) // step 2
 
-    return mapped // step 3
+      return mapped // step 3
   }
 #+END_SRC
 
