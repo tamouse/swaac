@@ -1,10 +1,8 @@
----
-layout: post
-title: "TIL: WebStorm automatic import problems"
-date: 2018-08-13 12:26
-categories: ["tools"]
-tags: ["tools","webstorm"]
----
+* TIL: WebStorm automatic import problems
+
+- date: 2018-08-13 12:26
+- categories: ["tools"]
+- tags: ["tools","webstorm"]
 
 Working today in webstorm, I spent about an hour trying to figure out why a particular test was failing. I didn't realize that webstorm had fumbled an automatic import line.
 
@@ -14,15 +12,19 @@ However, webstorm may not get the actual import correct.
 
 In this case, it wrote the import statement as
 
-    import { graphql } from "react-apollo/index"
+#+BEGIN_SRC javascript
+  import { graphql } from "react-apollo/index"
+#+END_SRC
 
 when it should have been
 
-    import { graphql } from "react-apollo"
+#+BEGIN_SRC javascript
+  import { graphql } from "react-apollo"
+#+END_SRC
 
 This was throwing errors in testing that looked like
 
-```
+#+BEGIN_EXAMPLE
   ● Test suite failed to run
 
     /Users/tamara.temple/Projects/react/kickserv/node_modules/react-apollo/index.js:1
@@ -34,5 +36,4 @@ This was throwing errors in testing that looked like
       at ScriptTransformer._transformAndBuildScript (node_modules/jest-runtime/build/script_transformer.js:305:17)
       at Object.<anonymous> (app/javascript/src/client/src/concepts/customers/new/NewCustomerModal.js:3:14)
       at Object.<anonymous> (app/javascript/src/client/src/concepts/customers/new/NewCustomerModal.test.js:3:25)
-
-```
+#+END_EXAMPLE
