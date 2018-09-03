@@ -1,14 +1,8 @@
----
-# BEGIN: redirect added by jekyllpress on 2014-09-29 00:34:42 -0500
-redirect_from:
-  - /blog/2013/05/15/possible-topics-for-swaac/
-# END:   redirect added by jekyllpress on 2014-09-29 00:34:42 -0500
-layout: post
-title: "Possible Topics for SWaaC"
-date: 2013-05-15 13:20
-comments: true
-categories: [swaac]
----
+# Possible Topics for SWaaC
+
+- date: 2013-05-15 13:20
+- categories: [swaac]
+
 A list of potential topics to discuss and explore as software craftspeople.
 
 Below is a potential list of topics I'd like to cover on the web site.

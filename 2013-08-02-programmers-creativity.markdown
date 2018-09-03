@@ -1,21 +1,13 @@
----
-# BEGIN: redirect added by jekyllpress on 2014-09-29 00:34:42 -0500
-redirect_from:
-  - /blog/2013/08/02/programmers-creativity/
-# END:   redirect added by jekyllpress on 2014-09-29 00:34:42 -0500
-layout: post
-title: Programmers Creativity
-date: 2013-08-02 04:51
-categories: [swaac]
-tags: [quotes, creativity]
----
+# Programmers Creativity
+
+- date: 2013-08-02 04:51
+- tags: [quotes, creativity]
+
 > # I think most people think programming is cold, precise, and mechanical. It's actually creative, perplexing and deeply personal.
 > — Unknown (from http://discordianquotes.com/quote/think-people-thing-programming-cold-precise-mechanical-actually)
 
 I've said similar words many times. I wish more people understood
 them.
-
-<!--more-->
 
 ## Programming is Creative
 
@@ -24,14 +16,17 @@ that other's can see as beautiful, or as unique, but also it means
 applying your mind to making something real that exists only at first
 in your mind.
 
-> ### To Create:
+### To Create:
 
-> 1. to cause to come into being, as something unique.
-> 2. to evolve from one's imagination, as a work of art or an invention.
-> 3. to perform (a role) in the first production of a play or motion picture.
-> 4. to make by investing with new rank; designate: to create a peer.
-> 5. to arrange or bring about, as by intention or design: to create confusion.
-> 6. to do something creative.
+1. to cause to come into being, as something unique.
+2. to evolve from one's imagination, as a work of art or an invention.
+3. to perform (a role) in the first production of a play or motion picture.
+4. to make by investing with new rank; designate: to create a peer.
+5. to arrange or bring about, as by intention or design: to create confusion.
+6. to do something creative.
+
+<cite href="https://www.thefreedictionary.com/create">create. (n.d.) American Heritage® Dictionary of the English Language, Fifth Edition. (2011). </cite>
+
 
 The thing that makes something a craft *vs* a fine art is that crafts
 have some utility beyond their form, or because of their form, whereas

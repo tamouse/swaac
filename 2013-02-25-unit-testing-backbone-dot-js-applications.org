@@ -1,0 +1,21 @@
+* Unit Testing Backbone.JS Applications
+
+- date: 2013-02-25 16:01
+- categories: [swaac]
+- tags: [software, development, testing, unit-testing, backbone-js, javascript, node-js, test-em, mocha-js, sinon-js, chai-js, web-apps]
+- source: http://www.sitepoint.com/unit-testing-backbone-js-applications/
+
+A starting collection of tools and environment that helps automate unit testing of Backbone.JS applications
+
+** Summary
+
+This is a good collection of tools and environment for starting off running [[http://www.agiledata.org/essays/tdd.html][TDD]] on [[http://backbonejs.org/][Backbone.JS]] applications.
+
+Tools discussed:
+
+- Command line JavaScript execution environment: [[http://nodejs.org/][node.js]]
+- JavaScript unit testing framework: [[http://visionmedia.github.com/mocha/][Mocha]]
+- Test Development Environment: [[https://github.com/airportyh/testem][Test'em]]
+- JavaScript assertion library: [[http://chaijs.com/][Chai Assertion Library]]
+- Spies, stubs, and mocks: [[http://sinonjs.org/][Sinon.JS]]
+- Additional assertions: [[https://github.com/domenic/sinon-chai][Sinon.JS Assertions for Chai]]

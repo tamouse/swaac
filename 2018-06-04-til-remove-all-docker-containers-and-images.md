@@ -1,10 +1,8 @@
----
-layout: post
-title: "TIL: Removing all Docker Containers and Images"
-date: 2018-06-04 11:51
-categories: [docker]
-tags: [docker, containers, images, removing]
----
+# TIL: Removing all Docker Containers and Images
+
+- date: 2018-06-04 11:51
+- categories: [docker]
+- tags: [docker, containers, images, removing]
 
 I needed to do a reset on my work machine of the Docker stuff I was
 using, so needed to know how to do this.
