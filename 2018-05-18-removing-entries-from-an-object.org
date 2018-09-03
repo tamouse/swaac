@@ -1,33 +1,33 @@
+* Removing entries from an Object in JavaScript
+
+- Created on: 2018-05-18
+- Keyworeds: JavaScript, Object, How To
+
+
 I was casting about for a simple way to remove specific keys from an
 object before returning it to a consumer function. In this particular
 case, I wanted to remove all the entries that began with an underscore
-(="_"=).
+(~"_"~).
 
 There's nothing like Ruby's Hash Enumerbles, but there is a library of
 such functions for JavaScript, [[https://lodash.com][lodash]] that fills
 in rather well.
 
 For this exercise, I used the
-[[https://lodash.com/docs/4.17.10#reduce][=reduce=]] function in the
-=Collections= set of functions.
+[[https://lodash.com/docs/4.17.10#reduce][~reduce~]] function in the
+~Collections~ set of functions.
 
 ** reduce syntax
-   :PROPERTIES:
-   :CUSTOM_ID: reduce-syntax
-   :END:
 
-The syntax for lodash's =reduce= is:
+The syntax for lodash's ~reduce~ is:
 
 #+BEGIN_EXAMPLE
     result = _.reduce(collection, filter, initialValue)
 #+END_EXAMPLE
 
 ** the filter
-   :PROPERTIES:
-   :CUSTOM_ID: the-filter
-   :END:
 
-In the =reduce= function, you need to provide it with an =iteratee= --
+In the ~reduce~ function, you need to provide it with an ~iteratee~ --
 something that acts on the current thing in the collection and returns
 the updated accumulator.
 
@@ -37,8 +37,8 @@ The function signature for the filter (iteratee) is:
     function filter(accumulator, value, key, collection)
 #+END_EXAMPLE
 
-If the collection is an =Object=, the key is the current key. If the
-collection is an =Array=, it's the current index.
+If the collection is an ~Object~, the key is the current key. If the
+collection is an ~Array~, it's the current index.
 
 In my case, I want to dump all keys that start with underscore, so the
 filter function is:
@@ -53,11 +53,8 @@ filter function is:
 #+END_EXAMPLE
 
 ** putting it all together
-   :PROPERTIES:
-   :CUSTOM_ID: putting-it-all-together
-   :END:
 
-In a simple example, I have =obj1= that has a bad key: =_bad= that I
+In a simple example, I have ~obj1~ that has a bad key: ~_bad~ that I
 want removed:
 
 #+BEGIN_EXAMPLE
@@ -76,7 +73,7 @@ want removed:
     let obj2 = _.reduce(obj1, no_, {})
 #+END_EXAMPLE
 
-The end result in =obj2= is:
+The end result in ~obj2~ is:
 
 #+BEGIN_EXAMPLE
     { good: 2 }
@@ -84,4 +81,4 @@ The end result in =obj2= is:
 
 which is just what I wanted.
 
-There's a =jsfiddle= at [[https://jsfiddle.net/tamouse/5f3L5dbz/]]
+There's a ~jsfiddle~ at [[https://jsfiddle.net/tamouse/5f3L5dbz/]]
