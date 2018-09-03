@@ -1,0 +1,35 @@
+* TIL: Capybara fill\_in wants the id, not the CSS selector id
+  :PROPERTIES:
+  :CUSTOM_ID: til-capybara-fill_in-wants-the-id-not-the-css-selector-id
+  :PUBLISHED_DATE: 2017-11-16T14:12
+  :KEYWORDS: capybara, rails, testing, forms, fill_in
+  :END:
+
+- date: 2017-11-16 14:12
+- keywords: capybara, rails, testing, forms, fill_in
+
+So today I learned that one should pay closer attention to what the documetation says instead of just assuming you already know. RTFM\^2.
+
+In Capybara, you can fill in fields in forms using the =.fill_in()= method. In [[http://www.rubydoc.info/github/teamcapybara/capybara/master/Capybara/Node/Actions#fill_in-instance_method][the documentation]] it discusses the types of locators you can use:
+
+#+BEGIN_QUOTE
+  Locate a text field or text area and fill it in with the given text The field can be found via its name, id or label text.
+#+END_QUOTE
+
+It doesn't say /anything/ about using a CSS selector!
+
+So: this does not work:
+
+#+BEGIN_SRC ruby
+    @modal.fill_in("#new-job-number-input-#{@job.id}", with: "999")
+#+END_SRC
+
+But this, however, *DOES* work:
+
+#+BEGIN_SRC ruby
+    @modal.fill_in("new-job-number-input-#{@job.id}", with: "999")
+#+END_SRC
+
+That one, single "#" at the beginning of the string was throwing me off, causing me to reach for other sorts of shenannigans to find the field to fill in.
+
+Hooray, persistence!
