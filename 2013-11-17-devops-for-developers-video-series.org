@@ -1,0 +1,11 @@
+A new series on how to deploy web applications, especially for
+developers. Essential knowledge often difficult to pull together for new
+Rails developers.
+
+#+BEGIN_HTML
+  <iframe width="560" height="315" src="//www.youtube.com/embed/videoseries?list=PLjQo0sojbbxUav7I746f0lT4apGX8-iON" frameborder="0" allowfullscreen>
+#+END_HTML
+
+#+BEGIN_HTML
+  </iframe>
+#+END_HTML

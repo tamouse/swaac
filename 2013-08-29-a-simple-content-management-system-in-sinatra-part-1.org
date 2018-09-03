@@ -1,0 +1,15 @@
+* Link: A Simple Content Management System in Sinatra
+  :PROPERTIES:
+  :CREATED_AT: 2013-08-29
+  :END:
+
+[[http://sinatrarb.com][Sinatra]] is a cute little web application
+mini-framework, that primarily sets up controllers and views, processing
+routes and generating responses.
+
+It can be quite fun to work with something light-weight like this rather
+than doing everything with Rails.
+
+- [[http://www.sitepoint.com/a-simple-content-management-system-in-sinatra/][Part 1]]
+- [[https://www.sitepoint.com/a-simple-cms-in-sinatra-part-ii/][Part 2]]
+- [[https://www.sitepoint.com/a-simple-cms-in-sinatra-part-iii/][Part 3]]

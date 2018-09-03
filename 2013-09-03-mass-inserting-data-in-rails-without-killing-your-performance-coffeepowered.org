@@ -1,0 +1,10 @@
+* Link: Mass inserting data in Rails without killing your performance
+  :PROPERTIES:
+  :CREATED_AT: 2013-09-03
+  :END:
+
+*Link:* [[https://www.coffeepowered.net/2009/01/23/mass-inserting-data-in-rails-without-killing-your-performance/]]
+
+** Summary
+
+Good article on using direct SQL statements to perform mass insertions into Rails models, instead of using ActiveRecord's rather slow way of instantiating objects for each row before inserting them.

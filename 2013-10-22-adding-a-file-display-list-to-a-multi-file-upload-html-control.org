@@ -1,0 +1,240 @@
+A repost of <{{page.source}}> by
+[[http://www.raymondcamden.com/][Raymond Camden]].
+
+#+BEGIN_QUOTE
+  ** [[http://www.raymondcamden.com/index.cfm/2013/9/10/Adding-a-file-display-list-to-a-multifile-upload-HTML-control][Adding
+  a file display list to a multi-file upload HTML control]]
+     :PROPERTIES:
+     :CUSTOM_ID: adding-a-file-display-list-to-a-multi-file-upload-html-control
+     :END:
+
+  ** 09-10-2013 **
+
+  I'm working on something a bit interesting with a multi-file upload
+  control, but while that is in development, I thought I'd share a quick
+  tip about working with multi-file upload controls in general.
+
+  If you are not clear about what I'm talking about, I simply mean
+  adding the multiple attribute to the input tag for file uploads. Like
+  so:
+
+  #+BEGIN_EXAMPLE
+      <input type="file" name="foo" id="foo" multiple>
+  #+END_EXAMPLE
+
+  In browsers that support it, the user will be able to select multiple
+  files. In browsers that don't support it, it still works fine as a
+  file control, but they are limited to one file. In theory, this is
+  pretty trivial to use, but there's a UX issue that kind of bugs me.
+  Here is a screen shot of a form using this control. I've selected two
+  files:
+
+  [[/images/raymondcamden/Screenshot_9_10_13_9_32_AM.jpg]]
+
+  Notice something? The user isn't told /what/ files they selected. Now
+  obviously in a form this small it isn't that big of a deal, but in a
+  larger form the user may forget or simply want to double check before
+  they submit the form. Unfortunately there is no way to do that.
+  Clicking the Browse button simply opens the file picker again.
+  Surprisingly, IE handles this the best. It provides a read-only list
+  of what you selected:
+
+  [[/images/raymondcamden/Screenshot_9_10_13_9_35_AM.png]]
+
+  One could use a bit of CSS to make that field a bit larger for sure
+  and easier to read, but you get the idea. So how can we provide some
+  feedback to the user about what files they have selected?
+
+  First, let's add a simple change handler to our input field:
+
+  #+BEGIN_EXAMPLE
+      document.addEventListener("DOMContentLoaded", init, false);
+          
+      function init() {
+          document.querySelector('#files').addEventListener('change', handleFileSelect, false);
+      }
+  #+END_EXAMPLE
+
+  Next, let's write an event handler and see if we can get access to the
+  files property of the event. Not all browsers support this, but in the
+  ones that do, we can enumerate over them.
+
+  #+BEGIN_EXAMPLE
+      function handleFileSelect(e) {
+              
+          if(!e.target.files) return;
+              
+          var files = e.target.files;
+          for(var i=0; i < files.length; i++) {
+              var f = files[i];
+          }
+              
+      }
+  #+END_EXAMPLE
+
+  The file object gives us a few properties, but the one we care about
+  is the name. So let's create a full demo of this. I'm going to add a
+  little div below my input field and use it as place to list my files.
+
+  #+BEGIN_EXAMPLE
+      <!doctype html>
+      <html>
+      <head>
+      <title>Proper Title</title>
+      </head>
+          
+      <body>
+          
+          <form id="myForm" method="post" enctype="multipart/form-data">
+
+              Files: <input type="file" id="files" name="files" multiple><br/>
+
+              <div id="selectedFiles"></div>
+
+              <input type="submit">
+          </form>
+
+          <script>
+          var selDiv = "";
+              
+          document.addEventListener("DOMContentLoaded", init, false);
+          
+          function init() {
+              document.querySelector('#files').addEventListener('change', handleFileSelect, false);
+              selDiv = document.querySelector("#selectedFiles");
+          }
+              
+          function handleFileSelect(e) {
+              
+              if(!e.target.files) return;
+              
+              selDiv.innerHTML = "";
+              
+              var files = e.target.files;
+              for(var i=0; i<files.length; i++) {
+                  var f = files[i];
+                  
+                  selDiv.innerHTML += f.name + "<br/>";
+
+              }
+              
+          }
+          </script>
+
+      </body>
+      </html>
+  #+END_EXAMPLE
+
+  Pretty simple, right? You can view an example of this here:
+  [[http://www.raymondcamden.com/demos/2013/sep/10/test0A.html]]. And
+  here is a quick screen shot in case you are viewing this in a
+  non-compliant browser.
+
+  [[/images/raymondcamden/Screenshot_9_10_13_9_42_AM.png]]
+
+  Pretty simple, right? Let's kick it up a notch. Some browsers support
+  FileReader
+  ([[https://developer.mozilla.org/en-US/docs/Web/API/FileReader][MDN
+  Reference]]), a basic way of reading files on the user system. We
+  could check for FileReader support and use it to provide image
+  previews. I'll share the code first and then explain how it works.
+
+  *Edit on September 11:* A big thank you to Sime Vidas for
+  [[http://www.raymondcamden.com/index.cfm/2013/9/10/Adding-a-file-display-list-to-a-multifile-upload-HTML-control#c6E612D19-BAD9-A665-957DCD4546E53F41][pointing
+  out]] a stupid little bug in my code I missed on first pass around. I
+  made a classic array/callback bug and didn't notice it. I fixed the
+  code and the screen shot, but if you want to see the broken code, view
+  source on
+  http://www.raymondcamden.com/demos/2013/sep/10/test0orig.html.
+
+  #+BEGIN_EXAMPLE
+      <!doctype html>
+      <html>
+      <head>
+      <title>Proper Title</title>
+      <style>
+          #selectedFiles img {
+              max-width: 125px;
+              max-height: 125px;
+              float: left;
+              margin-bottom:10px;
+          }
+      </style>
+      </head>
+          
+      <body>
+          
+          <form id="myForm" method="post" enctype="multipart/form-data">
+
+              Files: <input type="file" id="files" name="files" multiple accept="image/*"><br/>
+
+              <div id="selectedFiles"></div>
+
+              <input type="submit">
+          </form>
+
+          <script>
+          var selDiv = "";
+              
+          document.addEventListener("DOMContentLoaded", init, false);
+          
+          function init() {
+              document.querySelector('#files').addEventListener('change', handleFileSelect, false);
+              selDiv = document.querySelector("#selectedFiles");
+          }
+              
+          function handleFileSelect(e) {
+              
+              if(!e.target.files || !window.FileReader) return;
+
+              selDiv.innerHTML = "";
+              
+              var files = e.target.files;
+              var filesArr = Array.prototype.slice.call(files);
+              filesArr.forEach(function(f) {
+                  var f = files[i];
+                  if(!f.type.match("image.*")) {
+                      return;
+                  }
+
+                  var reader = new FileReader();
+                  reader.onload = function (e) {
+                      var html = "<img src=\"" + e.target.result + "\">" + f.name + "<br clear=\"left\"/>";
+                      selDiv.innerHTML += html;               
+                  }
+                  reader.readAsDataURL(f); 
+              });
+              
+          }
+          </script>
+
+      </body>
+      </html>
+  #+END_EXAMPLE
+
+  I've modified the handleFileSelect code to check for both the files
+  array as well as FileReader. (Note - I should do this /before/ I even
+  attach the event handler. I just thought of that.) I've updated my
+  input field to say it accepts only images and added a second check
+  within the event handler. Once we are sure we have an image, I use the
+  FileReader API to create a DataURL (string) version of the image. With
+  that I can actually draw the image as a preview.
+
+  You can view a demo of this here:
+  [[http://www.raymondcamden.com/demos/2013/sep/10/test0.html]]. And
+  again, a screen shot:
+
+  [[/images/raymondcamden/Screenshot_9_11_13_5_49_AM.png]]
+
+  Check it out and let me know what you think. As I said, it should be
+  fully backwards compatible (in that it won't break) and works well in
+  Chrome, Firefox, IE10, and Safari.
+
+  ** Related Blog Entries
+     :PROPERTIES:
+     :CUSTOM_ID: related-blog-entries
+     :END:
+
+  - [[http://www.raymondcamden.com/index.cfm/2013/10/1/MultiFile-Uploads-and-Multiple-Selects][Multi-File
+    Uploads and Multiple Selects]] (October 1, 2013)
+#+END_QUOTE

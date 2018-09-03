@@ -1,0 +1,7 @@
+Here's the latest that seems to work for me:
+
+#+BEGIN_EXAMPLE
+    brew cask install emacs
+#+END_EXAMPLE
+
+This installed version 25.1.1 on {{page.date | date\_to\_string}}.

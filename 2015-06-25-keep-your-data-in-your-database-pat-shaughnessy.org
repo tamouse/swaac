@@ -1,0 +1,3 @@
+Great show and tell about making your database system do the heavy
+lifting on data manipulation, making it so your application only gets
+the information it needs.

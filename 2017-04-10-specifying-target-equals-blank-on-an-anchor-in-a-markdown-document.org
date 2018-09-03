@@ -1,0 +1,25 @@
+Just a quick note so I don't lose this:
+
+In Jekyll's default markdown processor, =kramdown=, you can specify an
+attribute on a spanning or block element inside braces ("squirly
+brackets") like so:
+
+{% highlight markdown %} {% raw %}{:attr="value"}{% endraw %} {%
+endhighlight %}
+
+Thus, to get a link to open in a new tab:
+
+{% highlight markdown %} {% raw %}[[file:linkpath][link
+text]]{:target=“\_blank" rel="noopenner noreferrer"}{% endraw %} {%
+endhighlight %}
+
+Should generate:
+
+{% highlight html %} link text {% endhighlight %}
+
+Let's just see what happens:
+
+#+BEGIN_QUOTE
+  [[file:%7B%7Bpage.url%7D%7D][This link]]{:target=“\_blank"
+  rel="noopenner noreferrer"} should open in a new page.
+#+END_QUOTE

@@ -1,0 +1,266 @@
+I've put out a new release of =Jekyllpress=, my Thor script to help
+create new jekyll posts and pages.
+
+** To Install
+   :PROPERTIES:
+   :CUSTOM_ID: to-install
+   :END:
+
+Command line install:
+
+#+BEGIN_EXAMPLE
+    $ gem install jekyllpress
+#+END_EXAMPLE
+
+** New features
+   :PROPERTIES:
+   :CUSTOM_ID: new-features
+   :END:
+
+- /--url/ switch, lets you specify a url to be placed into the template.
+  ERB variable =@url=.
+
+- /--layout/ switch, lets you specify a different layout.
+
+- /--template/ switch, lets you specify a different document template.
+
+- =@filename= variable that can be used in the ERB part of a template.
+
+** Example used to generate this post:
+   :PROPERTIES:
+   :CUSTOM_ID: example-used-to-generate-this-post
+   :END:
+
+*** Command line
+    :PROPERTIES:
+    :CUSTOM_ID: command-line
+    :END:
+
+{% highlight bash %} $ jekyllpress new\_post 'A new release of
+Jekyllpress' -c jekyll\\
+-t jekyllpress jekyll --layout=link --template=new\_link.markdown\\
+--url=https://github.com/tamouse/jekyllpress/releases/tag/v1.0.0 {%
+endhighlight %}
+
+*** new\_link.markdown template
+    :PROPERTIES:
+    :CUSTOM_ID: new_link.markdown-template
+    :END:
+
+It's just frontmatter.
+
+** {% highlight yaml %}
+   :PROPERTIES:
+   :CUSTOM_ID: highlight-yaml
+   :END:
+
+layout: link title: "Link: <%= @title %>" date: <%=
+Time.now.strftime("%Y-%m-%d %H:%M") %> categories: <%=
+Array(@categories) %> tags: <%= Array(@tags) %> link: href: "<%= @url
+%>" title: "" date: "" author: name: "" url: "" attachments: - name: ""
+link: "" description: "" ---
+
+{% endhighlight %}
+
+*** link layout
+    :PROPERTIES:
+    :CUSTOM_ID: link-layout
+    :END:
+
+** {% highlight html %}{% raw %}
+   :PROPERTIES:
+   :CUSTOM_ID: highlight-html-raw
+   :END:
+
+** layout: default
+   :PROPERTIES:
+   :CUSTOM_ID: layout-default
+   :END:
+
+#+BEGIN_HTML
+  <main role="main">
+#+END_HTML
+
+#+BEGIN_HTML
+  <header class="page-header">
+#+END_HTML
+
+#+BEGIN_HTML
+  <h1>
+#+END_HTML
+
+{{ page.link.title }}
+
+#+BEGIN_HTML
+  </h1>
+#+END_HTML
+
+#+BEGIN_HTML
+  <ul>
+#+END_HTML
+
+#+BEGIN_HTML
+  <li>
+#+END_HTML
+
+Author: {{page.link.author.name}}
+
+#+BEGIN_HTML
+  </li>
+#+END_HTML
+
+#+BEGIN_HTML
+  <li>
+#+END_HTML
+
+Article date: {{page.link.date}}
+
+#+BEGIN_HTML
+  </li>
+#+END_HTML
+
+{% if page.categories %}
+
+#+BEGIN_HTML
+  <li>
+#+END_HTML
+
+#+BEGIN_HTML
+  <ul class="link-list">
+#+END_HTML
+
+#+BEGIN_HTML
+  <li>
+#+END_HTML
+
+Categories:
+
+#+BEGIN_HTML
+  </li>
+#+END_HTML
+
+{% for cat in page.categories %}
+
+#+BEGIN_HTML
+  <li role="presentation">
+#+END_HTML
+
+{{cat}}
+
+#+BEGIN_HTML
+  </li>
+#+END_HTML
+
+{% endfor %}
+
+#+BEGIN_HTML
+  </ul>
+#+END_HTML
+
+#+BEGIN_HTML
+  </li>
+#+END_HTML
+
+{% endif %} {% if page.tags %}
+
+#+BEGIN_HTML
+  <li>
+#+END_HTML
+
+#+BEGIN_HTML
+  <ul class="link-list">
+#+END_HTML
+
+#+BEGIN_HTML
+  <li>
+#+END_HTML
+
+Tags:
+
+#+BEGIN_HTML
+  </li>
+#+END_HTML
+
+{% for tag in page.tags %}
+
+#+BEGIN_HTML
+  <li role="presentation">
+#+END_HTML
+
+{{tag}}
+
+#+BEGIN_HTML
+  </li>
+#+END_HTML
+
+{% endfor %}
+
+#+BEGIN_HTML
+  </ul>
+#+END_HTML
+
+#+BEGIN_HTML
+  </li>
+#+END_HTML
+
+{% endif %}
+
+#+BEGIN_HTML
+  </ul>
+#+END_HTML
+
+#+BEGIN_HTML
+  </header>
+#+END_HTML
+
+#+BEGIN_HTML
+  <article>
+#+END_HTML
+
+{{ content }}
+
+#+BEGIN_HTML
+  </article>
+#+END_HTML
+
+#+BEGIN_HTML
+  <footer>
+#+END_HTML
+
+#+BEGIN_HTML
+  <hr>
+#+END_HTML
+
+{% if page.source %}
+
+#+BEGIN_HTML
+  <p>
+#+END_HTML
+
+Source
+
+#+BEGIN_HTML
+  </p>
+#+END_HTML
+
+{% endif %}
+
+#+BEGIN_HTML
+  </footer>
+#+END_HTML
+
+#+BEGIN_HTML
+  <aside>
+#+END_HTML
+
+{% include discuss.html %}
+
+#+BEGIN_HTML
+  </aside>
+#+END_HTML
+
+#+BEGIN_HTML
+  </main>
+#+END_HTML
+
+{% endraw %}{% endhighlight %}

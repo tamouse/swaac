@@ -1,0 +1,3 @@
+* SWAAC Posts
+
+These have come through a few different web sites and static site generators. I'm pretty much done with trying to make these things work, over and over. I've decided to just write these things in ORG-mode, via Emacs, and publish them straight-up on github, without any other stuff around them.

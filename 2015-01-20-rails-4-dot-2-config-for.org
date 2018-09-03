@@ -1,0 +1,89 @@
+There have been a lot of blog posts and articles written on how to add
+application-specific configurations to a Rails app. In version 4.2,
+there is a method called =config_for= which makes a lot of that
+obsolete, simplifying the results.
+
+** A common Rails idiom
+   :PROPERTIES:
+   :CUSTOM_ID: a-common-rails-idiom
+   :END:
+
+A seemingly very common idiom is to arrange appliation configuration
+values in YAML+ERB files under the =config= directory in a Rails app.
+Then, in an initializer, read in the file, process it through ERB, then
+YAML extract the set appropriate to the running environment, and save it
+in a constant or global:
+
+*** =config/app_config.yml=
+    :PROPERTIES:
+    :CUSTOM_ID: configapp_config.yml
+    :END:
+
+#+BEGIN_EXAMPLE
+    default: &default
+      service_url: https://my_service.example.com
+
+    development:
+      <<: *default
+
+    test:
+      <<: *default
+
+    production:
+      service_url: <%= ENV['APP_SERVICE_URL'] %>
+#+END_EXAMPLE
+
+*** =config/initializers/app_config.rb=
+    :PROPERTIES:
+    :CUSTOM_ID: configinitializersapp_config.rb
+    :END:
+
+#+BEGIN_SRC ruby
+    require 'yaml'
+    require 'erb'
+
+    APP_CONFIG = YAML.load(ERB.new(File.read(Rails.root.join('config','app_config.yml'))).result)[Rails.env] || {}
+#+END_SRC
+
+** Enter =config_for= at Rails 4.2
+   :PROPERTIES:
+   :CUSTOM_ID: enter-config_for-at-rails-4.2
+   :END:
+
+[[http://api.rubyonrails.org/classes/Rails/Application.html#method-i-config_for][=config_for=]]
+is a method on =Rails.application=. It can be called bar within all the
+normal configuration contexts, such as inside
+=config/environments/development.rb= and such.
+
+What it does is fairly straightforward, reading a YAML+ERB file from the
+=config= directory, returning the appropriate section based on the
+current Rails environment.
+
+It's a simple enough implementation:
+[[https://github.com/rails/rails/blob/1d1239d32856b32b19c04edd17d0dd0d47611586/railties/lib/rails/application.rb#L226]]
+(Note of course this is a volatile link). It's implemented in
+Rails::Application#config\_for.
+
+You pass in a symbol that corresponds to a file name under =config=, so
+=config_for(:app_config)= loads up the appropriate environment variables
+from =config/app_config.yml=.
+
+Now, your initializer can become simply:
+
+*** =config/initializers/app_config.rb=
+    :PROPERTIES:
+    :CUSTOM_ID: configinitializersapp_config.rb-1
+    :END:
+
+#+BEGIN_SRC ruby
+    APP_CONFIG = Rails.application.config_for(:app_config)
+#+END_SRC
+
+** Example
+   :PROPERTIES:
+   :CUSTOM_ID: example
+   :END:
+
+I've an example github repo at
+[[https://github.com/tamouse/test_config_for]]. Feel free to fork it and
+play with it yourself.

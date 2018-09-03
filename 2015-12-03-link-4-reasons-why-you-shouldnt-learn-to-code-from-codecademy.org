@@ -1,0 +1,4 @@
+I agree with all of these, but it's not so much that you shouldn't learn
+from Codecademy, more like there's so much you can't learn from
+Codecademy. Don't assume you'll get more out of it than you will a basic
+understanding of syntax, but not problem solving.

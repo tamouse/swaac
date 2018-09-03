@@ -1,0 +1,13 @@
+I needed to do a reset on my work machine of the Docker stuff I was
+using, so needed to know how to do this.
+
+#+BEGIN_SRC sh
+    $ docker rm $(docker ps -aq)
+    $ docker rmi $(docker images -q)
+#+END_SRC
+
+=docker ps -aq= gives a list of all the container hashes, which is given
+the =docker rm= command.
+
+Similarly, =docker images -q= lists all the docker image hashes, which
+is given to docker's "remove images" =rmi= command.

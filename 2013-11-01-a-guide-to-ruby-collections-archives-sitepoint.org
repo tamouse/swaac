@@ -1,0 +1,33 @@
+A useful guide Ruby Collections: * Arrays * Hashes * Sets * Ranges *
+Enumerable * Enumerator
+
+#+BEGIN_QUOTE
+  ** A Guide to Ruby Collections
+     :PROPERTIES:
+     :CUSTOM_ID: a-guide-to-ruby-collections
+     :END:
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+
+  - [[http://www.sitepoint.com/guide-ruby-collections-part-arrays/][A
+    Guide to Ruby Collections, Part I: Arrays]] by
+    [[http://www.sitepoint.com/author/rqualls/][Robert Qualls]] Oct 21,
+    2013
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+
+  - [[http://www.sitepoint.com/guide-ruby-collections-ii-hashes-sets-ranges/][A
+    Guide to Ruby Collections, II: Hashes, Sets, and Ranges]] by
+    [[http://www.sitepoint.com/author/rqualls/][Robert Qualls]] Oct 25,
+    2013
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+
+  - [[http://www.sitepoint.com/guide-ruby-collections-iii-enumerable-enumerator/][A
+    Guide to Ruby Collections III: Enumerable and Enumerator]] by
+    [[http://www.sitepoint.com/author/rqualls/][Robert Qualls]] Oct 31,
+    2013
+#+END_QUOTE

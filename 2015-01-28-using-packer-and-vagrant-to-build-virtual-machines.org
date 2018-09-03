@@ -1,0 +1,6 @@
+The great [[http://www.codeship.com][codeship.com]]'s
+[[http://blog.codeship.com/author/florianmotlik/][Florian Motlik]]
+writes a superb tutorial on building virtual machines with
+[[http://vagrantup.com][Vagrant]] and [[http://www.packer.io][Packer]].
+Being able to swiftly build virtual machines is something I find
+essential for development, test, staging, and deployment.

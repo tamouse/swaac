@@ -1,0 +1,7 @@
+Fighting your way through a code review with a lot of changes simply due
+to white space changes?
+
+Github to the rescue!
+
+Append =?w=1= to the end of the =.../files= url to view the diff
+/without/ white space changes.

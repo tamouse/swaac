@@ -1,0 +1,2 @@
+Randy Coulman has written a [[file:%7B%7Bpage.source%7D%7D][series on
+testing]] that I think you'll find useful.

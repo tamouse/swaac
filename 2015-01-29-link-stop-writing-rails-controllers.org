@@ -1,0 +1,64 @@
+Good article, thought provoking. Makes one think about how much code one
+must write and how it's possibly better to just use data to configure
+things, /a la/ =config/routes.rb=. The actual controllers end up being
+so thin and repetative, maybe all that needs to happen is specify some
+basic information and generate the code.
+
+The implementation presented here is basically a Controller Factory.
+
+* Excerpt:
+  :PROPERTIES:
+  :CUSTOM_ID: excerpt
+  :END:
+
+#+BEGIN_QUOTE
+  ** Data Driven Controllers
+     :PROPERTIES:
+     :CUSTOM_ID: data-driven-controllers
+     :END:
+
+  Data Driven Controllers (DDC) lets you declare via data how to convert
+  back and forth from HTTP to your application's domain without the need
+  for code. By adhering to a couple of interfaces, you can avoid writing
+  most controller code and tests. DDC breaks the process of handling a
+  request into three parts.
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+  *** 1. Convert parameters.
+      :PROPERTIES:
+      :CUSTOM_ID: convert-parameters.
+      :END:
+
+  This step is handled by some sort of context builder. It is mostly in
+  charge of gathering parameters, but may need to pluck out additional
+  information from the controller. The information is collected into a
+  form that the domain code can digest (usually a data blob via a Hash
+  or Struct).
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+  *** 2. Process the domain request / action.
+      :PROPERTIES:
+      :CUSTOM_ID: process-the-domain-request-action.
+      :END:
+
+  The domain level service object takes the necessary information and
+  processes it (update the database, send emails, external services).
+  The service then returns a result that knows nothing about HTTP-land.
+  It includes things like status (application, not HTTP), objects,
+  errors, etc.
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+  *** 3. Glue.
+      :PROPERTIES:
+      :CUSTOM_ID: glue.
+      :END:
+
+  DDC is the glue that holds it all together. It creates a controller
+  class that does all the default things for you, but allows you to
+  override and fill in the blanks where necessary. When defining your
+  glue, you simply tell the action how to get the params from the
+  context builder and what service object to send them off to.
+#+END_QUOTE

@@ -1,0 +1,13 @@
+An overview of the four most common JavaScript-based task runners in use
+today:
+
+- Grunt
+- Gulp
+- Webpack
+- npm scripts
+
+Why limit it to JS-based? Because they will run on all the OSes as well,
+not just the classic *nix-based distros.
+
+Personally, I'm loving [[https://webpack.github.io/][Webpack]] with npm
+scripts these days. :)

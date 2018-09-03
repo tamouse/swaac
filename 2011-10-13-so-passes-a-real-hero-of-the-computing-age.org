@@ -1,0 +1,15 @@
+* So passes a real hero of the computing age. RIP Dennis Ritchie
+  :PROPERTIES:
+  :CREATED_ON: 2011-10-13T04:00:49
+  :KEYWORDS: people, ritchie, obit
+  :END:
+
+I just heard that Dennis Ritchie passed away:
+
+[[https://plus.google.com/+RobPikeTheHuman/posts/ENuEDDYfvKP]]
+
+[[https://en.wikipedia.org/wiki/Dennis_Ritchie][Dennis Richie]] was co-inventor of the C Programming Language, which all modern computer operating systems are based upon, with Brian Kernighan, and co-inventor of Unix, with Ken Thompson.
+
+Ritchie, Thompson and Kernighan were all big heroes and inspirations for me in my early career. Their influence is great; many, many people will not ever know how much influence these people have had on their daily lives.
+
+RIP, Dennis. :'(

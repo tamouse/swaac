@@ -1,0 +1,12 @@
+A great post from @tenderlove on some interesting performance aspects of
+using strings for keys in hashes:
+
+[[file:%7B%7B%20page.source%20%7D%7D][Weird stuff with hashes]]
+
+tl;dr:
+
+- Hashes dup string keys and then freeze them
+- Creating a lot of hashes with string keys can become a big performance
+  hit
+- Freeze the string key so Hash won't dup it and reduce object
+  allocations and hence calls to the GC

@@ -1,0 +1,3 @@
+Quick talk I gave at the June 13, 2016
+[[http://railsmn.org%20Rails%20Beginner's%20Meetup%20Minneapolis][Rails.MN]]
+meetup.
