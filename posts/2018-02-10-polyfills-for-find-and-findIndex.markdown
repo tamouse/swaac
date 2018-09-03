@@ -1,26 +1,15 @@
----
-layout: post
-title: "Polyfills for find() and findIndex() in JavaScript"
-categories: ["javascript"]
-tags:
-  - javascript
-  - polyfills
-  - find
-  - findIndex
-  - missing-ie9
-  - reduce
-  - functional-programming
-source: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
----
+# Polyfills for find() and findIndex() in JavaScript
 
-The JavaScript `Array` `find()` and `findIndez()` methods are
+- KEYWORDS: javascript, polyfills, find, findIndex, missing IE9, reduce, functional programming
+
+[ArrayDoc] https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
+
+The JavaScript [`Array`][ArrayDoc] `find()` and `findIndez()` methods are
 available on all browsers now **except** IE9. Interestingly, the
 `map()`, `filter()`, and `reduce()` methods *are* in IE9.
 
 **On this page;:**
 
-* contents
-{:toc}
 
 ## the starting point
 
