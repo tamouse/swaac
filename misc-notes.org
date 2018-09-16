@@ -1,0 +1,56 @@
+#+TITLE: miscellaneous notes
+
+- Time-stamp: <2018-09-16 15:16:00 tamara.temple>
+
+Just some notes on making this repo
+
+** Converting markdown to org
+
+[[https://pandoc.org/index.html][Pandoc]] does an excellent job of converting regular markdown to org mode. It needs a bit of help afterwards when converting [[https://jekyllrb.com/][Jekyll]] posts, however.
+
+Conversion utility:
+
+#+BEGIN_SRC shell-script
+  pandoc --wrap=none -f markdown -t org <SOURCE >TARGET
+
+  # or simply
+
+  pandoc --wrap=none -o post_file.org post_file.markdown
+#+END_SRC
+
+~pandoc~ is smart enough to figure out the source and target formats from the file extensions.
+
+** Fixing frontmatter
+
+~Pandoc~ sucks at pulling over the ~Jekyll~ frontmatter, so that has to be dealt with manually.
+
+A typical bit of frontmatter:
+
+#+BEGIN_SRC yaml
+  ---
+  layout: post
+  title: "Delete a remote git branch"
+  date: 2013-10-05 08:03
+  categories: [git]
+  tags: [remote, branch, remove]
+  source: http://stackoverflow.com/questions/315911/git-for-beginners-the-definitive-practical-guide/5977604#5977604
+  ---
+#+END_SRC
+
+
+- the ~title:~ yaml key is used in the org file with the ~#+TITLE:~ keyword:
+
+#+BEGIN_SRC org
+  ,#+TITLE: Delete a remote git branch
+#+END_SRC
+
+The other frontmatter is just becoming a plain list:
+
+#+BEGIN_SRC org
+  - Time-stamp: <>
+  - original date: 2013-10-05 08:03
+  - keywords: git, remote, branch, remove
+  - source: http://stackoverflow.com/questions/315911/git-for-beginners-the-definitive-practical-guide/5977604#5977604
+#+END_SRC
+
+The time stamp thingie, ~<>~ gets filled in by Emacs when the file is saved, giving the last time the file was edited and saved. /Keywords/ are the former categories and tags from the ~Jekyll~ post.
