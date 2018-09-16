@@ -1,10 +1,8 @@
 #+TITLE: Remember -- Unit Testing is NOT Integration Testing
 #+DATE: [2018-09-16 Sun 13:34]
 
-* Remember: Unit testing is NOT integration testing
-  :PROPERTIES:
-  :KEYWORDS: testing, react, unit testing, components
-  :END:
+- last update: Time-stamp: <2018-09-16 13:42:24 tamara.temple>
+- keywords: testing, react, unit testing, components
 
 I seem to forget this from time to time when creating a component, that the unit test does not and should not test things outside the component, or things that interact with the component.
 
