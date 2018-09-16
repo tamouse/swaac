@@ -1,0 +1,58 @@
+* Gerald Wienberg: My most challenging experience as a software developer
+  :PROPERTIES:
+  :CUSTOM_ID: gerald-wienberg-my-most-challenging-experience-as-a-software-developer
+  :PUBLISHED_DATE: 2017-10-29T17:13
+  :KEYWORDS: Gerald "Jerry" Wienberg, people, most challenging experience, software development, masters
+  :END:
+
+- PUBLISHED\_DATE: 2017-10-29T17:13
+- KEYWORDS: Gerald "Jerry" Wienberg, people, most challenging experience, software development, masters
+
+
+[[http://www.geraldmweinberg.com/][Gerald Weinberg]] is a long-time writer and commenter on the field of software enginering. I've been a longtime fan of Jerry, and had the privilege and pleasure of meeting him, working with him on some stuff back at HP, and attending some of his and Dani's seminars.
+
+He's always proven faithful to my vision of how the field of software development should be run, in a humane, thoughtful, and intelligent fashion.
+
+[[http://secretsofconsulting.blogspot.com/2017/10/my-most-challenging-experience-as.html][Here's his answer]] to the question: "What was your most challenging experience in software development?"
+
+The moral at the end is really the most important take-away for all of us learning and working in this area:
+
+#+BEGIN_QUOTE
+  Moral: We may think that hardware and software errors are challenging, but nothing matches the difficulty of confronting human errors---especially when those humans are managers willing to hide errors in order to make schedules.
+#+END_QUOTE
+
+Software development is ultimately a human system, focused on solving human problems. This also brings into it all the human fallabilities and problems. Keep clear what's important.
+
+** His answer in full, because it's so astounding that I don't ever want it to be lost:
+
+#+BEGIN_QUOTE
+Here is my detailed answer to the question, "What is the most challenging experience you encountered as a software developer?:
+
+We were developing the tracking system for Project Mercury, to put a person in space and bring them back alive. The “back alive” was the challenging part, but not the only one. Some other challenges were as follows:
+
+- The system was based on a world-wide network of fairly unreliable teletype connections.
+
+- We had to determine the touchdown in the Pacific to within a small radius, which meant we needed accurate and perfectly synchronized clocks on the computer and space capsule.
+
+- We also needed to knew exactly where our tracking stations were, but it turned out nobody knew where Australia's two stations were with sufficient precision. We had to create an entire sub-project to locate Australia.
+
+- We needed information on the launch rocket, but because it was also a military rocket, that information was classified. We eventually found a way to work around that.
+
+- Our computers were a pair of IBM 7090s, plus a 709 at a critical station in Bermuda. In those days, the computers were not built for on-line real-time work. For instance, there was no standard interrupt clock. We actually built our own for the Bermuda machine.
+
+- Also, there were no disk drives yet, so everything had to be based on a tape drive system, but the tape drives were not sufficiently reliable for our specs. We beat this problem by building software error-correcting codes into the tape drive system.
+
+We worked our way through all these problems and many more smaller ones, but the most challenging problem was the “back alive” requirement. Once we had the hardware and network reliability up to snuff, we still had the problem of software errors. To counter this problem, we created a special test group, something that had never been done before. Then we set a standard that any error detected by the test group and not explicitly corrected would stop any launch.
+
+Our tests revealed that the system could crash for unknown reasons at random times, so it would be unable to bring down the astronaut safely at a known location. When the crash occurred in testing, the two on-line printers simultaneously printed a 120-character of random garbage. The line was identical on the two printers, indicating that this was not some kind of machine error on one of the 7090s. It could have been a hardware design error or a coding error. We had to investigate both possibilities, but the second possibility was far more likely.
+
+We struggled to track down the source of the crash, but after a fruitless month, the project manager wanted to drop it as a “random event.” We all knew it wasn’t random, but he didn’t want to be accused of delaying the first launch.
+
+To us, however, it was endangering the life of the astronaut, so we pleaded for time to continue trying to pinpoint the fault. “We should think more about this,” we said, to which he replied (standing under an IBM THINK sign), “Thinking is a luxury we can no longer afford.”
+
+We believed (and still believe) that thinking is not a luxury for software developers, so we went underground. After much hard work, Marilyn pinpointed the fault and we corrected it just before the first launch. We may have saved an astronaut’s life, but we’ll never get any credit for it.
+
+Moral: We may think that hardware and software errors are challenging, but nothing matches the difficulty of confronting human errors—especially when those humans are managers willing to hide errors in order to make schedules.
+
+https://leanpub.com/errors
+#+END_QUOTE

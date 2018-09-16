@@ -1,0 +1,83 @@
+#+TITLE: PP 2: Think First, Program Later
+
+- Time-stamp: <2018-09-16 14:39:50 tamara.temple>
+- original date: 2017-07-29 11:24
+- keywords: programming, proverbs, think-first-code-later
+
+--------------
+
+[[./2017-07-23-pp-introduction.org][Programming Proverbs Introduction]]
+
+--------------
+
+** Proverb #2: Think First, Program Later
+
+This proverb doesn't need much updating, it's still a fairly popular proverb, oft-spoken. It really goes hand in hand with [[file:%7B%%20link%20_posts/2017-07-29-pp-1-define-the-problem-completely.md%20%%7D][the first proverb]] in that you have to think about what you're doing, or going to do, before you begin it, in order to define the problem.
+
+But it does go a bit further as well.
+
+When given a story, feature, item, etc., that has a definition of the problem, oft times we jump right in and start to implement it. But there's still questions to answer, even before that point, such as
+
+- how will I write this?
+- where will it go?
+- is it already solved somewhere else?
+- is there a better way to do this?
+
+** How will I write this?
+
+Thinking about the algorithm or steps to complete the solution is important. In the next proverb, "Use the top-down approach", Ledgard expresses this more completely, but even before that point, you want to think through the approach to writing the code. This includes the decision of whether you will follow TDD, or if you need to spike something first, or if you need to go off and learn something more about the problem, technology, language, environment, etc., perhaps you should go write a small "toy" application that solves the problem in a simpler context to get an understanding of the approach, etc.
+
+** Where will it go?
+
+Organizing code is something worth thinking about before writing it. There are lots of ways to organize code. Some may be determined by the frameworks and languages you're using, but even in those there isn't necessarily an exact location and so it requires your judgment of the best place to put the code.
+
+Along with this, you need to decide where the test will live. Again, testing frameworks may give you a lot of the answers, but it's still necessary to think about it.
+
+** Is it already solved somewhere else?
+
+If something has been solved before, it's often easier and simpler to take that implementation and incorporate it. This isn't always so, but it's worth looking. Reasons you want to do this include:
+
+- the existing solution is proof that it can be done
+- it can save the time in the iteration
+- the existing solution can provide a blueprint for the current solution if it can't be directly used
+
+Reasons you may not want to use an existing solution are numerous, of course, but those reasons shouldn't preclude looking for one.
+
+** Is there a better way to do this?
+
+When we approach a problem, we often only think of one way the problem can be solved. There is a maxim called "Do the simplest thing that works" that in practice often just turns into "Do the first thing you can think of." When you arrive at a way to solve a problem, ask yourself if you can think of another way to do it. How can you make it simpler?
+
+Test-driven development is a way to think through how to solve the problem, but even here it's tempting to start writing the test code too early. Take a moment to write down just the test statements themselves, such as:
+
+"it renders an enabled, green submit button when all the required fields are set"
+
+The act of writing out the test cases gives you a much better idea of how you'll solve the problem.
+
+You might consider writing them not in a code file, but in a text file, or even writing them in a notebook by hand. (Yes, archaic.) But separating the thinking from doing is important enough that changing the way the thoughts are recorded can help.
+
+** Other questions
+
+The questions above are most definitely /not/ the only questions to consider before moving on to coding. Develop your own set of questions, create a practice for yourself of asking those questions and finding new ones to ask when you find the need.
+
+I can guarantee these aren't the only questions I ask, either. Here's a few more:
+
+- How will I give input to the item?
+- How will I provide the results?
+- What information do I need besides the direct input?
+- What items need to be configurable?
+- Do I need to worry about environmental differences?
+- Is there anything I need to be concerned about when operationalizing this?
+- Are there compositional parts of the solution I want to have be interchangeable (i.e. via dependency injection, etc)?
+- What implementation decisions should I postpone until run time? Which have to be determined at compile time? Which have to be determined at deployment?
+
+And a couple of meta questions:
+
+- What questions are important to answer now? later?
+- What questions should I be asking?
+- What questions have I not considered?
+
+Some of the later proverbs should also provide questions to think about up front.
+
+** More thought yields less code
+
+I believe, ultimately, that the intent here is directly related to the idea that the less code you have to write, the better. The more you think the problem through before writing code, the fewer false starts and abandoned lines of code you'll have.
