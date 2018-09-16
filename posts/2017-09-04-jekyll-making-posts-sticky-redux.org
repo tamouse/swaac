@@ -1,6 +1,6 @@
 #+TITLE: Jekyll: Making Posts Sticky Redux
 
-- Time-stamp: <2018-09-16 14:05:11 tamara.temple>
+- Time-stamp: <2018-09-16 14:06:42 tamara.temple> - conversion to ~org-mode~
 - original date: 2017-09-04 19:00
 - keywords: jekyll
 
