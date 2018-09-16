@@ -1,6 +1,6 @@
 #+TITLE: miscellaneous notes
 
-- Time-stamp: <2018-09-16 15:16:00 tamara.temple>
+- Time-stamp: <2018-09-16 15:23:29 tamara.temple>
 
 Just some notes on making this repo
 
@@ -54,3 +54,18 @@ The other frontmatter is just becoming a plain list:
 #+END_SRC
 
 The time stamp thingie, ~<>~ gets filled in by Emacs when the file is saved, giving the last time the file was edited and saved. /Keywords/ are the former categories and tags from the ~Jekyll~ post.
+** Fixing code listings
+
+This is the most different for ~pandoc~ since ~Jekyll~ uses a Liquid tag ~highlight~ to format code listings. It /also/ uses the standard Github-flavoured Markdown [GFM] /code-fence/, which at least pandoc tries to make work.
+
+Org mode in emacs, however, has a really spiffy way to put in code examples. If you type ~<s~ and then hit ~TAB~ is expands to a ~#+BEGIN_SRC/#+END_SRC~ block, and you can put the language mode at the end of the first ~#+BEGIN_SRC~ line:
+
+#+BEGIN_SRC org
+  ,#+BEGIN_SRC javascript
+    // some javascript code
+  ,#+END_SRC
+#+END_SRC
+
+When you drop the cursor into the block, hit ~C-c '~ a separate window opens in the programming mode specified, which is really cool.
+
+I've been snagging the code examples out of the markdown file as is and pasting them in the source editing window after deleting the highlight block from the org version.
