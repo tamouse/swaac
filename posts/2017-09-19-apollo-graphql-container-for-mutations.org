@@ -1,7 +1,7 @@
 #+TITLE: Apollo graphql container for mutations
 
 - date: 2017-09-19 21:43
-- last update: Time stamp: <>
+- last update: Time-stamp: <2018-09-16 13:52:50 tamara.temple>
 - keywords: webdev, graphql, apollo, react, mutations
 - source: http://dev.apollodata.com/react/api-mutations.html
 
