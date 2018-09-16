@@ -1,17 +1,11 @@
 #+TITLE: PP 3: Use the Top-Down Approach
 
-- Time-stamp: <2018-09-16 14:09:59 tamara.temple> - convert to org mode
+- Time-stamp: <2018-09-16 14:52:22 tamara.temple> - convert to org mode
 - date: 2017-08-20 12:01
 - keywords: programming, proverbs, Top Down Design
 
 
-Ledgard's 3rd Proverb is "Use the Top-Down Approach", which means to design our code in levels, from most abstract to most detailed.
-
---------------
-
-[[./2017-07-23-pp-introduction.markdown][Programming Proverbs Introduction]]
-
---------------
+From Ledgard's [[./2017-07-23-pp-introduction.org][Programming Proverbs]], the 3rd Proverb is "Use the Top-Down Approach", which means to design our code in levels, from most abstract to most detailed.
 
 It builds on the first two proverbs directly, and introduces the idea of /postponement of details/ by making /abstractions/, which are /successively refined/.
 
@@ -26,9 +20,6 @@ Another advantage is that the top-down approach is helpful in keeping our module
 When creating our initial levels, it's often helpful to write them out in human language as comments. This can often help us derive useful names for variables and methods, and to write the test statements to be filled in as well.
 
 ** example: ATM
-    :PROPERTIES:
-    :CUSTOM_ID: example-atm
-    :END:
 
 Most of us are familiar with an automated teller machine (ATM). If our task was to write an interface, in a top-down approach, we might start with this:
 
@@ -57,4 +48,4 @@ and then refine each step. Taking just "process request" step from above:
 
 (Some ATMs do a lot more than that, but you get the picture.)
 
-Being able to just write out the algorithm in plain human language helps us to keep to [[./2017-07-29-pp-2-think-first-program-later.md][proverb 2: think first, program later]].
+Being able to just write out the algorithm in plain human language helps us to keep to [[./2017-07-29-pp-2-think-first-program-later.org][proverb 2: think first, program later]].

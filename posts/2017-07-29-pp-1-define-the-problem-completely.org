@@ -1,0 +1,91 @@
+#+TITLE: PP 1: Define the Problem Completely
+
+- Time-stamp: <2018-09-16 14:49:42 tamara.temple>
+- original date: 2017-07-29 09:12
+- keywords: programming, proverbs, problem-definition
+
+Continuing in the [[./2017-07-23-pp-introduction.org][Programming Proverb series]], by Henry F. Ledgard.
+
+** Programming Proverb #1: Define the problem completely.
+
+This seems obvious, but it happens so often that we, as programmers, begin to solve the problem sometimes even before it's even requested. Getting specifications is also hard, because it involves talking about the desired result with people who don't necessarily speak our language.
+
+Problem-solving is fun, especially writing programs to do so. And yet, the landscape is littered with software that didn't solve the problem it was intended for, or that cause new problems that didn't exist before.
+
+** Successive Iterations on Problem Definition
+
+Getting the specifications down as completely as possible is one of those things that seems to fly in the face of agile programming, but in fact it doesn't. Each epic, story, task, chore, should strive to get a complete enough statement of the problem to provide the developer and the tester the ability to successfully complete it.
+
+Because we've learned that trying to get complete answers before we begin often leads to overdesign and overspending for little value at the end of the implementation, take an interative approach to problem definition, along with everything else. This proverb, as all the others we'll see, isn't intended to be taken by itself, all alone.
+
+** But what's complete enough?
+
+People have different levels of understanding of problems; obvious enough. If you're writing a story you're going to implement, it's likely that you'll think you need a lot less information in the ticket than if you were planning on having someone else implement it. The fact is, though, that at the time we're implementing the ticket, we're almost certainly removed from the moment we wrote it, and if it's someone else implementing, they may have never been in the conversation. So it does make sense to be as thorough as you can in stating the work to be done, and stating what success means for that particular item.
+
+Complete enough needs to consist of answers to three questions:
+
+1. What is the feature to be created
+2. What will the feature be used for (and who will use it)
+3. How will we know the feature meets the needs of 1 and 2
+
+Unpacking each of those:
+
+*** 1: What is the item to be created
+
+
+There are really an unlimited number of questions you could ask, but it's important that you ask questions about the item.
+
+- What should it do?
+- What's the desired outcome?
+- What's the range of input?
+- Where will it live?
+- Does it need anything else to work?
+
+There are meta questions to ask as well:
+
+- What information does the person implementing this need to know?
+- When should this item be implemented?
+
+and so on.
+
+*** 2: What will the item be used for (and who will use it)
+
+It's important to understand why this item is being created, and who cares about it. When you understand that, you have knowledge that informs, directs, and constrains the solution.
+
+- Who uses the item? It may be an end user, an admin, another coder (e.g. and API call), etc., the point is, there is /always/ someone who's going to use it
+
+- When, how, what will they use it for?
+
+*** 3: How will we know the item meets the needs of 1 and 2
+
+This is the Test-Driven and Behaviour-Driven Testing part of the problem definition. It's the part where you validate the desired outcome in the implementation of the item.
+
+- How are you going to know you're done with the item?
+- How can you show you are done with the item?
+- How will you know you did not introduce new problems?
+
+Gherkin, the language of Cucumber, gives both the writer, the implementer, and the verifier a common structure to work in, even if it isn't directly used in writing a test.
+
+#+BEGIN_SRC feature
+  Feature: Users are able to log in to their accounts
+
+    Background:
+      Given I am a user with an account
+
+    Scenario:
+      When I visit the login page
+      And I enter my username
+      And I enter my password
+      And I press the submit button
+      Then I am directed to my profile page
+#+END_SRC
+
+** What about problems we don't know or understand completely?
+
+This is really the most common case in software development. We don't tend to write the same software over and over, we get new problems, new users, new knowledge domains, new, new, new. If it's already been solved, we try to rework the existing solution.
+
+So, because we don't, or maybe even can't understand a problem completely, how does this fit in the proverb?
+
+Here is where iterative development, agile, spikes, and such things makes it possible to move forward with what we do know, and let the other parts reveal themselves. Is this the opposite of the proverb? In some ways of looking at it, yes, very much so. Even so, as we start out, each of the initial stories, features, items, we work on should be given enough scrutiny to make us successful in moving to the next step.
+
+This proverb and the next go hand in hand. Problem definition requires thinking.

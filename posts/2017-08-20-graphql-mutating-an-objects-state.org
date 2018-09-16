@@ -1,6 +1,6 @@
 #+TITLE: GraphQL: Mutating an Object's State
 
-- Time-stamp: <2018-09-16 14:21:14 tamara.temple>
+- Time-stamp: <2018-09-16 14:23:52 tamara.temple>
 - original date: 2017-08-20 11:08
 - keywords: webdev, graphql, ruby, rails
 
@@ -31,7 +31,7 @@ My approach was to create a ~transitionJob~ field in the root mutation:
     end
 #+END_SRC
 
-I created the ~PORO~[fn:PORO] ~JobTransitionMutation~ to handle the actions getting passed up to the graphql controller. This was also an opportunity to refactor the actual transitions into and event PORO as the same code occurred in two standard Rails controllers as well.
+I created the ~PORO~ /(Plain, old, Ruby object)/ ~JobTransitionMutation~ to handle the actions getting passed up to the graphql controller. This was also an opportunity to refactor the actual transitions into an event PORO as the same code occurred in two /other/ Rails controllers as well.
 
 #+BEGIN_SRC ruby
     class JobTransitionMutation
@@ -67,7 +67,3 @@ This took me a while to figure out, bouncing back and forth between the ruby sid
 Future plans include converting the action into an Enum type.
 
 I'm not quite sure what to do about the number of mutations we're going to need. Nearly everything in the client hangs off the root node of the account, which includes job, estimates, invoices, customers, employees, and a whole raft of other things. The root mutation seems like it's going to end up as large as the Rails ~routes.rb~ file if I'm not careful.
-
-* Footnotes
-
-[fn:PORO] PORO: Plain, Old, Ruby Object
