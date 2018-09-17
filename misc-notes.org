@@ -1,6 +1,6 @@
 #+TITLE: miscellaneous notes
 
-- Time-stamp: <2018-09-16 15:25:27 tamara.temple>
+- Time-stamp: <2018-09-16 17:19:23 tamara.temple>
 
 Just some notes on making this repo
 
@@ -69,3 +69,22 @@ Org mode in emacs, however, has a really spiffy way to put in code examples. If 
 When you drop the cursor into the block, hit ~C-c '~ a separate window opens in the programming mode specified, which is really cool.
 
 I've been snagging the code examples out of the markdown file as is and pasting them in the source editing window after deleting the highlight block from the org version.
+** Rake tasks
+
+*** moving org files
+
+When I've completed converting a markdown post to an org file, I'm removing the markdown file and putting the org file in a subdirectory based on it's year and month, and removing the date string from the front of the post file name. I wrote a rake task to do this: ~move_posts~.
+
+#+BEGIN_SRC shell-script
+  rake move_posts
+#+END_SRC
+
+*** creating index files
+
+I wrote another rake task that builds an ~index.org~ file of the posts in that directory. I didn't bother with an index file for the monthly "leaf" directories since they're all there already. These index.org files have no appreciable formatting, just the link to the file. I may make those better over time, we'll see. :D
+
+#+BEGIN_SRC shell-script
+  rake build_indexes
+#+END_SRC
+
+/Note:/ I am planning on keeping a Gemfile and package.json file /out/ of this repo, just have it be the posts. Just have to remember to have ~rake~ installed globally.

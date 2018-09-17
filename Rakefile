@@ -49,24 +49,9 @@ task :build_indexes do
           .map { |f| "- [[#{f}]]".tap { |l| logger.debug "link: #{l}" } }
           .join("\n")
       )
-
-
-      Dir['./*/'].each do |month|
-        Dir.chdir(month) do |subdir|
-          logger.debug "In subdir #{subdir}"
-          File.write(
-            'index.org',
-            Dir['./*.org']
-              .sort
-              .uniq
-              .reject { |f| f.match(%r{index.org}) }
-              .map { |f| "- [[#{f}]]".tap { |l| logger.debug "link: #{l}" } }
-              .join("\n")
-          )
-        end
-      end
-
     end
   end
+
+  # don't need indexes for the leaf directories
 
 end
