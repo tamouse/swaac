@@ -37,8 +37,8 @@ task :build_indexes do
       .join("\n")
   )
 
-  Dir['posts/*/'].each do |parent|
-    Dir.chdir(parent) do |dir|
+  Dir['posts/*/'].each do |year|
+    Dir.chdir(year) do |dir|
       logger.debug "In dir #{dir}"
       File.write(
         'index.org',
@@ -47,21 +47,26 @@ task :build_indexes do
           .uniq
           .reject {|f| f.match(%r{index.org}) }
           .map { |f| "- [[#{f}]]".tap { |l| logger.debug "link: #{l}" } }
+          .join("\n")
       )
+
+
+      Dir['./*/'].each do |month|
+        Dir.chdir(month) do |subdir|
+          logger.debug "In subdir #{subdir}"
+          File.write(
+            'index.org',
+            Dir['./*.org']
+              .sort
+              .uniq
+              .reject { |f| f.match(%r{index.org}) }
+              .map { |f| "- [[#{f}]]".tap { |l| logger.debug "link: #{l}" } }
+              .join("\n")
+          )
+        end
+      end
+
     end
   end
 
-  Dir['posts/**/*/'].each do |parent|
-    Dir.chdir(parent) do |dir|
-      logger.debug "In subdir #{dir}"
-      File.write(
-        'index.org',
-        Dir['./*.org']
-          .sort
-          .uniq
-          .reject { |f| f.match(%r{index.org}) }
-          .map { |f| "- [[#{f}]]".tap { |l| logger.debug "link: #{l}" } }
-      )
-    end
-  end
 end

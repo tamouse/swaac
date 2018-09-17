@@ -1,1 +1,4 @@
-["- [[./gerald-wienberg-my-most-challenging-experience-as-a-software-developer.org]]", "- [[./talk-learning-react-plus-graphql-plus-apollo-with-rails-graphql-api-all-at-once.org]]", "- [[./til-export-unwrapped-graphql-components-to-make-unit-testing-possible.org]]", "- [[./til-react-setstate-is-async-and-has-a-callback.org]]"]
+- [[./gerald-wienberg-my-most-challenging-experience-as-a-software-developer.org]]
+- [[./talk-learning-react-plus-graphql-plus-apollo-with-rails-graphql-api-all-at-once.org]]
+- [[./til-export-unwrapped-graphql-components-to-make-unit-testing-possible.org]]
+- [[./til-react-setstate-is-async-and-has-a-callback.org]]

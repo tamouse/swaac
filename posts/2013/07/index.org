@@ -1,1 +1,1 @@
-["- [[./caption-hover-effects-in-css3.org]]"]
+- [[./caption-hover-effects-in-css3.org]]

@@ -1,1 +1,4 @@
-["- [[./pp-1-define-the-problem-completely.org]]", "- [[./pp-2-think-first-program-later.org]]", "- [[./pp-introduction.org]]", "- [[./til-apolloclient-authentication-graphql.org]]"]
+- [[./pp-1-define-the-problem-completely.org]]
+- [[./pp-2-think-first-program-later.org]]
+- [[./pp-introduction.org]]
+- [[./til-apolloclient-authentication-graphql.org]]

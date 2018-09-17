@@ -1,1 +1,2 @@
-[]
+- [[./10/another-personal-hero-falls.org]]
+- [[./10/so-passes-a-real-hero-of-the-computing-age.org]]

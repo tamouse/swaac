@@ -1,1 +1,1 @@
-["- [[./til-remove-all-docker-containers-and-images.org]]"]
+- [[./til-remove-all-docker-containers-and-images.org]]

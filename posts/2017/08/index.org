@@ -1,1 +1,4 @@
-["- [[./TIL-enzyme-shallow-render-with-memoryrouter-doesnt-work.org]]", "- [[./graphql-mutating-an-objects-state.org]]", "- [[./hack-of-the-day-comments-in-package-dot-json.org]]", "- [[./pp-3-use-the-top-down-approach.org]]"]
+- [[./TIL-enzyme-shallow-render-with-memoryrouter-doesnt-work.org]]
+- [[./graphql-mutating-an-objects-state.org]]
+- [[./hack-of-the-day-comments-in-package-dot-json.org]]
+- [[./pp-3-use-the-top-down-approach.org]]

@@ -1,1 +1,4 @@
-["- [[./git-merge-dry-run.org]]", "- [[./how-to-reset-ios-simulator.org]]", "- [[./passing-the-time-between-rails-and-react-dot-js.org]]", "- [[./polyfills-for-find-and-findIndex.org]]"]
+- [[./git-merge-dry-run.org]]
+- [[./how-to-reset-ios-simulator.org]]
+- [[./passing-the-time-between-rails-and-react-dot-js.org]]
+- [[./polyfills-for-find-and-findIndex.org]]

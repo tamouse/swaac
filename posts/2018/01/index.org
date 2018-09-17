@@ -1,1 +1,1 @@
-["- [[./til-some-jest-testing-tricks.org]]"]
+- [[./til-some-jest-testing-tricks.org]]
