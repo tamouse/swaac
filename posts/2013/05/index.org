@@ -1,2 +1,0 @@
-- [[./possible-topics-for-swaac.org]]
-- [[./roles-and-activities-in-software-development.org]]
