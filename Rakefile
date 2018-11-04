@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'byebug'
 require 'yaml'
+require 'erb'
 require 'time'
 require 'logger'
 require 'fileutils'
@@ -201,7 +201,7 @@ class Feed2Xml
       when Time
         out += "#{" "*indent}<#{k}>#{v.xmlschema}</#{k}>\n"
       else
-        out += "#{" "*indent}<#{k}>#{v}</#{k}>\n"
+        out += "#{" "*indent}<#{k}>#{ERB::Util.h(v)}</#{k}>\n"
       end
     end
 
@@ -230,7 +230,7 @@ class Feed2Xml
       when Time
         out += "#{" "*indent}<item>#{Time.xmlschema(entry)}</item>\n"
       else
-        out += "#{" "*indent}<item>#{entry}</item>\n"
+        out += "#{" "*indent}<item>#{ERB::Util.h(entry)}</item>\n"
       end
     end
     indent -= 2

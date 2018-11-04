@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?><feed>
   <id>https://github.com/tamouse/swaac</id>
-  <title>Tamouse's Software as a Craft blog</title>
+  <title>Tamouse&#39;s Software as a Craft blog</title>
   <updated>2018-11-04T10:02:41-06:00</updated>
   <entries>
       <entry>
@@ -10,13 +10,13 @@
         <title>LINK: [[https://30-seconds.github.io/30-seconds-of-css/][30 seconds of CSS]]:</title>
         <content>* LINK: [[https://30-seconds.github.io/30-seconds-of-css/][30 seconds of CSS]]:
 
-- Time-stamp: <2018-11-04 10:02:41 tamara>
+- Time-stamp: &lt;2018-11-04 10:02:41 tamara&gt;
 - published date: [2018-11-04 Sun]
 - keywords: link, css, collection, exercises, learning
 
 [[https://30-seconds.github.io/30-seconds-of-css/][30 seconds of CSS]]:
 
-> A curated collection of useful CSS snippets you can understand in 30 seconds or less.
+&gt; A curated collection of useful CSS snippets you can understand in 30 seconds or less.
 </content>
       </entry>
       <entry>
@@ -26,17 +26,17 @@
         <title>LINK: [[https://css-tricks.com/aria-spackle-not-rebar/][ARIA is Spackle, Not Rebar]]</title>
         <content>* LINK: [[https://css-tricks.com/aria-spackle-not-rebar/][ARIA is Spackle, Not Rebar]]
 
-- Time-stamp: <2018-11-04 10:02:04 tamara>
+- Time-stamp: &lt;2018-11-04 10:02:04 tamara&gt;
 - published date: [2018-11-04 Sun]
 - keywords: ARIA, accessibility, a11y, link
 
-There's an excellent article over at [[https://css-tricks.com/][CSS Tricks]] by Eric Bailey, [[https://css-tricks.com/aria-spackle-not-rebar/][ARIA is Spackle, Not Rebar]], written November 2017, that lays out the reasons when to use ARIA ([[https://www.w3.org/WAI/standards-guidelines/aria/][Accessible Rich Internet Applications Suite]]) directly, and most importantly in my view, when _not_ to use it explicitly (tl;dr: most of the time).
+There&#39;s an excellent article over at [[https://css-tricks.com/][CSS Tricks]] by Eric Bailey, [[https://css-tricks.com/aria-spackle-not-rebar/][ARIA is Spackle, Not Rebar]], written November 2017, that lays out the reasons when to use ARIA ([[https://www.w3.org/WAI/standards-guidelines/aria/][Accessible Rich Internet Applications Suite]]) directly, and most importantly in my view, when _not_ to use it explicitly (tl;dr: most of the time).
 
 I think this sums up the intent nicely:
 
-> Before considering other options, start with markup that semantically describes the content it is wrapping.
+&gt; Before considering other options, start with markup that semantically describes the content it is wrapping.
 
-And while that is definitely true, it really does help to understand what ARIA is for and how it works. So while we're on the subject, I want to point out the excellent [[https://frontendmasters.com][Frontend Masters]] course: [[https://frontendmasters.com/courses/web-accessibility/][Website Accessibility]] by Jon Kuperman.
+And while that is definitely true, it really does help to understand what ARIA is for and how it works. So while we&#39;re on the subject, I want to point out the excellent [[https://frontendmasters.com][Frontend Masters]] course: [[https://frontendmasters.com/courses/web-accessibility/][Website Accessibility]] by Jon Kuperman.
 </content>
       </entry>
       <entry>
@@ -46,15 +46,15 @@ And while that is definitely true, it really does help to understand what ARIA i
         <title>LINK: [[https://thoughtbot.com/upcase][Upcase, by Thoughbot]]</title>
         <content>* LINK: [[https://thoughtbot.com/upcase][Upcase, by Thoughbot]]
 
-- Time-stamp: <2018-11-04 10:01:18 tamara>
+- Time-stamp: &lt;2018-11-04 10:01:18 tamara&gt;
 - published date: [2018-11-04 Sun]
 - keywords: link, learning, school, tech, level up
 
 [[https://thoughtbot.com/upcase][Thoughbot]], a leading software engineering company, has started a new online school, [[https://thoughtbot.com/upcase][Upcase]], their words:
 
-> We're not a bootcamp, we're a finishing school. Become an experienced developer and take "junior" out of your title.
+&gt; We&#39;re not a bootcamp, we&#39;re a finishing school. Become an experienced developer and take &quot;junior&quot; out of your title.
 
-When you're looking for the "what's next" after completing your bootcamp experience, or when you're a mid-level practitioner looking to level up, they look like a good place to try.
+When you&#39;re looking for the &quot;what&#39;s next&quot; after completing your bootcamp experience, or when you&#39;re a mid-level practitioner looking to level up, they look like a good place to try.
 
 Some of their features include:
 
@@ -71,7 +71,7 @@ Some of their features include:
         <title>Link: [[https://alistapart.com/article/tags-to-dom][Tags to DOM]]</title>
         <content>* Link: [[https://alistapart.com/article/tags-to-dom][Tags to DOM]]
 
-- Time-stamp: <2018-11-04 10:00:32 tamara>
+- Time-stamp: &lt;2018-11-04 10:00:32 tamara&gt;
 - published date: [2018-11-04 Sun]
 - keywords: link, deep dive, html tags, DOM construction
 
@@ -85,23 +85,23 @@ Over at the most excellent blog, [[https://alistapart.com/][A List Apart]], ther
         <title>TIL: Some Jest testing tricks</title>
         <content>* TIL: Some Jest testing tricks
 
-- Time-stamp: <2018-11-04 08:26:19 tamara>
+- Time-stamp: &lt;2018-11-04 08:26:19 tamara&gt;
 - published date: 2018-01-19 22:12
-- keywords: jest, testing, react, instance, beforeEach, beforeAll, setup & teardown
+- keywords: jest, testing, react, instance, beforeEach, beforeAll, setup &amp; teardown
 
 Deeper learning after much pondering and RTFM for Jest
 
 ** TIL: using beforeAll and beforeEach in jest tests
 
-This has been bugging me for awhile. I have wanted to set up things in =beforeAll= and =beforeEach= functions, like I do in RSpec, but couldn't quite figure out how to get them in the =it= calls.
+This has been bugging me for awhile. I have wanted to set up things in =beforeAll= and =beforeEach= functions, like I do in RSpec, but couldn&#39;t quite figure out how to get them in the =it= calls.
 
 Turns out to be stupid simple. All you need to do is set the items on the =global= context, like so:
 
 #+BEGIN_SRC javascript
-  beforeAll(()=>{
+  beforeAll(()=&gt;{
     global.TagsInstance = new Tags({
       item: item,
-      item_type: "Job",
+      item_type: &quot;Job&quot;,
       data: data,
       mutate: noop
     })
@@ -111,7 +111,7 @@ Turns out to be stupid simple. All you need to do is set the items on the =globa
 After the suite finishes, clear out the item:
 
 #+BEGIN_SRC javascript
-  afterAll(()=>{
+  afterAll(()=&gt;{
     global.TagsInstance = undefined
   })
 #+END_SRC
@@ -119,32 +119,32 @@ After the suite finishes, clear out the item:
 I suppose that pollutes the global space, so one might want to do it in a namespace, and then clear that every time, too:
 
 #+BEGIN_SRC javascript
-  beforeEach(()=>{
+  beforeEach(()=&gt;{
     global.beforeEach.actual = mount(
-      <Tag item={item}/>
+      &lt;Tag item={item}/&gt;
     )
   })
 
-  afterEach(()=>{
+  afterEach(()=&gt;{
     global.beforeEach = undefined
   })
 #+END_SRC
 
 ** TIL: you can call instance variables and functions on an Enzyme wrapper
 
-Okay, this is very cool. I didn't know this would work BUT IT DOES!
+Okay, this is very cool. I didn&#39;t know this would work BUT IT DOES!
 
 This involves a few different things:
 
 - calling a method on a mounted instance of a component
 - putting an expect on a callback
-- interogating a mounted component's state
+- interogating a mounted component&#39;s state
 
 #+BEGIN_SRC javascript
-  it("can i call stuff directly?", ()=>{
-    const actual = mount(<MyComponent />)
-    actual.instance().setState({ boo: "boo"}, () => {
-      expect(actual.instance().state.boo).toEqual("boo")
+  it(&quot;can i call stuff directly?&quot;, ()=&gt;{
+    const actual = mount(&lt;MyComponent /&gt;)
+    actual.instance().setState({ boo: &quot;boo&quot;}, () =&gt; {
+      expect(actual.instance().state.boo).toEqual(&quot;boo&quot;)
     })
   })
 #+END_SRC
@@ -157,7 +157,7 @@ This involves a few different things:
         <title>Polyfills for find() and findIndex() in JavaScript</title>
         <content>* Polyfills for find() and findIndex() in JavaScript
 
-- Time-stamp: <2018-11-04 08:25:37 tamara>
+- Time-stamp: &lt;2018-11-04 08:25:37 tamara&gt;
 - published date: 2018-02-10
 - keywords: javascript, polyfills, find, findIndex, missing IE9, reduce, functional programming
 
@@ -170,7 +170,7 @@ The impetus for this little post is recently seeing a passage of code like this:
 #+BEGIN_SRC javascript
     let stateIndex = state.index
     const routes = state.routes
-    const activateTab = routes.filter((tab, index) => {
+    const activateTab = routes.filter((tab, index) =&gt; {
       if (tab.routeName == action.routeName) {
         stateIndex = index
       }
@@ -178,7 +178,7 @@ The impetus for this little post is recently seeing a passage of code like this:
     return { ...state, index: stateIndex }
 #+END_SRC
 
-The code, as written, will return the index for the /last/ match. Since I'm refactoring, I'm not going to change that behavior.
+The code, as written, will return the index for the /last/ match. Since I&#39;m refactoring, I&#39;m not going to change that behavior.
 
 There are a few things wrong with this, IMHO:
 
@@ -192,20 +192,20 @@ If =find()= or =findIndex()= were available everywhere, I could write this as:
 
 #+BEGIN_SRC javascript
     const routes = state.routes
-    let stateIndex = routes.findIndex(tab => tab.routeName === action.routeName)
+    let stateIndex = routes.findIndex(tab =&gt; tab.routeName === action.routeName)
     stateInddex = stateIndex === -1 ? state.index : stateIndex
     return { ...state, index: stateIndex }
 #+END_SRC
 
-Except that finds the /first/ match, not the last, so I couldn't really use them anyway.
+Except that finds the /first/ match, not the last, so I couldn&#39;t really use them anyway.
 
 ** using forEach
 
-But since IE9 doesn't have =find()= or =findIndex()=, I'm going write it with =forEach()=, which is /intended/ for looping /with/ side effects:
+But since IE9 doesn&#39;t have =find()= or =findIndex()=, I&#39;m going write it with =forEach()=, which is /intended/ for looping /with/ side effects:
 
 #+BEGIN_SRC javascript
     let stateIndex = state.index
-    state.routes.forEach((tab, index) => {
+    state.routes.forEach((tab, index) =&gt; {
       if (tab.routeName == action.routeName) {
         stateIndex = index
       }
@@ -215,7 +215,7 @@ But since IE9 doesn't have =find()= or =findIndex()=, I'm going write it with =f
 
 I also got rid of the =routes= intermediate variable.
 
-This is okay and I could leave it there, except it's still using intermediate variables.
+This is okay and I could leave it there, except it&#39;s still using intermediate variables.
 
 ** enter the functional programming
 
@@ -225,7 +225,7 @@ Writing it with =reduce()= to get rid of the intermediate variables:
     return {
       ...state,
       index: state.routes.reduce(
-        (acc, cur, idx) => {
+        (acc, cur, idx) =&gt; {
           return cur.routeName === action.routeName ?
             idx :
             acc
@@ -237,9 +237,9 @@ Writing it with =reduce()= to get rid of the intermediate variables:
 
 ** discussion
 
-Let's walk through what's going on with the =reduce()= call.
+Let&#39;s walk through what&#39;s going on with the =reduce()= call.
 
-[[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce#Syntax][Array's =reduce()= function]] takes two arguments:
+[[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce#Syntax][Array&#39;s =reduce()= function]] takes two arguments:
 
 - =callback= - a function that is passed 4 arguments:
 
@@ -248,7 +248,7 @@ Let's walk through what's going on with the =reduce()= call.
   - =index= - the index of the current value of the array (indexed by 0)
   - =array= - the original array being reduced
 
-- =initialValue= - the initial value given to the =accumulator=. If omitted or "undefined" the first element of the array is used.
+- =initialValue= - the initial value given to the =accumulator=. If omitted or &quot;undefined&quot; the first element of the array is used.
 
 The callback function in our code is returning the result from the ternary expression:
 
@@ -268,17 +268,17 @@ If the reducer goes all through the array and the ternary never comes true, the 
 
 ** so what?
 
-When I was first learning programming, and even now that I'm more experienced, but don't necessarily know exactly what I need to do to implement a passage of code, using /intermediate variables/ can be very helpful in understanding and debugging my code.
+When I was first learning programming, and even now that I&#39;m more experienced, but don&#39;t necessarily know exactly what I need to do to implement a passage of code, using /intermediate variables/ can be very helpful in understanding and debugging my code.
 
 There are some passages of code that are more idiomatic and repetitious, and these are things I practice on and reduce the amount of code.
 
 Arrays in particular are high-value targets for practicing on reducing the number of intermediate variables and beginning to use functional programming techniques.
 
-There was nothing wrong with the original code: it did what it's supposed to do, it's not that difficult to see what's going on. However, because it uses a method not intended for performing side effects, it can open up the possibility for injecting an error during maintenance or enhancemnt.
+There was nothing wrong with the original code: it did what it&#39;s supposed to do, it&#39;s not that difficult to see what&#39;s going on. However, because it uses a method not intended for performing side effects, it can open up the possibility for injecting an error during maintenance or enhancemnt.
 
-Having the unused variable creates confusion for later maintainers as well, since we're left with a question about whether it should be there, and some intended functionality went missing.
+Having the unused variable creates confusion for later maintainers as well, since we&#39;re left with a question about whether it should be there, and some intended functionality went missing.
 
-The reducer may look complicated at first, but that's primarily due to unfamiliarity. Starting to learn bits of functional programming can improve the understandability of code for yourself.
+The reducer may look complicated at first, but that&#39;s primarily due to unfamiliarity. Starting to learn bits of functional programming can improve the understandability of code for yourself.
 </content>
       </entry>
       <entry>
@@ -288,27 +288,27 @@ The reducer may look complicated at first, but that's primarily due to unfamilia
         <title>Passing the Time between Rails and React.js</title>
         <content>* Passing the Time between Rails and React.js
 
-- Time-stamp: <2018-11-04 08:23:27 tamara>
+- Time-stamp: &lt;2018-11-04 08:23:27 tamara&gt;
 - published date: 2018-02-15T18:39
 - keyworeds: time formats, raBils, react, data interchange
 
-One of the problems I've encountered with a recent project is maintaining the integrity of Time and Date information going back and forth between a Rails server and a React client.
+One of the problems I&#39;ve encountered with a recent project is maintaining the integrity of Time and Date information going back and forth between a Rails server and a React client.
 
-While the issue isn't necessarily specific to React, it affects any sort of JavaScript client using [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date][JavaScript's Date]] object.
+While the issue isn&#39;t necessarily specific to React, it affects any sort of JavaScript client using [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date][JavaScript&#39;s Date]] object.
 
 The source of my frustration with this particular project is that the dates in the client are passed around in various different formats, and there is a lot of reformatting of the dates happening.
 
-One of my sort of tenants of programming is to never format a date or time (or datetime, if you will) until it's necessary to display it to the user. (This applies in general, but a lot for times.)
+One of my sort of tenants of programming is to never format a date or time (or datetime, if you will) until it&#39;s necessary to display it to the user. (This applies in general, but a lot for times.)
 
 On the Rails side, as on most Unix-based systems, times are objects with an underlying float value with the integer part being the number of seconds since the Unix Epoc, 1970-01-01 at midnight UTC. (Often times one can see dates such as Dec 31, 1969 show up because of timezone conversions to North America. No, in fact, zero time is /not/ on Wednesday everywhere.)
 
-Rails has the ability to translate time in and out of storage quite well, but it's sometimes tricky.
+Rails has the ability to translate time in and out of storage quite well, but it&#39;s sometimes tricky.
 
-JavaScript has the ability create and parse dates and times, but it's lousy at formatting nice date, which brings in the =moment= library which is quite popular.
+JavaScript has the ability create and parse dates and times, but it&#39;s lousy at formatting nice date, which brings in the =moment= library which is quite popular.
 
-What I'm talking about here, though, is the passing of time information back and forth between a Rails server and the JavaScript client.
+What I&#39;m talking about here, though, is the passing of time information back and forth between a Rails server and the JavaScript client.
 
-Most of the time, when you serialize a Rails record, the time information is converted to a string, with the default format that looks like: ="Wed, 28 Feb 2018 17:59:28 UTC +00:00"= (the output of =.to_s=). In nearly every case, that's not a very useful value to be passing to other programs, which is why I'm converting it to JSON, presumably.
+Most of the time, when you serialize a Rails record, the time information is converted to a string, with the default format that looks like: =&quot;Wed, 28 Feb 2018 17:59:28 UTC +00:00&quot;= (the output of =.to_s=). In nearly every case, that&#39;s not a very useful value to be passing to other programs, which is why I&#39;m converting it to JSON, presumably.
 
 So, the better conversion, to avoid all confusion about timezones, time formats, etc., is to convert it to milliseconds, both going out and coming back, and convert accordingly, e.g.:
 
@@ -319,8 +319,8 @@ So, the better conversion, to avoid all confusion about timezones, time formats,
 In GraphQL-land, this would be the =lambda= on the =resolve= entry for a =field=:
 
 #+BEGIN_SRC ruby
-    field :created_at_ms, "Time of creation in milliseconds" do
-      resolve ->(object, _args, _context) { (object.created_at.to_f * 1000).to_i }
+    field :created_at_ms, &quot;Time of creation in milliseconds&quot; do
+      resolve -&gt;(object, _args, _context) { (object.created_at.to_f * 1000).to_i }
     end
 #+END_SRC
 
@@ -343,7 +343,7 @@ Or create a resolver class:
 And declare the field as:
 
 #+BEGIN_SRC ruby
-    field :created_at_ms, "Time of creation in milliseconds" { resolve TimeFieldMillisecond.new(:created_at) }
+    field :created_at_ms, &quot;Time of creation in milliseconds&quot; { resolve TimeFieldMillisecond.new(:created_at) }
 #+END_SRC
 
 On the client side, convert the milliseconds to a Date object as:
@@ -366,13 +366,13 @@ or when using moment:
         <title>How to reset iOS simulator</title>
         <content>* How to reset iOS simulator
 
-- Time-stamp: <2018-11-04 08:23:11 tamara>
+- Time-stamp: &lt;2018-11-04 08:23:11 tamara&gt;
 - published date: 2018-02-15T16:07
 - keywords: ios, simulator, development, reset
 
-I ran into an issue recently where I was trying to debug a problem in a project, but had a problem accessing the right data server since I was logged into a local development server, and really needed to get back to the "new app" state.
+I ran into an issue recently where I was trying to debug a problem in a project, but had a problem accessing the right data server since I was logged into a local development server, and really needed to get back to the &quot;new app&quot; state.
 
-I searched for "reset xcode simulator" via DDG and first hit came up with <https://stackoverflow.com/questions/16195859/reset-ios-simulator-application-data-to-run-app-for-first-time#16195931> which gave me an answer.
+I searched for &quot;reset xcode simulator&quot; via DDG and first hit came up with &lt;https://stackoverflow.com/questions/16195859/reset-ios-simulator-application-data-to-run-app-for-first-time#16195931&gt; which gave me an answer.
 
 The command line versions work, but it can be a pain to get the UDID for the simulator. Doing it from the running simulator was easier, but of course the menu options are different than discussed in the stackoverflow answer.
 
@@ -386,14 +386,14 @@ I found it on the Simulator (Version 10.0 (SimulatorApp-835.2.1) seen in the fol
         <id>https://github.com/tamouse/swaac/blob/master/posts/2018/02/git-merge-dry-run.org</id>
         <file>posts/2018/02/git-merge-dry-run.org</file>
         <date>2018-11-04T08:22:45-06:00</date>
-        <title>Git Merge "dry run"</title>
-        <content>* Git Merge "dry run"
+        <title>Git Merge &quot;dry run&quot;</title>
+        <content>* Git Merge &quot;dry run&quot;
 
-- Time-stamp: <2018-11-04 08:22:45 tamara>
+- Time-stamp: &lt;2018-11-04 08:22:45 tamara&gt;
 - published date: 2018-02-28 10:30
 - keywords: git, merge, dry run, tools
 
-There's no specific thing called a "dry run merge" with git, but it's simple enough to simulate.
+There&#39;s no specific thing called a &quot;dry run merge&quot; with git, but it&#39;s simple enough to simulate.
 
 In the sample below, =BRANCH= is being merged *into* =TARGET=.
 
@@ -406,7 +406,7 @@ In the sample below, =BRANCH= is being merged *into* =TARGET=.
 
 You can look for any potential merge conflicts after the first command as well and see what you might be up against.
 
-Note you need /both/ the =--no-commit= /AND/ =--no-ff= flags to prevent the merge from occurring if it's possible for a fast-forward merge to occur (likely).
+Note you need /both/ the =--no-commit= /AND/ =--no-ff= flags to prevent the merge from occurring if it&#39;s possible for a fast-forward merge to occur (likely).
 </content>
       </entry>
       <entry>
@@ -416,7 +416,7 @@ Note you need /both/ the =--no-commit= /AND/ =--no-ff= flags to prevent the merg
         <title>TIL: React Error boundary workarounds</title>
         <content>* TIL: React Error boundary workarounds
 
-- Time-stamp: <2018-11-04 08:22:25 tamara>
+- Time-stamp: &lt;2018-11-04 08:22:25 tamara&gt;
 - published date: 2018-03-30
 - keywords: react, errors, error-handling, error-boundaries, componentDidCatch
 
@@ -426,26 +426,26 @@ Recently I was working on a next-gen standalone react client for my work, and I 
   Error boundaries are React components that catch JavaScript errors anywhere in their child component tree, log those errors, and display a fallback UI instead of the component tree that crashed. Error boundaries catch errors during rendering, in lifecycle methods, and in constructors of the whole tree below them.
 #+END_QUOTE
 
-This is well and good, but the first thing I ran into was how to catch errors that happen outside of the space React's error boundaries work in. The following aren't caught by =componentDidCatch=:
+This is well and good, but the first thing I ran into was how to catch errors that happen outside of the space React&#39;s error boundaries work in. The following aren&#39;t caught by =componentDidCatch=:
 
 - Event handlers
 - Asynchronous code (e.g. setTimeout or requestAnimationFrame callbacks)
 - Server side rendering
 - Errors thrown in the error boundary itself (rather than its children)
 
-The particular problem I was working on was catching login errors, which were returned as a promise rejection. Since the error boundary didn't handle this, i searched for help on this, and got it in the React.MN slack.
+The particular problem I was working on was catching login errors, which were returned as a promise rejection. Since the error boundary didn&#39;t handle this, i searched for help on this, and got it in the React.MN slack.
 
 After thinking about it, it does make sense, since React is declarative, this pretty much has to be handled as some form of state. The key is, what to do?
 
-I took a page out of some previous work where I was doing a =<Redirect/>= when a state entry became =true= , so I did it again for this. I'd catch the rejected promise in the handler, and set a state variable to =true=:
+I took a page out of some previous work where I was doing a =&lt;Redirect/&gt;= when a state entry became =true= , so I did it again for this. I&#39;d catch the rejected promise in the handler, and set a state variable to =true=:
 
 #+BEGIN_SRC javascript
-    login = () => {
+    login = () =&gt; {
       logon()
         .then(
           // do logon stuff when it works
         )
-        .catch(error => {
+        .catch(error =&gt; {
           this.setState({
             hasError: true,
             error
@@ -454,7 +454,7 @@ I took a page out of some previous work where I was doing a =<Redirect/>= when a
     }
 #+END_SRC
 
-So now there's a state variable =hasError= that's true, and the actual error in state. Down in the =render= method:
+So now there&#39;s a state variable =hasError= that&#39;s true, and the actual error in state. Down in the =render= method:
 
 #+BEGIN_SRC javascript
     render() {
@@ -466,23 +466,23 @@ So now there's a state variable =hasError= that's true, and the actual error in 
 
 This does the bubble-up necessary for the error boundary to catch it.
 
-Here's a codepen:
+Here&#39;s a codepen:
 
 #+BEGIN_HTML
-  <p data-height="735" data-theme-id="0" data-slug-hash="ZxxdGO" data-default-tab="js,result" data-user="tamouse" data-embed-version="2" data-pen-title="ErrorBoundary Example" class="codepen">
+  &lt;p data-height=&quot;735&quot; data-theme-id=&quot;0&quot; data-slug-hash=&quot;ZxxdGO&quot; data-default-tab=&quot;js,result&quot; data-user=&quot;tamouse&quot; data-embed-version=&quot;2&quot; data-pen-title=&quot;ErrorBoundary Example&quot; class=&quot;codepen&quot;&gt;
 #+END_HTML
 
 See the Pen ErrorBoundary Example by Tamara Temple (@tamouse) on CodePen.
 
 #+BEGIN_HTML
-  </p>
+  &lt;/p&gt;
 #+END_HTML
 
 #+BEGIN_HTML
-  <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+  &lt;script async src=&quot;https://static.codepen.io/assets/embed/ei.js&quot;&gt;&lt;/script&gt;
 #+END_HTML
 
-It turns out I didn't use this to handle login errors, but it was a useful excursion and learning experience anyway.
+It turns out I didn&#39;t use this to handle login errors, but it was a useful excursion and learning experience anyway.
 </content>
       </entry>
   </entries>
