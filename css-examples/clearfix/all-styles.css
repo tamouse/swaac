@@ -1,0 +1,25 @@
+/* some resets */
+body, div, section { margin: 0; padding: 0; }
+.container { padding: 0 15px; }
+.hero .right {
+  float: right;
+  padding-left: 20px;
+}
+/* fixed footer */
+footer.fixed {
+  position: fixed;
+  bottom: 0;
+  margin: 0;
+  width: 100%;
+  height: 200px;
+  padding-top: 40px;
+  background-color: #333;
+}
+body { margin: 0 0 250px 0; }
+.text-center{text-align: center;}
+.text-muted{color: #AAA;}
+.text-red{color: red;}
+code {
+  color: red;
+  background-color: #eee;
+}

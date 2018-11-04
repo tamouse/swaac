@@ -1,0 +1,82 @@
+* Thor Scripting
+
+So I've been playing around with thor for a whlie, and have a couple of interesting things I've learned.
+
+** Making "unix-like" options available for commands
+
+A typical unix command (both short and long options) typically doesn't have a subcommand associated with it.
+
+To get =thor= to emulate this, you use the =map= method:
+
+#+BEGIN_SRC ruby
+    class MyScript < Thor
+      VERSION = "0.1.0"
+      include Thor::Actions
+      map "-V" => :version
+      map "--version" => :version
+
+      desc "version", "display the version string"
+      def version
+        say "MyScript version: #{MyScript::VERSION}"
+      end
+    end
+
+    MyScript.start(ARGV)
+#+END_SRC
+
+Then you can call the script with
+
+#+BEGIN_EXAMPLE
+    $ myscript -V
+    MyScript version: 0.1.0
+#+END_EXAMPLE
+
+And you'll see the version string!
+
+** Testing thor scripts
+
+I set up a thor script development arena with the standard bundler =gem= command:
+
+#+BEGIN_EXAMPLE
+    $ bundle gem jekyllpress -b -t spec
+#+END_EXAMPLE
+
+which creates an executable in =bin/jekyllpress= that just requires =lib/jekyllpress.rb= and that's it. I put my thor application inside the =Jekyllpress= module like so:
+
+#+BEGIN_SRC ruby
+    module Jekyllpress
+      class App < Thor
+        #...
+      end
+    end
+#+END_SRC
+
+and added the autoinvocation into the =bin= script:
+
+#+BEGIN_SRC ruby
+    #... initializing thingies
+    require 'jekyllpress'
+    Jekyllpress::App.start(ARGV)
+#+END_SRC
+
+so the library module would be clean for the purposes of testing; I could pass in things from the specs without having to worry about the application running every time it got included.
+
+Now, a typical spec will be:
+
+#+BEGIN_SRC ruby
+    it "returns a version string" do
+      result = Jekyllpress::App.start(%w[version])
+      expect(result).to include(Jekyllpress::VERSION)
+    end
+#+END_SRC
+
+** What if your action prints output instead of returning a value?
+
+Have it do both: do the printing or whatever, but return the value(s) you want to test for:
+
+#+BEGIN_SRC ruby
+    def version
+      say "Jekyllpress version: #{Jekyllpress::VERSION}"
+      Jekyllpress::VERSION
+    end
+#+END_SRC

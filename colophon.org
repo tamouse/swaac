@@ -1,0 +1,12 @@
+* Colophon
+  :PROPERTIES:
+  :CUSTOM_ID: colophon
+  :END:
+
+#+BEGIN_QUOTE
+  Colophon \Col"o/phon (k[o^]l"[-o]/f[o^]n), n. [L. colophon finishing stroke, Gr. kolofw`n; cf. L. culmen top, collis hill. Cf. Holm.]
+
+  An inscription, monogram, or cipher, containing the place and date of publication, printer's name, etc., formerly placed on the last page of a book.
+#+END_QUOTE
+
+--- from [[http://www.dict.org/bin/Dict?Form=Dict3&Database=gcide][The Collaborative International Dictionary of English v.0.48]] via [[http://www.dict.org/bin/Dict?Form=Dict2&Database=*&Query=colophon][dict.org]]

@@ -1,0 +1,349 @@
+* Setting up your Mac for working on the command line.
+  :PROPERTIES:
+  :CUSTOM_ID: setting-up-your-mac-for-working-on-the-command-line.
+  :END:
+
+--------------
+
+Before beginning, I strongly urge you to get Michael Hartl's [[https://www.learnenough.com/command-line-tutorial][Learn Enough Command Line to Be Dangerous]] which is seriously the best introduction to this whole thing.
+
+See also: [Conventions Used in This Section]({{ "/pages/learning/beginner/conventions-used-in-this-section"}}).
+
+** Intro
+   :PROPERTIES:
+   :CUSTOM_ID: intro
+   :END:
+
+I'd love to provide the TL;DR for this, but I can't. I don't know what's on your system already, what level you're at, or even a kind voice to listen to your questions and respond.
+
+Using the caommand line effectively means having it configured to your needs. So this page is going to introduce how to configure your command line.
+
+There are two, sometimes three, files involved in this:
+
+- =.bash_profile=
+- =.profile=
+- =.bashrc=
+
+The rest of this will tell you how to set them up.
+
+** You'll need to know
+   :PROPERTIES:
+   :CUSTOM_ID: youll-need-to-know
+   :END:
+
+- [[file:%7B%7B%20site.baseurl%20%7D%7D/pages/learning/beginner/how-do-i-get-to-the-command-line-on-a-mac/][How to open Terminal on a Mac]]
+- Various shell commands:
+
+  - =cd=
+  - =chmod=
+  - =cp=
+  - =echo=
+  - =ls=
+
+** Gathering Current Information
+   :PROPERTIES:
+   :CUSTOM_ID: gathering-current-information
+   :END:
+
+1. [[file:%7B%7B%20site.baseurl%20%7D%7D/pages/learning/beginner/how-do-i-get-to-the-command-line-on-a-mac/][Open up the Terminal]]
+
+2. Run the command:
+
+#+BEGIN_EXAMPLE
+    ls -1 .profile .bash_profile .bashrc
+#+END_EXAMPLE
+
+The "-1" ("minus-one") option produces a listing of file names in a single column. It's not necessary, but it's a little easier to read for short listings.
+
+The =ls= command has /lots/ of options which can be learned about using the =man ls= command and reading the manual page.
+
+You could see something like the following:
+
+#+BEGIN_EXAMPLE
+       ls: .bash_profile: No such file or directory
+       ls: .bashrc: No such file or directory
+       ls: .profile: No such file or directory
+#+END_EXAMPLE
+
+in which case you don't have any of those files, which is okay.
+
+You might see something like this:
+
+#+BEGIN_EXAMPLE
+       ls: .bash_profile: No such file or directory
+       ls: .profile: No such file or directory
+       .bashrc
+#+END_EXAMPLE
+
+in which case you have the =.bashrc= file, but you don't have the others, which is also okay.
+
+In fact, /any/ combination is okay, there'll be a section below on each case.
+
+Here are the combinations:
+
+1. You don't have any of them (default OSX setup)
+2. You have =.profile= but not the other two
+3. You have =.bash_profile= but not the other two
+4. You have =.bashrc= but not the other two
+5. You have =.bash_profile= and =.bashrc=, but not =.profile=
+6. You have =.profile= and =.bashrc=, but not =.bash_profile=
+7. You have all three
+
+** If you don't have any of the three files
+   :PROPERTIES:
+   :CUSTOM_ID: if-you-dont-have-any-of-the-three-files
+   :END:
+
+In this section, we'll talk about when none of those files exist yet. This is easiest to deal with starting off.
+
+*** What are the =.bash_profile= and =.profile= file about?
+    :PROPERTIES:
+    :CUSTOM_ID: what-are-the-.bash_profile-and-.profile-file-about
+    :END:
+
+On Unix- and Linux-based systems, the command line is also referred to as "The Shell". By default, Mac's use the program "bash" as the command line shell.
+
+When you start up Terminal, it launches a "login shell" by starting the program =/bin/bash=. This program then looks for two files in your user's [home directory][homedir]: =.bash_profile= and =.profile=.
+
+It's important to note that if =bash= finds =.bash_profile=, it will run that file, otherwise it will run =.profile=. There may come a time when you install a software development command-line tool that creates a =.bash_profile=, and you can find all the things you put in =.profile= are not being set up. Likewise, you might install a software command line tool that only expects things to be initialized in =.profile= and then that tool's setting won't happen correctly. It's confusing, to be sure.
+
+There's always more than one way to deal with this, of course. Perhaps the best way is to start with the =.bash_profile= and make all your initialisation happen there.
+
+I prefer to do the following though:
+
+1. Create a =.bash_profile= in your home directory with the following contents:
+
+#+BEGIN_EXAMPLE
+       #!/bin/bash
+       [ -f $HOME/.profile ] && source $HOME/.profile
+#+END_EXAMPLE
+
+What this does is execute the =.profile= file if it exists. In this way you can have initialisation code put in either file and it will be run. The /major/ caveat on this is to make sure if there's initialisation code in both =.bash_profile= and =.profile= it does not cause any problems if it gets run twice. Usually this is okay, but it can be a source of errors.
+
+2. Create the =.profile= file and place the initialisation codes you want to manage there.
+
+*** The =.profile= file
+    :PROPERTIES:
+    :CUSTOM_ID: the-.profile-file
+    :END:
+
+As noted, this file contains initialisation codes. Here's where you can set environment variables that are used throughout your command line sessions.
+
+One such environment variable is =PATH= -- this is the variable used to find command line programs on your computer. Sometimes you'll need to extend this variable when you install a new piece of software.
+
+Jump into your command line now and type:
+
+#+BEGIN_EXAMPLE
+    $ echo $PATH
+#+END_EXAMPLE
+
+Incidently, that /first/ "$" on the line above is *not* part of the command; it is there to indicate the command line prompt (which could be much more complicated). It's used here to tell you something you should be typing. What you'll actually type is what follows the space after the "$", i.e. just "echo $PATH".
+
+On the stock Mac install, you'll probably see something like:
+
+#+BEGIN_EXAMPLE
+    /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+#+END_EXAMPLE
+
+(It might be slightly different, or it might have been changed previously.)
+
+Let's take the case where you just recently install the "Sass" program which pre-processed CSS files in a special format. After you've run the =gem install sass --user-install= command, you may have seen a warning like the following:
+
+#+BEGIN_EXAMPLE
+    WARNING:  You don't have /Users/noob/.gem/ruby/2.0.0/bin in your PATH, gem executables will not run.
+#+END_EXAMPLE
+
+While not an error, not addressing this warning is going to be very painful for you.
+
+So let's add that indicated directory to our PATH environment variable. We do this in the =.profile= file like so:
+
+#+BEGIN_EXAMPLE
+    export PATH=$PATH:$HOME/.gem/ruby/2.0.0/bin
+#+END_EXAMPLE
+
+Save and close your =.profile= file, switch back to your command line, and type the following:
+
+#+BEGIN_EXAMPLE
+    $ source $HOME/.profile
+    $ echo $PATH
+#+END_EXAMPLE
+
+Now you should see the following:
+
+#+BEGIN_EXAMPLE
+    usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/noob/.gem/ruby/2.0.0/bin
+#+END_EXAMPLE
+
+** If you have =.bash_profile=, but none of the others
+   :PROPERTIES:
+   :CUSTOM_ID: if-you-have-.bash_profile-but-none-of-the-others
+   :END:
+
+If you already have one, the easiest is to add the following line at the bottom of the file:
+
+#+BEGIN_EXAMPLE
+    [ -f $HOME/.profile ] && source $HOME/.profile
+#+END_EXAMPLE
+
+then save and close the file.
+
+Then open a new file named =.profile= and enter the following in it:
+
+#+BEGIN_EXAMPLE
+    \#!/bin/bash
+#+END_EXAMPLE
+
+Then you can add whatever other initialisation codes you want in =.profile=. Follow the example in the previous section to append something to your =PATH= environment variable.
+
+** If you have =.profile=, but none of the others
+   :PROPERTIES:
+   :CUSTOM_ID: if-you-have-.profile-but-none-of-the-others
+   :END:
+
+Create a =.bash_profile= in your home directory with the following contents:
+
+#+BEGIN_EXAMPLE
+    \#!/bin/bash
+    [ -f $HOME/.profile ] && source $HOME/.profile
+#+END_EXAMPLE
+
+That's all, really.
+
+** If you do NOT have a =.bashrc= file
+   :PROPERTIES:
+   :CUSTOM_ID: if-you-do-not-have-a-.bashrc-file
+   :END:
+
+This is the default starting point for a new user.
+
+*** What is the =.bashrc= file all about?
+    :PROPERTIES:
+    :CUSTOM_ID: what-is-the-.bashrc-file-all-about
+    :END:
+
+The =.bashrc= file in your home directory will be executed whenever an /interactive/ shell gets invoked. Calling =bash= from the command line from a is considered an /interactive/ shell. It is /not/ run, however, when a /login/ shell is started, which is what happens when you start up a new Terminal window.
+
+Confusing? Yes. Try the following to see what is happening.
+
+Edit your =.profile= and add the following line to the end:
+
+#+BEGIN_EXAMPLE
+    echo ".profile ran"
+#+END_EXAMPLE
+
+Edit =.bashrc= (creating it if necessary) and put the following at the end:
+
+#+BEGIN_EXAMPLE
+    echo ".bashrc ran"
+#+END_EXAMPLE
+
+Now open a /new/ Terminal window (Command-N) and see what is printed. You should /just/ see ".profile ran" before the prompt:
+
+#+BEGIN_EXAMPLE
+    .profile ran
+    $
+#+END_EXAMPLE
+
+Your command prompt will be different of course.
+
+Now run an interactive bash:
+
+#+BEGIN_EXAMPLE
+    $ bash
+#+END_EXAMPLE
+
+You should now see something like:
+
+#+BEGIN_EXAMPLE
+    .bashrc ran
+    bash-3.2$
+#+END_EXAMPLE
+
+You can see that the =.bashrc= file is not run on starting up a new window. (You might also see your command prompt change! We'll fix that in a second.)
+
+What we actually /want/ usually, is to have the =.bashrc= file run for a login shell as well.
+
+To do that, we need to fix up the =.profile= file with the following line at the end of the file:
+
+#+BEGIN_EXAMPLE
+    [ -x $HOME/.bashrc ] && source $HOME/.bashrc
+#+END_EXAMPLE
+
+This will cause the =.bashrc= file to be executed at the end of the =.profile= file's executing but only /if/ the =.bashrc= file is *executable*.
+
+This gives a little extra control, if we don't want =.bashrc= to run at login, we can unset it's execution bit. But for now, let's set it:
+
+#+BEGIN_EXAMPLE
+    $ chmod +x $HOME/.bashrc
+    $ ls -l .bashrc
+#+END_EXAMPLE
+
+And you should see something like:
+
+#+BEGIN_EXAMPLE
+    \-rwxr-xr-x  1 noob  staff  32 Aug  7 01:01 .bashrc
+#+END_EXAMPLE
+
+Which shows it's become executable for everyone on the system.
+
+Close the Terminal window and open a new one. Now you should see the following before the first command line prompt:
+
+#+BEGIN_EXAMPLE
+    .bashrc ran
+    .profile ran
+#+END_EXAMPLE
+
+You can remove those two "echo" commands from =.profile= and =.bashrc= if you wish, or leave them in as tracers while you're working with them.
+
+*** Creating the =.bashrc= file
+    :PROPERTIES:
+    :CUSTOM_ID: creating-the-.bashrc-file
+    :END:
+
+This file initialized /each/ interactive shell, including setting some environment variables used by =bash=, aliases, and other settings.
+
+There is a global =/etc/bashrc= file that is a good starting point for your own.
+
+Run the following command:
+
+#+BEGIN_EXAMPLE
+    $ cp /etc/bashrc $HOME/.bashrc
+#+END_EXAMPLE
+
+This will *overwrite* the =.bashrc= file you just made, but that's okay since there really wasn't anything in it.
+
+Give the new file execute permission:
+
+#+BEGIN_EXAMPLE
+    $ chmod +x $HOME/.bashrc
+#+END_EXAMPLE
+
+Close the Terminal window and open a new one.
+
+** If you have =.bashrc= but neither =.bash_profile= or =.profile=
+   :PROPERTIES:
+   :CUSTOM_ID: if-you-have-.bashrc-but-neither-.bash_profile-or-.profile
+   :END:
+
+In this case, you want to add running the =.bashrc= file for /login/ shells so those settings are available.
+
+Add the following line to the end of your =.profile=:
+
+#+BEGIN_EXAMPLE
+    [ -x $HOME/.bashrc ] && source $HOME/.bashrc
+#+END_EXAMPLE
+
+as in the previous section. You may need to set the execute bit on =.bashrc= as well:
+
+#+BEGIN_EXAMPLE
+    $ chmod +x .bashrc
+#+END_EXAMPLE
+
+** If you have =.bashrc=, and one or both of =.bash_profile= and =.profile=
+   :PROPERTIES:
+   :CUSTOM_ID: if-you-have-.bashrc-and-one-or-both-of-.bash_profile-and-.profile
+   :END:
+
+If you only have one of =.bash_profile= or =.profile= see the appropriate section above.
+
+Make sure one of those two files is calling =.bashrc= as in the previous section. If neither do, put the line into =.profile=.
