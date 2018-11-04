@@ -1,7 +1,4 @@
 * Setting up your Mac for working on the command line.
-  :PROPERTIES:
-  :CUSTOM_ID: setting-up-your-mac-for-working-on-the-command-line.
-  :END:
 
 --------------
 
@@ -10,9 +7,6 @@ Before beginning, I strongly urge you to get Michael Hartl's [[https://www.learn
 See also: [Conventions Used in This Section]({{ "/pages/learning/beginner/conventions-used-in-this-section"}}).
 
 ** Intro
-   :PROPERTIES:
-   :CUSTOM_ID: intro
-   :END:
 
 I'd love to provide the TL;DR for this, but I can't. I don't know what's on your system already, what level you're at, or even a kind voice to listen to your questions and respond.
 
@@ -27,9 +21,6 @@ There are two, sometimes three, files involved in this:
 The rest of this will tell you how to set them up.
 
 ** You'll need to know
-   :PROPERTIES:
-   :CUSTOM_ID: youll-need-to-know
-   :END:
 
 - [[file:%7B%7B%20site.baseurl%20%7D%7D/pages/learning/beginner/how-do-i-get-to-the-command-line-on-a-mac/][How to open Terminal on a Mac]]
 - Various shell commands:
@@ -41,9 +32,6 @@ The rest of this will tell you how to set them up.
   - =ls=
 
 ** Gathering Current Information
-   :PROPERTIES:
-   :CUSTOM_ID: gathering-current-information
-   :END:
 
 1. [[file:%7B%7B%20site.baseurl%20%7D%7D/pages/learning/beginner/how-do-i-get-to-the-command-line-on-a-mac/][Open up the Terminal]]
 
@@ -90,16 +78,10 @@ Here are the combinations:
 7. You have all three
 
 ** If you don't have any of the three files
-   :PROPERTIES:
-   :CUSTOM_ID: if-you-dont-have-any-of-the-three-files
-   :END:
 
 In this section, we'll talk about when none of those files exist yet. This is easiest to deal with starting off.
 
 *** What are the =.bash_profile= and =.profile= file about?
-    :PROPERTIES:
-    :CUSTOM_ID: what-are-the-.bash_profile-and-.profile-file-about
-    :END:
 
 On Unix- and Linux-based systems, the command line is also referred to as "The Shell". By default, Mac's use the program "bash" as the command line shell.
 
@@ -123,9 +105,6 @@ What this does is execute the =.profile= file if it exists. In this way you can 
 2. Create the =.profile= file and place the initialisation codes you want to manage there.
 
 *** The =.profile= file
-    :PROPERTIES:
-    :CUSTOM_ID: the-.profile-file
-    :END:
 
 As noted, this file contains initialisation codes. Here's where you can set environment variables that are used throughout your command line sessions.
 
@@ -175,9 +154,6 @@ Now you should see the following:
 #+END_EXAMPLE
 
 ** If you have =.bash_profile=, but none of the others
-   :PROPERTIES:
-   :CUSTOM_ID: if-you-have-.bash_profile-but-none-of-the-others
-   :END:
 
 If you already have one, the easiest is to add the following line at the bottom of the file:
 
@@ -196,9 +172,6 @@ Then open a new file named =.profile= and enter the following in it:
 Then you can add whatever other initialisation codes you want in =.profile=. Follow the example in the previous section to append something to your =PATH= environment variable.
 
 ** If you have =.profile=, but none of the others
-   :PROPERTIES:
-   :CUSTOM_ID: if-you-have-.profile-but-none-of-the-others
-   :END:
 
 Create a =.bash_profile= in your home directory with the following contents:
 
@@ -210,16 +183,10 @@ Create a =.bash_profile= in your home directory with the following contents:
 That's all, really.
 
 ** If you do NOT have a =.bashrc= file
-   :PROPERTIES:
-   :CUSTOM_ID: if-you-do-not-have-a-.bashrc-file
-   :END:
 
 This is the default starting point for a new user.
 
 *** What is the =.bashrc= file all about?
-    :PROPERTIES:
-    :CUSTOM_ID: what-is-the-.bashrc-file-all-about
-    :END:
 
 The =.bashrc= file in your home directory will be executed whenever an /interactive/ shell gets invoked. Calling =bash= from the command line from a is considered an /interactive/ shell. It is /not/ run, however, when a /login/ shell is started, which is what happens when you start up a new Terminal window.
 
@@ -296,9 +263,6 @@ Close the Terminal window and open a new one. Now you should see the following b
 You can remove those two "echo" commands from =.profile= and =.bashrc= if you wish, or leave them in as tracers while you're working with them.
 
 *** Creating the =.bashrc= file
-    :PROPERTIES:
-    :CUSTOM_ID: creating-the-.bashrc-file
-    :END:
 
 This file initialized /each/ interactive shell, including setting some environment variables used by =bash=, aliases, and other settings.
 
@@ -321,9 +285,6 @@ Give the new file execute permission:
 Close the Terminal window and open a new one.
 
 ** If you have =.bashrc= but neither =.bash_profile= or =.profile=
-   :PROPERTIES:
-   :CUSTOM_ID: if-you-have-.bashrc-but-neither-.bash_profile-or-.profile
-   :END:
 
 In this case, you want to add running the =.bashrc= file for /login/ shells so those settings are available.
 
@@ -340,9 +301,6 @@ as in the previous section. You may need to set the execute bit on =.bashrc= as 
 #+END_EXAMPLE
 
 ** If you have =.bashrc=, and one or both of =.bash_profile= and =.profile=
-   :PROPERTIES:
-   :CUSTOM_ID: if-you-have-.bashrc-and-one-or-both-of-.bash_profile-and-.profile
-   :END:
 
 If you only have one of =.bash_profile= or =.profile= see the appropriate section above.
 

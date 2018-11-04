@@ -1,6 +1,6 @@
 * Resources for learning how to program, especially how to program in Ruby and Rails
 
-- last updated Time-stamp: <2018-11-04 00:39:36 tamara>
+- last updated Time-stamp: <2018-11-04 01:04:37 tamara>
 
 ** Introduction
 
@@ -17,7 +17,7 @@ I've been finding things around the 'net that can greatly help people new to pro
 
 --------------
 
-*UPDATE:* I've created a section for the [[./beginner.org][Absolute Beginner]] as well, you might find it useful.
+*UPDATE:* I've created a section for the [[./beginner-section.org][Absolute Beginner]] as well, you might find it useful.
 
 This is a quick, short list of things. I urge you to seek them out, and seek out others as well, and create your /own/ list of learning resources. People will begin to ask you, and it's nice to have something handy.
 
@@ -30,9 +30,6 @@ Also, [[https://www.codefellows.org/blog/this-is-why-learning-rails-is-hard][lea
 --------------
 
 ** Books
-   :PROPERTIES:
-   :CUSTOM_ID: books
-   :END:
 
  - [[https://www.goodreads.com/book/show/13590009-think-like-a-programmer][*Think Like a Programmer: An Introduction to Creative Problem Solving*]] by V. Anton Spraul.
 
@@ -65,18 +62,12 @@ Also, [[https://www.codefellows.org/blog/this-is-why-learning-rails-is-hard][lea
    This book, published in 1975, and a subsequent volume dedicated to the Pascal language published in 1979, were essential to me back when I was in university learning computer science. They're out of print now, so I'm starting a blog series covering them. [[file:%7B%7Bsite.baseurl%7D%7D%7B%%20link%20_posts/2017-07-23-pp-introduction.markdown%20%%7D][Programming Proverbs: Introduction]]
 
 *** Object-Oriented Programming
-    :PROPERTIES:
-    :CUSTOM_ID: object-oriented-programming
-    :END:
 
  - [[https://www.sandimetz.com/99bottles][*99 Bottles of OOP*]] by Sandi Metz and Katrina Owen.
 
    A recent book, representing the absolute best by two teachers of software engineering. Sandi has been teaching Object-oriented programming for decades, and Katrina brings in her expertise with refactoring, resulting in a deep book that stretches beyond the basics and deep into the structures and understanding of object systems and idioms. It brings up to date the actual concepts of refactoring, test-driven development, naming things, reducing code "smells" and making code more easily and economically maintainable and sustainable. They take all the buzzwords and unbuzzify them into practical, useful methodologies and techniques.
 
 *** Ruby-specific
-    :PROPERTIES:
-    :CUSTOM_ID: ruby-specific
-    :END:
 
  - [[https://www.goodreads.com/book/show/9364729-eloquent-ruby][*Eloquent Ruby*]] by Russ Olsen.
 
@@ -95,9 +86,6 @@ Also, [[https://www.codefellows.org/blog/this-is-why-learning-rails-is-hard][lea
    This book provides a deeply-needed introduction to object-oriented design, specifically targeted to the Ruby language. Ruby is one of the richest languages in which to express object-oriented patterns, but it is easy to fall of the OO wagon and start to get things messed up. Sandi provides the thinking tools necessary to decide how to structure your code for better maintainability, extensibility and testability. Comprehension and forward communication of the choices made during software design are crucial to programming, and Sandi is one of the very best at explaining things.
 
 *** Rails-specific
-    :PROPERTIES:
-    :CUSTOM_ID: rails-specific
-    :END:
 
  - [[http://www.manning.com/bigg2/][*Rails 4 in Action*]] by Ryan Bigg, Yehuda Katz, Steve Klabnik, and Rebecca Skinner.
 
@@ -110,9 +98,6 @@ Also, [[https://www.codefellows.org/blog/this-is-why-learning-rails-is-hard][lea
    The first chapter alone (free!) is worth a download and very thorough read. Justin has provided one of the most effective strategies for learning just about /anything/ skill based, and it's especially effective for learning software skills. The focus of the book and the examples and such are obviously Rails, but the first chapter is applicable to anything.
 
 *** JavaScript-specific
-    :PROPERTIES:
-    :CUSTOM_ID: javascript-specific
-    :END:
 
  - [[https://www.goodreads.com/book/show/2998152-javascript][*JavaScript: The Good Parts*]] by David Crockford.
 
@@ -127,18 +112,12 @@ Also, [[https://www.codefellows.org/blog/this-is-why-learning-rails-is-hard][lea
    When I was more naive about JS, I wrote a bit of a negative review of this book. Subsequently, I've learned of it's true eloquence and meaning in giving a model of how to organize and implement modern JS. The subtitle "A modern introduction to programming" is still a bit misleading, perhaps, because you have to understand a fair bit of JavaScript /and/ programming to get the message, I feel. But that's just a quibble at this point. Read this before you strike out on creating a client-based JS application; you won't regret it.
 
 *** HTML and CSS Specific
-    :PROPERTIES:
-    :CUSTOM_ID: html-and-css-specific
-    :END:
 
  - [[https://www.amazon.com/HTML-CSS-Design-Build-Websites/dp/1118008189?ie=UTF8&*Version*=1&*entries*=0][*HTML and CSS Design and Build Websites*]] by Jon Duckett.
 
    This book has been recommended by several people in the [GDI] courses I've been helping in. A very visual approach, using full-colour photographs to explain the two declarative languages.
 
 ** Web sites
-   :PROPERTIES:
-   :CUSTOM_ID: web-sites
-   :END:
 
  This is just going to be a list of sites I've found or been pointed at for helping people learn to program. These are most definitely biased towards Ruby and Rails, as that is my current area of concentration, and generate the most requests that come to me.
 
@@ -169,9 +148,6 @@ Also, [[https://www.codefellows.org/blog/this-is-why-learning-rails-is-hard][lea
  - [[http://www.rubykoans.com/][*Ruby Koans*]] -- "koans" are an Eastern discipline tradition: small, repeated exercises to learn skills and build them into your muscles and memory, so you can use them without thinking consciously about them. In this sense, the ruby koans are small exercises intended to lead you on the way to learning ruby. I can't say if they're that successful, but some people definitely enjoy this progressive way of learning. The ruby koans definitely guide you in the way of test-first development, which is a beneficial practice for all to know.
 
 ** Podcasts
-   :PROPERTIES:
-   :CUSTOM_ID: podcasts
-   :END:
 
  I am not such a big fan of podcasts, but that has more to do with my personal learning style. Nevertheless, there are some great pocasts out there.
 
@@ -182,9 +158,6 @@ Also, [[https://www.codefellows.org/blog/this-is-why-learning-rails-is-hard][lea
  - [[http://www.codenewbie.org/][*CodeNewbies*]] -- started off as a twitter chat, and grew into a thing, CodeNewbies offers podcasts on topics that range far and wide. Recent topics have included Scrum/Agile methods, maintaining your mental health while programming, interviews with folks who have created significant web sites (Gina Trapani of LifeHacker!!), mobile, databases, single-page apps, you name it. One of the best aspects I can see directly is that this is a /very/ open, diverse collaboration.
 
 ** Teaching Organizations
-   :PROPERTIES:
-   :CUSTOM_ID: teaching-organizations
-   :END:
 
  These are the ones I'm familiar with at this point in time (late 2015) in the Twin Cities area:
 
@@ -195,16 +168,10 @@ Also, [[https://www.codefellows.org/blog/this-is-why-learning-rails-is-hard][lea
  - [[http://www.meetup.com/Girl-Develop-It-Minneapolis/][*Girl Develop It! Minneapolis*]] serves up training courses mainly in the HTML, CSS, and JS arena, and is focused on bringing this training to women and other underrepresented groups. The training sessions are focused on beginners, which rather fills the gap between the beginner and intermediate. There are GDI chapeter in several other cities as well. The parent organization is at [[https://www.girldevelopit.com/]].
 
 ** Bootcamps
-   :PROPERTIES:
-   :CUSTOM_ID: bootcamps
-   :END:
 
  These are becoming quite popular, if expensive, but they seem to provide what's being offered: intensive training in the skills necessary to become a web application developer, with experience and skills in the entire lifecycle of modern software development. I can't really provide much information on them, as I've never experienced them. [[http://www.bootcamps.in/][Bootcamps.in]] provides at least a first-glance at several bootcamps.
 
 ** Conferences and Meetups
-   :PROPERTIES:
-   :CUSTOM_ID: conferences-and-meetups
-   :END:
 
  Going to conferences, hanging out, meeting like-minded people, and generally instilling one's self into the millieau of the Ruby and Rails communities can be extremely rewarding. Even if you're not the conference type, make an effort to find people in your area to talk to.
 
@@ -222,8 +189,5 @@ Also, [[https://www.codefellows.org/blog/this-is-why-learning-rails-is-hard][lea
  - [[https://www.meetup.com/Minneapolis-St-Paul-WordPress-User-Group/][MSP WP]]
 
 ** More Advanced
-   :PROPERTIES:
-   :CUSTOM_ID: more-advanced
-   :END:
 
  If you want to go deep and learn more about computer science, the book [[https://mitpress.mit.edu/sicp/][/Structure and Interpretation of Computer Programs/]] is probably your best bet in terms of a real CS text book that's available online for free. It's not a tutorial, but there are exercises in the text. The book uses Scheme, a lisp-like programming language. Everyone should learn a little lisp at some point. :) However it's not mandatory one use Scheme (or Clojure as the local Clojure user group has been doing). The analytical concepts apply across all languages. If you're focused on JavaScript or Ruby, you can work the examples in those languages, too.

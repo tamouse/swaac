@@ -1,14 +1,11 @@
 * Useful Links
 
-- Time-stamp: <2018-11-04 00:41:46 tamara>
+- Time-stamp: <2018-11-04 01:05:38 tamara>
 
 
 Just a few links. I don't know if this is a good collection anymore. I also don't know why these aren't just regular posts.
 
 ** CSS
-   :PROPERTIES:
-   :CUSTOM_ID: css
-   :END:
 
  - [[https://css-tricks.com/autoprefixer/][Autoprefixer]] [[https://github.com/postcss/autoprefixer][(GitHub)]] is a CSS post-processor that automatically adds CSS vendor prefixes and fixes the CSS to work in many browser versions that don't yet have full support for CSS features. See also "Can I Use" below.
 
@@ -19,9 +16,6 @@ Just a few links. I don't know if this is a good collection anymore. I also don'
  - [[https://css-tricks.com/][CSS-Tricks Blog]] is a great site for learning about nify CSS stuff.
 
 ** Databases
-   :PROPERTIES:
-   :CUSTOM_ID: databases
-   :END:
 
  - [[http://blog.donwilson.net/2011/11/constructing-a-less-than-simple-query-with-rails-and-arel/][Constructing a less than simple query with rails and arel]] This is from back in 2011, so is probably out of date, but still contains some fascinating use of AREL instead of writing straight SQL.
 
@@ -30,16 +24,10 @@ Just a few links. I don't know if this is a good collection anymore. I also don'
  - [[http://patshaughnessy.net/2015/6/18/dont-let-your-data-out-of-the-database][Dont Let Your Data Out of the Database - Pat Shaughnessy]]
 
 ** Design
-   :PROPERTIES:
-   :CUSTOM_ID: design
-   :END:
 
  - [[http://www.webdesignerdepot.com/2014/06/6-steps-to-perfecting-minimalism-in-web-design/][6 Steps to Perfecting Minimalism in Web Design]] with a great example site by [[http://www.briandanaher.com/][Brian Danahar]].
 
 ** Docker
-   :PROPERTIES:
-   :CUSTOM_ID: docker
-   :END:
 
  - [[http://docs.docker.com/compose/rails/][Getting Started with Compose and Rails]]
 
@@ -56,9 +44,6 @@ Just a few links. I don't know if this is a good collection anymore. I also don'
  - [[http://www.ybrikman.com/writing/2015/05/19/docker-osx-dev/][A Productive Development Environment with Docker on OS/X]] A good write-up on using docker in rails development.
 
 ** Emacs
-   :PROPERTIES:
-   :CUSTOM_ID: emacs
-   :END:
 
  - Jekor's Emacs Tutorials: [[https://www.youtube.com/playlist?list=PLxj9UAX4Em-IiOfvF2Qs742LxEK4owSkr]]
 
@@ -67,9 +52,6 @@ Just a few links. I don't know if this is a good collection anymore. I also don'
  - [[https://www.masteringemacs.org/][Mastering Emacs]] web site and now e-book by Emacs master Mickey Petersen [[http://twitter.com/mickeynp][twitter]]. Blog posts about using Emacs's more advanced and powerful features.
 
 ** Javascript
-   :PROPERTIES:
-   :CUSTOM_ID: javascript
-   :END:
 
  - [[https://github.com/getify/You-Dont-Know-JS][You Don't Know JS]] Kyle Simpson's tour de force on JavaScript in online form.
 
@@ -78,39 +60,24 @@ Just a few links. I don't know if this is a good collection anymore. I also don'
  - [[https://github.com/rwaldron/idiomatic.js][Writing Idiomatic Javascript]]
 
 *** Angular
-    :PROPERTIES:
-    :CUSTOM_ID: angular
-    :END:
 
  - [[https://github.com/johnpapa/angular-styleguide][Opinionated Style Guide]] by [[http://johnpapa.net/][John Papa]] [[https://twitter.com/john_papa][(twitter)]]
 
 *** Aurelia.IO
-    :PROPERTIES:
-    :CUSTOM_ID: aurelia.io
-    :END:
 
  - [[http://aurelia.io/][aurelia.io]] - a newish (April 2015) JS client framework using pretty simple convention over configuration to speed up SPA development. [[http://durandaljs.com/][Durandel.JS]] is the previous generation of aurelia.
 
 *** React.JS
-    :PROPERTIES:
-    :CUSTOM_ID: react.js
-    :END:
 
  - [[https://www.airpair.com/reactjs/posts/reactjs-a-guide-for-rails-developers][React.JS and Rails]] by [[https://github.com/fervisa][Fernando Villalobos]]. A really clear tutorial for using React.JS with Rails, including [[https://github.com/fervisa/accounts-react-rails][sample code]] [[https://github.com/tamouse/accounts-react-rails][(my fork)]].
 
 ** Jekyll
-   :PROPERTIES:
-   :CUSTOM_ID: jekyll
-   :END:
 
  - [[https://developmentseed.org/blog/2013/05/01/introducing-jekyll-hook/][Introducing Jekyll-hook: Run your own GitHub Pages --- Development Seed]]
  - [[http://prose.io/][Prose · A Content Editor for GitHub]], [[https://github.com/prose/prose][prose/prose]]
  - [[http://cloudcannon.com/][Build websites in HTML or Jekyll. Have your non-technical team update inline - CloudCannon]]
 
 ** Rails
-   :PROPERTIES:
-   :CUSTOM_ID: rails
-   :END:
 
  - [[http://www.sitepoint.com/enumerated-types-with-activerecord-and-postgresql/?utm_source=rubyweekly&utm_medium=email][Enumerated Types with ActiveRecord and PostgreSQL]]
 
@@ -131,9 +98,6 @@ Just a few links. I don't know if this is a good collection anymore. I also don'
  - [[http://www.justinweiss.com/articles/how-to-preload-rails-scopes/][How to preload Rails scopes - Justin Weiss]]
 
 ** Ruby
-   :PROPERTIES:
-   :CUSTOM_ID: ruby
-   :END:
 
  - [[http://www.saturnflyer.com/blog/jim/2015/01/20/ruby-forwardable-deep-dive/][Forwardable Deep Dive]]
 
@@ -146,28 +110,16 @@ Just a few links. I don't know if this is a good collection anymore. I also don'
  - [[http://plugins.jetbrains.com/update/index?pr=ruby&updateId=19837][Docker support in RubyMine]]
 
 ** Shell, Command Line, Bash, etc.
-   :PROPERTIES:
-   :CUSTOM_ID: shell-command-line-bash-etc.
-   :END:
 
  - [[http://www.learnenough.com/command-line-tutorial][Learn Enough Command Line To Be Dangerous]] -- by Michael Hartl of RailsTutorial fame.
 
 ** Testing
-   :PROPERTIES:
-   :CUSTOM_ID: testing
-   :END:
 
  - Randy Coulman has written a [[http://randycoulman.com/blog/categories/getting-testy/][series on testing]] that I think you'll find useful.
 
 ** Tools
-   :PROPERTIES:
-   :CUSTOM_ID: tools
-   :END:
 
 *** Version Control, Git, etc
-    :PROPERTIES:
-    :CUSTOM_ID: version-control-git-etc
-    :END:
 
  - [[https://about.futurelearn.com/blog/telling-stories-with-your-git-history/][Telling stories with your Git history - FutureLearn]]
 
