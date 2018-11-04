@@ -38,15 +38,20 @@ end
 
 desc 'build indexes at each level in the tree'
 task :build_indexes do
-  File.write(
-    'posts/index.org',
-    Dir['posts/**/*.org', 'posts/**/*.markdown', 'posts/**/*.md']
-      .sort
-      .uniq
-      .reject { |f| f.match(%r{index.org}) }
-      .map { |f| "- [[./#{f}]]" }
-      .join("\n")
-  )
+  Dir.chdir('posts') do |postsDir|
+    File.write(
+      'index.org',
+      Dir['**/*.org']
+        .sort
+        .reverse
+        .uniq
+        .reject { |f| f.match(%r{index.org}) }
+        .map { |f| "- [[./#{f}]]" }
+        .join("\n")
+    )
+
+  end
+
 
   Dir['posts/*/'].each do |year|
     Dir.chdir(year) do |dir|
@@ -55,6 +60,7 @@ task :build_indexes do
         'index.org',
         Dir['./**/*.org']
           .sort
+          .reverse
           .uniq
           .reject {|f| f.match(%r{index.org}) }
           .map { |f| "- [[#{f}]]".tap { |l| logger.debug "link: #{l}" } }
