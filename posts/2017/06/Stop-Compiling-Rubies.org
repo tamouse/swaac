@@ -1,0 +1,22 @@
+#+TITLE: Stop Compiling Ruby For Provisioning!
+#+AUTHOR: Tamara Temple [[mailto:tamara@tamouse.org][tamara@tamouse.org]]
+#+DATE: 2017-06-06T21:35
+
+* Stop Compiling Ruby For Provisioning!
+
+- keywords: devops, provisioning, brightbox, ruby
+
+*Stop! Don't compile that ruby installation!*
+
+Next time you are setting out to provision a box with Ruby on it, instead of downloading the source and libraries and compiling it, and waiting for 15 minutes, use the pre-built binaries at the [[http://www.brightbox.com][Brightbox]]:
+
+- Ubuntu: [[https://www.brightbox.com/docs/ruby/ubuntu/]]
+
+** In a nutshell:
+
+#+BEGIN_SRC shell-script
+  apt-get install build-essential software-properties-common
+  apt-add-repository ppa:brightbox.com/ruby-ng
+  apt-get update && apt-get install ruby2.4 ruby2.4-dev
+  apt-get install ruby-switch
+#+END_SRC

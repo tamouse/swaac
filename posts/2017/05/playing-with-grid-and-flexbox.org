@@ -1,0 +1,71 @@
+* Playing with Grid and Flexbox
+  :PROPERTIES:
+  :CUSTOM_ID: playing-with-grid-and-flexbox
+  :END:
+
+- published date: 2017-05-02 17:00
+- keywords: css, grid, flexbox
+
+--------------
+
+So last month, March 2017, Grid CSS support dropped for almost all the major browsers. Grid is a pretty nice system for 2-dimensional layout while Flexbox remains a good system for 1-dimensional layout. A lot of folks have been asking [[https://css-tricks.com/css-grid-replace-flexbox/][if Grid replaces Flexbox but it does not]]. In fact, they can play really well together.
+
+** GridCSS Holy Grail Layout
+   :PROPERTIES:
+   :CUSTOM_ID: gridcss-holy-grail-layout
+   :END:
+
+The [holy grail] layout is a pretty common one, seen pretty much everywhere:
+
+- header and footer
+- middle content area with left and right sidebars
+
+Creating it in Grid was something I wanted to try to figure out as a way of learning. My attempt is over on CodePen.io:
+
+#+BEGIN_HTML
+  <p data-height="265" data-theme-id="0" data-slug-hash="zwwwwZ" data-default-tab="result" data-user="tamouse" data-embed-version="2" data-pen-title="GridCSS holy grail" class="codepen">
+#+END_HTML
+
+See the Pen GridCSS holy grail by Tamara Temple (@tamouse) on CodePen.
+
+#+BEGIN_HTML
+  </p>
+#+END_HTML
+
+I'm still struggling with getting the height to stretch out if the content does not naturally fill the window.
+
+** Flexbox Dashboard with Grid Section
+   :PROPERTIES:
+   :CUSTOM_ID: flexbox-dashboard-with-grid-section
+   :END:
+
+This was more successful. I wanted a full-height left navigation panel and a masonry-style right panel that would let various guages and displays flow nicely.
+
+#+BEGIN_HTML
+  <p data-height="265" data-theme-id="0" data-slug-hash="EmmXdr" data-default-tab="result" data-user="tamouse" data-embed-version="2" data-pen-title="Flexbox Dashboard with Grid Section" class="codepen">
+#+END_HTML
+
+See the Pen Flexbox Dashboard with Grid Section by Tamara Temple (@tamouse) on CodePen.
+
+#+BEGIN_HTML
+  </p>
+#+END_HTML
+
+It's not really responsive, I'd like it if the left panel shrunk down when the viewport gets narrow enough, but I don't think I can make that happen on codepen.
+
+** Links
+   :PROPERTIES:
+   :CUSTOM_ID: links
+   :END:
+
+- [[http://codepen.io/tamouse/pen/zwwwwZ][GridCSS Holy Grail]]
+- [[http://codepen.io/tamouse/pen/EmmXdr][Flexbox Dashboard]]
+
+- [[https://css-tricks.com/css-grid-replace-flexbox/][Grid vs. Flexbox]]
+- [[https://www.youtube.com/watch?v=tjHOLtouElA][Rachel Andrew's Start using grid today (video)]]
+- [[https://hackernoon.com/getting-started-with-css-grid-layout-8e00de547daf][Getting started with CSS Grid]]
+- [[https://css-tricks.com/css-grid-one-layout-multiple-ways/][One Layout, Multiple Ways]]
+
+#+BEGIN_HTML
+  <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+#+END_HTML

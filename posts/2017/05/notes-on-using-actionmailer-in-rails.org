@@ -1,0 +1,79 @@
+* Notes on using ActionMailer in Rails
+  :PROPERTIES:
+  :CUSTOM_ID: notes-on-using-actionmailer-in-rails
+  :END:
+
+- published date: 2017-05-06 03:54
+- keywords: rails, ruby, ActionMailer
+
+--------------
+
+(This article was originally posted on Sat Aug 24 10:39:09 2013 in wiki.tamaratemple.com. It deserves a new home.)
+
+[[http://guides.rubyonrails.org/action_mailer_basics.html][ActionMailer]] allows a Rails application to send and receive emails in a fashion similar to a Rails controller. You can have multi-part bodies, templates, attachments, and so on. It isn't quite a complete ecosystem, as you need to have a transport for sending and recieving mail, and you need to have a way of accurately testing your emails, so I'm going to write some notes to complete that view.
+
+** First, read the documentation
+   :PROPERTIES:
+   :CUSTOM_ID: first-read-the-documentation
+   :END:
+
+[[http://guides.rubyonrails.org/][The Rails Guides]] provide the basics for getting up and running using ActionMailer.
+
+In addition, the [[http://api.rubyonrails.org/classes/ActionMailer/Base.html][api docs]] provides more details on the usage of the methods in ActionMailer.
+
+** Testing Considerations
+   :PROPERTIES:
+   :CUSTOM_ID: testing-considerations
+   :END:
+
+Since we are all good TDD/BDD-ers (we are, right?), I'm going to start with how you can set up your Rails environment for testing your mailers.
+
+The Rails Guides provide a section on [[http://guides.rubyonrails.org/testing.html#testing-your-mailers][testing your mailers]], which you should go off and read right now.
+
+*** Delivery Mode =:test=
+    :PROPERTIES:
+    :CUSTOM_ID: delivery-mode-test
+    :END:
+
+The simplest setup for this, especially useful for unit and functional testing, is to set the delivery mode for action mailer to =:test= in the =test= environment.
+
+*File:* =config/environments/test.rb=:
+
+#+BEGIN_SRC ruby
+      # Tell Action Mailer not to deliver emails to the real world.
+      # The :test delivery method accumulates sent emails in the
+      # ActionMailer::Base.deliveries array.
+      config.action_mailer.delivery_method = :test
+#+END_SRC
+
+In a new Rails app, this is the default setting, so you don't really need to do anything in particular.
+
+*** MailCatcher For Round-Trip Testing
+    :PROPERTIES:
+    :CUSTOM_ID: mailcatcher-for-round-trip-testing
+    :END:
+
+While it is often the case that you should not bother to test the underlying delivery mechanisms, sometimes you really want to see what your email is going to look like in the eyes of the receiver. [[http://mailcatcher.me/][MailCatcher]] to the rescue. MailCatcher is a nice utility that emulates an SMTP connection and provides a webmail view of the mails it catches. To use MailCatcher, after you've installed it according to the instructions, is to set up your environments files appropriately. In this case, I'm going to set it in the =development= environment.
+
+*File:* =config/environments/development.rb=:
+
+#+BEGIN_SRC ruby
+      config.action_mailer.deliver_method = :smtp
+      config.action_mailer.smtp_settings = {
+        :address => 'localhost',
+        :port => 1025
+      }
+#+END_SRC
+
+When you cause mails to be sent with your mailer, the mails can be seen by pointing your browser at [[http://localhost:1080]] and it works like your typical web mail reader. (You can't reply or forward, obviously.)
+
+** Intercepting Emails on Staging
+   :PROPERTIES:
+   :CUSTOM_ID: intercepting-emails-on-staging
+   :END:
+
+When getting ready to deploy a project update, generally a good practice is to deploy to a staging server that mirrors your production environment as closely as possible to see if there will be any errors during final deploy. One of the things frequently done in this is a run with a copy (or near copy) of production data.
+
+However, you probably don't want mail going out indiscrimantly from your staging environment to your users, so the thing you want to do here is intercept the emails. You can set up mailcatcher like above, but there are alternatives, such as catching all mail and switch the outbound addresses to something more benign.
+
+[[http://guides.rubyonrails.org/action_mailer_basics.html#intercepting-emails][Someone thought this through already]] The example works perfectly for what I need to be able to do full systems testing on staging without worrying about sending bogus emails to users!

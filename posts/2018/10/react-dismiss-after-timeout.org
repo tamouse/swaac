@@ -1,10 +1,9 @@
 #+TITLE React concept: dismiss after timeout
 #+DATE 2018-10-11
 
-- Time-stamp: <>
+- Time-stamp: <2018-11-03 16:16:37 tamara>
 - keywords: react, dismiss, alert
 
 Over at the [[https://github.com/react-bootstrap/react-bootstrap][react-bootstrap repo]], there is a pull request to deprecate the ~dismissAfter~ prop on ~Alert~ components, and in [[https://github.com/react-bootstrap/react-bootstrap/pull/1636#issuecomment-429085552][this issue]] the author discusses a workaround if user's still need the capability.
 
 I think generalizing that concept would be a pretty cool thing, and possibly a bit simplification for, say, the debouncer I wrote for work.
-
