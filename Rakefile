@@ -179,7 +179,7 @@ class Feed2Xml
   end
 
   def header
-    "<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+    "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
   end
 
   def hash2xml(h, options={})
@@ -187,7 +187,7 @@ class Feed2Xml
     indent = options[:indent] || 0
     out = ""
     if (root)
-      out += "#{" "*indent}<#{root}>\n"
+      out += "#{" "*indent}<#{root == "feed" ? "feed xmlns=\"http://www.w3.org/2005/Atom\"" : root}>\n"
     end
 
     indent += 2
@@ -219,8 +219,6 @@ class Feed2Xml
 
     out = ""
 
-    out += "#{" "*indent}<#{root}>\n"
-    indent += 2
     a.each do |entry|
       case entry
       when Array
@@ -233,8 +231,6 @@ class Feed2Xml
         out += "#{" "*indent}<item>#{ERB::Util.h(entry)}</item>\n"
       end
     end
-    indent -= 2
-    out += "#{" "*indent}</#{root}>\n"
     out
   end
 
