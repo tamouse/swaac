@@ -1,3 +1,9 @@
 * Software as a Craft dev blog
 
 This is my swaac (Software as a Craft) web site posts, converted into [[https://orgmode.org/][Emacs Org Mode]] which is another sort of mark-down type writing experience, only richer than straight Markdown. Org mode includes a richer environment for editing code snippets, which is part-and-parcel of *this* particular web site. Org mode is also a great way to organize thoughts and concepts. The major inhibiting factor has been how to publish the results. I'm just stuffing these onto github, which handles org formatting at least as well as it does Markdown. This feels like the least restrictive way for me to write my devblog.
+
+The posts are in the [[./posts][posts]] directory. The other directories are only temporary in case I need to do some editing and have the original around.
+
+** [[./posts/index.org][Full List of Posts]]
+
+Each directory also has an ~index.org~ file in it listing the posts for that directory.
