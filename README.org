@@ -4,6 +4,8 @@ This is my swaac (Software as a Craft) web site posts, converted into [[https://
 
 The posts are in the [[./posts][posts]] directory. The other directories are only temporary in case I need to do some editing and have the original around.
 
+If you're looking for the Atom feed, it is [[https://tamouse.github.io/swaac/feed.xml][here]].
+
 ** [[./posts/index.org][Full List of Posts]]
 
 Each directory also has an ~index.org~ file in it listing the posts for that directory.
