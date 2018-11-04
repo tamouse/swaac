@@ -28,7 +28,7 @@ This project adheres to the [[https://www.contributor-covenant.org/version/1/4/c
 
 ** Contact
 
-Email: [[tamara@tamouse.org][tamara@tamouse.org]]
+Email: [[mailto:tamara@tamouse.org][tamara@tamouse.org]]
 
 Twitter: [[https://twitter.com/tamouse][@tamouse]]
 
