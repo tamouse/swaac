@@ -32,4 +32,4 @@ Email: [[mailto:tamara@tamouse.org][tamara@tamouse.org]]
 
 Twitter: [[https://twitter.com/tamouse][@tamouse]]
 
-Github: [[https://github.com/tamouse/swaac-org/pulls][tamouse]]
+Github: [[https://github.com/tamouse/][tamouse]]
