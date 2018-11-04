@@ -139,7 +139,10 @@ class Entry
       updated: moddate(file),
       title: findtitle(file),
       content: getcontent(file),
-      author: "Tamara Temple <tamara@tamouse.org>"
+      author: {
+        name: "Tamara Temple",
+        email: "tamara@tamouse.org"
+      }
     }
   end
 

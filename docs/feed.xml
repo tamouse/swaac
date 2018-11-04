@@ -17,7 +17,10 @@
 
 &gt; A curated collection of useful CSS snippets you can understand in 30 seconds or less.
 </content>
-      <author>Tamara Temple &lt;tamara@tamouse.org&gt;</author>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
     </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2018/10/link-ARIA-is-spackle-not-rebar.org</id>
@@ -37,7 +40,10 @@ I think this sums up the intent nicely:
 
 And while that is definitely true, it really does help to understand what ARIA is for and how it works. So while we&#39;re on the subject, I want to point out the excellent [[https://frontendmasters.com][Frontend Masters]] course: [[https://frontendmasters.com/courses/web-accessibility/][Website Accessibility]] by Jon Kuperman.
 </content>
-      <author>Tamara Temple &lt;tamara@tamouse.org&gt;</author>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
     </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2018/10/link-upcase-by-thoughbot.org</id>
@@ -62,7 +68,10 @@ Some of their features include:
 - Flash cards
 - Forums
 </content>
-      <author>Tamara Temple &lt;tamara@tamouse.org&gt;</author>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
     </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2018/10/link-ala-tags-to-dom.org</id>
@@ -76,7 +85,10 @@ Some of their features include:
 
 Over at the most excellent blog, [[https://alistapart.com/][A List Apart]], there is a series of deep-dive articles. One that caught my eye in particular is [[https://alistapart.com/article/tags-to-dom][Tags to DOM]], an explanation of how a browser goes from the plain HTML markup to building the DOM ([[https://developer.mozilla.org/en-US/docs/Glossary/DOM][Document Object Model]]).
 </content>
-      <author>Tamara Temple &lt;tamara@tamouse.org&gt;</author>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
     </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2018/01/til-some-jest-testing-tricks.org</id>
@@ -148,7 +160,10 @@ This involves a few different things:
   })
 #+END_SRC
 </content>
-      <author>Tamara Temple &lt;tamara@tamouse.org&gt;</author>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
     </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2018/02/polyfills-for-find-and-findIndex.org</id>
@@ -279,7 +294,10 @@ Having the unused variable creates confusion for later maintainers as well, sinc
 
 The reducer may look complicated at first, but that&#39;s primarily due to unfamiliarity. Starting to learn bits of functional programming can improve the understandability of code for yourself.
 </content>
-      <author>Tamara Temple &lt;tamara@tamouse.org&gt;</author>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
     </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2018/02/passing-the-time-between-rails-and-react-dot-js.org</id>
@@ -357,7 +375,10 @@ or when using moment:
     let createdAt = moment(object.created_at_ms)
 #+END_SRC
 </content>
-      <author>Tamara Temple &lt;tamara@tamouse.org&gt;</author>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
     </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2018/02/how-to-reset-ios-simulator.org</id>
@@ -380,7 +401,10 @@ I found it on the Simulator (Version 10.0 (SimulatorApp-835.2.1) seen in the fol
 #+CAPTION: Reset IOS Simulator Screenshot
 [[../images/reset-ios-simulator.png]]
 </content>
-      <author>Tamara Temple &lt;tamara@tamouse.org&gt;</author>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
     </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2018/02/git-merge-dry-run.org</id>
@@ -407,7 +431,10 @@ You can look for any potential merge conflicts after the first command as well a
 
 Note you need /both/ the =--no-commit= /AND/ =--no-ff= flags to prevent the merge from occurring if it&#39;s possible for a fast-forward merge to occur (likely).
 </content>
-      <author>Tamara Temple &lt;tamara@tamouse.org&gt;</author>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
     </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2018/03/til-react-error-boundary-workarounds.org</id>
@@ -483,6 +510,9 @@ See the Pen ErrorBoundary Example by Tamara Temple (@tamouse) on CodePen.
 
 It turns out I didn&#39;t use this to handle login errors, but it was a useful excursion and learning experience anyway.
 </content>
-      <author>Tamara Temple &lt;tamara@tamouse.org&gt;</author>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
     </entry>
 </feed>
