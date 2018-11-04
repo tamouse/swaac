@@ -120,9 +120,9 @@ task :mkfeed do
 
   posts = Dir['posts/**/*.org'].map do |file|
     { entry: Entry.new(file).entry }
-  end.sort_by{|entry| entry[:entry][:date]}.reverse.take(10)
+  end.sort_by{|entry| entry[:entry][:updated]}.reverse.take(10)
 
-  feed[:updated] = posts.first[:entry][:date]
+  feed[:updated] = posts.first[:entry][:updated]
   feed[:entries] = posts
   feed_xml = Feed2Xml.new(feed).xml
   File.write("docs/feed.xml", feed_xml)
@@ -136,10 +136,10 @@ class Entry
   def initialize(file)
     @entry = {
       id: createid(file),
-      file: file,
-      date: moddate(file),
+      updated: moddate(file),
       title: findtitle(file),
-      content: getcontent(file)
+      content: getcontent(file),
+      author: "Tamara Temple <tamara@tamouse.org>"
     }
   end
 

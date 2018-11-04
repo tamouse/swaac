@@ -5,8 +5,7 @@
   <updated>2018-11-04T10:02:41-06:00</updated>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2018/10/link-30-seconds-of-CSS.org</id>
-      <file>posts/2018/10/link-30-seconds-of-CSS.org</file>
-      <date>2018-11-04T10:02:41-06:00</date>
+      <updated>2018-11-04T10:02:41-06:00</updated>
       <title>LINK: [[https://30-seconds.github.io/30-seconds-of-css/][30 seconds of CSS]]:</title>
       <content>* LINK: [[https://30-seconds.github.io/30-seconds-of-css/][30 seconds of CSS]]:
 
@@ -18,11 +17,11 @@
 
 &gt; A curated collection of useful CSS snippets you can understand in 30 seconds or less.
 </content>
+      <author>Tamara Temple &lt;tamara@tamouse.org&gt;</author>
     </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2018/10/link-ARIA-is-spackle-not-rebar.org</id>
-      <file>posts/2018/10/link-ARIA-is-spackle-not-rebar.org</file>
-      <date>2018-11-04T10:02:04-06:00</date>
+      <updated>2018-11-04T10:02:04-06:00</updated>
       <title>LINK: [[https://css-tricks.com/aria-spackle-not-rebar/][ARIA is Spackle, Not Rebar]]</title>
       <content>* LINK: [[https://css-tricks.com/aria-spackle-not-rebar/][ARIA is Spackle, Not Rebar]]
 
@@ -38,11 +37,11 @@ I think this sums up the intent nicely:
 
 And while that is definitely true, it really does help to understand what ARIA is for and how it works. So while we&#39;re on the subject, I want to point out the excellent [[https://frontendmasters.com][Frontend Masters]] course: [[https://frontendmasters.com/courses/web-accessibility/][Website Accessibility]] by Jon Kuperman.
 </content>
+      <author>Tamara Temple &lt;tamara@tamouse.org&gt;</author>
     </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2018/10/link-upcase-by-thoughbot.org</id>
-      <file>posts/2018/10/link-upcase-by-thoughbot.org</file>
-      <date>2018-11-04T10:01:18-06:00</date>
+      <updated>2018-11-04T10:01:18-06:00</updated>
       <title>LINK: [[https://thoughtbot.com/upcase][Upcase, by Thoughbot]]</title>
       <content>* LINK: [[https://thoughtbot.com/upcase][Upcase, by Thoughbot]]
 
@@ -63,11 +62,11 @@ Some of their features include:
 - Flash cards
 - Forums
 </content>
+      <author>Tamara Temple &lt;tamara@tamouse.org&gt;</author>
     </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2018/10/link-ala-tags-to-dom.org</id>
-      <file>posts/2018/10/link-ala-tags-to-dom.org</file>
-      <date>2018-11-04T10:00:32-06:00</date>
+      <updated>2018-11-04T10:00:32-06:00</updated>
       <title>Link: [[https://alistapart.com/article/tags-to-dom][Tags to DOM]]</title>
       <content>* Link: [[https://alistapart.com/article/tags-to-dom][Tags to DOM]]
 
@@ -77,11 +76,11 @@ Some of their features include:
 
 Over at the most excellent blog, [[https://alistapart.com/][A List Apart]], there is a series of deep-dive articles. One that caught my eye in particular is [[https://alistapart.com/article/tags-to-dom][Tags to DOM]], an explanation of how a browser goes from the plain HTML markup to building the DOM ([[https://developer.mozilla.org/en-US/docs/Glossary/DOM][Document Object Model]]).
 </content>
+      <author>Tamara Temple &lt;tamara@tamouse.org&gt;</author>
     </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2018/01/til-some-jest-testing-tricks.org</id>
-      <file>posts/2018/01/til-some-jest-testing-tricks.org</file>
-      <date>2018-11-04T08:26:19-06:00</date>
+      <updated>2018-11-04T08:26:19-06:00</updated>
       <title>TIL: Some Jest testing tricks</title>
       <content>* TIL: Some Jest testing tricks
 
@@ -149,11 +148,11 @@ This involves a few different things:
   })
 #+END_SRC
 </content>
+      <author>Tamara Temple &lt;tamara@tamouse.org&gt;</author>
     </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2018/02/polyfills-for-find-and-findIndex.org</id>
-      <file>posts/2018/02/polyfills-for-find-and-findIndex.org</file>
-      <date>2018-11-04T08:25:37-06:00</date>
+      <updated>2018-11-04T08:25:37-06:00</updated>
       <title>Polyfills for find() and findIndex() in JavaScript</title>
       <content>* Polyfills for find() and findIndex() in JavaScript
 
@@ -280,11 +279,11 @@ Having the unused variable creates confusion for later maintainers as well, sinc
 
 The reducer may look complicated at first, but that&#39;s primarily due to unfamiliarity. Starting to learn bits of functional programming can improve the understandability of code for yourself.
 </content>
+      <author>Tamara Temple &lt;tamara@tamouse.org&gt;</author>
     </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2018/02/passing-the-time-between-rails-and-react-dot-js.org</id>
-      <file>posts/2018/02/passing-the-time-between-rails-and-react-dot-js.org</file>
-      <date>2018-11-04T08:23:27-06:00</date>
+      <updated>2018-11-04T08:23:27-06:00</updated>
       <title>Passing the Time between Rails and React.js</title>
       <content>* Passing the Time between Rails and React.js
 
@@ -358,11 +357,11 @@ or when using moment:
     let createdAt = moment(object.created_at_ms)
 #+END_SRC
 </content>
+      <author>Tamara Temple &lt;tamara@tamouse.org&gt;</author>
     </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2018/02/how-to-reset-ios-simulator.org</id>
-      <file>posts/2018/02/how-to-reset-ios-simulator.org</file>
-      <date>2018-11-04T08:23:11-06:00</date>
+      <updated>2018-11-04T08:23:11-06:00</updated>
       <title>How to reset iOS simulator</title>
       <content>* How to reset iOS simulator
 
@@ -381,11 +380,11 @@ I found it on the Simulator (Version 10.0 (SimulatorApp-835.2.1) seen in the fol
 #+CAPTION: Reset IOS Simulator Screenshot
 [[../images/reset-ios-simulator.png]]
 </content>
+      <author>Tamara Temple &lt;tamara@tamouse.org&gt;</author>
     </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2018/02/git-merge-dry-run.org</id>
-      <file>posts/2018/02/git-merge-dry-run.org</file>
-      <date>2018-11-04T08:22:45-06:00</date>
+      <updated>2018-11-04T08:22:45-06:00</updated>
       <title>Git Merge &quot;dry run&quot;</title>
       <content>* Git Merge &quot;dry run&quot;
 
@@ -408,11 +407,11 @@ You can look for any potential merge conflicts after the first command as well a
 
 Note you need /both/ the =--no-commit= /AND/ =--no-ff= flags to prevent the merge from occurring if it&#39;s possible for a fast-forward merge to occur (likely).
 </content>
+      <author>Tamara Temple &lt;tamara@tamouse.org&gt;</author>
     </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2018/03/til-react-error-boundary-workarounds.org</id>
-      <file>posts/2018/03/til-react-error-boundary-workarounds.org</file>
-      <date>2018-11-04T08:22:25-06:00</date>
+      <updated>2018-11-04T08:22:25-06:00</updated>
       <title>TIL: React Error boundary workarounds</title>
       <content>* TIL: React Error boundary workarounds
 
@@ -484,5 +483,6 @@ See the Pen ErrorBoundary Example by Tamara Temple (@tamouse) on CodePen.
 
 It turns out I didn&#39;t use this to handle login errors, but it was a useful excursion and learning experience anyway.
 </content>
+      <author>Tamara Temple &lt;tamara@tamouse.org&gt;</author>
     </entry>
 </feed>
