@@ -1,6 +1,6 @@
-#+TITLE: Mocking GraphQL Mutations in Jest Tests
+* Mocking GraphQL Mutations in Jest Tests
 
-- Time-stamp: <2018-09-16 15:49:11 tamara.temple>
+- Time-stamp: <2018-11-04 08:17:52 tamara>
 - original date: [2018-09-16 Sun]
 - keywords: graphql, mutation, testing, mocking, jest, javascript, react
 

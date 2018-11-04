@@ -1,21 +1,12 @@
 * Polyfills for find() and findIndex() in JavaScript
-  :PROPERTIES:
-  :CUSTOM_ID: polyfills-for-find-and-findindex-in-javascript
-  :KEYWORDS: javascript, polyfills, find, findIndex, missing IE9, reduce, functional programming
-  :PUBLISHED_DATE: 2018-02-10
-  :END:
 
-- PUBLISHED_DATE: 2018-02-10
-- KEYWORDS: javascript, polyfills, find, findIndex, missing IE9, reduce, functional programming
+- Time-stamp: <2018-11-04 08:25:37 tamara>
+- published date: 2018-02-10
+- keywords: javascript, polyfills, find, findIndex, missing IE9, reduce, functional programming
 
-[ArrayDoc] https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/Array
-
-The JavaScript [=Array=][ArrayDoc] =find()= and =findIndez()= methods are available on all browsers now *except* IE9. Interestingly, the =map()=, =filter()=, and =reduce()= methods /are/ in IE9.
+The [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/Array][MDN Array documentation]] =find()= and =findIndez()= methods are available on all browsers now *except* IE9. Interestingly, the =map()=, =filter()=, and =reduce()= methods /are/ in IE9.
 
 ** the starting point
-   :PROPERTIES:
-   :CUSTOM_ID: the-starting-point
-   :END:
 
 The impetus for this little post is recently seeing a passage of code like this:
 
@@ -39,9 +30,6 @@ There are a few things wrong with this, IMHO:
 3. setting several intermediate variables
 
 ** using find
-   :PROPERTIES:
-   :CUSTOM_ID: using-find
-   :END:
 
 If =find()= or =findIndex()= were available everywhere, I could write this as:
 
@@ -55,9 +43,6 @@ If =find()= or =findIndex()= were available everywhere, I could write this as:
 Except that finds the /first/ match, not the last, so I couldn't really use them anyway.
 
 ** using forEach
-   :PROPERTIES:
-   :CUSTOM_ID: using-foreach
-   :END:
 
 But since IE9 doesn't have =find()= or =findIndex()=, I'm going write it with =forEach()=, which is /intended/ for looping /with/ side effects:
 
@@ -76,9 +61,6 @@ I also got rid of the =routes= intermediate variable.
 This is okay and I could leave it there, except it's still using intermediate variables.
 
 ** enter the functional programming
-   :PROPERTIES:
-   :CUSTOM_ID: enter-the-functional-programming
-   :END:
 
 Writing it with =reduce()= to get rid of the intermediate variables:
 
@@ -97,9 +79,6 @@ Writing it with =reduce()= to get rid of the intermediate variables:
 #+END_SRC
 
 ** discussion
-   :PROPERTIES:
-   :CUSTOM_ID: discussion
-   :END:
 
 Let's walk through what's going on with the =reduce()= call.
 
@@ -109,10 +88,7 @@ Let's walk through what's going on with the =reduce()= call.
 
   - =accumulator= - collects the value returned from each iteration
   - =currentValue= - holds the current value of the array for this iteration
-  - =index= - the index of the current value of the array (indexed by
-
-    0)
-
+  - =index= - the index of the current value of the array (indexed by 0)
   - =array= - the original array being reduced
 
 - =initialValue= - the initial value given to the =accumulator=. If omitted or "undefined" the first element of the array is used.
@@ -134,9 +110,6 @@ As the reducer rolls through the array, if the ternary comes true, the accumulat
 If the reducer goes all through the array and the ternary never comes true, the final accumulator value will still be the same as when set initially.
 
 ** so what?
-   :PROPERTIES:
-   :CUSTOM_ID: so-what
-   :END:
 
 When I was first learning programming, and even now that I'm more experienced, but don't necessarily know exactly what I need to do to implement a passage of code, using /intermediate variables/ can be very helpful in understanding and debugging my code.
 

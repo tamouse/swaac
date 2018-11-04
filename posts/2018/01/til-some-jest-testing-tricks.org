@@ -1,11 +1,7 @@
 * TIL: Some Jest testing tricks
-  :PROPERTIES:
-  :CUSTOM_ID: til-some-jest-testing-tricks
-  :PUBLISHED_DATE: 2018-01-19T22:12
-  :KEYWORDS: jest, testing, react, instance, beforeEach, beforeAll, setup & teardown
-  :END:
 
-- date: 2018-01-19 22:12
+- Time-stamp: <2018-11-04 08:26:19 tamara>
+- published date: 2018-01-19 22:12
 - keywords: jest, testing, react, instance, beforeEach, beforeAll, setup & teardown
 
 Deeper learning after much pondering and RTFM for Jest
@@ -50,9 +46,6 @@ I suppose that pollutes the global space, so one might want to do it in a namesp
 #+END_SRC
 
 ** TIL: you can call instance variables and functions on an Enzyme wrapper
-   :PROPERTIES:
-   :CUSTOM_ID: til-you-can-call-instance-variables-and-functions-on-an-enzyme-wrapper
-   :END:
 
 Okay, this is very cool. I didn't know this would work BUT IT DOES!
 

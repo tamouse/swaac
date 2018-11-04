@@ -1,11 +1,7 @@
 * TIL: React Error boundary workarounds
-  :PROPERTIES:
-  :CUSTOM_ID: til-react-error-boundary-workarounds
-  :PUBLISHED_DATE: 2018-03-30
-  :KEYWORDS: react, errors, error-handling, error-boundaries, componentDidCatch
-  :END:
 
-- date: 2018-03-30
+- Time-stamp: <2018-11-04 08:22:25 tamara>
+- published date: 2018-03-30
 - keywords: react, errors, error-handling, error-boundaries, componentDidCatch
 
 Recently I was working on a next-gen standalone react client for my work, and I decided I wanted to put in error boundaries, which were introduced in React v16. From the [[https://reactjs.org/docs/error-boundaries.html][docs]]:

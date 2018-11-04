@@ -1,8 +1,6 @@
 * TIL: Removing all Docker Containers and Images
-  :PROPERTIES:
-  :CUSTOM_ID: til-removing-all-docker-containers-and-images
-  :END:
 
+- Time-stamp: <2018-11-04 08:20:23 tamara>
 - date: 2018-06-04 11:51
 - keywords: [docker, containers, images, removing]
 

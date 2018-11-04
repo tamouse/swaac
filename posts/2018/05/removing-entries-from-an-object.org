@@ -1,10 +1,6 @@
 * Removing entries from an object
-  :PROPERTIES:
-  :CUSTOM_ID: removing-entries-from-an-object
-  :KEYWORDS: javascript, lodash, reduce, snippets
-  :PUBLICATION_DATE: 2018-05-15T00:38
-  :END:
 
+- Time-stamp: <2018-11-04 08:21:03 tamara>
 - date: 2018-05-15 00:38
 - keywords: javascript, lodash, reduce, snippets
 
@@ -15,9 +11,6 @@ There's nothing like Ruby's Hash Enumerbles, but there is a library of such func
 For this exercise, I used the [[https://lodash.com/docs/4.17.10#reduce][=reduce=]] function in the =Collections= set of functions.
 
 ** reduce syntax
-   :PROPERTIES:
-   :CUSTOM_ID: reduce-syntax
-   :END:
 
 The syntax for lodash's =reduce= is:
 
@@ -26,9 +19,6 @@ The syntax for lodash's =reduce= is:
 #+END_SRC
 
 ** the filter
-   :PROPERTIES:
-   :CUSTOM_ID: the-filter
-   :END:
 
 In the =reduce= function, you need to provide it with an =iteratee= -- something that acts on the current thing in the collection and returns the updated accumulator.
 
@@ -52,9 +42,6 @@ In my case, I want to dump all keys that start with underscore, so the filter fu
 #+END_SRC
 
 ** putting it all together
-   :PROPERTIES:
-   :CUSTOM_ID: putting-it-all-together
-   :END:
 
 In a simple example, I have =obj1= that has a bad key: =_bad= that I want removed:
 

@@ -1,10 +1,6 @@
 * TIL: Setting input value in React determines controlled vs uncontrolled
-  :PROPERTIES:
-  :CUSTOM_ID: til-setting-input-value-in-react-determines-controlled-vs-uncontrolled
-  :PUBLICATION_DATE: 2018-05-04
-  :KEYWORDS: react, controlled, uncontrolled, input, value
-  :END:
 
+- Time-stamp: <2018-11-04 08:21:22 tamara>
 - date: 2018-05-04
 - keywords: react, controlled, uncontrolled, input, value
 

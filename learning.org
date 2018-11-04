@@ -1,6 +1,6 @@
 * Resources for learning how to program, especially how to program in Ruby and Rails
 
-- last updated Time-stamp: <2018-11-04 01:04:37 tamara>
+- last updated Time-stamp: <2018-11-04 08:31:48 tamara>
 
 ** Introduction
 
@@ -17,7 +17,7 @@ I've been finding things around the 'net that can greatly help people new to pro
 
 --------------
 
-*UPDATE:* I've created a section for the [[./beginner-section.org][Absolute Beginner]] as well, you might find it useful.
+*UPDATE:* I've created a section for the [[./beginners-section.org][Absolute Beginner]] as well, you might find it useful.
 
 This is a quick, short list of things. I urge you to seek them out, and seek out others as well, and create your /own/ list of learning resources. People will begin to ask you, and it's nice to have something handy.
 

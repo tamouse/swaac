@@ -1,11 +1,7 @@
 * Passing the Time between Rails and React.js
-  :PROPERTIES:
-  :CUSTOM_ID: passing-the-time-between-rails-and-react.js
-  :PUBLISHED_DATE: 2018-02-15T18:39
-  :KEYWORDS: time formats, raBils, react, data interchange
-  :END:
 
-- date: 2018-02-15T18:39
+- Time-stamp: <2018-11-04 08:23:27 tamara>
+- published date: 2018-02-15T18:39
 - keyworeds: time formats, raBils, react, data interchange
 
 One of the problems I've encountered with a recent project is maintaining the integrity of Time and Date information going back and forth between a Rails server and a React client.

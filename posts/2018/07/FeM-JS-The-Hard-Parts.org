@@ -1,8 +1,8 @@
 * FrontendMasters: JavaScript: The Hard Parts, Will Sentance
 
+- Time-stamp: <2018-11-04 08:20:07 tamara>
 - date: 2018-07-11 05:35
-- categories: ["javascript"]
-- tags: ["javascript", "class", "notes"]
+- keywords: ["javascript", "class", "notes"]
 - source: [[https://frontendmasters.com/courses/javascript-hard-parts/][video]]
 
 Recently watching [[https://frontendmasters.com/courses/javascript-hard-parts/][this video]] with a study group, and working through a few of the coding challenges.
