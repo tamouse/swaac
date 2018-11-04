@@ -1,0 +1,159 @@
+* Implementing Multi-Table Full Text Search with Postgres in Rails -- Hashdog blog
+  :PROPERTIES:
+  :CUSTOM_ID: implementing-multi-table-full-text-search-with-postgres-in-rails-hashdog-blog
+  :END:
+
+- published date: 2013-09-04 10:27
+- keywords: ["postgresql", "rails", "swaac"]
+- source: http://www.hashdog.com/blog/implementing-multi-table-full-text-search-with-postgres-in-rails/
+
+Clipped on 2013-09-04 10:27:38 -0500
+
+#+BEGIN_HTML
+  <!--more-->
+#+END_HTML
+
+#+BEGIN_QUOTE
+  * [[http://www.hashdog.com/blog][[[http://www.hashdog.com/blog/wp-content/themes/shortnotes//library/images/logo.png]]]] Creative.Simple.
+    :PROPERTIES:
+    :CUSTOM_ID: hashdog-blog-creative.simple.
+    :END:
+
+  sep 2, 2013
+
+  ** [[http://www.hashdog.com/blog/implementing-multi-table-full-text-search-with-postgres-in-rails/][Implementing Multi-Table Full Text Search with Postgres in Rails]]
+     :PROPERTIES:
+     :CUSTOM_ID: implementing-multi-table-full-text-search-with-postgres-in-rails
+     :END:
+
+  Easily searching across an application's data is a pervasive need. If you are lucky, you can get away with simple sorting or searching on a single column, but it is more likely that you need full text search across multiple models, all from a single search field.
+
+  There are many standalone services, some hosted and some not, offering full text search. We looked at a few of these, but decided that adding [[http://robots.thoughtbot.com/post/50655960596/sandi-metz-rules-for-developers][too much to our classes]] or having an external service running during tests weren't things we wanted for this project.
+
+  Thanks to the power of Postgres' [[http://www.postgresql.org/docs/9.2/static/textsearch.html][full text search]], rolling your own search isn't too difficult.
+
+  If all you need is to search over a few models' text and string fields, this approach is probably the simplest thing you can do.
+
+  ** SQL Changes
+     :PROPERTIES:
+     :CUSTOM_ID: sql-changes
+     :END:
+
+  We'll need to construct a [[http://www.postgresql.org/docs/9.2/static/tutorial-views.html][database view]] which presents a polymorphic relationship to the individual result and the text column being searched.
+
+  #+BEGIN_EXAMPLE
+      CREATE VIEW searches AS
+
+        SELECT
+          statuses.id AS searchable_id,
+          'Status' AS searchable_type,
+          comments.body AS term
+        FROM statuses
+        JOIN comments ON statuses.id = comments.status_id
+
+        UNION
+
+        SELECT
+          statuses.id AS searchable_id,
+          'Status' AS searchable_type,
+          statuses.body AS term
+        FROM statuses
+
+        UNION
+
+        SELECT
+          users.id AS searchable_id,
+          'User' AS searchable_type,
+          users.name AS term
+        FROM users
+  #+END_EXAMPLE
+
+  From here, we add [[http://www.postgresql.org/docs/9.2/static/textsearch-indexes.html][gin]] indices to the columns on which we are searching. In our case similar indices to these made the difference between a 3-5 second lookup and ~100ms.
+
+  #+BEGIN_EXAMPLE
+      CREATE INDEX index_statuses_on_body ON statuses USING gin(to_tsvector('english', body));
+      CREATE INDEX index_comments_on_body ON comments USING gin(to_tsvector('english', body));
+      CREATE INDEX index_users_on_name ON users USING gin(to_tsvector('english', name));
+  #+END_EXAMPLE
+
+  ** Ruby
+     :PROPERTIES:
+     :CUSTOM_ID: ruby
+     :END:
+
+  [[https://twitter.com/tenderlove][Aaron Patterson]]‘s [[https://github.com/textacular/textacular][Textacular]] is the only non-standard dependency we'll introduce here:
+
+  #+BEGIN_EXAMPLE
+      gem 'textacular'
+  #+END_EXAMPLE
+
+  Textacular will manage searching over all text and varchar columns.
+
+  We follow Rails' conventions in our database view, which makes hooking a model up to it as simple as any table-backed model. The *Search* class below automatically hooks into the*searches* view we created.
+
+  Luckily, ActiveRecord already presents us with a solution to polymorphic associations in the form of the
+
+  #+BEGIN_EXAMPLE
+      <ASSOCIATION>_id
+  #+END_EXAMPLE
+
+  and
+
+  #+BEGIN_EXAMPLE
+      <ASSOCIATION>_type
+  #+END_EXAMPLE
+
+  columns.
+
+  All we have to do is tell *Search* about its *searchable* relationship, define the *results*method to perform the search, and extend *Textacular* in the model.
+
+  #+BEGIN_EXAMPLE
+      class Search < ActiveRecord::Base
+        extend Textacular
+
+        belongs_to :searchable, polymorphic: true
+
+        def results
+          if @query.present?
+            self.class.search(@query).preload(:searchable).map!(&amp;:searchable).uniq
+          else
+            Search.none
+          end
+        end
+      end
+  #+END_EXAMPLE
+
+  The call to
+
+  #+BEGIN_EXAMPLE
+      preload
+  #+END_EXAMPLE
+
+  is used instead of *include* because Rails can't include polymorphic associations. Calling *preload* still loads the related models in as few SQL statements as possible, but does not allow for querying on the related models. This isn't something we need since we immediately map to *searchable*.
+
+  Since we could potentially get a result for a model multiple times, for example if the same term appeared in a status and a comment, we also call *uniq*.
+
+  The interface for Search look like this: *Search.new(query: 'books').results*.
+
+  ** Caveats
+     :PROPERTIES:
+     :CUSTOM_ID: caveats
+     :END:
+
+  - Rails lacks any support for creating or updating database views. Because the view must be created by calling execute, Rails is unable to dump the view into *db/schema.rb*. Your must make the following change to your application configuration:
+
+    #+BEGIN_EXAMPLE
+        # config/application.rb
+        config.active_record.schema_format = :sql
+    #+END_EXAMPLE
+
+  - If the view needs to change to include additional searchable content, the *up* method on the migration has to redefine the view entirely and the *down* method must redefine the view in its previous form.
+  - Remember that creating indices blocks writes by default, which means that the site needs to be in maintenance mode. [[http://robots.thoughtbot.com/post/56828751507/how-to-create-postgres-indexes-concurrently-in][Create indices concurrently in Rails]] to avoid this.
+
+  ** Conclusion
+     :PROPERTIES:
+     :CUSTOM_ID: conclusion
+     :END:
+
+  Overall, we've enjoyed working with this method of full text search. Because it's awkward to change the view we'd recommend not approaching the search too iteratively; add the tables you know you'll want to search up front and save yourself some headache.
+#+END_QUOTE

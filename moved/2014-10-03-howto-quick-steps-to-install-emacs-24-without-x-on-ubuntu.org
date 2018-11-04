@@ -1,0 +1,54 @@
+* HowTo: Quick Steps to Install Emacs 24 without X on Ubuntu
+  :PROPERTIES:
+  :CUSTOM_ID: howto-quick-steps-to-install-emacs-24-without-x-on-ubuntu
+  :END:
+
+- published date: 2014-10-03 09:31
+- keywords: ["emacs", "howtos", "installation", "technology", "ubuntu"]
+- source:
+
+Following steps from here: [[http://ubuntuforums.org/showthread.php?t=1999720]]
+
+```console linenos > # Obtain latest emacs from Savannah: http://ftp.gnu.org/gnu/emacs/ > wget http://ftp.gnu.org/gnu/emacs/emacs-24.3.tar.gz
+
+#+BEGIN_QUOTE
+  * Install dependencies:
+    :PROPERTIES:
+    :CUSTOM_ID: install-dependencies
+    :END:
+
+  sudo apt-get install libjpeg-dev libpng-dev libgif-dev\\
+  libtiff-dev libncurses-dev -y
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+  * Untar the archive:
+    :PROPERTIES:
+    :CUSTOM_ID: untar-the-archive
+    :END:
+
+  tar xvfz emacs-24.3-rc.tar.gz
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+  cd emacs-24.3
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+  * Do not include the X-Windows system code (just CLI version)
+    :PROPERTIES:
+    :CUSTOM_ID: do-not-include-the-x-windows-system-code-just-cli-version
+    :END:
+
+  ./configure --without-x
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+  make
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+  sudo make install ```
+#+END_QUOTE
+
+[[/downloads/install-emacs-24-without-x-on-ubuntu.txt][Download source]]

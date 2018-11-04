@@ -1,0 +1,14 @@
+* Today's Reading
+  :PROPERTIES:
+  :CUSTOM_ID: todays-reading
+  :END:
+
+- published date: 2015-06-22 22:38
+- keywords: ["docker", "misc"]
+- source:
+
+Today's reading for {{ page.date }}.
+
+- [[http://blog.zenika.com/index.php?post/2015/06/15/Docker-meets-the-IDE][Docker meets the IDE - Zenika]] an interesting read about an eclipse plug-in. I've already heard there's support coming from JetBrains maybe for RubyMine.
+
+- Oh, hey, and here's [[http://plugins.jetbrains.com/update/index?pr=ruby&updateId=19837][Docker support in RubyMine]].

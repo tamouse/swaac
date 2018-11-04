@@ -1,0 +1,14 @@
+* Tiny Best Practices
+  :PROPERTIES:
+  :CUSTOM_ID: tiny-best-practices
+  :END:
+
+- published date: 2015-05-26 10:44
+- keywords: ["tbp", "tiny-best-practices"]
+- source:
+
+Tiny Best Practices will be a category of posts here which are small things one can do to achieve better code, better results, and a stronger sense of craftsmanship.
+
+These aren't the big ones, like code reviews, TDD/BDD, and so on. These are the very small ones that can be practiced, don't occupy a bunch of time, don't need to be planned for, etc.
+
+As with all Best Practices, they're only "best" in certain contexts, and you may entirely disagree with them and disregard them. These are really mine, feel free to adopt or ignore, add or subtract. If I post one you disagree with, let me know!

@@ -1,0 +1,49 @@
+* Links from GDI Intro to WordPress Class
+  :PROPERTIES:
+  :CUSTOM_ID: links-from-gdi-intro-to-wordpress-class
+  :END:
+
+- published date: 2016-11-13 12:25
+- keywords: ["class", "gdi", "links", "wordpress"]
+- source:
+
+I was teaching a WordPress class this past Saturday (12 Nov 2016) that was a huge amount of fun.
+
+At the end of the class, my co-teacher started dumping out links, and I tried to capture them. No guarantees I got them all!
+
+** Good links for learning WordPress
+   :PROPERTIES:
+   :CUSTOM_ID: good-links-for-learning-wordpress
+   :END:
+
+- [[https://docs.google.com/presentation/d/196G0XINo_NKzi39lAld5Y4FccUN_sOiV5MmhhFBcNT4/edit][class slides]]{:target="_blank"}
+
+- [[https://cloud.digitalocean.com/droplets][Digital Ocean Droplets]]{:target="_blank"} when you want to run your own server
+
+- [[https://getflywheel.com/][Flywheel Hosting]]{:target="_blank"}
+
+- [[https://serverpress.com/get-desktopserver/][Desktop Server]]{:target="_blank"} for easier migrating from development to production
+
+- [[https://codex.wordpress.org/][The WordPress Codex]]{:target="_blank"} the ultimate guide to WordPress
+
+- [[https://developer.wordpress.org/files/2014/10/template-hierarchy.png][Template Hierarchy Diagram]]{:target="_blank"}
+
+- [[https://codex.wordpress.org/Child_Themes][Child Themes]]{:target="_blank"}
+
+- [[https://wptavern.com/][WordPress Tavern]]{:target="_blank"} for news and info on your quest to learn WordPress
+
+- [[http://torquemag.io/][Torque Mag]]{:target="_blank"} news about WordPress development
+
+- [[http://chrislema.com/blog/][Chris Lema's blog]]{:target="_blank"} really good source of information
+
+- [[https://wp.zacgordon.com/][Zac Gordon's Blog]]{:target="_blank"} about learning WordPress
+
+- [[https://www.wp101.com/wordpress-tutorials/][WordPress Tutorials]]{:target="_blank"}
+
+- [[https://bobwp.com/][BobWP's blog]]{:target="_blank"}
+
+- [[http://www.wpbeginner.com/][WordPress Beginner]]{:target="_blank"} resources for the WP noob
+
+- [[https://www.wp-bff.com/][WP BFF]]{:target="_blank"} home of the [[http://www.wordpressally.com/5daychallenge][5-day Website Challenge]]{:target="_blank"}
+
+- [[https://digwp.com/book/][Digital WordPress Book]]{:target="_blank"}

@@ -1,0 +1,13 @@
+* FREE! FREE! 100's of Free Programming Books
+  :PROPERTIES:
+  :CUSTOM_ID: free-free-100s-of-free-programming-books
+  :END:
+
+- published date: 2013-10-20 23:33
+- keywords: ["books", "free", "programming", "swaac"]
+- source:
+- redirect_from: ["/blog/2013/10/20/free-free-100-s-of-free-programming-books/"]
+
+[[https://github.com/vhf][Victor Felder]] has taken his list of [[https://github.com/vhf/free-programming-books/blob/master/free-programming-books.md][Free Programming Books]] and put it on Github for collaborative updating. (Seems it is going into other languages quite a bit.) This is a great resource for folks looking to learn something technical.
+
+/Via [[http://lifehacker.com/grab-over-500-free-programming-books-from-github-1447805132][Lifehacker]]./

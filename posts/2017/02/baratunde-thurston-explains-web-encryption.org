@@ -1,0 +1,22 @@
+* Baratunde Thurston Explains Web Encryption
+  :PROPERTIES:
+  :CUSTOM_ID: baratunde-thurston-explains-web-encryption
+  :END:
+
+- published date: 2017-02-12 08:06
+- keywords: ["baratunde-thurston", "eff", "encryption", "https", "security"]
+- source: https://youtu.be/PdnpNJZVUE0
+
+The Electronic Freedom Foundation ([[https://www.eff.org][EFF]]) is working to [[https://www.eff.org/encrypt-the-web][encrypt the web]], converting all web sites from HTTP to HTTPS. [[http://baratunde.com/][Baratunde Thurston]] narrates the video explaining web encryption to the masses.
+
+#+BEGIN_HTML
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/PdnpNJZVUE0?rel=0" frameborder="0" allowfullscreen>
+#+END_HTML
+
+#+BEGIN_HTML
+  </iframe>
+#+END_HTML
+
+You may notice my sites don't use HTTPS. The only reason is I've not gotten around to implementing it yet.
+
+I've used it on projects, and it's pretty simple to set up. Look for a future post, probably.

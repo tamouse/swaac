@@ -1,0 +1,82 @@
+* Using web-mode for JavaScript in Emacs
+  :PROPERTIES:
+  :CUSTOM_ID: using-web-mode-for-javascript-in-emacs
+  :END:
+
+- published date: 2016-04-13 08:16
+- keywords: ["configuration", "emacs", "javascript", "web-mode"]
+- source:
+
+I've been avoiding using Emacs, my normal, every-day editor, for editing JavaScript, because the default modes are so astoundingly frustrating.[fn:1]
+
+Asking in =#emacs= on Freenode, I got the advice to use =web-mode= instead. Already having that installed, I switched over, and immediately ran into a similar frustration: indentation was all wonky.
+
+- it was using tabs instead of spaces
+- indentation level was set to 8
+- it didn't know how to deal with React's JSX code
+
+First problem I tackled, tab indentation. Running into the code, I found this:
+
+#+BEGIN_SRC lisp
+    (defcustom web-mode-code-indent-offset
+      (if (and (boundp 'standard-indent) standard-indent) standard-indent 2)
+      "Code (javascript, php, etc.) indentation level."
+      :type 'integer
+      :group 'web-mode)
+#+END_SRC
+
+So, I just need to set this variable, right? Wrong. It was already set to 4, which is what I at least wanted to start with. (Work projects use 2 spaces as standard.)
+
+I looked in the wee test file I was using and found that the value had been changed to 8 locally. Global value was still 4. Okay, what's changing it locally?
+
+Searching through =web-mode.el=, I found it was being set in =web-mode-use-tabs=, which was a little strange.
+
+#+BEGIN_SRC lisp
+    (defun web-mode-use-tabs ()
+      "Tweaks vars to be compatible with TAB indentation."
+      (let (offset)
+        (setq web-mode-block-padding 0)
+        (setq web-mode-script-padding 0)
+        (setq web-mode-style-padding 0)
+        (setq offset
+              (cond
+               ((and (boundp 'tab-width) tab-width) tab-width)
+               ((and (boundp 'standard-indent) standard-indent) standard-indent)
+               (t 4)))
+        ;;    (message "offset(%S)" offset)
+        (setq web-mode-attr-indent-offset offset)
+        (setq web-mode-code-indent-offset offset)
+        (setq web-mode-css-indent-offset offset)
+        (setq web-mode-markup-indent-offset offset)
+        (setq web-mode-sql-indent-offset offset)
+        (add-to-list 'web-mode-indentation-params '("lineup-args" . nil))
+        (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil))
+        (add-to-list 'web-mode-indentation-params '("lineup-concats" . nil))
+        (add-to-list 'web-mode-indentation-params '("lineup-ternary" . nil))
+        ))
+#+END_SRC
+
+Why would it be using tabs? Sure enough, searching for that function, I found a little further where the mode is actually defined (=define-derived-mode web-mode=) it calls =web-mode-use-tabs= when the variable =indent-tabs-mode= is not =nil=.
+
+#+BEGIN_SRC lisp
+    (define-derived-mode web-mode web-mode-prog-mode "Web"
+      "Major mode for editing web templates."
+
+      ;; ...
+
+      (when (and (boundp 'indent-tabs-mode) indent-tabs-mode)
+        (web-mode-use-tabs))
+
+      ;; ...
+    )
+#+END_SRC
+
+Voila. I then set =indent-tabs-mode= to =nil= in my global settings, reloaded emacs, and now =web-mode= uses the setting of 4 for indents.
+
+Whew!
+
+I'm hoping this will actually help, now.
+
+--------------
+
+[fn:1] What I've been using instead is JetBrain's WebStorm, which is actually a really wonderful alternative, but I don't want to fire it up if I just have to tweak a couple =.js= or =.json= files.

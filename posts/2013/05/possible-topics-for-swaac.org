@@ -65,5 +65,3 @@ Below is a potential list of topics I'd like to cover on the web site.
 
   - When to automate
   - How to automate
-
-

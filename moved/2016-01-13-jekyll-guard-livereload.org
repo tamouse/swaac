@@ -1,0 +1,205 @@
+#+TITLE: Using Jekyll with Guard and LiveReload
+
+*UPDATE:* This scheme described here doesn't actually work all that well. What I'm going to suggest is look at the jekyll plugin [[https://github.com/awood/hawkins][=hawkins=]] for a really simple and /working/ method to get live reloading with everything working in Jekyll.
+
+Recently looking around, and chatting with some folks on the =#jekyll= irc channel on freenode, I started to rethink the work I'd done creating the [[https://github.com/tamouse/drink_up_doctor][drink_up_doctor]] gem using [[http://gulpjs.com][Gulp]] to drive the work cycle.
+
+[[http://guardgem.org/][Guard]] is a tool for performing continuous testing on your local machine while you're developing code. Some folks have written extensions that let you continuously rebuild and view your work in a browser while you're updating your Jekyll site.
+
+Since the Gulp build system uses a /lot/ of node.js modules, and they take up a significant chunk of disk space in relation to most Jekyll sites, it seems prudent to find something that's a little more lightweight.
+
+There are some good [[http://dan.doezema.com/2014/01/setting-up-livereload-with-jekyll/][posts]] out there on the subject of using Jekyll with Guard. Here's what I discovered and set up, based on Dan's post, and a lot of reading of source code.
+
+- contents {:toc}
+
+** Starting out
+   :PROPERTIES:
+   :CUSTOM_ID: starting-out
+   :END:
+
+I first created a new directory for the site.
+
+#+BEGIN_EXAMPLE
+    $ mkdir ~/Sites/test_jekyll_guard
+    $ cd ~/Sites/test_jekyll_guard
+#+END_EXAMPLE
+
+** Git-ized it
+   :PROPERTIES:
+   :CUSTOM_ID: git-ized-it
+   :END:
+
+#+BEGIN_EXAMPLE
+    $ git init
+    $ echo _site/ >> .gitignore
+    $ git add .
+    $ git commit -m "initial"
+#+END_EXAMPLE
+
+** Initialize =bundler=
+   :PROPERTIES:
+   :CUSTOM_ID: initialize-bundler
+   :END:
+
+#+BEGIN_EXAMPLE
+    $ bundle init
+#+END_EXAMPLE
+
+** Edit the =Gemfile=
+   :PROPERTIES:
+   :CUSTOM_ID: edit-the-gemfile
+   :END:
+
+#+BEGIN_SRC ruby
+    source "https://rubygems.org"
+    gem "jekyll"
+    gem "guard"
+    gem "guard-jekyll-plus"
+    gem "guard-livereload"
+    gem "rack-livereload"
+    gem "thin"
+#+END_SRC
+
+** Bundle it up
+   :PROPERTIES:
+   :CUSTOM_ID: bundle-it-up
+   :END:
+
+#+BEGIN_EXAMPLE
+    $ bundle
+#+END_EXAMPLE
+
+** Created the =Guardfile=
+   :PROPERTIES:
+   :CUSTOM_ID: created-the-guardfile
+   :END:
+
+#+BEGIN_SRC ruby
+    guard 'livereload' do
+      watch /.*/
+    end
+
+    guard 'jekyll-plus', serve: true do
+      watch /.*/
+      ignore /^_site/
+    end
+#+END_SRC
+
+** Built an empty jekyll site
+   :PROPERTIES:
+   :CUSTOM_ID: built-an-empty-jekyll-site
+   :END:
+
+#+BEGIN_EXAMPLE
+    $ bundle exec jekyll new . --force --blank
+#+END_EXAMPLE
+
+** Made a =_config.yml= file
+   :PROPERTIES:
+   :CUSTOM_ID: made-a-_config.yml-file
+   :END:
+
+#+BEGIN_EXAMPLE
+    title: testing guard-livereload with jekyll
+
+    exclude:
+      - Gemfile
+      - Gemfile.lock
+      - Guardfile
+      - README.md
+#+END_EXAMPLE
+
+** And fired up =guard=
+   :PROPERTIES:
+   :CUSTOM_ID: and-fired-up-guard
+   :END:
+
+#+BEGIN_SRC sh
+    $ bundle exec guard
+    Configuration file: _config.yml
+    05:50:10 - INFO - Jekyll building...
+    05:50:10 - INFO - LiveReload is waiting for a browser to connect.
+    05:50:10 - INFO - Jekyll build completed in 0.01s /Users/tamara/Sites/test_jekyll_guard → _site
+    05:50:10 - INFO - Jekyll Using: Rack::Handler::Thin as server
+    05:50:10 - INFO - Jekyll watching and serving using rack at 127.0.0.1:4000
+    05:50:10 - INFO - Jekyll watching
+    05:50:10 - INFO - Guard is now watching at '/Users/tamara/Sites/test_jekyll_guard'
+    [1] guard(main)> Thin web server (v1.6.4 codename Gob Bluth)
+    Maximum connections set to 1024
+    Listening on 127.0.0.1:4000, CTRL+C to stop
+#+END_SRC
+
+This starts up the jekyll server at it's usual place serving =http://127.0.0.1:4000=, but before I could browse there, I needed to add the LiveReload extension to my browser. I use Google Chrome, but there are extensions for Firefox and others. Here I will simply point elsewhere for installing the extension: [[http://livereload.com/extensions/]]
+
+** Browse to the site
+   :PROPERTIES:
+   :CUSTOM_ID: browse-to-the-site
+   :END:
+
+Now fire up your browser to point at jekyll's server. I had to initially click the livereload button that was on the toolbar. In other browsers, there might be some other way to start it listening. The output at your terminal will show:
+
+#+BEGIN_SRC sh
+    127.0.0.1 - - [13/Jan/2016:05:50:18 -0600] "GET /index.html HTTP/1.1" 200 - 0.0019
+    05:50:19 - INFO - Browser connected.
+#+END_SRC
+
+The page will be blank, because the =index.html= file is empty.
+
+** Create some content
+   :PROPERTIES:
+   :CUSTOM_ID: create-some-content
+   :END:
+
+Let's create some content and see what happens.
+
+*** In =_layouts/default.html=
+    :PROPERTIES:
+    :CUSTOM_ID: in-_layoutsdefault.html
+    :END:
+
+#+BEGIN_EXAMPLE
+    {% raw %}<!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport"
+          content="width=device-width,initial-scale=1">
+        <title>{{site.title}}</title>
+      </head>
+      <body>
+    {{content}}
+      </body>
+    </html>
+    {% endraw %}
+#+END_EXAMPLE
+
+*** In =index.html=
+    :PROPERTIES:
+    :CUSTOM_ID: in-index.html
+    :END:
+
+#+BEGIN_EXAMPLE
+    {% raw %}---
+    layout: default
+    ---
+
+    <h1>{{ site.title }}</h1>
+    <h2>It works!</h2>
+    {% endraw %}
+#+END_EXAMPLE
+
+** Watch it reload!
+   :PROPERTIES:
+   :CUSTOM_ID: watch-it-reload
+   :END:
+
+After saving these, your browser should reload a couple times and you should see the site with your content.
+
+When you're done working, you simple enter =quit= to tell Guard to stop. (Note that it might look like it's in the middle of something, but it's actually at a prompt. Just hit enter to see another prompt. This screws me up all the time.)
+
+** Conclusion
+   :PROPERTIES:
+   :CUSTOM_ID: conclusion
+   :END:
+
+This is a lot more lightweight than using the Gulp build system with BrowserSync, and only really requires manually opening the browser and clicking on the livereload button to connect things (BrowserSync does this automatically.) On this blog, still running the Gulp build system, the =node_modules= directory takes up 105MB while the entire site takes up 161MB, i.e., the node software is taking up *two-thirds* of the space.

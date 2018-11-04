@@ -1,0 +1,283 @@
+* How I Set Up my Local WordPress Development Environment Using Vagrant and Ansible
+  :PROPERTIES:
+  :CUSTOM_ID: how-i-set-up-my-local-wordpress-development-environment-using-vagrant-and-ansible
+  :END:
+
+- published date: 2017-02-11 22:17
+- keywords: ["ansible", "local", "sandbox", "vagrant", "wordpress"]
+- source: https://github.com/tamouse/sandbox.wp.local
+
+As part of my volunteering with [[https://gdiminneapolis.com][GDI Minneapolis]], I've been getting back into WordPress development (child themes, custom themes, etc.), while TAing, teaching, and helping develop some classes. One of the key things we want to show students is how to develop their sites safely and learn the trade of software development in the WordPress environment.
+
+There are several ways one can do this. There are some really /excellent/ tools out there now that make this a snap for people not versed in setting things up themselves.
+
+- [[https://local.getflywheel.com][Local by Flywheel]]
+- [[https://serverpress.com/get-desktopserver/][DesktopServer from ServerPress]]
+
+There are also traditional ways of installing [[https://www.mamp.info/en/][MAMP]] on MacOSx, or using a [[https://www.turnkeylinux.org/wordpress][Turnkey Linux WordPress Appliance]], and so many other ways.
+
+This is how I set up my local environment using two tools I use heavily in other areas of web development:
+
+- [[https://www.vagrantup.com/][Vagrant]]
+- [[https://www.ansible.com/][Ansible]]
+
+--------------
+
+First off, this is going to be less of a tutorial and more a description of what I'm doing. I'm definitely not holding this out as a definitive way to set up your local WordPress development environment, but /my/ way that works for me. If you're brand new to all this, and don't want to learn all about systems and devops, then I recommend using one of the first two options above. (I've played a bit with [[https://local.getflywheel.com][Local]], and find it amazingly intuitive and simple, so that's my latest recommendation.)
+
+Secondly, the sandbox setup is available on GitHub at [[https://github.com/tamouse/sandbox.wp.local][github.com/tamouse/sandbox.wp.local]] so feel free to fork it, and do what you want with it. I'll happily take PRs if you find bugs, too.
+
+--------------
+
+** Starting Point
+   :PROPERTIES:
+   :CUSTOM_ID: starting-point
+   :END:
+
+My working system:
+
+- Macbook Pro 13"
+- 8 GiB RAM
+- 4 CPU Cores
+- about 50 GiB free disk space (I didn't need anywhere near this, it's just what was there when I started.)
+
+** Prerequisites
+   :PROPERTIES:
+   :CUSTOM_ID: prerequisites
+   :END:
+
+*** Available Software
+    :PROPERTIES:
+    :CUSTOM_ID: available-software
+    :END:
+
+This is stuff I already had on my system because of other development I do.
+
+- HomeBrew
+- VirtualBox
+- Vagrant
+- Ansible
+
+** Steps to Get Things Set Up
+   :PROPERTIES:
+   :CUSTOM_ID: steps-to-get-things-set-up
+   :END:
+
+*** Create a project folder and initialize it
+    :PROPERTIES:
+    :CUSTOM_ID: create-a-project-folder-and-initialize-it
+    :END:
+
+I always start my projects the same way:
+
+#+BEGIN_EXAMPLE
+    mkdir -p ~/Projects/wordpress-stuff/sandbox.wp.local
+    cd ~/Projects/wordpress-stuff/sandbox.wp.local
+    git init
+    echo 'Local WordPress Development Sandbox running in Vagrant with Ansible Provisioning' | tee README.md > .git/description
+    hub create -d "$(cat .git/description)"
+    git add -Av
+    git commit -m 'initial commit'
+    git push -u origin master
+#+END_EXAMPLE
+
+(Truth be told, this is one of my bash functions, so it really looked like this:
+
+#+BEGIN_EXAMPLE
+    new_proj sandbox.wp.local 'Local WordPress Development Sandbox running in Vagrant with Ansible Provisioning' 'initial commit'
+#+END_EXAMPLE
+
+)
+
+*** Run =vagrant init=
+    :PROPERTIES:
+    :CUSTOM_ID: run-vagrant-init
+    :END:
+
+I typically use one of the later Ubuntu server variants; mostly I've been using 'trusty':
+
+#+BEGIN_SRC sh
+    vagrant init 'ubuntu/trusty64'
+#+END_SRC
+
+This writes out a default =Vagrantfile= (which is written in Ruby).
+
+*** Modify =Vagrantfile= for my needs
+    :PROPERTIES:
+    :CUSTOM_ID: modify-vagrantfile-for-my-needs
+    :END:
+
+I modify the file so it looks like so:
+
+```ruby linenos BOX_NAME="sandbox.wp.local" DEFAULT_IP="192.168.33.35"
+
+require "resolv"
+
+def my_ip @my_ip ||= Resolv::Hosts.new.getaddress(BOX_NAME) || DEFAULT_IP rescue @my_ip ||= DEFAULT_IP end Vagrant.configure(2) do |config|
+
+config.ssh.forward_agent = true
+
+config.vm.define :sandbox_wp do |sb| sb.vm.box = "ubuntu/trusty64" sb.vm.network "private_network", ip: my_ip sb.vm.network "forwarded_port", guest: 80, host: 8088 sb.vm.hostname = BOX_NAME
+
+#+BEGIN_EXAMPLE
+    sb.vm.provider "virtualbox" do |vb|
+      # Display the VirtualBox GUI when booting the machine
+      # vb.gui = true
+
+      # Customize the amount of memory on the VM:
+      vb.customize ["modifyvm", :id, "--memory", "2048"]
+      vb.customize ["modifyvm", :id, "--vram", "18"]
+      vb.customize ["modifyvm", :id, "--cpus", "2"]
+      vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+    end
+#+END_EXAMPLE
+
+end
+
+config.vm.provision :ansible do |a| a.playbook = 'ansible/sandbox.yml' # a.verbose = 'vvvv' end end ```
+
+Some explanation about the various settings:
+
+#+BEGIN_SRC ruby
+    BOX_NAME="sandbox.wp.local"
+    DEFAULT_IP="192.168.33.35"
+#+END_SRC
+
+These define two constants that get used later in the =Vagrantfile=. I edited my machine's =/etc/hosts= file, which maps IP addresses to hostnames locally. The line I added to =/etc/hosts= looks like so:
+
+#+BEGIN_EXAMPLE
+    192.168.33.35   sandbox.wp.local sandbox
+#+END_EXAMPLE
+
+This lets me type 'http://sandbox/' or 'http://sandbox.wp.local' in the browser address bar to access the web server that will be running in the Vagrant Virtual Machine (aka "VM").
+
+(Note: when I used [[https://local.getflywheel.com][Local]], it did something similar.)
+
+Then I'm bringing in ruby's =resolv= standard library, which gives the ability to use that mapping given in the =/etc/hosts= file; the =DEFAULT_IP= constant provides a fallback in case it can't find =BOX_NAME= in =/etc/hosts=.
+
+The =my_ip= method defined sets and returns the IP address to be used for my WordPress sandbox.
+
+With all that handled, vagrant can begin it's configuration. Most everything from here out can be found in vagrant's documentation, if you want.
+
+#+BEGIN_SRC ruby
+      config.ssh.forward_agent = true
+#+END_SRC
+
+I set this to true so when I'm logged into the vagrant box, it will use my ssh keys from my development machine; this is especially helpful when using git commands that talk to GitHub, etc.
+
+#+BEGIN_SRC ruby
+        sb.vm.network  "private_network", ip: my_ip
+#+END_SRC
+
+Here is where that calculation for figuring out what IP address to use that matches the name 'sandbox.wp.local' I set up is made.
+
+#+BEGIN_SRC ruby
+        sb.vm.hostname = BOX_NAME
+#+END_SRC
+
+This sets the VM host name, so it will match 'sandbox.wp.local' when I'm logged in.
+
+#+BEGIN_SRC ruby
+          vb.customize ["modifyvm", :id, "--memory", "2048"]
+#+END_SRC
+
+This reserves 2GiB of RAM for the VM.
+
+#+BEGIN_SRC ruby
+          vb.customize ["modifyvm", :id, "--vram", "18"]
+#+END_SRC
+
+This reserves 18MB of RAM for the video buffer.
+
+#+BEGIN_SRC ruby
+          vb.customize ["modifyvm", :id, "--cpus", "2"]
+#+END_SRC
+
+This allows up to 2 CPU Cores to be used by the VM.
+
+#+BEGIN_SRC ruby
+          vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+#+END_SRC
+
+This does some magic to use the host machine's DNS resolver to find IP address, which pulls in the magic of mapping 'sandbox.wp.local'.
+
+#+BEGIN_SRC ruby
+      config.vm.provision :ansible do |a|
+#+END_SRC
+
+Tells vagrant I'm using Ansible provisioning.
+
+#+BEGIN_SRC ruby
+        a.playbook = 'ansible/sandbox.yml'
+#+END_SRC
+
+Specifies the Ansible 'playbook'
+
+#+BEGIN_SRC ruby
+        # a.verbose  = 'vvvv'
+#+END_SRC
+
+Leaving this commented out, but usually it's uncommented for me to be able to debug things during provisioning.
+
+*** Make a git savepoint
+    :PROPERTIES:
+    :CUSTOM_ID: make-a-git-savepoint
+    :END:
+
+Committing the current changes at this point to create a "save point" to get back to if I end up mucking things up.
+
+#+BEGIN_EXAMPLE
+    git add -Av && git commit -m 'Vagrantfile updated' && git push
+#+END_EXAMPLE
+
+(And this is also a bash function:
+
+#+BEGIN_SRC sh
+    gacp 'Vagrantfile updated'
+#+END_SRC
+
+)
+
+At this point, I decided I would make a branch to work on Ansible stuff, too:
+
+#+BEGIN_SRC sh
+    git checkout -b ansible-playbook
+#+END_SRC
+
+*** Create the Anisble Playbook
+    :PROPERTIES:
+    :CUSTOM_ID: create-the-anisble-playbook
+    :END:
+
+Ansible playbooks are build as YAML files, which is just a way of specifying structured data. It's akin to JSON and XML.
+
+I made the ansible playbook in the =ansible= subdirectory, the structure is:
+
+#+BEGIN_EXAMPLE
+    ansible/
+      group_vars/
+        all.yml
+      roles/
+        external/
+          .keep
+        internal/
+          cleanup/
+            tasks/
+              main.yml
+          common/
+            tasks/
+              install.yml
+              main.yml
+        requirements.yml
+      sandbox.yml
+      sudo_roles.yml
+#+END_EXAMPLE
+
+*** Top level playbook
+    :PROPERTIES:
+    :CUSTOM_ID: top-level-playbook
+    :END:
+
+[[https://github.com/tamouse/sandbox.wp.local/blob/master/ansible/sandbox.yml][=sandbox.yml=]] is the top-level playbook that sets the whole provisioning activity off. It is simple and just contains:
+
+```yaml

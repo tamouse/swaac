@@ -1,0 +1,101 @@
+* How to set up your own private git repository on a remote server
+  :PROPERTIES:
+  :CUSTOM_ID: how-to-set-up-your-own-private-git-repository-on-a-remote-server
+  :END:
+
+- published date: 2016-10-08 00:22
+- keywords: ["git", "howto", "private", "remote", "server", "tools", "tutorial"]
+- source:
+
+This is an old article from my ancient wiki. I thought it was good to bring forward. Some of the git SaaS providers allow you to create private repositories, which are probably a better idea for collaboration, but this is a useful alternative when you don't want to go the SaaS route.
+
+** Have a local repo
+   :PROPERTIES:
+   :CUSTOM_ID: have-a-local-repo
+   :END:
+
+Let's just create a simple local repo to work with.
+
+#+BEGIN_SRC sh
+    $ git init my_project
+    $ cd my_project
+    $ echo 'My Project' > README.md
+    $ git add .
+    $ git commit -m 'initial'
+#+END_SRC
+
+Great, now let's get on with the remote stuff.
+
+** Set up the server
+   :PROPERTIES:
+   :CUSTOM_ID: set-up-the-server
+   :END:
+
+First, if you haven't done so already, add your public key to the server:
+
+/(Don't do this if you've already uploaded your public ssh key!)/
+
+#+BEGIN_SRC sh
+    $ ssh myuser@server.com 'mkdir -p .ssh'
+    $ cat .ssh/id_rsa.pub | ssh myuser@server.com 'cat >> .ssh/authorized_keys'
+#+END_SRC
+
+This will let you use git push without having to supply your password every time.
+
+** Add your repositories
+   :PROPERTIES:
+   :CUSTOM_ID: add-your-repositories
+   :END:
+
+Login to the server:
+
+#+BEGIN_SRC sh
+    $ ssh myuser@server.com
+#+END_SRC
+
+Create a directory to keep all your remote repos in one place
+
+#+BEGIN_SRC sh
+    $ mkdir Repos
+    $ cd Repos
+#+END_SRC
+
+Now we can create our remote repository:
+
+#+BEGIN_SRC sh
+    $ git init --bare my_project.git
+#+END_SRC
+
+Note that I've chosen to mirror the local project directory name. This is a pretty good practice, less confusion, less decision making. In addition, I've appended =.git= to the remote repo directory name, which helps inform those things that care that this is a git repository.
+
+If you have a look in the directory just created, it looks just like the =.git= directory in your local project. Hence the extension.
+
+With all that done, you can log out of the server.
+
+** Configure your development machine
+   :PROPERTIES:
+   :CUSTOM_ID: configure-your-development-machine
+   :END:
+
+To use the remote repository, we have to add it to the remotes available in the local repository.
+
+#+BEGIN_SRC sh
+    $ git remote add origin myuser@server.com:Repos/my_project.git
+    $ git push origin master
+#+END_SRC
+
+You'll probably also want to make sure you add a default merge and remote:
+
+#+BEGIN_SRC sh
+    $ git config branch.master.remote origin
+    $ git config branch.master.merge refs/heads/master
+#+END_SRC
+
+And that's it!
+
+** Resources
+   :PROPERTIES:
+   :CUSTOM_ID: resources
+   :END:
+
+1. [[https://git-scm.com/docs/git-init][git =init= command]] to find out about the =--bare= option.

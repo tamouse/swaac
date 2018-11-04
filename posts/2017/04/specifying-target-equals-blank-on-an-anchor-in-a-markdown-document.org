@@ -1,0 +1,34 @@
+* Specifying target=_blank on an anchor in a markdown document
+  :PROPERTIES:
+  :CUSTOM_ID: specifying-target_blank-on-an-anchor-in-a-markdown-document
+  :END:
+
+- published date: 2017-04-10 00:46
+- keywords: ["blank", "jekyll", "kramdown", "markdown", "syntax", "target"]
+- source: https://kramdown.gettalong.org/syntax.html#span-ials
+
+Just a quick note so I don't lose this:
+
+In Jekyll's default markdown processor, =kramdown=, you can specify an attribute on a spanning or block element inside braces ("squirly brackets") like so:
+
+#+BEGIN_EXAMPLE
+    {% raw %}{:attr="value"}{% endraw %}
+#+END_EXAMPLE
+
+Thus, to get a link to open in a new tab:
+
+#+BEGIN_EXAMPLE
+    {% raw %}[link text](linkpath){:target="_blank" rel="noopenner noreferrer"}{% endraw %}
+#+END_EXAMPLE
+
+Should generate:
+
+#+BEGIN_EXAMPLE
+    <a href="linkpath" target="_blank">link text</a>
+#+END_EXAMPLE
+
+Let's just see what happens:
+
+#+BEGIN_QUOTE
+  [[file:%7B%7Bpage.url%7D%7D][This link]]{:target="_blank" rel="noopenner noreferrer"} should open in a new page.
+#+END_QUOTE
