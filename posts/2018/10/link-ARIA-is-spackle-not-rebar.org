@@ -1,0 +1,13 @@
+* LINK: ARIA is spackle, not rebar
+
+- Time-stamp: <2018-11-04 09:14:44 tamara>
+- published date: [2018-11-04 Sun]
+- keywords: ARIA, accessibility, a11y, link
+
+There's an excellent article over at [[https://css-tricks.com/][CSS Tricks]] by Eric Bailey, [[https://css-tricks.com/aria-spackle-not-rebar/][ARIA is Spackle, Not Rebar]], written November 2017, that lays out the reasons when to use ARIA ([[https://www.w3.org/WAI/standards-guidelines/aria/][Accessible Rich Internet Applications Suite]]) directly, and most importantly in my view, when _not_ to use it explicitly (tl;dr: most of the time).
+
+I think this sums up the intent nicely:
+
+> Before considering other options, start with markup that semantically describes the content it is wrapping.
+
+And while that is definitely true, it really does help to understand what ARIA is for and how it works. So while we're on the subject, I want to point out the excellent [[https://frontendmasters.com][Frontend Masters]] course: [[https://frontendmasters.com/courses/web-accessibility/][Website Accessibility]] by Jon Kuperman.

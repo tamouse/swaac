@@ -1,6 +1,6 @@
 * Resources for learning how to program, especially how to program in Ruby and Rails
 
-- last updated Time-stamp: <2018-11-04 08:31:48 tamara>
+- last updated Time-stamp: <2018-11-04 09:25:15 tamara>
 
 ** Introduction
 
@@ -55,11 +55,14 @@ Also, [[https://www.codefellows.org/blog/this-is-why-learning-rails-is-hard][lea
    2. Second, make it pretty.
    3. Third, make it fast.
 
-    
-
  - *Programming Proverbs* by Henry F. Ledgard
 
    This book, published in 1975, and a subsequent volume dedicated to the Pascal language published in 1979, were essential to me back when I was in university learning computer science. They're out of print now, so I'm starting a blog series covering them. [[file:%7B%7Bsite.baseurl%7D%7D%7B%%20link%20_posts/2017-07-23-pp-introduction.markdown%20%%7D][Programming Proverbs: Introduction]]
+
+ - [[https://leanpub.com/systemdesignheuristics][*Systems Design Heuristics*]] - by the late, great Jerry Wienberg.
+
+   Jerry was a friend as well as a teacher. I miss him enourmously. This book is full of his thoughts and writings on how one should do systems design. As the title implies, there are no rules, but there are some heuristics one can apply to the overall design and architecture of systems.
+
 
 *** Object-Oriented Programming
 
@@ -111,6 +114,11 @@ Also, [[https://www.codefellows.org/blog/this-is-why-learning-rails-is-hard][lea
 
    When I was more naive about JS, I wrote a bit of a negative review of this book. Subsequently, I've learned of it's true eloquence and meaning in giving a model of how to organize and implement modern JS. The subtitle "A modern introduction to programming" is still a bit misleading, perhaps, because you have to understand a fair bit of JavaScript /and/ programming to get the message, I feel. But that's just a quibble at this point. Read this before you strike out on creating a client-based JS application; you won't regret it.
 
+ - [[https://leanpub.com/javascriptallongesix][*JavaScript Allongé*]] by Reginald "raganwald" Braithwait
+
+   Using the metaphor of a coffee barista, Reg goes in depth on thinking about how JavaScript works; this is not a practical book from the standpoint of "tell me what code to write", but rather from the standpoint of knowing how JavaScript works inside so you can write better code yourself.
+
+
 *** HTML and CSS Specific
 
  - [[https://www.amazon.com/HTML-CSS-Design-Build-Websites/dp/1118008189?ie=UTF8&*Version*=1&*entries*=0][*HTML and CSS Design and Build Websites*]] by Jon Duckett.
@@ -146,6 +154,8 @@ Also, [[https://www.codefellows.org/blog/this-is-why-learning-rails-is-hard][lea
  - [[http://learncodethehardway.org/][*LearnCodeTheHardWay*]] -- provides online versions of books and tutorials for [[http://learnpythonthehardway.org/book/][*Python*]], [[http://ruby.learncodethehardway.org/book/][*Ruby*]], [[http://c.learncodethehardway.org/book/][*C*]], [[http://sql.learncodethehardway.org/book/][*SQL*]], [[http://regex.learncodethehardway.org/book/][*Regular Expressions*]] and more.
 
  - [[http://www.rubykoans.com/][*Ruby Koans*]] -- "koans" are an Eastern discipline tradition: small, repeated exercises to learn skills and build them into your muscles and memory, so you can use them without thinking consciously about them. In this sense, the ruby koans are small exercises intended to lead you on the way to learning ruby. I can't say if they're that successful, but some people definitely enjoy this progressive way of learning. The ruby koans definitely guide you in the way of test-first development, which is a beneficial practice for all to know.
+
+ - [[https://thoughtbot.com/upcase][*Upcase, by Thoughtbot*]] -- not a bootcamp, a finishing school. Where to go to level-up.
 
 ** Podcasts
 

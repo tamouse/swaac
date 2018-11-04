@@ -1,0 +1,3 @@
+* This is not the page you're looking for :D
+
+This version of my swaac blog doesn't have a presentation page, /per se/, instead, it's just a [[https://github.com/tamouse/swaac/][Github Repo]].

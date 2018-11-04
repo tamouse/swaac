@@ -1,0 +1,9 @@
+* LINK: 30 Seconds of CSS
+
+- Time-stamp: <2018-11-04 09:04:52 tamara>
+- published date: [2018-11-04 Sun]
+- keywords: link, css, collection, exercises, learning
+
+[[https://30-seconds.github.io/30-seconds-of-css/][30 seconds of CSS]]:
+
+> A curated collection of useful CSS snippets you can understand in 30 seconds or less.
