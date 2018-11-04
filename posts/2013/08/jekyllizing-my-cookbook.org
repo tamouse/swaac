@@ -1,0 +1,67 @@
+* Jekyllizing My Cookbook
+  :PROPERTIES:
+  :CUSTOM_ID: jekyllizing-my-cookbook
+  :END:
+
+- published date: 2013-08-26 00:40
+- keywords: ["howtos", "jekyll", "swaac"]
+- source:
+- redirect_from: ["/blog/2013/08/26/jekyllizing-my-cookbook/"]
+
+Today's fun was working with [[http://jekyllrb.com][Jekyll]], the static site generator that underlies [[http://octopress.org][Octopress]] and [[http://pages.github.com][Github Pages]]. I have a cookbook online on my [[http://wiki.tamaratemple.com/Recipes/HomePage][wiki]]. I am starting to look at moving off that wiki and building the information there as a static web site instead, as part of my migration away from managing a server as I said in my [[/blog/2013/05/15/introduction/][introduction]].
+
+Today was fun and interesting learning how to work with Jekyll itself and finding out what I might be able to do with it.
+
+#+BEGIN_HTML
+  <!--more-->
+#+END_HTML
+
+** Where To Start?
+   :PROPERTIES:
+   :CUSTOM_ID: where-to-start
+   :END:
+
+I knew I was going to go with a static site generator, but which one? I have been using Octopress here on the github pages, but did I want to create another github pages project blog for something that didn't really have a project associated with it? Plus, how to generate the gh-pages themselves. I know octopress can do that, but I also am wanting to use non-blog pages, and wanted to learn more about Jekyll itself.
+
+So Jekyll it is.
+
+** How to Organize Things?
+   :PROPERTIES:
+   :CUSTOM_ID: how-to-organize-things
+   :END:
+
+I still haven't quite gotten this fully fleshed out, but for now, I have pages starting from the root directory, =recipes/= and subdirectories for the major types of food: =main-dishes=, =side-dishes=, =baked-goods=, and so on.
+
+I envision that under each of the directories and subdirectories, I will generate and index.html page containining links to the subdirectories and files within it. Should be interesting! I will have to write this by hand, obviously, as well as whatever feeds might be involved here, but I probably won't do that as such. (Although feeds might be a reason to go back to posting recipes instead and using categories. Hmm.)
+
+** Writing a Liquid Tag
+   :PROPERTIES:
+   :CUSTOM_ID: writing-a-liquid-tag
+   :END:
+
+Jekyll has a liquid tag that lets you write the link to a post by just giving it's slug name: =post_url=. There isn't one for getting the page's url given it's slug, so I wrote one. That was fun and a good learning, though I had to embed lots of debug prints to see what was going on. I didn't want to debug with =pry= as it involved too many loops and steps.
+
+** Where to Deploy?
+   :PROPERTIES:
+   :CUSTOM_ID: where-to-deploy
+   :END:
+
+Despite my reluctance to run a server, I still have 3 of them (!?!?) and so I'm putting the recipes under my server at tamouse.org on Gandi. I have that set up to quickly add domains and subdomains, and letting it serve up the static files will be neat. I'm currently saving the generated files in the git repo; I may change my mind later and remove them, and make sure the generate the pages on the remote site during an update, which I may automate with =chef-solo= which I am also playing with.
+
+** But Wait, There's More!
+   :PROPERTIES:
+   :CUSTOM_ID: but-wait-theres-more
+   :END:
+
+While working on both this blog and the recipe blog at the same time, I found myself having to remember to shut down the preview servers going back and forth.
+
+And then *POW* it hit me: Use POW.
+
+** POW
+   :PROPERTIES:
+   :CUSTOM_ID: pow
+   :END:
+
+[[http://pow.cx/][POW]] is a powerful little gizmo for the mac that lets you have multiple Rack applications underway in development at the same time, without having the bindings collide.
+
+After you install it, all you have to do is symlink your application to the =~/.pow/= directory, and then you can point your browser at the symlink name plus =.dev=. So cool!

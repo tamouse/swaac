@@ -1,0 +1,21 @@
+* Shout Out for Codeship.IO: Adding Transcripts to Video Blogs
+  :PROPERTIES:
+  :CUSTOM_ID: shout-out-for-codeship.io-adding-transcripts-to-video-blogs
+  :END:
+
+- published date: 2013-08-08 18:59
+- keywords: ["a11y", "praise", "swaac", "testing"]
+- source:
+- redirect_from: ["/blog/2013/08/08/shout-out-for-codeship-dot-io-adding-transcripts-to-video-blogs/"]
+
+In which your humble correspondent sings the praises for some people really trying to get it.
+
+The folks over at [[http://blog.codeship.io/][CodeshipIO]] run a weekly series called [[http://blog.codeship.io/category/testing-tuesday]["Testing Tuesday"]] that I really enjoy. It is a video lesson, which I often have a hard time following due to a bit of hearing loss and just the way I process things. I left a comment asking if they could do transcripts, not really expecting much because it's just these guys with their business, ya know?
+
+Well, I got back an [[http://blog.codeship.io/2013/07/23/testing-tuesday-15-how-to-set-up-cucumber.html#comment-982695501][enthusiastic reply]] and they've agreed to start putting up transcripts!
+
+Well done, Codeship!
+
+There's some improvements to be made, as with anything, and I hope they'll be able to keep it going alongside the videos. The series itself is awesome and I highly recommend it to people who want to get their game on in continuous testing.
+
+Again, thank you, Codeship, very well done!

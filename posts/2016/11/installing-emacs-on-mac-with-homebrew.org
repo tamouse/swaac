@@ -1,0 +1,16 @@
+* installing emacs on Mac with homebrew
+  :PROPERTIES:
+  :CUSTOM_ID: installing-emacs-on-mac-with-homebrew
+  :END:
+
+- published date: 2016-11-14 10:09
+- keywords: ["emacs", "homebrew", "mac", "osx"]
+- source:
+
+Here's the latest that seems to work for me:
+
+#+BEGIN_EXAMPLE
+    brew cask install emacs
+#+END_EXAMPLE
+
+This installed version 25.1.1 on {{page.date | date_to_string}}.

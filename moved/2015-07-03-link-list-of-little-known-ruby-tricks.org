@@ -1,0 +1,5 @@
+#+TITLE: Link: Whats you're favorite ruby trick or quirk that most people don't know about.
+
+#+DATE: 2015-07-03 21:29
+
+Reddit collection of some useful things to know and use in Ruby.

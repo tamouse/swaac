@@ -1,0 +1,116 @@
+#+TITLE: Learning ReactNative
+
+#+DATE: 2016-07-09 01:18
+
+Notes and reflections on learning [[https://facebook.github.io/react-native/][ReactNative]], from a workshop by [[https://github.com/hendrixer][Scott Moss]] at [[https://frontendmasters.com/][FrontendMasters]].
+
+** What is ReactNative?
+   :PROPERTIES:
+   :CUSTOM_ID: what-is-reactnative
+   :END:
+
+A version of [[https://facebook.github.io/react/][React]] that builds native applications on [iOS] and [Android].
+
+** Create a new app
+   :PROPERTIES:
+   :CUSTOM_ID: create-a-new-app
+   :END:
+
+{% highlight bash %} $ react-native init {% endhighlight %}
+
+Afterwards, the instructions are pretty simple:
+
+#+BEGIN_QUOTE
+  To run your app on iOS:
+#+END_QUOTE
+
+{% highlight bash %} cd your_app react-native run-ios {% endhighlight %}
+
+#+BEGIN_QUOTE
+  - or -
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+  Open your_app/ios/my_react_native_todo_app.xcodeproj in Xcode Hit the Run button
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+  To run your app on Android: Have an Android emulator running (quickest way to get started), or a device connected
+#+END_QUOTE
+
+{% highlight bash %} cd your_app react-native run-android {% endhighlight %}
+
+** A few chores
+   :PROPERTIES:
+   :CUSTOM_ID: a-few-chores
+   :END:
+
+{% highlight bash %} git init echo 'description of your app' | tee README.md > .git/description hub create -d "$(cat README.md)" npm init # fill in missing info {% endhighlight %}
+
+** Watchman
+   :PROPERTIES:
+   :CUSTOM_ID: watchman
+   :END:
+
+[[https://facebook.github.io/watchman/][Watchman]] is a utility that is used by [[https://facebook.github.io/react-native/][ReactNative]] in development mode to notify the system to rebuild when a file changes. I don't particularly like it, and it seems problematic. It's also a resource hog. For instance, I can't run Spotify at the same time I'm working (sux).
+
+Make to shut down the watchman server when switching projects.
+
+{% highlight bash %} watchman shutdown-server {% endhighlight %}
+
+** Json-Server
+   :PROPERTIES:
+   :CUSTOM_ID: json-server
+   :END:
+
+In order to have a nice server store, I'm using the [[https://www.npmjs.com/package/json-server][json-server]] module. It provides a nice RESTful server endpoint for the data you want to serve up.
+
+*** Initialize the data file
+    :PROPERTIES:
+    :CUSTOM_ID: initialize-the-data-file
+    :END:
+
+Create the =db.json= file with the following content:
+
+{% highlight json %} { "todos": [] } {% endhighlight %}
+
+Make sure the key is in quotes -- it's *JSON* not JavaScript.
+
+*Caveat:* if you decide to pre-populate the database, make *sure* that you have an =id= field for each record.
+
+** Redux
+   :PROPERTIES:
+   :CUSTOM_ID: redux
+   :END:
+
+[[http://redux.js.org/][Redux]] is the predictable state container for JavaScript. React has been associated strongly the Redux, although it's not the only option on the block (see [[http://reactivex.io/][RxJs]] too).
+
+*** =.fetch()=
+    :PROPERTIES:
+    :CUSTOM_ID: fetch
+    :END:
+
+The [[https://developer.mozilla.org/en-US/docs/Web/API/GlobalFetch/fetch][=.fetch()=]] function is the new, modern replacement for doing AJAX-y things with XmlHttpRequest. It's a cleaner interface and built right in. Using [[https://www.npmjs.com/package/isomorphic-fetch][isomorphic-fetch]] lets you use it browser or server side to perform [[http://redux.js.org/docs/advanced/AsyncActions.html][async actions]]. It's a bit odd for a name, though, since you can use any of the HTTP verbs with it, not just GET.
+
+*NOTE:* remember that =.json()= on the =Response= object is a /function/.
+
+{% highlight javascript linenos %} export function fetchTodos() { return dispatch => { dispatch(requestTodos()) return fetch(ENDPOINT) .then(response => response.json()) .then(json => dispatch(receivedTodos(json))) } } {% endhighlight %}
+
+** Testing
+   :PROPERTIES:
+   :CUSTOM_ID: testing
+   :END:
+
+I'm testing with [[http://mochajs.org/][Mocha]] and [[http://chaijs.com/][Chai]] modules
+
+#+BEGIN_HTML
+  <del>
+#+END_HTML
+
+Because I'm using =babel= in the tests, I also needed to install =bable-preset-react= to get the =run-ios= to work.
+
+#+BEGIN_HTML
+  </del>
+#+END_HTML
+
+In fact, using Mocha like this causes =react-native= to have conniptions, so I'm taking out the =.babelrc= file until I can figure out how to have both tests and native. :(

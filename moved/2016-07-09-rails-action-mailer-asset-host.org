@@ -1,0 +1,19 @@
+#+TITLE: Rails ActionMailer Asset Host Configuration
+
+#+DATE: 2016-07-09 01:16
+
+Working on a new app today, the problem was creating an email that contained brand images.
+
+The issue was getting the =image_url= tag to provide the full and complete URL to the images which were in =app/assets/images/=.
+
+The particular setting that worked in =:development= was:
+
+#+BEGIN_SRC ruby
+      config.action_mailer.asset_host = "http://localhost:3000"
+#+END_SRC
+
+This configuration option is just like =action_controller.asset_host= except it applied to the mailers instead of the controllers.
+
+The reason it's needed is that an email it delivered without any context for where the assets live, unlike how they are in the Rails application itself, so the email needs to full up path declared for it.
+
+In the lower environments, this is pretty easily set up for the purposes of getting things working. When you go to higher environments, you probably want a more robust solution for the asset host.

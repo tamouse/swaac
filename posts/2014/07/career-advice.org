@@ -1,0 +1,30 @@
+* Career Advice
+  :PROPERTIES:
+  :CUSTOM_ID: career-advice
+  :END:
+
+- published date: 2014-07-12 13:56:33 -0500
+- keywords: ["advice", "careers", "programming", "strategies", "swaac"]
+- source:
+- redirect_from: ["/blog/2014/07/12/career-advice/"]
+
+Something that comes up quite often on IRC is the question: "How do I get a job programming Ruby?", usually from people new to programming. I decided to post my response.
+
+1. Get a [[https://github.com][github]] account.
+2. Contribute to open source projects on github.
+3. Build a portfolio on your github account:
+
+   - Project contributions
+   - Your own projects
+   - Use [[https://pages.github.com][Github Pages]] to show what you are learning
+   - Use [[https://gist.github.com][gists]] liberally to show snippets of work, scripts, one-liners, etc
+
+4. Attend local events, network with people you want to work with.
+5. Help out at local events. If there are no events local to you start one.
+6. Do [[https://duckduckgo.com/?q=informational+interviewing][informational interviews]].
+7. Attend [[http://rubyconferences.org/][conferences]] , help out at conferences.
+8. Help people on IRC, StackOverflow, etc.
+
+*IOW*: Build a solid reputation that sells /you/.
+
+*AND*: don't say "I can't" to these, the main thing about becoming a programmer is /solving problems/. This is just another kind of problem, figure out how to solve it.

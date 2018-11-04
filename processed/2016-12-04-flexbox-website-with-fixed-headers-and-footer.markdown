@@ -1,0 +1,131 @@
+# flexbox website with fixed headers and footer
+
+- published date: 2016-12-04 14:31
+- keywords: ["css", "flexbox"]
+- source: https://github.com/tamouse/sample-flex-website-layout
+- demo: {"url"=>"https://tamouse.github.io/sample-flex-website-layout/", "text"=>"Flex Standard Layout (demo)", "tooltop"=>"Demonstration of standard web layout using flexbox"}
+
+
+
+I was playing around with some React stuff and came upon a basic
+layout issue. I wanted to have the standard header + footer + main +
+sidebar sort of layout, but I wanted to do it flexbox. I also wanted
+the header and footer to be fixed to the top and bottom, respectively,
+and for the main content to be able to scroll inside it.
+
+**UPDATE!!** Now with more responsive!
+
+The results can be seen at [this repo]({{ page.source }}), and a demo
+	at [{{ page.demo.text }}]({{ page.demo.url }} {{ page.demo.tooltip }}).
+
+## Page Boundaries: Header and Footer
+
+Making the header and footer fixed to top and bottom is fairly easy.
+The following attributes generally work well:
+
+```css
+.fixed-top, .fixed-bottom {
+  position: aboslute;
+  height: 40px;
+}
+.fixed-top { top: 0 }
+.fixed-bottom { bottom: 0 }
+```
+
+## Full-height columns
+
+Getting columns of equal height is a bit tricksier, and I resorted to
+what seems like a hack.
+
+```css
+.fixed-middle {
+  position: absolute;
+  top: 40px;
+  bottom: 40px;
+  overflow: hidden;
+
+}
+
+.fixed-middle .column {
+  overflow: auto;
+}
+```
+
+## Where's the flex?
+
+This isn't very flexy yet, so I added in some goodness for that:
+
+```css
+.fixed-middle {
+  dislplay: flex
+}
+.fixed-middle .col {
+  flex: 1
+}
+```
+
+Much better, but then the sidebars and central main content area are
+all the same width. I want the content area to dominate.
+
+I arranged the main content part to come before the sidebars, like so:
+
+```html
+<div class="fixed-middle">
+    <main class="main-content" role="main">
+        <!-- main content -->
+    </main>
+    <aside class="left-side">
+        <!-- left side bar content -->
+    </aside>
+    <aside class="right-side">
+        <!-- right sidebar content -->
+    </aside>
+</div>
+```
+
+After removing `.fixed-middle .col` CSS definition, I put in:
+
+```css
+.fixed-middle .main-content {
+   flex: 5;
+   order: 2;
+}
+.fixed-middle .left-side {
+   flex: 1;
+   order: 1;
+}
+.fixed-middle .right-side {
+   flex: 1;
+   order: 3;
+}
+```
+
+This tells flexbox to let the main content area grow to 5 times the
+size of the sidebars, but make sure the left side bar's content comes
+first in the row.
+
+## Header and Footer Redux
+
+I wanted to extend this even further, so the case where you may have
+multiple "widgets" in the header or footer, and so redid the same idea
+for the those, but keeping the flex to 1.
+
+If I ended up with a 2/3 widget and 1/3 widget, I could mark them with
+appropriate classes and set the flex accordingly.
+
+
+## Sample Repo and Demo
+
+* [sample repo on Github]({{ page.source }})
+* [demonstration]({{ page.demo.url }})
+
+## Making it responsive
+
+This turned out to be really easy, and all I needed to do is wrap the
+flexbox and absolute positioning in a media query.
+
+I had put the page header after the main content, but that didn't look
+as good, so I moved that to the top.
+
+The image was misbehaving as well, so I introduced an
+`.img-responsive` class that limited the width to 100%.

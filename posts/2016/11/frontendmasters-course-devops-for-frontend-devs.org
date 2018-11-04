@@ -1,0 +1,162 @@
+* FrontendMasters Course: DevOps for Frontend Devs
+  :PROPERTIES:
+  :CUSTOM_ID: frontendmasters-course-devops-for-frontend-devs
+  :END:
+
+- published date: 2016-11-13 12:52
+- keywords: ["class", "devops", "frontendmasters", "jemyoung"]
+- source: URL
+
+On November 11, 2016, I attended the [[https://frontendmasters.com][FrontendMasters]]{:target="_blank"} course"DevOps for Frontend Devs" taught by [[https://jemyoung.com/about/][Jem Young]]{:target="_blank"} from Netflix.
+
+It was a great class. Here's the checklist I built for bringing up a basic droplet on [[https://digitalocean.com][Digital Ocean]]{:target="_blank"}
+
+** create an ssh key pair
+   :PROPERTIES:
+   :CUSTOM_ID: create-an-ssh-key-pair
+   :END:
+
+You can reuse one you already have, or create a new one. Make sure it's on DigitalOcean and create the droplet with it.
+
+- [ ] upload the PUBLIC key you created or are reusing to DigitalOcean.
+
+** create a new server
+   :PROPERTIES:
+   :CUSTOM_ID: create-a-new-server
+   :END:
+
+- [ ] create a droplet on DO
+- [ ] copy and save the new droplet's IP address
+
+  - [ ] add to /etc/hosts to make it easy
+  - [ ] also create an entry for it in =~/.ssh/config=
+
+#+BEGIN_SRC sh
+    Host <DROPLET NAME>
+      User tamara
+      IdentityFile ~/.ssh/id_rsa
+      AddkeysToAgent yes
+      ForwardAgent yes
+      HostName <DROPLET IP>
+#+END_SRC
+
+- [ ] log into the new droplet
+
+** on the new server, as root
+   :PROPERTIES:
+   :CUSTOM_ID: on-the-new-server-as-root
+   :END:
+
+- [ ] Change root password to something you know (DO set's it to something randome and never tells you what it is.)
+
+  - [ ] =passwd=
+
+- [ ] =apt-get update= to refresh DPKG indexes
+- [ ] =apt-get install -y build-essential git curl wget emacs zip unzip zlibc zlib1g-dev= My tools of choice
+- [ ] =apt-get install -y htop= nice top() replacement
+
+** create users with sudo
+   :PROPERTIES:
+   :CUSTOM_ID: create-users-with-sudo
+   :END:
+
+- [ ] add user =tamara=:
+
+  - [ ] =adduser tamara=
+  - [ ] =usermod -aG sudo tamara=
+  - [ ] =mkdir -p ~tamara/.ssh=
+  - [ ] =cp ~/.ssh/authorized_keys ~tamara/.ssh/=
+  - [ ] =chown -R tamara:tamara ~tamara/.ssh/=
+
+- [ ] add new user =git=
+
+  - [ ] =adduser git=
+  - [ ] =usermod -aG sudo git=
+  - [ ] =mkdir -p ~git/.ssh=
+  - [ ] =cp ~/.ssh/authorized_keys ~git/.ssh/=
+  - [ ] =chown -R git:git ~git/.ssh=
+
+** back on the home machine
+   :PROPERTIES:
+   :CUSTOM_ID: back-on-the-home-machine
+   :END:
+
+If you copied the authorized keys file in the above steps, the following is not needed.
+
+- [ ] move public key to users
+
+  - Users: [tamara, git]
+
+    #+BEGIN_EXAMPLE
+        cat ~/.ssh/is_rsa.pub | ssh $USERa@$NEW_SERVER 'mkdir -p .ssh && cat >> .ssh/authorized_keys
+    #+END_EXAMPLE
+
+** on new server, regular user (from now on)
+   :PROPERTIES:
+   :CUSTOM_ID: on-new-server-regular-user-from-now-on
+   :END:
+
+- Disable access via =ssh= for =root=
+
+  - [ ] =sudo vi /etc/ssh/sshd_config=
+  - [ ] Set =PermitRootLogin: no=
+  - [ ] restart: =sudo service sshd restart=
+
+** get a domain name
+   :PROPERTIES:
+   :CUSTOM_ID: get-a-domain-name
+   :END:
+
+(optional, but kind of nice for easy referral from everywhere.)
+
+- [ ] buy a domain name from some place
+- [ ] for the domain, create 2 "A" records
+
+  - [ ] "@" point to new server's IP
+  - [ ] "www" point to new server's IP
+
+- [ ]
+
+** set up the web server
+   :PROPERTIES:
+   :CUSTOM_ID: set-up-the-web-server
+   :END:
+
+- [ ] install nginx
+- [ ] install nodejs and npm: following instructions on [[https://github.com/nodesource/distributions#installation-instructions][nodesource/distributions]]
+
+#+BEGIN_SRC sh
+    curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
+    sudo apt-get install -y nodejs
+#+END_SRC
+
+- [ ] symlink node -> nodejs Not necessary with the above
+
+- [ ] install ruby using [[https://www.brightbox.com/docs/ruby/ubuntu/#adding-the-repository][Brightbox.Com]]:
+
+#+BEGIN_SRC sh
+    sudo apt-get install software-properties-common
+    sudo apt-add-repository ppa:brightbox/ruby-ng
+    sudo apt-get update
+    sudo apt-get install ruby2.4
+    sudo gem install bundler rake
+    sudo gem install rails
+#+END_SRC
+
+** setting up the application
+   :PROPERTIES:
+   :CUSTOM_ID: setting-up-the-application
+   :END:
+
+- [ ] clone the app
+- [ ] cd into the app dir
+- [ ] =npm install=
+- [ ] =node app.js=
+- [ ] =nohup node app.js &= to make it run forever in the background
+
+** build and deploy an app
+   :PROPERTIES:
+   :CUSTOM_ID: build-and-deploy-an-app
+   :END:
+
+- using Gulp

@@ -1,0 +1,81 @@
+* Documenting Regular Expressions
+  :PROPERTIES:
+  :CUSTOM_ID: documenting-regular-expressions
+  :END:
+
+- published date: 2014-11-02 15:35
+- keywords: ["documentation", "regexp", "swaac"]
+- source:
+- subtitle: Utilizing the x modifier in order to enable well-documented regular expressions
+
+Regular Expressions (commonly referred to as 'regexes') can be highly opaque voodunesque constructions that often are difficult to decipher and thus modify when the time comes. Regexes seem to be a black art to many people, and something that takes a while to understand and master. Documenting regexes is something practically no one does, yet could be so helpful for many people.
+
+** PCRE modifiers
+   :PROPERTIES:
+   :CUSTOM_ID: pcre-modifiers
+   :END:
+
+[[http://pcre.org][PCRE]] (Perl Compatible Regular Expressions) has several modifiers that do various things to the action of the regex. These are the ones defined for PCRE:
+
+- *i:* make the match case insensitive
+- *m:* multiline
+- *s:* dot matches newlines
+- *x:* ignore white spaces in specification
+
+** Enter the *x* modifier
+   :PROPERTIES:
+   :CUSTOM_ID: enter-the-x-modifier
+   :END:
+
+The *x* modifier is where we can take advantage of the regex ignoring white space between pattern elements to beautify the regex and insert comments.
+
+#+BEGIN_SRC perl
+    $is_blank_re = qr{^\s*$};
+#+END_SRC
+
+The above regex is quite simple, most people should understand it well enough. But for illustration, let's break this up a bit, beautify it, and add some comments:
+
+#+BEGIN_SRC perl
+    $is_blank_re =
+        qr{
+           ^                    # match the beginning of the string
+           \s*                  # match zero or more white spaces
+           $                    # match the end of the string
+          }x;
+#+END_SRC
+
+This at least makes it clearer what each element of the regex /is/ and what it /does/. Using the regex defined is the same in either case:
+
+In =perl=:
+
+#+BEGIN_SRC perl
+    while ($line = <STDIN>) {
+        next if ( $line =~ m{$is_blank_re} );
+        # process the line
+    }
+#+END_SRC
+
+Similarly, in =ruby=:
+
+#+BEGIN_SRC ruby
+    is_blank = %r{
+      ^       # matches beginning of line
+      \s*     # match zero or more white spaces
+      $       # match end of the line
+    }x
+
+    STDIN.each_line do |line|
+      next if line.match is_blank
+      # ... process the line
+    end
+#+END_SRC
+
+** Language Implementations
+   :PROPERTIES:
+   :CUSTOM_ID: language-implementations
+   :END:
+
+- [[http://pcre.org][PCRE]]
+- [[http://perldoc.perl.org/perlre.html][Perl]]
+- [[http://us3.php.net/manual/en/reference.pcre.pattern.modifiers.php][PHP]]
+- [[http://ruby-doc.org/core-2.1.4/Regexp.html#class-Regexp-label-Options][Ruby]]

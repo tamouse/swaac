@@ -1,0 +1,230 @@
+* Klabnik waxes tweet on Continuous Delivery
+  :PROPERTIES:
+  :CUSTOM_ID: klabnik-waxes-tweet-on-continuous-delivery
+  :END:
+
+- published date: 2015-10-30 09:45
+- keywords: ["continuous-delivery", "deployment", "klabnik", "release-cycles"]
+- source: URL
+
+In a tweet storm this morning, [[http://twitter.com/steveklabnik][Steve Klabnik]] waxed quite eloquent about what shorter and shorter times between major releases means to him:
+
+#+BEGIN_HTML
+  <blockquote class="twitter-tweet" lang="en">
+#+END_HTML
+
+#+BEGIN_HTML
+  <p lang="en" dir="ltr">
+#+END_HTML
+
+Okay, Node 5 gives me some feels. Minor tweetstorm follows:
+
+#+BEGIN_HTML
+  </p>
+#+END_HTML
+
+--- Some(@steveklabnik) (@steveklabnik) October 30, 2015
+
+#+BEGIN_HTML
+  </blockquote>
+#+END_HTML
+
+#+BEGIN_HTML
+  <blockquote class="twitter-tweet" lang="en">
+#+END_HTML
+
+#+BEGIN_HTML
+  <p lang="en" dir="ltr">
+#+END_HTML
+
+One of the things that we're socially adjusting to in the software dev world is how different kinds of versioning plays out.
+
+#+BEGIN_HTML
+  </p>
+#+END_HTML
+
+--- Some(@steveklabnik) (@steveklabnik) October 30, 2015
+
+#+BEGIN_HTML
+  </blockquote>
+#+END_HTML
+
+#+BEGIN_HTML
+  <blockquote class="twitter-tweet" lang="en">
+#+END_HTML
+
+#+BEGIN_HTML
+  <p lang="en" dir="ltr">
+#+END_HTML
+
+We've been doing faster and faster upgrade cycles In a world of "plz mail me a tape drive", releases are few and far between.
+
+#+BEGIN_HTML
+  </p>
+#+END_HTML
+
+--- Some(@steveklabnik) (@steveklabnik) October 30, 2015
+
+#+BEGIN_HTML
+  </blockquote>
+#+END_HTML
+
+#+BEGIN_HTML
+  <blockquote class="twitter-tweet" lang="en">
+#+END_HTML
+
+#+BEGIN_HTML
+  <p lang="en" dir="ltr">
+#+END_HTML
+
+One of the promises of continuous delivery is "the more you ship, the better you get at shipping, the more you upgrade, the better you get"
+
+#+BEGIN_HTML
+  </p>
+#+END_HTML
+
+--- Some(@steveklabnik) (@steveklabnik) October 30, 2015
+
+#+BEGIN_HTML
+  </blockquote>
+#+END_HTML
+
+#+BEGIN_HTML
+  <blockquote class="twitter-tweet" lang="en">
+#+END_HTML
+
+#+BEGIN_HTML
+  <p lang="en" dir="ltr">
+#+END_HTML
+
+Frequently dealing with small updates is much easier than only sometimes dealing with large ones. I don't miss "deploy week."
+
+#+BEGIN_HTML
+  </p>
+#+END_HTML
+
+--- Some(@steveklabnik) (@steveklabnik) October 30, 2015
+
+#+BEGIN_HTML
+  </blockquote>
+#+END_HTML
+
+#+BEGIN_HTML
+  <blockquote class="twitter-tweet" lang="en">
+#+END_HTML
+
+#+BEGIN_HTML
+  <p lang="en" dir="ltr">
+#+END_HTML
+
+What this also means is that releases which contain /small/ breaking changes are happening more frequently. They're easier to deal with.
+
+#+BEGIN_HTML
+  </p>
+#+END_HTML
+
+--- Some(@steveklabnik) (@steveklabnik) October 30, 2015
+
+#+BEGIN_HTML
+  </blockquote>
+#+END_HTML
+
+#+BEGIN_HTML
+  <blockquote class="twitter-tweet" lang="en">
+#+END_HTML
+
+#+BEGIN_HTML
+  <p lang="en" dir="ltr">
+#+END_HTML
+
+So major version bumps /used/ to be "oh no six months of integration here we go." But that's not always true.
+
+#+BEGIN_HTML
+  </p>
+#+END_HTML
+
+--- Some(@steveklabnik) (@steveklabnik) October 30, 2015
+
+#+BEGIN_HTML
+  </blockquote>
+#+END_HTML
+
+#+BEGIN_HTML
+  <blockquote class="twitter-tweet" lang="en">
+#+END_HTML
+
+#+BEGIN_HTML
+  <p lang="en" dir="ltr">
+#+END_HTML
+
+The angst I'm seeing about "omg Node 4 just happened why Node 5" is because of these latent feels.
+
+#+BEGIN_HTML
+  </p>
+#+END_HTML
+
+--- Some(@steveklabnik) (@steveklabnik) October 30, 2015
+
+#+BEGIN_HTML
+  </blockquote>
+#+END_HTML
+
+#+BEGIN_HTML
+  <blockquote class="twitter-tweet" lang="en">
+#+END_HTML
+
+#+BEGIN_HTML
+  <p lang="en" dir="ltr">
+#+END_HTML
+
+But that's just because there are /some/ breaking changes. Your app might not even need to change!
+
+#+BEGIN_HTML
+  </p>
+#+END_HTML
+
+--- Some(@steveklabnik) (@steveklabnik) October 30, 2015
+
+#+BEGIN_HTML
+  </blockquote>
+#+END_HTML
+
+#+BEGIN_HTML
+  <blockquote class="twitter-tweet" lang="en">
+#+END_HTML
+
+#+BEGIN_HTML
+  <p lang="en" dir="ltr">
+#+END_HTML
+
+And if it does, those changes shouldn't be too intense, from what I'm seeing anyway.
+
+#+BEGIN_HTML
+  </p>
+#+END_HTML
+
+--- Some(@steveklabnik) (@steveklabnik) October 30, 2015
+
+#+BEGIN_HTML
+  </blockquote>
+#+END_HTML
+
+#+BEGIN_HTML
+  <blockquote class="twitter-tweet" lang="en">
+#+END_HTML
+
+#+BEGIN_HTML
+  <p lang="en" dir="ltr">
+#+END_HTML
+
+In conclusion, we're experiencing some pain from a shift in the way we look at this stuff. I like this new world, personally.
+
+#+BEGIN_HTML
+  </p>
+#+END_HTML
+
+--- Some(@steveklabnik) (@steveklabnik) October 30, 2015
+
+#+BEGIN_HTML
+  </blockquote>
+#+END_HTML

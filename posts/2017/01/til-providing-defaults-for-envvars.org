@@ -1,0 +1,33 @@
+* TIL: Providing Defaults For EnvVars in Python 3
+  :PROPERTIES:
+  :CUSTOM_ID: til-providing-defaults-for-envvars-in-python-3
+  :END:
+
+- published date: 2017-01-24 16:14
+- keywords: ["defaults", "envvars", "python", "python3", "til"]
+- source:
+
+*Today I Learned:* that you can set a default for a missing Environment Variable *and* that an empty string is not the best default.
+
+I'd been blissfully performing the following sort of passage when dealing with envvars:
+
+#+BEGIN_SRC python
+    if os.environ.get('FOO'):
+        foo_setting = os.envrion['FOO']
+    else:
+        foo_setting = ''
+#+END_SRC
+
+This is pretty wrong-headed in a few ways, including the fact that some things expect a setting to be =None= instead to ensure they work correctly. In particular, we were using this sort of thing to set the profile name for =boto3=. If the profile name is =None=, it doesn't try to connect, but if it's the empty string =''= it uses that for the profile name, which of course will never work.
+
+So the proper construction is:
+
+#+BEGIN_SRC python
+    foo_setting = os.environ.get('FOO', None)
+#+END_SRC
+
+saving us from an extraneous retrieval and test for a value.
+
+See more information here: [[https://docs.python.org/3/library/stdtypes.html#dict.get][dict.get()]] in the Standard Type documentation.
+
+I should note that I only got there from finding this: [[https://bugs.python.org/issue28242][Issue 28242 os.environ.get documentation missing - Python tracker]] via googling for "python3 os.environ get", so it's not exactly obvious to the newcomer, like me. And this /after/ the lead on the team fixed my oh so broken code. Yay for code reviews!

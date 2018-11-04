@@ -1,0 +1,17 @@
+* Links: Flexbox tutorials and posts
+  :PROPERTIES:
+  :CUSTOM_ID: links-flexbox-tutorials-and-posts
+  :END:
+
+- published date: 2017-02-07 20:02
+- keywords: ["css", "flexbox", "links"]
+- source:
+
+Collecting several links on learning Flexbox:
+
+- [[https://css-tricks.com/snippets/css/a-guide-to-flexbox/][A Complete Guide to Flexbox CSS-Tricks]]
+- [[https://css-tricks.com/designing-a-product-page-layout-with-flexbox/][Designing A Product Page Layout with Flexbox CSS-Tricks]]
+- [[https://medium.freecodecamp.com/understanding-flexbox-everything-you-need-to-know-b4013d4dc9af#.dqbu8so8a][Understanding Flexbox Everything you need to know]]
+- [[http://flexboxfroggy.com/][Flexbox Froggy - A game for learning CSS flexbox]]
+
+- [[http://swaac.tamouse.org/css/2016/12/04/flexbox-website-with-fixed-headers-and-footer/][flexbox website with fixed headers and footer]] (personal project)

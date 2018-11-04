@@ -1,0 +1,11 @@
+* Link: Why write good commit messages -- futurelearn blog
+  :PROPERTIES:
+  :CUSTOM_ID: link-why-write-good-commit-messages-futurelearn-blog
+  :END:
+
+- published date: 2015-06-25 14:54
+- keywords: ["commit", "communication", "emoji", "git", "links", "messages", "tbp", "teamwork", "tiny-best-practices", "utf-8"]
+- source:
+- link: {"href"=>"https://about.futurelearn.com/blog/a-commit-message-from-our-repo-2/", "title"=>"Link: Why write good commit messages -- futurelearn blog", "date"=>#<Date: 2015-06-17 ((2457191j,0s,0n),+0s,2299161j)>, "author"=>{"name"=>"Mal Pinder", "url"=>"https://about.futurelearn.com/author/mal-pinder"}}
+
+This article illustrates a great Tiny Best Practice: use your commit messages to communicate well to the rest of your team.

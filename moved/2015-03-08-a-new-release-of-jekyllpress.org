@@ -1,0 +1,60 @@
+* Link: A new release of Jekyllpress
+  :PROPERTIES:
+  :CUSTOM_ID: link-a-new-release-of-jekyllpress
+  :END:
+
+- published date: 2015-03-08 21:14
+- keywords: ["jekyll", "jekyllpress"]
+- source:
+- link: {"href"=>"https://github.com/tamouse/jekyllpress/releases/tag/v1.0.0", "title"=>"A new release of Jekyllpress", "date"=>"2015/03/08", "author"=>{"name"=>"Tamara Temple", "url"=>"https://github.com/tamouse"}}
+
+I've put out a new release of =Jekyllpress=, my Thor script to help create new jekyll posts and pages.
+
+** To Install
+   :PROPERTIES:
+   :CUSTOM_ID: to-install
+   :END:
+
+Command line install:
+
+#+BEGIN_EXAMPLE
+    $ gem install jekyllpress
+#+END_EXAMPLE
+
+** New features
+   :PROPERTIES:
+   :CUSTOM_ID: new-features
+   :END:
+
+- /--url/ switch, lets you specify a url to be placed into the template. ERB variable =@url=.
+
+- /--layout/ switch, lets you specify a different layout.
+
+- /--template/ switch, lets you specify a different document template.
+
+- =@filename= variable that can be used in the ERB part of a template.
+
+** Example used to generate this post:
+   :PROPERTIES:
+   :CUSTOM_ID: example-used-to-generate-this-post
+   :END:
+
+*** Command line
+    :PROPERTIES:
+    :CUSTOM_ID: command-line
+    :END:
+
+#+BEGIN_SRC sh
+        $ jekyllpress new_post 'A new release of Jekyllpress' -c jekyll \
+        -t jekyllpress jekyll --layout=link --template=new_link.markdown \
+        --url=https://github.com/tamouse/jekyllpress/releases/tag/v1.0.0
+#+END_SRC
+
+*** new_link.markdown template
+    :PROPERTIES:
+    :CUSTOM_ID: new_link.markdown-template
+    :END:
+
+It's just frontmatter.
+
+```yaml

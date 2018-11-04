@@ -1,0 +1,24 @@
+* Signing a PDF with Preview
+  :PROPERTIES:
+  :CUSTOM_ID: signing-a-pdf-with-preview
+  :END:
+
+- published date: 2016-10-12 11:55
+- keywords: ["mac", "macos", "pdf", "preview", "signing", "tools"]
+- source:
+
+Here's something I learned the other day: you can capture a graphical signature with Preview on macos to sign a PDF document.
+
+In the =Tools -> Annote -> Signatures= menu, you'll find a menu item =Manage Signatures= plus any signature you may have already added to Preview.
+
+If you click it, you get the opportunity to create a new signature.
+
+Now, here comes the really cool part:
+
+You can enter a signature using a pointing device of your choice, *OR* you can take a picture of a signature with the web camera!
+
+I don't know about you, but I have an awfully hard time getting a decent looking signature with any pointing device: mouse, trackpad, track pointer, track ball, even a graphics tablet and stylus combination. Nothing feels right for me like pen on paper.
+
+Making a pen-and-paper signature now can be transfered into a PDF directly, and this means no printing, signing, and scanning back in.
+
+This has probably existed for ages, but it's something I just learned. Never too young. :)

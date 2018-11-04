@@ -1,0 +1,17 @@
+* User GUI editing for Jekyll Sites
+  :PROPERTIES:
+  :CUSTOM_ID: user-gui-editing-for-jekyll-sites
+  :END:
+
+- published date: 2015-06-14 09:45
+- keywords: ["cms", "jekyll", "user-editing"]
+- source:
+
+A question that gets raised frequently in the #jekyll channel on freenode is: "What can I use that makes it easy for users / clients to maintian their content?".
+
+Fair question, and though I haven't done this personally, there's still some pretty good things out there someone can use to set this up for their clients.
+
+Two that come to mind are:
+
+- [[http://prose.io][prose.io]] [[https://github.com/prose/prose][github repo]]
+- [[http://cloudcannon.com][cloudcannon:]]

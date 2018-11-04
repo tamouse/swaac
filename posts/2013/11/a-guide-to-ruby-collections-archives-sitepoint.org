@@ -1,0 +1,33 @@
+* A Guide to Ruby Collections Archives - SitePoint
+  :PROPERTIES:
+  :CUSTOM_ID: a-guide-to-ruby-collections-archives---sitepoint
+  :END:
+
+- published date: 2013-11-01 13:43
+- keywords: ["arrays", "collections", "enumerable", "enumerator", "hashes", "ranges", "ruby", "sets", "swaac"]
+- source: http://www.sitepoint.com/series/a-guide-to-ruby-collections/
+- comments: true
+
+A useful guide Ruby Collections: * Arrays * Hashes * Sets * Ranges * Enumerable * Enumerator
+
+#+BEGIN_QUOTE
+  ** A Guide to Ruby Collections
+     :PROPERTIES:
+     :CUSTOM_ID: a-guide-to-ruby-collections
+     :END:
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+
+  - [[http://www.sitepoint.com/guide-ruby-collections-part-arrays/][A Guide to Ruby Collections, Part I: Arrays]] by [[http://www.sitepoint.com/author/rqualls/][Robert Qualls]] Oct 21, 2013
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+
+  - [[http://www.sitepoint.com/guide-ruby-collections-ii-hashes-sets-ranges/][A Guide to Ruby Collections, II: Hashes, Sets, and Ranges]] by [[http://www.sitepoint.com/author/rqualls/][Robert Qualls]] Oct 25, 2013
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+
+  - [[http://www.sitepoint.com/guide-ruby-collections-iii-enumerable-enumerator/][A Guide to Ruby Collections III: Enumerable and Enumerator]] by [[http://www.sitepoint.com/author/rqualls/][Robert Qualls]] Oct 31, 2013
+#+END_QUOTE

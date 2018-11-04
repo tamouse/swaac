@@ -1,0 +1,39 @@
+* Today's Reading
+  :PROPERTIES:
+  :CUSTOM_ID: todays-reading
+  :END:
+
+- published date: 2015-07-12 11:59
+- keywords: ["links", "nfs", "vagrant"]
+- source:
+- links: [{"href"=>"http://mitchellh.com/comparing-filesystem-performance-in-virtual-machines", "text"=>"Comparing Filesystem Performance in Virtual Machines"}]
+
+Stuff I'm reading today, Sun Jul 12 12:00:14 2015:
+
+** [[file:%7B%7B%20page.links%5B0%5D.href%7D%7D][{{ page.links[0].text}}]]
+   :PROPERTIES:
+   :CUSTOM_ID: page.links0.text
+   :END:
+
+Continuing in the reading about Docker and Vagrant. This article discusses the various file system characteristics using Vagrant file sync. The bottom line:
+
+#+BEGIN_QUOTE
+  With regards to shared filesystems, VMware has the behavior you want. Loading web pages, running test suites, and compiling software are all very read heavy. VMware shared folder read performance demolishes VirtualBox, while the write performance of VirtualBox shared folders is only marginally better than VMware.
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+  If you have the option to use NFS, use it. Again, the read performance is far more valuable than the write performance.
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+
+  #+BEGIN_HTML
+    <footer>
+  #+END_HTML
+
+  {{page.links[0].text}}, Mitchell Hashimoto, January 10, 2014.
+
+  #+BEGIN_HTML
+    </footer>
+  #+END_HTML
+#+END_QUOTE

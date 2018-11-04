@@ -1,0 +1,169 @@
+* json - How to send raw post data in a Rails functional test? - Stack Overflow
+  :PROPERTIES:
+  :CUSTOM_ID: json---how-to-send-raw-post-data-in-a-rails-functional-test---stack-overflow
+  :END:
+
+- published date: 2013-09-17 14:09
+- keywords: ["json", "rails", "swaac", "testing"]
+- source: http://stackoverflow.com/questions/2103977/how-to-send-raw-post-data-in-a-rails-functional-test
+- comments: true
+
+*Note:* I tried playing with this in =~/Project/rubystuff/railsstuff/my_newer_app/spec/controllers/shout_controller_spec.rb= and could not quite get it to work.
+
+#+BEGIN_HTML
+  <!--more-->
+#+END_HTML
+
+#+BEGIN_QUOTE
+  ** How to send raw post data in a Rails functional test?
+     :PROPERTIES:
+     :CUSTOM_ID: how-to-send-raw-post-data-in-a-rails-functional-test
+     :END:
+
+  I'm looking to send raw post data (e.g. unparamaterized json) to one of my controllers for testing: ``
+
+  #+BEGIN_EXAMPLE
+      class LegacyOrderUpdateControllerTest < ActionController::TestCase
+       test "sending json" do
+         post :index, '{"foo":"bar", "bool":true}'
+       end
+      end
+  #+END_EXAMPLE
+
+  but this gives me a =NoMethodError: undefined method=symbolize_keys' for #`
+
+  What is the correct way to send raw post data in ActionController::TestCase?
+
+  Here is some controller code
+
+  #+BEGIN_EXAMPLE
+      def index
+          post_data = request.body.read
+          req = JSON.parse(post_data)
+  #+END_EXAMPLE
+
+  ** 7 Answers
+     :PROPERTIES:
+     :CUSTOM_ID: answers
+     :END:
+
+  I ran across the same issue today and found a solution.
+
+  In your test_helper.rb define the following method inside of ActiveSupport::TestCase:
+
+  #+BEGIN_EXAMPLE
+        def raw_post(action, params, body)
+          @request.env['RAW_POST_DATA'] = body
+          response = post(action, params)
+          @request.env.delete('RAW_POST_DATA')
+          response
+        end
+  #+END_EXAMPLE
+
+  In your functional test, use it just like the =post= method but pass the raw post body as the third argument.
+
+  #+BEGIN_EXAMPLE
+      class LegacyOrderUpdateControllerTest < ActionController::TestCase
+       test "sending json" do
+         raw_post :index, {}, {:foo => "bar", :bool => true}.to_json
+       end
+      end
+  #+END_EXAMPLE
+
+  I tested this on Rails 2.3.4 when reading the raw post body using
+
+  #+BEGIN_EXAMPLE
+      request.raw_post
+  #+END_EXAMPLE
+
+  instead of
+
+  #+BEGIN_EXAMPLE
+      request.body.read
+  #+END_EXAMPLE
+
+  If you look at the [[http://github.com/rails/rails/blob/2-3-stable/actionpack/lib/action_controller/request.rb#L381][source code]] you'll see that raw_post just wraps request.body.read with a check for this RAW_POST_DATA in the request env hash.
+
+  This approach continues to work correctly in Rails 3.1
+
+  Huh, yeah And Rails 3.2 too. Thanks!
+
+  Make sure you're using request.raw_post (as in this answer) instead of request.body when parsing the JSON in your controller, or you'll get a weird error about "can't convert StringIO into String".
+
+  This doesn't work in rails 3.2.10+
+
+  I actually solved the same issues just adding one line before simulating the rspec post request. What you do is to populate the "RAW_POST_DATA". I tried to remove the attributes var on the post :create, but if I do so, it do not find the action.
+
+  Here my final solution.
+
+  #+BEGIN_EXAMPLE
+      def do_create(attributes)
+        request.env['RAW_POST_DATA'] = attributes.to_json
+        post :create, attributes
+      end 
+  #+END_EXAMPLE
+
+  In the controller the code you need to read the JSON is something similar to this
+
+  #+BEGIN_EXAMPLE
+        @property = Property.new(JSON.parse(request.body.read))
+  #+END_EXAMPLE
+
+  great! Just one line, and I had it work even without the =attributes= sent in to post.
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+  Looking at stack trace running a test you can acquire more control on request preparation: ActionDispatch::Integration::RequestHelpers.post => [[https://github.com/rails/rails/blob/master/actionpack/lib/action_dispatch/testing/integration.rb][ActionDispatch::Integration::Session.process]] => [[https://github.com/brynary/rack-test/blob/master/lib/rack/test.rb][Rack::Test::Session.env_for]]
+
+  You can pass json string as :params AND specify a content type "application/json". In other case content type will be set to "application/x-www-form-urlencoded" and your json will be parsed properly.
+
+  So all you need is to specify "CONTENT_TYPE":
+
+  #+BEGIN_EXAMPLE
+      post :index, '{"foo":"bar", "bool":true}', "CONTENT_TYPE" => 'application/json'
+  #+END_EXAMPLE
+
+  This does not work for me. I get an error like "undefined method `symbolize_keys' for #<String:0x00000102b4b0d8>"
+
+  The =post= method expects a hash of name-value pairs, so you'll need to do something like this:
+
+  #+BEGIN_EXAMPLE
+      post :index, :data => '{"foo":"bar", "bool":true}'
+  #+END_EXAMPLE
+
+  Then, in your controller, get the data to be parsed like this:
+
+  #+BEGIN_EXAMPLE
+      post_data = params[:data]
+  #+END_EXAMPLE
+
+  I've tried this, it needs to be completely raw though {"response":"error","errors":"can't parse request: 598: unexpected token at 'data=
+
+  If you are using RSpec (>= 2.12.0) and writing Request specs, the module that is included is =ActionDispatch::Integration::Runner=. If you take a look at the source code you can notice that the [[https://github.com/rails/rails/blob/4147e0feaddac0e86c9b1f52eec4b1e33d7d6591/actionpack/lib/action_dispatch/testing/integration.rb#L39][post]] method calls [[https://github.com/rails/rails/blob/4147e0feaddac0e86c9b1f52eec4b1e33d7d6591/actionpack/lib/action_dispatch/testing/integration.rb#L254][process]] which accepts a =rack_env= parameter.
+
+  All this means that you can simply do the following in your spec:
+
+  #+BEGIN_EXAMPLE
+      #spec/requests/articles_spec.rb
+
+      post '/articles', {}, {'RAW_POST_DATA' => 'something'}
+  #+END_EXAMPLE
+
+  And in the controller:
+
+  #+BEGIN_EXAMPLE
+      #app/controllers/articles_controller.rb
+
+      def create
+        puts request.body.read
+      end
+  #+END_EXAMPLE
+
+  Maybe it's the way you're formatting your JSON, it might need to be escaped some how? Try doing this:
+
+  #+BEGIN_EXAMPLE
+      post :index, :data => {:foo => 'bar', :bool => true }.to_json
+  #+END_EXAMPLE
+
+  This will turn the hash into json, and hopefully that should work. If not... well then I'm all out of ideas =)
+#+END_QUOTE

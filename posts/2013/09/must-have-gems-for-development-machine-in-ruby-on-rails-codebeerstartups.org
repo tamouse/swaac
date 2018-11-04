@@ -1,0 +1,159 @@
+* Must have gems for development machine in ruby on rails | CodeBeerStartups
+  :PROPERTIES:
+  :CUSTOM_ID: must-have-gems-for-development-machine-in-ruby-on-rails-codebeerstartups
+  :END:
+
+- published date: 2013-09-04 11:06
+- keywords: ["development", "gems", "productivity", "rails", "swaac", "tools"]
+- source: http://www.codebeerstartups.com/2013/04/must-have-gems-for-development-machine-in-ruby-on-rails/#!
+
+Clipped on 2013-09-04 11:06:26 -0500
+
+#+BEGIN_HTML
+  <!--more-->
+#+END_HTML
+
+#+BEGIN_QUOTE
+  ** Must Have Gems for Development Machine in Ruby on Rails
+     :PROPERTIES:
+     :CUSTOM_ID: must-have-gems-for-development-machine-in-ruby-on-rails
+     :END:
+
+  Rubygems are best thing that happened in ruby on rails. So today here is my list of gems in development group that helps to make things faster or sometimes bring simplicity to the development process
+#+END_QUOTE
+
+#+BEGIN_SRC ruby
+    gem "better_errors"
+    gem "binding_of_caller"
+    gem 'annotate'
+    gem 'bullet'
+    gem 'debugger'
+    gem 'flay'
+    gem 'hirb'
+    gem 'localtunnel'
+    gem 'lol_dba'
+    gem 'mailcatcher'
+    gem 'meta_request','0.2.1'
+    gem 'pry'
+    gem 'pry-doc'
+    gem 'quiet_assets'
+    gem 'rack-mini-profiler'
+    gem 'railroady'
+    gem 'rails-footnotes', '>= 3.7.5.rc4'
+    gem 'rails_best_practices'
+    gem 'reek'
+    gem 'request-log-analyzer'
+    gem 'smusher'
+    gem 'zeus' # don't add this in your gemfile.
+#+END_SRC
+
+#+BEGIN_QUOTE
+  *** What they do:
+      :PROPERTIES:
+      :CUSTOM_ID: what-they-do
+      :END:
+
+  - [[https://github.com/charliesome/better_errors][better_errors]]: Better Errors replaces the standard Rails error page with a much better and more useful error page. It is also usable outside of Rails in any Rack app as Rack middleware. If you would like to use Better Errors' advanced features (REPL, local/instance variable inspection, pretty stack frame names), you need to add the binding_of_caller
+
+  #+CAPTION: Better errors Screenshot
+  [[/images/better_errors.png]]
+
+  - [[https://github.com/ctran/annotate_models][annotate]] Will generate a schema of the model on the top of the model. Something like this.
+#+END_QUOTE
+
+#+BEGIN_SRC ruby
+    # == Schema Info
+    #
+    # Table name: line_items
+    #
+    #  id                  :integer(11)    not null, primary key
+    #  quantity            :integer(11)    not null
+    #  product_id          :integer(11)    not null
+    #  unit_price          :float
+    #  order_id            :integer(11)
+    #
+
+    class LineItem < ActiveRecord::Base
+    belongs_to :product
+#+END_SRC
+
+#+BEGIN_QUOTE
+
+  - [[https://github.com/flyerhzm/bullet][bullet]]: The Bullet gem is designed to help you increase your application's performance by reducing the number of queries it makes. It will watch your queries while you develop your application and notify you when you should add eager loading (N+1 queries), when you're using eager loading that isn't necessary and when you should use counter cache.
+
+  Best practice is to use Bullet in development mode or custom mode (staging, profile, etc.). The last thing you want is your clients getting alerts about how lazy you are.
+
+  - [[https://github.com/cldwalker/debugger][debugger]] Best debugger for your rails application.
+
+  - [[https://github.com/seattlerb/flay][flay]] Flay analyzes code for structural similarities. Differences in literal values, variable, class, method names, whitespace, programming style, braces vs do/end, etc are all ignored. Making this totally rad.
+
+  - [[https://github.com/cldwalker/hirb][hirb]]:A mini view framework for console/irb that's easy to use, even while under its influence. Console goodies include a no-wrap table, auto-pager, tree and menu. A console gem that will display your results something like this:
+
+    #+BEGIN_EXAMPLE
+          >> Tag.last
+          +-----+-------------------------+-------------+---------------+-----------+-----------+-------+
+          | id  | created_at              | description | name          | namespace | predicate | value |
+          +-----+-------------------------+-------------+---------------+-----------+-----------+-------+
+          | 907 | 2009-03-06 21:10:41 UTC |             | gem:tags=yaml | gem       | tags      | yaml  |
+          +-----+-------------------------+-------------+---------------+-----------+-----------+-------+
+          1 row in set
+    #+END_EXAMPLE
+
+  - [[https://github.com/progrium/localtunnel][localtunnel]]
+
+  Localtunnel lets you expose a local web server to the public Internet.
+
+  For example, running a web server on port 8000 on your laptop can be made public with::
+
+  #+BEGIN_EXAMPLE
+      $ localtunnel-beta 8000
+      Port 8000 is now accessible from http://8fde2c.v2.localtunnel.com ...
+  #+END_EXAMPLE
+
+  - [[https://github.com/plentz/lol_dba][lol_dba]]: lol_dba is a small package of rake tasks that scan your application models and displays a list of columns that probably should be indexed. Also, it can generate .sql migration scripts.
+
+  - [[https://github.com/sj26/mailcatcher][mailcatcher]]: MailCatcher runs a super simple SMTP server which catches any message sent to it to display in a web interface. Run mailcatcher, set your favourite app to deliver to smtp://127.0.0.1:1025 instead of your default SMTP server, then check out http://127.0.0.1:1080 to see the mail that's arrived so far.
+
+  #+CAPTION: mailcatcher
+  [[/images/mailcatcher.png]]
+
+  - [meta_request] RailsPanel is a Chrome extension for Rails development that will end your tailing of development.log. Have all information about your Rails app requests in the browser - in the Developer Tools panel. Provides insight to db/rendering/total times, parameter list, rendered views and more.
+
+  #+CAPTION: RailsPanel
+  [[/images/railspanel.png]]
+
+  - [[https://github.com/pry/pry][pry]] :An IRB alternative and runtime developer console
+
+  - [[https://github.com/evrone/quiet_assets][quiet_assets]]: Mutes assets pipeline log messages.
+
+  - [[https://github.com/harleyttd/miniprofiler][rack-mini-profiler]]: Middleware that displays speed badge for every html page. Designed to work both in production and in development.
+
+  #+CAPTION: miniprofiler
+  [[/images/miniprofiler.png]]
+
+  * [[https://github.com/preston/railroady][railroady]]: RailRoady generates Rails 3 model (AcitveRecord, Mongoid, Datamapper) and controller UML diagrams as cross-platform .svg files, as well as in the DOT language.
+
+  - [[https://github.com/josevalim/rails-footnotes][rails-footnotes]]: Every Rails page has footnotes that gives information about your application and links back to your editor
+
+  #+CAPTION: footernotes
+  [[/images/footernotes.png]]
+
+  - [[https://github.com/railsbp/rails_best_practices][rails_best_practices]]: A code metric tool for rails projects
+
+  - [[https://github.com/troessner/reek][reek]]: Code smell detector for Ruby
+
+  - [[https://github.com/wvanbergen/request-log-analyzer][request-log-analyzer]] A command line tool that analyzes request logfiles (e.g. Rails, Apache, MySQL, Delayed::Job) to produce a performance report
+
+  #+CAPTION: footernotes
+  [[/images/log_analyser.png]]
+
+  - [[https://github.com/grosser/smusher][smusher]]: Ruby/CLI: Automatic lossless reduction of all your images. Must run for image assets.
+
+  - [[https://github.com/burke/zeus][zeus]] Boot any rails app in under a second.
+
+  Please let me know if you have some other cool gems. It will great to know about some cool gems.
+
+  Apr 25th, 2013
+
+  UnCopyright © 2013 Mohit Jain
+#+END_QUOTE

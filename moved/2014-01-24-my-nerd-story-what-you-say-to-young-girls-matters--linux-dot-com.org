@@ -1,0 +1,18 @@
+* My Nerd Story: What You Say to Young Girls Matters | Linux.com
+  :PROPERTIES:
+  :CUSTOM_ID: my-nerd-story-what-you-say-to-young-girls-matters-linux.com
+  :END:
+
+- published date: 2014-01-24 04:31
+- keywords: ["gender-roles", "swaac", "women-in-tech"]
+- source: https://www.linux.com/community/blogs/127-personal/758147-my-nerd-story-what-you-say-to-young-girls-matters
+
+#+BEGIN_QUOTE
+  "Mom, the computer is talking to me."
+
+  I was sitting at a VT100 in a cold office building, far from home and missing Saturday morning cartoons. My mother, a UNIX programmer at a large telco, brought me with her to the company's San Francisco, California office that weekend since my father was out of town. It was an hour's drive each way and 7 year old me was a bit out of sorts from the long ride and the early hour at which I'd awakened. Mom, though, knew the best way to soothe me was to park me in front of a terminal window and let me have at it with Adventure.
+#+END_QUOTE
+
+/[[http://hawthornlandings.org/about-2/][Leslie Hawthorn]] is an internationally known community manager, speaker and author, who has spent the past decade creating, cultivating and enabling open source communities. She created world's [[https://developers.google.com/open-source/gci/][the first initiative]] to involve pre-university students in open source software development, launched [[http://google-opensource.blogspot.com/][Google's #2 Developer Blog]], received an  [[http://www.oscon.com/oscon2010/public/content/2010/07/20-os-awards][O'Reilly Open Source Award]] in 2010 and gave [[http://hawthornlandings.org/appearances/][a few great talks]] on many things open source. In August 2013, she joined [[http://elasticsearch.com/][Elasticsearch]] as Community Manager, where she looks forward to getting things done, facilitating user happiness and moving to Europe./
+
+This is a superb article on the effects of how we, as individuals and as a society, talk to women and young girls about technology, their ability and place in it, what's possible, and how easy it can be to unwittingly discourage someone.
