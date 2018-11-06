@@ -8,19 +8,6 @@ If you're looking for the Atom feed, it is [[https://tamouse.github.io/swaac/fee
 
 If you're looking for the "learning" entry it is [[./posts/learning.org][here (./posts/learning.org)]]
 
-** Recent posts
-
-- [[./posts/2018/11/serving-static-files-in-storybook.org]]
-- [[./posts/2018/10/react-dismiss-after-timeout.org]]
-- [[./posts/2018/10/link-upcase-by-thoughbot.org]]
-- [[./posts/2018/10/link-ala-tags-to-dom.org]]
-- [[./posts/2018/10/link-ARIA-is-spackle-not-rebar.org]]
-- [[./posts/2018/10/link-30-seconds-of-CSS.org]]
-- [[./posts/2018/09/remember-unit-testing-is-not-integration-testing.org]]
-- [[./posts/2018/09/mocking-graphql-mutations-in-jest-tests.org]]
-- [[./posts/2018/08/til-webstorm-automatic-imports-issues.org]]
-- [[./posts/2018/07/FeM-JS-The-Hard-Parts.org]]
-
 ** [[./posts/index.org][Full List of Posts]]
 
 Each directory also has an ~index.org~ file in it listing the posts for that directory.
