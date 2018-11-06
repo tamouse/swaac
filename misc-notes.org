@@ -1,6 +1,5 @@
-#+TITLE: miscellaneous notes
-
-- Time-stamp: <2018-09-16 17:19:23 tamara.temple>
+* miscellaneous notes
+- Time-stamp: <2018-11-06 09:10:57 tamara>
 
 Just some notes on making this repo
 
@@ -11,11 +10,11 @@ Just some notes on making this repo
 Conversion utility:
 
 #+BEGIN_SRC shell-script
-  pandoc --wrap=none -f markdown -t org <SOURCE >TARGET
+  pandoc --standalone --highlight=zenburn --wrap=none -f markdown -t org <SOURCE >TARGET
 
   # or simply
 
-  pandoc --wrap=none -o post_file.org post_file.markdown
+  pandoc -s --highlight=zenburn --wrap=none -o post_file.org post_file.markdown
 #+END_SRC
 
 ~pandoc~ is smart enough to figure out the source and target formats from the file extensions.
@@ -38,10 +37,10 @@ A typical bit of frontmatter:
 #+END_SRC
 
 
-- the ~title:~ yaml key is used in the org file with the ~#+TITLE:~ keyword:
+- the ~title:~ yaml key is used in the org file with the first headline
 
 #+BEGIN_SRC org
-  ,#+TITLE: Delete a remote git branch
+  ,* Delete a remote git branch
 #+END_SRC
 
 The other frontmatter is just becoming a plain list:
@@ -54,6 +53,7 @@ The other frontmatter is just becoming a plain list:
 #+END_SRC
 
 The time stamp thingie, ~<>~ gets filled in by Emacs when the file is saved, giving the last time the file was edited and saved. /Keywords/ are the former categories and tags from the ~Jekyll~ post.
+
 ** Fixing code listings
 
 This is the most different for ~pandoc~ since ~Jekyll~ uses a Liquid tag ~highlight~ to format code listings. It /also/ uses the standard Github-flavoured Markdown [GFM] /code-fence/, which at least pandoc tries to make work.
@@ -61,7 +61,7 @@ This is the most different for ~pandoc~ since ~Jekyll~ uses a Liquid tag ~highli
 Org mode in emacs, however, has a really spiffy way to put in code examples. If you type ~<s~ and then hit ~TAB~ is expands to a ~#+BEGIN_SRC/#+END_SRC~ block, and you can put the language mode at the end of the first ~#+BEGIN_SRC~ line:
 
 #+BEGIN_SRC org
-  ,#+BEGIN_SRC javascript
+  ,#+BEGIN_SRC rjsx
     // some javascript code
   ,#+END_SRC
 #+END_SRC
@@ -88,3 +88,15 @@ I wrote another rake task that builds an ~index.org~ file of the posts in that d
 #+END_SRC
 
 /Note:/ I am planning on keeping a Gemfile and package.json file /out/ of this repo, just have it be the posts. Just have to remember to have ~rake~ installed globally.
+
+*** creating the atom feed
+
+It's necessary for communicating when new posts drop. The atom feed is at ~./docs/feed.xml~, which is set up for Github pages. (There's an index.html file there as well telling folks where to find the content).
+
+#+BEGIN_SRC shell-script
+  rake mkfeed
+#+END_SRC
+
+** conclusion ?
+
+Somehow, this still feels like too much work, but it's still better than it was. It might be that I'm still putting finishing touches on it, it might be that I'm never satisfied and have to tinker. At any rate, we'll see what happens.
