@@ -1,2 +1,5 @@
 - [[./10/so-passes-a-real-hero-of-the-computing-age.org]]
 - [[./10/another-personal-hero-falls.org]]
+- [[./01/swaac-intro.org]]
+- [[./01/colophon.org]]
+- [[./01/about.org]]

@@ -1,6 +1,7 @@
 * Setting up your Mac for working on the command line.
-
---------------
+- Time-stamp: <2018-11-06 09:32:33 tamara>
+- published date: 2017-07
+- keywords: command line, cli, termoial, mac
 
 Before beginning, I strongly urge you to get Michael Hartl's [[https://www.learnenough.com/command-line-tutorial][Learn Enough Command Line to Be Dangerous]] which is seriously the best introduction to this whole thing.
 

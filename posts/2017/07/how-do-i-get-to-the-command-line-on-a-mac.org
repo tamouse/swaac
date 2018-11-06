@@ -1,7 +1,8 @@
 * How do I get to the command line on a Mac?
-  :PROPERTIES:
-  :CUSTOM_ID: how-do-i-get-to-the-command-line-on-a-mac
-  :END:
+
+- Time-stamp: <2018-11-06 09:31:47 tamara>
+- published date: 2018-07
+
 
 ** From Finder
    :PROPERTIES:

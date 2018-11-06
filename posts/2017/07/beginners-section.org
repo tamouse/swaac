@@ -1,7 +1,8 @@
 * Beginner's Section
-  :PROPERTIES:
-  :CUSTOM_ID: beginners-section
-  :END:
+
+- Time-stamp: <2018-11-06 09:31:20 tamara>
+- published date: 2017-07-23
+- keywords: beginner, beginning, how-to, learning
 
 I am far, far distant from a beginner at software crafts. I wrote my first BASIC program, a lunar lander game, in 1969, on a cranky old teletype. The program was saved on punched paper tape.
 
