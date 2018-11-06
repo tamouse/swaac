@@ -2,513 +2,596 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://github.com/tamouse/swaac</id>
   <title>Tamouse&#39;s Software as a Craft blog</title>
-  <updated>2018-11-04T10:02:41-06:00</updated>
+  <updated>2018-11-06T08:58:51-06:00</updated>
     <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/10/link-30-seconds-of-CSS.org</id>
-      <updated>2018-11-04T10:02:41-06:00</updated>
-      <title>LINK: [[https://30-seconds.github.io/30-seconds-of-css/][30 seconds of CSS]]:</title>
-      <content>* LINK: [[https://30-seconds.github.io/30-seconds-of-css/][30 seconds of CSS]]:
-
-- Time-stamp: &lt;2018-11-04 10:02:41 tamara&gt;
-- published date: [2018-11-04 Sun]
-- keywords: link, css, collection, exercises, learning
-
-[[https://30-seconds.github.io/30-seconds-of-css/][30 seconds of CSS]]:
-
-&gt; A curated collection of useful CSS snippets you can understand in 30 seconds or less.
-</content>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2016/index.org</id>
+      <updated>2018-11-06T08:58:51-06:00</updated>
+      <title>index</title>
+      <content>- [[./12/todo-app-using-just-react-with-pojs-no-jsx-or-es6.org]]
+- [[./12/js-app-config-pattern.org]]
+- [[./12/flexbox-website-with-fixed-headers-and-footer.org]]
+- [[./12/changing-the-return-to-shop-link-and-text-in-an-empty-woocommerce-cart.org]]
+- [[./11/tool-font-style-matcher.org]]
+- [[./11/til-target-equals-blank-with-no-rel-equals-noopener.org]]
+- [[./11/links-from-gdi-intro-to-wordpress-class.org]]
+- [[./11/installing-wordpress-things-without-ftp.org]]
+- [[./11/installing-emacs-on-mac-with-homebrew.org]]
+- [[./11/frontendmasters-course-devops-for-frontend-devs.org]]
+- [[./11/ask-me-anything.org]]
+- [[./10/testing-blur-events-in-cucumber-slash-capybara.org]]
+- [[./10/signing-a-pdf-with-preview.org]]
+- [[./10/how-to-set-up-your-own-private-remote-git-repository.org]]
+- [[./09/when-your-tools-environment-computer-and-everything-you-know-fails-you.org]]
+- [[./09/my-nginx-virtual-hosting-configuration.org]]
+- [[./09/madebymike-svg-has-more-potential.org]]
+- [[./09/building-resizeable-components-with-relative-css.org]]
+- [[./08/the-average-web-page-data-from-analyzing-8-million-websites.org]]
+- [[./08/beginner-learning-section-in-pages.org]]
+- [[./07/the-traits-of-a-proficient-programmer-gregory-brown.org]]
+- [[./07/rails-action-mailer-asset-host.org]]
+- [[./07/learning-react-native.org]]
+- [[./07/css-centering-lists.org]]
+- [[./06/rails-dot-mn-presentationon-rails-routing.org]]
+- [[./06/html-and-css-design-and-build-websites.org]]
+- [[./06/how-to-harness-the-machines-being-productive-with-task-runners.org]]
+- [[./06/fix-osx-file-open-dialog-missing-sidebar-items.org]]
+- [[./06/147-colors-grid-css-color-names.org]]
+- [[./05/your-software-is-never-perfect.org]]
+- [[./05/wordcamp-mpls-diving-back-into-wordpress.org]]
+- [[./05/tip-ejecting-a-volume-from-the-command-line-on-osx.org]]
+- [[./05/the-quiet-crisis-unfolding-in-software-development.org]]
+- [[./05/the-manuscripts-of-edsger-w-dijkstra.org]]
+- [[./05/learn-by-learning-to-test-first.org]]
+- [[./05/a-set-of-reactjs-demos.org]]
+- [[./04/using-web-mode-for-javascript-in-emacs.org]]
+- [[./03/new-hash-operators-in-ruby-2-dot-3.org]]
+- [[./02/my-way-of-implementing-service-objects-in-rails.org]]
+- [[./01/using-git-to-deploy-static-sites.org]]
+- [[./01/jekyll-guard-livereload.org]]</content>
       <author>
         <name>Tamara Temple</name>
         <email>tamara@tamouse.org</email>
       </author>
     </entry>
     <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/10/link-ARIA-is-spackle-not-rebar.org</id>
-      <updated>2018-11-04T10:02:04-06:00</updated>
-      <title>LINK: [[https://css-tricks.com/aria-spackle-not-rebar/][ARIA is Spackle, Not Rebar]]</title>
-      <content>* LINK: [[https://css-tricks.com/aria-spackle-not-rebar/][ARIA is Spackle, Not Rebar]]
-
-- Time-stamp: &lt;2018-11-04 10:02:04 tamara&gt;
-- published date: [2018-11-04 Sun]
-- keywords: ARIA, accessibility, a11y, link
-
-There&#39;s an excellent article over at [[https://css-tricks.com/][CSS Tricks]] by Eric Bailey, [[https://css-tricks.com/aria-spackle-not-rebar/][ARIA is Spackle, Not Rebar]], written November 2017, that lays out the reasons when to use ARIA ([[https://www.w3.org/WAI/standards-guidelines/aria/][Accessible Rich Internet Applications Suite]]) directly, and most importantly in my view, when _not_ to use it explicitly (tl;dr: most of the time).
-
-I think this sums up the intent nicely:
-
-&gt; Before considering other options, start with markup that semantically describes the content it is wrapping.
-
-And while that is definitely true, it really does help to understand what ARIA is for and how it works. So while we&#39;re on the subject, I want to point out the excellent [[https://frontendmasters.com][Frontend Masters]] course: [[https://frontendmasters.com/courses/web-accessibility/][Website Accessibility]] by Jon Kuperman.
-</content>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/index.org</id>
+      <updated>2018-11-06T08:58:51-06:00</updated>
+      <title>index</title>
+      <content>- [[./11/serving-static-files-in-storybook.org]]
+- [[./10/react-dismiss-after-timeout.org]]
+- [[./10/link-upcase-by-thoughbot.org]]
+- [[./10/link-ala-tags-to-dom.org]]
+- [[./10/link-ARIA-is-spackle-not-rebar.org]]
+- [[./10/link-30-seconds-of-CSS.org]]
+- [[./09/remember-unit-testing-is-not-integration-testing.org]]
+- [[./09/mocking-graphql-mutations-in-jest-tests.org]]
+- [[./08/til-webstorm-automatic-imports-issues.org]]
+- [[./07/FeM-JS-The-Hard-Parts.org]]
+- [[./06/til-remove-all-docker-containers-and-images.org]]
+- [[./05/til-setting-input-value-in-react-controlled-vs-uncontrolled.org]]
+- [[./05/removing-entries-from-an-object.org]]
+- [[./04/til-dont-use-vendor-subdirectory-on-heroku.org]]
+- [[./03/til-react-error-boundary-workarounds.org]]
+- [[./03/github-tricks-turn-off-white-space-diffs.org]]
+- [[./02/polyfills-for-find-and-findIndex.org]]
+- [[./02/passing-the-time-between-rails-and-react-dot-js.org]]
+- [[./02/how-to-reset-ios-simulator.org]]
+- [[./02/git-merge-dry-run.org]]
+- [[./01/til-some-jest-testing-tricks.org]]</content>
       <author>
         <name>Tamara Temple</name>
         <email>tamara@tamouse.org</email>
       </author>
     </entry>
     <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/10/link-upcase-by-thoughbot.org</id>
-      <updated>2018-11-04T10:01:18-06:00</updated>
-      <title>LINK: [[https://thoughtbot.com/upcase][Upcase, by Thoughbot]]</title>
-      <content>* LINK: [[https://thoughtbot.com/upcase][Upcase, by Thoughbot]]
-
-- Time-stamp: &lt;2018-11-04 10:01:18 tamara&gt;
-- published date: [2018-11-04 Sun]
-- keywords: link, learning, school, tech, level up
-
-[[https://thoughtbot.com/upcase][Thoughbot]], a leading software engineering company, has started a new online school, [[https://thoughtbot.com/upcase][Upcase]], their words:
-
-&gt; We&#39;re not a bootcamp, we&#39;re a finishing school. Become an experienced developer and take &quot;junior&quot; out of your title.
-
-When you&#39;re looking for the &quot;what&#39;s next&quot; after completing your bootcamp experience, or when you&#39;re a mid-level practitioner looking to level up, they look like a good place to try.
-
-Some of their features include:
-
-- Trails - learning paths
-- Videos
-- Flash cards
-- Forums
-</content>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2017/index.org</id>
+      <updated>2018-11-06T08:58:51-06:00</updated>
+      <title>index</title>
+      <content>- [[./12/til-emacs-toggle-debug-on-exit.org]]
+- [[./12/side-by-side-layout-with-css-grid.org]]
+- [[./11/whats-falsy-in-javascript.org]]
+- [[./11/til-capybara-fill-in-wants-the-id-not-the-css-selector-id.org]]
+- [[./11/til-capybara-dot-has-current-path.org]]
+- [[./11/making-capybara-wait-a-little-longer-for-just-one-test.org]]
+- [[./10/til-react-setstate-is-async-and-has-a-callback.org]]
+- [[./10/til-export-unwrapped-graphql-components-to-make-unit-testing-possible.org]]
+- [[./10/talk-learning-react-plus-graphql-plus-apollo-with-rails-graphql-api-all-at-once.org]]
+- [[./10/gerald-wienberg-my-most-challenging-experience-as-a-software-developer.org]]
+- [[./09/using-current-user-viewer-as-root-of-graphql-queries.org]]
+- [[./09/jekyll-making-posts-sticky-redux.org]]
+- [[./09/fix-make-mac-key-repeat-work.org]]
+- [[./09/apollo-graphql-container-with-queries.org]]
+- [[./09/apollo-graphql-container-for-mutations.org]]
+- [[./08/pp-3-use-the-top-down-approach.org]]
+- [[./08/hack-of-the-day-comments-in-package-dot-json.org]]
+- [[./08/graphql-mutating-an-objects-state.org]]
+- [[./08/TIL-enzyme-shallow-render-with-memoryrouter-doesnt-work.org]]
+- [[./07/til-apolloclient-authentication-graphql.org]]
+- [[./07/pp-introduction.org]]
+- [[./07/pp-2-think-first-program-later.org]]
+- [[./07/pp-1-define-the-problem-completely.org]]
+- [[./07/playing-games-with-the-checked-pseudo-selector.org]]
+- [[./07/TIL-GraphQL.org]]
+- [[./06/Stop-Compiling-Rubies.org]]
+- [[./05/scrollstick-a-javascript-module-make-scrolling-headers-sticky.org]]
+- [[./05/sarah-mei-five-factor-testing.org]]
+- [[./05/postgresql-timestamp-accuracy.org]]
+- [[./05/playing-with-grid-and-flexbox.org]]
+- [[./05/notes-on-using-actionmailer-in-rails.org]]
+- [[./05/minimum-needed-for-full-height-with-standard-header-slash-main-slash-footer.org]]
+- [[./05/list-of-awesome-accessibility-links.org]]
+- [[./05/fixing-the-rollunder.org]]
+- [[./05/changing-screencapture-location-on-macos.org]]
+- [[./04/specifying-target-equals-blank-on-an-anchor-in-a-markdown-document.org]]
+- [[./04/resetting-emacs-colours-after-working-with-guard.org]]
+- [[./04/link-decorating-activerecord.org]]
+- [[./02/links-flexbox-tutorials-and-posts.org]]
+- [[./02/how-i-set-up-my-local-wordpress-development-environment-using-vagrant-and-ansible.org]]
+- [[./02/gitlab-database-outage-post-mortem.org]]
+- [[./02/baratunde-thurston-explains-web-encryption.org]]
+- [[./01/til-providing-defaults-for-envvars.org]]
+- [[./01/til-call-done-to-fire-async-mocha-tests.org]]
+- [[./01/my-first-proxy-slash-adapter-for-an-express-dot-js-app.org]]</content>
       <author>
         <name>Tamara Temple</name>
         <email>tamara@tamouse.org</email>
       </author>
     </entry>
     <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/10/link-ala-tags-to-dom.org</id>
-      <updated>2018-11-04T10:00:32-06:00</updated>
-      <title>Link: [[https://alistapart.com/article/tags-to-dom][Tags to DOM]]</title>
-      <content>* Link: [[https://alistapart.com/article/tags-to-dom][Tags to DOM]]
-
-- Time-stamp: &lt;2018-11-04 10:00:32 tamara&gt;
-- published date: [2018-11-04 Sun]
-- keywords: link, deep dive, html tags, DOM construction
-
-Over at the most excellent blog, [[https://alistapart.com/][A List Apart]], there is a series of deep-dive articles. One that caught my eye in particular is [[https://alistapart.com/article/tags-to-dom][Tags to DOM]], an explanation of how a browser goes from the plain HTML markup to building the DOM ([[https://developer.mozilla.org/en-US/docs/Glossary/DOM][Document Object Model]]).
-</content>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2011/index.org</id>
+      <updated>2018-11-06T08:58:50-06:00</updated>
+      <title>index</title>
+      <content>- [[./10/so-passes-a-real-hero-of-the-computing-age.org]]
+- [[./10/another-personal-hero-falls.org]]</content>
       <author>
         <name>Tamara Temple</name>
         <email>tamara@tamouse.org</email>
       </author>
     </entry>
     <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/01/til-some-jest-testing-tricks.org</id>
-      <updated>2018-11-04T08:26:19-06:00</updated>
-      <title>TIL: Some Jest testing tricks</title>
-      <content>* TIL: Some Jest testing tricks
-
-- Time-stamp: &lt;2018-11-04 08:26:19 tamara&gt;
-- published date: 2018-01-19 22:12
-- keywords: jest, testing, react, instance, beforeEach, beforeAll, setup &amp; teardown
-
-Deeper learning after much pondering and RTFM for Jest
-
-** TIL: using beforeAll and beforeEach in jest tests
-
-This has been bugging me for awhile. I have wanted to set up things in =beforeAll= and =beforeEach= functions, like I do in RSpec, but couldn&#39;t quite figure out how to get them in the =it= calls.
-
-Turns out to be stupid simple. All you need to do is set the items on the =global= context, like so:
-
-#+BEGIN_SRC javascript
-  beforeAll(()=&gt;{
-    global.TagsInstance = new Tags({
-      item: item,
-      item_type: &quot;Job&quot;,
-      data: data,
-      mutate: noop
-    })
-  })
-#+END_SRC
-
-After the suite finishes, clear out the item:
-
-#+BEGIN_SRC javascript
-  afterAll(()=&gt;{
-    global.TagsInstance = undefined
-  })
-#+END_SRC
-
-I suppose that pollutes the global space, so one might want to do it in a namespace, and then clear that every time, too:
-
-#+BEGIN_SRC javascript
-  beforeEach(()=&gt;{
-    global.beforeEach.actual = mount(
-      &lt;Tag item={item}/&gt;
-    )
-  })
-
-  afterEach(()=&gt;{
-    global.beforeEach = undefined
-  })
-#+END_SRC
-
-** TIL: you can call instance variables and functions on an Enzyme wrapper
-
-Okay, this is very cool. I didn&#39;t know this would work BUT IT DOES!
-
-This involves a few different things:
-
-- calling a method on a mounted instance of a component
-- putting an expect on a callback
-- interogating a mounted component&#39;s state
-
-#+BEGIN_SRC javascript
-  it(&quot;can i call stuff directly?&quot;, ()=&gt;{
-    const actual = mount(&lt;MyComponent /&gt;)
-    actual.instance().setState({ boo: &quot;boo&quot;}, () =&gt; {
-      expect(actual.instance().state.boo).toEqual(&quot;boo&quot;)
-    })
-  })
-#+END_SRC
-</content>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2012/index.org</id>
+      <updated>2018-11-06T08:58:50-06:00</updated>
+      <title>index</title>
+      <content>- [[./12/code-as-literature-software-dev-as-communication.org]]</content>
       <author>
         <name>Tamara Temple</name>
         <email>tamara@tamouse.org</email>
       </author>
     </entry>
     <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/02/polyfills-for-find-and-findIndex.org</id>
-      <updated>2018-11-04T08:25:37-06:00</updated>
-      <title>Polyfills for find() and findIndex() in JavaScript</title>
-      <content>* Polyfills for find() and findIndex() in JavaScript
-
-- Time-stamp: &lt;2018-11-04 08:25:37 tamara&gt;
-- published date: 2018-02-10
-- keywords: javascript, polyfills, find, findIndex, missing IE9, reduce, functional programming
-
-The [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/Array][MDN Array documentation]] =find()= and =findIndez()= methods are available on all browsers now *except* IE9. Interestingly, the =map()=, =filter()=, and =reduce()= methods /are/ in IE9.
-
-** the starting point
-
-The impetus for this little post is recently seeing a passage of code like this:
-
-#+BEGIN_SRC javascript
-    let stateIndex = state.index
-    const routes = state.routes
-    const activateTab = routes.filter((tab, index) =&gt; {
-      if (tab.routeName == action.routeName) {
-        stateIndex = index
-      }
-    })
-    return { ...state, index: stateIndex }
-#+END_SRC
-
-The code, as written, will return the index for the /last/ match. Since I&#39;m refactoring, I&#39;m not going to change that behavior.
-
-There are a few things wrong with this, IMHO:
-
-1. the =activeTab= variable is never used
-2. the =filter()= method is being used to perform a side effect
-3. setting several intermediate variables
-
-** using find
-
-If =find()= or =findIndex()= were available everywhere, I could write this as:
-
-#+BEGIN_SRC javascript
-    const routes = state.routes
-    let stateIndex = routes.findIndex(tab =&gt; tab.routeName === action.routeName)
-    stateInddex = stateIndex === -1 ? state.index : stateIndex
-    return { ...state, index: stateIndex }
-#+END_SRC
-
-Except that finds the /first/ match, not the last, so I couldn&#39;t really use them anyway.
-
-** using forEach
-
-But since IE9 doesn&#39;t have =find()= or =findIndex()=, I&#39;m going write it with =forEach()=, which is /intended/ for looping /with/ side effects:
-
-#+BEGIN_SRC javascript
-    let stateIndex = state.index
-    state.routes.forEach((tab, index) =&gt; {
-      if (tab.routeName == action.routeName) {
-        stateIndex = index
-      }
-    })
-    return { ...state, index: stateIndex }
-#+END_SRC
-
-I also got rid of the =routes= intermediate variable.
-
-This is okay and I could leave it there, except it&#39;s still using intermediate variables.
-
-** enter the functional programming
-
-Writing it with =reduce()= to get rid of the intermediate variables:
-
-#+BEGIN_SRC javascript
-    return {
-      ...state,
-      index: state.routes.reduce(
-        (acc, cur, idx) =&gt; {
-          return cur.routeName === action.routeName ?
-            idx :
-            acc
-        },
-        state.index
-      )
-    }
-#+END_SRC
-
-** discussion
-
-Let&#39;s walk through what&#39;s going on with the =reduce()= call.
-
-[[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce#Syntax][Array&#39;s =reduce()= function]] takes two arguments:
-
-- =callback= - a function that is passed 4 arguments:
-
-  - =accumulator= - collects the value returned from each iteration
-  - =currentValue= - holds the current value of the array for this iteration
-  - =index= - the index of the current value of the array (indexed by 0)
-  - =array= - the original array being reduced
-
-- =initialValue= - the initial value given to the =accumulator=. If omitted or &quot;undefined&quot; the first element of the array is used.
-
-The callback function in our code is returning the result from the ternary expression:
-
-#+BEGIN_SRC javascript
-    cur.routeName === action.routeName ? idx : acc
-#+END_SRC
-
-The first part of the ternary evaluates whether the route names from the current route (=cur=) and the one passed in with =action= are the same.
-
-If so, the function returns the current index in the array. Otherwise, it returns the current accumulator.
-
-When the reduce begines, the accumulator is set to the =initialValue=, which in this case is the index from the current state, which is handled outside this bit of code.
-
-As the reducer rolls through the array, if the ternary comes true, the accumulator will get the value of the index at that point.
-
-If the reducer goes all through the array and the ternary never comes true, the final accumulator value will still be the same as when set initially.
-
-** so what?
-
-When I was first learning programming, and even now that I&#39;m more experienced, but don&#39;t necessarily know exactly what I need to do to implement a passage of code, using /intermediate variables/ can be very helpful in understanding and debugging my code.
-
-There are some passages of code that are more idiomatic and repetitious, and these are things I practice on and reduce the amount of code.
-
-Arrays in particular are high-value targets for practicing on reducing the number of intermediate variables and beginning to use functional programming techniques.
-
-There was nothing wrong with the original code: it did what it&#39;s supposed to do, it&#39;s not that difficult to see what&#39;s going on. However, because it uses a method not intended for performing side effects, it can open up the possibility for injecting an error during maintenance or enhancemnt.
-
-Having the unused variable creates confusion for later maintainers as well, since we&#39;re left with a question about whether it should be there, and some intended functionality went missing.
-
-The reducer may look complicated at first, but that&#39;s primarily due to unfamiliarity. Starting to learn bits of functional programming can improve the understandability of code for yourself.
-</content>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2013/index.org</id>
+      <updated>2018-11-06T08:58:50-06:00</updated>
+      <title>index</title>
+      <content>- [[./12/ux-what-does-flat-design-really-mean-link.org]]
+- [[./12/this-is-why-i-dont-like-sites-like-codeacademy.org]]
+- [[./12/possible-bug-ie8-wont-show-table-atargets-is-null-or-not-an-object-datatables-forums.org]]
+- [[./12/how-to-add-travis-ci-capability-to-a-github-repo.org]]
+- [[./12/cool-things-web-sequence-diagramer.org]]
+- [[./11/mvc-is-dead-its-time-to-move-on.org]]
+- [[./11/hashrocket-blog-sql-window-functions-and-you.org]]
+- [[./11/good-collection-of-backbone-dot-js-topics.org]]
+- [[./11/fascinating-article-pushing-the-boundaries-on-css-design.org]]
+- [[./11/devops-for-developers-video-series.org]]
+- [[./11/creating-non-rectangular-layouts-with-css-shapes.org]]
+- [[./11/a-guide-to-ruby-collections-archives-sitepoint.org]]
+- [[./10/ruby-cant-get-page-data-from-jekyll-plugin-stack-overflow.org]]
+- [[./10/pdf-rendering-with-phantomjs-big-elephants.org]]
+- [[./10/multi-file-uploads-and-multiple-selects.org]]
+- [[./10/generate-a-full-rails-app-with-a-composer.org]]
+- [[./10/free-free-100-s-of-free-programming-books.org]]
+- [[./10/devops-toolbox-introduction.org]]
+- [[./10/delete-a-remote-git-branch.org]]
+- [[./10/bootstrap-follies-solving-a-repsonsive-positioning-problem.org]]
+- [[./10/apache-slash-php-5-dot-x-remote-code-execution-exploit.org]]
+- [[./10/adding-a-file-display-list-to-a-multi-file-upload-html-control.org]]
+- [[./10/6-ways-to-remove-pain-from-feature-testing-in-ruby-on-rails.org]]
+- [[./09/why-you-should-stop-pirating-googles-geo-apis-pete-wardens-blog.org]]
+- [[./09/the-predicate-module-pattern.org]]
+- [[./09/the-laws-of-software-design.org]]
+- [[./09/running-headless-selenium-with-chrome.org]]
+- [[./09/rspec-custom-formatters-displaying-test-durations.org]]
+- [[./09/red-burns-list.org]]
+- [[./09/must-have-gems-for-development-machine-in-ruby-on-rails-codebeerstartups.org]]
+- [[./09/mass-inserting-data-in-rails-without-killing-your-performance-coffeepowered.org]]
+- [[./09/json-how-to-send-raw-post-data-in-a-rails-functional-test-stack-overflow.org]]
+- [[./09/jekyll-making-posts-sticky.org]]
+- [[./09/index-scorched.org]]
+- [[./09/implementing-multi-table-full-text-search-with-postgres-in-rails-hashdog-blog.org]]
+- [[./09/essential-tools-for-starting-a-rails-app-in-2013--pete-keen.org]]
+- [[./09/cool-thing-today-showterm-dot-io.org]]
+- [[./09/adding-real-time-to-rails-with-socket-dot-io-node-dot-js-and-backbone-dot-js-with-demo-liam-kaufman.org]]
+- [[./09/adding-real-time-to-a-restful-rails-app-liam-kaufman.org]]
+- [[./09/activerecord-enhanced-query-objects.org]]
+- [[./08/shout-out-for-codeship-dot-io-adding-transcripts-to-video-blogs.org]]
+- [[./08/programmers-creativity.org]]
+- [[./08/nginx-takes-the-slippery-road-away-from-open-source.org]]
+- [[./08/jekyllizing-my-cookbook.org]]
+- [[./08/how-to-reset-your-time-capsule-to-factory-settings-without-losing-your-data.org]]
+- [[./08/getting-keywords-from-a-web-page-via-nokogiri.org]]
+- [[./08/deploying-rails-app-using-nginx.org]]
+- [[./08/deploying-a-rails-app-using-nginx-unicorn-postgres-and-capistrano-to-digital-ocean.org]]
+- [[./08/css-tricks-drop-caps.org]]
+- [[./08/bootstrap-follies-vertically-and-horizontally-centered-form.org]]
+- [[./08/a-simple-content-management-system-in-sinatra-part-1.org]]
+- [[./07/caption-hover-effects-in-css3.org]]
+- [[./05/roles-and-activities-in-software-development.org]]
+- [[./05/possible-topics-for-swaac.org]]
+- [[./02/unit-testing-backbone-dot-js-applications.org]]</content>
       <author>
         <name>Tamara Temple</name>
         <email>tamara@tamouse.org</email>
       </author>
     </entry>
     <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/02/passing-the-time-between-rails-and-react-dot-js.org</id>
-      <updated>2018-11-04T08:23:27-06:00</updated>
-      <title>Passing the Time between Rails and React.js</title>
-      <content>* Passing the Time between Rails and React.js
-
-- Time-stamp: &lt;2018-11-04 08:23:27 tamara&gt;
-- published date: 2018-02-15T18:39
-- keyworeds: time formats, raBils, react, data interchange
-
-One of the problems I&#39;ve encountered with a recent project is maintaining the integrity of Time and Date information going back and forth between a Rails server and a React client.
-
-While the issue isn&#39;t necessarily specific to React, it affects any sort of JavaScript client using [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date][JavaScript&#39;s Date]] object.
-
-The source of my frustration with this particular project is that the dates in the client are passed around in various different formats, and there is a lot of reformatting of the dates happening.
-
-One of my sort of tenants of programming is to never format a date or time (or datetime, if you will) until it&#39;s necessary to display it to the user. (This applies in general, but a lot for times.)
-
-On the Rails side, as on most Unix-based systems, times are objects with an underlying float value with the integer part being the number of seconds since the Unix Epoc, 1970-01-01 at midnight UTC. (Often times one can see dates such as Dec 31, 1969 show up because of timezone conversions to North America. No, in fact, zero time is /not/ on Wednesday everywhere.)
-
-Rails has the ability to translate time in and out of storage quite well, but it&#39;s sometimes tricky.
-
-JavaScript has the ability create and parse dates and times, but it&#39;s lousy at formatting nice date, which brings in the =moment= library which is quite popular.
-
-What I&#39;m talking about here, though, is the passing of time information back and forth between a Rails server and the JavaScript client.
-
-Most of the time, when you serialize a Rails record, the time information is converted to a string, with the default format that looks like: =&quot;Wed, 28 Feb 2018 17:59:28 UTC +00:00&quot;= (the output of =.to_s=). In nearly every case, that&#39;s not a very useful value to be passing to other programs, which is why I&#39;m converting it to JSON, presumably.
-
-So, the better conversion, to avoid all confusion about timezones, time formats, etc., is to convert it to milliseconds, both going out and coming back, and convert accordingly, e.g.:
-
-#+BEGIN_SRC ruby
-    (object.created_at.to_f * 1000).to_i
-#+END_SRC
-
-In GraphQL-land, this would be the =lambda= on the =resolve= entry for a =field=:
-
-#+BEGIN_SRC ruby
-    field :created_at_ms, &quot;Time of creation in milliseconds&quot; do
-      resolve -&gt;(object, _args, _context) { (object.created_at.to_f * 1000).to_i }
-    end
-#+END_SRC
-
-Or create a resolver class:
-
-#+BEGIN_SRC ruby
-    class TimeFieldMilliseconds
-
-      def initialize(field)
-        @field = field
-      end
-
-      def call(object, _args, _context)
-        (object.public_send(field) * 1000).to_i
-      end
-
-    end
-#+END_SRC
-
-And declare the field as:
-
-#+BEGIN_SRC ruby
-    field :created_at_ms, &quot;Time of creation in milliseconds&quot; { resolve TimeFieldMillisecond.new(:created_at) }
-#+END_SRC
-
-On the client side, convert the milliseconds to a Date object as:
-
-#+BEGIN_SRC javascript
-    let createdAt = new Date(object.created_at_ms)
-#+END_SRC
-
-or when using moment:
-
-#+BEGIN_SRC javascript
-    let createdAt = moment(object.created_at_ms)
-#+END_SRC
-</content>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2014/index.org</id>
+      <updated>2018-11-06T08:58:50-06:00</updated>
+      <title>index</title>
+      <content>- [[./12/repost-rspec-3-and-deprecated-and-return-blocks.org]]
+- [[./11/how-to-converting-instance-variables-to-yaml-in-ruby.org]]
+- [[./11/documenting-regular-expressions.org]]
+- [[./11/dealing-with-mixed-encodings-in-a-file.org]]
+- [[./10/link-when-women-stopped-coding.org]]
+- [[./10/link-the-best-coding-language-for-you-to-learn.org]]
+- [[./10/howto-quick-steps-to-install-emacs-24-without-x-on-ubuntu.org]]
+- [[./09/converting-blog-to-pure-jekyll.org]]
+- [[./07/chris-pines-learn-to-program-on-unshelved-comic.org]]
+- [[./07/career-advice.org]]
+- [[./07/a-place-to-get-started-in-web-design.org]]
+- [[./07/a-new-jekyllpress-gem.org]]
+- [[./05/learning-resources-for-software-development-and-pr.org]]
+- [[./04/turning-off-ipv6-in-os-slash-x-maverics-10-dot-9.org]]
+- [[./03/playing-around-with-thor-generators.org]]
+- [[./02/dieter-rams-10-principles-for-good-design-readymag.org]]
+- [[./01/this-is-why-gandi-dot-net-is-my-registrar-of-choice.org]]
+- [[./01/my-nerd-story-what-you-say-to-young-girls-matters--linux-dot-com.org]]
+- [[./01/from-static-to-dynamic-typing-a-change-in-beliefs.org]]</content>
       <author>
         <name>Tamara Temple</name>
         <email>tamara@tamouse.org</email>
       </author>
     </entry>
     <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/02/how-to-reset-ios-simulator.org</id>
-      <updated>2018-11-04T08:23:11-06:00</updated>
-      <title>How to reset iOS simulator</title>
-      <content>* How to reset iOS simulator
-
-- Time-stamp: &lt;2018-11-04 08:23:11 tamara&gt;
-- published date: 2018-02-15T16:07
-- keywords: ios, simulator, development, reset
-
-I ran into an issue recently where I was trying to debug a problem in a project, but had a problem accessing the right data server since I was logged into a local development server, and really needed to get back to the &quot;new app&quot; state.
-
-I searched for &quot;reset xcode simulator&quot; via DDG and first hit came up with &lt;https://stackoverflow.com/questions/16195859/reset-ios-simulator-application-data-to-run-app-for-first-time#16195931&gt; which gave me an answer.
-
-The command line versions work, but it can be a pain to get the UDID for the simulator. Doing it from the running simulator was easier, but of course the menu options are different than discussed in the stackoverflow answer.
-
-I found it on the Simulator (Version 10.0 (SimulatorApp-835.2.1) seen in the following screen shot:
-
-#+CAPTION: Reset IOS Simulator Screenshot
-[[../images/reset-ios-simulator.png]]
-</content>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2015/index.org</id>
+      <updated>2018-11-06T08:58:50-06:00</updated>
+      <title>index</title>
+      <content>- [[./12/tweet-by-at-c089-hidden-costs-of-poor-programming.org]]
+- [[./12/self-referential-models-categories.org]]
+- [[./12/link-4-reasons-why-you-shouldnt-learn-to-code-from-codecademy.org]]
+- [[./11/link-getting-testy.org]]
+- [[./10/registrar-domain-name-service-web-hosting-service.org]]
+- [[./10/link-learn-enough-command-line-to-be-dangerous-by-michael-hartl.org]]
+- [[./10/klabnik-waxes-tweet-on-continuous-delivery.org]]
+- [[./09/thirty-css-selectors-you-must-memorize.org]]
+- [[./09/link-the-worst-mistake-in-computer-science.org]]
+- [[./08/rails-immutable-records-and-attributes.org]]
+- [[./08/ledgards-programming-proverbs.org]]
+- [[./07/where-do-i-go-next-code-kata.org]]
+- [[./07/what-are-the-fundamentals-of-software-engineering.org]]
+- [[./07/todays-reading.org]]
+- [[./07/link-list-of-little-known-ruby-tricks.org]]
+- [[./07/link-jquery-ui-autocomplete-with-ruby-on-rails.org]]
+- [[./07/link-handling-csv-views-in-rails.org]]
+- [[./06/why-write-good-commit-messages-futurelearn-blog.org]]
+- [[./06/user-editing-for-jekyll-sites.org]]
+- [[./06/todays-readings-and-stuff.org]]
+- [[./06/todays-reading.org]]
+- [[./06/keep-your-data-in-your-database-pat-shaughnessy.org]]
+- [[./06/just-say-no-to-more-end-to-end-tests-google-dev-blog.org]]
+- [[./06/interesting-uses-of-docker.org]]
+- [[./06/how-to-translate-nested-polymorphic-attributes-in-activemodel-errors-messages.org]]
+- [[./06/how-to-preload-rails-scopes-justin-weiss.org]]
+- [[./06/first-thing-i-learned-about-working-with-elixir.org]]
+- [[./05/using-emacss-org-mode-and-editing-yaml-frontmatter-in-jekyll-posts.org]]
+- [[./05/todays-reading.org]]
+- [[./05/tiny-best-practices.org]]
+- [[./05/til-beamer-installation-and-missing-fonts.org]]
+- [[./05/tbp-bistate-booleans-in-rails.org]]
+- [[./05/snippet-getting-the-end-of-the-month-in-ruby.org]]
+- [[./05/new-site-jekyll-tips.org]]
+- [[./05/multiple-vagrant-rails-development-box-setup-times.org]]
+- [[./05/love-letter.org]]
+- [[./04/you-dont-know-javascript-class.org]]
+- [[./04/til-kernel-number-gets-is-different-from-io-number-gets.org]]
+- [[./04/the-x-y-problem.org]]
+- [[./04/installing-phantomjs-on-ubuntu-linux.org]]
+- [[./03/rails-question-getting-x-where-there-are-no-y.org]]
+- [[./03/link-sharing-rails-views-with-jekyll.org]]
+- [[./03/link-how-to-use-the-html5-sectioning-elements.org]]
+- [[./03/a-new-release-of-jekyllpress.org]]
+- [[./02/tenderlove-weird-stuff-with-hashes.org]]
+- [[./02/reactjs-course-with-frontend-masters.org]]
+- [[./02/first-vs-take.org]]
+- [[./01/validation-contexts.org]]
+- [[./01/using-packer-and-vagrant-to-build-virtual-machines.org]]
+- [[./01/rails-4-dot-2-config-for.org]]
+- [[./01/link-stop-writing-rails-controllers.org]]
+- [[./01/emacs-org-mode.org]]</content>
       <author>
         <name>Tamara Temple</name>
         <email>tamara@tamouse.org</email>
       </author>
     </entry>
     <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/02/git-merge-dry-run.org</id>
-      <updated>2018-11-04T08:22:45-06:00</updated>
-      <title>Git Merge &quot;dry run&quot;</title>
-      <content>* Git Merge &quot;dry run&quot;
-
-- Time-stamp: &lt;2018-11-04 08:22:45 tamara&gt;
-- published date: 2018-02-28 10:30
-- keywords: git, merge, dry run, tools
-
-There&#39;s no specific thing called a &quot;dry run merge&quot; with git, but it&#39;s simple enough to simulate.
-
-In the sample below, =BRANCH= is being merged *into* =TARGET=.
-
-#+BEGIN_SRC sh
-    git checkout $TARGET
-    git merge --no-commit --no-ff $BRANCH
-    git diff --cached
-    git merge --abort
-#+END_SRC
-
-You can look for any potential merge conflicts after the first command as well and see what you might be up against.
-
-Note you need /both/ the =--no-commit= /AND/ =--no-ff= flags to prevent the merge from occurring if it&#39;s possible for a fast-forward merge to occur (likely).
-</content>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/index.org</id>
+      <updated>2018-11-06T08:58:50-06:00</updated>
+      <title>index</title>
+      <content>- [[./2018/11/serving-static-files-in-storybook.org]]
+- [[./2018/10/react-dismiss-after-timeout.org]]
+- [[./2018/10/link-upcase-by-thoughbot.org]]
+- [[./2018/10/link-ala-tags-to-dom.org]]
+- [[./2018/10/link-ARIA-is-spackle-not-rebar.org]]
+- [[./2018/10/link-30-seconds-of-CSS.org]]
+- [[./2018/09/remember-unit-testing-is-not-integration-testing.org]]
+- [[./2018/09/mocking-graphql-mutations-in-jest-tests.org]]
+- [[./2018/08/til-webstorm-automatic-imports-issues.org]]
+- [[./2018/07/FeM-JS-The-Hard-Parts.org]]
+- [[./2018/06/til-remove-all-docker-containers-and-images.org]]
+- [[./2018/05/til-setting-input-value-in-react-controlled-vs-uncontrolled.org]]
+- [[./2018/05/removing-entries-from-an-object.org]]
+- [[./2018/04/til-dont-use-vendor-subdirectory-on-heroku.org]]
+- [[./2018/03/til-react-error-boundary-workarounds.org]]
+- [[./2018/03/github-tricks-turn-off-white-space-diffs.org]]
+- [[./2018/02/polyfills-for-find-and-findIndex.org]]
+- [[./2018/02/passing-the-time-between-rails-and-react-dot-js.org]]
+- [[./2018/02/how-to-reset-ios-simulator.org]]
+- [[./2018/02/git-merge-dry-run.org]]
+- [[./2018/01/til-some-jest-testing-tricks.org]]
+- [[./2017/12/til-emacs-toggle-debug-on-exit.org]]
+- [[./2017/12/side-by-side-layout-with-css-grid.org]]
+- [[./2017/11/whats-falsy-in-javascript.org]]
+- [[./2017/11/til-capybara-fill-in-wants-the-id-not-the-css-selector-id.org]]
+- [[./2017/11/til-capybara-dot-has-current-path.org]]
+- [[./2017/11/making-capybara-wait-a-little-longer-for-just-one-test.org]]
+- [[./2017/10/til-react-setstate-is-async-and-has-a-callback.org]]
+- [[./2017/10/til-export-unwrapped-graphql-components-to-make-unit-testing-possible.org]]
+- [[./2017/10/talk-learning-react-plus-graphql-plus-apollo-with-rails-graphql-api-all-at-once.org]]
+- [[./2017/10/gerald-wienberg-my-most-challenging-experience-as-a-software-developer.org]]
+- [[./2017/09/using-current-user-viewer-as-root-of-graphql-queries.org]]
+- [[./2017/09/jekyll-making-posts-sticky-redux.org]]
+- [[./2017/09/fix-make-mac-key-repeat-work.org]]
+- [[./2017/09/apollo-graphql-container-with-queries.org]]
+- [[./2017/09/apollo-graphql-container-for-mutations.org]]
+- [[./2017/08/pp-3-use-the-top-down-approach.org]]
+- [[./2017/08/hack-of-the-day-comments-in-package-dot-json.org]]
+- [[./2017/08/graphql-mutating-an-objects-state.org]]
+- [[./2017/08/TIL-enzyme-shallow-render-with-memoryrouter-doesnt-work.org]]
+- [[./2017/07/til-apolloclient-authentication-graphql.org]]
+- [[./2017/07/pp-introduction.org]]
+- [[./2017/07/pp-2-think-first-program-later.org]]
+- [[./2017/07/pp-1-define-the-problem-completely.org]]
+- [[./2017/07/playing-games-with-the-checked-pseudo-selector.org]]
+- [[./2017/07/TIL-GraphQL.org]]
+- [[./2017/06/Stop-Compiling-Rubies.org]]
+- [[./2017/05/scrollstick-a-javascript-module-make-scrolling-headers-sticky.org]]
+- [[./2017/05/sarah-mei-five-factor-testing.org]]
+- [[./2017/05/postgresql-timestamp-accuracy.org]]
+- [[./2017/05/playing-with-grid-and-flexbox.org]]
+- [[./2017/05/notes-on-using-actionmailer-in-rails.org]]
+- [[./2017/05/minimum-needed-for-full-height-with-standard-header-slash-main-slash-footer.org]]
+- [[./2017/05/list-of-awesome-accessibility-links.org]]
+- [[./2017/05/fixing-the-rollunder.org]]
+- [[./2017/05/changing-screencapture-location-on-macos.org]]
+- [[./2017/04/specifying-target-equals-blank-on-an-anchor-in-a-markdown-document.org]]
+- [[./2017/04/resetting-emacs-colours-after-working-with-guard.org]]
+- [[./2017/04/link-decorating-activerecord.org]]
+- [[./2017/02/links-flexbox-tutorials-and-posts.org]]
+- [[./2017/02/how-i-set-up-my-local-wordpress-development-environment-using-vagrant-and-ansible.org]]
+- [[./2017/02/gitlab-database-outage-post-mortem.org]]
+- [[./2017/02/baratunde-thurston-explains-web-encryption.org]]
+- [[./2017/01/til-providing-defaults-for-envvars.org]]
+- [[./2017/01/til-call-done-to-fire-async-mocha-tests.org]]
+- [[./2017/01/my-first-proxy-slash-adapter-for-an-express-dot-js-app.org]]
+- [[./2016/12/todo-app-using-just-react-with-pojs-no-jsx-or-es6.org]]
+- [[./2016/12/js-app-config-pattern.org]]
+- [[./2016/12/flexbox-website-with-fixed-headers-and-footer.org]]
+- [[./2016/12/changing-the-return-to-shop-link-and-text-in-an-empty-woocommerce-cart.org]]
+- [[./2016/11/tool-font-style-matcher.org]]
+- [[./2016/11/til-target-equals-blank-with-no-rel-equals-noopener.org]]
+- [[./2016/11/links-from-gdi-intro-to-wordpress-class.org]]
+- [[./2016/11/installing-wordpress-things-without-ftp.org]]
+- [[./2016/11/installing-emacs-on-mac-with-homebrew.org]]
+- [[./2016/11/frontendmasters-course-devops-for-frontend-devs.org]]
+- [[./2016/11/ask-me-anything.org]]
+- [[./2016/10/testing-blur-events-in-cucumber-slash-capybara.org]]
+- [[./2016/10/signing-a-pdf-with-preview.org]]
+- [[./2016/10/how-to-set-up-your-own-private-remote-git-repository.org]]
+- [[./2016/09/when-your-tools-environment-computer-and-everything-you-know-fails-you.org]]
+- [[./2016/09/my-nginx-virtual-hosting-configuration.org]]
+- [[./2016/09/madebymike-svg-has-more-potential.org]]
+- [[./2016/09/building-resizeable-components-with-relative-css.org]]
+- [[./2016/08/the-average-web-page-data-from-analyzing-8-million-websites.org]]
+- [[./2016/08/beginner-learning-section-in-pages.org]]
+- [[./2016/07/the-traits-of-a-proficient-programmer-gregory-brown.org]]
+- [[./2016/07/rails-action-mailer-asset-host.org]]
+- [[./2016/07/learning-react-native.org]]
+- [[./2016/07/css-centering-lists.org]]
+- [[./2016/06/rails-dot-mn-presentationon-rails-routing.org]]
+- [[./2016/06/html-and-css-design-and-build-websites.org]]
+- [[./2016/06/how-to-harness-the-machines-being-productive-with-task-runners.org]]
+- [[./2016/06/fix-osx-file-open-dialog-missing-sidebar-items.org]]
+- [[./2016/06/147-colors-grid-css-color-names.org]]
+- [[./2016/05/your-software-is-never-perfect.org]]
+- [[./2016/05/wordcamp-mpls-diving-back-into-wordpress.org]]
+- [[./2016/05/tip-ejecting-a-volume-from-the-command-line-on-osx.org]]
+- [[./2016/05/the-quiet-crisis-unfolding-in-software-development.org]]
+- [[./2016/05/the-manuscripts-of-edsger-w-dijkstra.org]]
+- [[./2016/05/learn-by-learning-to-test-first.org]]
+- [[./2016/05/a-set-of-reactjs-demos.org]]
+- [[./2016/04/using-web-mode-for-javascript-in-emacs.org]]
+- [[./2016/03/new-hash-operators-in-ruby-2-dot-3.org]]
+- [[./2016/02/my-way-of-implementing-service-objects-in-rails.org]]
+- [[./2016/01/using-git-to-deploy-static-sites.org]]
+- [[./2016/01/jekyll-guard-livereload.org]]
+- [[./2015/12/tweet-by-at-c089-hidden-costs-of-poor-programming.org]]
+- [[./2015/12/self-referential-models-categories.org]]
+- [[./2015/12/link-4-reasons-why-you-shouldnt-learn-to-code-from-codecademy.org]]
+- [[./2015/11/link-getting-testy.org]]
+- [[./2015/10/registrar-domain-name-service-web-hosting-service.org]]
+- [[./2015/10/link-learn-enough-command-line-to-be-dangerous-by-michael-hartl.org]]
+- [[./2015/10/klabnik-waxes-tweet-on-continuous-delivery.org]]
+- [[./2015/09/thirty-css-selectors-you-must-memorize.org]]
+- [[./2015/09/link-the-worst-mistake-in-computer-science.org]]
+- [[./2015/08/rails-immutable-records-and-attributes.org]]
+- [[./2015/08/ledgards-programming-proverbs.org]]
+- [[./2015/07/where-do-i-go-next-code-kata.org]]
+- [[./2015/07/what-are-the-fundamentals-of-software-engineering.org]]
+- [[./2015/07/todays-reading.org]]
+- [[./2015/07/link-list-of-little-known-ruby-tricks.org]]
+- [[./2015/07/link-jquery-ui-autocomplete-with-ruby-on-rails.org]]
+- [[./2015/07/link-handling-csv-views-in-rails.org]]
+- [[./2015/06/why-write-good-commit-messages-futurelearn-blog.org]]
+- [[./2015/06/user-editing-for-jekyll-sites.org]]
+- [[./2015/06/todays-readings-and-stuff.org]]
+- [[./2015/06/todays-reading.org]]
+- [[./2015/06/keep-your-data-in-your-database-pat-shaughnessy.org]]
+- [[./2015/06/just-say-no-to-more-end-to-end-tests-google-dev-blog.org]]
+- [[./2015/06/interesting-uses-of-docker.org]]
+- [[./2015/06/how-to-translate-nested-polymorphic-attributes-in-activemodel-errors-messages.org]]
+- [[./2015/06/how-to-preload-rails-scopes-justin-weiss.org]]
+- [[./2015/06/first-thing-i-learned-about-working-with-elixir.org]]
+- [[./2015/05/using-emacss-org-mode-and-editing-yaml-frontmatter-in-jekyll-posts.org]]
+- [[./2015/05/todays-reading.org]]
+- [[./2015/05/tiny-best-practices.org]]
+- [[./2015/05/til-beamer-installation-and-missing-fonts.org]]
+- [[./2015/05/tbp-bistate-booleans-in-rails.org]]
+- [[./2015/05/snippet-getting-the-end-of-the-month-in-ruby.org]]
+- [[./2015/05/new-site-jekyll-tips.org]]
+- [[./2015/05/multiple-vagrant-rails-development-box-setup-times.org]]
+- [[./2015/05/love-letter.org]]
+- [[./2015/04/you-dont-know-javascript-class.org]]
+- [[./2015/04/til-kernel-number-gets-is-different-from-io-number-gets.org]]
+- [[./2015/04/the-x-y-problem.org]]
+- [[./2015/04/installing-phantomjs-on-ubuntu-linux.org]]
+- [[./2015/03/rails-question-getting-x-where-there-are-no-y.org]]
+- [[./2015/03/link-sharing-rails-views-with-jekyll.org]]
+- [[./2015/03/link-how-to-use-the-html5-sectioning-elements.org]]
+- [[./2015/03/a-new-release-of-jekyllpress.org]]
+- [[./2015/02/tenderlove-weird-stuff-with-hashes.org]]
+- [[./2015/02/reactjs-course-with-frontend-masters.org]]
+- [[./2015/02/first-vs-take.org]]
+- [[./2015/01/validation-contexts.org]]
+- [[./2015/01/using-packer-and-vagrant-to-build-virtual-machines.org]]
+- [[./2015/01/rails-4-dot-2-config-for.org]]
+- [[./2015/01/link-stop-writing-rails-controllers.org]]
+- [[./2015/01/emacs-org-mode.org]]
+- [[./2014/12/repost-rspec-3-and-deprecated-and-return-blocks.org]]
+- [[./2014/11/how-to-converting-instance-variables-to-yaml-in-ruby.org]]
+- [[./2014/11/documenting-regular-expressions.org]]
+- [[./2014/11/dealing-with-mixed-encodings-in-a-file.org]]
+- [[./2014/10/link-when-women-stopped-coding.org]]
+- [[./2014/10/link-the-best-coding-language-for-you-to-learn.org]]
+- [[./2014/10/howto-quick-steps-to-install-emacs-24-without-x-on-ubuntu.org]]
+- [[./2014/09/converting-blog-to-pure-jekyll.org]]
+- [[./2014/07/chris-pines-learn-to-program-on-unshelved-comic.org]]
+- [[./2014/07/career-advice.org]]
+- [[./2014/07/a-place-to-get-started-in-web-design.org]]
+- [[./2014/07/a-new-jekyllpress-gem.org]]
+- [[./2014/05/learning-resources-for-software-development-and-pr.org]]
+- [[./2014/04/turning-off-ipv6-in-os-slash-x-maverics-10-dot-9.org]]
+- [[./2014/03/playing-around-with-thor-generators.org]]
+- [[./2014/02/dieter-rams-10-principles-for-good-design-readymag.org]]
+- [[./2014/01/this-is-why-gandi-dot-net-is-my-registrar-of-choice.org]]
+- [[./2014/01/my-nerd-story-what-you-say-to-young-girls-matters--linux-dot-com.org]]
+- [[./2014/01/from-static-to-dynamic-typing-a-change-in-beliefs.org]]
+- [[./2013/12/ux-what-does-flat-design-really-mean-link.org]]
+- [[./2013/12/this-is-why-i-dont-like-sites-like-codeacademy.org]]
+- [[./2013/12/possible-bug-ie8-wont-show-table-atargets-is-null-or-not-an-object-datatables-forums.org]]
+- [[./2013/12/how-to-add-travis-ci-capability-to-a-github-repo.org]]
+- [[./2013/12/cool-things-web-sequence-diagramer.org]]
+- [[./2013/11/mvc-is-dead-its-time-to-move-on.org]]
+- [[./2013/11/hashrocket-blog-sql-window-functions-and-you.org]]
+- [[./2013/11/good-collection-of-backbone-dot-js-topics.org]]
+- [[./2013/11/fascinating-article-pushing-the-boundaries-on-css-design.org]]
+- [[./2013/11/devops-for-developers-video-series.org]]
+- [[./2013/11/creating-non-rectangular-layouts-with-css-shapes.org]]
+- [[./2013/11/a-guide-to-ruby-collections-archives-sitepoint.org]]
+- [[./2013/10/ruby-cant-get-page-data-from-jekyll-plugin-stack-overflow.org]]
+- [[./2013/10/pdf-rendering-with-phantomjs-big-elephants.org]]
+- [[./2013/10/multi-file-uploads-and-multiple-selects.org]]
+- [[./2013/10/generate-a-full-rails-app-with-a-composer.org]]
+- [[./2013/10/free-free-100-s-of-free-programming-books.org]]
+- [[./2013/10/devops-toolbox-introduction.org]]
+- [[./2013/10/delete-a-remote-git-branch.org]]
+- [[./2013/10/bootstrap-follies-solving-a-repsonsive-positioning-problem.org]]
+- [[./2013/10/apache-slash-php-5-dot-x-remote-code-execution-exploit.org]]
+- [[./2013/10/adding-a-file-display-list-to-a-multi-file-upload-html-control.org]]
+- [[./2013/10/6-ways-to-remove-pain-from-feature-testing-in-ruby-on-rails.org]]
+- [[./2013/09/why-you-should-stop-pirating-googles-geo-apis-pete-wardens-blog.org]]
+- [[./2013/09/the-predicate-module-pattern.org]]
+- [[./2013/09/the-laws-of-software-design.org]]
+- [[./2013/09/running-headless-selenium-with-chrome.org]]
+- [[./2013/09/rspec-custom-formatters-displaying-test-durations.org]]
+- [[./2013/09/red-burns-list.org]]
+- [[./2013/09/must-have-gems-for-development-machine-in-ruby-on-rails-codebeerstartups.org]]
+- [[./2013/09/mass-inserting-data-in-rails-without-killing-your-performance-coffeepowered.org]]
+- [[./2013/09/json-how-to-send-raw-post-data-in-a-rails-functional-test-stack-overflow.org]]
+- [[./2013/09/jekyll-making-posts-sticky.org]]
+- [[./2013/09/index-scorched.org]]
+- [[./2013/09/implementing-multi-table-full-text-search-with-postgres-in-rails-hashdog-blog.org]]
+- [[./2013/09/essential-tools-for-starting-a-rails-app-in-2013--pete-keen.org]]
+- [[./2013/09/cool-thing-today-showterm-dot-io.org]]
+- [[./2013/09/adding-real-time-to-rails-with-socket-dot-io-node-dot-js-and-backbone-dot-js-with-demo-liam-kaufman.org]]
+- [[./2013/09/adding-real-time-to-a-restful-rails-app-liam-kaufman.org]]
+- [[./2013/09/activerecord-enhanced-query-objects.org]]
+- [[./2013/08/shout-out-for-codeship-dot-io-adding-transcripts-to-video-blogs.org]]
+- [[./2013/08/programmers-creativity.org]]
+- [[./2013/08/nginx-takes-the-slippery-road-away-from-open-source.org]]
+- [[./2013/08/jekyllizing-my-cookbook.org]]
+- [[./2013/08/how-to-reset-your-time-capsule-to-factory-settings-without-losing-your-data.org]]
+- [[./2013/08/getting-keywords-from-a-web-page-via-nokogiri.org]]
+- [[./2013/08/deploying-rails-app-using-nginx.org]]
+- [[./2013/08/deploying-a-rails-app-using-nginx-unicorn-postgres-and-capistrano-to-digital-ocean.org]]
+- [[./2013/08/css-tricks-drop-caps.org]]
+- [[./2013/08/bootstrap-follies-vertically-and-horizontally-centered-form.org]]
+- [[./2013/08/a-simple-content-management-system-in-sinatra-part-1.org]]
+- [[./2013/07/caption-hover-effects-in-css3.org]]
+- [[./2013/05/roles-and-activities-in-software-development.org]]
+- [[./2013/05/possible-topics-for-swaac.org]]
+- [[./2013/02/unit-testing-backbone-dot-js-applications.org]]
+- [[./2012/12/code-as-literature-software-dev-as-communication.org]]
+- [[./2011/10/so-passes-a-real-hero-of-the-computing-age.org]]
+- [[./2011/10/another-personal-hero-falls.org]]</content>
       <author>
         <name>Tamara Temple</name>
         <email>tamara@tamouse.org</email>
       </author>
     </entry>
     <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/03/til-react-error-boundary-workarounds.org</id>
-      <updated>2018-11-04T08:22:25-06:00</updated>
-      <title>TIL: React Error boundary workarounds</title>
-      <content>* TIL: React Error boundary workarounds
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/11/serving-static-files-in-storybook.org</id>
+      <updated>2018-11-06T08:56:46-06:00</updated>
+      <title>[2018-11-06 Tue 08:40] TIL: serving static files in storybook</title>
+      <content>* [2018-11-06 Tue 08:40] TIL: serving static files in storybook
 
-- Time-stamp: &lt;2018-11-04 08:22:25 tamara&gt;
-- published date: 2018-03-30
-- keywords: react, errors, error-handling, error-boundaries, componentDidCatch
+  - last_update: Time-stamp: &lt;2018-11-06 08:56:46 tamara&gt;
+  - capture_date: [2018-11-06 Tue 08:40]
+  - keywords: storybook, test data, static assets
 
-Recently I was working on a next-gen standalone react client for my work, and I decided I wanted to put in error boundaries, which were introduced in React v16. From the [[https://reactjs.org/docs/error-boundaries.html][docs]]:
 
-#+BEGIN_QUOTE
-  Error boundaries are React components that catch JavaScript errors anywhere in their child component tree, log those errors, and display a fallback UI instead of the component tree that crashed. Error boundaries catch errors during rendering, in lifecycle methods, and in constructors of the whole tree below them.
-#+END_QUOTE
+  I wish I&#39;d known about this before taking all that time to munge the test data the first time. It turns out storybook can serve up static assets by providing the ~-s~ option on the command line:
 
-This is well and good, but the first thing I ran into was how to catch errors that happen outside of the space React&#39;s error boundaries work in. The following aren&#39;t caught by =componentDidCatch=:
+  #+BEGIN_SRC shell-script
+    start-storybook -p 9009 -s ./path/to/static/assets -c .storybook/config.js
+  #+END_SRC
 
-- Event handlers
-- Asynchronous code (e.g. setTimeout or requestAnimationFrame callbacks)
-- Server side rendering
-- Errors thrown in the error boundary itself (rather than its children)
+  You can have more than one folder as well, separating them by commas
 
-The particular problem I was working on was catching login errors, which were returned as a promise rejection. Since the error boundary didn&#39;t handle this, i searched for help on this, and got it in the React.MN slack.
+  #+BEGIN_SRC shell-script
+    start-storybook -p 9009 -s ./some/assets,./other/assets,./these/assets/over/here -c .storybook/config.js
+  #+END_SRC
 
-After thinking about it, it does make sense, since React is declarative, this pretty much has to be handled as some form of state. The key is, what to do?
+  This makes them available at the root URL
 
-I took a page out of some previous work where I was doing a =&lt;Redirect/&gt;= when a state entry became =true= , so I did it again for this. I&#39;d catch the rejected promise in the handler, and set a state variable to =true=:
+  #+BEGIN_SRC shell-script
+    http://localhost:9009/
+  #+END_SRC
 
-#+BEGIN_SRC javascript
-    login = () =&gt; {
-      logon()
-        .then(
-          // do logon stuff when it works
-        )
-        .catch(error =&gt; {
-          this.setState({
-            hasError: true,
-            error
-          })
-        })
-    }
-#+END_SRC
+  So if you have assets at ~./src/components/AttachmentList/__TEST_DATA__/attachments/~, for example, ~shasta/32/original/002.jpg~, then the URL would be:
 
-So now there&#39;s a state variable =hasError= that&#39;s true, and the actual error in state. Down in the =render= method:
+  #+BEGIN_SRC shell-script
+    http://localhost:9009/shasta/32/original/002.jpg
+  #+END_SRC
 
-#+BEGIN_SRC javascript
-    render() {
-      if (this.state.hasError) throw this.state.error
-
-      // go on with no error
-    }
-#+END_SRC
-
-This does the bubble-up necessary for the error boundary to catch it.
-
-Here&#39;s a codepen:
-
-#+BEGIN_HTML
-  &lt;p data-height=&quot;735&quot; data-theme-id=&quot;0&quot; data-slug-hash=&quot;ZxxdGO&quot; data-default-tab=&quot;js,result&quot; data-user=&quot;tamouse&quot; data-embed-version=&quot;2&quot; data-pen-title=&quot;ErrorBoundary Example&quot; class=&quot;codepen&quot;&gt;
-#+END_HTML
-
-See the Pen ErrorBoundary Example by Tamara Temple (@tamouse) on CodePen.
-
-#+BEGIN_HTML
-  &lt;/p&gt;
-#+END_HTML
-
-#+BEGIN_HTML
-  &lt;script async src=&quot;https://static.codepen.io/assets/embed/ei.js&quot;&gt;&lt;/script&gt;
-#+END_HTML
-
-It turns out I didn&#39;t use this to handle login errors, but it was a useful excursion and learning experience anyway.
+  And even more importantly, they can be referred to relatively even without the scheme and host.
 </content>
       <author>
         <name>Tamara Temple</name>
