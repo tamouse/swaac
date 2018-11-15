@@ -9,35 +9,8 @@ require 'fileutils'
 logger = Logger.new(STDOUT)
 logger.level = Logger::DEBUG
 
-desc 'convert markdown files to org with pandoc'
-task :pandoc do
-  Dir['posts/*.markdown', 'posts/*.md'].each do |file|
-    outfile = file.sub(/\.(markdown|md)/, '.org')
-    logger.info("Converting #{file} to #{outfile}")
-    system "pandoc -s --highlight=zenburn --wrap=none -o #{outfile} #{file}"
-  end
-
-end
-
-
-desc 'move org files into posts/YYYY/MM/ directories from posts/'
-task :move_posts do
-  org_posts = Dir['posts/*.org']
-
-  org_posts.each do |post|
-    m = post.match(%r{\Aposts\/(\d{4})-(\d{2})-(\d{2})-(.*)\z})
-    year = m[1]
-    month = m[2]
-    day = m[3]
-    title = m[4]
-    logger.debug "post: #{post}, year: #{year}, month: #{month}, day: #{day}, title: #{title}"
-    dir = "posts/#{year}/#{month}"
-    file = "#{dir}/#{title}"
-    logger.debug "dir: #{dir}, file: #{file}"
-    FileUtils.mkdir_p(dir)
-    FileUtils.cp(post, file, verbose: true)
-  end
-end
+desc "prepare for publishing"
+task prep: [:build_indexes, :mkfeed]
 
 desc 'build indexes at each level in the tree'
 task :build_indexes do
@@ -76,6 +49,57 @@ task :build_indexes do
 
 end
 
+desc 'create atom feed of most recent updates'
+task :mkfeed do
+
+  feed = {
+    id: "https://github.com/tamouse/swaac",
+    title: "Tamouse's Software as a Craft blog",
+  }
+
+  posts = Dir['posts/**/*.org'].map do |file|
+    { entry: Entry.new(file).entry }
+  end.sort_by{|entry| entry[:entry][:updated]}.reverse.take(10)
+
+  feed[:updated] = posts.first[:entry][:updated]
+  feed[:entries] = posts
+  feed_xml = Feed2Xml.new(feed).xml
+  File.write("docs/feed.xml", feed_xml)
+  logger.info "Wrote docs/feed.xml"
+
+end
+
+desc 'convert markdown files to org with pandoc'
+task :pandoc do
+  Dir['posts/*.markdown', 'posts/*.md'].each do |file|
+    outfile = file.sub(/\.(markdown|md)/, '.org')
+    logger.info("Converting #{file} to #{outfile}")
+    system "pandoc -s --highlight=zenburn --wrap=none -o #{outfile} #{file}"
+  end
+
+end
+
+
+desc 'move org files into posts/YYYY/MM/ directories from posts/'
+task :move_posts do
+  org_posts = Dir['posts/*.org']
+
+  org_posts.each do |post|
+    m = post.match(%r{\Aposts\/(\d{4})-(\d{2})-(\d{2})-(.*)\z})
+    year = m[1]
+    month = m[2]
+    day = m[3]
+    title = m[4]
+    logger.debug "post: #{post}, year: #{year}, month: #{month}, day: #{day}, title: #{title}"
+    dir = "posts/#{year}/#{month}"
+    file = "#{dir}/#{title}"
+    logger.debug "dir: #{dir}, file: #{file}"
+    FileUtils.mkdir_p(dir)
+    FileUtils.cp(post, file, verbose: true)
+  end
+end
+
+
 desc 'rewrite markdown so it can be parsed by pandoc'
 task :rewrite, :infile do |t, args|
   infile = args[:infile]
@@ -110,25 +134,6 @@ task :rewrite, :infile do |t, args|
 end
 
 
-desc 'create atom feed of most recent updates'
-task :mkfeed do
-
-  feed = {
-    id: "https://github.com/tamouse/swaac",
-    title: "Tamouse's Software as a Craft blog",
-  }
-
-  posts = Dir['posts/**/*.org'].map do |file|
-    { entry: Entry.new(file).entry }
-  end.sort_by{|entry| entry[:entry][:updated]}.reverse.take(10)
-
-  feed[:updated] = posts.first[:entry][:updated]
-  feed[:entries] = posts
-  feed_xml = Feed2Xml.new(feed).xml
-  File.write("docs/feed.xml", feed_xml)
-  logger.info "Wrote docs/feed.xml"
-
-end
 
 class Entry
   attr_accessor :entry
