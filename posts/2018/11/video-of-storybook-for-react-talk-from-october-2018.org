@@ -1,0 +1,17 @@
+* Video of Storybook for React talk from October 2018
+
+  - Time-stamp: <2018-11-06 20:08:58 tamara.temple>
+  - capture date: [2018-11-06 Tue 19:59]
+  - keywords: react, storybook, presentation
+
+** Intro
+
+   In October 2018, I gave a talk / tutorial on [[https://storybook.js.org/basics/introduction/][Storybook]], an environment for developing visual components, and how I'm using it in developing React components at work, for [[https://twitter.com/ReactMpls][React Minneapolis meetup]].
+
+** Video
+
+   The talk was recorded, and video is up at [[https://youtu.be/9B-IB2U3qSI][yahoo]].
+
+#+BEGIN_EXPORT html
+<iframe width="560" height="315" src="https://www.youtube.com/embed/9B-IB2U3qSI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+#+END_EXPORT

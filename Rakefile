@@ -58,8 +58,9 @@ task :mkfeed do
   }
 
   posts = Dir['posts/**/*.org'].map do |file|
+    next if file =~ /index.org/
     { entry: Entry.new(file).entry }
-  end.sort_by{|entry| entry[:entry][:updated]}.reverse.take(10)
+  end.compact.sort_by{|entry| entry[:entry][:updated]}.reverse.take(10)
 
   feed[:updated] = posts.first[:entry][:updated]
   feed[:entries] = posts

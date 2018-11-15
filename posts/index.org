@@ -1,3 +1,4 @@
+- [[./2018/11/video-of-storybook-for-react-talk-from-october-2018.org]]
 - [[./2018/11/serving-static-files-in-storybook.org]]
 - [[./2018/11/posting-a-file-with-fetch-api.org]]
 - [[./2018/11/posting-a-file-with-XMLHttpRequest.org]]

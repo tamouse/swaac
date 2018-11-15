@@ -2,583 +2,29 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://github.com/tamouse/swaac</id>
   <title>Tamouse&#39;s Software as a Craft blog</title>
-  <updated>2018-11-14T21:07:30-06:00</updated>
+  <updated>2018-11-14T21:08:10-06:00</updated>
     <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/index.org</id>
-      <updated>2018-11-14T21:07:30-06:00</updated>
-      <title>index</title>
-      <content>- [[./11/serving-static-files-in-storybook.org]]
-- [[./11/posting-a-file-with-fetch-api.org]]
-- [[./11/posting-a-file-with-XMLHttpRequest.org]]
-- [[./11/link-css-frameworks-vs-grid.org]]
-- [[./10/react-dismiss-after-timeout.org]]
-- [[./10/link-upcase-by-thoughbot.org]]
-- [[./10/link-ala-tags-to-dom.org]]
-- [[./10/link-ARIA-is-spackle-not-rebar.org]]
-- [[./10/link-30-seconds-of-CSS.org]]
-- [[./09/remember-unit-testing-is-not-integration-testing.org]]
-- [[./09/mocking-graphql-mutations-in-jest-tests.org]]
-- [[./08/til-webstorm-automatic-imports-issues.org]]
-- [[./07/FeM-JS-The-Hard-Parts.org]]
-- [[./06/til-remove-all-docker-containers-and-images.org]]
-- [[./05/til-setting-input-value-in-react-controlled-vs-uncontrolled.org]]
-- [[./05/removing-entries-from-an-object.org]]
-- [[./04/til-dont-use-vendor-subdirectory-on-heroku.org]]
-- [[./03/til-react-error-boundary-workarounds.org]]
-- [[./03/github-tricks-turn-off-white-space-diffs.org]]
-- [[./02/polyfills-for-find-and-findIndex.org]]
-- [[./02/passing-the-time-between-rails-and-react-dot-js.org]]
-- [[./02/how-to-reset-ios-simulator.org]]
-- [[./02/git-merge-dry-run.org]]
-- [[./01/til-some-jest-testing-tricks.org]]</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2017/index.org</id>
-      <updated>2018-11-14T21:07:30-06:00</updated>
-      <title>index</title>
-      <content>- [[./12/til-emacs-toggle-debug-on-exit.org]]
-- [[./12/side-by-side-layout-with-css-grid.org]]
-- [[./11/whats-falsy-in-javascript.org]]
-- [[./11/til-capybara-fill-in-wants-the-id-not-the-css-selector-id.org]]
-- [[./11/til-capybara-dot-has-current-path.org]]
-- [[./11/making-capybara-wait-a-little-longer-for-just-one-test.org]]
-- [[./10/til-react-setstate-is-async-and-has-a-callback.org]]
-- [[./10/til-export-unwrapped-graphql-components-to-make-unit-testing-possible.org]]
-- [[./10/talk-learning-react-plus-graphql-plus-apollo-with-rails-graphql-api-all-at-once.org]]
-- [[./10/gerald-wienberg-my-most-challenging-experience-as-a-software-developer.org]]
-- [[./09/using-current-user-viewer-as-root-of-graphql-queries.org]]
-- [[./09/jekyll-making-posts-sticky-redux.org]]
-- [[./09/fix-make-mac-key-repeat-work.org]]
-- [[./09/apollo-graphql-container-with-queries.org]]
-- [[./09/apollo-graphql-container-for-mutations.org]]
-- [[./08/pp-3-use-the-top-down-approach.org]]
-- [[./08/hack-of-the-day-comments-in-package-dot-json.org]]
-- [[./08/graphql-mutating-an-objects-state.org]]
-- [[./08/TIL-enzyme-shallow-render-with-memoryrouter-doesnt-work.org]]
-- [[./07/til-apolloclient-authentication-graphql.org]]
-- [[./07/setting-up-your-mac-for-working-on-the-command-line.org]]
-- [[./07/pp-introduction.org]]
-- [[./07/pp-2-think-first-program-later.org]]
-- [[./07/pp-1-define-the-problem-completely.org]]
-- [[./07/playing-games-with-the-checked-pseudo-selector.org]]
-- [[./07/how-do-i-get-to-the-command-line-on-a-mac.org]]
-- [[./07/beginners-section.org]]
-- [[./07/TIL-GraphQL.org]]
-- [[./06/Stop-Compiling-Rubies.org]]
-- [[./05/scrollstick-a-javascript-module-make-scrolling-headers-sticky.org]]
-- [[./05/sarah-mei-five-factor-testing.org]]
-- [[./05/postgresql-timestamp-accuracy.org]]
-- [[./05/playing-with-grid-and-flexbox.org]]
-- [[./05/notes-on-using-actionmailer-in-rails.org]]
-- [[./05/minimum-needed-for-full-height-with-standard-header-slash-main-slash-footer.org]]
-- [[./05/list-of-awesome-accessibility-links.org]]
-- [[./05/fixing-the-rollunder.org]]
-- [[./05/changing-screencapture-location-on-macos.org]]
-- [[./04/specifying-target-equals-blank-on-an-anchor-in-a-markdown-document.org]]
-- [[./04/resetting-emacs-colours-after-working-with-guard.org]]
-- [[./04/link-decorating-activerecord.org]]
-- [[./02/links-flexbox-tutorials-and-posts.org]]
-- [[./02/how-i-set-up-my-local-wordpress-development-environment-using-vagrant-and-ansible.org]]
-- [[./02/gitlab-database-outage-post-mortem.org]]
-- [[./02/baratunde-thurston-explains-web-encryption.org]]
-- [[./01/til-providing-defaults-for-envvars.org]]
-- [[./01/til-call-done-to-fire-async-mocha-tests.org]]
-- [[./01/my-first-proxy-slash-adapter-for-an-express-dot-js-app.org]]</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2015/index.org</id>
-      <updated>2018-11-14T21:07:30-06:00</updated>
-      <title>index</title>
-      <content>- [[./12/tweet-by-at-c089-hidden-costs-of-poor-programming.org]]
-- [[./12/self-referential-models-categories.org]]
-- [[./12/link-4-reasons-why-you-shouldnt-learn-to-code-from-codecademy.org]]
-- [[./11/link-getting-testy.org]]
-- [[./10/registrar-domain-name-service-web-hosting-service.org]]
-- [[./10/link-learn-enough-command-line-to-be-dangerous-by-michael-hartl.org]]
-- [[./10/klabnik-waxes-tweet-on-continuous-delivery.org]]
-- [[./09/thirty-css-selectors-you-must-memorize.org]]
-- [[./09/link-the-worst-mistake-in-computer-science.org]]
-- [[./08/rails-immutable-records-and-attributes.org]]
-- [[./08/ledgards-programming-proverbs.org]]
-- [[./07/where-do-i-go-next-code-kata.org]]
-- [[./07/what-are-the-fundamentals-of-software-engineering.org]]
-- [[./07/todays-reading.org]]
-- [[./07/link-list-of-little-known-ruby-tricks.org]]
-- [[./07/link-jquery-ui-autocomplete-with-ruby-on-rails.org]]
-- [[./07/link-handling-csv-views-in-rails.org]]
-- [[./06/why-write-good-commit-messages-futurelearn-blog.org]]
-- [[./06/user-editing-for-jekyll-sites.org]]
-- [[./06/todays-readings-and-stuff.org]]
-- [[./06/todays-reading.org]]
-- [[./06/keep-your-data-in-your-database-pat-shaughnessy.org]]
-- [[./06/just-say-no-to-more-end-to-end-tests-google-dev-blog.org]]
-- [[./06/interesting-uses-of-docker.org]]
-- [[./06/how-to-translate-nested-polymorphic-attributes-in-activemodel-errors-messages.org]]
-- [[./06/how-to-preload-rails-scopes-justin-weiss.org]]
-- [[./06/first-thing-i-learned-about-working-with-elixir.org]]
-- [[./05/using-emacss-org-mode-and-editing-yaml-frontmatter-in-jekyll-posts.org]]
-- [[./05/todays-reading.org]]
-- [[./05/tiny-best-practices.org]]
-- [[./05/til-beamer-installation-and-missing-fonts.org]]
-- [[./05/thor-scripting.org]]
-- [[./05/tbp-bistate-booleans-in-rails.org]]
-- [[./05/snippet-getting-the-end-of-the-month-in-ruby.org]]
-- [[./05/new-site-jekyll-tips.org]]
-- [[./05/multiple-vagrant-rails-development-box-setup-times.org]]
-- [[./05/love-letter.org]]
-- [[./05/links.org]]
-- [[./05/learning.org]]
-- [[./04/you-dont-know-javascript-class.org]]
-- [[./04/til-kernel-number-gets-is-different-from-io-number-gets.org]]
-- [[./04/the-x-y-problem.org]]
-- [[./04/installing-phantomjs-on-ubuntu-linux.org]]
-- [[./03/rails-question-getting-x-where-there-are-no-y.org]]
-- [[./03/link-sharing-rails-views-with-jekyll.org]]
-- [[./03/link-how-to-use-the-html5-sectioning-elements.org]]
-- [[./03/a-new-release-of-jekyllpress.org]]
-- [[./02/tenderlove-weird-stuff-with-hashes.org]]
-- [[./02/reactjs-course-with-frontend-masters.org]]
-- [[./02/first-vs-take.org]]
-- [[./01/validation-contexts.org]]
-- [[./01/using-packer-and-vagrant-to-build-virtual-machines.org]]
-- [[./01/rails-4-dot-2-config-for.org]]
-- [[./01/link-stop-writing-rails-controllers.org]]
-- [[./01/emacs-org-mode.org]]</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2014/index.org</id>
-      <updated>2018-11-14T21:07:30-06:00</updated>
-      <title>index</title>
-      <content>- [[./12/repost-rspec-3-and-deprecated-and-return-blocks.org]]
-- [[./11/how-to-converting-instance-variables-to-yaml-in-ruby.org]]
-- [[./11/documenting-regular-expressions.org]]
-- [[./11/dealing-with-mixed-encodings-in-a-file.org]]
-- [[./10/link-when-women-stopped-coding.org]]
-- [[./10/link-the-best-coding-language-for-you-to-learn.org]]
-- [[./10/howto-quick-steps-to-install-emacs-24-without-x-on-ubuntu.org]]
-- [[./09/converting-blog-to-pure-jekyll.org]]
-- [[./07/chris-pines-learn-to-program-on-unshelved-comic.org]]
-- [[./07/career-advice.org]]
-- [[./07/a-place-to-get-started-in-web-design.org]]
-- [[./07/a-new-jekyllpress-gem.org]]
-- [[./05/learning-resources-for-software-development-and-pr.org]]
-- [[./04/turning-off-ipv6-in-os-slash-x-maverics-10-dot-9.org]]
-- [[./03/playing-around-with-thor-generators.org]]
-- [[./02/dieter-rams-10-principles-for-good-design-readymag.org]]
-- [[./01/this-is-why-gandi-dot-net-is-my-registrar-of-choice.org]]
-- [[./01/my-nerd-story-what-you-say-to-young-girls-matters--linux-dot-com.org]]
-- [[./01/from-static-to-dynamic-typing-a-change-in-beliefs.org]]</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2013/index.org</id>
-      <updated>2018-11-14T21:07:30-06:00</updated>
-      <title>index</title>
-      <content>- [[./12/ux-what-does-flat-design-really-mean-link.org]]
-- [[./12/this-is-why-i-dont-like-sites-like-codeacademy.org]]
-- [[./12/possible-bug-ie8-wont-show-table-atargets-is-null-or-not-an-object-datatables-forums.org]]
-- [[./12/how-to-add-travis-ci-capability-to-a-github-repo.org]]
-- [[./12/cool-things-web-sequence-diagramer.org]]
-- [[./11/mvc-is-dead-its-time-to-move-on.org]]
-- [[./11/hashrocket-blog-sql-window-functions-and-you.org]]
-- [[./11/good-collection-of-backbone-dot-js-topics.org]]
-- [[./11/fascinating-article-pushing-the-boundaries-on-css-design.org]]
-- [[./11/devops-for-developers-video-series.org]]
-- [[./11/creating-non-rectangular-layouts-with-css-shapes.org]]
-- [[./11/a-guide-to-ruby-collections-archives-sitepoint.org]]
-- [[./10/ruby-cant-get-page-data-from-jekyll-plugin-stack-overflow.org]]
-- [[./10/pdf-rendering-with-phantomjs-big-elephants.org]]
-- [[./10/multi-file-uploads-and-multiple-selects.org]]
-- [[./10/generate-a-full-rails-app-with-a-composer.org]]
-- [[./10/free-free-100-s-of-free-programming-books.org]]
-- [[./10/devops-toolbox-introduction.org]]
-- [[./10/delete-a-remote-git-branch.org]]
-- [[./10/bootstrap-follies-solving-a-repsonsive-positioning-problem.org]]
-- [[./10/apache-slash-php-5-dot-x-remote-code-execution-exploit.org]]
-- [[./10/adding-a-file-display-list-to-a-multi-file-upload-html-control.org]]
-- [[./10/6-ways-to-remove-pain-from-feature-testing-in-ruby-on-rails.org]]
-- [[./09/why-you-should-stop-pirating-googles-geo-apis-pete-wardens-blog.org]]
-- [[./09/the-predicate-module-pattern.org]]
-- [[./09/the-laws-of-software-design.org]]
-- [[./09/running-headless-selenium-with-chrome.org]]
-- [[./09/rspec-custom-formatters-displaying-test-durations.org]]
-- [[./09/red-burns-list.org]]
-- [[./09/must-have-gems-for-development-machine-in-ruby-on-rails-codebeerstartups.org]]
-- [[./09/mass-inserting-data-in-rails-without-killing-your-performance-coffeepowered.org]]
-- [[./09/json-how-to-send-raw-post-data-in-a-rails-functional-test-stack-overflow.org]]
-- [[./09/jekyll-making-posts-sticky.org]]
-- [[./09/index-scorched.org]]
-- [[./09/implementing-multi-table-full-text-search-with-postgres-in-rails-hashdog-blog.org]]
-- [[./09/essential-tools-for-starting-a-rails-app-in-2013--pete-keen.org]]
-- [[./09/cool-thing-today-showterm-dot-io.org]]
-- [[./09/adding-real-time-to-rails-with-socket-dot-io-node-dot-js-and-backbone-dot-js-with-demo-liam-kaufman.org]]
-- [[./09/adding-real-time-to-a-restful-rails-app-liam-kaufman.org]]
-- [[./09/activerecord-enhanced-query-objects.org]]
-- [[./08/shout-out-for-codeship-dot-io-adding-transcripts-to-video-blogs.org]]
-- [[./08/programmers-creativity.org]]
-- [[./08/nginx-takes-the-slippery-road-away-from-open-source.org]]
-- [[./08/jekyllizing-my-cookbook.org]]
-- [[./08/how-to-reset-your-time-capsule-to-factory-settings-without-losing-your-data.org]]
-- [[./08/getting-keywords-from-a-web-page-via-nokogiri.org]]
-- [[./08/deploying-rails-app-using-nginx.org]]
-- [[./08/deploying-a-rails-app-using-nginx-unicorn-postgres-and-capistrano-to-digital-ocean.org]]
-- [[./08/css-tricks-drop-caps.org]]
-- [[./08/bootstrap-follies-vertically-and-horizontally-centered-form.org]]
-- [[./08/a-simple-content-management-system-in-sinatra-part-1.org]]
-- [[./07/caption-hover-effects-in-css3.org]]
-- [[./05/roles-and-activities-in-software-development.org]]
-- [[./05/possible-topics-for-swaac.org]]
-- [[./02/unit-testing-backbone-dot-js-applications.org]]</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2016/index.org</id>
-      <updated>2018-11-14T21:07:30-06:00</updated>
-      <title>index</title>
-      <content>- [[./12/todo-app-using-just-react-with-pojs-no-jsx-or-es6.org]]
-- [[./12/js-app-config-pattern.org]]
-- [[./12/flexbox-website-with-fixed-headers-and-footer.org]]
-- [[./12/changing-the-return-to-shop-link-and-text-in-an-empty-woocommerce-cart.org]]
-- [[./11/tool-font-style-matcher.org]]
-- [[./11/til-target-equals-blank-with-no-rel-equals-noopener.org]]
-- [[./11/links-from-gdi-intro-to-wordpress-class.org]]
-- [[./11/installing-wordpress-things-without-ftp.org]]
-- [[./11/installing-emacs-on-mac-with-homebrew.org]]
-- [[./11/frontendmasters-course-devops-for-frontend-devs.org]]
-- [[./11/ask-me-anything.org]]
-- [[./10/testing-blur-events-in-cucumber-slash-capybara.org]]
-- [[./10/signing-a-pdf-with-preview.org]]
-- [[./10/how-to-set-up-your-own-private-remote-git-repository.org]]
-- [[./09/when-your-tools-environment-computer-and-everything-you-know-fails-you.org]]
-- [[./09/my-nginx-virtual-hosting-configuration.org]]
-- [[./09/madebymike-svg-has-more-potential.org]]
-- [[./09/building-resizeable-components-with-relative-css.org]]
-- [[./08/the-average-web-page-data-from-analyzing-8-million-websites.org]]
-- [[./08/beginner-learning-section-in-pages.org]]
-- [[./07/the-traits-of-a-proficient-programmer-gregory-brown.org]]
-- [[./07/rails-action-mailer-asset-host.org]]
-- [[./07/learning-react-native.org]]
-- [[./07/css-centering-lists.org]]
-- [[./06/rails-dot-mn-presentationon-rails-routing.org]]
-- [[./06/html-and-css-design-and-build-websites.org]]
-- [[./06/how-to-harness-the-machines-being-productive-with-task-runners.org]]
-- [[./06/fix-osx-file-open-dialog-missing-sidebar-items.org]]
-- [[./06/css-examples/clearfix/clearfix.org]]
-- [[./06/147-colors-grid-css-color-names.org]]
-- [[./05/your-software-is-never-perfect.org]]
-- [[./05/wordcamp-mpls-diving-back-into-wordpress.org]]
-- [[./05/tip-ejecting-a-volume-from-the-command-line-on-osx.org]]
-- [[./05/the-quiet-crisis-unfolding-in-software-development.org]]
-- [[./05/the-manuscripts-of-edsger-w-dijkstra.org]]
-- [[./05/learn-by-learning-to-test-first.org]]
-- [[./05/javascript-examples/astronauts.org]]
-- [[./05/a-set-of-reactjs-demos.org]]
-- [[./04/using-web-mode-for-javascript-in-emacs.org]]
-- [[./03/new-hash-operators-in-ruby-2-dot-3.org]]
-- [[./02/my-way-of-implementing-service-objects-in-rails.org]]
-- [[./01/using-git-to-deploy-static-sites.org]]
-- [[./01/jekyll-guard-livereload.org]]</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2011/index.org</id>
-      <updated>2018-11-14T21:07:29-06:00</updated>
-      <title>index</title>
-      <content>- [[./10/so-passes-a-real-hero-of-the-computing-age.org]]
-- [[./10/another-personal-hero-falls.org]]
-- [[./01/swaac-intro.org]]
-- [[./01/colophon.org]]
-- [[./01/about.org]]</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2012/index.org</id>
-      <updated>2018-11-14T21:07:29-06:00</updated>
-      <title>index</title>
-      <content>- [[./12/code-as-literature-software-dev-as-communication.org]]</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/index.org</id>
-      <updated>2018-11-14T21:07:29-06:00</updated>
-      <title>index</title>
-      <content>- [[./2018/11/serving-static-files-in-storybook.org]]
-- [[./2018/11/posting-a-file-with-fetch-api.org]]
-- [[./2018/11/posting-a-file-with-XMLHttpRequest.org]]
-- [[./2018/11/link-css-frameworks-vs-grid.org]]
-- [[./2018/10/react-dismiss-after-timeout.org]]
-- [[./2018/10/link-upcase-by-thoughbot.org]]
-- [[./2018/10/link-ala-tags-to-dom.org]]
-- [[./2018/10/link-ARIA-is-spackle-not-rebar.org]]
-- [[./2018/10/link-30-seconds-of-CSS.org]]
-- [[./2018/09/remember-unit-testing-is-not-integration-testing.org]]
-- [[./2018/09/mocking-graphql-mutations-in-jest-tests.org]]
-- [[./2018/08/til-webstorm-automatic-imports-issues.org]]
-- [[./2018/07/FeM-JS-The-Hard-Parts.org]]
-- [[./2018/06/til-remove-all-docker-containers-and-images.org]]
-- [[./2018/05/til-setting-input-value-in-react-controlled-vs-uncontrolled.org]]
-- [[./2018/05/removing-entries-from-an-object.org]]
-- [[./2018/04/til-dont-use-vendor-subdirectory-on-heroku.org]]
-- [[./2018/03/til-react-error-boundary-workarounds.org]]
-- [[./2018/03/github-tricks-turn-off-white-space-diffs.org]]
-- [[./2018/02/polyfills-for-find-and-findIndex.org]]
-- [[./2018/02/passing-the-time-between-rails-and-react-dot-js.org]]
-- [[./2018/02/how-to-reset-ios-simulator.org]]
-- [[./2018/02/git-merge-dry-run.org]]
-- [[./2018/01/til-some-jest-testing-tricks.org]]
-- [[./2017/12/til-emacs-toggle-debug-on-exit.org]]
-- [[./2017/12/side-by-side-layout-with-css-grid.org]]
-- [[./2017/11/whats-falsy-in-javascript.org]]
-- [[./2017/11/til-capybara-fill-in-wants-the-id-not-the-css-selector-id.org]]
-- [[./2017/11/til-capybara-dot-has-current-path.org]]
-- [[./2017/11/making-capybara-wait-a-little-longer-for-just-one-test.org]]
-- [[./2017/10/til-react-setstate-is-async-and-has-a-callback.org]]
-- [[./2017/10/til-export-unwrapped-graphql-components-to-make-unit-testing-possible.org]]
-- [[./2017/10/talk-learning-react-plus-graphql-plus-apollo-with-rails-graphql-api-all-at-once.org]]
-- [[./2017/10/gerald-wienberg-my-most-challenging-experience-as-a-software-developer.org]]
-- [[./2017/09/using-current-user-viewer-as-root-of-graphql-queries.org]]
-- [[./2017/09/jekyll-making-posts-sticky-redux.org]]
-- [[./2017/09/fix-make-mac-key-repeat-work.org]]
-- [[./2017/09/apollo-graphql-container-with-queries.org]]
-- [[./2017/09/apollo-graphql-container-for-mutations.org]]
-- [[./2017/08/pp-3-use-the-top-down-approach.org]]
-- [[./2017/08/hack-of-the-day-comments-in-package-dot-json.org]]
-- [[./2017/08/graphql-mutating-an-objects-state.org]]
-- [[./2017/08/TIL-enzyme-shallow-render-with-memoryrouter-doesnt-work.org]]
-- [[./2017/07/til-apolloclient-authentication-graphql.org]]
-- [[./2017/07/setting-up-your-mac-for-working-on-the-command-line.org]]
-- [[./2017/07/pp-introduction.org]]
-- [[./2017/07/pp-2-think-first-program-later.org]]
-- [[./2017/07/pp-1-define-the-problem-completely.org]]
-- [[./2017/07/playing-games-with-the-checked-pseudo-selector.org]]
-- [[./2017/07/how-do-i-get-to-the-command-line-on-a-mac.org]]
-- [[./2017/07/beginners-section.org]]
-- [[./2017/07/TIL-GraphQL.org]]
-- [[./2017/06/Stop-Compiling-Rubies.org]]
-- [[./2017/05/scrollstick-a-javascript-module-make-scrolling-headers-sticky.org]]
-- [[./2017/05/sarah-mei-five-factor-testing.org]]
-- [[./2017/05/postgresql-timestamp-accuracy.org]]
-- [[./2017/05/playing-with-grid-and-flexbox.org]]
-- [[./2017/05/notes-on-using-actionmailer-in-rails.org]]
-- [[./2017/05/minimum-needed-for-full-height-with-standard-header-slash-main-slash-footer.org]]
-- [[./2017/05/list-of-awesome-accessibility-links.org]]
-- [[./2017/05/fixing-the-rollunder.org]]
-- [[./2017/05/changing-screencapture-location-on-macos.org]]
-- [[./2017/04/specifying-target-equals-blank-on-an-anchor-in-a-markdown-document.org]]
-- [[./2017/04/resetting-emacs-colours-after-working-with-guard.org]]
-- [[./2017/04/link-decorating-activerecord.org]]
-- [[./2017/02/links-flexbox-tutorials-and-posts.org]]
-- [[./2017/02/how-i-set-up-my-local-wordpress-development-environment-using-vagrant-and-ansible.org]]
-- [[./2017/02/gitlab-database-outage-post-mortem.org]]
-- [[./2017/02/baratunde-thurston-explains-web-encryption.org]]
-- [[./2017/01/til-providing-defaults-for-envvars.org]]
-- [[./2017/01/til-call-done-to-fire-async-mocha-tests.org]]
-- [[./2017/01/my-first-proxy-slash-adapter-for-an-express-dot-js-app.org]]
-- [[./2016/12/todo-app-using-just-react-with-pojs-no-jsx-or-es6.org]]
-- [[./2016/12/js-app-config-pattern.org]]
-- [[./2016/12/flexbox-website-with-fixed-headers-and-footer.org]]
-- [[./2016/12/changing-the-return-to-shop-link-and-text-in-an-empty-woocommerce-cart.org]]
-- [[./2016/11/tool-font-style-matcher.org]]
-- [[./2016/11/til-target-equals-blank-with-no-rel-equals-noopener.org]]
-- [[./2016/11/links-from-gdi-intro-to-wordpress-class.org]]
-- [[./2016/11/installing-wordpress-things-without-ftp.org]]
-- [[./2016/11/installing-emacs-on-mac-with-homebrew.org]]
-- [[./2016/11/frontendmasters-course-devops-for-frontend-devs.org]]
-- [[./2016/11/ask-me-anything.org]]
-- [[./2016/10/testing-blur-events-in-cucumber-slash-capybara.org]]
-- [[./2016/10/signing-a-pdf-with-preview.org]]
-- [[./2016/10/how-to-set-up-your-own-private-remote-git-repository.org]]
-- [[./2016/09/when-your-tools-environment-computer-and-everything-you-know-fails-you.org]]
-- [[./2016/09/my-nginx-virtual-hosting-configuration.org]]
-- [[./2016/09/madebymike-svg-has-more-potential.org]]
-- [[./2016/09/building-resizeable-components-with-relative-css.org]]
-- [[./2016/08/the-average-web-page-data-from-analyzing-8-million-websites.org]]
-- [[./2016/08/beginner-learning-section-in-pages.org]]
-- [[./2016/07/the-traits-of-a-proficient-programmer-gregory-brown.org]]
-- [[./2016/07/rails-action-mailer-asset-host.org]]
-- [[./2016/07/learning-react-native.org]]
-- [[./2016/07/css-centering-lists.org]]
-- [[./2016/06/rails-dot-mn-presentationon-rails-routing.org]]
-- [[./2016/06/html-and-css-design-and-build-websites.org]]
-- [[./2016/06/how-to-harness-the-machines-being-productive-with-task-runners.org]]
-- [[./2016/06/fix-osx-file-open-dialog-missing-sidebar-items.org]]
-- [[./2016/06/css-examples/clearfix/clearfix.org]]
-- [[./2016/06/147-colors-grid-css-color-names.org]]
-- [[./2016/05/your-software-is-never-perfect.org]]
-- [[./2016/05/wordcamp-mpls-diving-back-into-wordpress.org]]
-- [[./2016/05/tip-ejecting-a-volume-from-the-command-line-on-osx.org]]
-- [[./2016/05/the-quiet-crisis-unfolding-in-software-development.org]]
-- [[./2016/05/the-manuscripts-of-edsger-w-dijkstra.org]]
-- [[./2016/05/learn-by-learning-to-test-first.org]]
-- [[./2016/05/javascript-examples/astronauts.org]]
-- [[./2016/05/a-set-of-reactjs-demos.org]]
-- [[./2016/04/using-web-mode-for-javascript-in-emacs.org]]
-- [[./2016/03/new-hash-operators-in-ruby-2-dot-3.org]]
-- [[./2016/02/my-way-of-implementing-service-objects-in-rails.org]]
-- [[./2016/01/using-git-to-deploy-static-sites.org]]
-- [[./2016/01/jekyll-guard-livereload.org]]
-- [[./2015/12/tweet-by-at-c089-hidden-costs-of-poor-programming.org]]
-- [[./2015/12/self-referential-models-categories.org]]
-- [[./2015/12/link-4-reasons-why-you-shouldnt-learn-to-code-from-codecademy.org]]
-- [[./2015/11/link-getting-testy.org]]
-- [[./2015/10/registrar-domain-name-service-web-hosting-service.org]]
-- [[./2015/10/link-learn-enough-command-line-to-be-dangerous-by-michael-hartl.org]]
-- [[./2015/10/klabnik-waxes-tweet-on-continuous-delivery.org]]
-- [[./2015/09/thirty-css-selectors-you-must-memorize.org]]
-- [[./2015/09/link-the-worst-mistake-in-computer-science.org]]
-- [[./2015/08/rails-immutable-records-and-attributes.org]]
-- [[./2015/08/ledgards-programming-proverbs.org]]
-- [[./2015/07/where-do-i-go-next-code-kata.org]]
-- [[./2015/07/what-are-the-fundamentals-of-software-engineering.org]]
-- [[./2015/07/todays-reading.org]]
-- [[./2015/07/link-list-of-little-known-ruby-tricks.org]]
-- [[./2015/07/link-jquery-ui-autocomplete-with-ruby-on-rails.org]]
-- [[./2015/07/link-handling-csv-views-in-rails.org]]
-- [[./2015/06/why-write-good-commit-messages-futurelearn-blog.org]]
-- [[./2015/06/user-editing-for-jekyll-sites.org]]
-- [[./2015/06/todays-readings-and-stuff.org]]
-- [[./2015/06/todays-reading.org]]
-- [[./2015/06/keep-your-data-in-your-database-pat-shaughnessy.org]]
-- [[./2015/06/just-say-no-to-more-end-to-end-tests-google-dev-blog.org]]
-- [[./2015/06/interesting-uses-of-docker.org]]
-- [[./2015/06/how-to-translate-nested-polymorphic-attributes-in-activemodel-errors-messages.org]]
-- [[./2015/06/how-to-preload-rails-scopes-justin-weiss.org]]
-- [[./2015/06/first-thing-i-learned-about-working-with-elixir.org]]
-- [[./2015/05/using-emacss-org-mode-and-editing-yaml-frontmatter-in-jekyll-posts.org]]
-- [[./2015/05/todays-reading.org]]
-- [[./2015/05/tiny-best-practices.org]]
-- [[./2015/05/til-beamer-installation-and-missing-fonts.org]]
-- [[./2015/05/thor-scripting.org]]
-- [[./2015/05/tbp-bistate-booleans-in-rails.org]]
-- [[./2015/05/snippet-getting-the-end-of-the-month-in-ruby.org]]
-- [[./2015/05/new-site-jekyll-tips.org]]
-- [[./2015/05/multiple-vagrant-rails-development-box-setup-times.org]]
-- [[./2015/05/love-letter.org]]
-- [[./2015/05/links.org]]
-- [[./2015/05/learning.org]]
-- [[./2015/04/you-dont-know-javascript-class.org]]
-- [[./2015/04/til-kernel-number-gets-is-different-from-io-number-gets.org]]
-- [[./2015/04/the-x-y-problem.org]]
-- [[./2015/04/installing-phantomjs-on-ubuntu-linux.org]]
-- [[./2015/03/rails-question-getting-x-where-there-are-no-y.org]]
-- [[./2015/03/link-sharing-rails-views-with-jekyll.org]]
-- [[./2015/03/link-how-to-use-the-html5-sectioning-elements.org]]
-- [[./2015/03/a-new-release-of-jekyllpress.org]]
-- [[./2015/02/tenderlove-weird-stuff-with-hashes.org]]
-- [[./2015/02/reactjs-course-with-frontend-masters.org]]
-- [[./2015/02/first-vs-take.org]]
-- [[./2015/01/validation-contexts.org]]
-- [[./2015/01/using-packer-and-vagrant-to-build-virtual-machines.org]]
-- [[./2015/01/rails-4-dot-2-config-for.org]]
-- [[./2015/01/link-stop-writing-rails-controllers.org]]
-- [[./2015/01/emacs-org-mode.org]]
-- [[./2014/12/repost-rspec-3-and-deprecated-and-return-blocks.org]]
-- [[./2014/11/how-to-converting-instance-variables-to-yaml-in-ruby.org]]
-- [[./2014/11/documenting-regular-expressions.org]]
-- [[./2014/11/dealing-with-mixed-encodings-in-a-file.org]]
-- [[./2014/10/link-when-women-stopped-coding.org]]
-- [[./2014/10/link-the-best-coding-language-for-you-to-learn.org]]
-- [[./2014/10/howto-quick-steps-to-install-emacs-24-without-x-on-ubuntu.org]]
-- [[./2014/09/converting-blog-to-pure-jekyll.org]]
-- [[./2014/07/chris-pines-learn-to-program-on-unshelved-comic.org]]
-- [[./2014/07/career-advice.org]]
-- [[./2014/07/a-place-to-get-started-in-web-design.org]]
-- [[./2014/07/a-new-jekyllpress-gem.org]]
-- [[./2014/05/learning-resources-for-software-development-and-pr.org]]
-- [[./2014/04/turning-off-ipv6-in-os-slash-x-maverics-10-dot-9.org]]
-- [[./2014/03/playing-around-with-thor-generators.org]]
-- [[./2014/02/dieter-rams-10-principles-for-good-design-readymag.org]]
-- [[./2014/01/this-is-why-gandi-dot-net-is-my-registrar-of-choice.org]]
-- [[./2014/01/my-nerd-story-what-you-say-to-young-girls-matters--linux-dot-com.org]]
-- [[./2014/01/from-static-to-dynamic-typing-a-change-in-beliefs.org]]
-- [[./2013/12/ux-what-does-flat-design-really-mean-link.org]]
-- [[./2013/12/this-is-why-i-dont-like-sites-like-codeacademy.org]]
-- [[./2013/12/possible-bug-ie8-wont-show-table-atargets-is-null-or-not-an-object-datatables-forums.org]]
-- [[./2013/12/how-to-add-travis-ci-capability-to-a-github-repo.org]]
-- [[./2013/12/cool-things-web-sequence-diagramer.org]]
-- [[./2013/11/mvc-is-dead-its-time-to-move-on.org]]
-- [[./2013/11/hashrocket-blog-sql-window-functions-and-you.org]]
-- [[./2013/11/good-collection-of-backbone-dot-js-topics.org]]
-- [[./2013/11/fascinating-article-pushing-the-boundaries-on-css-design.org]]
-- [[./2013/11/devops-for-developers-video-series.org]]
-- [[./2013/11/creating-non-rectangular-layouts-with-css-shapes.org]]
-- [[./2013/11/a-guide-to-ruby-collections-archives-sitepoint.org]]
-- [[./2013/10/ruby-cant-get-page-data-from-jekyll-plugin-stack-overflow.org]]
-- [[./2013/10/pdf-rendering-with-phantomjs-big-elephants.org]]
-- [[./2013/10/multi-file-uploads-and-multiple-selects.org]]
-- [[./2013/10/generate-a-full-rails-app-with-a-composer.org]]
-- [[./2013/10/free-free-100-s-of-free-programming-books.org]]
-- [[./2013/10/devops-toolbox-introduction.org]]
-- [[./2013/10/delete-a-remote-git-branch.org]]
-- [[./2013/10/bootstrap-follies-solving-a-repsonsive-positioning-problem.org]]
-- [[./2013/10/apache-slash-php-5-dot-x-remote-code-execution-exploit.org]]
-- [[./2013/10/adding-a-file-display-list-to-a-multi-file-upload-html-control.org]]
-- [[./2013/10/6-ways-to-remove-pain-from-feature-testing-in-ruby-on-rails.org]]
-- [[./2013/09/why-you-should-stop-pirating-googles-geo-apis-pete-wardens-blog.org]]
-- [[./2013/09/the-predicate-module-pattern.org]]
-- [[./2013/09/the-laws-of-software-design.org]]
-- [[./2013/09/running-headless-selenium-with-chrome.org]]
-- [[./2013/09/rspec-custom-formatters-displaying-test-durations.org]]
-- [[./2013/09/red-burns-list.org]]
-- [[./2013/09/must-have-gems-for-development-machine-in-ruby-on-rails-codebeerstartups.org]]
-- [[./2013/09/mass-inserting-data-in-rails-without-killing-your-performance-coffeepowered.org]]
-- [[./2013/09/json-how-to-send-raw-post-data-in-a-rails-functional-test-stack-overflow.org]]
-- [[./2013/09/jekyll-making-posts-sticky.org]]
-- [[./2013/09/index-scorched.org]]
-- [[./2013/09/implementing-multi-table-full-text-search-with-postgres-in-rails-hashdog-blog.org]]
-- [[./2013/09/essential-tools-for-starting-a-rails-app-in-2013--pete-keen.org]]
-- [[./2013/09/cool-thing-today-showterm-dot-io.org]]
-- [[./2013/09/adding-real-time-to-rails-with-socket-dot-io-node-dot-js-and-backbone-dot-js-with-demo-liam-kaufman.org]]
-- [[./2013/09/adding-real-time-to-a-restful-rails-app-liam-kaufman.org]]
-- [[./2013/09/activerecord-enhanced-query-objects.org]]
-- [[./2013/08/shout-out-for-codeship-dot-io-adding-transcripts-to-video-blogs.org]]
-- [[./2013/08/programmers-creativity.org]]
-- [[./2013/08/nginx-takes-the-slippery-road-away-from-open-source.org]]
-- [[./2013/08/jekyllizing-my-cookbook.org]]
-- [[./2013/08/how-to-reset-your-time-capsule-to-factory-settings-without-losing-your-data.org]]
-- [[./2013/08/getting-keywords-from-a-web-page-via-nokogiri.org]]
-- [[./2013/08/deploying-rails-app-using-nginx.org]]
-- [[./2013/08/deploying-a-rails-app-using-nginx-unicorn-postgres-and-capistrano-to-digital-ocean.org]]
-- [[./2013/08/css-tricks-drop-caps.org]]
-- [[./2013/08/bootstrap-follies-vertically-and-horizontally-centered-form.org]]
-- [[./2013/08/a-simple-content-management-system-in-sinatra-part-1.org]]
-- [[./2013/07/caption-hover-effects-in-css3.org]]
-- [[./2013/05/roles-and-activities-in-software-development.org]]
-- [[./2013/05/possible-topics-for-swaac.org]]
-- [[./2013/02/unit-testing-backbone-dot-js-applications.org]]
-- [[./2012/12/code-as-literature-software-dev-as-communication.org]]
-- [[./2011/10/so-passes-a-real-hero-of-the-computing-age.org]]
-- [[./2011/10/another-personal-hero-falls.org]]
-- [[./2011/01/swaac-intro.org]]
-- [[./2011/01/colophon.org]]
-- [[./2011/01/about.org]]</content>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/11/video-of-storybook-for-react-talk-from-october-2018.org</id>
+      <updated>2018-11-14T21:08:10-06:00</updated>
+      <title>Video of Storybook for React talk from October 2018</title>
+      <content>* Video of Storybook for React talk from October 2018
+
+  - Time-stamp: &lt;2018-11-06 20:08:58 tamara.temple&gt;
+  - capture date: [2018-11-06 Tue 19:59]
+  - keywords: react, storybook, presentation
+
+** Intro
+
+   In October 2018, I gave a talk / tutorial on [[https://storybook.js.org/basics/introduction/][Storybook]], an environment for developing visual components, and how I&#39;m using it in developing React components at work, for [[https://twitter.com/ReactMpls][React Minneapolis meetup]].
+
+** Video
+
+   The talk was recorded, and video is up at [[https://youtu.be/9B-IB2U3qSI][yahoo]].
+
+#+BEGIN_EXPORT html
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/9B-IB2U3qSI&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;
+#+END_EXPORT
+</content>
       <author>
         <name>Tamara Temple</name>
         <email>tamara@tamouse.org</email>
@@ -607,6 +53,662 @@ Have you ever considered whether CSS Grid can actually replace the need for CSS 
 I love reading [[https://www.smashingmagazine.com/author/rachel-andrew][Rachel Andrew]]&#39;s posts, everywhere, not just on SmashingMagazine. This one is no different. Rachel is no hardline &quot;you have to use my stuff&quot; writer, she&#39;s thoughtfully laid out good reasons for using a CSS framework like Bootstrap, and even given other people&#39;s answers as to why it&#39;s a good choice. She&#39;s also given reasons for *not* using a framework, and why that&#39;s a good choice.
 
 Her conclusion, for those coming down on the side of &quot;no framework&quot; are some pretty good steps, and even might help you decide if it&#39;s worth going your own way.
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/11/posting-a-file-with-XMLHttpRequest.org</id>
+      <updated>2018-11-06T14:26:38-06:00</updated>
+      <title>RESEARCH: Posting a file with XMLHttpRequest</title>
+      <content>* RESEARCH: Posting a file with XMLHttpRequest
+
+- Time-stamp: &lt;2018-11-06 14:26:38 tamara&gt;
+- published date: [2018-11-06 Tue 13:46]
+- keywords: XMLHttpRequest, file upload, JavaScript, research, React
+
+
+See: [[https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest#Using_nothing_but_XMLHttpRequest][Using nothing but XMLHttpRequest]] &lt;-- maybe not
+
+See: [[https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest#Using_FormData_objects][Using FormData objects]] &lt;-- necessary for files, I think
+
+In contrast to [[./posting-a-file-with-fetch-api.org][Posting with Fetch API]], this is a bit lower on the food chain in terms of JS stuff, *but* it lets you get access to ~progress~ events, for doing such things as displaying a progress bar. Yay.
+
+** Using FormData
+
+MDN makes a special note:
+
+#+BEGIN_QUOTE
+Note: As we said, FormData objects are not stringifiable objects. If you want to stringify a submitted data, use the previous pure-AJAX example. Note also that, although in this example there are some file &lt;input&gt; fields, when you submit a form through the FormData API you do not need to use the FileReader API also: files are automatically loaded and uploaded.
+#+END_QUOTE
+
+** Using Event Handlers
+
+From the top of the page, just using / setting event handlers:
+
+#+BEGIN_SRC rjsx
+  function reqListener () {
+    console.log(this.responseText);
+  }
+
+  var oReq = new XMLHttpRequest();
+
+  // this sets the &#39;load&#39; event handler, which fires when the file is fully loaded.
+  // I think this works for POST/PUT as well...
+  oReq.addEventListener(&quot;load&quot;, reqListener);
+
+  oReq.open(&quot;GET&quot;, &quot;http://www.example.org/example.txt&quot;);
+  oReq.send();
+#+END_SRC
+
+There&#39;s a note [[https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest#Monitoring_progress][somewhere on the page]] saying something about ~progress~ event handlers needing to be set before the ~.open~ call.
+
+This would load up all the event handlers for XMLHttpRequest:
+
+#+BEGIN_SRC rjsx
+  let oReq = new XMLHttpRequest();
+
+  oReq.addEventListener(&quot;progress&quot;, updateProgress);
+  oReq.addEventListener(&quot;load&quot;, transferComplete);
+  oReq.addEventListener(&quot;error&quot;, transferFailed);
+  oReq.addEventListener(&quot;abort&quot;, transferCanceled);
+
+  oReq.open();
+#+END_SRC
+
+** Progress Indication
+
+The ~progress~ event handler takes in the progress event, which is defined at [[https://xhr.spec.whatwg.org/#interface-progressevent][WhatWG Progress Event specification]]. It has 3 attributes:
+
+- ~lengthComputable~ [boolean] whether the length of the object is known
+- ~loaded~ [number] how much has loaded so far
+- ~total~ [number] how much there is to load
+
+So progress can be calculated by:
+
+#+BEGIN_SRC rjsx
+  handleProgress = event =&gt; {
+      let progress = 0
+      if (event.total !== 0) {
+          progress = event.loaded / event.total
+      }
+      const percentCompleted = progress * 100
+      this,setState({ progress, percentCompleted })
+  }
+
+  handleLoaded = event =&gt; {
+      this.setState({ progress: 1, percentCompleted: 100, loaded: true })
+  }
+
+  // ...
+
+  request = () =&gt; {
+
+      const req = new XMLHttpRequest()
+
+      req.addEventListener(&#39;progress&#39;, this.handleProgress)
+      req.addEventListener(&#39;load&#39;, this.handleLoaded)
+
+      // ... etc
+  }
+#+END_SRC
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/11/posting-a-file-with-fetch-api.org</id>
+      <updated>2018-11-06T13:37:57-06:00</updated>
+      <title>Posting a file using the fetch API</title>
+      <content>* Posting a file using the fetch API
+- Time-stamp: &lt;2018-11-06 13:37:57 tamara&gt;
+- published date: [2018-11-06 Tue 13:17]
+- keywords: javascript, fetch, file upload
+
+I&#39;m investigating this for work
+
+See [[https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#Uploading_a_file][MDN: Uploading a file (fetch)]]
+
+#+BEGIN_QUOTE
+Files can be uploaded using an HTML &lt;input type=&quot;file&quot; /&gt; input element, FormData() and fetch().
+#+END_QUOTE
+
+#+BEGIN_SRC rjsx
+  let formData = new FormData();
+
+  const fileField = document.querySelector(&quot;input[type=&#39;file&#39;]&quot;);
+
+  formData.append(&#39;username&#39;, &#39;abc123&#39;);
+
+  // file fields provide a collection of files, apparently.
+  formData.append(&#39;avatar&#39;, fileField.files[0]);
+
+  fetch(&#39;https://example.com/profile/avatar&#39;, {
+      method: &#39;PUT&#39;,
+      headers: {
+          &#39;Content-type&#39;: &#39;application/x-www-form-urlencoded&#39;
+      },
+      body: formData,
+  })
+      .then(response =&gt; response.json())
+      .catch(error =&gt; console.error(&#39;Error:&#39;, error))
+      .then(response =&gt; console.log(&#39;Success:&#39;, JSON.stringify(response)));
+#+END_SRC
+In a React context, the information would be obtained using a React `ref` instead of the POJS `querySelector`, but it ends up close to the same afterwards:
+
+#+BEGIN_SRC rjsx
+  fileFieldRef = React.createRef()
+
+  handleSubmit = () =&gt; {
+      let formData = new FormData()
+      const fileField = this.fileFieldRef.current
+
+      formData.append(&#39;username&#39;, &#39;abc123&#39;)
+      formData.append(&#39;avatar&#39;, fileField.files[0])
+
+      fetch(&#39;https://example.com/profile/avatar&#39;, {
+          method: &#39;PUT&#39;,
+          headers: {
+              &#39;Content-type&#39;: &#39;application/x-www-form-urlencoded&#39;
+          },
+          body: formData,
+      })
+          .then(response =&gt; response.json())
+          .catch(error =&gt; console.error(&#39;Error:&#39;, error))
+          .then(response =&gt; console.log(&#39;Success:&#39;, JSON.stringify(response)));
+  }
+
+  // ...
+
+  render() {
+      return (
+          &lt;form onSubmit={this.handleSubmit}&gt;
+            &lt;input type=&quot;file&quot; ref={this.fileFieldRef}/&gt;
+          &lt;/form&gt;
+      )
+  }
+#+END_SRC
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2017/07/setting-up-your-mac-for-working-on-the-command-line.org</id>
+      <updated>2018-11-06T09:32:33-06:00</updated>
+      <title>Setting up your Mac for working on the command line.</title>
+      <content>* Setting up your Mac for working on the command line.
+- Time-stamp: &lt;2018-11-06 09:32:33 tamara&gt;
+- published date: 2017-07
+- keywords: command line, cli, termoial, mac
+
+Before beginning, I strongly urge you to get Michael Hartl&#39;s [[https://www.learnenough.com/command-line-tutorial][Learn Enough Command Line to Be Dangerous]] which is seriously the best introduction to this whole thing.
+
+See also: [Conventions Used in This Section]({{ &quot;/pages/learning/beginner/conventions-used-in-this-section&quot;}}).
+
+** Intro
+
+I&#39;d love to provide the TL;DR for this, but I can&#39;t. I don&#39;t know what&#39;s on your system already, what level you&#39;re at, or even a kind voice to listen to your questions and respond.
+
+Using the caommand line effectively means having it configured to your needs. So this page is going to introduce how to configure your command line.
+
+There are two, sometimes three, files involved in this:
+
+- =.bash_profile=
+- =.profile=
+- =.bashrc=
+
+The rest of this will tell you how to set them up.
+
+** You&#39;ll need to know
+
+- [[file:%7B%7B%20site.baseurl%20%7D%7D/pages/learning/beginner/how-do-i-get-to-the-command-line-on-a-mac/][How to open Terminal on a Mac]]
+- Various shell commands:
+
+  - =cd=
+  - =chmod=
+  - =cp=
+  - =echo=
+  - =ls=
+
+** Gathering Current Information
+
+1. [[file:%7B%7B%20site.baseurl%20%7D%7D/pages/learning/beginner/how-do-i-get-to-the-command-line-on-a-mac/][Open up the Terminal]]
+
+2. Run the command:
+
+#+BEGIN_EXAMPLE
+    ls -1 .profile .bash_profile .bashrc
+#+END_EXAMPLE
+
+The &quot;-1&quot; (&quot;minus-one&quot;) option produces a listing of file names in a single column. It&#39;s not necessary, but it&#39;s a little easier to read for short listings.
+
+The =ls= command has /lots/ of options which can be learned about using the =man ls= command and reading the manual page.
+
+You could see something like the following:
+
+#+BEGIN_EXAMPLE
+       ls: .bash_profile: No such file or directory
+       ls: .bashrc: No such file or directory
+       ls: .profile: No such file or directory
+#+END_EXAMPLE
+
+in which case you don&#39;t have any of those files, which is okay.
+
+You might see something like this:
+
+#+BEGIN_EXAMPLE
+       ls: .bash_profile: No such file or directory
+       ls: .profile: No such file or directory
+       .bashrc
+#+END_EXAMPLE
+
+in which case you have the =.bashrc= file, but you don&#39;t have the others, which is also okay.
+
+In fact, /any/ combination is okay, there&#39;ll be a section below on each case.
+
+Here are the combinations:
+
+1. You don&#39;t have any of them (default OSX setup)
+2. You have =.profile= but not the other two
+3. You have =.bash_profile= but not the other two
+4. You have =.bashrc= but not the other two
+5. You have =.bash_profile= and =.bashrc=, but not =.profile=
+6. You have =.profile= and =.bashrc=, but not =.bash_profile=
+7. You have all three
+
+** If you don&#39;t have any of the three files
+
+In this section, we&#39;ll talk about when none of those files exist yet. This is easiest to deal with starting off.
+
+*** What are the =.bash_profile= and =.profile= file about?
+
+On Unix- and Linux-based systems, the command line is also referred to as &quot;The Shell&quot;. By default, Mac&#39;s use the program &quot;bash&quot; as the command line shell.
+
+When you start up Terminal, it launches a &quot;login shell&quot; by starting the program =/bin/bash=. This program then looks for two files in your user&#39;s [home directory][homedir]: =.bash_profile= and =.profile=.
+
+It&#39;s important to note that if =bash= finds =.bash_profile=, it will run that file, otherwise it will run =.profile=. There may come a time when you install a software development command-line tool that creates a =.bash_profile=, and you can find all the things you put in =.profile= are not being set up. Likewise, you might install a software command line tool that only expects things to be initialized in =.profile= and then that tool&#39;s setting won&#39;t happen correctly. It&#39;s confusing, to be sure.
+
+There&#39;s always more than one way to deal with this, of course. Perhaps the best way is to start with the =.bash_profile= and make all your initialisation happen there.
+
+I prefer to do the following though:
+
+1. Create a =.bash_profile= in your home directory with the following contents:
+
+#+BEGIN_EXAMPLE
+       #!/bin/bash
+       [ -f $HOME/.profile ] &amp;&amp; source $HOME/.profile
+#+END_EXAMPLE
+
+What this does is execute the =.profile= file if it exists. In this way you can have initialisation code put in either file and it will be run. The /major/ caveat on this is to make sure if there&#39;s initialisation code in both =.bash_profile= and =.profile= it does not cause any problems if it gets run twice. Usually this is okay, but it can be a source of errors.
+
+2. Create the =.profile= file and place the initialisation codes you want to manage there.
+
+*** The =.profile= file
+
+As noted, this file contains initialisation codes. Here&#39;s where you can set environment variables that are used throughout your command line sessions.
+
+One such environment variable is =PATH= -- this is the variable used to find command line programs on your computer. Sometimes you&#39;ll need to extend this variable when you install a new piece of software.
+
+Jump into your command line now and type:
+
+#+BEGIN_EXAMPLE
+    $ echo $PATH
+#+END_EXAMPLE
+
+Incidently, that /first/ &quot;$&quot; on the line above is *not* part of the command; it is there to indicate the command line prompt (which could be much more complicated). It&#39;s used here to tell you something you should be typing. What you&#39;ll actually type is what follows the space after the &quot;$&quot;, i.e. just &quot;echo $PATH&quot;.
+
+On the stock Mac install, you&#39;ll probably see something like:
+
+#+BEGIN_EXAMPLE
+    /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+#+END_EXAMPLE
+
+(It might be slightly different, or it might have been changed previously.)
+
+Let&#39;s take the case where you just recently install the &quot;Sass&quot; program which pre-processed CSS files in a special format. After you&#39;ve run the =gem install sass --user-install= command, you may have seen a warning like the following:
+
+#+BEGIN_EXAMPLE
+    WARNING:  You don&#39;t have /Users/noob/.gem/ruby/2.0.0/bin in your PATH, gem executables will not run.
+#+END_EXAMPLE
+
+While not an error, not addressing this warning is going to be very painful for you.
+
+So let&#39;s add that indicated directory to our PATH environment variable. We do this in the =.profile= file like so:
+
+#+BEGIN_EXAMPLE
+    export PATH=$PATH:$HOME/.gem/ruby/2.0.0/bin
+#+END_EXAMPLE
+
+Save and close your =.profile= file, switch back to your command line, and type the following:
+
+#+BEGIN_EXAMPLE
+    $ source $HOME/.profile
+    $ echo $PATH
+#+END_EXAMPLE
+
+Now you should see the following:
+
+#+BEGIN_EXAMPLE
+    usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/noob/.gem/ruby/2.0.0/bin
+#+END_EXAMPLE
+
+** If you have =.bash_profile=, but none of the others
+
+If you already have one, the easiest is to add the following line at the bottom of the file:
+
+#+BEGIN_EXAMPLE
+    [ -f $HOME/.profile ] &amp;&amp; source $HOME/.profile
+#+END_EXAMPLE
+
+then save and close the file.
+
+Then open a new file named =.profile= and enter the following in it:
+
+#+BEGIN_EXAMPLE
+    \#!/bin/bash
+#+END_EXAMPLE
+
+Then you can add whatever other initialisation codes you want in =.profile=. Follow the example in the previous section to append something to your =PATH= environment variable.
+
+** If you have =.profile=, but none of the others
+
+Create a =.bash_profile= in your home directory with the following contents:
+
+#+BEGIN_EXAMPLE
+    \#!/bin/bash
+    [ -f $HOME/.profile ] &amp;&amp; source $HOME/.profile
+#+END_EXAMPLE
+
+That&#39;s all, really.
+
+** If you do NOT have a =.bashrc= file
+
+This is the default starting point for a new user.
+
+*** What is the =.bashrc= file all about?
+
+The =.bashrc= file in your home directory will be executed whenever an /interactive/ shell gets invoked. Calling =bash= from the command line from a is considered an /interactive/ shell. It is /not/ run, however, when a /login/ shell is started, which is what happens when you start up a new Terminal window.
+
+Confusing? Yes. Try the following to see what is happening.
+
+Edit your =.profile= and add the following line to the end:
+
+#+BEGIN_EXAMPLE
+    echo &quot;.profile ran&quot;
+#+END_EXAMPLE
+
+Edit =.bashrc= (creating it if necessary) and put the following at the end:
+
+#+BEGIN_EXAMPLE
+    echo &quot;.bashrc ran&quot;
+#+END_EXAMPLE
+
+Now open a /new/ Terminal window (Command-N) and see what is printed. You should /just/ see &quot;.profile ran&quot; before the prompt:
+
+#+BEGIN_EXAMPLE
+    .profile ran
+    $
+#+END_EXAMPLE
+
+Your command prompt will be different of course.
+
+Now run an interactive bash:
+
+#+BEGIN_EXAMPLE
+    $ bash
+#+END_EXAMPLE
+
+You should now see something like:
+
+#+BEGIN_EXAMPLE
+    .bashrc ran
+    bash-3.2$
+#+END_EXAMPLE
+
+You can see that the =.bashrc= file is not run on starting up a new window. (You might also see your command prompt change! We&#39;ll fix that in a second.)
+
+What we actually /want/ usually, is to have the =.bashrc= file run for a login shell as well.
+
+To do that, we need to fix up the =.profile= file with the following line at the end of the file:
+
+#+BEGIN_EXAMPLE
+    [ -x $HOME/.bashrc ] &amp;&amp; source $HOME/.bashrc
+#+END_EXAMPLE
+
+This will cause the =.bashrc= file to be executed at the end of the =.profile= file&#39;s executing but only /if/ the =.bashrc= file is *executable*.
+
+This gives a little extra control, if we don&#39;t want =.bashrc= to run at login, we can unset it&#39;s execution bit. But for now, let&#39;s set it:
+
+#+BEGIN_EXAMPLE
+    $ chmod +x $HOME/.bashrc
+    $ ls -l .bashrc
+#+END_EXAMPLE
+
+And you should see something like:
+
+#+BEGIN_EXAMPLE
+    \-rwxr-xr-x  1 noob  staff  32 Aug  7 01:01 .bashrc
+#+END_EXAMPLE
+
+Which shows it&#39;s become executable for everyone on the system.
+
+Close the Terminal window and open a new one. Now you should see the following before the first command line prompt:
+
+#+BEGIN_EXAMPLE
+    .bashrc ran
+    .profile ran
+#+END_EXAMPLE
+
+You can remove those two &quot;echo&quot; commands from =.profile= and =.bashrc= if you wish, or leave them in as tracers while you&#39;re working with them.
+
+*** Creating the =.bashrc= file
+
+This file initialized /each/ interactive shell, including setting some environment variables used by =bash=, aliases, and other settings.
+
+There is a global =/etc/bashrc= file that is a good starting point for your own.
+
+Run the following command:
+
+#+BEGIN_EXAMPLE
+    $ cp /etc/bashrc $HOME/.bashrc
+#+END_EXAMPLE
+
+This will *overwrite* the =.bashrc= file you just made, but that&#39;s okay since there really wasn&#39;t anything in it.
+
+Give the new file execute permission:
+
+#+BEGIN_EXAMPLE
+    $ chmod +x $HOME/.bashrc
+#+END_EXAMPLE
+
+Close the Terminal window and open a new one.
+
+** If you have =.bashrc= but neither =.bash_profile= or =.profile=
+
+In this case, you want to add running the =.bashrc= file for /login/ shells so those settings are available.
+
+Add the following line to the end of your =.profile=:
+
+#+BEGIN_EXAMPLE
+    [ -x $HOME/.bashrc ] &amp;&amp; source $HOME/.bashrc
+#+END_EXAMPLE
+
+as in the previous section. You may need to set the execute bit on =.bashrc= as well:
+
+#+BEGIN_EXAMPLE
+    $ chmod +x .bashrc
+#+END_EXAMPLE
+
+** If you have =.bashrc=, and one or both of =.bash_profile= and =.profile=
+
+If you only have one of =.bash_profile= or =.profile= see the appropriate section above.
+
+Make sure one of those two files is calling =.bashrc= as in the previous section. If neither do, put the line into =.profile=.
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2017/07/how-do-i-get-to-the-command-line-on-a-mac.org</id>
+      <updated>2018-11-06T09:31:47-06:00</updated>
+      <title>How do I get to the command line on a Mac?</title>
+      <content>* How do I get to the command line on a Mac?
+
+- Time-stamp: &lt;2018-11-06 09:31:47 tamara&gt;
+- published date: 2018-07
+
+
+** From Finder
+   :PROPERTIES:
+   :CUSTOM_ID: from-finder
+   :END:
+
+1. Open a Finder window.
+
+2. Go to the =Applications= folder (this could be in the side bar of the Finder window or you should be able to press Shift-Command-A unless you&#39;ve previously modified your keyboard shortcuts.)
+
+3. Scroll down to the =Utilites= folder and double click it to open it.
+
+4. Scroll down until to find the =Terminal= application, and double click it to open it.
+
+5. When it opens, the icon for =Terminal= will appear in the Dock. Right-click the icon, and select the &quot;Keep in Doc&quot; option.
+
+Now you can easily open the Terminal just by clicking on the icon in the Dock when you want one.
+
+** From Spotlight
+   :PROPERTIES:
+   :CUSTOM_ID: from-spotlight
+   :END:
+
+1. Press Command-Spacebar to open the Spotlight search dialog.
+
+2. Type &quot;ter&quot; -- this should be enough to highlight the =Terminal= application.
+
+3. Press the Return key and =Terminal= will start.
+
+Follow step 5 in the previous section to keep Terminal in your Dock.
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2017/07/beginners-section.org</id>
+      <updated>2018-11-06T09:31:20-06:00</updated>
+      <title>Beginner&#39;s Section</title>
+      <content>* Beginner&#39;s Section
+
+- Time-stamp: &lt;2018-11-06 09:31:20 tamara&gt;
+- published date: 2017-07-23
+- keywords: beginner, beginning, how-to, learning
+
+I am far, far distant from a beginner at software crafts. I wrote my first BASIC program, a lunar lander game, in 1969, on a cranky old teletype. The program was saved on punched paper tape.
+
+The current age of computers, software development practice, and, probably most importantly, the availability, ubiquity, and democratisation of computers and software development learning materials is so vastly different from 1969. No surprise, I&#39;m not saying anything new. But the implications for me are that it is really hard to re-acquire the mind-set of someone so brand new to programming that they really don&#39;t have any sense of how things work with absolutely no reference frames to hang things off of when they set down to learn.
+
+This is frustrating for both of us. I&#39;ve forgotten what I didn&#39;t used to know. You don&#39;t know what you need to learn.
+
+In this section, I want to put together some information for beginners.
+
+They&#39;re not going to come in any particular order, for I&#39;m still learning what might be needed. Organization will come, hopefully not too late, and not too poorly.
+
+This section is also going to be very, very Unix, Linux, GNU, and Mac OSX focused, since that&#39;s all I really have familiarity with.
+
+- [[./how-do-i-get-to-the-command-line-on-a-mac.org][How do I get to the command line on a Mac?]]
+- [[./setting-up-your-mac-for-working-on-the-command-line.org][Setting up your Mac for working on the command line]]
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/11/serving-static-files-in-storybook.org</id>
+      <updated>2018-11-06T08:56:46-06:00</updated>
+      <title>[2018-11-06 Tue 08:40] TIL: serving static files in storybook</title>
+      <content>* [2018-11-06 Tue 08:40] TIL: serving static files in storybook
+
+  - last_update: Time-stamp: &lt;2018-11-06 08:56:46 tamara&gt;
+  - capture_date: [2018-11-06 Tue 08:40]
+  - keywords: storybook, test data, static assets
+
+
+  I wish I&#39;d known about this before taking all that time to munge the test data the first time. It turns out storybook can serve up static assets by providing the ~-s~ option on the command line:
+
+  #+BEGIN_SRC shell-script
+    start-storybook -p 9009 -s ./path/to/static/assets -c .storybook/config.js
+  #+END_SRC
+
+  You can have more than one folder as well, separating them by commas
+
+  #+BEGIN_SRC shell-script
+    start-storybook -p 9009 -s ./some/assets,./other/assets,./these/assets/over/here -c .storybook/config.js
+  #+END_SRC
+
+  This makes them available at the root URL
+
+  #+BEGIN_SRC shell-script
+    http://localhost:9009/
+  #+END_SRC
+
+  So if you have assets at ~./src/components/AttachmentList/__TEST_DATA__/attachments/~, for example, ~shasta/32/original/002.jpg~, then the URL would be:
+
+  #+BEGIN_SRC shell-script
+    http://localhost:9009/shasta/32/original/002.jpg
+  #+END_SRC
+
+  And even more importantly, they can be referred to relatively even without the scheme and host.
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/10/link-30-seconds-of-CSS.org</id>
+      <updated>2018-11-04T10:02:41-06:00</updated>
+      <title>LINK: [[https://30-seconds.github.io/30-seconds-of-css/][30 seconds of CSS]]:</title>
+      <content>* LINK: [[https://30-seconds.github.io/30-seconds-of-css/][30 seconds of CSS]]:
+
+- Time-stamp: &lt;2018-11-04 10:02:41 tamara&gt;
+- published date: [2018-11-04 Sun]
+- keywords: link, css, collection, exercises, learning
+
+[[https://30-seconds.github.io/30-seconds-of-css/][30 seconds of CSS]]:
+
+&gt; A curated collection of useful CSS snippets you can understand in 30 seconds or less.
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/10/link-ARIA-is-spackle-not-rebar.org</id>
+      <updated>2018-11-04T10:02:04-06:00</updated>
+      <title>LINK: [[https://css-tricks.com/aria-spackle-not-rebar/][ARIA is Spackle, Not Rebar]]</title>
+      <content>* LINK: [[https://css-tricks.com/aria-spackle-not-rebar/][ARIA is Spackle, Not Rebar]]
+
+- Time-stamp: &lt;2018-11-04 10:02:04 tamara&gt;
+- published date: [2018-11-04 Sun]
+- keywords: ARIA, accessibility, a11y, link
+
+There&#39;s an excellent article over at [[https://css-tricks.com/][CSS Tricks]] by Eric Bailey, [[https://css-tricks.com/aria-spackle-not-rebar/][ARIA is Spackle, Not Rebar]], written November 2017, that lays out the reasons when to use ARIA ([[https://www.w3.org/WAI/standards-guidelines/aria/][Accessible Rich Internet Applications Suite]]) directly, and most importantly in my view, when _not_ to use it explicitly (tl;dr: most of the time).
+
+I think this sums up the intent nicely:
+
+&gt; Before considering other options, start with markup that semantically describes the content it is wrapping.
+
+And while that is definitely true, it really does help to understand what ARIA is for and how it works. So while we&#39;re on the subject, I want to point out the excellent [[https://frontendmasters.com][Frontend Masters]] course: [[https://frontendmasters.com/courses/web-accessibility/][Website Accessibility]] by Jon Kuperman.
 </content>
       <author>
         <name>Tamara Temple</name>
