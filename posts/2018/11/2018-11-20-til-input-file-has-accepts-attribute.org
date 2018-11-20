@@ -1,6 +1,6 @@
 * TIL: The ~input[type=file]~ element has an ~accepts~ attribute
 
-- Time-stamp: <2018-11-20 00:26:41 tamara>
+- Time-stamp: <2018-11-20 00:30:53 tamara>
 - capture date: [2018-11-20 Tue]
 - keywords: html, input, file, pass list
 
@@ -67,7 +67,7 @@ With a little more work, if there is a pass list of extensions on the server, I 
           <input
             type="file"
             name="data"
-            accepts={this.accepts_list}
+            accepts={this.accepts_list()}
             onChange={this.fileChange}
           />
       )
