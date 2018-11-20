@@ -2,7 +2,93 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://github.com/tamouse/swaac</id>
   <title>Tamouse&#39;s Software as a Craft blog</title>
-  <updated>2018-11-14T21:08:10-06:00</updated>
+  <updated>2018-11-20T00:26:42-06:00</updated>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/11/2018-11-20-til-input-file-has-accepts-attribute.org</id>
+      <updated>2018-11-20T00:26:42-06:00</updated>
+      <title>TIL: The ~input[type=file]~ element has an ~accepts~ attribute</title>
+      <content>* TIL: The ~input[type=file]~ element has an ~accepts~ attribute
+
+- Time-stamp: &lt;2018-11-20 00:26:41 tamara&gt;
+- capture date: [2018-11-20 Tue]
+- keywords: html, input, file, pass list
+
+The ~input[type=file]~ element has an attribute, ~accepts~ that provides a pass filter for the types of files that are accepted in the input file field. See [[https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#accept][the MDN documentation for input accept]] for details.
+
+This means, if I have a set of allowed extensions, I can put them in the ~accepts~ field to limit what the user can select:
+
+#+BEGIN_SRC html
+  &lt;!-- to accept all image types --&gt;
+  &lt;input type=&quot;file&quot; name=&quot;image_file&quot; accept=&quot;image/*&quot;&gt;
+
+  &lt;!-- to accept various file extensions --&gt;
+  &lt;input type=&quot;file&quot; name=&quot;data&quot; accept=&quot;.jpg,.jpeg,.gif,.png,.bmp,.pdf,.txt,.md,.markdown&quot;&gt;
+#+END_SRC
+
+With a little more work, if there is a pass list of extensions on the server, I could pass it down to the client via the ~gon~ object where a React client could pick it up.
+
+
+#+name: config/constants.rb
+#+begin_src ruby
+  module App
+    module CONSTANTS
+      UPLOAD_PASS_LIST = %w[
+        jpg
+        jpeg
+        png
+        gif
+        bmp
+        pdf
+        text
+        txt
+        markdown
+        md
+        csv
+        xls
+        xlsx
+        doc
+        docx
+      ].freeze
+    end
+  end
+#+end_src
+
+#+name: app/controllers/application_controller
+#+begin_src ruby
+  before_action :export_upload_pass_list
+
+  # ...
+
+  def export_upload_pass_list
+    gon.push(upload_pass_list: App::CONSTANTS::UPLOAD_PASS_LIST)
+  end
+#+end_src
+
+#+name: upload_file_form.js
+#+begin_src jsx
+
+  accepts_list = () =&gt; {
+      return gon.upload_pass_list.map(ext =&gt; `.${ext}`).join(&quot;,&quot;)
+  }
+
+  render() {
+      return (
+          &lt;input
+            type=&quot;file&quot;
+            name=&quot;data&quot;
+            accepts={this.accepts_list}
+            onChange={this.fileChange}
+          /&gt;
+      )
+  }
+
+#+end_src
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2018/11/video-of-storybook-for-react-talk-from-october-2018.org</id>
       <updated>2018-11-14T21:08:10-06:00</updated>
@@ -686,29 +772,6 @@ This section is also going to be very, very Unix, Linux, GNU, and Mac OSX focuse
 [[https://30-seconds.github.io/30-seconds-of-css/][30 seconds of CSS]]:
 
 &gt; A curated collection of useful CSS snippets you can understand in 30 seconds or less.
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/10/link-ARIA-is-spackle-not-rebar.org</id>
-      <updated>2018-11-04T10:02:04-06:00</updated>
-      <title>LINK: [[https://css-tricks.com/aria-spackle-not-rebar/][ARIA is Spackle, Not Rebar]]</title>
-      <content>* LINK: [[https://css-tricks.com/aria-spackle-not-rebar/][ARIA is Spackle, Not Rebar]]
-
-- Time-stamp: &lt;2018-11-04 10:02:04 tamara&gt;
-- published date: [2018-11-04 Sun]
-- keywords: ARIA, accessibility, a11y, link
-
-There&#39;s an excellent article over at [[https://css-tricks.com/][CSS Tricks]] by Eric Bailey, [[https://css-tricks.com/aria-spackle-not-rebar/][ARIA is Spackle, Not Rebar]], written November 2017, that lays out the reasons when to use ARIA ([[https://www.w3.org/WAI/standards-guidelines/aria/][Accessible Rich Internet Applications Suite]]) directly, and most importantly in my view, when _not_ to use it explicitly (tl;dr: most of the time).
-
-I think this sums up the intent nicely:
-
-&gt; Before considering other options, start with markup that semantically describes the content it is wrapping.
-
-And while that is definitely true, it really does help to understand what ARIA is for and how it works. So while we&#39;re on the subject, I want to point out the excellent [[https://frontendmasters.com][Frontend Masters]] course: [[https://frontendmasters.com/courses/web-accessibility/][Website Accessibility]] by Jon Kuperman.
 </content>
       <author>
         <name>Tamara Temple</name>

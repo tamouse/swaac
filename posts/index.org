@@ -3,6 +3,7 @@
 - [[./2018/11/posting-a-file-with-fetch-api.org]]
 - [[./2018/11/posting-a-file-with-XMLHttpRequest.org]]
 - [[./2018/11/link-css-frameworks-vs-grid.org]]
+- [[./2018/11/2018-11-20-til-input-file-has-accepts-attribute.org]]
 - [[./2018/10/react-dismiss-after-timeout.org]]
 - [[./2018/10/link-upcase-by-thoughbot.org]]
 - [[./2018/10/link-ala-tags-to-dom.org]]
