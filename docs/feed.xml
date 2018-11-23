@@ -2,14 +2,83 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://github.com/tamouse/swaac</id>
   <title>Tamouse&#39;s Software as a Craft blog</title>
-  <updated>2018-11-20T00:26:42-06:00</updated>
+  <updated>2018-11-23T16:44:09-06:00</updated>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/11/2018-11-23-til-setting-window-location-in-jest-tests.org</id>
+      <updated>2018-11-23T16:44:09-06:00</updated>
+      <title>TIL: Setting `window.location` during Jest testing</title>
+      <content>* TIL: Setting `window.location` during Jest testing
+  :PROPERTIES:
+  :CAPTURE_DATE: 2018-11-23
+  :KEYWORDS: jest, window.location, testing
+  :END:
+
+- Time-stamp: &lt;2018-11-23 16:44:09 tamara&gt;
+- capture_date: [2018-11-23 Fri]
+- keywords: jest, window.location, testing
+
+
+By default, the `window.location` properties are read-only. But for some tests, I need these to be specific, set values.
+
+In [[https://github.com/facebook/jest/issues/890][Jest issue 890]] over on github, there is a long discussion about this, and ways people have solved this issue for themselves.
+
+The first one I happened upon is one used by Facebook engineers:
+
+I needed to modify `pathname` property only for my test:
+#+BEGIN_SRC rjsx
+  Object.defineProperties(window.location, &#39;pathname&#39;, {
+      writeable: true,
+      value: defaultPathname
+  })
+#+END_SRC
+
+
+
+Here&#39;s a more universal one:
+
+#+BEGIN_SRC rjsx
+  const setURL = (url) =&gt; {
+    const parser = document.createElement(&#39;a&#39;);
+    parser.href = url;
+    [&#39;href&#39;, &#39;protocol&#39;, &#39;host&#39;, &#39;hostname&#39;, &#39;origin&#39;, &#39;port&#39;, &#39;pathname&#39;, &#39;search&#39;, &#39;hash&#39;].forEach(prop =&gt; {
+      Object.defineProperty(window.location, prop, {
+        value: parser[prop],
+        writable: true,
+      });
+    });
+  };
+#+END_SRC
+
+The sneaky trick of creating a wee little parser out of a document anchor element is pretty dang cool, too.
+
+Later in the issue page, there&#39;s some discussion about how this might break in future versions of `jsdom`, and another way to set the location property, by modifying the history on `window`:
+
+#+name: package.json
+#+begin_src js
+  {
+      &quot;testUrl&quot;: &quot;https://somehost.com/some/path/test.html&quot;
+  }
+#+end_src
+
+And in your test setup:
+#+BEGIN_SRC rjsx
+  window.history.pushState({}, &#39;Test Title&#39;, &#39;/another/path/test.html?query=true&#39;);
+#+END_SRC
+
+This is from the [[https://www.ryandoll.com/post/2018/3/29/jest-and-url-mocking][Jest and URL testing]] by Ryan Doll.
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2018/11/2018-11-20-til-input-file-has-accepts-attribute.org</id>
-      <updated>2018-11-20T00:26:42-06:00</updated>
+      <updated>2018-11-20T00:30:53-06:00</updated>
       <title>TIL: The ~input[type=file]~ element has an ~accepts~ attribute</title>
       <content>* TIL: The ~input[type=file]~ element has an ~accepts~ attribute
 
-- Time-stamp: &lt;2018-11-20 00:26:41 tamara&gt;
+- Time-stamp: &lt;2018-11-20 00:30:53 tamara&gt;
 - capture date: [2018-11-20 Tue]
 - keywords: html, input, file, pass list
 
@@ -76,7 +145,7 @@ With a little more work, if there is a pass list of extensions on the server, I 
           &lt;input
             type=&quot;file&quot;
             name=&quot;data&quot;
-            accepts={this.accepts_list}
+            accepts={this.accepts_list()}
             onChange={this.fileChange}
           /&gt;
       )
@@ -90,7 +159,7 @@ With a little more work, if there is a pass list of extensions on the server, I 
       </author>
     </entry>
     <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/11/video-of-storybook-for-react-talk-from-october-2018.org</id>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/11/2018-11-14-video-of-storybook-for-react-talk-from-october-2018.org</id>
       <updated>2018-11-14T21:08:10-06:00</updated>
       <title>Video of Storybook for React talk from October 2018</title>
       <content>* Video of Storybook for React talk from October 2018
@@ -117,7 +186,7 @@ With a little more work, if there is a pass list of extensions on the server, I 
       </author>
     </entry>
     <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/11/link-css-frameworks-vs-grid.org</id>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/11/2018-11-14-link-css-frameworks-vs-grid.org</id>
       <updated>2018-11-14T21:04:07-06:00</updated>
       <title>LINK: CSS Frameworks vs. CSS Grid</title>
       <content>* LINK: CSS Frameworks vs. CSS Grid
@@ -146,7 +215,7 @@ Her conclusion, for those coming down on the side of &quot;no framework&quot; ar
       </author>
     </entry>
     <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/11/posting-a-file-with-XMLHttpRequest.org</id>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/11/2018-11-06-posting-a-file-with-XMLHttpRequest.org</id>
       <updated>2018-11-06T14:26:38-06:00</updated>
       <title>RESEARCH: Posting a file with XMLHttpRequest</title>
       <content>* RESEARCH: Posting a file with XMLHttpRequest
@@ -247,7 +316,7 @@ So progress can be calculated by:
       </author>
     </entry>
     <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/11/posting-a-file-with-fetch-api.org</id>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/11/2018-11-06-posting-a-file-with-fetch-api.org</id>
       <updated>2018-11-06T13:37:57-06:00</updated>
       <title>Posting a file using the fetch API</title>
       <content>* Posting a file using the fetch API
@@ -718,7 +787,7 @@ This section is also going to be very, very Unix, Linux, GNU, and Mac OSX focuse
       </author>
     </entry>
     <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/11/serving-static-files-in-storybook.org</id>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/11/2018-11-06-serving-static-files-in-storybook.org</id>
       <updated>2018-11-06T08:56:46-06:00</updated>
       <title>[2018-11-06 Tue 08:40] TIL: serving static files in storybook</title>
       <content>* [2018-11-06 Tue 08:40] TIL: serving static files in storybook
@@ -753,25 +822,6 @@ This section is also going to be very, very Unix, Linux, GNU, and Mac OSX focuse
   #+END_SRC
 
   And even more importantly, they can be referred to relatively even without the scheme and host.
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/10/link-30-seconds-of-CSS.org</id>
-      <updated>2018-11-04T10:02:41-06:00</updated>
-      <title>LINK: [[https://30-seconds.github.io/30-seconds-of-css/][30 seconds of CSS]]:</title>
-      <content>* LINK: [[https://30-seconds.github.io/30-seconds-of-css/][30 seconds of CSS]]:
-
-- Time-stamp: &lt;2018-11-04 10:02:41 tamara&gt;
-- published date: [2018-11-04 Sun]
-- keywords: link, css, collection, exercises, learning
-
-[[https://30-seconds.github.io/30-seconds-of-css/][30 seconds of CSS]]:
-
-&gt; A curated collection of useful CSS snippets you can understand in 30 seconds or less.
 </content>
       <author>
         <name>Tamara Temple</name>
