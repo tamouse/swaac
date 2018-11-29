@@ -2,7 +2,66 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://github.com/tamouse/swaac</id>
   <title>Tamouse&#39;s Software as a Craft blog</title>
-  <updated>2018-11-23T16:44:09-06:00</updated>
+  <updated>2018-11-29T14:54:22-06:00</updated>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/11/2018-11-29-thoughts-on-writing-good-tests.org</id>
+      <updated>2018-11-29T14:54:22-06:00</updated>
+      <title>Thoughts on learning to write good tests                          :testing:</title>
+      <content>* Thoughts on learning to write good tests                          :testing:
+  :PROPERTIES:
+  :CAPTURE_DATE: [2018-11-29 Thu]
+  :KEYWORDS: testing, learning, good tests
+  :END:
+
+- Time-stamp: &lt;2018-11-29 14:54:22 tamara&gt;
+- current_date: [2018-11-29 Thu]
+- keywords: testing, learning
+
+
+Someone asked this question on the WWCodeTC #learning-to-code Slack channel the other day:
+
+#+BEGIN_QUOTE
+OP: I asked this in another group and I got a million answers but I&#39;ll ask here: anyone have a good way to learn how to write good tests? I&#39;ve listened to a test driven development course on lynda.com. I don&#39;t really have a specific question per se, just looking for a pointer to good testing practices beyond the basics.
+#+END_QUOTE
+
+
+My response:
+
+#+BEGIN_QUOTE
+
+everyone says testing is Super Important, but no one seems to definitively answer that question. the obvious answer is &quot;write a lot of bad tests&quot; but that is oh so dismal.
+
+the stuff i learned from, ages and ages ago, is probably no longer in print, but look for these authors:
+
+- jerry weinberg
+- boris beizer
+- larry constantine
+- glen meyers
+- bob grady
+
+I met and worked these guys aeons ago, all really amazing authors
+
+look up software quality institute,  I&#39;m not sure if it&#39;s still going
+
+most all classes and tutorials i see are about how to write tests in a framework, which is good, but like most software education, never really gets at how to do design of software for a purpose and tests do need to fit a purpose
+
+I&#39;ll just throw out a few questions you may want to try on as heuristics:
+
+- what are the most critical actions or features users need to function impeccably
+- what features are showing the most failures in use
+- if a feature is unclear in how to use, how many ways can it be used or abused
+- how can i break this?
+
+
+another way to approach it is from the test driven side, and write tests that describe exactly what the feature does, does not do, responds to random input, responds to incorrect input, etc, so you completely spec the feature before any feature code is written.
+
+#+END_QUOTE
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2018/11/2018-11-23-til-setting-window-location-in-jest-tests.org</id>
       <updated>2018-11-23T16:44:09-06:00</updated>
@@ -780,48 +839,6 @@ This section is also going to be very, very Unix, Linux, GNU, and Mac OSX focuse
 
 - [[./how-do-i-get-to-the-command-line-on-a-mac.org][How do I get to the command line on a Mac?]]
 - [[./setting-up-your-mac-for-working-on-the-command-line.org][Setting up your Mac for working on the command line]]
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/11/2018-11-06-serving-static-files-in-storybook.org</id>
-      <updated>2018-11-06T08:56:46-06:00</updated>
-      <title>[2018-11-06 Tue 08:40] TIL: serving static files in storybook</title>
-      <content>* [2018-11-06 Tue 08:40] TIL: serving static files in storybook
-
-  - last_update: Time-stamp: &lt;2018-11-06 08:56:46 tamara&gt;
-  - capture_date: [2018-11-06 Tue 08:40]
-  - keywords: storybook, test data, static assets
-
-
-  I wish I&#39;d known about this before taking all that time to munge the test data the first time. It turns out storybook can serve up static assets by providing the ~-s~ option on the command line:
-
-  #+BEGIN_SRC shell-script
-    start-storybook -p 9009 -s ./path/to/static/assets -c .storybook/config.js
-  #+END_SRC
-
-  You can have more than one folder as well, separating them by commas
-
-  #+BEGIN_SRC shell-script
-    start-storybook -p 9009 -s ./some/assets,./other/assets,./these/assets/over/here -c .storybook/config.js
-  #+END_SRC
-
-  This makes them available at the root URL
-
-  #+BEGIN_SRC shell-script
-    http://localhost:9009/
-  #+END_SRC
-
-  So if you have assets at ~./src/components/AttachmentList/__TEST_DATA__/attachments/~, for example, ~shasta/32/original/002.jpg~, then the URL would be:
-
-  #+BEGIN_SRC shell-script
-    http://localhost:9009/shasta/32/original/002.jpg
-  #+END_SRC
-
-  And even more importantly, they can be referred to relatively even without the scheme and host.
 </content>
       <author>
         <name>Tamara Temple</name>
