@@ -2,7 +2,26 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://github.com/tamouse/swaac</id>
   <title>Tamouse&#39;s Software as a Craft blog</title>
-  <updated>2018-11-29T14:54:22-06:00</updated>
+  <updated>2018-12-01T11:00:30-06:00</updated>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/12/2018-12-01-polyfill-for-custom-event.org</id>
+      <updated>2018-12-01T11:00:30-06:00</updated>
+      <title>Polyfill for JavaScript&#39;s ~CustomEvent~ constructor</title>
+      <content>* Polyfill for JavaScript&#39;s ~CustomEvent~ constructor
+
+I had a project I needed to use a non-DOM event with, where a couple of React components were signaling a change in state, and they didn&#39;t share any context.
+
+I could have used Redux, but that seemed like heavy lifting for only using an event, so I dug into using custom events.
+
+The downside is that only since version 9 has Internet Explorer supported some form of ~CustomEvent~, and it is not the same. I was looking at other libraries until I happened on the polyfill provided by Mozilla at [[https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent#Polyfill][CustomEvent Polyfill on MDN]]. I copied that into a file and import it where I want to dispatch a custom event.
+
+I attach the listeners in the various React components&#39; ~componentDidMount~ at the ~window~ DOM node as common ancestor for all components on the page, and remove them in ~componentWillUnmount~.
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2018/11/2018-11-29-thoughts-on-writing-good-tests.org</id>
       <updated>2018-11-29T14:54:22-06:00</updated>
@@ -809,36 +828,6 @@ Now you can easily open the Terminal just by clicking on the icon in the Dock wh
 3. Press the Return key and =Terminal= will start.
 
 Follow step 5 in the previous section to keep Terminal in your Dock.
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2017/07/beginners-section.org</id>
-      <updated>2018-11-06T09:31:20-06:00</updated>
-      <title>Beginner&#39;s Section</title>
-      <content>* Beginner&#39;s Section
-
-- Time-stamp: &lt;2018-11-06 09:31:20 tamara&gt;
-- published date: 2017-07-23
-- keywords: beginner, beginning, how-to, learning
-
-I am far, far distant from a beginner at software crafts. I wrote my first BASIC program, a lunar lander game, in 1969, on a cranky old teletype. The program was saved on punched paper tape.
-
-The current age of computers, software development practice, and, probably most importantly, the availability, ubiquity, and democratisation of computers and software development learning materials is so vastly different from 1969. No surprise, I&#39;m not saying anything new. But the implications for me are that it is really hard to re-acquire the mind-set of someone so brand new to programming that they really don&#39;t have any sense of how things work with absolutely no reference frames to hang things off of when they set down to learn.
-
-This is frustrating for both of us. I&#39;ve forgotten what I didn&#39;t used to know. You don&#39;t know what you need to learn.
-
-In this section, I want to put together some information for beginners.
-
-They&#39;re not going to come in any particular order, for I&#39;m still learning what might be needed. Organization will come, hopefully not too late, and not too poorly.
-
-This section is also going to be very, very Unix, Linux, GNU, and Mac OSX focused, since that&#39;s all I really have familiarity with.
-
-- [[./how-do-i-get-to-the-command-line-on-a-mac.org][How do I get to the command line on a Mac?]]
-- [[./setting-up-your-mac-for-working-on-the-command-line.org][Setting up your Mac for working on the command line]]
 </content>
       <author>
         <name>Tamara Temple</name>

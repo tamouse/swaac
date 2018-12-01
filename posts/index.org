@@ -1,3 +1,4 @@
+- [[./2018/12/2018-12-01-polyfill-for-custom-event.org]]
 - [[./2018/11/2018-11-29-thoughts-on-writing-good-tests.org]]
 - [[./2018/11/2018-11-23-til-setting-window-location-in-jest-tests.org]]
 - [[./2018/11/2018-11-20-til-input-file-has-accepts-attribute.org]]

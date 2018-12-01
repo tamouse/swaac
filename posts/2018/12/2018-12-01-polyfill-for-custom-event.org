@@ -1,0 +1,9 @@
+* Polyfill for JavaScript's ~CustomEvent~ constructor
+
+I had a project I needed to use a non-DOM event with, where a couple of React components were signaling a change in state, and they didn't share any context.
+
+I could have used Redux, but that seemed like heavy lifting for only using an event, so I dug into using custom events.
+
+The downside is that only since version 9 has Internet Explorer supported some form of ~CustomEvent~, and it is not the same. I was looking at other libraries until I happened on the polyfill provided by Mozilla at [[https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent#Polyfill][CustomEvent Polyfill on MDN]]. I copied that into a file and import it where I want to dispatch a custom event.
+
+I attach the listeners in the various React components' ~componentDidMount~ at the ~window~ DOM node as common ancestor for all components on the page, and remove them in ~componentWillUnmount~.
