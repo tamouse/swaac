@@ -6,7 +6,7 @@
 
 Kind of a random bit of monologue from an IRC channel, but I thought it might be interesting to save and think about sometime in the future.
 
-#+BEGIN_EXAMPLE
+#+begin_quote
     my very young dev coworker gave me an enourmous compliment today
     he's all of 25, shithot developer, but also still young and naive
     anyway, i had written a little script to do something we needed,
@@ -110,9 +110,9 @@ Kind of a random bit of monologue from an IRC channel, but I thought it might be
     idk
 
     i think i've ended up at the beginning
-    or beginned up and the end
+    or beginned up at the end
 
     i *think* this is what has me so excited
     so *interested* in continuing to learn,
     to work, and to teach, software development.
-#+END_EXAMPLE
+#+end_quote
