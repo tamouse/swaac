@@ -9,7 +9,7 @@ See: [[https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XML
 
 See: [[https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest#Using_FormData_objects][Using FormData objects]] <-- necessary for files, I think
 
-In contrast to [[./posting-a-file-with-fetch-api][Posting with Fetch API]], this is a bit lower on the food chain in terms of JS stuff, *but* it lets you get access to ~progress~ events, for doing such things as displaying a progress bar. Yay.
+In contrast to [[./2018-11-06-posting-a-file-with-fetch-api][Posting with Fetch API]], this is a bit lower on the food chain in terms of JS stuff, *but* it lets you get access to ~progress~ events, for doing such things as displaying a progress bar. Yay.
 
 ** Using FormData
 
