@@ -1,9 +1,9 @@
-* The Tenants of Toash and Tech
+* The Tenants of Toast and Tech
   :PROPERTIES:
   :CAPTURE_DATE: [2018-12-12 Wed]
   :END:
 
-- last_updated: Time-stamp: <2018-12-12 23:06:14 tamara>
+- last_updated: Time-stamp: <2018-12-12 23:07:18 tamara>
 - keywords: Learning Space, Toast and Tech
 
 As some of you following know, I've led this thing on Tuesday nights called "Toast & Tech" for about 3 years [starting in the Autumn of 2015], nominally under the organization at .@GDImpls, the Minneapolis chapter of .@girldevelopit.
