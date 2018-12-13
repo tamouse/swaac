@@ -2,7 +2,41 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://github.com/tamouse/swaac</id>
   <title>Tamouse&#39;s Software as a Craft blog</title>
-  <updated>2018-12-01T11:00:30-06:00</updated>
+  <updated>2018-12-12T22:56:53-06:00</updated>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/12/2018-12-12-tenants-of-toast-and-tech.org</id>
+      <updated>2018-12-12T22:56:53-06:00</updated>
+      <title>The Tenants of Toash and Tech</title>
+      <content>* The Tenants of Toash and Tech
+
+As some of you following know, I&#39;ve led this thing on Tuesday nights called &quot;Toast &amp; Tech&quot; for about 3 years [starting in the Autumn of 2015], nominally under the organization at .@GDImpls, the Minneapolis chapter of .@girldevelopit.
+
+I have left that organization, but I want to leave behind something for those involved in T&amp;T, and for those looking to make a space for learning that it inclusive 2/
+
+** The Tenants of Toast and Tech:
+
+- make *everyone* welcome, enthusiastically
+- make *all* questions welcome, enthusiastically
+- everyone is learning, everyone is teaching
+- there is no single path, there are as many paths as people attending, as many paths as needed
+- you don&#39;t need a project or tech work to attend, just come
+- you don&#39;t need any experience to attend, just come
+- support everyone who shows up
+- Make it safe to learn, safe to ask questions, safe to show up.
+
+Possibly the *most* important tenant of all: #ToastAndTech can happen *anywhere*, run by *anyone*; all it takes is letting folks know about it, and showing up to hold the space.
+
+#CauseAScene
+#KeepLearning
+#HappyToast
+
+[[./kawaii-toast.png][happy toast]]
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2018/12/2018-12-01-polyfill-for-custom-event.org</id>
       <updated>2018-12-01T11:00:30-06:00</updated>
@@ -783,51 +817,6 @@ as in the previous section. You may need to set the execute bit on =.bashrc= as 
 If you only have one of =.bash_profile= or =.profile= see the appropriate section above.
 
 Make sure one of those two files is calling =.bashrc= as in the previous section. If neither do, put the line into =.profile=.
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2017/07/how-do-i-get-to-the-command-line-on-a-mac.org</id>
-      <updated>2018-11-06T09:31:47-06:00</updated>
-      <title>How do I get to the command line on a Mac?</title>
-      <content>* How do I get to the command line on a Mac?
-
-- Time-stamp: &lt;2018-11-06 09:31:47 tamara&gt;
-- published date: 2018-07
-
-
-** From Finder
-   :PROPERTIES:
-   :CUSTOM_ID: from-finder
-   :END:
-
-1. Open a Finder window.
-
-2. Go to the =Applications= folder (this could be in the side bar of the Finder window or you should be able to press Shift-Command-A unless you&#39;ve previously modified your keyboard shortcuts.)
-
-3. Scroll down to the =Utilites= folder and double click it to open it.
-
-4. Scroll down until to find the =Terminal= application, and double click it to open it.
-
-5. When it opens, the icon for =Terminal= will appear in the Dock. Right-click the icon, and select the &quot;Keep in Doc&quot; option.
-
-Now you can easily open the Terminal just by clicking on the icon in the Dock when you want one.
-
-** From Spotlight
-   :PROPERTIES:
-   :CUSTOM_ID: from-spotlight
-   :END:
-
-1. Press Command-Spacebar to open the Spotlight search dialog.
-
-2. Type &quot;ter&quot; -- this should be enough to highlight the =Terminal= application.
-
-3. Press the Return key and =Terminal= will start.
-
-Follow step 5 in the previous section to keep Terminal in your Dock.
 </content>
       <author>
         <name>Tamara Temple</name>
