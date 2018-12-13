@@ -27,6 +27,6 @@ Possibly the *most* important tenant of all: #ToastAndTech can happen *anywhere*
 #KeepLearning
 #HappyToast
 
-[[./kawaii-toast.png][happy toast]] ./kawaii-toast.png
+[[./kawaii-toast.png][happy toast]]
 
 [[https://twitter.com/i/moments/1073061297200267265][moment on twitter]]
