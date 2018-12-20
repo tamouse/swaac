@@ -2,16 +2,99 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://github.com/tamouse/swaac</id>
   <title>Tamouse&#39;s Software as a Craft blog</title>
-  <updated>2018-12-12T22:56:53-06:00</updated>
+  <updated>2018-12-20T09:04:16-06:00</updated>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/12/2018-12-20-adding-methods-to-base-graphql-classes.org</id>
+      <updated>2018-12-20T09:04:16-06:00</updated>
+      <title>Adding methods to base GraphQL classes</title>
+      <content>* Adding methods to base GraphQL classes
+
+- Time-stamp: &lt;2018-12-20 09:04:16 tamara&gt;
+- keywords: graphql
+
+Sometime in the past year I started looking into using the class-based interface with ~graphql-ruby~. Here&#39;s an example to provide millisecond precision time as integer:
+
+#+name: types/base_object.rb
+#+begin_src ruby
+  module Types
+    class BaseObject &lt; GraphQL::Schema::Object
+
+      def created_at_ms
+        time_to_ms(object.created_at)
+      end
+
+      def updated_at_ms
+        time_to_ms(object.updated_at)
+      end
+
+      def time_to_ms(time)
+        (time.to_f * 1000).to_i
+      end
+
+    end
+  end
+#+end_src
+
+With that in place, another object that inherits from the base object will automatically get use of these:
+
+#+name: types/author_type.rb
+#+begin_src ruby
+  module Types
+    class AuthorType &lt; Types::BaseObject
+      field :name, String, null: false
+      field :url, String, null: true
+      field :created_at_ms, Integer, null: false
+      field :updated_at_ms, Integer, null: false
+    end
+  end
+#+end_src
+
+If there are other datetime fields, you can still use the ~time_to_ms~ method:
+
+#+name: types/book_type.rb
+#+begin_src ruby
+  module Types
+    class BookType &lt; Types::BaseObject
+      field :title, String, null: false
+      field :isbn, String, null: true
+      field :purchased_on_ms, Integer, null: true
+      def purchased_on_ms
+        time_to_ms(object.purchased_on)
+      end
+      field :finished_reading_on_ms, Integer, null: true
+      def finished_reading_on_ms
+        time_to_ms(object.finished_reading_on)
+      end
+      field :rating, Integer, null: true
+      field :private, Boolean, null: true
+      field :created_at_ms, Integer, null: true
+      field :updated_at_ms, Integer, null: true
+    end
+  end
+#+end_src
+
+These are from my [[https://github.com/tamouse/rails_react_graphql_template_example][rails react graphql template example]] repo.
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2018/12/2018-12-12-tenants-of-toast-and-tech.org</id>
-      <updated>2018-12-12T22:56:53-06:00</updated>
-      <title>The Tenants of Toash and Tech</title>
-      <content>* The Tenants of Toash and Tech
+      <updated>2018-12-12T23:07:18-06:00</updated>
+      <title>The Tenants of Toast and Tech</title>
+      <content>* The Tenants of Toast and Tech
+  :PROPERTIES:
+  :CAPTURE_DATE: [2018-12-12 Wed]
+  :END:
+
+- last_updated: Time-stamp: &lt;2018-12-12 23:07:18 tamara&gt;
+- keywords: Learning Space, Toast and Tech
 
 As some of you following know, I&#39;ve led this thing on Tuesday nights called &quot;Toast &amp; Tech&quot; for about 3 years [starting in the Autumn of 2015], nominally under the organization at .@GDImpls, the Minneapolis chapter of .@girldevelopit.
 
-I have left that organization, but I want to leave behind something for those involved in T&amp;T, and for those looking to make a space for learning that it inclusive 2/
+I have left that organization, but I want to leave behind something for those involved in T&amp;T, and for those looking to make a space for learning that it inclusive
 
 ** The Tenants of Toast and Tech:
 
@@ -31,6 +114,261 @@ Possibly the *most* important tenant of all: #ToastAndTech can happen *anywhere*
 #HappyToast
 
 [[./kawaii-toast.png][happy toast]]
+
+[[https://twitter.com/i/moments/1073061297200267265][moment on twitter]]
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2012/12/code-as-literature-software-dev-as-communication.org</id>
+      <updated>2018-12-12T22:58:01-06:00</updated>
+      <title>code as literature, software dev as communication</title>
+      <content>* code as literature, software dev as communication
+
+- date: 2012-12-05 05:02:50
+- categories: [swaac]
+- tags: [communication]
+
+Kind of a random bit of monologue from an IRC channel, but I thought it might be interesting to save and think about sometime in the future.
+
+#+begin_quote
+    my very young dev coworker gave me an enourmous compliment today.
+    
+    he&#39;s all of 25, shithot developer, but also still young and naive.
+    
+    anyway, i had written a little script to do something we needed,
+       and he said it was a masterwork and the best bit of code he&#39;s
+       seen from our group
+       
+    i was like &quot;what? why?&quot;
+    
+    he said &quot;these are the best comments in code i&#39;ve ever seen. and
+       the code is neat and clean&quot;
+       
+    i kind of had to struggle to take the compliment
+
+    i tell this not to say &quot;oh tamara, you&#39;re so great&quot;
+    
+    i&#39;m not
+    
+    i&#39;m probably better than mediocre
+    
+    but i&#39;m not great
+    
+    i say this because, in his way, he gave a very depressing,
+       but accurate account of our software
+       
+    what&#39;s sort of funny about this, too, is that the majority
+       of the script was repurposed from something he wrote,
+       that i tore out of the rakefile to make a stand-alone
+       script
+       
+    what exactly did i do?
+    
+    wrapped it in a class, connected database
+       records to it, and added some defensiveness to it
+       
+    and the comments i wrote were telling about the things i
+       found while writing that and why i chose to do it the way
+       i did
+
+    then tonite i was thinking about this
+
+    /code is literature/
+    
+    (not literate programming, that&#39;s something else)
+       [though related]
+
+    code is a message, a story:
+    - it&#39;s not really about telling the computer what to do
+    - it&#39;s about telling *someone else* what the computer is *doing*
+    
+    and i find this further deepens my understanding in the sense
+       of software dev as a craft
+
+    not just syntax, variables, etc; not just algorithms and data;
+    but a way of telling other people how to solve problems
+
+    i&#39;ve been thinking about this a lot lately
+    
+    it might be because of my elder status/position
+    and it&#39;s not just a little of the crap education i&#39;m seeing
+       people give themselves, and places that they go to for help
+       only answering rather mudnane details about sytax errors
+    
+    we learned because we taught ourselves
+    
+    but we also learned because we were fascinated both by the
+       technology itself, and not a little by learning itself
+
+    i was talking to someone, somewhere, about how people are
+       picking up programming
+    
+    like, it&#39;s the &quot;hot new must-have skill for everyone&quot;;
+    a life-skill, if you will
+
+    i don&#39;t necessarily disagree with that?
+
+    and i think there&#39;s all sorts of levels, just like, say cooking
+
+    but imagine if you learned how to cook the way programming
+       is being taught
+    - you might be able to survive
+    - but i don&#39;t think it would be very fun
+    - and know it wouldn&#39;t be worthy, really, of being called a craft
+
+    your scrambled eggs don&#39;t work, so you send in a message
+       with a photo of the results in your pan to a
+       &quot;eggs cooking mailing list&quot;
+       
+    and wow, you can&#39;t *eat* until you get it right
+    
+    part of the problem, maybe a great deal of the problem, is
+       that there aren&#39;t places really to learn the craft of it
+
+    and it is probably different now that it was for us
+    
+    i mean, yeah, i went to uni, you didn&#39;t, but i think the
+       learning for each of us was highly self-directed
+
+    i was writing basic code since 7th grade
+
+    i think for many people that i&#39;ve come across that are
+       learning, (maybe espcially php and html) is that
+       they are looking at it sort of desperately
+       as some way of making money?
+       
+    and i think that this slams against my privilege hard
+    because i never went at this as a way to make money
+    i *do* make money at it
+    
+    i *ask* for money when i do things for someone
+    but it&#39;s not like i have to learn to do this so i can make money
+    and that puts me in a position of privilege, surely
+
+    yet i also see this as, again, a matter of craftsmanship
+    and that acquiring the ability to make money requires
+       a sense of ownership of the skills, knowledge, and tools
+       to solve problems, solve *other* people&#39;s problems,
+       by writing software
+
+    and concomittant with that is the ability to *communicate*
+       *effectively* what you are telling the computer to do,
+       *to someone else*
+
+    idk
+
+    i think i&#39;ve ended up at the beginning; 
+    or beginned up at the end
+
+    i *think* this is what has me so excited,
+    so *interested* in continuing to learn,
+    to work, and to teach, software development.
+#+end_quote
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/11/2018-11-06-posting-a-file-with-XMLHttpRequest.org</id>
+      <updated>2018-12-12T22:58:01-06:00</updated>
+      <title>RESEARCH: Posting a file with XMLHttpRequest</title>
+      <content>* RESEARCH: Posting a file with XMLHttpRequest
+
+- Time-stamp: &lt;2018-11-06 14:26:38 tamara&gt;
+- published date: [2018-11-06 Tue 13:46]
+- keywords: XMLHttpRequest, file upload, JavaScript, research, React
+
+
+See: [[https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest#Using_nothing_but_XMLHttpRequest][Using nothing but XMLHttpRequest]] &lt;-- maybe not
+
+See: [[https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest#Using_FormData_objects][Using FormData objects]] &lt;-- necessary for files, I think
+
+In contrast to [[./2018-11-06-posting-a-file-with-fetch-api.org][Posting with Fetch API]], this is a bit lower on the food chain in terms of JS stuff, *but* it lets you get access to ~progress~ events, for doing such things as displaying a progress bar. Yay.
+
+** Using FormData
+
+MDN makes a special note:
+
+#+BEGIN_QUOTE
+Note: As we said, FormData objects are not stringifiable objects. If you want to stringify a submitted data, use the previous pure-AJAX example. Note also that, although in this example there are some file &lt;input&gt; fields, when you submit a form through the FormData API you do not need to use the FileReader API also: files are automatically loaded and uploaded.
+#+END_QUOTE
+
+** Using Event Handlers
+
+From the top of the page, just using / setting event handlers:
+
+#+BEGIN_SRC rjsx
+  function reqListener () {
+    console.log(this.responseText);
+  }
+
+  var oReq = new XMLHttpRequest();
+
+  // this sets the &#39;load&#39; event handler, which fires when the file is fully loaded.
+  // I think this works for POST/PUT as well...
+  oReq.addEventListener(&quot;load&quot;, reqListener);
+
+  oReq.open(&quot;GET&quot;, &quot;http://www.example.org/example.txt&quot;);
+  oReq.send();
+#+END_SRC
+
+There&#39;s a note [[https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest#Monitoring_progress][somewhere on the page]] saying something about ~progress~ event handlers needing to be set before the ~.open~ call.
+
+This would load up all the event handlers for XMLHttpRequest:
+
+#+BEGIN_SRC rjsx
+  let oReq = new XMLHttpRequest();
+
+  oReq.addEventListener(&quot;progress&quot;, updateProgress);
+  oReq.addEventListener(&quot;load&quot;, transferComplete);
+  oReq.addEventListener(&quot;error&quot;, transferFailed);
+  oReq.addEventListener(&quot;abort&quot;, transferCanceled);
+
+  oReq.open();
+#+END_SRC
+
+** Progress Indication
+
+The ~progress~ event handler takes in the progress event, which is defined at [[https://xhr.spec.whatwg.org/#interface-progressevent][WhatWG Progress Event specification]]. It has 3 attributes:
+
+- ~lengthComputable~ [boolean] whether the length of the object is known
+- ~loaded~ [number] how much has loaded so far
+- ~total~ [number] how much there is to load
+
+So progress can be calculated by:
+
+#+BEGIN_SRC rjsx
+  handleProgress = event =&gt; {
+      let progress = 0
+      if (event.total !== 0) {
+          progress = event.loaded / event.total
+      }
+      const percentCompleted = progress * 100
+      this,setState({ progress, percentCompleted })
+  }
+
+  handleLoaded = event =&gt; {
+      this.setState({ progress: 1, percentCompleted: 100, loaded: true })
+  }
+
+  // ...
+
+  request = () =&gt; {
+
+      const req = new XMLHttpRequest()
+
+      req.addEventListener(&#39;progress&#39;, this.handleProgress)
+      req.addEventListener(&#39;load&#39;, this.handleLoaded)
+
+      // ... etc
+  }
+#+END_SRC
 </content>
       <author>
         <name>Tamara Temple</name>
@@ -320,503 +658,6 @@ Have you ever considered whether CSS Grid can actually replace the need for CSS 
 I love reading [[https://www.smashingmagazine.com/author/rachel-andrew][Rachel Andrew]]&#39;s posts, everywhere, not just on SmashingMagazine. This one is no different. Rachel is no hardline &quot;you have to use my stuff&quot; writer, she&#39;s thoughtfully laid out good reasons for using a CSS framework like Bootstrap, and even given other people&#39;s answers as to why it&#39;s a good choice. She&#39;s also given reasons for *not* using a framework, and why that&#39;s a good choice.
 
 Her conclusion, for those coming down on the side of &quot;no framework&quot; are some pretty good steps, and even might help you decide if it&#39;s worth going your own way.
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/11/2018-11-06-posting-a-file-with-XMLHttpRequest.org</id>
-      <updated>2018-11-06T14:26:38-06:00</updated>
-      <title>RESEARCH: Posting a file with XMLHttpRequest</title>
-      <content>* RESEARCH: Posting a file with XMLHttpRequest
-
-- Time-stamp: &lt;2018-11-06 14:26:38 tamara&gt;
-- published date: [2018-11-06 Tue 13:46]
-- keywords: XMLHttpRequest, file upload, JavaScript, research, React
-
-
-See: [[https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest#Using_nothing_but_XMLHttpRequest][Using nothing but XMLHttpRequest]] &lt;-- maybe not
-
-See: [[https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest#Using_FormData_objects][Using FormData objects]] &lt;-- necessary for files, I think
-
-In contrast to [[./posting-a-file-with-fetch-api.org][Posting with Fetch API]], this is a bit lower on the food chain in terms of JS stuff, *but* it lets you get access to ~progress~ events, for doing such things as displaying a progress bar. Yay.
-
-** Using FormData
-
-MDN makes a special note:
-
-#+BEGIN_QUOTE
-Note: As we said, FormData objects are not stringifiable objects. If you want to stringify a submitted data, use the previous pure-AJAX example. Note also that, although in this example there are some file &lt;input&gt; fields, when you submit a form through the FormData API you do not need to use the FileReader API also: files are automatically loaded and uploaded.
-#+END_QUOTE
-
-** Using Event Handlers
-
-From the top of the page, just using / setting event handlers:
-
-#+BEGIN_SRC rjsx
-  function reqListener () {
-    console.log(this.responseText);
-  }
-
-  var oReq = new XMLHttpRequest();
-
-  // this sets the &#39;load&#39; event handler, which fires when the file is fully loaded.
-  // I think this works for POST/PUT as well...
-  oReq.addEventListener(&quot;load&quot;, reqListener);
-
-  oReq.open(&quot;GET&quot;, &quot;http://www.example.org/example.txt&quot;);
-  oReq.send();
-#+END_SRC
-
-There&#39;s a note [[https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest#Monitoring_progress][somewhere on the page]] saying something about ~progress~ event handlers needing to be set before the ~.open~ call.
-
-This would load up all the event handlers for XMLHttpRequest:
-
-#+BEGIN_SRC rjsx
-  let oReq = new XMLHttpRequest();
-
-  oReq.addEventListener(&quot;progress&quot;, updateProgress);
-  oReq.addEventListener(&quot;load&quot;, transferComplete);
-  oReq.addEventListener(&quot;error&quot;, transferFailed);
-  oReq.addEventListener(&quot;abort&quot;, transferCanceled);
-
-  oReq.open();
-#+END_SRC
-
-** Progress Indication
-
-The ~progress~ event handler takes in the progress event, which is defined at [[https://xhr.spec.whatwg.org/#interface-progressevent][WhatWG Progress Event specification]]. It has 3 attributes:
-
-- ~lengthComputable~ [boolean] whether the length of the object is known
-- ~loaded~ [number] how much has loaded so far
-- ~total~ [number] how much there is to load
-
-So progress can be calculated by:
-
-#+BEGIN_SRC rjsx
-  handleProgress = event =&gt; {
-      let progress = 0
-      if (event.total !== 0) {
-          progress = event.loaded / event.total
-      }
-      const percentCompleted = progress * 100
-      this,setState({ progress, percentCompleted })
-  }
-
-  handleLoaded = event =&gt; {
-      this.setState({ progress: 1, percentCompleted: 100, loaded: true })
-  }
-
-  // ...
-
-  request = () =&gt; {
-
-      const req = new XMLHttpRequest()
-
-      req.addEventListener(&#39;progress&#39;, this.handleProgress)
-      req.addEventListener(&#39;load&#39;, this.handleLoaded)
-
-      // ... etc
-  }
-#+END_SRC
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/11/2018-11-06-posting-a-file-with-fetch-api.org</id>
-      <updated>2018-11-06T13:37:57-06:00</updated>
-      <title>Posting a file using the fetch API</title>
-      <content>* Posting a file using the fetch API
-- Time-stamp: &lt;2018-11-06 13:37:57 tamara&gt;
-- published date: [2018-11-06 Tue 13:17]
-- keywords: javascript, fetch, file upload
-
-I&#39;m investigating this for work
-
-See [[https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#Uploading_a_file][MDN: Uploading a file (fetch)]]
-
-#+BEGIN_QUOTE
-Files can be uploaded using an HTML &lt;input type=&quot;file&quot; /&gt; input element, FormData() and fetch().
-#+END_QUOTE
-
-#+BEGIN_SRC rjsx
-  let formData = new FormData();
-
-  const fileField = document.querySelector(&quot;input[type=&#39;file&#39;]&quot;);
-
-  formData.append(&#39;username&#39;, &#39;abc123&#39;);
-
-  // file fields provide a collection of files, apparently.
-  formData.append(&#39;avatar&#39;, fileField.files[0]);
-
-  fetch(&#39;https://example.com/profile/avatar&#39;, {
-      method: &#39;PUT&#39;,
-      headers: {
-          &#39;Content-type&#39;: &#39;application/x-www-form-urlencoded&#39;
-      },
-      body: formData,
-  })
-      .then(response =&gt; response.json())
-      .catch(error =&gt; console.error(&#39;Error:&#39;, error))
-      .then(response =&gt; console.log(&#39;Success:&#39;, JSON.stringify(response)));
-#+END_SRC
-In a React context, the information would be obtained using a React `ref` instead of the POJS `querySelector`, but it ends up close to the same afterwards:
-
-#+BEGIN_SRC rjsx
-  fileFieldRef = React.createRef()
-
-  handleSubmit = () =&gt; {
-      let formData = new FormData()
-      const fileField = this.fileFieldRef.current
-
-      formData.append(&#39;username&#39;, &#39;abc123&#39;)
-      formData.append(&#39;avatar&#39;, fileField.files[0])
-
-      fetch(&#39;https://example.com/profile/avatar&#39;, {
-          method: &#39;PUT&#39;,
-          headers: {
-              &#39;Content-type&#39;: &#39;application/x-www-form-urlencoded&#39;
-          },
-          body: formData,
-      })
-          .then(response =&gt; response.json())
-          .catch(error =&gt; console.error(&#39;Error:&#39;, error))
-          .then(response =&gt; console.log(&#39;Success:&#39;, JSON.stringify(response)));
-  }
-
-  // ...
-
-  render() {
-      return (
-          &lt;form onSubmit={this.handleSubmit}&gt;
-            &lt;input type=&quot;file&quot; ref={this.fileFieldRef}/&gt;
-          &lt;/form&gt;
-      )
-  }
-#+END_SRC
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2017/07/setting-up-your-mac-for-working-on-the-command-line.org</id>
-      <updated>2018-11-06T09:32:33-06:00</updated>
-      <title>Setting up your Mac for working on the command line.</title>
-      <content>* Setting up your Mac for working on the command line.
-- Time-stamp: &lt;2018-11-06 09:32:33 tamara&gt;
-- published date: 2017-07
-- keywords: command line, cli, termoial, mac
-
-Before beginning, I strongly urge you to get Michael Hartl&#39;s [[https://www.learnenough.com/command-line-tutorial][Learn Enough Command Line to Be Dangerous]] which is seriously the best introduction to this whole thing.
-
-See also: [Conventions Used in This Section]({{ &quot;/pages/learning/beginner/conventions-used-in-this-section&quot;}}).
-
-** Intro
-
-I&#39;d love to provide the TL;DR for this, but I can&#39;t. I don&#39;t know what&#39;s on your system already, what level you&#39;re at, or even a kind voice to listen to your questions and respond.
-
-Using the caommand line effectively means having it configured to your needs. So this page is going to introduce how to configure your command line.
-
-There are two, sometimes three, files involved in this:
-
-- =.bash_profile=
-- =.profile=
-- =.bashrc=
-
-The rest of this will tell you how to set them up.
-
-** You&#39;ll need to know
-
-- [[file:%7B%7B%20site.baseurl%20%7D%7D/pages/learning/beginner/how-do-i-get-to-the-command-line-on-a-mac/][How to open Terminal on a Mac]]
-- Various shell commands:
-
-  - =cd=
-  - =chmod=
-  - =cp=
-  - =echo=
-  - =ls=
-
-** Gathering Current Information
-
-1. [[file:%7B%7B%20site.baseurl%20%7D%7D/pages/learning/beginner/how-do-i-get-to-the-command-line-on-a-mac/][Open up the Terminal]]
-
-2. Run the command:
-
-#+BEGIN_EXAMPLE
-    ls -1 .profile .bash_profile .bashrc
-#+END_EXAMPLE
-
-The &quot;-1&quot; (&quot;minus-one&quot;) option produces a listing of file names in a single column. It&#39;s not necessary, but it&#39;s a little easier to read for short listings.
-
-The =ls= command has /lots/ of options which can be learned about using the =man ls= command and reading the manual page.
-
-You could see something like the following:
-
-#+BEGIN_EXAMPLE
-       ls: .bash_profile: No such file or directory
-       ls: .bashrc: No such file or directory
-       ls: .profile: No such file or directory
-#+END_EXAMPLE
-
-in which case you don&#39;t have any of those files, which is okay.
-
-You might see something like this:
-
-#+BEGIN_EXAMPLE
-       ls: .bash_profile: No such file or directory
-       ls: .profile: No such file or directory
-       .bashrc
-#+END_EXAMPLE
-
-in which case you have the =.bashrc= file, but you don&#39;t have the others, which is also okay.
-
-In fact, /any/ combination is okay, there&#39;ll be a section below on each case.
-
-Here are the combinations:
-
-1. You don&#39;t have any of them (default OSX setup)
-2. You have =.profile= but not the other two
-3. You have =.bash_profile= but not the other two
-4. You have =.bashrc= but not the other two
-5. You have =.bash_profile= and =.bashrc=, but not =.profile=
-6. You have =.profile= and =.bashrc=, but not =.bash_profile=
-7. You have all three
-
-** If you don&#39;t have any of the three files
-
-In this section, we&#39;ll talk about when none of those files exist yet. This is easiest to deal with starting off.
-
-*** What are the =.bash_profile= and =.profile= file about?
-
-On Unix- and Linux-based systems, the command line is also referred to as &quot;The Shell&quot;. By default, Mac&#39;s use the program &quot;bash&quot; as the command line shell.
-
-When you start up Terminal, it launches a &quot;login shell&quot; by starting the program =/bin/bash=. This program then looks for two files in your user&#39;s [home directory][homedir]: =.bash_profile= and =.profile=.
-
-It&#39;s important to note that if =bash= finds =.bash_profile=, it will run that file, otherwise it will run =.profile=. There may come a time when you install a software development command-line tool that creates a =.bash_profile=, and you can find all the things you put in =.profile= are not being set up. Likewise, you might install a software command line tool that only expects things to be initialized in =.profile= and then that tool&#39;s setting won&#39;t happen correctly. It&#39;s confusing, to be sure.
-
-There&#39;s always more than one way to deal with this, of course. Perhaps the best way is to start with the =.bash_profile= and make all your initialisation happen there.
-
-I prefer to do the following though:
-
-1. Create a =.bash_profile= in your home directory with the following contents:
-
-#+BEGIN_EXAMPLE
-       #!/bin/bash
-       [ -f $HOME/.profile ] &amp;&amp; source $HOME/.profile
-#+END_EXAMPLE
-
-What this does is execute the =.profile= file if it exists. In this way you can have initialisation code put in either file and it will be run. The /major/ caveat on this is to make sure if there&#39;s initialisation code in both =.bash_profile= and =.profile= it does not cause any problems if it gets run twice. Usually this is okay, but it can be a source of errors.
-
-2. Create the =.profile= file and place the initialisation codes you want to manage there.
-
-*** The =.profile= file
-
-As noted, this file contains initialisation codes. Here&#39;s where you can set environment variables that are used throughout your command line sessions.
-
-One such environment variable is =PATH= -- this is the variable used to find command line programs on your computer. Sometimes you&#39;ll need to extend this variable when you install a new piece of software.
-
-Jump into your command line now and type:
-
-#+BEGIN_EXAMPLE
-    $ echo $PATH
-#+END_EXAMPLE
-
-Incidently, that /first/ &quot;$&quot; on the line above is *not* part of the command; it is there to indicate the command line prompt (which could be much more complicated). It&#39;s used here to tell you something you should be typing. What you&#39;ll actually type is what follows the space after the &quot;$&quot;, i.e. just &quot;echo $PATH&quot;.
-
-On the stock Mac install, you&#39;ll probably see something like:
-
-#+BEGIN_EXAMPLE
-    /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
-#+END_EXAMPLE
-
-(It might be slightly different, or it might have been changed previously.)
-
-Let&#39;s take the case where you just recently install the &quot;Sass&quot; program which pre-processed CSS files in a special format. After you&#39;ve run the =gem install sass --user-install= command, you may have seen a warning like the following:
-
-#+BEGIN_EXAMPLE
-    WARNING:  You don&#39;t have /Users/noob/.gem/ruby/2.0.0/bin in your PATH, gem executables will not run.
-#+END_EXAMPLE
-
-While not an error, not addressing this warning is going to be very painful for you.
-
-So let&#39;s add that indicated directory to our PATH environment variable. We do this in the =.profile= file like so:
-
-#+BEGIN_EXAMPLE
-    export PATH=$PATH:$HOME/.gem/ruby/2.0.0/bin
-#+END_EXAMPLE
-
-Save and close your =.profile= file, switch back to your command line, and type the following:
-
-#+BEGIN_EXAMPLE
-    $ source $HOME/.profile
-    $ echo $PATH
-#+END_EXAMPLE
-
-Now you should see the following:
-
-#+BEGIN_EXAMPLE
-    usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/noob/.gem/ruby/2.0.0/bin
-#+END_EXAMPLE
-
-** If you have =.bash_profile=, but none of the others
-
-If you already have one, the easiest is to add the following line at the bottom of the file:
-
-#+BEGIN_EXAMPLE
-    [ -f $HOME/.profile ] &amp;&amp; source $HOME/.profile
-#+END_EXAMPLE
-
-then save and close the file.
-
-Then open a new file named =.profile= and enter the following in it:
-
-#+BEGIN_EXAMPLE
-    \#!/bin/bash
-#+END_EXAMPLE
-
-Then you can add whatever other initialisation codes you want in =.profile=. Follow the example in the previous section to append something to your =PATH= environment variable.
-
-** If you have =.profile=, but none of the others
-
-Create a =.bash_profile= in your home directory with the following contents:
-
-#+BEGIN_EXAMPLE
-    \#!/bin/bash
-    [ -f $HOME/.profile ] &amp;&amp; source $HOME/.profile
-#+END_EXAMPLE
-
-That&#39;s all, really.
-
-** If you do NOT have a =.bashrc= file
-
-This is the default starting point for a new user.
-
-*** What is the =.bashrc= file all about?
-
-The =.bashrc= file in your home directory will be executed whenever an /interactive/ shell gets invoked. Calling =bash= from the command line from a is considered an /interactive/ shell. It is /not/ run, however, when a /login/ shell is started, which is what happens when you start up a new Terminal window.
-
-Confusing? Yes. Try the following to see what is happening.
-
-Edit your =.profile= and add the following line to the end:
-
-#+BEGIN_EXAMPLE
-    echo &quot;.profile ran&quot;
-#+END_EXAMPLE
-
-Edit =.bashrc= (creating it if necessary) and put the following at the end:
-
-#+BEGIN_EXAMPLE
-    echo &quot;.bashrc ran&quot;
-#+END_EXAMPLE
-
-Now open a /new/ Terminal window (Command-N) and see what is printed. You should /just/ see &quot;.profile ran&quot; before the prompt:
-
-#+BEGIN_EXAMPLE
-    .profile ran
-    $
-#+END_EXAMPLE
-
-Your command prompt will be different of course.
-
-Now run an interactive bash:
-
-#+BEGIN_EXAMPLE
-    $ bash
-#+END_EXAMPLE
-
-You should now see something like:
-
-#+BEGIN_EXAMPLE
-    .bashrc ran
-    bash-3.2$
-#+END_EXAMPLE
-
-You can see that the =.bashrc= file is not run on starting up a new window. (You might also see your command prompt change! We&#39;ll fix that in a second.)
-
-What we actually /want/ usually, is to have the =.bashrc= file run for a login shell as well.
-
-To do that, we need to fix up the =.profile= file with the following line at the end of the file:
-
-#+BEGIN_EXAMPLE
-    [ -x $HOME/.bashrc ] &amp;&amp; source $HOME/.bashrc
-#+END_EXAMPLE
-
-This will cause the =.bashrc= file to be executed at the end of the =.profile= file&#39;s executing but only /if/ the =.bashrc= file is *executable*.
-
-This gives a little extra control, if we don&#39;t want =.bashrc= to run at login, we can unset it&#39;s execution bit. But for now, let&#39;s set it:
-
-#+BEGIN_EXAMPLE
-    $ chmod +x $HOME/.bashrc
-    $ ls -l .bashrc
-#+END_EXAMPLE
-
-And you should see something like:
-
-#+BEGIN_EXAMPLE
-    \-rwxr-xr-x  1 noob  staff  32 Aug  7 01:01 .bashrc
-#+END_EXAMPLE
-
-Which shows it&#39;s become executable for everyone on the system.
-
-Close the Terminal window and open a new one. Now you should see the following before the first command line prompt:
-
-#+BEGIN_EXAMPLE
-    .bashrc ran
-    .profile ran
-#+END_EXAMPLE
-
-You can remove those two &quot;echo&quot; commands from =.profile= and =.bashrc= if you wish, or leave them in as tracers while you&#39;re working with them.
-
-*** Creating the =.bashrc= file
-
-This file initialized /each/ interactive shell, including setting some environment variables used by =bash=, aliases, and other settings.
-
-There is a global =/etc/bashrc= file that is a good starting point for your own.
-
-Run the following command:
-
-#+BEGIN_EXAMPLE
-    $ cp /etc/bashrc $HOME/.bashrc
-#+END_EXAMPLE
-
-This will *overwrite* the =.bashrc= file you just made, but that&#39;s okay since there really wasn&#39;t anything in it.
-
-Give the new file execute permission:
-
-#+BEGIN_EXAMPLE
-    $ chmod +x $HOME/.bashrc
-#+END_EXAMPLE
-
-Close the Terminal window and open a new one.
-
-** If you have =.bashrc= but neither =.bash_profile= or =.profile=
-
-In this case, you want to add running the =.bashrc= file for /login/ shells so those settings are available.
-
-Add the following line to the end of your =.profile=:
-
-#+BEGIN_EXAMPLE
-    [ -x $HOME/.bashrc ] &amp;&amp; source $HOME/.bashrc
-#+END_EXAMPLE
-
-as in the previous section. You may need to set the execute bit on =.bashrc= as well:
-
-#+BEGIN_EXAMPLE
-    $ chmod +x .bashrc
-#+END_EXAMPLE
-
-** If you have =.bashrc=, and one or both of =.bash_profile= and =.profile=
-
-If you only have one of =.bash_profile= or =.profile= see the appropriate section above.
-
-Make sure one of those two files is calling =.bashrc= as in the previous section. If neither do, put the line into =.profile=.
 </content>
       <author>
         <name>Tamara Temple</name>
