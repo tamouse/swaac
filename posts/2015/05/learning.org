@@ -175,8 +175,6 @@ Also, [[https://www.codefellows.org/blog/this-is-why-learning-rails-is-hard][lea
 
    FrontendMasters tackles intermediate and advanced topics in developing on the front end of web applications. Heavy into JavaScript, libraries, frameworks, techniques, and so on.
 
- - [[http://www.meetup.com/Girl-Develop-It-Minneapolis/][*Girl Develop It! Minneapolis*]] serves up training courses mainly in the HTML, CSS, and JS arena, and is focused on bringing this training to women and other underrepresented groups. The training sessions are focused on beginners, which rather fills the gap between the beginner and intermediate. There are GDI chapeter in several other cities as well. The parent organization is at [[https://www.girldevelopit.com/]].
-
 ** Bootcamps
 
  These are becoming quite popular, if expensive, but they seem to provide what's being offered: intensive training in the skills necessary to become a web application developer, with experience and skills in the entire lifecycle of modern software development. I can't really provide much information on them, as I've never experienced them. [[http://www.bootcamps.in/][Bootcamps.in]] provides at least a first-glance at several bootcamps.
