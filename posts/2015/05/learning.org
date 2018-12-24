@@ -183,10 +183,6 @@ Also, [[https://www.codefellows.org/blog/this-is-why-learning-rails-is-hard][lea
 
  Going to conferences, hanging out, meeting like-minded people, and generally instilling one's self into the millieau of the Ruby and Rails communities can be extremely rewarding. Even if you're not the conference type, make an effort to find people in your area to talk to.
 
- If you're ever in the Minneapolis area, look me up at [[http://www.rails.mn/][Rails.MN]] and [[http://www.ruby.mn/][Ruby.MN]] -- I attend those pretty regularly (weather permitting).
-
- I also "run" the weekly *Toast and Tech* meetup from [[http://www.meetup.com/Girl-Develop-It-Minneapolis/][GDI Minneapolis]] on Tuesdays at the [[https://www.yelp.com/biz/canteen-3255-minneapolis-2][Canteen]]. Stop on by and have wonderful toast, coffee, and working with a bunch of wonderful folks learning web and other development.
-
  There's lots of other meetups in the Twin Cities I'm regularly trying to attend:
 
  - [[https://www.meetup.com/Women-Who-Code-Twin-Cities/][Women Who Code Twin Cities]]
