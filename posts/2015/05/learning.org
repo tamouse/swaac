@@ -1,6 +1,6 @@
 * Resources for learning how to program, especially how to program in Ruby and Rails
 
-- last updated Time-stamp: <2018-11-04 09:25:15 tamara>
+- last updated Time-stamp: <2018-12-30 12:42:51 tamara>
 
 ** Introduction
 
@@ -114,6 +114,12 @@ Also, [[https://www.codefellows.org/blog/this-is-why-learning-rails-is-hard][lea
 
    When I was more naive about JS, I wrote a bit of a negative review of this book. Subsequently, I've learned of it's true eloquence and meaning in giving a model of how to organize and implement modern JS. The subtitle "A modern introduction to programming" is still a bit misleading, perhaps, because you have to understand a fair bit of JavaScript /and/ programming to get the message, I feel. But that's just a quibble at this point. Read this before you strike out on creating a client-based JS application; you won't regret it.
 
+ - *Test-Driven JavaScript Development* by Christian Johansen (Addison-Wesley Professional, September 2010, ISBN 9780321683915)
+
+   (The [[http://www.informit.com/store/test-driven-javascript-development-9780321684042][ebook]] for this title is ridiculously expensive. I read it via [[https://learning.oreilly.com/library/view/test-driven-javascript-development/9780321684097/][safarionline]].)
+
+   This book provides some great insights into testing JavaScript applications. Released in 2010, the things that are out of date are the specific tools used for testing, /however/, the concepts for writing tests and performing test-driven Javascript development are still very appropriate.
+
  - [[https://leanpub.com/javascriptallongesix][*JavaScript Allongé*]] by Reginald "raganwald" Braithwait
 
    Using the metaphor of a coffee barista, Reg goes in depth on thinking about how JavaScript works; this is not a practical book from the standpoint of "tell me what code to write", but rather from the standpoint of knowing how JavaScript works inside so you can write better code yourself.
@@ -149,7 +155,7 @@ Also, [[https://www.codefellows.org/blog/this-is-why-learning-rails-is-hard][lea
 
  - [[http://railscasts.com/][*RailsCasts*]] -- another super awesome effort has been put together by Ryan Bates. Current production is on hiatus, so the $9/month fee for the full screen casts is being pro-rated, so you can buy in for $9 and there won't be further monthly charges until production starts up again.
 
- - [[http://www.rubytapas.com/faq][*RubyTapas*]] -- Avdi Grimm is a fabulous Ruby and Rails mentor and guide, who puts out two very short screen casts a week (tapas -- small plates). These are really impeccably done, and I personally love listening to Avdi talk.
+ - [[https://www.rubytapas.com/frequently-asked-questions/][*RubyTapas*]] -- Avdi Grimm is a fabulous Ruby and Rails mentor and guide, who puts out two very short screen casts a week (tapas -- small plates). These are really impeccably done, and I personally love listening to Avdi talk.
 
  - [[http://learncodethehardway.org/][*LearnCodeTheHardWay*]] -- provides online versions of books and tutorials for [[http://learnpythonthehardway.org/book/][*Python*]], [[http://ruby.learncodethehardway.org/book/][*Ruby*]], [[http://c.learncodethehardway.org/book/][*C*]], [[http://sql.learncodethehardway.org/book/][*SQL*]], [[http://regex.learncodethehardway.org/book/][*Regular Expressions*]] and more.
 
@@ -194,4 +200,33 @@ Also, [[https://www.codefellows.org/blog/this-is-why-learning-rails-is-hard][lea
 
 ** More Advanced
 
- If you want to go deep and learn more about computer science, the book [[https://mitpress.mit.edu/sicp/][/Structure and Interpretation of Computer Programs/]] is probably your best bet in terms of a real CS text book that's available online for free. It's not a tutorial, but there are exercises in the text. The book uses Scheme, a lisp-like programming language. Everyone should learn a little lisp at some point. :) However it's not mandatory one use Scheme (or Clojure as the local Clojure user group has been doing). The analytical concepts apply across all languages. If you're focused on JavaScript or Ruby, you can work the examples in those languages, too.
+If you want to go deep and learn more about computer science, the book [[https://mitpress.mit.edu/sicp/][/Structure and Interpretation of Computer Programs/]] is probably your best bet in terms of a real CS text book that's available online for free. It's not a tutorial, but there are exercises in the text. The book uses Scheme, a lisp-like programming language. Everyone should learn a little lisp at some point. :) However it's not mandatory one use Scheme (or Clojure as the local Clojure user group has been doing). The analytical concepts apply across all languages. If you're focused on JavaScript or Ruby, you can work the examples in those languages, too.
+
+The afore-mentioned Frontend Masters has been producing some much more advanced courses lately:
+
+- [[https://frontendmasters.com/courses/computer-science/][Four Semesters of Computer Science in 5 Hours]] with [[https://frontendmasters.com/teachers/brian-holt/][Brian Holt]]
+
+- [[https://frontendmasters.com/courses/computer-science-2/][Four Semesters of Computer Science in 5 Hours, Part 2]] with Brian Holt
+
+- [[https://frontendmasters.com/courses/practical-algorithms/][A Practical Guide to Algorithms with JavaScript]] with [[https://frontendmasters.com/teachers/bianca-gandolfo/][Bianca Gandolfo]]
+
+- [[https://frontendmasters.com/courses/data-structures-interviews/][Introduction to Data Structures for Interviews]] with Bianca Gandolfo
+
+- With Will Sentance:
+
+  - [[https://frontendmasters.com/courses/javascript-hard-parts/][JavaScript: The Hard Parts]]
+
+  - [[https://frontendmasters.com/courses/javascript-new-hard-parts/][JavaScript: The New Hard Parts]]
+
+  - [[https://frontendmasters.com/courses/object-oriented-js/][JavaScript: The Hard Parts of Object Oriented JavaScript]]
+
+I'm just going to list [[https://frontendmasters.com/teachers/kyle-simpson/][Kyle Simpson's entire collection]] because they are *all* great
+
+Other fav instructors:
+
+- [[https://frontendmasters.com/teachers/scott-moss/][Scott Moss]]
+- [[https://frontendmasters.com/teachers/shirley-wu/][Shirley Wu]]
+- [[https://frontendmasters.com/teachers/kentcdodds/][Kent C. Dodds]]
+- [[https://frontendmasters.com/teachers/jem-young/][Jem Young]]
+- [[https://frontendmasters.com/teachers/lukas-ruebbelke/][Lukas Reubbelke]]
+- [[https://frontendmasters.com/teachers/sarah-drasner/][Sarah Drasner]]
