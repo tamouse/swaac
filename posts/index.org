@@ -1,3 +1,4 @@
+- [[./learning.org]]
 - [[./2018/12/2018-12-20-adding-methods-to-base-graphql-classes.org]]
 - [[./2018/12/2018-12-12-tenants-of-toast-and-tech.org]]
 - [[./2018/12/2018-12-01-polyfill-for-custom-event.org]]
@@ -158,7 +159,6 @@
 - [[./2015/05/multiple-vagrant-rails-development-box-setup-times.org]]
 - [[./2015/05/love-letter.org]]
 - [[./2015/05/links.org]]
-- [[./2015/05/learning.org]]
 - [[./2015/04/you-dont-know-javascript-class.org]]
 - [[./2015/04/til-kernel-number-gets-is-different-from-io-number-gets.org]]
 - [[./2015/04/the-x-y-problem.org]]

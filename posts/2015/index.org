@@ -36,7 +36,6 @@
 - [[./05/multiple-vagrant-rails-development-box-setup-times.org]]
 - [[./05/love-letter.org]]
 - [[./05/links.org]]
-- [[./05/learning.org]]
 - [[./04/you-dont-know-javascript-class.org]]
 - [[./04/til-kernel-number-gets-is-different-from-io-number-gets.org]]
 - [[./04/the-x-y-problem.org]]
