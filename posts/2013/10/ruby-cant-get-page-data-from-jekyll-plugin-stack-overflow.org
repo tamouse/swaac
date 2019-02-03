@@ -8,8 +8,6 @@
 - source: http://stackoverflow.com/questions/10264249/cant-get-page-data-from-jekyll-plugin
 - comments: true
 
-A repost of <{{page.source}}>.
-
 #+BEGIN_QUOTE
   * Can't get page data from Jekyll plugin
     :PROPERTIES:

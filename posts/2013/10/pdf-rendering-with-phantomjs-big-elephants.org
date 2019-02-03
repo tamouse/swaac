@@ -7,7 +7,6 @@
 - keywords: ["pdf", "phantomjs", "swaac"]
 - source: http://big-elephants.com/2012-12/pdf-rendering-with-phantomjs/
 
-A repost of <{{page.source}}>
 
 #+BEGIN_QUOTE
   * Pdf Rendering With Phantomjs
@@ -199,7 +198,7 @@ A repost of <{{page.source}}>
   To avoid rendering the page on each request you can setup some the cache ttl in seconds
 
   #+BEGIN_EXAMPLE
-      config.middleware.use Shrimp::Middleware, :cache_ttl => 3600, :out_path => "/my/pdf/store" 
+      config.middleware.use Shrimp::Middleware, :cache_ttl => 3600, :out_path => "/my/pdf/store"
   #+END_EXAMPLE
 
   *** Cookies
@@ -261,11 +260,11 @@ A repost of <{{page.source}}>
   #+BEGIN_EXAMPLE
       503 Retry-After                     # as long as the rendering is still in progress
       504                                 # if rendering took longer than request_timeout
-      200 Content-Type application/pdf    # delivering the pdf file if rendering is finished 
+      200 Content-Type application/pdf    # delivering the pdf file if rendering is finished
 
       if request was HTTP_X_REQUESTED_WITH (Ajax)
 
-      200 Content-Type text/html          # delivering html with the link to the pdf file 
+      200 Content-Type text/html          # delivering html with the link to the pdf file
   #+END_EXAMPLE
 
   To include some fancy Ajax stuff with jquery you can do

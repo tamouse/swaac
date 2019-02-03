@@ -7,8 +7,6 @@
 - keywords: ["node-js", "rails", "real-time", "socket.io", "swaac"]
 - source: http://liamkaufman.com/blog/2013/02/27/adding-real-time-to-a-restful-rails-app/
 
-A reposting of <{{page.source}}> by [[http://liamkaufman.com/blog/][Liam Kaufman]]
-
 #+BEGIN_QUOTE
   * Adding Real-Time to a RESTful Rails App
     :PROPERTIES:
@@ -70,7 +68,7 @@ A reposting of <{{page.source}}> by [[http://liamkaufman.com/blog/][Liam Kaufman
          window.app.realtime = {
            connect : function(){
              window.app.socket = io.connect("http://0.0.0.0:5001");
-     
+
              window.app.socket.on("rt-change", function(message){
                // publish the change on the client side, the channel == the resource
                window.app.trigger(message.resource, message);

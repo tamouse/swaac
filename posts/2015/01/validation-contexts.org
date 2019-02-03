@@ -1,20 +1,14 @@
 * Validation Contexts
-  :PROPERTIES:
-  :CUSTOM_ID: validation-contexts
-  :END:
 
 - published date: 2015-01-20 06:27
 - keywords: ["justin-weiss", "links", "practicing-rails", "rails", "swaac", "validation"]
-- source: http://www.justinweiss.com/blog/2014/09/15/a-lightweight-way-to-handle-different-validation-situations/
+- source: [[http://www.justinweiss.com/blog/2014/09/15/a-lightweight-way-to-handle-different-validation-situations/]]
 
 By introduction, [[http://www.justinweiss.com][Justin Weiss]] is a rather prolific blogger, journaler, and writer about Rails. He has a book that's coming out, [[http://www.justinweiss.com/book][Practicing Rails]] that is the book I wish I had written, and I am thoroughly indebted to Justin for writing. The book is /exactly/ the way I go about learning how programming concepts, language features, framework features, and all that stuff work.
 
-In [[file:%7B%7Bpage.source%7D%7D][this article]], Justin covers Rails's [[http://api.rubyonrails.org/classes/ActiveModel/Validations.html#method-i-valid-3F][validation contexts]], a poorly-documented (to date) feature that allows different validation tests to be run during model operations. The article references another article, [[http://blog.arkency.com/2014/04/mastering-rails-validations-contexts/]], which goes even further into the topic.
+In [[http://www.justinweiss.com/blog/2014/09/15/a-lightweight-way-to-handle-different-validation-situations/][this article]], Justin covers Rails's [[http://api.rubyonrails.org/classes/ActiveModel/Validations.html#method-i-valid-3F][validation contexts]], a poorly-documented (to date) feature that allows different validation tests to be run during model operations. The article references another article, [[http://blog.arkency.com/2014/04/mastering-rails-validations-contexts/]], which goes even further into the topic.
 
 ** In a nutshell, or, the TL;DR
-   :PROPERTIES:
-   :CUSTOM_ID: in-a-nutshell-or-the-tldr
-   :END:
 
 You can read (and you /should/ read) those other articles for more details. I'm merely going to capture the bottom line here.
 

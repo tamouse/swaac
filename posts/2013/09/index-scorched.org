@@ -7,8 +7,6 @@
 - keywords: ["controller", "framework", "minimal", "ruby", "swaac", "web"]
 - source: http://scorchedrb.com/
 
-A repost of <{{page.source}}>.
-
 #+BEGIN_QUOTE
   * [[http://scorchedrb.com][Simple, Powerful, Scorched]]
     :PROPERTIES:

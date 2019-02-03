@@ -13,7 +13,7 @@
 
 *NOTE:* THIS TUTORIAL IS REALLY OUT OF DATE
 
-*LINK:* [[file:{{page.source}}]]
+*LINK:* [[https://coderwall.com/p/yz8cha/deploying-rails-app-using-nginx-unicorn-postgres-and-capistrano-to-digital-ocean]]
 
 ** review / summary
    :PROPERTIES:

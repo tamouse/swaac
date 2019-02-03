@@ -1,13 +1,10 @@
 * First thing I learned about working with Elixir
-  :PROPERTIES:
-  :CUSTOM_ID: first-thing-i-learned-about-working-with-elixir
-  :END:
 
 - published date: 2015-06-30 13:16
 - keywords: ["elixir", "first-thing", "new-lang"]
 - source: http://elixir-lang.org
 
-So, learning a new language, [[file:%7B%7Bpage.source%7D%7D][Elixir]], and after installing it (a breeze, way easier than ruby), I start up the Elixir REPL, IEx, type a few bon mots and then I'm stuck trying to quit the thing.
+So, learning a new language, [[http://elixir-lang-org][Elixir]], and after installing it (a breeze, way easier than ruby), I start up the Elixir REPL, IEx, type a few bon mots and then I'm stuck trying to quit the thing.
 
 #+BEGIN_SRC sh
     $ iex

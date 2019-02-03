@@ -5,9 +5,9 @@
 
 - published date: 2015-03-03 05:38
 - keywords: ["code", "examples", "questions", "rails", "ruby"]
-- source: https://github.com/tamouse/example_questions_without_answers
+- source: [[https://github.com/tamouse/example_questions_without_answers]]
 
-There was a question recently in the =#RubyOnRails= IRC channel on [[http://www.freenode.net][freenode]]: "How can I retrieve all the questions that don't have answers?". [[file:%7B%7B%20page.source%20%7D%7D][This Rails coding example shows the answer]].
+There was a question recently in the =#RubyOnRails= IRC channel on [[http://www.freenode.net][freenode]]: "How can I retrieve all the questions that don't have answers?". [[https://github.com/tamouse/example_questions_without_answers][This Rails coding example shows the answer]].
 
 ** Two Models
    :PROPERTIES:

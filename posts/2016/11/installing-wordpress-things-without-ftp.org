@@ -9,7 +9,7 @@
 
 Recently having set up a couple of WordPress sandbox areas, which would not have any FTP access points for upgrading and installing WP themes and plugins, I ran across this feature where the WP install can "reach out" and pull in the items it needs, rather than telling the WP repository to push the items to the site.
 
-In the [[file:%7B%7Bpage.source%7D%7D][codex]]{:target="_blank"} there is a section on"WordPress Upgrade Constants", and in particular it describes =FS_METHOD= which turns the nature of installing upgrades around.
+In the [[https://codex.wordpress.org/Editing_wp-config.php#WordPress_Upgrade_Constants][codex]] there is a section on "WordPress Upgrade Constants", and in particular it describes =FS_METHOD= which turns the nature of installing upgrades around.
 
 By adding the following line to the =wp-config.php= file, you can enable this behaviour:
 

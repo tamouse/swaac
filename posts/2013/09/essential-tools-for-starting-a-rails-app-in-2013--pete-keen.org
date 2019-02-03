@@ -7,8 +7,6 @@
 - keywords: ["rails", "swaac", "tools"]
 - source: http://www.petekeen.net/essential-tools-for-starting-a-rails-app-in-2013
 
-A repost of <{{page.source}}>.
-
 ** Author: Pete Keen
    :PROPERTIES:
    :CUSTOM_ID: author-pete-keen

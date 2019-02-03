@@ -15,7 +15,7 @@ Using Ruby on Rails, I am constantly frustrated by things which might be nil, an
 
 Here's an article explaning the origin of the debacle.
 
-- [[file:%7B%7B%20page.source%20%7D%7D][The worst mistake of computer science - Lucidchart]]
+- [[https://www.lucidchart.com/techblog/2015/08/31/the-worst-mistake-of-computer-science/][The worst mistake of computer science - Lucidchart]]
 
 #+BEGIN_HTML
   <blockquote>

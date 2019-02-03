@@ -7,8 +7,6 @@
 - keywords: ["activerecord", "rails", "sql", "swaac"]
 - source: http://hashrocket.com/blog/posts/sql-window-functions
 
-A repost of <{{page.source}}> by [[http://hashrocket.com/blog/rocketeers/josh-davey][Joshua Davey]].
-
 #+BEGIN_QUOTE
   * SQL Window Functions and You
     :PROPERTIES:
@@ -145,7 +143,7 @@ A repost of <{{page.source}}> by [[http://hashrocket.com/blog/rocketeers/josh-da
   #+BEGIN_SRC ruby
       # SELECT id, name, category_id, price FROM cat_pictures ORDER BY category_id, price;
 
-       id |         name         | category_id | price 
+       id |         name         | category_id | price
       ----+----------------------+-------------+-------
         7 | Triple LOL           |           1 |  9.99
         5 | Hugs not Drugs       |           1 |  9.99
@@ -164,7 +162,7 @@ A repost of <{{page.source}}> by [[http://hashrocket.com/blog/rocketeers/josh-da
   #+BEGIN_SRC sh
       SELECT category_id, min(price) FROM cat_pictures GROUP BY category_id;
 
-       category_id |  min  
+       category_id |  min
       -------------+-------
                  1 |  9.99
                  2 | 11.99
@@ -173,7 +171,7 @@ A repost of <{{page.source}}> by [[http://hashrocket.com/blog/rocketeers/josh-da
   #+BEGIN_SRC sh
       SELECT category_id, min(price) OVER (PARTITION BY category_id) FROM cat_pictures;
 
-       category_id |  min  
+       category_id |  min
       -------------+-------
                  1 |  9.99
                  1 |  9.99
@@ -192,7 +190,7 @@ A repost of <{{page.source}}> by [[http://hashrocket.com/blog/rocketeers/josh-da
   #+BEGIN_SRC sh
       SELECT id, name, category_id, price, rank() OVER (PARTITION BY category_id ORDER BY price) FROM cat_pictures;
 
-       id |         name         | category_id | price | rank 
+       id |         name         | category_id | price | rank
       ----+----------------------+-------------+-------+------
         7 | Triple LOL           |           1 |  9.99 |    1
         5 | Hugs not Drugs       |           1 |  9.99 |    1
@@ -211,7 +209,7 @@ A repost of <{{page.source}}> by [[http://hashrocket.com/blog/rocketeers/josh-da
   #+BEGIN_SRC sh
       SELECT id, name, category_id, price, row_number() OVER (PARTITION BY category_id ORDER BY price, name) FROM cat_pictures;
 
-       id |         name         | category_id | price | row_number 
+       id |         name         | category_id | price | row_number
       ----+----------------------+-------------+-------+------------
         5 | Hugs not Drugs       |           1 |  9.99 |          1
         7 | Triple LOL           |           1 |  9.99 |          2
@@ -235,7 +233,7 @@ A repost of <{{page.source}}> by [[http://hashrocket.com/blog/rocketeers/josh-da
   #+END_SRC
 
   #+BEGIN_SRC sh
-       id | category_id |         name         | price 
+       id | category_id |         name         | price
       ----+-------------+----------------------+-------
         5 |           1 | Hugs not Drugs       |  9.99
         4 |           2 | Turkleton's Folly    | 11.99

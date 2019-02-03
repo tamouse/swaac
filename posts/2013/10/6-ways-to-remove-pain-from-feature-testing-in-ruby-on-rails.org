@@ -7,8 +7,6 @@
 - keywords: ["ruby", "swaac", "testing"]
 - source: http://gaslight.co/blog/6-ways-to-remove-pain-from-feature-testing-in-ruby-on-rails
 
-A repost of <{{page.source}}>.
-
 #+BEGIN_QUOTE
   * [[http://gaslight.co/blog/6-ways-to-remove-pain-from-feature-testing-in-ruby-on-rails][6 Ways to Remove Pain From Feature Testing in Ruby on Rails]]
     :PROPERTIES:

@@ -7,8 +7,6 @@
 - keywords: ["coding-practice", "predicates", "ruby", "swaac"]
 - source: http://raganwald.com/2013/09/12/the-predicate-module-pattern.html
 
-A repost of <{{page.source}}>.
-
 #+BEGIN_QUOTE
   * The Predicate Module Pattern
     :PROPERTIES:
@@ -31,7 +29,7 @@ A repost of <{{page.source}}>.
   #+BEGIN_EXAMPLE
       class BankAccount
 
-        # ... 
+        # ...
 
       end
   #+END_EXAMPLE
@@ -61,7 +59,7 @@ A repost of <{{page.source}}>.
       class BankAccount
 
         attr_writer :frozen
-        
+
         def frozen?
           @frozen
         end
@@ -91,7 +89,7 @@ A repost of <{{page.source}}>.
       class BankAccount
 
         attr_writer :frozen
-        
+
         def frozen?
           @frozen
         end

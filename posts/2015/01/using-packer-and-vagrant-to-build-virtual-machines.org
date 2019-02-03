@@ -1,7 +1,4 @@
 * Using Packer and Vagrant to Build Virtual Machines
-  :PROPERTIES:
-  :CUSTOM_ID: using-packer-and-vagrant-to-build-virtual-machines
-  :END:
 
 - published date: 2015-01-28 00:07
 - keywords: ["codeship", "dev-env", "development", "devops", "packer", "swaac", "vagrant"]

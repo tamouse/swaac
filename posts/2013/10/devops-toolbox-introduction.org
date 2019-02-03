@@ -7,8 +7,6 @@
 - keywords: ["deployment", "devops", "swaac", "sysadmin", "tools"]
 - source: http://chrislaco.com/devops-toolbox/introduction/
 
-A repost of <{{page.source}}>.
-
 #+BEGIN_QUOTE
   Welcome to the DevOps Toolbox, a step by step guide for the budding devops engineer who wants to enjoy the wonders of modern system configuration and management without having to become the "Server Guy".
 
