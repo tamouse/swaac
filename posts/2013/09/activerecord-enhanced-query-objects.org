@@ -1,17 +1,10 @@
 * ActiveRecord: Enhanced Query Objects
-  :PROPERTIES:
-  :CUSTOM_ID: activerecord-enhanced-query-objects
-  :END:
 
 - published date: 2013-09-20 18:09
 - keywords: ["activerecord", "enhanced-query-objects", "poros", "rails", "scopes", "swaac"]
 - source: http://hasghari.github.io/2013/09/15/active-record-enhanced-query-objects.html?utm_source=rubyweekly&utm_medium=email
 
-#+BEGIN_QUOTE
-  ** ActiveRecord: Enhanced Query Objects
-     :PROPERTIES:
-     :CUSTOM_ID: activerecord-enhanced-query-objects-1
-     :END:
+  ActiveRecord: Enhanced Query Objects
 
   15 Sep 2013
 
@@ -100,16 +93,9 @@
 
   I've come to really like this pattern to adhere to the Single Responsibility Principle and keep my models manageable.
 
-  \\
-
-  Please enable JavaScript to view the [[http://disqus.com/?ref_noscript][comments powered by Disqus.]]
-
-  [[http://disqus.com][comments powered by Disqus]]
-
   Hamed Asghari\\
   Ruby, JavaScript and Go enthusiast\\
   hasghari@gmail.com
 
   [[https://github.com/hasghari][github.com/hasghari]]\\
   [[https://twitter.com/phyrengr][twitter.com/phyrengr]]\\
-#+END_QUOTE

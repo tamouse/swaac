@@ -1,7 +1,4 @@
 * Caption Hover Effects in CSS3
-  :PROPERTIES:
-  :CUSTOM_ID: caption-hover-effects-in-css3
-  :END:
 
 - date: 2013-07-06 12:14
 - tags: [tech, css3, ui, links]
@@ -12,9 +9,7 @@ Provided is a [[https://github.com/codrops/CaptionHoverEffects][Github repositor
 
 I am rather partial to this one:
 
-#+BEGIN_HTML
-  <iframe src="http://tympanus.net/Tutorials/CaptionHoverEffects/index4.html" width="100%" height="600px"></iframe>
-#+END_HTML
+#+HTML: <iframe src="http://tympanus.net/Tutorials/CaptionHoverEffects/index4.html" width="100%" height="600px"></iframe>
 
 Highly recommended reading!
 

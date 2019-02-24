@@ -8,8 +8,18 @@
 	 :section-numbers nil
 	 :with-toc t
 	 :recursive t
+	 :html-head "<link rel=\"stylesheet\" href=\"/others/style.css\" type=\"text/css\" />"
+	 :html-preamble t
+	 :auto-sitemap t
+	 :sitemap-ignore-case t
+	 )
+	("others"
+	 :base-directory "~/Sites/swaac/others/"
+	 :base-extension "css"
+	 :publishing-directory "~/Sites/swaac-pub/others/"
+	 :publishing-function org-publish-attachment
 	 )
 	("website"
-	 :components ("orgfiles")
+	 :components ("orgfiles" "others")
 	 )
 	))

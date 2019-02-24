@@ -2,660 +2,228 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://github.com/tamouse/swaac</id>
   <title>Tamouse&#39;s Software as a Craft blog</title>
-  <updated>2019-01-03T14:54:57-06:00</updated>
+  <updated>2019-02-03T00:51:24-06:00</updated>
     <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2019/01/2019-01-03-dealing-with-jest-import-syntax-error.org</id>
-      <updated>2019-01-03T14:54:57-06:00</updated>
-      <title>TIL: Dealing with a jest ~import~ SyntaxError</title>
-      <content>
-* TIL: Dealing with a jest ~import~ SyntaxError
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2013/10/adding-a-file-display-list-to-a-multi-file-upload-html-control.org</id>
+      <updated>2019-02-03T00:51:24-06:00</updated>
+      <title>Adding a file display list to a multi-file upload HTML control</title>
+      <content>#+TITLE: Adding a file display list to a multi-file upload HTML control
+#+AUTHOR: Raymond Camden
+#+DATE: 2013-09-10
 
-- Time-stamp: &lt;2019-01-03 14:54:57 tamara&gt;
-- capture-date: [2019-01-03 Thu]
-- keywords: jest, import, SyntaxError, transformIgnorePatterns
 
-Today, I kept getting an error while running jest tests from within a module down in ~/node_modules/~:
+* Adding a file display list to a multi-file upload HTML control
 
-#+BEGIN_SRC code
-  ● Test suite failed to run
+- published date: 2013-10-22 11:08
+- keywords: [&quot;code&quot;, &quot;display&quot;, &quot;file-uploads&quot;, &quot;javascript&quot;, &quot;swaac&quot;, &quot;user-experience&quot;, &quot;user-feedback&quot;, &quot;ux&quot;]
+- source: https://www.raymondcamden.com/2013/09/10/Adding-a-file-display-list-to-a-multifile-upload-HTML-control
 
-    /Users/tamara/Work/master/kickserv/node_modules/promise-polyfill/src/polyfill.js:1
-    ({&quot;Object.&lt;anonymous&gt;&quot;:function(module,exports,require,__dirname,__filename,global,jest){import Promise from &#39;./index&#39;;
-                                                                                             ^^^^^^
+** TL;DR: when you want to upload multiple files
 
-    SyntaxError: Unexpected token import
+... add a ~multiple~ attribute to the ~input type=&quot;file&quot;~ element.
+
+*** For example
+
+#+BEGIN_SRC web
+  &lt;input type=&quot;file&quot; name=&quot;uploads&quot; id=&quot;uploads&quot; multiple /&gt;
 #+END_SRC
 
-I tried numerous options, but finally landed on this: [[https://github.com/facebook/jest/issues/3202#issuecomment-387899346][Comment from @Izhaki]] describing their use of jest&#39;s ~transformIgnorePatterns~ setting. It turns out, all that was required was to actually *remove* the promise-polyfill npm module from the ignore patterns:
+*** Funging the display
 
-#+name: package.json
-#+begin_src rjsx
-  {
-      &quot;jest&quot;: {
-          &quot;transformIgnorePatterns&quot;: [
-              &quot;node_modules/(?!(promise-polyfill)/)&quot;
-          ]
+The post further disusses the usability hit with the lack of indication what files have been selected and how to fix it up with some CSS and JavaScript.
+
+** COMMENT copied article
+
+#+BEGIN_QUOTE
+  ** [[http://www.raymondcamden.com/index.cfm/2013/9/10/Adding-a-file-display-list-to-a-multifile-upload-HTML-control][Adding a file display list to a multi-file upload HTML control]]
+     :PROPERTIES:
+     :CUSTOM_ID: adding-a-file-display-list-to-a-multi-file-upload-html-control-1
+     :END:
+
+  ** 09-10-2013 **
+
+  I&#39;m working on something a bit interesting with a multi-file upload control, but while that is in development, I thought I&#39;d share a quick tip about working with multi-file upload controls in general.
+
+  If you are not clear about what I&#39;m talking about, I simply mean adding the multiple attribute to the input tag for file uploads. Like so:
+
+  #+BEGIN_EXAMPLE
+      &lt;input type=&quot;file&quot; name=&quot;foo&quot; id=&quot;foo&quot; multiple&gt;
+  #+END_EXAMPLE
+
+  In browsers that support it, the user will be able to select multiple files. In browsers that don&#39;t support it, it still works fine as a file control, but they are limited to one file. In theory, this is pretty trivial to use, but there&#39;s a UX issue that kind of bugs me. Here is a screen shot of a form using this control. I&#39;ve selected two files:
+
+  [[/images/raymondcamden/Screenshot_9_10_13_9_32_AM.jpg]]
+
+  Notice something? The user isn&#39;t told /what/ files they selected. Now obviously in a form this small it isn&#39;t that big of a deal, but in a larger form the user may forget or simply want to double check before they submit the form. Unfortunately there is no way to do that. Clicking the Browse button simply opens the file picker again. Surprisingly, IE handles this the best. It provides a read-only list of what you selected:
+
+  [[/images/raymondcamden/Screenshot_9_10_13_9_35_AM.png]]
+
+  One could use a bit of CSS to make that field a bit larger for sure and easier to read, but you get the idea. So how can we provide some feedback to the user about what files they have selected?
+
+  First, let&#39;s add a simple change handler to our input field:
+
+  #+BEGIN_EXAMPLE
+      document.addEventListener(&quot;DOMContentLoaded&quot;, init, false);
+
+      function init() {
+          document.querySelector(&#39;#files&#39;).addEventListener(&#39;change&#39;, handleFileSelect, false);
       }
-  }
-#+end_src
+  #+END_EXAMPLE
 
-The funky expresson, ~&quot;node_modules/(?!(promise-polyfill)/)&quot;~ is indicating that the matching path should *not* be ignored, and be transpiled by jest.
+  Next, let&#39;s write an event handler and see if we can get access to the files property of the event. Not all browsers support this, but in the ones that do, we can enumerate over them.
 
-The other options in that comment thread and other places were about changing the `.babelrc` file and specifying different ~NODE_ENV~ values, which I just could not make work. With this setting, the jest tests all run, and the promise polyfill works in the code running in the browser.
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/learning.org</id>
-      <updated>2018-12-30T12:42:52-06:00</updated>
-      <title>Resources for learning how to program, especially how to program in Ruby and Rails</title>
-      <content>* Resources for learning how to program, especially how to program in Ruby and Rails
+  #+BEGIN_EXAMPLE
+      function handleFileSelect(e) {
 
-- last updated Time-stamp: &lt;2018-12-30 12:42:51 tamara&gt;
+          if(!e.target.files) return;
 
-** Introduction
+          var files = e.target.files;
+          for(var i=0; i &lt; files.length; i++) {
+              var f = files[i];
+          }
 
-Many people ask me &quot;How do I learn to program?&quot; and &quot;What book(!) should I read to learn Rails?&quot;.
-
-These are legitimate questions, but they aren&#39;t necessarily the right questions to ask in order to begin the journey of becoming a software craftsperson.
-
-Better questions, I feel, are:
-
-- What resources do you recommend for beginners?
-- Where can I go for help?
-
-I&#39;ve been finding things around the &#39;net that can greatly help people new to programming, new to web development, new to Rails, and so on.
-
---------------
-
-*UPDATE:* I&#39;ve created a section for the [[./beginners-section.org][Absolute Beginner]] as well, you might find it useful.
-
-This is a quick, short list of things. I urge you to seek them out, and seek out others as well, and create your /own/ list of learning resources. People will begin to ask you, and it&#39;s nice to have something handy.
-
-Also, [[https://www.codefellows.org/blog/this-is-why-learning-rails-is-hard][learning Rails is hard]]. But don&#39;t despair! The key to learning is break things down, focusing and practicing small things, and build up a lot of skills slowly. (&quot;Wax on, wax off.&quot; &quot;Ok, Mr. Myagi.&quot;) I&#39;m going to jump ahead and tell you to download the first chapter (free) of Justin Weiss&#39;s book [[https://www.justinweiss.com/practicing-rails/][Practicing Rails]]. Search for &quot;first chapter&quot; and fill out the form to get it. You&#39;re also signing up to get e-mail from Justin, but it&#39;s always good stuff.
-
---------------
-
-/Update Sun Jun 8 11:39:13 2014:/ Recently came across web post [[http://astonj.com/tech/best-way-to-learn-ruby-rails/][Best Way To Learn Ruby and Rails]] and must say it is a great compilation of resources. In addition, Ashton puts the focus right at the heart of the matter: you have learn /both/ Ruby /and/ Rails.
-
---------------
-
-** Books
-
- - [[https://www.goodreads.com/book/show/13590009-think-like-a-programmer][*Think Like a Programmer: An Introduction to Creative Problem Solving*]] by V. Anton Spraul.
-
-   Spraul&#39;s purpose in this book is not to teach you how to write a program, but to begin to understand the problem-solving approach that is inherent in good programmers. Like so many skills, programming is driven by the desire and vision of the practitioner. A painter uses brushes, canvas, paints, other media to create a work of art, but it isn&#39;t the tools, it isn&#39;t the specific techniques, and it isn&#39;t even the particular skill the painter has that makes a good work of art; it is their composition, the melding of media and surface, the use of different techniques, and practice in developing the skills that come together to form the work of art. Spraul is going to take you deeper than just the syntax, semantics, and data structures of software to the heart of what makes a good programmer: the ability to creatively find and generate solutions to problems.
-
- - [[https://www.goodreads.com/book/show/520.Learn_to_Program][*Learn to Program*]] by Chris Pine.
-
-   To be honest, I have not looked through this book. It is, however, nearly universally recommended to people new to programming. The original tutorial is available online for free as well: [[https://pine.fm/LearnToProgram/]]. LtP was featured on the great webcomic [[http://www.unshelved.com/2014-7-25][Unshelved]].
-
- - [[https://pragprog.com/book/tpp/the-pragmatic-programmer][**The Pragmatic Programmer]] by Andrew Hunt and David Thomas
-
-   This is the best modern treatise on the craft of programming. It represents the best of experiences programmers have come to appreciate during years of development. I read this book after years of practice, and found everything in it to ring true. (The thought &quot;I could have written this!&quot; came up frequently.) This book is not about any specific language or technology, but spans the gamut of software development. This is a must-have for practitioners.
-
- - [[https://www.goodreads.com/book/show/79766.A_Pattern_Language][*A Pattern Language: Towns, Buildings, Construction*]] by Christopher Alexander.
-
-   You may be wondering why I&#39;ve included a book on building construction. The answer is quite simple: the concepts in building towns and houses is nearly directly translatable to building software applications and systems. One part of being an excellent craftsperson is being able to apply abstract learning in different problem domains. If you are an expert in writing software, you are almost /never/ going to be solving problems only for other software developers. (You can and should do so, but the client and users are generally non-programmers.) Thus you&#39;re most likely going to be working in someone else&#39;s domain of expertise. Alexander&#39;s views on architecture apply to software architecture as well.
-
- - [[http://shop.oreilly.com/product/9780596510046.do][*Beautiful Code*]] by Andy Oram and Greg Wilson.
-
-   A book with a purpose, that isn&#39;t a how to, so much as a how to think. It&#39;s a collection of essays by various software developers on what they think makes code beautiful. In all, the following holds true:
-
-   1. First, make it correct.
-   2. Second, make it pretty.
-   3. Third, make it fast.
-
- - *Programming Proverbs* by Henry F. Ledgard
-
-   This book, published in 1975, and a subsequent volume dedicated to the Pascal language published in 1979, were essential to me back when I was in university learning computer science. They&#39;re out of print now, so I&#39;m starting a blog series covering them. [[file:%7B%7Bsite.baseurl%7D%7D%7B%%20link%20_posts/2017-07-23-pp-introduction.markdown%20%%7D][Programming Proverbs: Introduction]]
-
- - [[https://leanpub.com/systemdesignheuristics][*Systems Design Heuristics*]] - by the late, great Jerry Wienberg.
-
-   Jerry was a friend as well as a teacher. I miss him enourmously. This book is full of his thoughts and writings on how one should do systems design. As the title implies, there are no rules, but there are some heuristics one can apply to the overall design and architecture of systems.
-
-
-*** Object-Oriented Programming
-
- - [[https://www.sandimetz.com/99bottles][*99 Bottles of OOP*]] by Sandi Metz and Katrina Owen.
-
-   A recent book, representing the absolute best by two teachers of software engineering. Sandi has been teaching Object-oriented programming for decades, and Katrina brings in her expertise with refactoring, resulting in a deep book that stretches beyond the basics and deep into the structures and understanding of object systems and idioms. It brings up to date the actual concepts of refactoring, test-driven development, naming things, reducing code &quot;smells&quot; and making code more easily and economically maintainable and sustainable. They take all the buzzwords and unbuzzify them into practical, useful methodologies and techniques.
-
-*** Ruby-specific
-
- - [[https://www.goodreads.com/book/show/9364729-eloquent-ruby][*Eloquent Ruby*]] by Russ Olsen.
-
-   Olsen&#39;s approach in this book is to go far beyond just learning a programming language, but a way to learning the idioms and the &quot;Ruby Way&quot;. Even if your chosen language is something other than Ruby, reading this book will give you an appreciation for how to delve into a language and get the most out of it.
-
- - [[http://www.confidentruby.com/][*Confident Ruby*]] by Avdi Grimm.
-
-   More than any other book I&#39;ve read on Ruby, &quot;Confident Ruby&quot; has affected my coding habits more than any other. If Ruby is about making programmers happy, /Confident Ruby/ is about making programming joyful, and not just in the immediate, but being able to look at code you&#39;ve written in the future and recall the joy. /Confident Ruby/ seeks to combat software rot from the get-go.
-
- - [[http://www.amazon.com/The-Well-Grounded-Rubyist-David-Black/dp/1617291692][*Well-Grounded Rubyist*]] by David A. Black
-
-   Also known as the &quot;Black Book&quot; (because of the author&#39;s name), WGR is the successor to /Ruby for Rails/ by Black that provided me with the much-needed introduction to how to write Ruby code, with the idea of using it in Ruby for Rails. This book is a fabulous primer on the Ruby idioms and expressions that help make one a good Ruby programmer.
-
- - [[http://www.poodr.com/][*Practical Object-Oriented Design in Ruby*]] by Sandi Metz
-
-   This book provides a deeply-needed introduction to object-oriented design, specifically targeted to the Ruby language. Ruby is one of the richest languages in which to express object-oriented patterns, but it is easy to fall of the OO wagon and start to get things messed up. Sandi provides the thinking tools necessary to decide how to structure your code for better maintainability, extensibility and testability. Comprehension and forward communication of the choices made during software design are crucial to programming, and Sandi is one of the very best at explaining things.
-
-*** Rails-specific
-
- - [[http://www.manning.com/bigg2/][*Rails 4 in Action*]] by Ryan Bigg, Yehuda Katz, Steve Klabnik, and Rebecca Skinner.
-
-   A follow-on the highly successful Rails 3 in Action, R4iA has been completely rewritten, with new examples, case study, and all the great new features in Rails 4.
-
-   A great book for beginning Rails developers to start with, and for intermediate developers to step up their game.
-
- - [[https://www.justinweiss.com/practicing-rails/][*Practicing Rails*]] by [[http://www.justinweiss.com][Justin Weiss]].
-
-   The first chapter alone (free!) is worth a download and very thorough read. Justin has provided one of the most effective strategies for learning just about /anything/ skill based, and it&#39;s especially effective for learning software skills. The focus of the book and the examples and such are obviously Rails, but the first chapter is applicable to anything.
-
-*** JavaScript-specific
-
- - [[https://www.goodreads.com/book/show/2998152-javascript][*JavaScript: The Good Parts*]] by David Crockford.
-
-   JavaScript is a vast, sprawling language and ecosystem, and has been maligned for much poor code on the web. Crockford extracts out the parts that are really useful, giving the reader a better grounding. This book is the progenitor of many of the JavaScript frameworks that have come up the past few years, as well as CoffeeScript and other *Script derivatives.
-
- - [[https://github.com/getify/You-Dont-Know-JS][*You Don&#39;t Know JS series*]] by [[https://github.com/getify][Kyle Simpson]].
-
-   A /tour de force/ by one of the great teachers and evangelists of JavaScript, Kyle&#39;s &quot;You Don&#39;t Know JS&quot; series is a must-read collection of books. You can get the books in raw form on-line at the above address, and you can get the published e-books at your favourite vendor.
-
- - [[http://eloquentjavascript.net/][*Eloquent Javascript*]] by Marijn Haverbeke.
-
-   When I was more naive about JS, I wrote a bit of a negative review of this book. Subsequently, I&#39;ve learned of it&#39;s true eloquence and meaning in giving a model of how to organize and implement modern JS. The subtitle &quot;A modern introduction to programming&quot; is still a bit misleading, perhaps, because you have to understand a fair bit of JavaScript /and/ programming to get the message, I feel. But that&#39;s just a quibble at this point. Read this before you strike out on creating a client-based JS application; you won&#39;t regret it.
-
- - *Test-Driven JavaScript Development* by Christian Johansen (Addison-Wesley Professional, September 2010, ISBN 9780321683915)
-
-   (The [[http://www.informit.com/store/test-driven-javascript-development-9780321684042][ebook]] for this title is ridiculously expensive. I read it via [[https://learning.oreilly.com/library/view/test-driven-javascript-development/9780321684097/][safarionline]].)
-
-   This book provides some great insights into testing JavaScript applications. Released in 2010, the things that are out of date are the specific tools used for testing, /however/, the concepts for writing tests and performing test-driven Javascript development are still very appropriate.
-
- - [[https://leanpub.com/javascriptallongesix][*JavaScript Allongé*]] by Reginald &quot;raganwald&quot; Braithwait
-
-   Using the metaphor of a coffee barista, Reg goes in depth on thinking about how JavaScript works; this is not a practical book from the standpoint of &quot;tell me what code to write&quot;, but rather from the standpoint of knowing how JavaScript works inside so you can write better code yourself.
-
-
-*** HTML and CSS Specific
-
- - [[https://www.amazon.com/HTML-CSS-Design-Build-Websites/dp/1118008189?ie=UTF8&amp;*Version*=1&amp;*entries*=0][*HTML and CSS Design and Build Websites*]] by Jon Duckett.
-
-   This book has been recommended by several people in the [GDI] courses I&#39;ve been helping in. A very visual approach, using full-colour photographs to explain the two declarative languages.
-
-** Web sites
-
- This is just going to be a list of sites I&#39;ve found or been pointed at for helping people learn to program. These are most definitely biased towards Ruby and Rails, as that is my current area of concentration, and generate the most requests that come to me.
-
- - [[http://www.theodinproject.com/home][*The Odin Project*]] -- pulling together a curriculum from around the web, this is a curation site that gives order and structure to learning how to develop web applications.
-
- - [[http://codekata.com/][*Code Kata*]] -- Dave Thomas&#39;s site that lists a great set of coding exercises. You can work these more than once, in fact that is what you do with kata.
-
- - [[http://exercism.io/][*Exercism.IO*]] -- a site devoted to helping people learn and think deeply about writing excellent code. It has projects you implement and then get feedback on from others, and allows you to give feedback as well.
-
- - [[http://docs.railsbridge.org/docs/][*RailsBridge*]] -- a site devoted to helping people get up and running on learning Ruby on Rails, with emphasis on reaching out to women and LGBTQ folks. RailsBridge workshops are run around the world and the documents here can be used individually to help turn your computer into a development machine. What so often isn&#39;t addressed directly by very many of these sites and books is the ecosystem that one has to learn as well: a coding editor, the command line, rake, irb/pry, git, heroku if that is your choice for deployment (which I do recommend for small beginner projects so you can show it off to your friends); RailsBridge tutorials include these very important tools.
-
- - [[http://guides.railsgirls.com/][*RailsGirls Guides*]] -- I haven&#39;t explored these in depth yet, I just got the site yesterday. However, I can see just from the list of guides these would be pretty great, just like the RailsBridge site above.
-
- - [[http://www.railstutorial.org/][*Hartl&#39;s Rails Tutorial*]] -- the most often recommended site to learn how to create web applications in Rails, it goes beyond the Rails stack itself, teaching Ruby, HTML5, CSS3, JavaScript, user authentication and authorization, data modeling, and so on. While Michael sells the book, tutorials, and screen casts, the text of the tutorial online is free at http://www.railstutorial.org/book. Considerable work has gone into this effort, however, so if you can afford to, please purchase at least the book.
-
- - [[https://www.codeschool.com/][*CodeSchool*]] -- learn from the &quot;Comfort of your own browser&quot;. Codeschool has web casts, coding practices, challenges, and so on.
-
- - [[http://codeacademy.com][*CodeAcademy*]] -- although I do not personally like the way one interacts with the web site, it does offer an gentle introduction to ruby, javascript, python and other subjects in an immediate feedback environment.
-
- - [[https://www.khanacademy.org/computing/cs][*Kahn Academy*]] -- learning to program with JavaScript (if you are just starting out, JS is a fine language to learn. It&#39;s fairly ubiquitous in the online world.). Their approach is teaching young folks, which might or might not appeal.
-
- - [[http://railscasts.com/][*RailsCasts*]] -- another super awesome effort has been put together by Ryan Bates. Current production is on hiatus, so the $9/month fee for the full screen casts is being pro-rated, so you can buy in for $9 and there won&#39;t be further monthly charges until production starts up again.
-
- - [[https://www.rubytapas.com/frequently-asked-questions/][*RubyTapas*]] -- Avdi Grimm is a fabulous Ruby and Rails mentor and guide, who puts out two very short screen casts a week (tapas -- small plates). These are really impeccably done, and I personally love listening to Avdi talk.
-
- - [[http://learncodethehardway.org/][*LearnCodeTheHardWay*]] -- provides online versions of books and tutorials for [[http://learnpythonthehardway.org/book/][*Python*]], [[http://ruby.learncodethehardway.org/book/][*Ruby*]], [[http://c.learncodethehardway.org/book/][*C*]], [[http://sql.learncodethehardway.org/book/][*SQL*]], [[http://regex.learncodethehardway.org/book/][*Regular Expressions*]] and more.
-
- - [[http://www.rubykoans.com/][*Ruby Koans*]] -- &quot;koans&quot; are an Eastern discipline tradition: small, repeated exercises to learn skills and build them into your muscles and memory, so you can use them without thinking consciously about them. In this sense, the ruby koans are small exercises intended to lead you on the way to learning ruby. I can&#39;t say if they&#39;re that successful, but some people definitely enjoy this progressive way of learning. The ruby koans definitely guide you in the way of test-first development, which is a beneficial practice for all to know.
-
- - [[https://thoughtbot.com/upcase][*Upcase, by Thoughtbot*]] -- not a bootcamp, a finishing school. Where to go to level-up.
-
-** Podcasts
-
- I am not such a big fan of podcasts, but that has more to do with my personal learning style. Nevertheless, there are some great pocasts out there.
-
- - [[http://www.greaterthancode.com/][*Greater Than Code*]] Also known as =&gt;Code=, this is a podcast that&#39;s more about people that practice software development and allied things, about management of such people, and making all our lives better.
-
- - [[http://frontendhappyhour.com/][**Frontend Happy Hour]] A handful of front end developers, including Brian Holt, Jem Young, Ryan Burgess, Augustus Yuan, and Stacy London, joined by various guests. It&#39;s a fun podcast, each week with a special word or phrase that when uttered, everyone takes a drink.
-
- - [[http://www.codenewbie.org/][*CodeNewbies*]] -- started off as a twitter chat, and grew into a thing, CodeNewbies offers podcasts on topics that range far and wide. Recent topics have included Scrum/Agile methods, maintaining your mental health while programming, interviews with folks who have created significant web sites (Gina Trapani of LifeHacker!!), mobile, databases, single-page apps, you name it. One of the best aspects I can see directly is that this is a /very/ open, diverse collaboration.
-
-** Teaching Organizations
-
- These are the ones I&#39;m familiar with at this point in time (late 2015) in the Twin Cities area:
-
- - [[https://frontendmasters.com/][*Frontend Masters*]] -- Based out of Savage, MN, they offer both live in-person and online courses, and they have recorded all the training sessions for on-demand viewing if you&#39;re a member. The quality of these sessions and the videos are extremely good (these are not your twitch.tv live sessions of someone rambling about their code as they hack away) All the courses I&#39;ve taken and viewed are fantastic.
-
-   FrontendMasters tackles intermediate and advanced topics in developing on the front end of web applications. Heavy into JavaScript, libraries, frameworks, techniques, and so on.
-
-** Bootcamps
-
- These are becoming quite popular, if expensive, but they seem to provide what&#39;s being offered: intensive training in the skills necessary to become a web application developer, with experience and skills in the entire lifecycle of modern software development. I can&#39;t really provide much information on them, as I&#39;ve never experienced them. [[http://www.bootcamps.in/][Bootcamps.in]] provides at least a first-glance at several bootcamps.
-
-** Conferences and Meetups
-
- Going to conferences, hanging out, meeting like-minded people, and generally instilling one&#39;s self into the millieau of the Ruby and Rails communities can be extremely rewarding. Even if you&#39;re not the conference type, make an effort to find people in your area to talk to.
-
- There&#39;s lots of other meetups in the Twin Cities I&#39;m regularly trying to attend:
-
- - [[https://www.meetup.com/Women-Who-Code-Twin-Cities/][Women Who Code Twin Cities]]
- - [[https://www.meetup.com/ruby-mn/][Ruby.MN]]
- - [[https://www.meetup.com/JavaScriptMN/][JavaScript.MN]]
- - [[https://www.meetup.com/React-Minneapolis-Meetup/][React Minneapolis Meeetup]]
- - [[https://www.meetup.com/Elixir-MN/][Elixir MN]]
- - [[https://www.meetup.com/Minneapolis-St-Paul-WordPress-User-Group/][MSP WP]]
-
-** More Advanced
-
-If you want to go deep and learn more about computer science, the book [[https://mitpress.mit.edu/sicp/][/Structure and Interpretation of Computer Programs/]] is probably your best bet in terms of a real CS text book that&#39;s available online for free. It&#39;s not a tutorial, but there are exercises in the text. The book uses Scheme, a lisp-like programming language. Everyone should learn a little lisp at some point. :) However it&#39;s not mandatory one use Scheme (or Clojure as the local Clojure user group has been doing). The analytical concepts apply across all languages. If you&#39;re focused on JavaScript or Ruby, you can work the examples in those languages, too.
-
-The afore-mentioned Frontend Masters has been producing some much more advanced courses lately:
-
-- [[https://frontendmasters.com/courses/computer-science/][Four Semesters of Computer Science in 5 Hours]] with [[https://frontendmasters.com/teachers/brian-holt/][Brian Holt]]
-
-- [[https://frontendmasters.com/courses/computer-science-2/][Four Semesters of Computer Science in 5 Hours, Part 2]] with Brian Holt
-
-- [[https://frontendmasters.com/courses/practical-algorithms/][A Practical Guide to Algorithms with JavaScript]] with [[https://frontendmasters.com/teachers/bianca-gandolfo/][Bianca Gandolfo]]
-
-- [[https://frontendmasters.com/courses/data-structures-interviews/][Introduction to Data Structures for Interviews]] with Bianca Gandolfo
-
-- With Will Sentance:
-
-  - [[https://frontendmasters.com/courses/javascript-hard-parts/][JavaScript: The Hard Parts]]
-
-  - [[https://frontendmasters.com/courses/javascript-new-hard-parts/][JavaScript: The New Hard Parts]]
-
-  - [[https://frontendmasters.com/courses/object-oriented-js/][JavaScript: The Hard Parts of Object Oriented JavaScript]]
-
-I&#39;m just going to list [[https://frontendmasters.com/teachers/kyle-simpson/][Kyle Simpson&#39;s entire collection]] because they are *all* great
-
-Other fav instructors:
-
-- [[https://frontendmasters.com/teachers/scott-moss/][Scott Moss]]
-- [[https://frontendmasters.com/teachers/shirley-wu/][Shirley Wu]]
-- [[https://frontendmasters.com/teachers/kentcdodds/][Kent C. Dodds]]
-- [[https://frontendmasters.com/teachers/jem-young/][Jem Young]]
-- [[https://frontendmasters.com/teachers/lukas-ruebbelke/][Lukas Reubbelke]]
-- [[https://frontendmasters.com/teachers/sarah-drasner/][Sarah Drasner]]
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/12/2018-12-20-adding-methods-to-base-graphql-classes.org</id>
-      <updated>2018-12-20T09:04:16-06:00</updated>
-      <title>Adding methods to base GraphQL classes</title>
-      <content>* Adding methods to base GraphQL classes
-
-- Time-stamp: &lt;2018-12-20 09:04:16 tamara&gt;
-- keywords: graphql
-
-Sometime in the past year I started looking into using the class-based interface with ~graphql-ruby~. Here&#39;s an example to provide millisecond precision time as integer:
-
-#+name: types/base_object.rb
-#+begin_src ruby
-  module Types
-    class BaseObject &lt; GraphQL::Schema::Object
-
-      def created_at_ms
-        time_to_ms(object.created_at)
-      end
-
-      def updated_at_ms
-        time_to_ms(object.updated_at)
-      end
-
-      def time_to_ms(time)
-        (time.to_f * 1000).to_i
-      end
-
-    end
-  end
-#+end_src
-
-With that in place, another object that inherits from the base object will automatically get use of these:
-
-#+name: types/author_type.rb
-#+begin_src ruby
-  module Types
-    class AuthorType &lt; Types::BaseObject
-      field :name, String, null: false
-      field :url, String, null: true
-      field :created_at_ms, Integer, null: false
-      field :updated_at_ms, Integer, null: false
-    end
-  end
-#+end_src
-
-If there are other datetime fields, you can still use the ~time_to_ms~ method:
-
-#+name: types/book_type.rb
-#+begin_src ruby
-  module Types
-    class BookType &lt; Types::BaseObject
-      field :title, String, null: false
-      field :isbn, String, null: true
-      field :purchased_on_ms, Integer, null: true
-      def purchased_on_ms
-        time_to_ms(object.purchased_on)
-      end
-      field :finished_reading_on_ms, Integer, null: true
-      def finished_reading_on_ms
-        time_to_ms(object.finished_reading_on)
-      end
-      field :rating, Integer, null: true
-      field :private, Boolean, null: true
-      field :created_at_ms, Integer, null: true
-      field :updated_at_ms, Integer, null: true
-    end
-  end
-#+end_src
-
-These are from my [[https://github.com/tamouse/rails_react_graphql_template_example][rails react graphql template example]] repo.
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/12/2018-12-12-tenants-of-toast-and-tech.org</id>
-      <updated>2018-12-12T23:07:18-06:00</updated>
-      <title>The Tenants of Toast and Tech</title>
-      <content>* The Tenants of Toast and Tech
-  :PROPERTIES:
-  :CAPTURE_DATE: [2018-12-12 Wed]
-  :END:
-
-- last_updated: Time-stamp: &lt;2018-12-12 23:07:18 tamara&gt;
-- keywords: Learning Space, Toast and Tech
-
-As some of you following know, I&#39;ve led this thing on Tuesday nights called &quot;Toast &amp; Tech&quot; for about 3 years [starting in the Autumn of 2015], nominally under the organization at .@GDImpls, the Minneapolis chapter of .@girldevelopit.
-
-I have left that organization, but I want to leave behind something for those involved in T&amp;T, and for those looking to make a space for learning that it inclusive
-
-** The Tenants of Toast and Tech:
-
-- make *everyone* welcome, enthusiastically
-- make *all* questions welcome, enthusiastically
-- everyone is learning, everyone is teaching
-- there is no single path, there are as many paths as people attending, as many paths as needed
-- you don&#39;t need a project or tech work to attend, just come
-- you don&#39;t need any experience to attend, just come
-- support everyone who shows up
-- Make it safe to learn, safe to ask questions, safe to show up.
-
-Possibly the *most* important tenant of all: #ToastAndTech can happen *anywhere*, run by *anyone*; all it takes is letting folks know about it, and showing up to hold the space.
-
-#CauseAScene
-#KeepLearning
-#HappyToast
-
-[[./kawaii-toast.png][happy toast]]
-
-[[https://twitter.com/i/moments/1073061297200267265][moment on twitter]]
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2012/12/code-as-literature-software-dev-as-communication.org</id>
-      <updated>2018-12-12T22:58:01-06:00</updated>
-      <title>code as literature, software dev as communication</title>
-      <content>* code as literature, software dev as communication
-
-- date: 2012-12-05 05:02:50
-- categories: [swaac]
-- tags: [communication]
-
-Kind of a random bit of monologue from an IRC channel, but I thought it might be interesting to save and think about sometime in the future.
-
-#+begin_quote
-    my very young dev coworker gave me an enourmous compliment today.
-    
-    he&#39;s all of 25, shithot developer, but also still young and naive.
-    
-    anyway, i had written a little script to do something we needed,
-       and he said it was a masterwork and the best bit of code he&#39;s
-       seen from our group
-       
-    i was like &quot;what? why?&quot;
-    
-    he said &quot;these are the best comments in code i&#39;ve ever seen. and
-       the code is neat and clean&quot;
-       
-    i kind of had to struggle to take the compliment
-
-    i tell this not to say &quot;oh tamara, you&#39;re so great&quot;
-    
-    i&#39;m not
-    
-    i&#39;m probably better than mediocre
-    
-    but i&#39;m not great
-    
-    i say this because, in his way, he gave a very depressing,
-       but accurate account of our software
-       
-    what&#39;s sort of funny about this, too, is that the majority
-       of the script was repurposed from something he wrote,
-       that i tore out of the rakefile to make a stand-alone
-       script
-       
-    what exactly did i do?
-    
-    wrapped it in a class, connected database
-       records to it, and added some defensiveness to it
-       
-    and the comments i wrote were telling about the things i
-       found while writing that and why i chose to do it the way
-       i did
-
-    then tonite i was thinking about this
-
-    /code is literature/
-    
-    (not literate programming, that&#39;s something else)
-       [though related]
-
-    code is a message, a story:
-    - it&#39;s not really about telling the computer what to do
-    - it&#39;s about telling *someone else* what the computer is *doing*
-    
-    and i find this further deepens my understanding in the sense
-       of software dev as a craft
-
-    not just syntax, variables, etc; not just algorithms and data;
-    but a way of telling other people how to solve problems
-
-    i&#39;ve been thinking about this a lot lately
-    
-    it might be because of my elder status/position
-    and it&#39;s not just a little of the crap education i&#39;m seeing
-       people give themselves, and places that they go to for help
-       only answering rather mudnane details about sytax errors
-    
-    we learned because we taught ourselves
-    
-    but we also learned because we were fascinated both by the
-       technology itself, and not a little by learning itself
-
-    i was talking to someone, somewhere, about how people are
-       picking up programming
-    
-    like, it&#39;s the &quot;hot new must-have skill for everyone&quot;;
-    a life-skill, if you will
-
-    i don&#39;t necessarily disagree with that?
-
-    and i think there&#39;s all sorts of levels, just like, say cooking
-
-    but imagine if you learned how to cook the way programming
-       is being taught
-    - you might be able to survive
-    - but i don&#39;t think it would be very fun
-    - and know it wouldn&#39;t be worthy, really, of being called a craft
-
-    your scrambled eggs don&#39;t work, so you send in a message
-       with a photo of the results in your pan to a
-       &quot;eggs cooking mailing list&quot;
-       
-    and wow, you can&#39;t *eat* until you get it right
-    
-    part of the problem, maybe a great deal of the problem, is
-       that there aren&#39;t places really to learn the craft of it
-
-    and it is probably different now that it was for us
-    
-    i mean, yeah, i went to uni, you didn&#39;t, but i think the
-       learning for each of us was highly self-directed
-
-    i was writing basic code since 7th grade
-
-    i think for many people that i&#39;ve come across that are
-       learning, (maybe espcially php and html) is that
-       they are looking at it sort of desperately
-       as some way of making money?
-       
-    and i think that this slams against my privilege hard
-    because i never went at this as a way to make money
-    i *do* make money at it
-    
-    i *ask* for money when i do things for someone
-    but it&#39;s not like i have to learn to do this so i can make money
-    and that puts me in a position of privilege, surely
-
-    yet i also see this as, again, a matter of craftsmanship
-    and that acquiring the ability to make money requires
-       a sense of ownership of the skills, knowledge, and tools
-       to solve problems, solve *other* people&#39;s problems,
-       by writing software
-
-    and concomittant with that is the ability to *communicate*
-       *effectively* what you are telling the computer to do,
-       *to someone else*
-
-    idk
-
-    i think i&#39;ve ended up at the beginning; 
-    or beginned up at the end
-
-    i *think* this is what has me so excited,
-    so *interested* in continuing to learn,
-    to work, and to teach, software development.
-#+end_quote
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/11/2018-11-06-posting-a-file-with-XMLHttpRequest.org</id>
-      <updated>2018-12-12T22:58:01-06:00</updated>
-      <title>RESEARCH: Posting a file with XMLHttpRequest</title>
-      <content>* RESEARCH: Posting a file with XMLHttpRequest
-
-- Time-stamp: &lt;2018-11-06 14:26:38 tamara&gt;
-- published date: [2018-11-06 Tue 13:46]
-- keywords: XMLHttpRequest, file upload, JavaScript, research, React
-
-
-See: [[https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest#Using_nothing_but_XMLHttpRequest][Using nothing but XMLHttpRequest]] &lt;-- maybe not
-
-See: [[https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest#Using_FormData_objects][Using FormData objects]] &lt;-- necessary for files, I think
-
-In contrast to [[./2018-11-06-posting-a-file-with-fetch-api.org][Posting with Fetch API]], this is a bit lower on the food chain in terms of JS stuff, *but* it lets you get access to ~progress~ events, for doing such things as displaying a progress bar. Yay.
-
-** Using FormData
-
-MDN makes a special note:
-
-#+BEGIN_QUOTE
-Note: As we said, FormData objects are not stringifiable objects. If you want to stringify a submitted data, use the previous pure-AJAX example. Note also that, although in this example there are some file &lt;input&gt; fields, when you submit a form through the FormData API you do not need to use the FileReader API also: files are automatically loaded and uploaded.
-#+END_QUOTE
-
-** Using Event Handlers
-
-From the top of the page, just using / setting event handlers:
-
-#+BEGIN_SRC rjsx
-  function reqListener () {
-    console.log(this.responseText);
-  }
-
-  var oReq = new XMLHttpRequest();
-
-  // this sets the &#39;load&#39; event handler, which fires when the file is fully loaded.
-  // I think this works for POST/PUT as well...
-  oReq.addEventListener(&quot;load&quot;, reqListener);
-
-  oReq.open(&quot;GET&quot;, &quot;http://www.example.org/example.txt&quot;);
-  oReq.send();
-#+END_SRC
-
-There&#39;s a note [[https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest#Monitoring_progress][somewhere on the page]] saying something about ~progress~ event handlers needing to be set before the ~.open~ call.
-
-This would load up all the event handlers for XMLHttpRequest:
-
-#+BEGIN_SRC rjsx
-  let oReq = new XMLHttpRequest();
-
-  oReq.addEventListener(&quot;progress&quot;, updateProgress);
-  oReq.addEventListener(&quot;load&quot;, transferComplete);
-  oReq.addEventListener(&quot;error&quot;, transferFailed);
-  oReq.addEventListener(&quot;abort&quot;, transferCanceled);
-
-  oReq.open();
-#+END_SRC
-
-** Progress Indication
-
-The ~progress~ event handler takes in the progress event, which is defined at [[https://xhr.spec.whatwg.org/#interface-progressevent][WhatWG Progress Event specification]]. It has 3 attributes:
-
-- ~lengthComputable~ [boolean] whether the length of the object is known
-- ~loaded~ [number] how much has loaded so far
-- ~total~ [number] how much there is to load
-
-So progress can be calculated by:
-
-#+BEGIN_SRC rjsx
-  handleProgress = event =&gt; {
-      let progress = 0
-      if (event.total !== 0) {
-          progress = event.loaded / event.total
       }
-      const percentCompleted = progress * 100
-      this,setState({ progress, percentCompleted })
-  }
+  #+END_EXAMPLE
 
-  handleLoaded = event =&gt; {
-      this.setState({ progress: 1, percentCompleted: 100, loaded: true })
-  }
+  The file object gives us a few properties, but the one we care about is the name. So let&#39;s create a full demo of this. I&#39;m going to add a little div below my input field and use it as place to list my files.
 
-  // ...
+  #+BEGIN_EXAMPLE
+      &lt;!doctype html&gt;
+      &lt;html&gt;
+      &lt;head&gt;
+      &lt;title&gt;Proper Title&lt;/title&gt;
+      &lt;/head&gt;
 
-  request = () =&gt; {
+      &lt;body&gt;
 
-      const req = new XMLHttpRequest()
+          &lt;form id=&quot;myForm&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;
 
-      req.addEventListener(&#39;progress&#39;, this.handleProgress)
-      req.addEventListener(&#39;load&#39;, this.handleLoaded)
+              Files: &lt;input type=&quot;file&quot; id=&quot;files&quot; name=&quot;files&quot; multiple&gt;&lt;br/&gt;
 
-      // ... etc
-  }
-#+END_SRC
+              &lt;div id=&quot;selectedFiles&quot;&gt;&lt;/div&gt;
+
+              &lt;input type=&quot;submit&quot;&gt;
+          &lt;/form&gt;
+
+          &lt;script&gt;
+          var selDiv = &quot;&quot;;
+
+          document.addEventListener(&quot;DOMContentLoaded&quot;, init, false);
+
+          function init() {
+              document.querySelector(&#39;#files&#39;).addEventListener(&#39;change&#39;, handleFileSelect, false);
+              selDiv = document.querySelector(&quot;#selectedFiles&quot;);
+          }
+
+          function handleFileSelect(e) {
+
+              if(!e.target.files) return;
+
+              selDiv.innerHTML = &quot;&quot;;
+
+              var files = e.target.files;
+              for(var i=0; i&lt;files.length; i++) {
+                  var f = files[i];
+
+                  selDiv.innerHTML += f.name + &quot;&lt;br/&gt;&quot;;
+
+              }
+
+          }
+          &lt;/script&gt;
+
+      &lt;/body&gt;
+      &lt;/html&gt;
+  #+END_EXAMPLE
+
+  Pretty simple, right? You can view an example of this here: [[http://www.raymondcamden.com/demos/2013/sep/10/test0A.html]]. And here is a quick screen shot in case you are viewing this in a non-compliant browser.
+
+  [[/images/raymondcamden/Screenshot_9_10_13_9_42_AM.png]]
+
+  Pretty simple, right? Let&#39;s kick it up a notch. Some browsers support FileReader ([[https://developer.mozilla.org/en-US/docs/Web/API/FileReader][MDN Reference]]), a basic way of reading files on the user system. We could check for FileReader support and use it to provide image previews. I&#39;ll share the code first and then explain how it works.
+
+  *Edit on September 11:* A big thank you to Sime Vidas for [[http://www.raymondcamden.com/index.cfm/2013/9/10/Adding-a-file-display-list-to-a-multifile-upload-HTML-control#c6E612D19-BAD9-A665-957DCD4546E53F41][pointing out]] a stupid little bug in my code I missed on first pass around. I made a classic array/callback bug and didn&#39;t notice it. I fixed the code and the screen shot, but if you want to see the broken code, view source on http://www.raymondcamden.com/demos/2013/sep/10/test0orig.html.
+
+  #+BEGIN_EXAMPLE
+      &lt;!doctype html&gt;
+      &lt;html&gt;
+      &lt;head&gt;
+      &lt;title&gt;Proper Title&lt;/title&gt;
+      &lt;style&gt;
+          #selectedFiles img {
+              max-width: 125px;
+              max-height: 125px;
+              float: left;
+              margin-bottom:10px;
+          }
+      &lt;/style&gt;
+      &lt;/head&gt;
+
+      &lt;body&gt;
+
+          &lt;form id=&quot;myForm&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;
+
+              Files: &lt;input type=&quot;file&quot; id=&quot;files&quot; name=&quot;files&quot; multiple accept=&quot;image/*&quot;&gt;&lt;br/&gt;
+
+              &lt;div id=&quot;selectedFiles&quot;&gt;&lt;/div&gt;
+
+              &lt;input type=&quot;submit&quot;&gt;
+          &lt;/form&gt;
+
+          &lt;script&gt;
+          var selDiv = &quot;&quot;;
+
+          document.addEventListener(&quot;DOMContentLoaded&quot;, init, false);
+
+          function init() {
+              document.querySelector(&#39;#files&#39;).addEventListener(&#39;change&#39;, handleFileSelect, false);
+              selDiv = document.querySelector(&quot;#selectedFiles&quot;);
+          }
+
+          function handleFileSelect(e) {
+
+              if(!e.target.files || !window.FileReader) return;
+
+              selDiv.innerHTML = &quot;&quot;;
+
+              var files = e.target.files;
+              var filesArr = Array.prototype.slice.call(files);
+              filesArr.forEach(function(f) {
+                  var f = files[i];
+                  if(!f.type.match(&quot;image.*&quot;)) {
+                      return;
+                  }
+
+                  var reader = new FileReader();
+                  reader.onload = function (e) {
+                      var html = &quot;&lt;img src=\&quot;&quot; + e.target.result + &quot;\&quot;&gt;&quot; + f.name + &quot;&lt;br clear=\&quot;left\&quot;/&gt;&quot;;
+                      selDiv.innerHTML += html;
+                  }
+                  reader.readAsDataURL(f);
+              });
+
+          }
+          &lt;/script&gt;
+
+      &lt;/body&gt;
+      &lt;/html&gt;
+  #+END_EXAMPLE
+
+  I&#39;ve modified the handleFileSelect code to check for both the files array as well as FileReader. (Note - I should do this /before/ I even attach the event handler. I just thought of that.) I&#39;ve updated my input field to say it accepts only images and added a second check within the event handler. Once we are sure we have an image, I use the FileReader API to create a DataURL (string) version of the image. With that I can actually draw the image as a preview.
+
+  You can view a demo of this here: [[http://www.raymondcamden.com/demos/2013/sep/10/test0.html]]. And again, a screen shot:
+
+  [[/images/raymondcamden/Screenshot_9_11_13_5_49_AM.png]]
+
+  Check it out and let me know what you think. As I said, it should be fully backwards compatible (in that it won&#39;t break) and works well in Chrome, Firefox, IE10, and Safari.
+
+  ** Related Blog Entries
+     :PROPERTIES:
+     :CUSTOM_ID: related-blog-entries
+     :END:
+
+  - [[http://www.raymondcamden.com/index.cfm/2013/10/1/MultiFile-Uploads-and-Multiple-Selects][Multi-File Uploads and Multiple Selects]] (October 1, 2013)
+#+END_QUOTE
 </content>
       <author>
         <name>Tamara Temple</name>
@@ -663,76 +231,317 @@ So progress can be calculated by:
       </author>
     </entry>
     <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/12/2018-12-01-polyfill-for-custom-event.org</id>
-      <updated>2018-12-01T11:00:30-06:00</updated>
-      <title>Polyfill for JavaScript&#39;s ~CustomEvent~ constructor</title>
-      <content>* Polyfill for JavaScript&#39;s ~CustomEvent~ constructor
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2013/10/6-ways-to-remove-pain-from-feature-testing-in-ruby-on-rails.org</id>
+      <updated>2019-02-03T00:41:19-06:00</updated>
+      <title>6 Ways to Remove Pain From Feature Testing in Ruby on Rails</title>
+      <content>#+TITLE: 6 Ways to Remove Pain From Feature Testing in Ruby on Rails
+#+AUTHOR: [[http://gaslight.co/blog?author=mitchlloyd][Mitch Lloyd]]
+#+DATE: 2013-10-02
 
-I had a project I needed to use a non-DOM event with, where a couple of React components were signaling a change in state, and they didn&#39;t share any context.
+#+OPTIONS: toc:nil
 
-I could have used Redux, but that seemed like heavy lifting for only using an event, so I dug into using custom events.
+* 6 Ways to Remove Pain From Feature Testing in Ruby on Rails
 
-The downside is that only since version 9 has Internet Explorer supported some form of ~CustomEvent~, and it is not the same. I was looking at other libraries until I happened on the polyfill provided by Mozilla at [[https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent#Polyfill][CustomEvent Polyfill on MDN]]. I copied that into a file and import it where I want to dispatch a custom event.
+- published date: 2013-10-04 20:07
+- keywords: [&quot;ruby&quot;, &quot;swaac&quot;, &quot;testing&quot;]
+- source: http://gaslight.co/blog/6-ways-to-remove-pain-from-feature-testing-in-ruby-on-rails
 
-I attach the listeners in the various React components&#39; ~componentDidMount~ at the ~window~ DOM node as common ancestor for all components on the page, and remove them in ~componentWillUnmount~.
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/11/2018-11-29-thoughts-on-writing-good-tests.org</id>
-      <updated>2018-11-29T14:54:22-06:00</updated>
-      <title>Thoughts on learning to write good tests                          :testing:</title>
-      <content>* Thoughts on learning to write good tests                          :testing:
-  :PROPERTIES:
-  :CAPTURE_DATE: [2018-11-29 Thu]
-  :KEYWORDS: testing, learning, good tests
-  :END:
+** TL;DR:
 
-- Time-stamp: &lt;2018-11-29 14:54:22 tamara&gt;
-- current_date: [2018-11-29 Thu]
-- keywords: testing, learning
+- uninstall Cucumber
+- use Page Objects
+- have useful failure messages
+- embrace asynchronous testing
+- get serious about data building
+- prefer refining existing tests over writing new tests
+- who&#39;s testing your tests?
 
 
-Someone asked this question on the WWCodeTC #learning-to-code Slack channel the other day:
+** COMMENT quoted page
 
 #+BEGIN_QUOTE
-OP: I asked this in another group and I got a million answers but I&#39;ll ask here: anyone have a good way to learn how to write good tests? I&#39;ve listened to a test driven development course on lynda.com. I don&#39;t really have a specific question per se, just looking for a pointer to good testing practices beyond the basics.
+  * [[http://gaslight.co/blog/6-ways-to-remove-pain-from-feature-testing-in-ruby-on-rails][6 Ways to Remove Pain From Feature Testing in Ruby on Rails]]
+    :PROPERTIES:
+    :CUSTOM_ID: ways-to-remove-pain-from-feature-testing-in-ruby-on-rails-1
+    :END:
 #+END_QUOTE
 
-
-My response:
-
 #+BEGIN_QUOTE
+  by [[http://gaslight.co/blog?author=mitchlloyd][Mitch Lloyd]] [[http://gaslight.co/blog/6-ways-to-remove-pain-from-feature-testing-in-ruby-on-rails][October 2, 2013]]
 
-everyone says testing is Super Important, but no one seems to definitively answer that question. the obvious answer is &quot;write a lot of bad tests&quot; but that is oh so dismal.
+  Writing feature tests in Ruby on Rails used to be the most painful part of my development work flow. Now I kind of like it. Here&#39;s what&#39;s different:
 
-the stuff i learned from, ages and ages ago, is probably no longer in print, but look for these authors:
+  ** 1 - Don&#39;t Use Cucumber
+     :PROPERTIES:
+     :CUSTOM_ID: dont-use-cucumber
+     :END:
 
-- jerry weinberg
-- boris beizer
-- larry constantine
-- glen meyers
-- bob grady
+  If you have Cucumber installed, uninstall it. This stuff is already hard enough without trying to parse natural language into Ruby code.
 
-I met and worked these guys aeons ago, all really amazing authors
+  I&#39;m using:
 
-look up software quality institute,  I&#39;m not sure if it&#39;s still going
+  - Rspec - Testing DSL
+  - FactoryGirl - Model Builder
+  - Capybara - DOM Dominator
+  - Database Cleaner - Database Cleaner
+  - Spring - Startup Speeder
 
-most all classes and tutorials i see are about how to write tests in a framework, which is good, but like most software education, never really gets at how to do design of software for a purpose and tests do need to fit a purpose
+  I&#39;m happy with these. Let&#39;s make a spec.
 
-I&#39;ll just throw out a few questions you may want to try on as heuristics:
+  #+BEGIN_EXAMPLE
+      feature &#39;Navigating through workpapers&#39; do
+        let(:user) { create(:user) }
+        let(:audit) { create(:audit, users: [user]) }
 
-- what are the most critical actions or features users need to function impeccably
-- what features are showing the most failures in use
-- if a feature is unclear in how to use, how many ways can it be used or abused
-- how can i break this?
+        scenario &quot;User sees workpapers within an audit&quot; do
+          workpaper = create(:workpaper, audit: audit)
 
+          visit &#39;/&#39;
+          fill_in &#39;email&#39;, with: user.email
+          fill_in &#39;password&#39;, with: &#39;password&#39;
+          click_on &#39;Log In&#39;
 
-another way to approach it is from the test driven side, and write tests that describe exactly what the feature does, does not do, responds to random input, responds to incorrect input, etc, so you completely spec the feature before any feature code is written.
+          find(&#39;#audit-selector&#39;).select audit.name
+          expect(page).to have_css?(&#39;.workpaper&#39;, text: workpaper.name)
+        end
+      end
+  #+END_EXAMPLE
 
+  This doesn&#39;t look too bad but a more complicated feature would really start to get muddy and the login logic will eventually be duplicated between tests. Even this example doesn&#39;t read as well as I would like.
+
+  ** 2 - Use Page Objects
+     :PROPERTIES:
+     :CUSTOM_ID: use-page-objects
+     :END:
+
+  Capybara selectors are likely to break as development continues. Your copy-writer decides the login button should say &quot;Sign into a world of possibilities&quot;. Now you need to fix your tests.
+
+  Page objects are adapters to the specifics of your DOM. When the markup changes, you&#39;ll know exactly where to go to fix the issues.
+
+  Here&#39;s a login page object:
+
+  #+BEGIN_EXAMPLE
+      class LoginPage
+        include Capybara::DSL
+
+        def visit_page
+          visit &#39;/&#39;
+          self
+        end
+
+        def login(user)
+          fill_in &#39;email&#39;, with: user.email
+          fill_in &#39;password&#39;, with: &#39;password&#39;
+          click_on &#39;Log In&#39;
+        end
+      end
+  #+END_EXAMPLE
+
+  Here is another page object for the Workpaper index page:
+
+  #+BEGIN_EXAMPLE
+      class WorkpaperIndexPage
+        include Capybara::DSL
+
+        def select_audit(audit)
+          find(&#39;#audit-selector&#39;).select audit.name
+        end
+
+        def has_workpaper?(workpaper)
+          has_css?(&#39;.workpaper&#39;, text: workpaper.name)
+        end
+      end
+  #+END_EXAMPLE
+
+  Here&#39;s the new test using these page objects:
+
+  #+BEGIN_EXAMPLE
+      feature &#39;Navigating through workpapers&#39; do
+        let(:user) { create(:user) }
+        let(:audit) { create(:audit, users: [user]) }
+        let(:login_page) { LoginPage.new }
+        let(:workpaper_page) { WorkpaperIndexPage.new }
+
+        scenario &quot;User sees workpapers within an audit&quot; do
+          workpaper = create(:workpaper, audit: audit)
+
+          login_page.visit_page.login(user)
+          workpaper_page.select(audit)
+          expect(workpaper_page).to have_workpaper(workpaper)
+        end
+      end
+  #+END_EXAMPLE
+
+  Now let&#39;s say someone keeps tweaking that login button. You can pop into the Login page, start using an ID selector or an I18n entry (which might even have been a good idea upfront), and not worry about changing any other test code. All of that page fiddlyness is contained in the page objects.
+
+  These page objects are very minimal, but they can grow to provide additional error checking as the user navigates through the UI or pass off other pages (or sections of pages) to assert on and interact with. Page objects pay off so often and so much that *I always use page objects in my feature tests*. Just as I never write SQL in my Rails views, I never access the DOM in a feature test without a page object.
+
+  ** 3 - Create Useful Failure Messages
+     :PROPERTIES:
+     :CUSTOM_ID: create-useful-failure-messages
+     :END:
+
+  Failing feature tests can be hard to diagnose. Let&#39;s say you used a page object like this:
+
+  #+BEGIN_EXAMPLE
+      expect(workpaper_page).to have_one_workpaper(workpaper)
+
+      Failure/Error: expect(workpaper_page).to have_one_workpaper(workpaper)
+        expected #has_one_workpaper?(workpaper) to return true, got false
+  #+END_EXAMPLE
+
+  The expectation is readable, but it would be even better to know whether the workpaper was missing or whether there were other workpapers there causing the expectation to fail.
+
+  In practice I&#39;ve raised exceptions when calling these type of predicate methods on page objects.
+
+  #+BEGIN_EXAMPLE
+      Failure/Error: expect(workpaper_page).to have_one_workpaper(workpaper)
+        PageExpectationNotMetError:
+          expected one workpaper called &quot;My Sweet Workpaper&quot;, but the following
+          workpapers were on the page:
+            * &quot;Bogus Workpaper&quot;
+            * &quot;My Sweet Workpaper&quot;
+  #+END_EXAMPLE
+
+  I&#39;ve been using this technique sparingly and I&#39;m still looking for a more elegant approach, but this helps me to get more descriptive error messages and avoid debugging trips to the browser. Let me know if you have some good ways of integrating messages like this into your tests.
+
+  ** 4 - Embrace Asynchronous Testing
+     :PROPERTIES:
+     :CUSTOM_ID: embrace-asynchronous-testing
+     :END:
+
+  Many frustrations with browser automation testing stem from mistakes using assertions that need to wait. Adding a sleep to your tests an okay way to debug code if you think you have a timing issue, but =sleep= should should never make it into your final test code.
+
+  Flickering tests (tests that fail intermittently) will kill your confidence in your test suit. They should be fixed or deleted.
+
+  In general, my best advice is to learn the Capybara API well. Here are some pointers:
+
+  - Using =#all= does not wait, so this is probably not the matcher you want.
+  - The =#has_css?= method takes a =count= parameter so that you can indicate how many matching elements you want to wait for.
+  - Asserting something like =expect(page).to_not have_css(&#39;.post&#39;)= is usually not what you want. This matcher waits for =.post= elements to show up before it can pass, resulting in a big delay. Usually you&#39;ll want to use =expect(page).to have_no_css(&#39;.post&#39;)= which will pass immediately if the elements are not there, but wait for them to disappear if they are there. To use this matcher with confidence you&#39;ll first want to assert that there were posts at some point earlier.
+
+  At times you may want to wait for something to happen outside of Capybara. For that, [[https://gist.github.com/mattwynne/1228927][this handy =eventually= helper]] will save the day:
+
+  The following code waits for the workpaper to be awesome and fails if the expectation is not met within 2 seconds.
+
+  #+BEGIN_EXAMPLE
+      eventually { expect(workpaper).to be_awesome }
+  #+END_EXAMPLE
+
+  But when would you ever make a polling assertion like this without Capybara? Read on...
+
+  ** 5 - Get Serious About Data Building
+     :PROPERTIES:
+     :CUSTOM_ID: get-serious-about-data-building
+     :END:
+
+  Early on I remember hearing a mantra for feature tests that went something like &quot;Do everything from the perspective of the user&quot;. This advice primarily served to discourage testers from manually manipulating your data in feature tests. I can confidently say that this was bad advice. It&#39;s impractical to sign up a new user with a credit card and complete 20 other provisioning steps just to click an approval button.
+
+  I use FactoryGirl extensively for setting up data in tests. This means that I have factories that that can generate complicated objects. For instance here is a way to make a =workpaper= with a =worflow= that has =steps= assigned to certain =users= called =preparers= and =reviewers=.
+
+  #+BEGIN_EXAMPLE
+      FactoryGirl.define do
+        factory :workpaper do
+          sequence(:name) {|n| &quot;workpaper #{n}&quot;}
+
+          factory :assigned_workpaper do
+            ignore do
+              preparer { create(:user) }
+              reviewer { create(:user) }
+            end
+
+            after(:create) do |workpaper, evaluator|
+              create(:assigned_workflow, workpaper: workpaper, preparer: evaluator.preparer, reviewer: evaluator.reviewer)
+            end
+          end
+        end
+
+        factory :workflow do
+          factory :assigned_workflow do
+            ignore do
+              preparer { create(:user) }
+              reviewer false
+            end
+
+            after(:create) do |workflow, evaluator|
+              create(:step, workflow: workflow, user: evaluator.preparer)
+
+              if evaluator.reviewer
+                create(:step, workflow: workflow, user: evaluator.reviewer)
+              end
+            end
+          end
+        end
+
+        factory :step
+      end
+  #+END_EXAMPLE
+
+  This lets me create specific, declarative objects for my tests:
+
+  #+BEGIN_EXAMPLE
+      create(:assigned_workpaper, preparer: first_user, reviewer: second_user)
+  #+END_EXAMPLE
+
+  I always create database models through FactoryGirl in my feature tests. I&#39;m definitely a fan of FactoryGirl, but I think there is probably room for improvement for building complex data like this. Whatever tool you use, the data setup for your tests should be readable, easy to use, and well-factored.
+
+  Not only is it acceptable to setup data before you begin your test, it&#39;s also acceptable to assert that another side effect occurred that is not immediately visible to users. For instance, in the world of rich client web apps, seeing something on the screen doesn&#39;t mean that everything has been successfully persisted in the database.
+
+  Just as we have helpers for building up the data, we should have helpers for inspecting it. This assertion will make sure that the preparer for a workpaper has been successfully saved in the database:
+
+  #+BEGIN_EXAMPLE
+      eventually { preparer_for(workpaper).should be(preparer) }
+  #+END_EXAMPLE
+
+  ** 6 - Prefer Refining Existing Tests Over Creating New Ones
+     :PROPERTIES:
+     :CUSTOM_ID: prefer-refining-existing-tests-over-creating-new-ones
+     :END:
+
+  When I started doing feature tests in Rails I got some advice that went something like &quot;each test should have one user action and one assertion&quot;. So I worked like this:
+
+  1. Write a cucumber scenario for a feature.
+  2. Make the code work.
+  3. Write another cucumber scenario for a new aspect of that feature.
+  4. Make the code work.
+
+  While this is a useful guideline for unit tests, this is not good advice for feature tests.
+
+  Let&#39;s say I have a test like this:
+
+  #+BEGIN_EXAMPLE
+      scenario &quot;assigning a reviewer to a workpaper&quot; do
+        user_visits_workpaper(user, workpaper)
+        ui.begin_assigning_reviewer
+        ui.assign_work_to(reviewer)
+        eventually { expect(reviewer_for workpaper).to eq(other_tester) }
+      end
+  #+END_EXAMPLE
+
+  When we call =ui.begin_assigning_reviewer= a modal dialog pops up that lets the user pick someone to assign as a reviewer. That feature works. Great.
+
+  Now I want to make sure that only users with access to review show up in that modal dialog. Instead of making a new spec for that, I would rather refine the one that I already have.
+
+  #+BEGIN_EXAMPLE
+      scenario &quot;assigning a reviewer to a workpaper&quot; do
+        user_visits_workpaper(user, workpaper)
+        ui.begin_assigning_reviewer
+        expect(ui).to have_excluded_user(non_reviewer)
+        ui.assign_work_to(reviewer)
+        eventually { expect(reviewer_for workpaper).to eq(other_tester) }
+      end
+  #+END_EXAMPLE
+
+  You would not want to use this approach in unit tests, but this works in feature tests where the goal is to guide your progress and efficiently detect regressions.
+
+  *** But Who&#39;s Testing Your Tests?
+      :PROPERTIES:
+      :CUSTOM_ID: but-whos-testing-your-tests
+      :END:
+
+  When you start building a lot of logic into you tests someone will eventually say &quot;But who&#39;s testing your tests?&quot; to imply that your tests are too complicated or over-engineered. Your production code tests your tests. Don&#39;t use the sentiment in this question to justify poorly-factored, unreadable feature tests.
+
+  The specific tools and techniques discussed above will change over time but I have heightened my sensitivity to bad feature tests forever. Refactor aggressively, design thoughtfully, and love your feature tests.
 #+END_QUOTE
 </content>
       <author>
@@ -741,68 +550,585 @@ another way to approach it is from the test driven side, and write tests that de
       </author>
     </entry>
     <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/11/2018-11-23-til-setting-window-location-in-jest-tests.org</id>
-      <updated>2018-11-23T16:44:09-06:00</updated>
-      <title>TIL: Setting `window.location` during Jest testing</title>
-      <content>* TIL: Setting `window.location` during Jest testing
-  :PROPERTIES:
-  :CAPTURE_DATE: 2018-11-23
-  :KEYWORDS: jest, window.location, testing
-  :END:
-
-- Time-stamp: &lt;2018-11-23 16:44:09 tamara&gt;
-- capture_date: [2018-11-23 Fri]
-- keywords: jest, window.location, testing
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2013/09/why-you-should-stop-pirating-googles-geo-apis-pete-wardens-blog.org</id>
+      <updated>2019-02-03T00:32:37-06:00</updated>
+      <title>Why you should stop pirating Google&#39;s geo APIs « Pete Warden&#39;s blog</title>
+      <content>#+OPTIONS: toc:nil
 
 
-By default, the `window.location` properties are read-only. But for some tests, I need these to be specific, set values.
+* Why you should stop pirating Google&#39;s geo APIs « Pete Warden&#39;s blog
 
-In [[https://github.com/facebook/jest/issues/890][Jest issue 890]] over on github, there is a long discussion about this, and ways people have solved this issue for themselves.
+- published date: 2013-09-11 22:49
+- keywords: [&quot;apis&quot;, &quot;data-science-toolkit&quot;, &quot;gis&quot;, &quot;google&quot;, &quot;open-software&quot;, &quot;swaac&quot;]
+- source: http://petewarden.com/2013/09/09/why-you-should-stop-pirating-googles-geo-apis/
 
-The first one I happened upon is one used by Facebook engineers:
+Using Google&#39;s proprietary APIs in ways that violate Google&#39;s TOS prevents more open and free (libre) sources from emerging and evolving, as well as opening up your application to reprisal or failure when the APIs change or go away.
 
-I needed to modify `pathname` property only for my test:
-#+BEGIN_SRC rjsx
-  Object.defineProperties(window.location, &#39;pathname&#39;, {
-      writeable: true,
-      value: defaultPathname
-  })
+Instead, use:
+
+- [[http://www.datasciencetoolkit.org/][Data Science Toolkit]], an open VM that wraps a lot of the geo community&#39;s greatest open-source projects in a friendly and familiar interface.
+
+** COMMENT copied page
+#+BEGIN_QUOTE
+  * Why you should stop pirating Google&#39;s geo APIs
+    :PROPERTIES:
+    :CUSTOM_ID: why-you-should-stop-pirating-googles-geoapis
+    :END:
+
+  [[http://petewarden.com/2013/09/09/why-you-should-stop-pirating-googles-geo-apis/][September 9, 2013]] By [[http://petewarden.com/author/petewarden/][Pete Warden]]
+
+  This morning I ran across a wonderful open source project called &quot;[[https://github.com/gwintrob/crime-doesnt-climb/blob/master/README.md][Crime doesn&#39;t climb]]&quot;, analyzing how crime rates vary with altitude in San Francisco. Then I reached this line, and honestly couldn&#39;t decide whether to cry or scream: &quot;/Here&#39;s the code snippet that queries the Google Elevation API (careful--Google rate limits aggressively)/&quot;
+
+  Google is very clear about [[https://developers.google.com/maps/documentation/elevation/#Limits][the accepted usage of all their geo APIs]], here&#39;s the quote that&#39;s repeated in almost every page: &quot;/The Elevation API may only be used in conjunction with displaying results on a Google map; using elevation data without displaying a map for which elevation data was requested is prohibited./&quot;
+
+  The crime project isn&#39;t an exception, it&#39;s common to see geocoding and other closed APIs being used in all sorts of unauthorized ways . [[http://ariya.ofilabs.com/2013/07/geolocation-and-interactive-maps.html][Even]] [[http://peteh.me/speeding-up-geocoding-on-rails-with-geocoder/][tutorials]] openly recommend going this route.
+
+  So what? Everyone ignores the terms, and Google doesn&#39;t seem to enforce them energetically. People have projects to build, and the APIs are conveniently to hand, even if they&#39;re technically breaking the terms of service. Here&#39;s why I care, and why I think you should too:
+
+  *Google&#39;s sucking up all the oxygen*
+
+  Because everyone&#39;s using closed-source APIs from Google, there&#39;s very little incentive to improve the open-source alternatives. [[http://labnol.blogspot.com/2007/07/we-love-microsoft-software-piracy-in.html][Microsoft loved it when people in China pirated Windows]], because that removed a lot of potential users for free alternatives, and so hobbled their development, and something very similar is happening in the geo world. Open geocoding alternatives would be a lot further along if crowds of frustrated geeks were diving in to improve them, rather than ignoring them.
+
+  *You&#39;re giving them a throat to choke*
+
+  Do you remember when the Twitter API was a wonderful open platform to build your business on? Do you remember how well that worked out? If you&#39;re relying on Google&#39;s geo APIs as a core part of your projects you already have a tricky dependency to manage even if it&#39;s all kosher. If you&#39;re not using them according to the terms of service, you&#39;re completely at their mercy if it becomes successful. Sometimes the trade-off is going to be worth it, but you should at least be aware of the alternatives when you make that choice.
+
+  *A lot of doors are closed*
+
+  Google is good about rate-limiting its API usage, so you won&#39;t be able to run bulk data analysis. You also can only access the data in a handful of ways. For example, for the crime project they were forced to run point sampling across the city to estimate the proportion of the city that was at each elevation, when having full access to the data would have allowed them to calculate that much more directly and precisely. By starting with a closed API, you&#39;re drastically limiting the answers you&#39;ll be able to pull from the data.
+
+  *You&#39;re missing out on all the fun*
+
+  I&#39;m not [[http://stallman.org/][RMS]], I love open-source for very pragmatic reasons. One of the biggest is that I hate hitting black boxes when I&#39;m debugging! When I was first using Yahoo&#39;s old Placemaker API, I was driven crazy by its habit of marking an references to &quot;The New York Times&quot; as being in New York. I ended up having to patch around this habit for all sorts of nouns, doing a massive amount of work when I knew that it would be far simpler to tweak the original algorithm for my use case. When I run across bugs or features I&#39;d like to add to open-source software, I can dive in, make the changes, and anyone else who has the same problem also benefits. It&#39;s not only more efficient, it&#39;s a lot more satisfying too.
+
+  *So, what can you do?*
+
+  There&#39;s a reason Google&#39;s geo APIs are dominant -- they&#39;re well-documented, have broad coverage, and are easy to access. There&#39;s nothing in the open world that matches them overall. There are good solutions out there though, so all I&#39;d ask is that you look into what&#39;s available before you default to closed data.
+
+  I&#39;ve put my money where my mouth is, by pulling together the [[http://www.datasciencetoolkit.org/][Data Science Toolkit]] as an open VM that wraps a lot of the geo community&#39;s greatest open-source projects in a friendly and familiar interface, even [[http://www.datasciencetoolkit.org/developerdocs#googlestylegeocoder][emulating Google&#39;s geocoder URL structure]]. Instead of using Google&#39;s elevation API, the crime project could have used NASA&#39;s SRTM elevation data through the [[http://www.datasciencetoolkit.org/developerdocs#coordinates2statistics][coordinates2statistics]] JSON endpoint, or even logged in to the PostGIS database that drives it to run bulk calculations.
+
+  There are a lot of other alternatives too. I have high hopes for [[http://wiki.openstreetmap.org/wiki/Nominatim][Nominatim]], OpenStreetMap&#39;s geocoding service, though a lot of my applications require a more &#39;permissive&#39; interface that accepts messier input. PostGIS now comes with [[http://wiki.bitnami.com/Components/PostgreSQL/PostGIS_Quick_Start_Guide#How_can_I_install_Tiger_Geocoder.3f][a geocoder for US Census &#39;Tiger&#39; data pre-installed too]]. [[http://www.geonames.org/][Geonames]] has a great set of data on places all around the world you can explore.
+
+  If you don&#39;t see what you want, figure out if there are any similar projects you might be able to extend with a little effort, or that you can persuade the maintainers to work on for you. If you need neighborhood boundaries, why not take a look at building them in [[http://zetashapes.com/][Zetashapes]] and contributing them back? If Nominatim doesn&#39;t work well for your country&#39;s postal addresses, dig into improving their parser. I know only a tiny percentage of people will have the time, skills, or inclination to get involved, but just by hearing about the projects, you&#39;ve increased the odds you&#39;ll end up helping.
+
+  I want to live in a world where basic facts about the places we live and work are freely available, so it&#39;s a lot easier to build amazing projects like the crime analysis that triggered this rant. Please, at least find out a little bit about the open alternatives before you use Google&#39;s geo APIs, you might be pleasantly surprised at what&#39;s out there!
+#+END_QUOTE
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2013/09/the-predicate-module-pattern.org</id>
+      <updated>2019-02-03T00:25:11-06:00</updated>
+      <title>The Predicate Module Pattern</title>
+      <content>* The Predicate Module Pattern
+
+- published date: 2013-09-20 18:03
+- keywords: [&quot;coding-practice&quot;, &quot;predicates&quot;, &quot;ruby&quot;, &quot;swaac&quot;]
+- source: http://raganwald.com/2013/09/12/the-predicate-module-pattern.html
+
+[[http://raganwald.com/][via raganwald.com]]
+
+In Ruby, modules are often used to [[https://en.wikipedia.org/wiki/Mixin][mix functionality into]] concrete classes. Another excellent pattern is to [[http://www.ruby-doc.org/docs/ProgrammingRuby/html/classes.html#UD][extend objects]] as a way of avoiding monkey-patching classes you do not &quot;own.&quot; There&#39;s a third pattern that I find handy and expressive: Using modules as object predicates.
+
+Let&#39;s begin by defining the problem:
+
+** Representing object predicates
+
+We have some objects that represent entities of some sort. They could be in the domain, they could be in the implementation. For our ridiculously simple example, we will choose bank accounts:
+
+#+BEGIN_SRC ruby
+  class BankAccount
+    # ...
+  end
 #+END_SRC
 
+Our bank account instances have lots of state. A really forward-looking way to deal with that is to implement a state machine, but let&#39;s hand-wave over that and imagine that we&#39;re trying to write Java programs with Ruby syntax, so we use a getter and setter for some attribute:
+
+#+BEGIN_SRC ruby
+  class BankAccount
+    attr_accessor :frozen
+  end
+
+  chequing_acct = BankAccount.new(...)
+  chequing_acct.frozen = false
+
+  if chequeing_acct.frozen
+    # do something
+  end
+#+END_SRC
+
+If this attribute is always a boolean, we call it a predicate, and in the Ruby style borrowed from Lisp, we suffix its getter with a =?=:
+
+#+BEGIN_SRC ruby
+  class BankAccount
+    attr_writer :frozen
+
+    def frozen?
+      @frozen
+    end
+  end
+
+  chequing_acct = BankAccount.new(...)
+  chequing_acct.frozen = false
+
+  if chequeing_acct.frozen?
+    # do something
+  end
+#+END_SRC
+
+That&#39;s how most of my code is written, and it works just fine. But we should be clear about what this code is saying and what it isn&#39;t saying.
+
+** what are we saying with predicate attributes?
+
+Let&#39;s compare this:
+
+#+BEGIN_SRC ruby
+  class BankAccount
+    attr_writer :frozen
+
+    def frozen?
+      @frozen
+    end
+  end
+#+END_SRC
+
+With the following:
+
+#+BEGIN_SRC ruby
+  class BankAccount; end
+
+  class Thawed &lt; BankAccount
+    def frozen?; false; end
+  end
+
+  class Frozen &lt; BankAccount
+    def frozen?; true; end
+  end
+
+  bank_account = Frozen.new(...)
+#+END_SRC
+
+In the first example, using an attribute /implies/ that =frozen= can change during an object&#39;s lifespan. In the second example, using classes imples that =frozen= cannot change during an object&#39;s lifespan. That is very interesting! People talk about code that communicates its intent, having two ways to implement the =frozen?= method helps us communicate whether the frozen state is expected to change for an object.
+
+** cleaning up with predicate modules
+
+If we do have a predicate that is not expected to change during the object&#39;s lifespan, having a pattern to communicate that is a win, provided it&#39;s a clean pattern. Subclassing is not clean for this case. And imagine we had four or ten such predicate attributes, subclassing would be insane.
+
+Modules can help us out. Let&#39;s try:
+
+#+BEGIN_SRC ruby
+  class BankAccount; end
+
+  module Thawed
+    def frozen?; false; end
+  end
+
+  module Frozen
+    def frozen?; true; end
+  end
+
+  bank_account = BankAccount.new(...).extend(Frozen)
+  bank_account.frozen?  #=&gt; true
+#+END_SRC
+
+Now we&#39;re extending an object with a module (not including the module in a class), and we get the module&#39;s functionality in that object. It works like a charm, although you do want to be aware there are now /three/ states for frozen-ness: =Frozen=, =Thawed=, and =I-Forgot-To-Extend-The-Object=. And we can mix in as many such predicate modules as we like.
+
+** module responsibilities
+
+With classes including modules, each class is responsible for including the modules it needs. Writing =.extend(Foo)= when creating a new object shifts the responsibility to the client creating an object. That&#39;s nearly always a bad idea, so we bakeit into the initialize method. I prefer hashes of options and initializers, but you can do this in other ways:
+
+#+BEGIN_SRC ruby
+  class BankAccount
+    def initialize options = {}
+      self.extend(
+	if options[:frozen]
+	  Frozen
+	else
+	  Thawed
+	end
+      )
+    end
+  end
+#+END_SRC
+
+You can experiment with this pattern. If you find yourself writing a lot of this kind of code:
+
+#+BEGIN_SRC ruby
+  if object.frozen?
+    raise &quot;Cannot fuggle with a frozen object&quot;
+  else
+    fuggle(object)
+  end
+#+END_SRC
+
+You can write:
+
+#+BEGIN_SRC ruby
+  module Thawed
+    def frozen?; false; end
+
+    def guard_with_frozen_check desc
+      yield self
+    end
+  end
+
+  module Frozen
+    def frozen?; true; end
+    def guard_with_frozen_check desc = &#39;evaluate code block&#39;
+      raise &quot;Cannot #{desc} with a frozen object&quot;
+    end
+  end
+
+  bank_account.guard_with_frozen_check(&#39;fuggle&#39;) do |acct|
+    fuggle(acct)
+  end
+#+END_SRC
+
+This is much more &#39;OO&#39; than having code test =frozen?=. Not that there&#39;s anything wrong with that! But what if you like to test bank accounts for frozen-ness? Well, you don&#39;t really need a =frozen?= method if you don&#39;t want one:
+
+#+BEGIN_SRC ruby
+  module Thawed; end
+  module Frozen; end
+
+  bank_account = BankAccount.new(...).extend(Frozen)
+  bank_account.kind_of?(Frozen)  #=&gt; true
+#+END_SRC
+
+Checking whether an account is a kind of =Frozen= is a matter of taste, of course. But it&#39;s no worse in my mind than a =frozen?= method if we do not expect an object to change such a state during its lifetime.
+
+  Well, there you have it: *The Predicate Module Pattern*. Cheers!
+
+** personal commentary
+
+If you make a habit of programming as I do, you will inevitably run into contrary opinions. For example, one widely held opinion is that =#kind_of?= is a &quot;code smell.&quot; I agree with this, provided that the expression &quot;code smell&quot; retains it shistorical meaning, namely something that should be double-checked to make sure that it is what you want.
+
+As a general rule, you should be absolutely certain that you are using =.kind_of?= for good rasons, and not because you are unfamiliar with the &quot;Kingdom of Nouns&quot; style of programming where entities are burdened with an every-increasing number of responsibilities because they ought to know everything about how to use them.
+
+In the code above, we&#39;re actually presented with three ways to use a bank account&#39;s =frozen= predicate attribute:
+
+1. A method called =frozen?=.
+2. Using =kind_of?(Frozen)=.
+3. Baking flow control into the predicate modules using the =guard_with_frozen_check= method.
+
+If a module is created strictly to communciate a predicate to fellow programmers, it&#39;s true that you can define =frozen?= in a module to show that ths is not expected to change, however there is a problem. The interface of the method =frozen?= is abstract enough that the predicate could be a state that changes, or it could be a state that doesn&#39;t change.
+
+That&#39;s widely seen as a benefit, but when everything is abstract and could-be-changed in the future, interfaces communicate very little. =kind_of?(Frozen)= pushes the implementation into the interface, true, but it also pushes a contractual promise about the behaviour of =Frozen= into the interface. That can be a benefit when you make a conscious choice that you are trying to make this behaviour obvious.
+
+Generally, modules and classes are used for implementing interfaces, and they shouldn&#39;t become the interface. But a predicate module is, IMO, a place where it is worth considering whether the smell is calling out an actual antipattern or whether this is one of those places where a general rule espoused by the mass of the herd doesn&#39;t apply.
+
+As for option 3, this speaks to a style of programming that eschews checking predicates or values at all times. The name =guard_with_frozen_check= is good for explaining the mechanism, but terrible in practice. I&#39;d pick /the name/ as the smell. Consider instead:
+
+#+BEGIN_SRC ruby
+  class BankAccount
+    def initialize options = {}
+      self.extend(
+	if options[:security_score].andand &lt; 42
+	  Frozen
+	else
+	  Thawed
+	end
+      )
+    end
+  end
+
+  module Thawed
+    def perform_user_action desc
+      yield self
+    end
+  end
+
+  module Frozen
+    def perform_user_action desc = &#39;perform user action&#39;
+      raise &quot;Cannot #{desc} with an object frozen because of a poor security score&quot;
+    end
+  end
+
+  bank_account = BankAccount.new security_score: 74
+  bank_account.perform_user_action(&#39;fuggle&#39;) do |acct|
+    fuggle(acct)
+  end
+#+END_SRC
+
+In this code, clients do not know anything about why an account might be froze, they create accounts and provide security scores, and they ask the accounts to perform user actions. The account checks the frozen &quot;state&quot; via a module.
+
+You could do the same thing by saving teh score and checking it, or saving a frozen predicate attribute, but you wouldn&#39;t be communicating that security scores don&#39;t change in the context of an instantiated =BankAccount= object.
+
+It&#39;s up to you what to do with this pattern. Just be aware that if you read essays by people who switched from Java to Ruby at a time when Ruby was unpopular, they may act as if &quot;popularity&quot; isn&#39;t their first consideration when choosing how to write programs.
+
+That&#39;s neither good, nor bad, it just /is/.
+
+[[https://twitter.com/raganwald][Follow @raganwald]]
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2013/09/the-laws-of-software-design.org</id>
+      <updated>2019-02-03T00:00:35-06:00</updated>
+      <title>The Laws of Software Design</title>
+      <content>#+OPTIONS: tex:t
+
+* The Laws of Software Design
+
+- published date: 2013-09-14 01:37
+- keywords: [&quot;books&quot;, &quot;code-simplicity&quot;, &quot;design&quot;, &quot;max-kanat-alexander&quot;, &quot;swaac&quot;]
+
+In his book [[http://www.goodreads.com/book/show/13234063-code-simplicity][/Code Simplicity/]], [[http://www.goodreads.com/mkanat][Max Kanat-Alexander]] lists six laws of software design in an appendix. These are a pretty good set of rules!
+
+It is interesting to me to note how these 6 laws relate to other platitudes of software design and development, such as &quot;Do the simplest thing that works&quot;, &quot;You ain&#39;t gonna need it&quot;, The Law of Demeter (aka Principle of Least Knowledge) and several others. They are saying the same sorts of things, but perhaps slightly different perspectives.
+
+There is nothing new here, really, but the collected wisdom from people who have slogged through software development projects and survived.
+
+** The Six Laws of Software Design
+
+1. The purpose of software is /to help people/.
+
+2. The Equation of Software Design:
+
+   $$ D = (Vn + Vf) / (Ei + Em) $$
+
+   where:
+   - /D/ :Stands for the desirability of the change.
+   - /Vn/ : Stands for value now.
+   - /Vf/ : Stands for future value.
+   - /Ei/ : Stands for the effort of implementation.
+   - /Em/ : Stands for the effort of maintenance.
+
+   This is the primary law of software design. As time goes on, this equation reduces to:
+
+   $$ D = Vf / Em $$
+
+   Which demonstrates that it is more important to reduce the effort of maintenance than it is to reduce the effort of implementation.
+
+3. *The Law of Change*: The longer your program exists, the more probable it is that any piece of it will have to change.
+
+4. *The Law of Defect Probability*: The chance of introducing a defect into your program is proportional to the size of the changes you make to it.
+
+5. *The Law of Simplicity*: The ease of maintenance of any piece of software is proportional to the simplicity of its individual pieces.
+
+6. *The Law of Testing*: The degree to which you know how your software behaves is the degree to which you have accurately tested it.
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2013/09/running-headless-selenium-with-chrome.org</id>
+      <updated>2019-02-02T23:51:57-06:00</updated>
+      <title>Running Headless Selenium with Chrome</title>
+      <content>* Running Headless Selenium with Chrome
+
+  - published date: 2013-09-08 13:48
+  - keywords: [&quot;headless&quot;, &quot;javascript&quot;, &quot;selenium&quot;, &quot;swaac&quot;, &quot;testing&quot;, &quot;web-development&quot;]
+  - source:
+
+  Source http://www.chrisle.me/2013/08/running-headless-selenium-with-chrome/
+
+  Clipped on 2013-09-08 13:48:54 -0500
+* Running Headless Selenium with Chrome
+
+  Scaling website automation for either testing or scraping can be a challenge when the site is enitrely driven by JavaScript or behaves differently when using specific browsers.
+
+  Running a headless Selenium machine with Google&#39;s Chrome installed provides a scalable way to automate your tests on one of the most popular browsers in use.
+
+  Here are step by step instructions for installing a headless Selenium server with Chrome and Vagrant.
+
+  #+CAPTION: Selenium with Chrome
+  [[http://www.chrisle.me/wp-content/uploads/2013/08/Screen-Shot-2013-08-18-at-1.02.09-PM.png]]
 
 
-Here&#39;s a more universal one:
+** Spike Goals
 
-#+BEGIN_SRC rjsx
-  const setURL = (url) =&gt; {
-    const parser = document.createElement(&#39;a&#39;);
-    parser.href = url;
-    [&#39;href&#39;, &#39;protocol&#39;, &#39;host&#39;, &#39;hostname&#39;, &#39;origin&#39;, &#39;port&#39;, &#39;pathname&#39;, &#39;search&#39;, &#39;hash&#39;].forEach(prop =&gt; {
-      Object.defineProperty(window.location, prop, {
-        value: parser[prop],
-        writable: true,
+  - Get up and running quickly
+  - Run a sample script that demos it works
+  - Use JavaScript only (via NodeJS)
+
+** Prerequisites
+
+  The code you write locally should work when deployed at scale in production. These tools help us do that by creating identical environments for development and production.
+
+  /Both are free downloads. Install with the default settings/
+
+  - Download and install [[https://www.virtualbox.org/wiki/Downloads][VirtualBox]]
+  - Download and install [[http://www.vagrantup.com/][Vagrant]]
+  - Download and install [[http://nodejs.org/download/][NodeJS]]
+
+  /I also assume you can use a command line and have some vague idea of what a virtual machine and Vagrant is./
+
+** Create a &quot;Vagrantfile&quot;
+
+  This file tells Vagrant how configure the testing environment. It applies universally to both development and production.
+
+  Create a project directory and create a file named =Vagrantfile=:
+
+  #+BEGIN_SRC shell-script
+      # encoding: utf-8
+      # -*- mode: ruby -*-
+      # vi: set ft=ruby :
+
+      Vagrant.configure(&quot;2&quot;) do |config|
+        config.vm.box = &quot;precise64&quot;
+        config.vm.box_url = &quot;http://files.vagrantup.com/precise64.box&quot;
+        config.ssh.forward_agent = true
+
+        config.vm.provider :aws do |aws, override|
+          aws.access_key_id = &#39;XXXX&#39;      # Replace this
+          aws.secret_access_key = &#39;XXXX&#39;  # Replace this
+          aws.keypair_name = &#39;XXXX&#39;       # Replace this
+          aws.ami = &#39;ami-7747d01e&#39;        # ubuntu 12.04
+          override.ssh.username = &#39;ubuntu&#39;
+          override.ssh.private_key_path = &#39;~/.ssh/amazon-ubuntu.pem&#39;
+        end
+
+        config.vm.provision :shell, :path =&gt; &quot;setup.sh&quot;
+        config.vm.network :forwarded_port, guest:4444, host:4444
+
+      end
+  #+END_SRC
+
+** 2. Create &quot;setup.sh&quot;
+
+  The setup.sh file executes when Vagrant creates a virtual machine for you. In the same folder as you created your =VagrantFile= create a =setup.sh= file:
+
+  #+BEGIN_SRC shell-script
+      #!/bin/sh
+      set -e
+
+      if [ -e /.installed ]; then
+        echo &#39;Already installed.&#39;
+
+      else
+        echo &#39;&#39;
+        echo &#39;INSTALLING&#39;
+        echo &#39;----------&#39;
+
+        # Add Google public key to apt
+        wget -q -O - &quot;https://dl-ssl.google.com/linux/linux_signing_key.pub&quot; | sudo apt-key add -
+
+        # Add Google to the apt-get source list
+        echo &#39;deb http://dl.google.com/linux/chrome/deb/ stable main&#39; &gt;&gt; /etc/apt/sources.list
+
+        # Update app-get
+        apt-get update
+
+        # Install Java, Chrome, Xvfb, and unzip
+        apt-get -y install openjdk-7-jre google-chrome-stable xvfb unzip
+
+        # Download and copy the ChromeDriver to /usr/local/bin
+        cd /tmp
+        wget &quot;https://chromedriver.googlecode.com/files/chromedriver_linux64_2.2.zip&quot;
+        wget &quot;https://selenium.googlecode.com/files/selenium-server-standalone-2.35.0.jar&quot;
+        unzip chromedriver_linux64_2.2.zip
+        mv chromedriver /usr/local/bin
+        mv selenium-server-standalone-2.35.0.jar /usr/local/bin
+
+        # So that running `vagrant provision` doesn&#39;t redownload everything
+        touch /.installed
+      fi
+
+      # Start Xvfb, Chrome, and Selenium in the background
+      export DISPLAY=:10
+      cd /vagrant
+
+      echo &quot;Starting Xvfb ...&quot;
+      Xvfb :10 -screen 0 1366x768x24 -ac &amp;
+
+      echo &quot;Starting Google Chrome ...&quot;
+      google-chrome --remote-debugging-port=9222 &amp;
+
+      echo &quot;Starting Selenium ...&quot;
+      cd /usr/local/bin
+      nohup java -jar ./selenium-server-standalone-2.35.0.jar &amp;
+  #+END_SRC
+
+** 3. Run &quot;vagrant up&quot;
+
+  On your command line and in the directory where you created the =VagrantFile=, run the following command:
+
+  #+BEGIN_SRC shell-script
+      vagrant up
+  #+END_SRC
+
+  This will kick off downloading and installing all the pieces neccessary. It should look like this:
+
+  #+CAPTION: vagrant up
+  [[http://www.chrisle.me/wp-content/uploads/2013/08/Screen-Shot-2013-08-18-at-12.35.54-PM.png]]
+
+
+** 4. Make sure it&#39;s running
+
+  You can check to see if everything is working by going to =http://localhost:4444/wd/hub=.
+
+  The =VagrantFile= has been configured to forward port 4444 on your localhost. This allows you UI control of the Selenium browser. This page shows you all the sessions that you&#39;re running in your virtual machine. If you see this page, everything is OK.
+
+  #+CAPTION: WebDriver UI
+  [[http://www.chrisle.me/wp-content/uploads/2013/08/Screen-Shot-2013-08-18-at-12.32.08-PM.png]]
+
+
+** 5. Install the selenium-webdriver
+
+  In order to write NodeJS scripts that talk to Chrome you will need the Selenium-Webdriver for NodeJS.
+
+  On your command line, install =selenium-webdriver= with the following command. This will install the modules needed for interacting with Selenium.
+
+  #+BEGIN_SRC shell-script
+    npm install selenium-webdriver
+  #+END_SRC
+
+** 6. Write your first Selenium script
+
+  This first script will go to Google&#39;s homepage, type in a query, then print out the HTML.
+
+  #+BEGIN_SRC shell-script
+    var webdriver = require(&#39;selenium-webdriver&#39;);
+
+    var keyword = &quot;chris le twitter&quot;;
+
+    var driver = new webdriver.Builder().
+       usingServer(&#39;http://localhost:4444/wd/hub&#39;).
+       withCapabilities(webdriver.Capabilities.chrome()).
+       build();
+
+    driver.get(&#39;http://www.google.com&#39;);
+    driver.findElement(webdriver.By.name(&#39;q&#39;)).sendKeys(keyword);
+    driver.findElement(webdriver.By.name(&#39;btnG&#39;)).click();
+    driver.wait(function() {
+      return driver.getTitle().then(function(title) {
+	driver.getPageSource().then(function(html) {
+	  console.log(html);
+	  return true;
+	});
       });
-    });
-  };
-#+END_SRC
+    }, 1000);
 
-The sneaky trick of creating a wee little parser out of a document anchor element is pretty dang cool, too.
+    driver.quit();
+  #+END_SRC
 
-Later in the issue page, there&#39;s some discussion about how this might break in future versions of `jsdom`, and another way to set the location property, by modifying the history on `window`:
+** 7. Run your test
 
-#+name: package.json
-#+begin_src js
-  {
-      &quot;testUrl&quot;: &quot;https://somehost.com/some/path/test.html&quot;
-  }
-#+end_src
+  Run your test with node. You should see the HTML that was rendered by the Chrome browser.
 
-And in your test setup:
-#+BEGIN_SRC rjsx
-  window.history.pushState({}, &#39;Test Title&#39;, &#39;/another/path/test.html?query=true&#39;);
-#+END_SRC
+  #+CAPTION: HTML from NodeJs
+  [[http://www.chrisle.me/wp-content/uploads/2013/08/Screen-Shot-2013-08-18-at-1.07.55-PM.png]]
 
-This is from the [[https://www.ryandoll.com/post/2018/3/29/jest-and-url-mocking][Jest and URL testing]] by Ryan Doll.
+
+* Use Cases
+
+  So now that you have this up and running what can you use it for?
+
+  *Running your automated test suites*: This is great for doing integration testing against Chrome browsers and probably responsive websites.
+
+  *Testing your Chrome Extentions*: Debugging Chrome Extensions can be a bit of a pain. This could be your Asprin.
+
+  *Taking many screenshots*: If you want to make screenshots of many pages at once.
+
+  *Scraping stubborn websites*: I wasn&#39;t able to scrape a website using PhantomJS because it fired JSONP requests long after the onLoad() event fired. Simply waiting for the event loop to empty itself wansn&#39;t enough. A combination of debugging with a real browser and Selenium, I was more successful at getting the DOM after the scripts had run.
 </content>
       <author>
         <name>Tamara Temple</name>
@@ -810,85 +1136,388 @@ This is from the [[https://www.ryandoll.com/post/2018/3/29/jest-and-url-mocking]
       </author>
     </entry>
     <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/11/2018-11-20-til-input-file-has-accepts-attribute.org</id>
-      <updated>2018-11-20T00:30:53-06:00</updated>
-      <title>TIL: The ~input[type=file]~ element has an ~accepts~ attribute</title>
-      <content>* TIL: The ~input[type=file]~ element has an ~accepts~ attribute
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2013/09/rspec-custom-formatters-displaying-test-durations.org</id>
+      <updated>2019-02-02T23:48:54-06:00</updated>
+      <title>RSpec Custom Formatters: Displaying Test Durations</title>
+      <content>* RSpec Custom Formatters: Displaying Test Durations
 
-- Time-stamp: &lt;2018-11-20 00:30:53 tamara&gt;
-- capture date: [2018-11-20 Tue]
-- keywords: html, input, file, pass list
+- published date: 2013-09-01 13:23
+- keywords: [&quot;howtos&quot;, &quot;rspec&quot;, &quot;ruby&quot;, &quot;swaac&quot;]
 
-The ~input[type=file]~ element has an attribute, ~accepts~ that provides a pass filter for the types of files that are accepted in the input file field. See [[https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#accept][the MDN documentation for input accept]] for details.
+The standard documentation formatter for RSpec does not show how long each test executes. This information is available in the HTML formatter, though, so I thought it could be available in others. Turns out this is true.
 
-This means, if I have a set of allowed extensions, I can put them in the ~accepts~ field to limit what the user can select:
+Inside the formatter, the =example= variable has a method called =execution_result= that is a Hash. One of the hash keys is =:run_time=, which is the milliseconds the test took to run, just what we wanted.
+
+** Creating the custom formatter
+
+The simplest thing in our case is to subclass the documentation formatter, and replace the reporting functions. =stopwatch_formatter.rb= does this.
+
+*** Changing the output
+
+The only two methods of =DocumentationFormatter= we need to look at are:
+
+- =failure_output=
+- =passed_output=
+
+since these are the only ones that reporting duration on makes sense. (Pending tests don&#39;t take any time.)
+
+In this case, I merely copied the methods from the documentation formatter, and added the duration from =example.execution_results[:run_time]= to the output. (I did add a bit of formatting, but that&#39;s trivial.)
+
+#+BEGIN_SRC ruby
+    require &#39;rspec/core/formatters/documentation_formatter&#39;
+
+    class StopwatchFormatter &lt; RSpec::Core::Formatters::DocumentationFormatter
+      DURATION_FORMAT = &quot;%s %-60s | Duration: %7.5f ms&quot;
+
+      def failure_output(example, exception)
+	failure_color(
+	  format(
+	    DURATION_FORMAT,
+	    current_indentation,
+	    &quot;#{example.description.strip} (FAILED - #{next_failure_index})&quot;,
+	    example.execution_result[:run_time]
+	  )
+	)
+      end
+
+      def passed_output(example)
+	success_color(
+	  format(
+	    DURATION_FORMAT,
+	    current_indentation,
+	    example.description.strip,
+	    example.execution_result[:run_time]
+	  )
+	)
+      end
+    end
+#+END_SRC
+
+Sample output:
+
+#+BEGIN_EXPORT html
+&lt;pre&gt;&lt;code&gt;
+/Users/tamara/.rubies/ruby-2.0.0-p427/bin/ruby -S rspec ./spec/lib/stopwatch_formatter_spec.rb
+
+StopwatchFormatter
+  this will pass                                               | Duration: 0.00099 ms
+  this will fail (FAILED - 1)                                  | Duration: 0.00010 ms
+
+Failures:
+
+  1) StopwatchFormatter this will fail
+     Failure/Error: false.should be_true
+       expected: true value
+            got: false
+     # ./spec/lib/stopwatch_formatter_spec.rb:8:in `block (2 levels) in &lt;top (required)&gt;&#39;
+
+Finished in 0.00146 seconds
+2 examples, 1 failure
+
+Failed examples:
+
+rspec ./spec/lib/stopwatch_formatter_spec.rb:7 # StopwatchFormatter this will fail
+/Users/tamara/.rubies/ruby-2.0.0-p427/bin/ruby -S rspec ./spec/lib/stopwatch_formatter_spec.rb failed
+&lt;/code&gt;&lt;/pre&gt;
+#+END_EXPORT
+
+** Using the custom formatter
+
+=rspec= needs to load the code for your custom formatter. The easiest thing is to simply require it on the =rspec= command line, and specify the class name as the formatter:
+
+#+BEGIN_SRC shell-script
+rspec -r /path/to/stopwatch_formatter.rb --format StopwatchFormatter ...
+#+END_SRC
+
+** Getting the formatter
+
+You can get =stopwatch_formatter= from rubygems:
+
+#+BEGIN_SRC shell-script
+    gem install stopwatch_formatter
+#+END_SRC
+
+or put it in your =Gemfile=:
+
+#+BEGIN_SRC shell-script
+    gem &#39;stopwatch_formatter&#39;, :group =&gt; [:development, :test]
+#+END_SRC
+
+and =bundle install= as usual. You can specify to use the stopwatch formatter in a few ways:
+
+*** =rake= =SPEC_OPTS=
+    :PROPERTIES:
+    :CUSTOM_ID: rake-spec_opts
+    :END:
+
+If you use rake, and run rspec from within it, you can simply add the =SPEC_OPTS= variable to your run:
+
+#+BEGIN_SRC shell-script
+    rake SPEC_OPTS=&#39;-f StopwatchFormatter&#39;
+#+END_SRC
+
+*** =.rspec=
+
+A more convenient method is to put the formatter inside the =.rspec= file:
+
+#+BEGIN_SRC shell-script
+    --format StopwatchFormatter
+#+END_SRC
+
+then you can just run:
+
+#+BEGIN_SRC shell-script
+  rake
+#+END_SRC
+
+(assuming =spec= is one of you default tasks.)
+
+*** =spec/spec_helper=
+    :PROPERTIES:
+    :CUSTOM_ID: specspec_helper
+    :END:
+
+If you want a more permanent solution, you can configure the formatter inside the =spec/spec_helper.rb= file:
 
 #+BEGIN_SRC html
-  &lt;!-- to accept all image types --&gt;
-  &lt;input type=&quot;file&quot; name=&quot;image_file&quot; accept=&quot;image/*&quot;&gt;
-
-  &lt;!-- to accept various file extensions --&gt;
-  &lt;input type=&quot;file&quot; name=&quot;data&quot; accept=&quot;.jpg,.jpeg,.gif,.png,.bmp,.pdf,.txt,.md,.markdown&quot;&gt;
+    require &#39;stopwatch_formatter&#39;
+    RSpec.configure {|c| c.add_formatter StopwatchFormatter }
 #+END_SRC
 
-With a little more work, if there is a pass list of extensions on the server, I could pass it down to the client via the ~gon~ object where a React client could pick it up.
+This last rather permanently adds the stopwatch formatter to your runs, so if you specify another formatter on the command line or in =.rspec=, you&#39;ll end up with that output /and/ the stopwatch output, so this isn&#39;t really recommended.
 
+** Getting the formatter, contributing, and all that
+   :PROPERTIES:
+   :CUSTOM_ID: getting-the-formatter-contributing-and-all-that
+   :END:
 
-#+name: config/constants.rb
-#+begin_src ruby
-  module App
-    module CONSTANTS
-      UPLOAD_PASS_LIST = %w[
-        jpg
-        jpeg
-        png
-        gif
-        bmp
-        pdf
-        text
-        txt
-        markdown
-        md
-        csv
-        xls
-        xlsx
-        doc
-        docx
-      ].freeze
-    end
-  end
-#+end_src
+1. Fork the github repository at http://github.com/tamouse/stopwatch_formatter
+2. Create a /new/ branch for your changes.
+3. Commit your changes and push to the branch on your fork. Please rebase.
+4. Issue a pull request via Github.
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2013/09/cool-thing-today-showterm-dot-io.org</id>
+      <updated>2019-02-02T23:09:12-06:00</updated>
+      <title>Cool Thing Today: showterm.io</title>
+      <content>* Cool Thing Today: showterm.io
 
-#+name: app/controllers/application_controller
-#+begin_src ruby
-  before_action :export_upload_pass_list
+- published date: 2013-09-09 15:10
+- keywords: [&quot;coding&quot;, &quot;demos&quot;, &quot;show-and-tell&quot;, &quot;swaac&quot;, &quot;tools&quot;]
 
-  # ...
+[[http://showterm.io]] is a really cool website for sharing terminal sessions by capturing them and playing them back.
 
-  def export_upload_pass_list
-    gon.push(upload_pass_list: App::CONSTANTS::UPLOAD_PASS_LIST)
-  end
-#+end_src
+Easy to install and use, you can share your efforts from the command line in to others, embed in posts, and so on.
 
-#+name: upload_file_form.js
-#+begin_src jsx
+I like this tool!
 
-  accepts_list = () =&gt; {
-      return gon.upload_pass_list.map(ext =&gt; `.${ext}`).join(&quot;,&quot;)
-  }
+[[http://showterm.io/03fe34182d9d48fa45e09#fast][Showterm of me making a new post]]
 
-  render() {
-      return (
-          &lt;input
-            type=&quot;file&quot;
-            name=&quot;data&quot;
-            accepts={this.accepts_list()}
-            onChange={this.fileChange}
-          /&gt;
-      )
-  }
+#+HTML: &lt;iframe src=&quot;http://showterm.io/03fe34182d9d48fa45e09#fast&quot; width=&quot;640&quot; height=&quot;480&quot;&gt;
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2013/09/activerecord-enhanced-query-objects.org</id>
+      <updated>2019-02-02T23:07:38-06:00</updated>
+      <title>ActiveRecord: Enhanced Query Objects</title>
+      <content>* ActiveRecord: Enhanced Query Objects
 
-#+end_src
+- published date: 2013-09-20 18:09
+- keywords: [&quot;activerecord&quot;, &quot;enhanced-query-objects&quot;, &quot;poros&quot;, &quot;rails&quot;, &quot;scopes&quot;, &quot;swaac&quot;]
+- source: http://hasghari.github.io/2013/09/15/active-record-enhanced-query-objects.html?utm_source=rubyweekly&amp;utm_medium=email
+
+  ActiveRecord: Enhanced Query Objects
+
+  15 Sep 2013
+
+  Your ActiveRecord models are usually the first place in your application where the unwieldy code begs for refactoring.
+
+  In an excellent post by Bryan Helmkamp on the Code Climate Blog, he outlined [[http://blog.codeclimate.com/blog/2012/10/17/7-ways-to-decompose-fat-activerecord-models/][7 Patterns to Refactor Fat ActiveRecord Models]]. One of the patterns from this blog post that I want to focus on is *Extract Query Objects*.
+
+  We have been using this pattern for a while but I missed the convenience of chainable and reusable scopes. Here&#39;s an example:
+
+  #+BEGIN_EXAMPLE
+       1 class Product &lt; ActiveRecord::Base
+       2   has_many :reviews
+       3 end
+       4
+       5 class PopularProductQuery
+       6   def initialize(relation = Product.scoped)
+       7     @relation = relation
+       8   end
+       9
+      10   def popular(time)
+      11     @relation.joins(:reviews).where(reviews: { created_at: time..Time.now,
+      12                                                available: true })
+      13   end
+      14
+      15   def with_recent_activity(time)
+      16     @relation.joins(:reviews).where(reviews: { created_at: time..Time.now })
+      17   end
+      18
+      19   def with_available_reviews
+      20     @relation.joins(:reviews).where(reviews: { available: true })
+      21   end
+      22 end
+  #+END_EXAMPLE
+
+  The query object above defines three utility methods to return records of =Product= with certain properties. However, you will notice that =PopularProductQuery#popular= is combining the logic of =#with_recent_activity= and =#with_available_reviews=. The trivial solution to keeping this DRY is defining scopes on the =Product= model:
+
+  #+BEGIN_EXAMPLE
+       1 class Product &lt; ActiveRecord::Base
+       2   has_many :reviews
+       3
+       4   scope :popular, -&gt;(time) {
+       5     with_recent_activity(time).with_available_reviews
+       6   }
+       7
+       8   scope :with_recent_activity, -&gt;(time) {
+       9     joins(:reviews).where(reviews: { created_at: time..Time.now })
+      10   }
+      11
+      12   scope :with_available_reviews, -&gt;(time) {
+      13     joins(:reviews).where(reviews: { available: true })
+      14   }
+      15 end
+  #+END_EXAMPLE
+
+  Ideally we would like to define these scopes on our query objects to prevent our models from growing &quot;fat&quot; over time. If these scopes were so common that they would be used across many different contexts in our application, we would probably want to keep them on the model but for the purpose of this post, let&#39;s assume that these are very specific scopes that we would like to isolate to the query object.
+
+  An existing but rarely advertised feature of ActiveRecord is that you have the ability to extend any =ActiveRecord::Relation= object with your custom scopes:
+
+  #+BEGIN_EXAMPLE
+       1 class PopularProductQuery
+       2   def initialize(relation = Product.scoped)
+       3     @relation = relation.extending(Scopes)
+       4   end
+       5
+       6   def popular(time)
+       7     @relation.with_recent_activity(time).with_available_reviews
+       8   end
+       9
+      10   module Scopes
+      11     def with_recent_activity(time)
+      12       joins(:reviews).where(reviews: { created_at: time..Time.now })
+      13     end
+      14
+      15     def with_available_reviews
+      16       joins(:reviews).where(reviews: { available: true })
+      17     end
+      18   end
+      19 end
+  #+END_EXAMPLE
+
+  Here we are taking advantage of the =ActiveRecord::QueryMethods#extending= method to add custom scopes to our query object without polluting the model space. In other words, =Product.with_available_reviews= is *not* valid. To put it all together, you would use the enhanced query object like so:
+
+  #+BEGIN_EXAMPLE
+      PopularProductQuery.new.popular(2.weeks.ago)
+  #+END_EXAMPLE
+
+  I&#39;ve come to really like this pattern to adhere to the Single Responsibility Principle and keep my models manageable.
+
+  Hamed Asghari\\
+  Ruby, JavaScript and Go enthusiast\\
+  hasghari@gmail.com
+
+  [[https://github.com/hasghari][github.com/hasghari]]\\
+  [[https://twitter.com/phyrengr][twitter.com/phyrengr]]\\
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2013/08/programmers-creativity.org</id>
+      <updated>2019-02-02T23:05:33-06:00</updated>
+      <title>Programmers Creativity</title>
+      <content>* Programmers Creativity
+
+- date: 2013-08-02 04:51
+- tags: [quotes, creativity]
+
+#+BEGIN_QUOTE
+  I think most people think programming is cold, precise, and mechanical. It&#39;s actually creative, perplexing and deeply personal.
+
+  --- Unknown (from http://discordianquotes.com/quote/think-people-thing-programming-cold-precise-mechanical-actually)
+#+END_QUOTE
+
+I&#39;ve said similar words many times. I wish more people understood them.
+
+** Programming is Creative
+
+What does it mean to be creative? It usually means making something that other&#39;s can see as beautiful, or as unique, but also it means applying your mind to making something real that exists only at first in your mind.
+
+*** To Create:
+
+1. to cause to come into being, as something unique.
+2. to evolve from one&#39;s imagination, as a work of art or an invention.
+3. to perform (a role) in the first production of a play or motion picture.
+4. to make by investing with new rank; designate: to create a peer.
+5. to arrange or bring about, as by intention or design: to create confusion.
+6. to do something creative.
+
+Citation: create. (n.d.) American Heritage® Dictionary of the English Language, Fifth Edition. (2011). From https://www.thefreedictionary.com/create
+
+The thing that makes something a craft /vs/ a fine art is that crafts have some utility beyond their form, or because of their form, whereas fine art is meant to be displayed.
+
+Both have long traditions and both are necessary for a society.
+
+Beauty exists in many forms, many guises, and beauty exists as such in software in many forms and guises as well. While it is difficult for many to see such things, especially non-programmers, and for many beginners, and even for many very experienced developers, the thing about what they are producing, the code, has form, function, embodies aesthetics (although the rules that apply to that vary), and is the result of a spark of imagination.
+
+Software has use, certainly, and I&#39;d never expect to see a source code listing hanging in the Louvre, it is, however, something that could use more exposure.
+
+As we head deeper into the 21st century, a rallying cry has emerged around the notion that programming is a core life skill. While I am not quite going that far, I do think that it is a skill that can be acquired by many, and put to use by many. It&#39;s not quite in the same arena as being able to do laundry, cook a meal, balance a checkbook, and so on, but it is possible for it to be something enjoyable, useful, and as rewarding as many fiber crafts, or knowing how to fix your car, or playing the piano. No one person /needs/ to know these things, but it sure makes for a better world that /someone/ knows these things, and that they enjoy doing them.
+
+Software development as a profession is not altogether different from being a custom cabinet maker, or a construction worker, or an auto mechanic. Sometimes writing software is just labour. Sometimes it is a labour of love. Sometimes, it is both. And sometimes, it is much, much more.
+
+** Programming is Perplexing
+
+One of the key concerns about writing software in earnest (as opposed to doing /kata/) is that it is primary about solving a problem (or problems). The problem might be the developer&#39;s, it might be some other developer that has the problem, but far and away most software is written with an end user in mind: someone who does not want to write the software themselves, or at least have someone provide them the means to solve their problem.
+
+But one of the other natures of software is that once that problem is solved, once the program is written, it doesn&#39;t really need to be written again. Not that it isn&#39;t: as developers we /do/ recreate solutions to problems over and over. The thing that appeals to many developers though is solving new problems. And new problems are perplexing.
+
+That comes in basically two flavours:
+
+- the perplexity of the domain
+- the perplexity of the solution
+
+The &quot;domain&quot; of a solution means what particular knowledge is needed to understand the nature of the problem: the people involved; their vocabulary and jargon; their tasks, steps, procedures; their rituals, beliefs, values; and what already exists in the realm of the solution.
+
+The solution offers its own perplexity because it requires understanding of how to put it together: its pieces, subsystems, libraries, ecosystem, and so on.
+
+The co-mingling of both of these adds yet /another/ dimension of perplexity: how do you connect what those that will be using the program with those that will be writing the program? This is yet another skill, and the lore of software development is rife with tales of how the lack of such skills has caused many problems. Everyone knows about the developer with no social skills, for example.
+
+People often remark about how negative software developers are. I firmly believe this to be a complete misinterpretation of the behaviour they see when proposing something to developers: at heart, most developers are problem solvers, very much akin to puzzle solvers.
+
+If you look at people sitting around a table putting together a jigsaw puzzle, mostly what you&#39;ll observe are people in tight concentration and focus. If you simply look at them outside the context of the puzzle, they look rather perplexed, or even angry, because of this intense concentration. Yet replace the context and it all makes sense.
+
+One of the major issues in non-developers watching developers is that they do not really understand what is happening: at the point when it looks like developers are throwing out objections, or things that sound like your idea won&#39;t work, what they are actually doing is beginning the design in their heads, observing potential problems they&#39;ll have to solve or work around, and clarifying for themselves the beginnings of the design. One of the best things you can actually get from them is &quot;That won&#39;t work&quot;. While that sounds disheartening, especially if the idea you presented has personal meaning, what that actually means is &quot;I have an idea that may work for your need&quot;, or &quot;I am now engaged on solving your problem&quot;. One of the worst things you can get is a shrug and &quot;That&#39;s nice&quot;, because that means they don&#39;t care. And you want them to care.
+
+** Programming is Deeply Personal
+
+While programming has many core skills, and many best and better practices, and many concepts of aesthetics and fitness for use that are shared, it is also a realm of individual imagination and approaches to solving problems. One of the common phrases is &quot;There&#39;s more than one way to do it!&quot; is so true, and creates part of the rich tapestry of software that is available for people to use.
+
+Writing software means something different to everyone who does it. There are many different reasons people feel the need to write software, and many different approaches to that effort.
+
+As with all products of the imagination, software is no less bound to the personality of its creators.
+
+For a long time, companies that produced software tried to instill process in people, with the notion of reducing the uncertainty of how much time and effort it took to produce the software. Removing the uncertainty gives a business the ability to predict or forecast more accurately how much money it is going to take to create a product that they can then sell, giving part of the equation of how much money they think they will make in the near term.
+
+The problem with that is that when pressed on software developers, it becomes yet another problem for them to solve; we&#39;re insatiable when it comes to getting problems to solve sometimes.
+
+But I digress; software management is a topic for another post.
+
+The key thing here is that while there are many traits one can find in common among developers, and certainly many shared skills, knowledge, tools and libraries, it is never going to be the case that you will find two programmers with identical thoughts about what they are producing. What you make is yours -- the product of your mind -- even if it is being made with others. You cannot separate that personality from the thing it creates.
 </content>
       <author>
         <name>Tamara Temple</name>

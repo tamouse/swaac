@@ -1,53 +1,34 @@
+#+OPTIONS: tex:t
+
 * The Laws of Software Design
-  :PROPERTIES:
-  :CUSTOM_ID: the-laws-of-software-design
-  :END:
 
 - published date: 2013-09-14 01:37
 - keywords: ["books", "code-simplicity", "design", "max-kanat-alexander", "swaac"]
-- source:
-- redirect_from: ["/blog/2013/09/14/the-laws-of-software-design/"]
 
 In his book [[http://www.goodreads.com/book/show/13234063-code-simplicity][/Code Simplicity/]], [[http://www.goodreads.com/mkanat][Max Kanat-Alexander]] lists six laws of software design in an appendix. These are a pretty good set of rules!
-
-#+BEGIN_HTML
-  <!--more-->
-#+END_HTML
-
---------------
 
 It is interesting to me to note how these 6 laws relate to other platitudes of software design and development, such as "Do the simplest thing that works", "You ain't gonna need it", The Law of Demeter (aka Principle of Least Knowledge) and several others. They are saying the same sorts of things, but perhaps slightly different perspectives.
 
 There is nothing new here, really, but the collected wisdom from people who have slogged through software development projects and survived.
 
---------------
-
 ** The Six Laws of Software Design
-   :PROPERTIES:
-   :CUSTOM_ID: the-six-laws-of-software-design
-   :END:
 
 1. The purpose of software is /to help people/.
 
 2. The Equation of Software Design:
 
-   #+BEGIN_EXAMPLE
-        D = (Vn + Vf) / (Ei + Em)
-   #+END_EXAMPLE
+   $$ D = (Vn + Vf) / (Ei + Em) $$
 
    where:
-
-   - /D/: Stands for the desirability of the change.
-   - /Vn/: Stands for value now.
-   - /Vf/: Stands for future value.
-   - /Ei/: Stands for the effort of implementation.
-   - /Em/: Stands for the effort of maintenance.
+   - /D/ :Stands for the desirability of the change.
+   - /Vn/ : Stands for value now.
+   - /Vf/ : Stands for future value.
+   - /Ei/ : Stands for the effort of implementation.
+   - /Em/ : Stands for the effort of maintenance.
 
    This is the primary law of software design. As time goes on, this equation reduces to:
 
-   #+BEGIN_EXAMPLE
-        D = Vf / Em 
-   #+END_EXAMPLE
+   $$ D = Vf / Em $$
 
    Which demonstrates that it is more important to reduce the effort of maintenance than it is to reduce the effort of implementation.
 

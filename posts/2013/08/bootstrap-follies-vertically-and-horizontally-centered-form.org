@@ -1,20 +1,18 @@
 * Bootstrap Follies: Vertically and Horizontally Centered Form
-  :PROPERTIES:
-  :CUSTOM_ID: bootstrap-follies-vertically-and-horizontally-centered-form
-  :END:
 
 - published date: 2013-08-11 09:59
 - keywords: ["bootstrap", "css", "design", "howtos", "swaac"]
-- source:
-- redirect_from: ["/blog/2013/08/11/bootstrap-follies-vertically-and-horizontally-centered-form/"]
 
-[[http://getbootstrap.com/2.3.2/][Bootstrap]] provides a really nice framework and set of components to make a very nice looking web page out of the box. However, it's not always clear how to do something. A frequently asked question among CSS newbies is:
+** TL;DR: See CSS-Tricks
+
+[[https://css-tricks.com/centering-css-complete-guide/][Centering in CSS: A complete guide]]
+
+** Bootstrap or?
+
+[[https://getbootstrap.com][Bootstrap]] provides a really nice framework and set of components to make a very nice looking web page out of the box. However, it's not always clear how to do something. A frequently asked question among CSS newbies is:
 
 #+BEGIN_QUOTE
-  ** How do I center a form on my window?
-     :PROPERTIES:
-     :CUSTOM_ID: how-do-i-center-a-form-on-my-window
-     :END:
+  How do I center a form on my window?
 #+END_QUOTE
 
 This is a pretty-well solved problem /outside/ of bootstrap, and you could use the same method inside bootstrap as well.
@@ -27,9 +25,6 @@ There are some compromises, though:
 I'll go through the method so you can understand what is going on.
 
 ** Pure (?) CSS implementation
-   :PROPERTIES:
-   :CUSTOM_ID: pure-css-implementation
-   :END:
 
 In a local style sheet, define a class for your centered form. I'm calling mine 'centered-box', and determine the box will be 600px wide by 300px high.
 
@@ -52,50 +47,47 @@ In a local style sheet, define a class for your centered form. I'm calling mine 
     }
 #+END_SRC
 
-#+BEGIN_EXAMPLE
-    <div id="centered_box" class="centered-box">
-      <div class="row-fluid">
-        <div class="offset1 span10">
-          <form method="get" id="my_form" action="" class="form-horizontal">
-            <div class="page-header">
-              <h1>Login:</h1>
-           </div>
-           <div class="control-group">
-             <label class="control-label" for="inputEmail">Email</label>
-             <div class="controls">
-               <input type="text" id="inputEmail" placeholder="Email">
-             </div>
-           </div>
-           <div class="control-group">
-             <label class="control-label" for="inputEmail">Password</label>
-             <div class="controls">
-               <input type="password" id="inputPassword" placeholder="Password">
-             </div>
-           </div>
-           <div class="control-group">
-             <div class="controls">
-               <label class="checkbox"><input type="checkbox"> Remember me</label>
-               <button type="submit" class="btn">Sign in</button>
-             </div>
-           </div>
-         </form>
-       </div>
-      </div>
+#+BEGIN_SRC html
+  <div id="centered_box" class="centered-box">
+    <div class="row-fluid">
+      <div class="offset1 span10">
+	<form method="get" id="my_form" action="" class="form-horizontal">
+	  <div class="page-header">
+	    <h1>Login:</h1>
+	 </div>
+	 <div class="control-group">
+	   <label class="control-label" for="inputEmail">Email</label>
+	   <div class="controls">
+	     <input type="text" id="inputEmail" placeholder="Email">
+	   </div>
+	 </div>
+	 <div class="control-group">
+	   <label class="control-label" for="inputEmail">Password</label>
+	   <div class="controls">
+	     <input type="password" id="inputPassword" placeholder="Password">
+	   </div>
+	 </div>
+	 <div class="control-group">
+	   <div class="controls">
+	     <label class="checkbox"><input type="checkbox"> Remember me</label>
+	     <button type="submit" class="btn">Sign in</button>
+	   </div>
+	 </div>
+       </form>
+     </div>
     </div>
-#+END_EXAMPLE
+  </div>
+#+END_SRC
 
 This results in a rather non-bootstrap-ish presentation:
 
-[[/images/bootstrap_follies_centered_box_8_11_13_10_13_AM.jpeg]]
+#+COMMENT: [[/images/bootstrap_follies_centered_box_8_11_13_10_13_AM.jpeg]]
 
 ** The Bootstrap Static Modal
-   :PROPERTIES:
-   :CUSTOM_ID: the-bootstrap-static-modal
-   :END:
 
 Bootstrap provides a component, =modal=, that basically does the same thing as above, although it makes an additional compromise that i cannot /a priori/ know the height of the box, so simply sets the top value to 10%. To use modal, simply make it the class on your box, and omit the styling from the previous example:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC html
     <div id="centered_box" class="modal">
       <div class="row-fluid">
         <div class="offset1 span10">
@@ -125,11 +117,11 @@ Bootstrap provides a component, =modal=, that basically does the same thing as a
        </div>
       </div>
     </div>
-#+END_EXAMPLE
+#+END_SRC
 
 And the result is a prettier, bootstrap-ish box:
 
-[[/images/bootstrap_follies_modal_centered_box_8_11_13_10_13_AM.jpeg]]
+#+COMMENT: [[/images/bootstrap_follies_modal_centered_box_8_11_13_10_13_AM.jpeg]]
 
 I much prefer the latter of these two approaches, for a few reasons:
 

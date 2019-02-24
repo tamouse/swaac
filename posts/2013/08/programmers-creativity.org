@@ -1,16 +1,10 @@
 * Programmers Creativity
-  :PROPERTIES:
-  :CUSTOM_ID: programmers-creativity
-  :END:
 
 - date: 2013-08-02 04:51
 - tags: [quotes, creativity]
 
 #+BEGIN_QUOTE
-  * I think most people think programming is cold, precise, and mechanical. It's actually creative, perplexing and deeply personal.
-    :PROPERTIES:
-    :CUSTOM_ID: i-think-most-people-think-programming-is-cold-precise-and-mechanical.-its-actually-creative-perplexing-and-deeply-personal.
-    :END:
+  I think most people think programming is cold, precise, and mechanical. It's actually creative, perplexing and deeply personal.
 
   --- Unknown (from http://discordianquotes.com/quote/think-people-thing-programming-cold-precise-mechanical-actually)
 #+END_QUOTE
@@ -18,16 +12,10 @@
 I've said similar words many times. I wish more people understood them.
 
 ** Programming is Creative
-   :PROPERTIES:
-   :CUSTOM_ID: programming-is-creative
-   :END:
 
 What does it mean to be creative? It usually means making something that other's can see as beautiful, or as unique, but also it means applying your mind to making something real that exists only at first in your mind.
 
 *** To Create:
-    :PROPERTIES:
-    :CUSTOM_ID: to-create
-    :END:
 
 1. to cause to come into being, as something unique.
 2. to evolve from one's imagination, as a work of art or an invention.
@@ -51,9 +39,6 @@ As we head deeper into the 21st century, a rallying cry has emerged around the n
 Software development as a profession is not altogether different from being a custom cabinet maker, or a construction worker, or an auto mechanic. Sometimes writing software is just labour. Sometimes it is a labour of love. Sometimes, it is both. And sometimes, it is much, much more.
 
 ** Programming is Perplexing
-   :PROPERTIES:
-   :CUSTOM_ID: programming-is-perplexing
-   :END:
 
 One of the key concerns about writing software in earnest (as opposed to doing /kata/) is that it is primary about solving a problem (or problems). The problem might be the developer's, it might be some other developer that has the problem, but far and away most software is written with an end user in mind: someone who does not want to write the software themselves, or at least have someone provide them the means to solve their problem.
 
@@ -77,9 +62,6 @@ If you look at people sitting around a table putting together a jigsaw puzzle, m
 One of the major issues in non-developers watching developers is that they do not really understand what is happening: at the point when it looks like developers are throwing out objections, or things that sound like your idea won't work, what they are actually doing is beginning the design in their heads, observing potential problems they'll have to solve or work around, and clarifying for themselves the beginnings of the design. One of the best things you can actually get from them is "That won't work". While that sounds disheartening, especially if the idea you presented has personal meaning, what that actually means is "I have an idea that may work for your need", or "I am now engaged on solving your problem". One of the worst things you can get is a shrug and "That's nice", because that means they don't care. And you want them to care.
 
 ** Programming is Deeply Personal
-   :PROPERTIES:
-   :CUSTOM_ID: programming-is-deeply-personal
-   :END:
 
 While programming has many core skills, and many best and better practices, and many concepts of aesthetics and fitness for use that are shared, it is also a realm of individual imagination and approaches to solving problems. One of the common phrases is "There's more than one way to do it!" is so true, and creates part of the rich tapestry of software that is available for people to use.
 

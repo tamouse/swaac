@@ -1,12 +1,7 @@
 * Cool Thing Today: showterm.io
-  :PROPERTIES:
-  :CUSTOM_ID: cool-thing-today-showterm.io
-  :END:
 
 - published date: 2013-09-09 15:10
 - keywords: ["coding", "demos", "show-and-tell", "swaac", "tools"]
-- source:
-- redirect_from: ["/blog/2013/09/09/cool-thing-today-showterm-dot-io/"]
 
 [[http://showterm.io]] is a really cool website for sharing terminal sessions by capturing them and playing them back.
 
@@ -16,10 +11,4 @@ I like this tool!
 
 [[http://showterm.io/03fe34182d9d48fa45e09#fast][Showterm of me making a new post]]
 
-#+BEGIN_HTML
-  <iframe src="http://showterm.io/03fe34182d9d48fa45e09#fast" width="640" height="480">
-#+END_HTML
-
-#+BEGIN_HTML
-  </iframe>
-#+END_HTML
+#+HTML: <iframe src="http://showterm.io/03fe34182d9d48fa45e09#fast" width="640" height="480">
