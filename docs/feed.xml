@@ -2,7 +2,60 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://github.com/tamouse/swaac</id>
   <title>Tamouse&#39;s Software as a Craft blog</title>
-  <updated>2019-02-24T17:49:10-06:00</updated>
+  <updated>2019-02-24T17:52:08-06:00</updated>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2019/01/2019-01-21-TIL-adding-a-new-html-tag-when-creating-a-react-portal.org</id>
+      <updated>2019-02-24T17:52:08-06:00</updated>
+      <title>TIL: Adding a new HTML tag name when creating a React Portal</title>
+      <content>* TIL: Adding a new HTML tag name when creating a React Portal
+  :PROPERTIES:
+  :KEYWORDS: react, portal, html, tag names
+  :CAPTURE_DATE: Mon Jan 21 16:49:12 2019
+  :LAST_UPDATE: Time-stamp: &lt;2019-01-21 17:06:24 tamara.temple&gt;
+  :END:
+
+- keywords: react, portal, html, tag names
+- capture date: Mon Jan 21 16:49:12 2019
+- last updated: Time-stamp: &lt;2019-01-21 17:06:24 tamara.temple&gt;
+
+I was working on a replacement for the ~Modal~ component in ~react-bootstrap~ since it is clear the library is moving away from where we want to be with our app.
+
+While doing so, I noticed it was difficult to find the Portal that react creates in the DOM tree, since I was using just a regular old ~&lt;div&gt;~ element. Given in HTML5 you can invent your own HTML tag names (which Web Components and CSS Components take advantage of as well).
+
+So I called the created element ~&lt;modal-portal&gt;~ and it&#39;s quite visible when it shows up in the DOM, and it makes an easy grab handle for testing.
+
+In my ~ModalPortal~ component, the code looks like this:
+
+#+name: ModalPortal.js
+#+begin_src rjsx
+    constructor(props) {
+      super(props)
+      this.el = document.createElement(&quot;modal-portal&quot;)
+      this.modalRoot = document.querySelector(this.props.selector || &quot;body&quot;)
+    }
+#+end_src
+
+In the DOM, the component looks like this:
+
+#+BEGIN_SRC html
+  &lt;modal-portal&gt;
+    &lt;div class=&quot;modal fade in&quot; style=&quot;display: block;&quot;&gt;...&lt;/div&gt;
+  &lt;/modal-portal&gt;
+#+END_SRC
+
+
+#+BEGIN_COMMENT
+Local Variables:
+time-stamp-count: 2
+time-stamp-line-limit: 20
+End:
+#+END_COMMENT
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2018/10/link-ARIA-is-spackle-not-rebar.org</id>
       <updated>2019-02-24T17:49:10-06:00</updated>
@@ -1296,26 +1349,6 @@ Here&#39;s our final code:
 #+END_SRC
 
 You can see this application with tests at the [[file:%7B%7Bpage.source%7D%7D][Github Repository]].
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2015/11/link-getting-testy.org</id>
-      <updated>2019-02-24T17:49:10-06:00</updated>
-      <title>Link: Getting Testy</title>
-      <content>* Link: Getting Testy
-  :PROPERTIES:
-  :CUSTOM_ID: link-getting-testy
-  :END:
-
-- published date: 2015-11-13 08:44
-- keywords: [&quot;link&quot;, &quot;randy-coulman&quot;, &quot;tdd&quot;, &quot;testing&quot;]
-- source: http://randycoulman.com/blog/categories/getting-testy/
-
-Randy Coulman has written a [[file:%7B%7Bpage.source%7D%7D][series on testing]] that I think you&#39;ll find useful.
 </content>
       <author>
         <name>Tamara Temple</name>
