@@ -2,19 +2,20 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://github.com/tamouse/swaac</id>
   <title>Tamouse&#39;s Software as a Craft blog</title>
-  <updated>2019-03-06T18:27:39-06:00</updated>
+  <updated>2019-03-06T18:44:57-06:00</updated>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2019/03/2019-03-07-til-fixing-a-capybara-problem-scrolling-submit-into-view-on-a-modal.org</id>
-      <updated>2019-03-06T18:27:39-06:00</updated>
+      <updated>2019-03-06T18:44:57-06:00</updated>
       <title>TIL: Fixing a Capybara Problem Scrolling the Submit Button Into View on a Modal Form Test</title>
-      <content>* TIL: Fixing a Capybara Problem Scrolling the Submit Button Into View on a Modal Form Test
+      <content>#+COMMENT -*- time-stamp-line-limit: 12; time-stamp-count: 2 -*-
+* TIL: Fixing a Capybara Problem Scrolling the Submit Button Into View on a Modal Form Test
   :PROPERTIES:
-  :LAST_UPDATE: Time-stamp: &lt;2019-03-06 18:27:39 tamara&gt;
+  :LAST_UPDATE: Time-stamp: &lt;2019-03-06 18:44:57 tamara&gt;
   :CAPTURE_DATE: [2019-03-06 Wed]
   :KEYWORDS: testing, capybara, scrolling, modal
   :END:
 
-  - last_update: Time-stamp: &lt;2018-09-16 14:32:23 tamara.temple&gt;
+  - last_update: Time-stamp: &lt;2019-03-06 18:44:57 tamara&gt;
   - capture_date: [2019-03-06 Wed]
   - keywords: testing, capybara, scrolling, modal
 
@@ -38,7 +39,7 @@
 
    it will scroll the window down, however, the modal isn&#39;t really sitting inside the window. It&#39;s definitely part of the DOM, but we need to scroll the modal itself.
 
-   Instead, we grab the modal DOM element and scroll it instead:
+   So we grab the *modal DOM element* and tell it to scroll down:
 
    #+BEGIN_SRC ruby
      page.execute_script &quot;document.getElementById(&#39;new-customer-modal&#39;).scroll(0, 10000)&quot;

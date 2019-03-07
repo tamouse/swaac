@@ -1,11 +1,12 @@
+#+COMMENT -*- time-stamp-line-limit: 12; time-stamp-count: 2 -*-
 * TIL: Fixing a Capybara Problem Scrolling the Submit Button Into View on a Modal Form Test
   :PROPERTIES:
-  :LAST_UPDATE: Time-stamp: <2019-03-06 18:27:39 tamara>
+  :LAST_UPDATE: Time-stamp: <2019-03-06 18:44:57 tamara>
   :CAPTURE_DATE: [2019-03-06 Wed]
   :KEYWORDS: testing, capybara, scrolling, modal
   :END:
 
-  - last_update: Time-stamp: <2018-09-16 14:32:23 tamara.temple>
+  - last_update: Time-stamp: <2019-03-06 18:44:57 tamara>
   - capture_date: [2019-03-06 Wed]
   - keywords: testing, capybara, scrolling, modal
 
@@ -29,7 +30,7 @@
 
    it will scroll the window down, however, the modal isn't really sitting inside the window. It's definitely part of the DOM, but we need to scroll the modal itself.
 
-   Instead, we grab the modal DOM element and scroll it instead:
+   So we grab the *modal DOM element* and tell it to scroll down:
 
    #+BEGIN_SRC ruby
      page.execute_script "document.getElementById('new-customer-modal').scroll(0, 10000)"
