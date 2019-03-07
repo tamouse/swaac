@@ -1,0 +1,44 @@
+* TIL: Fixing a Capybara Problem Scrolling the Submit Button Into View on a Modal Form Test
+  :PROPERTIES:
+  :LAST_UPDATE: Time-stamp: <2019-03-06 18:27:39 tamara>
+  :CAPTURE_DATE: [2019-03-06 Wed]
+  :KEYWORDS: testing, capybara, scrolling, modal
+  :END:
+
+  - last_update: Time-stamp: <2018-09-16 14:32:23 tamara.temple>
+  - capture_date: [2019-03-06 Wed]
+  - keywords: testing, capybara, scrolling, modal
+
+** Background
+
+   In [[https://www.kickserv.com/][the product I work on]], we have a form to let a user create a new customer during the editing of a job. This form is quite long. In the test, the only required field, the Customer's name, is filled in, and the new customer modal form is submitted.
+
+** Problem
+
+   Since the form is so long, the submit button is not visible on the page, so [[http://teamcapybara.github.io/capybara/][Capybara]] cannot find it to click on it.
+
+** Solution
+
+   Scroll the modal so the submit button comes into view.
+
+   If you execute the following line in a Capybara test:
+
+   #+BEGIN_SRC ruby
+     page.execute_script "window.scrollBy(0,10000)"
+   #+END_SRC
+
+   it will scroll the window down, however, the modal isn't really sitting inside the window. It's definitely part of the DOM, but we need to scroll the modal itself.
+
+   Instead, we grab the modal DOM element and scroll it instead:
+
+   #+BEGIN_SRC ruby
+     page.execute_script "document.getElementById('new-customer-modal').scroll(0, 10000)"
+   #+END_SRC
+
+   which makes the submit button come into view, and then the Capybara ~.click~ method works.
+
+** Caveats
+
+   This works when you're using Chrome (visible or headless). It does *not* work in IE11 or lower, nor does it work in Safari mobile.
+
+   The same issue can arise when using [[http://nightwatchjs.org/][NightWatch.js]], with a similar solution to scroll the modal rather than the window.

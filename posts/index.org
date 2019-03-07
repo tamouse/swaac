@@ -1,6 +1,7 @@
 - [[./learning.org]]
 - [[./2019/01/2019-01-21-TIL-adding-a-new-html-tag-when-creating-a-react-portal.org]]
 - [[./2019/01/2019-01-03-dealing-with-jest-import-syntax-error.org]]
+- [[./2019-03-07-til-fixing-a-capybara-problem-scrolling-submit-into-view-on-a-modal.org]]
 - [[./2018/12/2018-12-20-adding-methods-to-base-graphql-classes.org]]
 - [[./2018/12/2018-12-12-tenants-of-toast-and-tech.org]]
 - [[./2018/12/2018-12-01-polyfill-for-custom-event.org]]
