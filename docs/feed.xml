@@ -2,21 +2,21 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://github.com/tamouse/swaac</id>
   <title>Tamouse&#39;s Software as a Craft blog</title>
-  <updated>2019-04-05T01:48:54-05:00</updated>
+  <updated>2019-04-05T01:54:31-05:00</updated>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2019/04/2019-04-05-common-error-not-clearing-selected-value.org</id>
-      <updated>2019-04-05T01:48:54-05:00</updated>
-      <title>Fixing and common problem: not clearing a selected option before setting a new selected option</title>
-      <content>* Fixing and common problem: not clearing a selected option before setting a new selected option
+      <updated>2019-04-05T01:54:31-05:00</updated>
+      <title>Fixing a common problem: not clearing a selected option before setting a new selected option</title>
+      <content>* Fixing a common problem: not clearing a selected option before setting a new selected option
   :PROPERTIES:
   :KEYWORDS: javascript, jquery
   :CAPTURE_DATE: Fri Apr  5 01:11:42 2019
-  :LAST_UPDATE: Time-stamp: &lt;2019-04-05 01:48:54 tamara&gt;
+  :LAST_UPDATE: Time-stamp: &lt;2019-04-05 01:54:31 tamara&gt;
   :END:
 
 - keywords: javascript, jquery
 - capture date: Fri Apr  5 01:11:42 2019
-- last updated: Time-stamp: &lt;2019-04-05 01:48:54 tamara&gt;
+- last updated: Time-stamp: &lt;2019-04-05 01:54:31 tamara&gt;
 
 ** Intro
 

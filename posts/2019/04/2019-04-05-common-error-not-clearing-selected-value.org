@@ -1,13 +1,13 @@
-* Fixing and common problem: not clearing a selected option before setting a new selected option
+* Fixing a common problem: not clearing a selected option before setting a new selected option
   :PROPERTIES:
   :KEYWORDS: javascript, jquery
   :CAPTURE_DATE: Fri Apr  5 01:11:42 2019
-  :LAST_UPDATE: Time-stamp: <2019-04-05 01:48:54 tamara>
+  :LAST_UPDATE: Time-stamp: <2019-04-05 01:54:31 tamara>
   :END:
 
 - keywords: javascript, jquery
 - capture date: Fri Apr  5 01:11:42 2019
-- last updated: Time-stamp: <2019-04-05 01:48:54 tamara>
+- last updated: Time-stamp: <2019-04-05 01:54:31 tamara>
 
 ** Intro
 
