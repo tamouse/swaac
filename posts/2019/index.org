@@ -1,5 +1,6 @@
 - [[./04/2019-04-05-til-mounting-standalone-react-client-as-a-rails-react_component_works.org]]
 - [[./04/2019-04-05-link-how-to-access-production-data-in-rails-migrations.org]]
+- [[./04/2019-04-05-common-error-not-clearing-selected-value.org]]
 - [[./03/2019-03-07-til-fixing-a-capybara-problem-scrolling-submit-into-view-on-a-modal.org]]
 - [[./01/2019-01-21-TIL-adding-a-new-html-tag-when-creating-a-react-portal.org]]
 - [[./01/2019-01-03-dealing-with-jest-import-syntax-error.org]]

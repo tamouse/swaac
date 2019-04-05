@@ -2,7 +2,123 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://github.com/tamouse/swaac</id>
   <title>Tamouse&#39;s Software as a Craft blog</title>
-  <updated>2019-04-05T00:59:22-05:00</updated>
+  <updated>2019-04-05T01:48:54-05:00</updated>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2019/04/2019-04-05-common-error-not-clearing-selected-value.org</id>
+      <updated>2019-04-05T01:48:54-05:00</updated>
+      <title>Fixing and common problem: not clearing a selected option before setting a new selected option</title>
+      <content>* Fixing and common problem: not clearing a selected option before setting a new selected option
+  :PROPERTIES:
+  :KEYWORDS: javascript, jquery
+  :CAPTURE_DATE: Fri Apr  5 01:11:42 2019
+  :LAST_UPDATE: Time-stamp: &lt;2019-04-05 01:48:54 tamara&gt;
+  :END:
+
+- keywords: javascript, jquery
+- capture date: Fri Apr  5 01:11:42 2019
+- last updated: Time-stamp: &lt;2019-04-05 01:48:54 tamara&gt;
+
+** Intro
+
+This was a problem that our customers found (OOPS! :( ) that caused the wrong itme to be sent up to the server. What was most interesting about this is the way it presented itself was it was only failing in Safari on macOS. It worked as &quot;expected&quot; on both Chrome and Firefox.
+
+** The problem
+
+The problem was that when the user selected and option button, the app was using jQuery to change a hidden select tag by marking the option `selected`. The issue was the originally selected item was not cleared.
+
+So in the case of Chrome and Firefox, in particular, they used the *first* selected option, while Safari used the *last* selected option. Neither are particularly right or wrong, and open to interpretation.
+
+** The solution
+
+The answer is that before setting an item &quot;selected&quot;, remove all the existing &quot;selected&quot; options. Theoretically there should be only one, however unless there&#39;s some ungodly number of options that it might affect perceived performance, it&#39;s easiest to just clear every option, first.
+
+** Some code
+
+THis is a tiny bit of jQuery that implemented the fix:
+
+#+BEGIN_SRC js
+  function setTaskType(type) {
+      // missing this caused the problem
+      $(&#39;#task_task_type_id option&#39;)
+	  .attr(&#39;selected&#39;, false);
+
+      // this was the original
+      $(&#39;#task_task_type_id option&#39;)
+	  .filter(function() { return $.trim( $(this).text() ) == type; })
+	  .attr(&#39;selected&#39;,true);
+  }
+#+END_SRC
+
+** Other thoughts
+
+I&#39;m calling this a &quot;common error&quot; because I&#39;ve seen this exact problem crop up in other circumstances, perhaps a dozen times. If *I&#39;ve* seen it that often, and I haven&#39;t been writing a lot of JS for very long (a handful of years), it&#39;s probably something that happens more often. It&#39;s easy to forget it. It&#39;s even easier to neglect to test this, especially if it looks like it&#39;s working on one browser.
+
+I think, in actuality, if this feature had been tested by pressing random buttons, in different orders, and selecting different options more than once, this error might have shown up a lot earlier, and on all browsers, too. That it showed up in the customers&#39; world is a let down. That it took one line to fix was pure luck.
+
+#+BEGIN_COMMENT
+Local Variables:
+time-stamp-count: 2
+time-stamp-line-limit: 20
+End:
+#+END_COMMENT
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/12/2018-12-12-tenets-of-toast-and-tech.org</id>
+      <updated>2019-04-05T01:09:23-05:00</updated>
+      <title>The Tenets of Toast and Tech</title>
+      <content>* The Tenets of Toast and Tech
+  :PROPERTIES:
+  :CAPTURE_DATE: [2018-12-12 Wed]
+  :last_update: Time-stamp: &lt;2019-04-05 01:09:23 tamara&gt;
+  :END:
+
+  - last_updated: Time-stamp: &lt;2019-04-05 01:09:23 tamara&gt;
+  - keywords: Learning Space, Toast and Tech
+  - capture date: [2018-12-12 Wed]
+
+  As some of you following know, I&#39;ve led this thing on Tuesday nights called &quot;Toast &amp; Tech&quot; for about 3 years [starting in the Autumn of 2015], nominally under the organization at .@GDImpls, the Minneapolis chapter of .@girldevelopit.
+
+  I have left that organization, but I want to leave behind something for those involved in T&amp;T, and for those looking to make a space for learning that it inclusive
+
+** The Tenets of Toast and Tech:
+
+   - make *everyone* welcome, enthusiastically
+   - make *all* questions welcome, enthusiastically
+   - everyone is learning, everyone is teaching
+   - there is no single path, there are as many paths as people attending, as many paths as needed
+   - you don&#39;t need a project or tech work to attend, just come
+   - you don&#39;t need any experience to attend, just come
+   - support everyone who shows up
+   - Make it safe to learn, safe to ask questions, safe to show up.
+
+   Possibly the *most* important tenet of all: #ToastAndTech can happen *anywhere*, run by *anyone*; all it takes is letting folks know about it, and showing up to hold the space.
+
+   #CauseAScene
+   #KeepLearning
+   #HappyToast
+
+   [[./kawaii-toast.png][happy toast]]
+
+   [[https://twitter.com/i/moments/1073061297200267265][moment on twitter]]
+
+
+   #+BEGIN_COMMENT
+   Local Variables:
+   time-stamp-count: 2
+   time-stamp-line-limit: 20
+   End:
+   #+END_COMMENT
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2019/04/2019-04-05-til-mounting-standalone-react-client-as-a-rails-react_component_works.org</id>
       <updated>2019-04-05T00:59:22-05:00</updated>
@@ -351,182 +467,6 @@ They list several items in the Root Cause Analysis section, and provide a list o
    :PROPERTIES:
    :CUSTOM_ID: major-kudos-to-gitlab
    :END:
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2016/12/todo-app-using-just-react-with-pojs-no-jsx-or-es6.org</id>
-      <updated>2019-02-24T17:49:10-06:00</updated>
-      <title>Todo app using just React with POJS - no JSX or ES6</title>
-      <content>* Todo app using just React with POJS - no JSX or ES6
-  :PROPERTIES:
-  :CUSTOM_ID: todo-app-using-just-react-with-pojs---no-jsx-or-es6
-  :END:
-
-- published date: 2016-12-03 09:56
-- keywords: [&quot;brian-holt&quot;, &quot;frontend-masters&quot;, &quot;javascript&quot;, &quot;learning&quot;, &quot;react&quot;, &quot;todoapp&quot;]
-- source: https://github.com/tamouse/todo-react-nojsx
-
-I just moderated the [[https://frontendmasters.com][Frontend Masters]] class &quot;Complete Introduction to React&quot; taught by [[https://twitter.com/holtbt][Brian Holt]] of Netflix and Reddit fame.
-
-It was a great course, but as moderator I was doing a lot of things to keep the chat room flowing and didn&#39;t get to pay much attention to the detail Brian was presenting, and definitely didn&#39;t have time in class to try out stuff.
-
-So I thought I&#39;d just give the first bit of Brian&#39;s presentation a go, where we just worked with React as a plain JS library, nothing fancy, no JSX transpiling, etc.
-
-[[file:%7B%7Bpage.source%7D%7D][This]] is the result, the canonical single page Todo application.
-
-It was pretty easy, and pretty fun. I kept only to the [[https://facebook.github.io/react/docs/][React docs]], especially
-
-- [[https://facebook.github.io/react/docs/react-without-es6.html][React Without ES6 - React]]
-- [[https://facebook.github.io/react/docs/react-without-jsx.html][React Without JSX - React]]
-
-I&#39;m pleased with the experiement.
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2016/12/flexbox-website-with-fixed-headers-and-footer.org</id>
-      <updated>2019-02-24T17:49:10-06:00</updated>
-      <title>flexbox website with fixed headers and footer</title>
-      <content>* flexbox website with fixed headers and footer
-  :PROPERTIES:
-  :CUSTOM_ID: flexbox-website-with-fixed-headers-and-footer
-  :END:
-
-- published date: 2016-12-04 14:31
-- keywords: [&quot;css&quot;, &quot;flexbox&quot;]
-- source: https://github.com/tamouse/sample-flex-website-layout
-- demo: {&quot;url&quot;=&gt;&quot;https://tamouse.github.io/sample-flex-website-layout/&quot;, &quot;text&quot;=&gt;&quot;Flex Standard Layout (demo)&quot;, &quot;tooltop&quot;=&gt;&quot;Demonstration of standard web layout using flexbox&quot;}
-
-I was playing around with some React stuff and came upon a basic layout issue. I wanted to have the standard header + footer + main + sidebar sort of layout, but I wanted to do it flexbox. I also wanted the header and footer to be fixed to the top and bottom, respectively, and for the main content to be able to scroll inside it.
-
-*UPDATE!!* Now with more responsive!
-
-The results can be seen at [[file:%7B%7B%20page.source%20%7D%7D][this repo]], and a demo at [[file:%7B%7B%20page.demo.url%20%7D%7D%20%7B%7B%20page.demo.tooltip%20%7D%7D][{{ page.demo.text }}]].
-
-** Page Boundaries: Header and Footer
-   :PROPERTIES:
-   :CUSTOM_ID: page-boundaries-header-and-footer
-   :END:
-
-Making the header and footer fixed to top and bottom is fairly easy. The following attributes generally work well:
-
-#+BEGIN_SRC css
-    .fixed-top, .fixed-bottom {
-      position: aboslute;
-      height: 40px;
-    }
-    .fixed-top { top: 0 }
-    .fixed-bottom { bottom: 0 }
-#+END_SRC
-
-** Full-height columns
-   :PROPERTIES:
-   :CUSTOM_ID: full-height-columns
-   :END:
-
-Getting columns of equal height is a bit tricksier, and I resorted to what seems like a hack.
-
-#+BEGIN_SRC css
-    .fixed-middle {
-      position: absolute;
-      top: 40px;
-      bottom: 40px;
-      overflow: hidden;
-
-    }
-
-    .fixed-middle .column {
-      overflow: auto;
-    }
-#+END_SRC
-
-** Where&#39;s the flex?
-   :PROPERTIES:
-   :CUSTOM_ID: wheres-the-flex
-   :END:
-
-This isn&#39;t very flexy yet, so I added in some goodness for that:
-
-#+BEGIN_SRC css
-    .fixed-middle {
-      dislplay: flex
-    }
-    .fixed-middle .col {
-      flex: 1
-    }
-#+END_SRC
-
-Much better, but then the sidebars and central main content area are all the same width. I want the content area to dominate.
-
-I arranged the main content part to come before the sidebars, like so:
-
-#+BEGIN_EXAMPLE
-    &lt;div class=&quot;fixed-middle&quot;&gt;
-        &lt;main class=&quot;main-content&quot; role=&quot;main&quot;&gt;
-            &lt;!-- main content --&gt;
-        &lt;/main&gt;
-        &lt;aside class=&quot;left-side&quot;&gt;
-            &lt;!-- left side bar content --&gt;
-        &lt;/aside&gt;
-        &lt;aside class=&quot;right-side&quot;&gt;
-            &lt;!-- right sidebar content --&gt;
-        &lt;/aside&gt;
-    &lt;/div&gt;
-#+END_EXAMPLE
-
-After removing =.fixed-middle .col= CSS definition, I put in:
-
-#+BEGIN_SRC css
-    .fixed-middle .main-content {
-       flex: 5;
-       order: 2;
-    }
-    .fixed-middle .left-side {
-       flex: 1;
-       order: 1;
-    }
-    .fixed-middle .right-side {
-       flex: 1;
-       order: 3;
-    }
-#+END_SRC
-
-This tells flexbox to let the main content area grow to 5 times the size of the sidebars, but make sure the left side bar&#39;s content comes first in the row.
-
-** Header and Footer Redux
-   :PROPERTIES:
-   :CUSTOM_ID: header-and-footer-redux
-   :END:
-
-I wanted to extend this even further, so the case where you may have multiple &quot;widgets&quot; in the header or footer, and so redid the same idea for the those, but keeping the flex to 1.
-
-If I ended up with a 2/3 widget and 1/3 widget, I could mark them with appropriate classes and set the flex accordingly.
-
-** Sample Repo and Demo
-   :PROPERTIES:
-   :CUSTOM_ID: sample-repo-and-demo
-   :END:
-
-- [[file:%7B%7B%20page.source%20%7D%7D][sample repo on Github]]
-- [[file:%7B%7B%20page.demo.url%20%7D%7D][demonstration]]
-
-** Making it responsive
-   :PROPERTIES:
-   :CUSTOM_ID: making-it-responsive
-   :END:
-
-This turned out to be really easy, and all I needed to do is wrap the flexbox and absolute positioning in a media query.
-
-I had put the page header after the main content, but that didn&#39;t look as good, so I moved that to the top.
-
-The image was misbehaving as well, so I introduced an =.img-responsive= class that limited the width to 100%.
 </content>
       <author>
         <name>Tamara Temple</name>
