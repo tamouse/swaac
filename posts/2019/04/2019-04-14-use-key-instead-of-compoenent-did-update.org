@@ -1,0 +1,75 @@
+#+COMMENT -*- time-stamp-line-limit: 12; time-stamp-count: 2 -*-
+* TIL: Use key instead of componentDidUpdate
+  :PROPERTIES:
+  :LAST_UPDATE: Time-stamp: <2019-04-19 19:11:28 tamara>
+  :CAPTURE_DATE: [2019-04-19 Fri 19:05]
+  :KEYWORDS: react, componentDidUpdate, key prop
+  :END:
+
+- last update: Time-stamp: <2018-09-16 14:32:23 tamara.temple>
+- capture date: [2019-04-19 Fri 19:07]
+- keywords: react, componentDidUpdate, key prop
+
+Watching Ryan Florence over at [[https://www.reacttraining.com][reacttraining.com]] in the [[https://courses.reacttraining.com/courses/354571/lectures/5449516][Reach Catchup componentWillReceiveProps video]], towards the end, after explaining how to use ~componentDidUpdate~ to retrieve updated props / state based on a new prop, he then goes on to say you can do this a lot easier by setting the component's ~key~ to the thing you're checking in ~cDU~ and just make React create a whole new instance.
+
+This is so easy it's just astounding how much it makes sense.
+
+** an example
+
+Let's say you have a collection of notes to display, with the following structure:
+
+#+BEGIN_SRC rjsx
+  {
+    "notes": [
+      {
+	"id": Int,
+	"body": String,
+	"createdAt": String,
+	"updatedAt": String,
+	"creator": {
+	  "name": String
+	},
+	"public": Boolean
+      }
+    ]
+  }
+
+#+END_SRC
+
+Let's say this is our component:
+
+#+BEGIN_SRC rjsx
+  const Notes = ({ notes }) => (
+    <NoteList>
+      {notes && notes.length > 0 ? (
+	notes.map((note, index) => <Note key={index} note={note} />)
+      ) : (
+	<NoNotes />
+      )}
+    </NoteList>
+  )
+#+END_SRC
+
+
+If for some reason you need to manage state for each note, perhaps because you're modifying it in place (i.e. within the row), or you delete a note, or add a note, you might need to keep the state updated based on update props. If the note changes, you may need to perform refetch to get the updated info.
+
+Or so you might think.
+
+Instead, by using the ~note.id~ as the ~key~, you can easily make React produce a new instance.
+
+#+BEGIN_SRC rjsx
+  const Notes = ({ notes }) => (
+    <NoteList>
+      {notes && notes.length > 0 ? (
+	notes.map(note => <Note key={note.id} note={note} />)
+      ) : (
+	<NoNotes />
+      )}
+    </NoteList>
+  )
+#+END_SRC
+
+
+If the id of the particular note in that sequence changes, React will re-instantiate the ~Note~ and whatever you do to initialize it is done with the new note.
+
+This may not be the best example, but the concept is what's important for me to remember. I have a habit of just using the map index instead of something more useful to React.

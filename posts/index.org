@@ -1,4 +1,5 @@
 - [[./learning.org]]
+- [[./2019/04/2019-04-14-use-key-instead-of-compoenent-did-update.org]]
 - [[./2019/04/2019-04-05-til-mounting-standalone-react-client-as-a-rails-react_component_works.org]]
 - [[./2019/04/2019-04-05-link-how-to-access-production-data-in-rails-migrations.org]]
 - [[./2019/04/2019-04-05-common-error-not-clearing-selected-value.org]]
