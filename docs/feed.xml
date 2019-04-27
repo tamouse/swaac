@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://github.com/tamouse/swaac</id>
   <title>Tamouse&#39;s Software as a Craft blog</title>
-  <updated>2019-04-27T16:23:14-05:00</updated>
+  <updated>2019-04-27T16:28:56-05:00</updated>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2019/04/2019-04-27-flash-toastr-using-react-hooks.org</id>
-      <updated>2019-04-27T16:23:14-05:00</updated>
+      <updated>2019-04-27T16:28:56-05:00</updated>
       <title>FlashToastr React Component using React Hooks</title>
       <content>#+TITLE: 2019-04-27-flash-toastr-using-react-hooks
 #+DATE: &lt;2019-04-27 Sat&gt;
@@ -50,7 +50,7 @@
 
 ** Enter Context
 
-   What I figured out finally was that in face I needed a context that would keep state across the app and for the flash components themselves. This turned out to be pretty nifty and solved things quite nicely.
+   What I figured out finally was that I needed a context that would keep state across the app and for the flash components themselves. This turned out to be pretty nifty and solved things quite nicely.
 
    The context holds information on what the flash message is, what level of message it is, and whether the message is showing or not. In addition, it has setters for each of these. The context provider .. erm .. provides them, and the hook picks them up with ~useContext~, implements 2 convenience functions for setting/showing the flash, and another for closing it.
 
