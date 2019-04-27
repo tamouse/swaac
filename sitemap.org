@@ -1,5 +1,6 @@
 #+TITLE: Sitemap for project orgfiles
 
+- [[file:index.org][index]]
 - [[file:misc-notes.org][misc-notes]]
 - [[file:README.org][README]]
 - posts
