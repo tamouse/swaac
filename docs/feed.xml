@@ -2,7 +2,71 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://github.com/tamouse/swaac</id>
   <title>Tamouse&#39;s Software as a Craft blog</title>
-  <updated>2019-04-27T06:24:39-05:00</updated>
+  <updated>2019-04-27T16:23:14-05:00</updated>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2019/04/2019-04-27-flash-toastr-using-react-hooks.org</id>
+      <updated>2019-04-27T16:23:14-05:00</updated>
+      <title>FlashToastr React Component using React Hooks</title>
+      <content>#+TITLE: 2019-04-27-flash-toastr-using-react-hooks
+#+DATE: &lt;2019-04-27 Sat&gt;
+#+AUTHOR: Tamara Temple
+#+EMAIL: tamouse@gmail.com
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+CREATOR: Emacs 26.1 (Org mode 9.1.9)
+#+OPTIONS: html-link-use-abs-url:nil html-postamble:auto
+#+OPTIONS: html-preamble:t html-scripts:t html-style:t html5-fancy:t
+#+OPTIONS: tex:t
+#+HTML_DOCTYPE: html5
+#+HTML_CONTAINER: div
+#+DESCRIPTION: An example implementation to learn react hooks
+#+KEYWORDS: react,hooks,context,component,flash messages,toastr
+#+HTML_LINK_HOME:
+#+HTML_LINK_UP:
+#+HTML_MATHJAX:
+#+HTML_HEAD: &lt;link rel=&quot;stylesheet&quot; href=&quot;../../../others/style.css&quot; /&gt;
+#+HTML_HEAD_EXTRA:
+#+SUBTITLE:
+#+INFOJS_OPT:
+#+CREATOR: &lt;a href=&quot;https://www.gnu.org/software/emacs/&quot;&gt;Emacs&lt;/a&gt; 26.1 (&lt;a href=&quot;https://orgmode.org&quot;&gt;Org&lt;/a&gt; mode 9.1.9)
+#+LATEX_HEADER:
+
+* FlashToastr React Component using React Hooks
+
+  Today I set out on a learning journey. I&#39;d been looking at React&#39;s Hooks implementation for a bit, but haven&#39;t really gone out to make anything.
+
+  The app I work on, Kickserv, has a Redux-based Flash message component that used in the new React-based client. It&#39;s rather large, and totally over-engineered for the need it&#39;s fulfilling.
+
+  Roll up with Hooks in React 16.8 getting full support, and I figured it&#39;s really time to buckle down and learn them.
+
+** First mis-direction
+
+   Initially, I thought I would be able to do this using only ~useState~ in the hook. This led to a few hours of hair-pulling, the wailing of gnashing of teeth, and a few good swears. It turns out I was missing something really important:
+
+   &gt; When you use ~useState~, *it&#39;s actually creating new state*
+
+   This is probably obvious, and it shouldn&#39;t need stating, but it was breaking me. See, for the flash message thing, it&#39;s treated sort of like a modal, but not really. It needs a context to be able to let a component anywhere within the app be able to submit a flash message to it, and have the little toastr overlay alert show up. In this app, there is only one, they don&#39;t stack up like notifications do in other systems, they just show up at the top of the page until dismissed by the user, a la Rails&#39; flash messages.
+
+** Enter Context
+
+   What I figured out finally was that in face I needed a context that would keep state across the app and for the flash components themselves. This turned out to be pretty nifty and solved things quite nicely.
+
+   The context holds information on what the flash message is, what level of message it is, and whether the message is showing or not. In addition, it has setters for each of these. The context provider .. erm .. provides them, and the hook picks them up with ~useContext~, implements 2 convenience functions for setting/showing the flash, and another for closing it.
+
+** Storybook View
+
+   The component is illustrated using storybook, and can be seen at [[https://flash_toastr.surge.sh/]] .
+
+** Github Repo
+
+   The repo containing the code is out at [[https://github.com/tamouse/flash_toaster]] if you want to play around with it or something.
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2018/10/link-ARIA-is-spackle-not-rebar.org</id>
       <updated>2019-04-27T06:24:39-05:00</updated>
@@ -914,26 +978,6 @@ Here&#39;s our final code:
 #+END_SRC
 
 You can see this application with tests at the [[https://github.com/tamouse/example_nested_category][Github Repository]].
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2015/11/link-getting-testy.org</id>
-      <updated>2019-04-27T06:24:39-05:00</updated>
-      <title>Link: Getting Testy</title>
-      <content>* Link: Getting Testy
-  :PROPERTIES:
-  :CUSTOM_ID: link-getting-testy
-  :END:
-
-- published date: 2015-11-13 08:44
-- keywords: [&quot;link&quot;, &quot;randy-coulman&quot;, &quot;tdd&quot;, &quot;testing&quot;]
-- source: http://randycoulman.com/blog/categories/getting-testy/
-
-Randy Coulman has written a [[http://randycoulman.com/blog/categories/getting-testy/][series on testing]] that I think you&#39;ll find useful.
 </content>
       <author>
         <name>Tamara Temple</name>

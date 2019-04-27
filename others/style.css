@@ -1,8 +1,26 @@
+/* Adding a dark-light switch, from
+   https://dev.to/ananyaneogi/create-a-dark-light-mode-switch-with-css-variables-34l8. kinda
+   neat, and maybe i'll do more design, someday. @tamouse
+   2019-04-27T06:41:59-0500 */
+
+/* set some CSS variables at the document root: */
+:root {
+  --font-color: #000;
+  --bg-color: #FFF;
+}
+/* and now the dark-mode colors: */
+[dark-theme="dark"] {
+  --font-color: #FFF;
+  --bg-color: #000;
+}
+
 body {
   margin: 10px auto;
   width: 70%;
   font-family: sans-serif;
   font-size: 18px;
+  background-color: var(--bg-color);
+  color: var(--font-color);
 }
 blockquote {
   font-style: italic;
@@ -14,6 +32,16 @@ figure img {
 }
 pre.src {
   overflow: auto;
-  background: #333;
-  color: #ccc;
+  background-color: var(--font-color);
+  color: var(--bg-color);
+}
+a,
+a:hover,
+a:visited,
+a:active{
+  color: var(--font-color);
+  text-decoration: underline;
+}
+a:hover {
+  background-color: #d9dc33;
 }

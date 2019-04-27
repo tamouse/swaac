@@ -12,6 +12,14 @@ If you're looking for the "learning" entry it is [[./posts/learning.org][here (.
 
 Each directory also has an ~index.org~ file in it listing the posts for that directory.
 
+** Publishing
+
+I've recently set up a publishing scheme for this blog, so maybe it's not just available as a github repo.
+
+Utilizing org-mode's vast publishing capability, I can put these org files out as a whole web site. Ultimately, I'll build a rake command for it so it can be easily built and published.
+
+For now, in emacs, open the [[file:publish-setup.el::(setq%20org-publish-project-alist][~publish-setup.el~]], evaluate the buffer, and then execute ~org-publish~, selecting ~website~ as the object to be published. It's kinda cool. The entire directory is published in ~$HOME/Sites/swaac-pub/~ (hardcoded for now).
+
 ** Issues, Questions, Comments
 
 Please feel free to file an [[https://github.com/tamouse/swaac-org/issues][issue]] on the repo if you

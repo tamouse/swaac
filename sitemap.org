@@ -349,9 +349,18 @@
       - [[file:posts/2018/11/2018-11-29-thoughts-on-writing-good-tests.org][2018-11-29-thoughts-on-writing-good-tests]]
     - 12
       - [[file:posts/2018/12/2018-12-01-polyfill-for-custom-event.org][2018-12-01-polyfill-for-custom-event]]
-      - [[file:posts/2018/12/2018-12-12-tenants-of-toast-and-tech.org][2018-12-12-tenants-of-toast-and-tech]]
+      - [[file:posts/2018/12/2018-12-12-tenets-of-toast-and-tech.org][2018-12-12-tenets-of-toast-and-tech]]
       - [[file:posts/2018/12/2018-12-20-adding-methods-to-base-graphql-classes.org][2018-12-20-adding-methods-to-base-graphql-classes]]
   - 2019
     - [[file:posts/2019/index.org][index]]
     - 01
       - [[file:posts/2019/01/2019-01-03-dealing-with-jest-import-syntax-error.org][2019-01-03-dealing-with-jest-import-syntax-error]]
+      - [[file:posts/2019/01/2019-01-21-TIL-adding-a-new-html-tag-when-creating-a-react-portal.org][2019-01-21-TIL-adding-a-new-html-tag-when-creating-a-react-portal]]
+    - 03
+      - [[file:posts/2019/03/2019-03-07-til-fixing-a-capybara-problem-scrolling-submit-into-view-on-a-modal.org][2019-03-07-til-fixing-a-capybara-problem-scrolling-submit-into-view-on-a-modal]]
+    - 04
+      - [[file:posts/2019/04/2019-04-05-common-error-not-clearing-selected-value.org][2019-04-05-common-error-not-clearing-selected-value]]
+      - [[file:posts/2019/04/2019-04-05-link-how-to-access-production-data-in-rails-migrations.org][2019-04-05-link-how-to-access-production-data-in-rails-migrations]]
+      - [[file:posts/2019/04/2019-04-05-til-mounting-standalone-react-client-as-a-rails-react_component_works.org][2019-04-05-til-mounting-standalone-react-client-as-a-rails-react_component_works]]
+      - [[file:posts/2019/04/2019-04-14-use-key-instead-of-compoenent-did-update.org][2019-04-14-use-key-instead-of-compoenent-did-update]]
+      - [[file:posts/2019/04/2019-04-27-flash-toastr-using-react-hooks.org][2019-04-27-flash-toastr-using-react-hooks]]
