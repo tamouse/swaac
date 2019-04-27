@@ -1,25 +1,15 @@
 * Rails 4.2 config_for
-  :PROPERTIES:
-  :CUSTOM_ID: rails-4.2-config_for
-  :END:
 
 - published date: 2015-01-20 07:30
 - keywords: ["configuration", "rails", "swaac"]
-- source:
 
 There have been a lot of blog posts and articles written on how to add application-specific configurations to a Rails app. In version 4.2, there is a method called =config_for= which makes a lot of that obsolete, simplifying the results.
 
 ** A common Rails idiom
-   :PROPERTIES:
-   :CUSTOM_ID: a-common-rails-idiom
-   :END:
 
 A seemingly very common idiom is to arrange appliation configuration values in YAML+ERB files under the =config= directory in a Rails app. Then, in an initializer, read in the file, process it through ERB, then YAML extract the set appropriate to the running environment, and save it in a constant or global:
 
 *** =config/app_config.yml=
-    :PROPERTIES:
-    :CUSTOM_ID: configapp_config.yml
-    :END:
 
 #+BEGIN_EXAMPLE
     default: &default
@@ -36,9 +26,6 @@ A seemingly very common idiom is to arrange appliation configuration values in Y
 #+END_EXAMPLE
 
 *** =config/initializers/app_config.rb=
-    :PROPERTIES:
-    :CUSTOM_ID: configinitializersapp_config.rb
-    :END:
 
 #+BEGIN_SRC ruby
     require 'yaml'
@@ -48,9 +35,6 @@ A seemingly very common idiom is to arrange appliation configuration values in Y
 #+END_SRC
 
 ** Enter =config_for= at Rails 4.2
-   :PROPERTIES:
-   :CUSTOM_ID: enter-config_for-at-rails-4.2
-   :END:
 
 [[http://api.rubyonrails.org/classes/Rails/Application.html#method-i-config_for][=config_for=]] is a method on =Rails.application=. It can be called bar within all the normal configuration contexts, such as inside =config/environments/development.rb= and such.
 
@@ -63,17 +47,11 @@ You pass in a symbol that corresponds to a file name under =config=, so =config_
 Now, your initializer can become simply:
 
 *** =config/initializers/app_config.rb=
-    :PROPERTIES:
-    :CUSTOM_ID: configinitializersapp_config.rb-1
-    :END:
 
 #+BEGIN_SRC ruby
     APP_CONFIG = Rails.application.config_for(:app_config)
 #+END_SRC
 
 ** Example
-   :PROPERTIES:
-   :CUSTOM_ID: example
-   :END:
 
 I've an example github repo at [[https://github.com/tamouse/test_config_for]]. Feel free to fork it and play with it yourself.

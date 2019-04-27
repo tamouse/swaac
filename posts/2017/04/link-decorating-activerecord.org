@@ -5,9 +5,9 @@
 
 - published date: 2017-04-06 23:01
 - keywords: ["activerecord", "decorators", "links", "rails", "tl-dr"]
-- source: https://robots.thoughtbot.com/decorating-activerecord
+- source: [[https://robots.thoughtbot.com/decorating-activerecord]]
 
-This came across my path this week: [[https://robots.thoughtbot.com/authors/joel-quenneville][Joël Quenneville]]'s article, [[file:%7B%7B%20page.source%20%7D%7D][Decorating ActiveRecord]], which outlines some hazards when you go about decorating ActiveRecord models.
+This came across my path this week: [[https://robots.thoughtbot.com/authors/joel-quenneville][Joël Quenneville]]'s article, [[https://robots.thoughtbot.com/decorating-activerecord][Decorating ActiveRecord]], which outlines some hazards when you go about decorating ActiveRecord models.
 
 Do read the article, it's good.
 

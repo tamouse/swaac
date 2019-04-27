@@ -1,25 +1,13 @@
 * Running Headless Selenium with Chrome
-  :PROPERTIES:
-  :CUSTOM_ID: running-headless-selenium-with-chrome
-  :END:
 
-- published date: 2013-09-08 13:48
-- keywords: ["headless", "javascript", "selenium", "swaac", "testing", "web-development"]
-- source:
+  - published date: 2013-09-08 13:48
+  - keywords: ["headless", "javascript", "selenium", "swaac", "testing", "web-development"]
+  - source:
 
-Source http://www.chrisle.me/2013/08/running-headless-selenium-with-chrome/
+  Source http://www.chrisle.me/2013/08/running-headless-selenium-with-chrome/
 
-Clipped on 2013-09-08 13:48:54 -0500
-
-#+BEGIN_HTML
-  <!--more-->
-#+END_HTML
-
-#+BEGIN_QUOTE
-  * Running Headless Selenium with Chrome
-    :PROPERTIES:
-    :CUSTOM_ID: running-headless-selenium-with-chrome-1
-    :END:
+  Clipped on 2013-09-08 13:48:54 -0500
+* Running Headless Selenium with Chrome
 
   Scaling website automation for either testing or scraping can be a challenge when the site is enitrely driven by JavaScript or behaves differently when using specific browsers.
 
@@ -30,23 +18,14 @@ Clipped on 2013-09-08 13:48:54 -0500
   #+CAPTION: Selenium with Chrome
   [[http://www.chrisle.me/wp-content/uploads/2013/08/Screen-Shot-2013-08-18-at-1.02.09-PM.png]]
 
-  Side note: [[http://www.chrisle.me/2013/08/5-reasons-i-chose-selenium-over-phantomjs/][Why use Selenium instead of PhantomJS]]?
 
-  --------------
-
-  ** Spike Goals
-     :PROPERTIES:
-     :CUSTOM_ID: spike-goals
-     :END:
+** Spike Goals
 
   - Get up and running quickly
   - Run a sample script that demos it works
   - Use JavaScript only (via NodeJS)
 
-  ** Prerequisites
-     :PROPERTIES:
-     :CUSTOM_ID: prerequisites
-     :END:
+** Prerequisites
 
   The code you write locally should work when deployed at scale in production. These tools help us do that by creating identical environments for development and production.
 
@@ -58,18 +37,13 @@ Clipped on 2013-09-08 13:48:54 -0500
 
   /I also assume you can use a command line and have some vague idea of what a virtual machine and Vagrant is./
 
-  --------------
-
-  ** Create a "Vagrantfile"
-     :PROPERTIES:
-     :CUSTOM_ID: create-a-vagrantfile
-     :END:
+** Create a "Vagrantfile"
 
   This file tells Vagrant how configure the testing environment. It applies universally to both development and production.
 
   Create a project directory and create a file named =Vagrantfile=:
 
-  #+BEGIN_SRC sh
+  #+BEGIN_SRC shell-script
       # encoding: utf-8
       # -*- mode: ruby -*-
       # vi: set ft=ruby :
@@ -94,16 +68,11 @@ Clipped on 2013-09-08 13:48:54 -0500
       end
   #+END_SRC
 
-  --------------
-
-  ** 2. Create "setup.sh"
-     :PROPERTIES:
-     :CUSTOM_ID: create-setup.sh
-     :END:
+** 2. Create "setup.sh"
 
   The setup.sh file executes when Vagrant creates a virtual machine for you. In the same folder as you created your =VagrantFile= create a =setup.sh= file:
 
-  #+BEGIN_SRC sh
+  #+BEGIN_SRC shell-script
       #!/bin/sh
       set -e
 
@@ -154,16 +123,11 @@ Clipped on 2013-09-08 13:48:54 -0500
       nohup java -jar ./selenium-server-standalone-2.35.0.jar &
   #+END_SRC
 
-  --------------
-
-  ** 3. Run "vagrant up"
-     :PROPERTIES:
-     :CUSTOM_ID: run-vagrant-up
-     :END:
+** 3. Run "vagrant up"
 
   On your command line and in the directory where you created the =VagrantFile=, run the following command:
 
-  #+BEGIN_SRC sh
+  #+BEGIN_SRC shell-script
       vagrant up
   #+END_SRC
 
@@ -172,12 +136,8 @@ Clipped on 2013-09-08 13:48:54 -0500
   #+CAPTION: vagrant up
   [[http://www.chrisle.me/wp-content/uploads/2013/08/Screen-Shot-2013-08-18-at-12.35.54-PM.png]]
 
-  --------------
 
-  ** 4. Make sure it's running
-     :PROPERTIES:
-     :CUSTOM_ID: make-sure-its-running
-     :END:
+** 4. Make sure it's running
 
   You can check to see if everything is working by going to =http://localhost:4444/wd/hub=.
 
@@ -186,73 +146,55 @@ Clipped on 2013-09-08 13:48:54 -0500
   #+CAPTION: WebDriver UI
   [[http://www.chrisle.me/wp-content/uploads/2013/08/Screen-Shot-2013-08-18-at-12.32.08-PM.png]]
 
-  --------------
 
-  ** 5. Install the selenium-webdriver
-     :PROPERTIES:
-     :CUSTOM_ID: install-the-selenium-webdriver
-     :END:
+** 5. Install the selenium-webdriver
 
   In order to write NodeJS scripts that talk to Chrome you will need the Selenium-Webdriver for NodeJS.
 
   On your command line, install =selenium-webdriver= with the following command. This will install the modules needed for interacting with Selenium.
 
-  #+BEGIN_SRC sh
-      npm install selenium-webdriver
+  #+BEGIN_SRC shell-script
+    npm install selenium-webdriver
   #+END_SRC
 
-  --------------
-
-  ** 6. Write your first Selenium script
-     :PROPERTIES:
-     :CUSTOM_ID: write-your-first-selenium-script
-     :END:
+** 6. Write your first Selenium script
 
   This first script will go to Google's homepage, type in a query, then print out the HTML.
 
-  #+BEGIN_SRC sh
-      var webdriver = require('selenium-webdriver');
+  #+BEGIN_SRC shell-script
+    var webdriver = require('selenium-webdriver');
 
-      var keyword = "chris le twitter";
+    var keyword = "chris le twitter";
 
-      var driver = new webdriver.Builder().
-         usingServer('http://localhost:4444/wd/hub').
-         withCapabilities(webdriver.Capabilities.chrome()).
-         build();
+    var driver = new webdriver.Builder().
+       usingServer('http://localhost:4444/wd/hub').
+       withCapabilities(webdriver.Capabilities.chrome()).
+       build();
 
-      driver.get('http://www.google.com');
-      driver.findElement(webdriver.By.name('q')).sendKeys(keyword);
-      driver.findElement(webdriver.By.name('btnG')).click();
-      driver.wait(function() {
-        return driver.getTitle().then(function(title) {
-          driver.getPageSource().then(function(html) {
-            console.log(html);
-            return true;
-          });
-        });
-      }, 1000);
+    driver.get('http://www.google.com');
+    driver.findElement(webdriver.By.name('q')).sendKeys(keyword);
+    driver.findElement(webdriver.By.name('btnG')).click();
+    driver.wait(function() {
+      return driver.getTitle().then(function(title) {
+	driver.getPageSource().then(function(html) {
+	  console.log(html);
+	  return true;
+	});
+      });
+    }, 1000);
 
-      driver.quit();
+    driver.quit();
   #+END_SRC
 
-  --------------
-
-  ** 7. Run your test
-     :PROPERTIES:
-     :CUSTOM_ID: run-your-test
-     :END:
+** 7. Run your test
 
   Run your test with node. You should see the HTML that was rendered by the Chrome browser.
 
   #+CAPTION: HTML from NodeJs
   [[http://www.chrisle.me/wp-content/uploads/2013/08/Screen-Shot-2013-08-18-at-1.07.55-PM.png]]
 
-  --------------
 
-  * Use Cases
-    :PROPERTIES:
-    :CUSTOM_ID: use-cases
-    :END:
+* Use Cases
 
   So now that you have this up and running what can you use it for?
 
@@ -263,4 +205,3 @@ Clipped on 2013-09-08 13:48:54 -0500
   *Taking many screenshots*: If you want to make screenshots of many pages at once.
 
   *Scraping stubborn websites*: I wasn't able to scrape a website using PhantomJS because it fired JSONP requests long after the onLoad() event fired. Simply waiting for the event loop to empty itself wansn't enough. A combination of debugging with a real browser and Selenium, I was more successful at getting the DOM after the scripts had run.
-#+END_QUOTE

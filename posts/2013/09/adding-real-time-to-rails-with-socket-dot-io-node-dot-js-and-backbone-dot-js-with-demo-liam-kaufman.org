@@ -7,8 +7,6 @@
 - keywords: ["backbone-js", "node-js", "rails", "real-time", "socket.io", "swaac"]
 - source: http://liamkaufman.com/blog/2012/02/25/adding_real-time_to_rails_with_socket.IO_nodejs_and_backbonejs_with_demo/
 
-A repost of <{{page.source}}> by [[http://liamkaufman.com/blog][Liam Kaufman]].
-
 #+BEGIN_QUOTE
   * Adding Real-Time to Rails With Socket.IO, Node.js and Backbone.js (With Demo)
     :PROPERTIES:
@@ -126,7 +124,7 @@ A repost of <{{page.source}}> by [[http://liamkaufman.com/blog][Liam Kaufman]].
           @eventHandlers()
 
         eventHandlers: () ->
-          # Subscribe to the app-wide event 'new-example'. When 
+          # Subscribe to the app-wide event 'new-example'. When
           # the event is called, the call-back function is provided
           # with an example model, which is then added to the collection.
           app.events.on 'new-example', (example) =>

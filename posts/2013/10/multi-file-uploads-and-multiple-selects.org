@@ -7,8 +7,6 @@
 - keywords: ["code", "javascript", "multi-file-uploads", "swaac", "user-experience", "user-feedback", "ux"]
 - source: http://www.raymondcamden.com/index.cfm/2013/10/1/MultiFile-Uploads-and-Multiple-Selects
 
-A repost of <{{page.source}}> by [[http://www.raymondcamden.com/][Raymond Camden]].
-
 #+BEGIN_QUOTE
   ** [[http://www.raymondcamden.com/index.cfm/2013/10/1/MultiFile-Uploads-and-Multiple-Selects][Multi-File Uploads and Multiple Selects]]
      :PROPERTIES:
@@ -40,7 +38,7 @@ A repost of <{{page.source}}> by [[http://www.raymondcamden.com/][Raymond Camden
       if(!e.target.files) return;
       selDiv.innerHTML = "";
       var files = e.target.files;
-      
+
       for(var i=0; i...) {
       }
     }
@@ -71,9 +69,9 @@ A repost of <{{page.source}}> by [[http://www.raymondcamden.com/][Raymond Camden
           }
         </style>
       </head>
-      
+
       <body>
-        
+
         <form id="myForm" method="post">
 
           Files: <input type="file" id="files" name="files" multiple><br/>
@@ -109,7 +107,7 @@ A repost of <{{page.source}}> by [[http://www.raymondcamden.com/][Raymond Camden
 
         }
 
-        reader.readAsDataURL(f); 
+        reader.readAsDataURL(f);
       }
 
     }
@@ -166,9 +164,9 @@ A repost of <{{page.source}}> by [[http://www.raymondcamden.com/][Raymond Camden
           }
         </style>
       </head>
-      
+
       <body>
-        
+
         <form id="myForm" method="post">
 
           Files: <input type="file" id="files" name="files" multiple><br/>
@@ -198,36 +196,36 @@ A repost of <{{page.source}}> by [[http://www.raymondcamden.com/][Raymond Camden
           continue;
         }
         storedFiles.push(f);
-        
+
         var reader = new FileReader();
         reader.onload = function (e) {
           var html = "<img src=\"" + e.target.result + "\">" + f.name + "<br clear=\"left\"/>";
           selDiv.innerHTML += html;
-          
+
         }
-        reader.readAsDataURL(f); 
+        reader.readAsDataURL(f);
       }
-      
+
     }
 
     function handleForm(e) {
       e.preventDefault();
       var data = new FormData();
-      
+
       for(var i=0, len=storedFiles.length; i<len; i++) {
-        data.append('files', storedFiles[i]);   
+        data.append('files', storedFiles[i]);
       }
-      
+
       var xhr = new XMLHttpRequest();
       xhr.open('POST', 'handler.cfm', true);
-      
+
       xhr.onload = function(e) {
         if(this.status == 200) {
-          console.log(e.currentTarget.responseText);  
+          console.log(e.currentTarget.responseText);
           alert(e.currentTarget.responseText + ' items uploaded.');
         }
       }
-      
+
       xhr.send(data);
     }
         </script>

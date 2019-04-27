@@ -1,550 +1,192 @@
+#+OPTIONS: toc:5
+
+
 * WordCamp Minneapolis 2016: Diving Back Into WordPress
-  :PROPERTIES:
-  :CUSTOM_ID: wordcamp-minneapolis-2016-diving-back-into-wordpress
-  :END:
 
-- published date: 2016-05-23 04:10
-- keywords: ["custom-themes", "relearning", "themes", "wordcamp", "wordpress"]
-- source:
+  - published date: 2016-05-23 04:10
+  - keywords: ["custom-themes", "relearning", "themes", "wordcamp", "wordpress"]
 
-[[https://2016.minneapolis.wordcamp.org/files/2016/02/wordpress-logo-2016.png]] [[https://2016.minneapolis.wordcamp.org/files/2016/02/wcmpls-logo-2016.png]] {: .text-center}
+  [[https://2016.minneapolis.wordcamp.org/files/2016/02/wordpress-logo-2016.png]]
 
-This past weekend, May 20-22, I attended [[https://2016.minneapolis.wordcamp.org/][WordCamp Minneapolis 2016]] (twitter hash tag [[http://twitter.com/search?q=%23wcmple][#wcmpls]]) which was a *huge* lot of fun. I haven't looked at WordPress and PHP in years, at least since around 2007. A lot has changed, and a lot hasn't changed. I also found a really welcoming community among the #wcmpls crowd.
+  This past weekend, May 20-22, I attended [[https://2016.minneapolis.wordcamp.org/][WordCamp Minneapolis 2016]] (twitter hash tag [[http://twitter.com/search?q=%23wcmple][#wcmpls]]) which was a *huge* lot of fun. I haven't looked at WordPress and PHP in years, at least since around 2007. A lot has changed, and a lot hasn't changed. I also found a really welcoming community among the #wcmpls crowd.
 
-Since I stopped using it, WordPress has only continued to grow and improve, thanks to the dedicated efforts of the WordPress open source community and project leaders.
+  Since I stopped using it, WordPress has only continued to grow and improve, thanks to the dedicated efforts of the WordPress open source community and project leaders.
 
-It was also great to step away from the Ruby on Rails server-side environment I've been running in for the past many years and engage in a bit of nostalgia in PHP (and perhaps some [[#nastalgia][nastalgia]] as well).
+  It was also great to step away from the Ruby on Rails server-side environment I've been running in for the past many years and engage in a bit of nostalgia in PHP (and perhaps some /nastalgia/[fn:1] as well).
 
-One of the things that made this event so much fun for me was all the people I already knew through [[http://gdiminneapolis.com][GDI]].
+  One of the things that made this event so much fun for me was all the people I already knew through [[http://gdiminneapolis.com][GDI]].
 
-#+BEGIN_HTML
-  <figure>
-#+END_HTML
+  https://s3.amazonaws.com/swaac.tamouse.org/images/wcmpls-gdi-attendees.jpg
 
-<img src="{{"images/wcmpls-gdi-attendees.jpg" | prepend: site.s3path}}" class="" alt="GDI WordCamp attendees. We happy few." />
-
-#+BEGIN_HTML
-  <figcaption class="text-center">
-#+END_HTML
-
-#+BEGIN_HTML
-  <p>
-#+END_HTML
-
-Our merry band, we happy few.
-
-#+BEGIN_HTML
-  </p>
-#+END_HTML
-
-#+BEGIN_HTML
-  <p>
-#+END_HTML
-
-GDI Mpls
-
-#+BEGIN_HTML
-  </p>
-#+END_HTML
-
-#+BEGIN_HTML
-  </figcaption>
-#+END_HTML
-
-#+BEGIN_HTML
-  </figure>
-#+END_HTML
-
-#+BEGIN_HTML
-  <hr class="divider divider-primary">
-#+END_HTML
+  Our merry band, we happy few. GDI Mpls
 
 ** Friday Foundation
-   :PROPERTIES:
-   :CUSTOM_ID: friday-foundation
-   :END:
 
-For the first time, #wcmpls had a Friday-before-the-conference technical day, and I chose to dive deep into the development track and learn about creating a custom theme from scratch.
+   For the first time, #wcmpls had a Friday-before-the-conference technical day, and I chose to dive deep into the development track and learn about creating a custom theme from scratch.
 
-This was wonderful because it met my dual needs of expressing my creativity in software building and relearning and extending my knowledge into the platform.
+   This was wonderful because it met my dual needs of expressing my creativity in software building and relearning and extending my knowledge into the platform.
 
-I ended up a little frustrated with the day, because what I was building didn't work as I expected. Not so unusual during these massive teaching days; I certainly wouldn't expect them to hold up everything until I understood what I was doing wrong.
-
-#+BEGIN_HTML
-  <hr class="divider divider-primary">
-#+END_HTML
+   I ended up a little frustrated with the day, because what I was building didn't work as I expected. Not so unusual during these massive teaching days; I certainly wouldn't expect them to hold up everything until I understood what I was doing wrong.
 
 ** Saturday
-   :PROPERTIES:
-   :CUSTOM_ID: saturday
-   :END:
 
-Sessions, sessions, sessions! I tended to pick the more tech/dev side of things and was rewarded with some great topics. There were several that were quite a bit more "junior" in my experience, such as the JavaScript with WordPress sessions, where it seems that JavaScript is enjoying a lot of attention, but has not yet penetrated into the mainstream of things.
+   Sessions, sessions, sessions! I tended to pick the more tech/dev side of things and was rewarded with some great topics. There were several that were quite a bit more "junior" in my experience, such as the JavaScript with WordPress sessions, where it seems that JavaScript is enjoying a lot of attention, but has not yet penetrated into the mainstream of things.
 
-Likewise, there's still a bit of a feeling I got that as far as development practices go, things are still sometimes pretty loose as far as source control, continuous testing/integration, and what-not.
+   Likewise, there's still a bit of a feeling I got that as far as development practices go, things are still sometimes pretty loose as far as source control, continuous testing/integration, and what-not.
 
-From my "can't leave it unfinished" feeling from Friday, I spent a fair bit of time hitting up other people and working on getting a working custom theme with custom post types and custom taxonomy in place, even using bootstrap to drive the theme, which I find pretty awesome.
+   From my "can't leave it unfinished" feeling from Friday, I spent a fair bit of time hitting up other people and working on getting a working custom theme with custom post types and custom taxonomy in place, even using bootstrap to drive the theme, which I find pretty awesome.
 
-There was this thing called the "Happy Bar" (I think) -- which I didn't find out what it was until late Sunday afternoon, at which point I went over and /promptly/ got great answers for some lingering questions.
+   There was this thing called the "Happy Bar" (I think) -- which I didn't find out what it was until late Sunday afternoon, at which point I went over and /promptly/ got great answers for some lingering questions.
 
-My prior experience extended to child themes and small changes here and there in CSS and layout, but having a packaged custom theme example is really great.
+   My prior experience extended to child themes and small changes here and there in CSS and layout, but having a packaged custom theme example is really great.
 
-#+BEGIN_QUOTE
-  The example custom theme code can be seen out on [[https://github.com/tamouse/example-wordpress-theme-creation-wcmpls16][github]] and there's a [[http://wp.pontiki.io/demo-custom-theme/][demo]] available, too. {: .text-right}
-#+END_QUOTE
+   #+BEGIN_QUOTE
+   The example custom theme code can be seen out on [[https://github.com/tamouse/example-wordpress-theme-creation-wcmpls16][github]] and there's a [[http://wp.pontiki.io/demo-custom-theme/][demo]] available, too. {: .text-right}
+   #+END_QUOTE
 
-As often happens, while you're trying to solve one problem, you come with another, and in the midst of that, an idea is spawned to automate something, and then another yak is ready for shaving. Randall Monroe captures this, of course:
+   As often happens, while you're trying to solve one problem, you come with another, and in the midst of that, an idea is spawned to automate something, and then another yak is ready for shaving. Randall Monroe captures this, of course:
 
-[[http://imgs.xkcd.com/comics/automation.png]] {: .text-center}
+   [[http://imgs.xkcd.com/comics/automation.png]]
 
-So, yeah, part of the day I worked on building a [[http://whatisthor.com][Thor]] tool to automatically build a [[http://vagrantup.com][Vagrant]] box provisioned with [[http://ansible.com][Ansible]] that would be usable as a [[https://wordpress.org][WordPress]] custom theme and plugin development environment. Yeah, it's still in progress ...
+   So, yeah, part of the day I worked on building a [[http://whatisthor.com][Thor]] tool to automatically build a [[http://vagrantup.com][Vagrant]] box provisioned with [[http://ansible.com][Ansible]] that would be usable as a [[https://wordpress.org][WordPress]] custom theme and plugin development environment. Yeah, it's still in progress ...
 
-But at least I did get a custom theme, custom post type, and custom taxonomy built! Yay!
-
-#+BEGIN_HTML
-  <hr class="divider divider-primary">
-#+END_HTML
+   But at least I did get a custom theme, custom post type, and custom taxonomy built! Yay!
 
 *** Saturday Talks
-    :PROPERTIES:
-    :CUSTOM_ID: saturday-talks
-    :END:
 
-There were lots of great talks and speakers. I only attended two talks on Saturday, and they were awesome.
+    There were lots of great talks and speakers. I only attended two talks on Saturday, and they were awesome.
 
 **** Amy Gebhardt's /From Junior to Senior: Why We Teach/
-     :PROPERTIES:
-     :CUSTOM_ID: amy-gebhardts-from-junior-to-senior-why-we-teach
-     :END:
 
-[[http://twitter.com/amlyhamm][Amy]] is a friend whom I have the pleasure of volunteering with at [[http://gdiminneapolis.com][Girl Develop It]]. Her talk explored a bit of what goes on at GDI, whose mission is the teach beginning HTML, CSS, and JavaScript to Women. The hope is to bring diversity into the web development world.
+     [[http://twitter.com/amlyhamm][Amy]] is a friend whom I have the pleasure of volunteering with at [[http://gdiminneapolis.com][Girl Develop It]]. Her talk explored a bit of what goes on at GDI, whose mission is the teach beginning HTML, CSS, and JavaScript to Women. The hope is to bring diversity into the web development world.
 
-With that, and with all the bootcamps, however, there is a backpressure created as many firms and agencies don't wish to hire inexperienced or junior developers.
+     With that, and with all the bootcamps, however, there is a backpressure created as many firms and agencies don't wish to hire inexperienced or junior developers.
 
-Amy's talk struck right to the heart of this, outlining why it's a good idea, and once you decide to try it, how to engage them, and then how to bring them up to speed once they join your organization.
+     Amy's talk struck right to the heart of this, outlining why it's a good idea, and once you decide to try it, how to engage them, and then how to bring them up to speed once they join your organization.
 
-In her usual brilliant and high-energy way, Amy provided a lot of human and humane reasons for all of this, and presented her own difficulties in dealing with the third step of this, handling your own work and reactions when working with someone who needs a lot of hand-holding.
+     In her usual brilliant and high-energy way, Amy provided a lot of human and humane reasons for all of this, and presented her own difficulties in dealing with the third step of this, handling your own work and reactions when working with someone who needs a lot of hand-holding.
 
-- [[http://amlyhamm.com/talks/wcmpls/from-junior-to-senior/][Slides from Amy's Talk]]
+     - [[http://amlyhamm.com/talks/wcmpls/from-junior-to-senior/][Slides from Amy's Talk]]
 
-#+BEGIN_HTML
-  <figure>
-#+END_HTML
+     https://s3.amazonaws.com/swaac.tamouse.org/images/amlyhamm-junior-dev-talk.jpg
 
-<img src="{{"images/wcmpls-amyg-hiring-junior-devs.jpg" | prepend: site.s3path }}" class="" alt="Amy Gebardt brings the excitement!" />
-
-#+BEGIN_HTML
-  <figcaption class="text-center">
-#+END_HTML
-
-#+BEGIN_HTML
-  <p>
-#+END_HTML
-
-Amy Gebhardt brings the excitement!
-
-#+BEGIN_HTML
-  </p>
-#+END_HTML
-
-#+BEGIN_HTML
-  <p>
-#+END_HTML
-
-Credit: @amlyhamm
-
-#+BEGIN_HTML
-  </p>
-#+END_HTML
-
-#+BEGIN_HTML
-  </figcaption>
-#+END_HTML
-
-#+BEGIN_HTML
-  </figure>
-#+END_HTML
-
-#+BEGIN_HTML
-  <hr class="divider divider-primary">
-#+END_HTML
+     Amy Gebhardt brings the excitement! Credit: @amlyhamm
 
 **** Eryn O'Neil's /Programmers Can UX Too: Avoiding the Programmer's User Interface/
-     :PROPERTIES:
-     :CUSTOM_ID: eryn-oneils-programmers-can-ux-too-avoiding-the-programmers-user-interface
-     :END:
 
-Eryn's talk was very enjoyable, she has rather good comedic timing, and knows her audience. (In fact, she spent quite a bit of time up front making sure she /had/ the right audience, inviting people to leave if they though they wouldn't get much out of her talk.)
+     Eryn's talk was very enjoyable, she has rather good comedic timing, and knows her audience. (In fact, she spent quite a bit of time up front making sure she /had/ the right audience, inviting people to leave if they though they wouldn't get much out of her talk.)
 
-Eryn's message is right there in the title: as a developer, you, too, /must/ understand enough about what your user is trying to accomplish, and that you really need to make your software enjoyable enough for the user to operate that they'll continue to do so.
+     Eryn's message is right there in the title: as a developer, you, too, /must/ understand enough about what your user is trying to accomplish, and that you really need to make your software enjoyable enough for the user to operate that they'll continue to do so.
 
-My comment to Eryn afterwards was that I was struck (again) by the importance of paying attention to the user, whom all the value of your code resides in. There are intrinsic values, certainly, and your own aesthetic values, but the actual value rests on whether or not the user will use your code. We build these things not to sit in a repository, but to be out in the world, solving problems for people.
+     My comment to Eryn afterwards was that I was struck (again) by the importance of paying attention to the user, whom all the value of your code resides in. There are intrinsic values, certainly, and your own aesthetic values, but the actual value rests on whether or not the user will use your code. We build these things not to sit in a repository, but to be out in the world, solving problems for people.
 
-- [[http://www.slideshare.net/eryno/programmers-can-ux-too-minnewebcon-2014][Eryn's slides]]
+     - [[http://www.slideshare.net/eryno/programmers-can-ux-too-minnewebcon-2014][Eryn's slides]]
 
-#+BEGIN_HTML
-  <figure>
-#+END_HTML
+     https://s3.amazonaws.com/swaac.tamouse.org/images/wcmplw-eryn-oneil-the-programmers-ux.jpg
 
-<img src="{{"images/wcmplw-eryn-oneil-the-programmers-ux.jpg" | prepend: site.s3path}}" class="" alt="Eryn O'Neil (@eryno) showing us the Programmer's UX (unph)" />
-
-#+BEGIN_HTML
-  <figcaption class="text-center">
-#+END_HTML
-
-Eryn O'Niel showing us the Programmer's UX (unph)
-
-#+BEGIN_HTML
-  <p>
-#+END_HTML
-
-Credit: @ChrisEdwardsCE
-
-#+BEGIN_HTML
-  </p>
-#+END_HTML
-
-#+BEGIN_HTML
-  </figcaption>
-#+END_HTML
-
-#+BEGIN_HTML
-  </figure>
-#+END_HTML
-
-#+BEGIN_HTML
-  <hr class="divider divider-primary">
-#+END_HTML
+     Eryn O'Niel showing us the Programmer's UX (unph) Credit: @ChrisEdwardsCE
 
 ** Sunday
-   :PROPERTIES:
-   :CUSTOM_ID: sunday
-   :END:
 
-The morning was taken up with a brunch at the [Fountain Room] in downtown Minneapolis, which if you've never been is pretty doggone spectacular. One of the top spots for wedding receptions, apparently.
+   The morning was taken up with a brunch at the [Fountain Room] in downtown Minneapolis, which if you've never been is pretty doggone spectacular. One of the top spots for wedding receptions, apparently.
 
-#+BEGIN_HTML
-  <figure>
-#+END_HTML
+   https://s3.amazonaws.com/swaac.tamouse.org/images/fountain-room-pano-20160522-rot.jpg
 
-<img src="{{"images/fountain-room-pano-20160522-rot.jpg" | prepend: site.s3path}}" class="" alt="" />
+   [[https://s3.amazonaws.com/swaac.tamouse.org/images/fountain-room-pano-20160522.jpg][big pano]]
 
-#+BEGIN_HTML
-  <figcaption class="text-right">
-#+END_HTML
-
-<a href="{{"images/fountain-room-pano-20160522.jpg" | prepend: site.s3path }}" target="_blank" title="Fountain Room, Minneapolis, Panoramic Photo">Here's a panorama of the room. (Off page, because it's big.)
-
-#+BEGIN_HTML
-  <p>
-#+END_HTML
-
-Credit: me!
-
-#+BEGIN_HTML
-  </p>
-#+END_HTML
-
-#+BEGIN_HTML
-  </figcaption>
-#+END_HTML
-
-#+BEGIN_HTML
-  </figure>
-#+END_HTML
+   Fountain Room, Minneapolis, Panoramic Photo
 
 *** Lightning Talks
-    :PROPERTIES:
-    :CUSTOM_ID: lightning-talks
-    :END:
 
-The lightning talks were rather good, but I think the first two were speaking to bloggers as a business more than mere devs.
+    The lightning talks were rather good, but I think the first two were speaking to bloggers as a business more than mere devs.
 
-#+BEGIN_HTML
-  <hr class="divider divider-primary">
-#+END_HTML
 
 **** Shawn Pfunder's /Bicycle Freelancing/.
-     :PROPERTIES:
-     :CUSTOM_ID: shawn-pfunders-bicycle-freelancing.
-     :END:
 
-Shawn uses a bicycle shop as analogy and metaphor for creating your own business.
+     Shawn uses a bicycle shop as analogy and metaphor for creating your own business.
 
-5 main points:
+     5 main points:
 
-- build a tribe
-- secure space
-- get together
-- teach others
-- get personal
+     - build a tribe
+     - secure space
+     - get together
+     - teach others
+     - get personal
 
-#+BEGIN_HTML
-  <figure>
-#+END_HTML
+     https://s3.amazonaws.com/swaac.tamouse.org/images/wcmpls-pfunder-bicycle-freelancing.jpg
 
-<img src="{{"images/wcmpls-pfunder-bicycle-freelancing.jpg" | prepend: site.s3path}}" class="" alt="Shawn Pfunder on how your business should be like a bike shop #wcmpls" />
-
-#+BEGIN_HTML
-  <figcaption class="text-center">
-#+END_HTML
-
-Shawn Pfunder on how your business should be like a bike shop.
-
-#+BEGIN_HTML
-  <p>
-#+END_HTML
-
-Credit: @_horneck
-
-#+BEGIN_HTML
-  </p>
-#+END_HTML
-
-#+BEGIN_HTML
-  </figcaption>
-#+END_HTML
-
-#+BEGIN_HTML
-  </figure>
-#+END_HTML
-
-#+BEGIN_HTML
-  <hr class="divider divider-primary">
-#+END_HTML
+     Shawn Pfunder on how your business should be like a bike shop. Credit: ~@_horneck~
 
 **** Aaron Rosell's /Why Email Newsletters Help Bloggers Build Influence/
-     :PROPERTIES:
-     :CUSTOM_ID: aaron-rosells-why-email-newsletters-help-bloggers-build-influence
-     :END:
 
-Aaron presented a case study of one of his clients, who runs a fashion blog. She began also putting out a few different newsletters:
+     Aaron presented a case study of one of his clients, who runs a fashion blog. She began also putting out a few different newsletters:
 
-- blog teaser
-- news / article / interest aggregator, not limited to fashion
-- weekend edition, more articles, lots of personal stuff, things not found on the blog itself.
+     - blog teaser
+     - news / article / interest aggregator, not limited to fashion
+     - weekend edition, more articles, lots of personal stuff, things not found on the blog itself.
 
-Aaron's points are that if you're a serious blogger, consider adding an e-mail (or e-mails) to your blog, and capture more attention, more readers, make yourself more personable, more accessible, and in addition, gather a lot more data about your readers so you understand them better.
-
-#+BEGIN_HTML
-  <hr class="divider divider-primary">
-#+END_HTML
+     Aaron's points are that if you're a serious blogger, consider adding an e-mail (or e-mails) to your blog, and capture more attention, more readers, make yourself more personable, more accessible, and in addition, gather a lot more data about your readers so you understand them better.
 
 **** Cate DeRosia's /Why You Should Embrace Failure/
-     :PROPERTIES:
-     :CUSTOM_ID: cate-derosias-why-you-should-embrace-failure
-     :END:
 
-Cate's talk restated something most people have heard before, but that bears repeating often, as it's something that hasn't been fully grokked and integrated into our culture very well:
+     Cate's talk restated something most people have heard before, but that bears repeating often, as it's something that hasn't been fully grokked and integrated into our culture very well:
 
-#+BEGIN_QUOTE
-  "We learn from failure" {: .text-center}
-#+END_QUOTE
+     #+BEGIN_QUOTE
+     "We learn from failure"
+     #+END_QUOTE
 
-It's really important to remember that when you've just deleted the corporate database, or cost the company $100,000 in accidental overcharges (okay, it only looked like it was $7000, and it was only a data error, but still...). The key thing is to learn from those mistakes. Fix the causes of the errors so they won't happen again. Fix the causes of the causes of the errors, find the root cause and fix that. Keep improving.
+     It's really important to remember that when you've just deleted the corporate database, or cost the company $100,000 in accidental overcharges (okay, it only looked like it was $7000, and it was only a data error, but still...). The key thing is to learn from those mistakes. Fix the causes of the errors so they won't happen again. Fix the causes of the causes of the errors, find the root cause and fix that. Keep improving.
 
-Ultimately, failing can be a very positive experience once we get over the fear and frustration. That won't go away, we are human after all, but we don't have to let those feelings rule us.
+     Ultimately, failing can be a very positive experience once we get over the fear and frustration. That won't go away, we are human after all, but we don't have to let those feelings rule us.
 
-#+BEGIN_HTML
-  <figure>
-#+END_HTML
+     https://s3.amazonaws.com/swaac.tamouse.org/images/wcmpls-cate-derosio-learn-from-failure.jpg
 
-<img src="{{"images/wcmpls-cate-derosio-learn-from-failure.jpg" | prepend: site.s3path}}" class="" alt="Cate DeRosia learning from failure" />
-
-#+BEGIN_HTML
-  <figcaption class="text-center">
-#+END_HTML
-
-#+BEGIN_HTML
-  <p>
-#+END_HTML
-
-Cate DeRosia helping us to embrace our failures in order to learn and grow.
-
-#+BEGIN_HTML
-  </p>
-#+END_HTML
-
-#+BEGIN_HTML
-  <p>
-#+END_HTML
-
-Credit: @topher1kenobe
-
-#+BEGIN_HTML
-  </p>
-#+END_HTML
-
-#+BEGIN_HTML
-  </figcaption>
-#+END_HTML
-
-#+BEGIN_HTML
-  </figure>
-#+END_HTML
-
-#+BEGIN_HTML
-  <hr class="divider divider-primary">
-#+END_HTML
+     Cate DeRosia helping us to embrace our failures in order to learn and grow. Credit: @topher1kenobe
 
 *** Sunday Sessions
-    :PROPERTIES:
-    :CUSTOM_ID: sunday-sessions
-    :END:
 
-There were fewer talks on Saturday, only in the afternoon. I went all in on the JavaScript talks:
+    There were fewer talks on Saturday, only in the afternoon. I went all in on the JavaScript talks:
 
 **** Solomon Scott's /JavaScript <3 WordPress/
-     :PROPERTIES:
-     :CUSTOM_ID: solomon-scotts-javascript-3-wordpress
-     :END:
 
-Solomon is a true lover of JavaScript (as am I) and his passion shows through quite well.
+     Solomon is a true lover of JavaScript (as am I) and his passion shows through quite well.
 
-This was an important talk for me, not from the overview of JavaScript Solomon presented, but from the eagerness of the audience, and my own interest, in bringing the two worlds together. On Friday, I had just learned how to intergrate the styles and scripts I could make for a custom theme or plugin, and Solomon provided for me the binding of modern JavaScript development with WordPress integration. It was really nice.
+     This was an important talk for me, not from the overview of JavaScript Solomon presented, but from the eagerness of the audience, and my own interest, in bringing the two worlds together. On Friday, I had just learned how to intergrate the styles and scripts I could make for a custom theme or plugin, and Solomon provided for me the binding of modern JavaScript development with WordPress integration. It was really nice.
 
-He does speak way too fast, though. :D
+     He does speak way too fast, though. :D
 
-- [[http://solomonscott.com/index.php/javascript-and-wordpress/][JavaScript <3 WordPress slides]]
+     - [[http://solomonscott.com/index.php/javascript-and-wordpress/][JavaScript <3 WordPress slides]]
 
-#+BEGIN_HTML
-  <figure>
-#+END_HTML
+     https://s3.amazonaws.com/swaac.tamouse.org/images/wcmpls-solomonscott-wp-heart-js.jpg
 
-<img src="{{"images/wcmpls-solomonscott-wp-heart-js.jpg" | prepend: site.s3path}}" class="" alt="Solomon Scott showing some love. #wcmpls" />
-
-#+BEGIN_HTML
-  <figcaption class="text-center">
-#+END_HTML
-
-#+BEGIN_HTML
-  <p>
-#+END_HTML
-
-Solomon Scott showing some love.
-
-#+BEGIN_HTML
-  </p>
-#+END_HTML
-
-#+BEGIN_HTML
-  <p>
-#+END_HTML
-
-Credit: @Julie381Julie
-
-#+BEGIN_HTML
-  </p>
-#+END_HTML
-
-#+BEGIN_HTML
-  </figcaption>
-#+END_HTML
-
-#+BEGIN_HTML
-  </figure>
-#+END_HTML
-
-#+BEGIN_HTML
-  <hr class="divider divider-primary">
-#+END_HTML
+     Solomon Scott showing some love. Credit: @Julie381Julie
 
 **** Josh Broton's /WordPress+React: A Match Made In Heaven/
-     :PROPERTIES:
-     :CUSTOM_ID: josh-brotons-wordpressreact-a-match-made-in-heaven
-     :END:
 
-Wow. Josh is like the most dynamic speaker ever. He's bouncing around the podium, his slides are just /lousy/ with animated GIFs and he's astoundingly funny and engaging. That's just the outside.
+     Wow. Josh is like the most dynamic speaker ever. He's bouncing around the podium, his slides are just /lousy/ with animated GIFs and he's astoundingly funny and engaging. That's just the outside.
 
-Inside, Josh's talk was super engaging, and super informative. For most of the people attending, I think React is a completely new concept, but I was quite eager to see how it could be used.
+     Inside, Josh's talk was super engaging, and super informative. For most of the people attending, I think React is a completely new concept, but I was quite eager to see how it could be used.
 
-The upshot, and this is the same conclusion I've reached on the Rails side, is that WordPress can and should be used only as an API source (your web service) and completely eschew any of it's own views. It only delivers up JSON to a Single Page App (SPA) which is written in a way that is really outside the entire WordPress Loop.
+     The upshot, and this is the same conclusion I've reached on the Rails side, is that WordPress can and should be used only as an API source (your web service) and completely eschew any of it's own views. It only delivers up JSON to a Single Page App (SPA) which is written in a way that is really outside the entire WordPress Loop.
 
-When the user comes in to your site, the main WordPress page would just deliver the SPA to the browser, and subsequent interaction with WordPress would be entirely AJAX-driven.
+     When the user comes in to your site, the main WordPress page would just deliver the SPA to the browser, and subsequent interaction with WordPress would be entirely AJAX-driven.
 
-It's quite compelling, I think, and it will be interesting to see how much traction this concept gets in the WP community. I like it a lot.
+     It's quite compelling, I think, and it will be interesting to see how much traction this concept gets in the WP community. I like it a lot.
 
-- No slides yet for Josh's talk. Coming soon, I hope.
+     - No slides yet for Josh's talk. Coming soon, I hope.
 
-#+BEGIN_HTML
-  <figure class="text-center">
-#+END_HTML
+     https://s3.amazonaws.com/swaac.tamouse.org/images/wcmpls-josh-broton-its-just-js-but-its-not-but-it-is.jpg
 
-<img src="{{"images/wcmpls-josh-broton-its-just-js-but-its-not-but-it-is.jpg" | prepend: site.s3path }}" alt="Josh Broton: React: it's just javascript, but it's not, but it is" />
-
-#+BEGIN_HTML
-  <figcaption class="text-center">
-#+END_HTML
-
-#+BEGIN_HTML
-  <p>
-#+END_HTML
-
-Josh Broton: "React: It's just Javascript, but it's not, but it is."
-
-#+BEGIN_HTML
-  </p>
-#+END_HTML
-
-#+BEGIN_HTML
-  <p>
-#+END_HTML
-
-Credit: @foundartphotog
-
-#+BEGIN_HTML
-  </p>
-#+END_HTML
-
-#+BEGIN_HTML
-  </figcaption>
-#+END_HTML
-
-#+BEGIN_HTML
-  </figure>
-#+END_HTML
-
-#+BEGIN_HTML
-  <hr class="divider divider-primary">
-#+END_HTML
+     Josh Broton: "React: It's just Javascript, but it's not, but it is." Credit: @foundartphotog
 
 ** Conclusion
-   :PROPERTIES:
-   :CUSTOM_ID: conclusion
-   :END:
 
-I was pretty tired, but also pretty jazzed. I had such a great time, and I'm so happy to those who made this possible.
+   I was pretty tired, but also pretty jazzed. I had such a great time, and I'm so happy to those who made this possible.
 
-A special shout-out to [[https://twitter.com/marktimemedia][Michelle Schulp]] who organized this super event, and lovingly opened up a space for me at the last minute. Most excellent work!
+   A special shout-out to [[https://twitter.com/marktimemedia][Michelle Schulp]] who organized this super event, and lovingly opened up a space for me at the last minute. Most excellent work!
 
-#+BEGIN_HTML
-  <hr class="divider divider-primary">
-#+END_HTML
+   Images were taken from the #wcmpls twitter search feed. Copied without persmission, credit goes to the originators. Apologies all around. I do appreciate your work.
 
-#+BEGIN_HTML
-  <p class="text-muted">
-#+END_HTML
+** Footnotes
 
-"Nastalgia" is just a word I made-up by accident when referring to that feeling where you look at something in the past and it makes you a bit sick.
-
-#+BEGIN_HTML
-  </p>
-#+END_HTML
-
-#+BEGIN_HTML
-  <hr class="divider divider-primary">
-#+END_HTML
-
-#+BEGIN_HTML
-  <p class="text-muted">
-#+END_HTML
-
- Images were taken from the #wcmpls twitter search feed. Copied without persmission, credit goes to the originators. Apologies all around. I do appreciate your work.
-
-#+BEGIN_HTML
-  </p>
-#+END_HTML
-
-#+BEGIN_HTML
-  <hr class="divider divider-primary">
-#+END_HTML
+[fn:1] "Nastalgia" is just a word I made-up by accident when referring to that feeling where you look at something in the past and it makes you a bit sick.

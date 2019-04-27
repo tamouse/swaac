@@ -1,28 +1,17 @@
 * RSpec Custom Formatters: Displaying Test Durations
-  :PROPERTIES:
-  :CUSTOM_ID: rspec-custom-formatters-displaying-test-durations
-  :END:
 
 - published date: 2013-09-01 13:23
 - keywords: ["howtos", "rspec", "ruby", "swaac"]
-- source:
-- redirect_from: ["/blog/2013/09/01/rspec-custom-formatters-displaying-test-durations/"]
 
 The standard documentation formatter for RSpec does not show how long each test executes. This information is available in the HTML formatter, though, so I thought it could be available in others. Turns out this is true.
 
 Inside the formatter, the =example= variable has a method called =execution_result= that is a Hash. One of the hash keys is =:run_time=, which is the milliseconds the test took to run, just what we wanted.
 
 ** Creating the custom formatter
-   :PROPERTIES:
-   :CUSTOM_ID: creating-the-custom-formatter
-   :END:
 
 The simplest thing in our case is to subclass the documentation formatter, and replace the reporting functions. =stopwatch_formatter.rb= does this.
 
 *** Changing the output
-    :PROPERTIES:
-    :CUSTOM_ID: changing-the-output
-    :END:
 
 The only two methods of =DocumentationFormatter= we need to look at are:
 
@@ -37,75 +26,81 @@ In this case, I merely copied the methods from the documentation formatter, and 
     require 'rspec/core/formatters/documentation_formatter'
 
     class StopwatchFormatter < RSpec::Core::Formatters::DocumentationFormatter
-
-      DURATION_FORMAT = "%-80s | Duration: %7.5f ms"
+      DURATION_FORMAT = "%s %-60s | Duration: %7.5f ms"
 
       def failure_output(example, exception)
-        failure_color(DURATION_FORMAT % ["#{current_indentation}#{example.description.strip} (FAILED - #{next_failure_index})", example.execution_result[:run_time]])
+	failure_color(
+	  format(
+	    DURATION_FORMAT,
+	    current_indentation,
+	    "#{example.description.strip} (FAILED - #{next_failure_index})",
+	    example.execution_result[:run_time]
+	  )
+	)
       end
 
       def passed_output(example)
-        success_color(DURATION_FORMAT % ["#{current_indentation}#{example.description.strip}", example.execution_result[:run_time]])
+	success_color(
+	  format(
+	    DURATION_FORMAT,
+	    current_indentation,
+	    example.description.strip,
+	    example.execution_result[:run_time]
+	  )
+	)
       end
-
     end
 #+END_SRC
 
 Sample output:
 
-#+BEGIN_HTML
-  <pre><code>
-  /Users/tamara/.rubies/ruby-2.0.0-p427/bin/ruby -S rspec ./spec/lib/stopwatch_formatter_spec.rb
+#+BEGIN_EXPORT html
+<pre><code>
+/Users/tamara/.rubies/ruby-2.0.0-p427/bin/ruby -S rspec ./spec/lib/stopwatch_formatter_spec.rb
 
-  StopwatchFormatter
-    this will pass                                                                 | Duration: 0.00099 ms
-    this will fail (FAILED - 1)                                                    | Duration: 0.00010 ms
+StopwatchFormatter
+  this will pass                                               | Duration: 0.00099 ms
+  this will fail (FAILED - 1)                                  | Duration: 0.00010 ms
 
-  Failures:
+Failures:
 
-    1) StopwatchFormatter this will fail
-       Failure/Error: false.should be_true
-         expected: true value
-              got: false
-       # ./spec/lib/stopwatch_formatter_spec.rb:8:in `block (2 levels) in <top (required)>'
+  1) StopwatchFormatter this will fail
+     Failure/Error: false.should be_true
+       expected: true value
+            got: false
+     # ./spec/lib/stopwatch_formatter_spec.rb:8:in `block (2 levels) in <top (required)>'
 
-  Finished in 0.00146 seconds
-  2 examples, 1 failure
+Finished in 0.00146 seconds
+2 examples, 1 failure
 
-  Failed examples:
+Failed examples:
 
-  rspec ./spec/lib/stopwatch_formatter_spec.rb:7 # StopwatchFormatter this will fail
-  /Users/tamara/.rubies/ruby-2.0.0-p427/bin/ruby -S rspec ./spec/lib/stopwatch_formatter_spec.rb failed
-  </code></pre>
-#+END_HTML
+rspec ./spec/lib/stopwatch_formatter_spec.rb:7 # StopwatchFormatter this will fail
+/Users/tamara/.rubies/ruby-2.0.0-p427/bin/ruby -S rspec ./spec/lib/stopwatch_formatter_spec.rb failed
+</code></pre>
+#+END_EXPORT
 
 ** Using the custom formatter
-   :PROPERTIES:
-   :CUSTOM_ID: using-the-custom-formatter
-   :END:
 
 =rspec= needs to load the code for your custom formatter. The easiest thing is to simply require it on the =rspec= command line, and specify the class name as the formatter:
 
-#+BEGIN_EXAMPLE
-        rspec -r /path/to/stopwatch_formatter.rb --format StopwatchFormatter ...
-#+END_EXAMPLE
+#+BEGIN_SRC shell-script
+rspec -r /path/to/stopwatch_formatter.rb --format StopwatchFormatter ...
+#+END_SRC
 
 ** Getting the formatter
-   :PROPERTIES:
-   :CUSTOM_ID: getting-the-formatter
-   :END:
 
 You can get =stopwatch_formatter= from rubygems:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC shell-script
     gem install stopwatch_formatter
-#+END_EXAMPLE
+#+END_SRC
 
 or put it in your =Gemfile=:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC shell-script
     gem 'stopwatch_formatter', :group => [:development, :test]
-#+END_EXAMPLE
+#+END_SRC
 
 and =bundle install= as usual. You can specify to use the stopwatch formatter in a few ways:
 
@@ -116,26 +111,23 @@ and =bundle install= as usual. You can specify to use the stopwatch formatter in
 
 If you use rake, and run rspec from within it, you can simply add the =SPEC_OPTS= variable to your run:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC shell-script
     rake SPEC_OPTS='-f StopwatchFormatter'
-#+END_EXAMPLE
+#+END_SRC
 
 *** =.rspec=
-    :PROPERTIES:
-    :CUSTOM_ID: rspec
-    :END:
 
 A more convenient method is to put the formatter inside the =.rspec= file:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC shell-script
     --format StopwatchFormatter
-#+END_EXAMPLE
+#+END_SRC
 
 then you can just run:
 
-#+BEGIN_EXAMPLE
-    rake
-#+END_EXAMPLE
+#+BEGIN_SRC shell-script
+  rake
+#+END_SRC
 
 (assuming =spec= is one of you default tasks.)
 
@@ -146,10 +138,10 @@ then you can just run:
 
 If you want a more permanent solution, you can configure the formatter inside the =spec/spec_helper.rb= file:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC html
     require 'stopwatch_formatter'
     RSpec.configure {|c| c.add_formatter StopwatchFormatter }
-#+END_EXAMPLE
+#+END_SRC
 
 This last rather permanently adds the stopwatch formatter to your runs, so if you specify another formatter on the command line or in =.rspec=, you'll end up with that output /and/ the stopwatch output, so this isn't really recommended.
 

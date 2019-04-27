@@ -9,13 +9,10 @@ I am a firm believer that software development is primarily a craft, that is, it
 I [[./posts/2013/08/programmers-creativity.org][wrote a post on this]] back in 2013:
 
 #+BEGIN_QUOTE
-
-  #+BEGIN_QUOTE
-    I think most people think programming is cold, precise, and mechanical. It's actually creative, perplexing and deeply personal. --- Unknown (from [[http://discordianquotes.com/quote/think-people-thing-programming-cold-precise-mechanical-actually][Discordian Quotes]])
-  #+END_QUOTE
-
-  I've said similar words many times. I wish more people understood them.
+I think most people think programming is cold, precise, and mechanical. It's actually creative, perplexing and deeply personal. --- Unknown (from [[http://discordianquotes.com/quote/think-people-thing-programming-cold-precise-mechanical-actually][Discordian Quotes]])
 #+END_QUOTE
+
+I've said similar words many times. I wish more people understood them.
 
 What does it mean to be creative? It usually means making something that other's can see as beautiful, or as unique, but also it means applying your mind to making something real that exists only at first in your mind.
 

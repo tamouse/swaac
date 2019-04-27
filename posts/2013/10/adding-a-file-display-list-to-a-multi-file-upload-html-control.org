@@ -1,13 +1,29 @@
+#+TITLE: Adding a file display list to a multi-file upload HTML control
+#+AUTHOR: Raymond Camden
+#+DATE: 2013-09-10
+
+
 * Adding a file display list to a multi-file upload HTML control
-  :PROPERTIES:
-  :CUSTOM_ID: adding-a-file-display-list-to-a-multi-file-upload-html-control
-  :END:
 
 - published date: 2013-10-22 11:08
 - keywords: ["code", "display", "file-uploads", "javascript", "swaac", "user-experience", "user-feedback", "ux"]
-- source: http://www.raymondcamden.com/index.cfm/2013/9/10/Adding-a-file-display-list-to-a-multifile-upload-HTML-control
+- source: https://www.raymondcamden.com/2013/09/10/Adding-a-file-display-list-to-a-multifile-upload-HTML-control
 
-A repost of <{{page.source}}> by [[http://www.raymondcamden.com/][Raymond Camden]].
+** TL;DR: when you want to upload multiple files
+
+... add a ~multiple~ attribute to the ~input type="file"~ element.
+
+*** For example
+
+#+BEGIN_SRC web
+  <input type="file" name="uploads" id="uploads" multiple />
+#+END_SRC
+
+*** Funging the display
+
+The post further disusses the usability hit with the lack of indication what files have been selected and how to fix it up with some CSS and JavaScript.
+
+** COMMENT copied article
 
 #+BEGIN_QUOTE
   ** [[http://www.raymondcamden.com/index.cfm/2013/9/10/Adding-a-file-display-list-to-a-multifile-upload-HTML-control][Adding a file display list to a multi-file upload HTML control]]
@@ -39,7 +55,7 @@ A repost of <{{page.source}}> by [[http://www.raymondcamden.com/][Raymond Camden
 
   #+BEGIN_EXAMPLE
       document.addEventListener("DOMContentLoaded", init, false);
-          
+
       function init() {
           document.querySelector('#files').addEventListener('change', handleFileSelect, false);
       }
@@ -49,14 +65,14 @@ A repost of <{{page.source}}> by [[http://www.raymondcamden.com/][Raymond Camden
 
   #+BEGIN_EXAMPLE
       function handleFileSelect(e) {
-              
+
           if(!e.target.files) return;
-              
+
           var files = e.target.files;
           for(var i=0; i < files.length; i++) {
               var f = files[i];
           }
-              
+
       }
   #+END_EXAMPLE
 
@@ -68,9 +84,9 @@ A repost of <{{page.source}}> by [[http://www.raymondcamden.com/][Raymond Camden
       <head>
       <title>Proper Title</title>
       </head>
-          
+
       <body>
-          
+
           <form id="myForm" method="post" enctype="multipart/form-data">
 
               Files: <input type="file" id="files" name="files" multiple><br/>
@@ -82,28 +98,28 @@ A repost of <{{page.source}}> by [[http://www.raymondcamden.com/][Raymond Camden
 
           <script>
           var selDiv = "";
-              
+
           document.addEventListener("DOMContentLoaded", init, false);
-          
+
           function init() {
               document.querySelector('#files').addEventListener('change', handleFileSelect, false);
               selDiv = document.querySelector("#selectedFiles");
           }
-              
+
           function handleFileSelect(e) {
-              
+
               if(!e.target.files) return;
-              
+
               selDiv.innerHTML = "";
-              
+
               var files = e.target.files;
               for(var i=0; i<files.length; i++) {
                   var f = files[i];
-                  
+
                   selDiv.innerHTML += f.name + "<br/>";
 
               }
-              
+
           }
           </script>
 
@@ -133,9 +149,9 @@ A repost of <{{page.source}}> by [[http://www.raymondcamden.com/][Raymond Camden
           }
       </style>
       </head>
-          
+
       <body>
-          
+
           <form id="myForm" method="post" enctype="multipart/form-data">
 
               Files: <input type="file" id="files" name="files" multiple accept="image/*"><br/>
@@ -147,20 +163,20 @@ A repost of <{{page.source}}> by [[http://www.raymondcamden.com/][Raymond Camden
 
           <script>
           var selDiv = "";
-              
+
           document.addEventListener("DOMContentLoaded", init, false);
-          
+
           function init() {
               document.querySelector('#files').addEventListener('change', handleFileSelect, false);
               selDiv = document.querySelector("#selectedFiles");
           }
-              
+
           function handleFileSelect(e) {
-              
+
               if(!e.target.files || !window.FileReader) return;
 
               selDiv.innerHTML = "";
-              
+
               var files = e.target.files;
               var filesArr = Array.prototype.slice.call(files);
               filesArr.forEach(function(f) {
@@ -172,11 +188,11 @@ A repost of <{{page.source}}> by [[http://www.raymondcamden.com/][Raymond Camden
                   var reader = new FileReader();
                   reader.onload = function (e) {
                       var html = "<img src=\"" + e.target.result + "\">" + f.name + "<br clear=\"left\"/>";
-                      selDiv.innerHTML += html;               
+                      selDiv.innerHTML += html;
                   }
-                  reader.readAsDataURL(f); 
+                  reader.readAsDataURL(f);
               });
-              
+
           }
           </script>
 

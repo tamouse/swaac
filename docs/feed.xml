@@ -2,391 +2,14 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://github.com/tamouse/swaac</id>
   <title>Tamouse&#39;s Software as a Craft blog</title>
-  <updated>2019-04-19T19:11:28-05:00</updated>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2019/04/2019-04-14-use-key-instead-of-compoenent-did-update.org</id>
-      <updated>2019-04-19T19:11:28-05:00</updated>
-      <title>TIL: Use key instead of componentDidUpdate</title>
-      <content>#+COMMENT -*- time-stamp-line-limit: 12; time-stamp-count: 2 -*-
-* TIL: Use key instead of componentDidUpdate
-  :PROPERTIES:
-  :LAST_UPDATE: Time-stamp: &lt;2019-04-19 19:11:28 tamara&gt;
-  :CAPTURE_DATE: [2019-04-19 Fri 19:05]
-  :KEYWORDS: react, componentDidUpdate, key prop
-  :END:
-
-- last update: Time-stamp: &lt;2018-09-16 14:32:23 tamara.temple&gt;
-- capture date: [2019-04-19 Fri 19:07]
-- keywords: react, componentDidUpdate, key prop
-
-Watching Ryan Florence over at [[https://www.reacttraining.com][reacttraining.com]] in the [[https://courses.reacttraining.com/courses/354571/lectures/5449516][Reach Catchup componentWillReceiveProps video]], towards the end, after explaining how to use ~componentDidUpdate~ to retrieve updated props / state based on a new prop, he then goes on to say you can do this a lot easier by setting the component&#39;s ~key~ to the thing you&#39;re checking in ~cDU~ and just make React create a whole new instance.
-
-This is so easy it&#39;s just astounding how much it makes sense.
-
-** an example
-
-Let&#39;s say you have a collection of notes to display, with the following structure:
-
-#+BEGIN_SRC rjsx
-  {
-    &quot;notes&quot;: [
-      {
-	&quot;id&quot;: Int,
-	&quot;body&quot;: String,
-	&quot;createdAt&quot;: String,
-	&quot;updatedAt&quot;: String,
-	&quot;creator&quot;: {
-	  &quot;name&quot;: String
-	},
-	&quot;public&quot;: Boolean
-      }
-    ]
-  }
-
-#+END_SRC
-
-Let&#39;s say this is our component:
-
-#+BEGIN_SRC rjsx
-  const Notes = ({ notes }) =&gt; (
-    &lt;NoteList&gt;
-      {notes &amp;&amp; notes.length &gt; 0 ? (
-	notes.map((note, index) =&gt; &lt;Note key={index} note={note} /&gt;)
-      ) : (
-	&lt;NoNotes /&gt;
-      )}
-    &lt;/NoteList&gt;
-  )
-#+END_SRC
-
-
-If for some reason you need to manage state for each note, perhaps because you&#39;re modifying it in place (i.e. within the row), or you delete a note, or add a note, you might need to keep the state updated based on update props. If the note changes, you may need to perform refetch to get the updated info.
-
-Or so you might think.
-
-Instead, by using the ~note.id~ as the ~key~, you can easily make React produce a new instance.
-
-#+BEGIN_SRC rjsx
-  const Notes = ({ notes }) =&gt; (
-    &lt;NoteList&gt;
-      {notes &amp;&amp; notes.length &gt; 0 ? (
-	notes.map(note =&gt; &lt;Note key={note.id} note={note} /&gt;)
-      ) : (
-	&lt;NoNotes /&gt;
-      )}
-    &lt;/NoteList&gt;
-  )
-#+END_SRC
-
-
-If the id of the particular note in that sequence changes, React will re-instantiate the ~Note~ and whatever you do to initialize it is done with the new note.
-
-This may not be the best example, but the concept is what&#39;s important for me to remember. I have a habit of just using the map index instead of something more useful to React.
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2019/04/2019-04-05-common-error-not-clearing-selected-value.org</id>
-      <updated>2019-04-05T01:54:31-05:00</updated>
-      <title>Fixing a common problem: not clearing a selected option before setting a new selected option</title>
-      <content>* Fixing a common problem: not clearing a selected option before setting a new selected option
-  :PROPERTIES:
-  :KEYWORDS: javascript, jquery
-  :CAPTURE_DATE: Fri Apr  5 01:11:42 2019
-  :LAST_UPDATE: Time-stamp: &lt;2019-04-05 01:54:31 tamara&gt;
-  :END:
-
-- keywords: javascript, jquery
-- capture date: Fri Apr  5 01:11:42 2019
-- last updated: Time-stamp: &lt;2019-04-05 01:54:31 tamara&gt;
-
-** Intro
-
-This was a problem that our customers found (OOPS! :( ) that caused the wrong itme to be sent up to the server. What was most interesting about this is the way it presented itself was it was only failing in Safari on macOS. It worked as &quot;expected&quot; on both Chrome and Firefox.
-
-** The problem
-
-The problem was that when the user selected and option button, the app was using jQuery to change a hidden select tag by marking the option `selected`. The issue was the originally selected item was not cleared.
-
-So in the case of Chrome and Firefox, in particular, they used the *first* selected option, while Safari used the *last* selected option. Neither are particularly right or wrong, and open to interpretation.
-
-** The solution
-
-The answer is that before setting an item &quot;selected&quot;, remove all the existing &quot;selected&quot; options. Theoretically there should be only one, however unless there&#39;s some ungodly number of options that it might affect perceived performance, it&#39;s easiest to just clear every option, first.
-
-** Some code
-
-THis is a tiny bit of jQuery that implemented the fix:
-
-#+BEGIN_SRC js
-  function setTaskType(type) {
-      // missing this caused the problem
-      $(&#39;#task_task_type_id option&#39;)
-	  .attr(&#39;selected&#39;, false);
-
-      // this was the original
-      $(&#39;#task_task_type_id option&#39;)
-	  .filter(function() { return $.trim( $(this).text() ) == type; })
-	  .attr(&#39;selected&#39;,true);
-  }
-#+END_SRC
-
-** Other thoughts
-
-I&#39;m calling this a &quot;common error&quot; because I&#39;ve seen this exact problem crop up in other circumstances, perhaps a dozen times. If *I&#39;ve* seen it that often, and I haven&#39;t been writing a lot of JS for very long (a handful of years), it&#39;s probably something that happens more often. It&#39;s easy to forget it. It&#39;s even easier to neglect to test this, especially if it looks like it&#39;s working on one browser.
-
-I think, in actuality, if this feature had been tested by pressing random buttons, in different orders, and selecting different options more than once, this error might have shown up a lot earlier, and on all browsers, too. That it showed up in the customers&#39; world is a let down. That it took one line to fix was pure luck.
-
-#+BEGIN_COMMENT
-Local Variables:
-time-stamp-count: 2
-time-stamp-line-limit: 20
-End:
-#+END_COMMENT
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/12/2018-12-12-tenets-of-toast-and-tech.org</id>
-      <updated>2019-04-05T01:09:23-05:00</updated>
-      <title>The Tenets of Toast and Tech</title>
-      <content>* The Tenets of Toast and Tech
-  :PROPERTIES:
-  :CAPTURE_DATE: [2018-12-12 Wed]
-  :last_update: Time-stamp: &lt;2019-04-05 01:09:23 tamara&gt;
-  :END:
-
-  - last_updated: Time-stamp: &lt;2019-04-05 01:09:23 tamara&gt;
-  - keywords: Learning Space, Toast and Tech
-  - capture date: [2018-12-12 Wed]
-
-  As some of you following know, I&#39;ve led this thing on Tuesday nights called &quot;Toast &amp; Tech&quot; for about 3 years [starting in the Autumn of 2015], nominally under the organization at .@GDImpls, the Minneapolis chapter of .@girldevelopit.
-
-  I have left that organization, but I want to leave behind something for those involved in T&amp;T, and for those looking to make a space for learning that it inclusive
-
-** The Tenets of Toast and Tech:
-
-   - make *everyone* welcome, enthusiastically
-   - make *all* questions welcome, enthusiastically
-   - everyone is learning, everyone is teaching
-   - there is no single path, there are as many paths as people attending, as many paths as needed
-   - you don&#39;t need a project or tech work to attend, just come
-   - you don&#39;t need any experience to attend, just come
-   - support everyone who shows up
-   - Make it safe to learn, safe to ask questions, safe to show up.
-
-   Possibly the *most* important tenet of all: #ToastAndTech can happen *anywhere*, run by *anyone*; all it takes is letting folks know about it, and showing up to hold the space.
-
-   #CauseAScene
-   #KeepLearning
-   #HappyToast
-
-   [[./kawaii-toast.png][happy toast]]
-
-   [[https://twitter.com/i/moments/1073061297200267265][moment on twitter]]
-
-
-   #+BEGIN_COMMENT
-   Local Variables:
-   time-stamp-count: 2
-   time-stamp-line-limit: 20
-   End:
-   #+END_COMMENT
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2019/04/2019-04-05-til-mounting-standalone-react-client-as-a-rails-react_component_works.org</id>
-      <updated>2019-04-05T00:59:22-05:00</updated>
-      <title>TIL: mounting stand-alone react client as a react_component in react-rails :rails:react:</title>
-      <content>#+COMMENT -*- time-stamp-line-limit: 12; time-stamp-count: 2 -*-
-* TIL: mounting stand-alone react client as a react_component in react-rails :rails:react:
-  :PROPERTIES:
-  :CAPTURE_DATE: [2019-04-05 Fri 00:40]
-  :last_update: Time-stamp: &lt;2019-04-05 00:59:22 tamara&gt;
-  :END:
-  :LOGBOOK:
-  CLOCK: [2019-04-05 Fri 00:41]--[2019-04-05 Fri 00:50] =&gt;  0:09
-  :END:
-
-  - last updated: Time-stamp: &lt;2019-04-05 00:59:22 tamara&gt;
-  - capture date: [2019-04-05 Fri 00:40]
-  - keywords: react-rails, rails, react
-
-  This should have been obvious, but for some reason seemed like it was the &quot;wrong&quot; way to do this.
-
-  We have a product that we&#39;re converting slowly to react-based components. One of the central philosophies has been to build towards a standalone react client, and move the rails app to be more strictly an API provider.
-
-  I started out using the standard ~ReactDom~ style of mounting the application to the page. This has worked well so far, until we ran into a strange issue.
-
-  The library ~styled-components~ has been something we&#39;ve adopted for putting our CSS in JS. However it has a problem: if multiple copies are loaded on the page in different bundles, it gets confused and the styles seem to go missing.
-
-  My first reaction was to remove all the ~styled-components~ and go with inline style objects instead.
-
-  However, my colleague pointed out that we could *also* just build one bundle which would keep the issue at bay.
-
-  I ran an experiment to do this, and it worked. The essential parts are:
-
-  1. Create a new component, in my case I named it ~ReactClient~, in the ~app/javascript/components/~ directory.
-     - the component essentially just imports the ~App~ and renders it.
-  2. Change the layout where you&#39;re loading the app to instead issue and ERB call to ~react_component~ that calls ~ReactClient~, possibly adding props options and HTML options.
-  3. Remove the ~webpacker~ packs the build the client.
-
-  This worked really well, with the caveat that the application bundle is rather large since it now contains everything.
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2019/04/2019-04-05-link-how-to-access-production-data-in-rails-migrations.org</id>
-      <updated>2019-04-05T00:56:37-05:00</updated>
-      <title>Link: [[https://www.gregnavis.com/articles/how-to-access-production-data-in-rails-migrations.html][How to Access Production Data in Rails Migrations]] :rails:migrations:data:</title>
-      <content>#+COMMENT -*- time-stamp-line-limit: 12; time-stamp-count: 2 -*-
-* Link: [[https://www.gregnavis.com/articles/how-to-access-production-data-in-rails-migrations.html][How to Access Production Data in Rails Migrations]] :rails:migrations:data:
-     :PROPERTIES:
-     :CAPTURE_DATE: [2019-04-05 Fri 00:35]
-     :last_update: Time-stamp: &lt;2019-04-05 00:56:37 tamara&gt;
-     :END:
-
-     - last update: Time-stamp: &lt;2019-04-05 00:56:37 tamara&gt;
-     - keywords: rails, migrations, data
-     - capture date: [2019-04-05 Fri 00:35]
-
-     This article represents standard practice when you have to access actual data in the database (i.e. production) when running a migration. The example they use of adding a slug is pretty straight-forward. Beware, though, when modifying a table that has a huge number of records as this will effectively lock out the table while the migration is running. If you do go this route, better to schedule the down time.
-
-     Of particular importance is to create the ActiveRecord models in the migration for the tables being modified. Do *not* use the actual models to avoid callbacks, validations, and the like.
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2019/03/2019-03-07-til-fixing-a-capybara-problem-scrolling-submit-into-view-on-a-modal.org</id>
-      <updated>2019-03-06T18:44:57-06:00</updated>
-      <title>TIL: Fixing a Capybara Problem Scrolling the Submit Button Into View on a Modal Form Test</title>
-      <content>#+COMMENT -*- time-stamp-line-limit: 12; time-stamp-count: 2 -*-
-* TIL: Fixing a Capybara Problem Scrolling the Submit Button Into View on a Modal Form Test
-  :PROPERTIES:
-  :LAST_UPDATE: Time-stamp: &lt;2019-03-06 18:44:57 tamara&gt;
-  :CAPTURE_DATE: [2019-03-06 Wed]
-  :KEYWORDS: testing, capybara, scrolling, modal
-  :END:
-
-  - last_update: Time-stamp: &lt;2019-03-06 18:44:57 tamara&gt;
-  - capture_date: [2019-03-06 Wed]
-  - keywords: testing, capybara, scrolling, modal
-
-** Background
-
-   In [[https://www.kickserv.com/][the product I work on]], we have a form to let a user create a new customer during the editing of a job. This form is quite long. In the test, the only required field, the Customer&#39;s name, is filled in, and the new customer modal form is submitted.
-
-** Problem
-
-   Since the form is so long, the submit button is not visible on the page, so [[http://teamcapybara.github.io/capybara/][Capybara]] cannot find it to click on it.
-
-** Solution
-
-   Scroll the modal so the submit button comes into view.
-
-   If you execute the following line in a Capybara test:
-
-   #+BEGIN_SRC ruby
-     page.execute_script &quot;window.scrollBy(0,10000)&quot;
-   #+END_SRC
-
-   it will scroll the window down, however, the modal isn&#39;t really sitting inside the window. It&#39;s definitely part of the DOM, but we need to scroll the modal itself.
-
-   So we grab the *modal DOM element* and tell it to scroll down:
-
-   #+BEGIN_SRC ruby
-     page.execute_script &quot;document.getElementById(&#39;new-customer-modal&#39;).scroll(0, 10000)&quot;
-   #+END_SRC
-
-   which makes the submit button come into view, and then the Capybara ~.click~ method works.
-
-** Caveats
-
-   This works when you&#39;re using Chrome (visible or headless). It does *not* work in IE11 or lower, nor does it work in Safari mobile.
-
-   The same issue can arise when using [[http://nightwatchjs.org/][NightWatch.js]], with a similar solution to scroll the modal rather than the window.
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2019/01/2019-01-21-TIL-adding-a-new-html-tag-when-creating-a-react-portal.org</id>
-      <updated>2019-02-24T17:52:08-06:00</updated>
-      <title>TIL: Adding a new HTML tag name when creating a React Portal</title>
-      <content>* TIL: Adding a new HTML tag name when creating a React Portal
-  :PROPERTIES:
-  :KEYWORDS: react, portal, html, tag names
-  :CAPTURE_DATE: Mon Jan 21 16:49:12 2019
-  :LAST_UPDATE: Time-stamp: &lt;2019-01-21 17:06:24 tamara.temple&gt;
-  :END:
-
-- keywords: react, portal, html, tag names
-- capture date: Mon Jan 21 16:49:12 2019
-- last updated: Time-stamp: &lt;2019-01-21 17:06:24 tamara.temple&gt;
-
-I was working on a replacement for the ~Modal~ component in ~react-bootstrap~ since it is clear the library is moving away from where we want to be with our app.
-
-While doing so, I noticed it was difficult to find the Portal that react creates in the DOM tree, since I was using just a regular old ~&lt;div&gt;~ element. Given in HTML5 you can invent your own HTML tag names (which Web Components and CSS Components take advantage of as well).
-
-So I called the created element ~&lt;modal-portal&gt;~ and it&#39;s quite visible when it shows up in the DOM, and it makes an easy grab handle for testing.
-
-In my ~ModalPortal~ component, the code looks like this:
-
-#+name: ModalPortal.js
-#+begin_src rjsx
-    constructor(props) {
-      super(props)
-      this.el = document.createElement(&quot;modal-portal&quot;)
-      this.modalRoot = document.querySelector(this.props.selector || &quot;body&quot;)
-    }
-#+end_src
-
-In the DOM, the component looks like this:
-
-#+BEGIN_SRC html
-  &lt;modal-portal&gt;
-    &lt;div class=&quot;modal fade in&quot; style=&quot;display: block;&quot;&gt;...&lt;/div&gt;
-  &lt;/modal-portal&gt;
-#+END_SRC
-
-
-#+BEGIN_COMMENT
-Local Variables:
-time-stamp-count: 2
-time-stamp-line-limit: 20
-End:
-#+END_COMMENT
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
+  <updated>2019-04-27T06:24:39-05:00</updated>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2018/10/link-ARIA-is-spackle-not-rebar.org</id>
-      <updated>2019-02-24T17:49:10-06:00</updated>
+      <updated>2019-04-27T06:24:39-05:00</updated>
       <title>LINK: [[https://css-tricks.com/aria-spackle-not-rebar/][ARIA is Spackle, Not Rebar]]</title>
       <content>* LINK: [[https://css-tricks.com/aria-spackle-not-rebar/][ARIA is Spackle, Not Rebar]]
 
-- Time-stamp: &lt;2018-11-04 10:02:04 tamara&gt;
+- Time-stamp: &lt;2019-02-02 17:27:14 tamara&gt;
 - published date: [2018-11-04 Sun]
 - keywords: ARIA, accessibility, a11y, link
 
@@ -394,7 +17,9 @@ There&#39;s an excellent article over at [[https://css-tricks.com/][CSS Tricks]]
 
 I think this sums up the intent nicely:
 
-&gt; Before considering other options, start with markup that semantically describes the content it is wrapping.
+#+BEGIN_QUOTE
+Before considering other options, start with markup that semantically describes the content it is wrapping.
+#+END_QUOTE
 
 And while that is definitely true, it really does help to understand what ARIA is for and how it works. So while we&#39;re on the subject, I want to point out the excellent [[https://frontendmasters.com][Frontend Masters]] course: [[https://frontendmasters.com/courses/web-accessibility/][Website Accessibility]] by Jon Kuperman.
 </content>
@@ -405,25 +30,21 @@ And while that is definitely true, it really does help to understand what ARIA i
     </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2017/07/playing-games-with-the-checked-pseudo-selector.org</id>
-      <updated>2019-02-24T17:49:10-06:00</updated>
+      <updated>2019-04-27T06:24:39-05:00</updated>
       <title>Playing games with the :checked pseudo-selector</title>
-      <content>#+TITLE: Playing games with the :checked pseudo-selector
-#+DATE: 2017-07-06 01:25
+      <content>* Playing games with the :checked pseudo-selector
+  :PROPERTIES:
+  :CAPTURE_DATE: 2017-07-06 01:25
+  :END:
 
 - keywords: css, checked
-- source: https://codepen.io/tamouse/pen/YQjVNb?editors=1100
+- source: [[https://codepen.io/tamouse/pen/YQjVNb?editors=1100]]
 
-* Playing games with the :checked pseudo-selector
+I&#39;m not sure what made me think of this, but I got a wild hair and thought I&#39;d try it out.
 
-I&#39;m not sure what made me think of this, but I got a wild hair and
-thought I&#39;d try it out.
+The =:checked= CSS pseudo-selector lets you select a /checked/ checkbox or radio button. The question I wondered, would this be a cheap-azz way of making a sliding sidebar? And the answer is, yes it could.
 
-The =:checked= CSS pseudo-selector lets you select a /checked/ checkbox
-or radio button. The question I wondered, would this be a cheap-azz way
-of making a sliding sidebar? And the answer is, yes it could.
-
-Over at [[file:%7B%7Bpage.source%7D%7D][codepen]] I left a pen showing
-just that:
+Over at [[https://codepen.io/tamouse/pen/YQjVNb?editors=1100][codepen]] I left a pen showing just that:
 
 #+BEGIN_HTML
   &lt;iframe height=&quot;265&quot; scrolling=&quot;no&quot; title=&quot;what can you do with :checked?&quot; src=&quot;//codepen.io/tamouse/embed/YQjVNb/?height=265&amp;amp;theme-id=0&amp;amp;default-tab=result&amp;amp;embed-version=2&quot; frameborder=&quot;no&quot; allowtransparency=&quot;true&quot; allowfullscreen=&quot;true&quot; style=&quot;width: 100%;&quot;&gt;
@@ -434,16 +55,11 @@ on CodePen.
 
 Some of the interesting bits:
 
-- The body is set to =display: flex= and =flex-direction: row=, which
-  would normally put the 3 major body parts, =input=, =aside=, and
-  =article= horizontally, but...
+- The body is set to =display: flex= and =flex-direction: row=, which would normally put the 3 major body parts, =input=, =aside=, and =article= horizontally, but,
 
-- The input checkbox is positioned absolute taking it out of the flex
-  flow, so only the =aside= and =article= are flexed
+- The input checkbox is positioned absolute taking it out of the flex flow, so only the =aside= and =article= are flexed
 
-- After setting everything up for the &quot;normal&quot; state, with the checkbox
-  /un/checked, and the sidebar /hidden/, I added the last CSS rule to
-  display the sidebar when the input checkbox is checked.
+- After setting everything up for the &quot;normal&quot; state, with the checkbox /un/checked, and the sidebar /hidden/, I added the last CSS rule to display the sidebar when the input checkbox is checked.
 
 *** normal state
 
@@ -469,8 +85,7 @@ Some of the interesting bits:
     }
 #+END_SRC
 
-Of course, this could be taken in all sorts of directions, but I wanted
-to try this out to see if it works.
+Of course, this could be taken in all sorts of directions, but I wanted to try this out to see if it works.
 </content>
       <author>
         <name>Tamara Temple</name>
@@ -479,7 +94,7 @@ to try this out to see if it works.
     </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2017/04/link-decorating-activerecord.org</id>
-      <updated>2019-02-24T17:49:10-06:00</updated>
+      <updated>2019-04-27T06:24:39-05:00</updated>
       <title>Link: Decorating ActiveRecord</title>
       <content>* Link: Decorating ActiveRecord
   :PROPERTIES:
@@ -488,9 +103,9 @@ to try this out to see if it works.
 
 - published date: 2017-04-06 23:01
 - keywords: [&quot;activerecord&quot;, &quot;decorators&quot;, &quot;links&quot;, &quot;rails&quot;, &quot;tl-dr&quot;]
-- source: https://robots.thoughtbot.com/decorating-activerecord
+- source: [[https://robots.thoughtbot.com/decorating-activerecord]]
 
-This came across my path this week: [[https://robots.thoughtbot.com/authors/joel-quenneville][Joël Quenneville]]&#39;s article, [[file:%7B%7B%20page.source%20%7D%7D][Decorating ActiveRecord]], which outlines some hazards when you go about decorating ActiveRecord models.
+This came across my path this week: [[https://robots.thoughtbot.com/authors/joel-quenneville][Joël Quenneville]]&#39;s article, [[https://robots.thoughtbot.com/decorating-activerecord][Decorating ActiveRecord]], which outlines some hazards when you go about decorating ActiveRecord models.
 
 Do read the article, it&#39;s good.
 
@@ -513,6 +128,812 @@ def to_model self end end ```
 #+BEGIN_HTML
   &lt;/blockquote&gt;
 #+END_HTML
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2017/02/gitlab-database-outage-post-mortem.org</id>
+      <updated>2019-04-27T06:24:39-05:00</updated>
+      <title>Gitlab Database Outage Post-Mortem</title>
+      <content>* Gitlab Database Outage Post-Mortem
+
+  - published date: 2017-02-11 01:54
+  - keywords: [&quot;database-outage&quot;, &quot;devops&quot;, &quot;gitlab&quot;, &quot;post-mortem&quot;]
+  - source: https://about.gitlab.com/2017/02/10/postmortem-of-database-outage-of-january-31/
+
+  Back at the end of January 2017, git SaaS provider [[https://gitlab.com][Gitlab]] reported a disaster of epic proportions:
+
+  #+BEGIN_QUOTE
+  On January 31st 2017, we experienced a major service outage for one of our products, the online service GitLab.com. The outage was caused by an accidental removal of data from our primary database server.
+  #+END_QUOTE
+
+  #+BEGIN_QUOTE
+  This incident caused the GitLab.com service to be unavailable for many hours. We also lost some production data that we were eventually unable to recover. Specifically, we lost modifications to database data such as projects, comments, user accounts, issues and snippets, that took place between 17:20 and 00:00 UTC on January 31. Our best estimate is that it affected roughly 5,000 projects, 5,000 comments and 700 new user accounts. Code repositories or wikis hosted on GitLab.com were unavailable during the outage, but were not affected by the data loss. GitLab Enterprise customers, GitHost customers, and self-hosted GitLab CE users were not affected by the outage, or the data loss.
+  #+END_QUOTE
+
+  They had destroyed the database holding all their repository information, and then could not find any viable backups.
+
+  *Today, 11 February 2017,* they released a [[https://about.gitlab.com/2017/02/10/postmortem-of-database-outage-of-january-31/][post-mortem]] of the situation, providing something few companies have /ever/ done: transparency and openness into a major devops disaster so that /everyone/ can learn.
+
+  They list several items in the Root Cause Analysis section, and provide a list of mitigation and recovery improvements now underway.
+
+  *Major kudos to Gitlab!*
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2016/12/todo-app-using-just-react-with-pojs-no-jsx-or-es6.org</id>
+      <updated>2019-04-27T06:24:39-05:00</updated>
+      <title>Todo app using just React with POJS - no JSX or ES6</title>
+      <content>* Todo app using just React with POJS - no JSX or ES6
+  :PROPERTIES:
+  :CUSTOM_ID: todo-app-using-just-react-with-pojs---no-jsx-or-es6
+  :END:
+
+- published date: 2016-12-03 09:56
+- keywords: [&quot;brian-holt&quot;, &quot;frontend-masters&quot;, &quot;javascript&quot;, &quot;learning&quot;, &quot;react&quot;, &quot;todoapp&quot;]
+- source: https://github.com/tamouse/todo-react-nojsx
+
+I just moderated the [[https://frontendmasters.com][Frontend Masters]] class &quot;Complete Introduction to React&quot; taught by [[https://twitter.com/holtbt][Brian Holt]] of Netflix and Reddit fame.
+
+It was a great course, but as moderator I was doing a lot of things to keep the chat room flowing and didn&#39;t get to pay much attention to the detail Brian was presenting, and definitely didn&#39;t have time in class to try out stuff.
+
+So I thought I&#39;d just give the first bit of Brian&#39;s presentation a go, where we just worked with React as a plain JS library, nothing fancy, no JSX transpiling, etc.
+
+[[https://github.com/tamouse/todo-react-nojsx][This]] is the result, the canonical single page Todo application.
+
+It was pretty easy, and pretty fun. I kept only to the [[https://facebook.github.io/react/docs/][React docs]], especially
+
+- [[https://facebook.github.io/react/docs/react-without-es6.html][React Without ES6 - React]]
+- [[https://facebook.github.io/react/docs/react-without-jsx.html][React Without JSX - React]]
+
+I&#39;m pleased with the experiement.
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2016/12/flexbox-website-with-fixed-headers-and-footer.org</id>
+      <updated>2019-04-27T06:24:39-05:00</updated>
+      <title>flexbox website with fixed headers and footer</title>
+      <content>* flexbox website with fixed headers and footer
+  :PROPERTIES:
+  :CUSTOM_ID: flexbox-website-with-fixed-headers-and-footer
+  :END:
+
+- published date: 2016-12-04 14:31
+- keywords: [&quot;css&quot;, &quot;flexbox&quot;]
+
+I was playing around with some React stuff and came upon a basic layout issue. I wanted to have the standard header + footer + main + sidebar sort of layout, but I wanted to do it flexbox. I also wanted the header and footer to be fixed to the top and bottom, respectively, and for the main content to be able to scroll inside it.
+
+*UPDATE!!* Now with more responsive!
+
+The results can be seen at [[https://github.com/tamouse/sample-flex-website-layout][this repo]], and a demo at [[https://tamouse.github.io/sample-flex-website-layout/][Flex Standard Layout (demo)]].
+
+** Page Boundaries: Header and Footer
+   :PROPERTIES:
+   :CUSTOM_ID: page-boundaries-header-and-footer
+   :END:
+
+Making the header and footer fixed to top and bottom is fairly easy. The following attributes generally work well:
+
+#+BEGIN_SRC css
+    .fixed-top, .fixed-bottom {
+      position: aboslute;
+      height: 40px;
+    }
+    .fixed-top { top: 0 }
+    .fixed-bottom { bottom: 0 }
+#+END_SRC
+
+** Full-height columns
+   :PROPERTIES:
+   :CUSTOM_ID: full-height-columns
+   :END:
+
+Getting columns of equal height is a bit tricksier, and I resorted to what seems like a hack.
+
+#+BEGIN_SRC css
+    .fixed-middle {
+      position: absolute;
+      top: 40px;
+      bottom: 40px;
+      overflow: hidden;
+
+    }
+
+    .fixed-middle .column {
+      overflow: auto;
+    }
+#+END_SRC
+
+** Where&#39;s the flex?
+   :PROPERTIES:
+   :CUSTOM_ID: wheres-the-flex
+   :END:
+
+This isn&#39;t very flexy yet, so I added in some goodness for that:
+
+#+BEGIN_SRC css
+    .fixed-middle {
+      dislplay: flex
+    }
+    .fixed-middle .col {
+      flex: 1
+    }
+#+END_SRC
+
+Much better, but then the sidebars and central main content area are all the same width. I want the content area to dominate.
+
+I arranged the main content part to come before the sidebars, like so:
+
+#+BEGIN_EXAMPLE
+    &lt;div class=&quot;fixed-middle&quot;&gt;
+        &lt;main class=&quot;main-content&quot; role=&quot;main&quot;&gt;
+            &lt;!-- main content --&gt;
+        &lt;/main&gt;
+        &lt;aside class=&quot;left-side&quot;&gt;
+            &lt;!-- left side bar content --&gt;
+        &lt;/aside&gt;
+        &lt;aside class=&quot;right-side&quot;&gt;
+            &lt;!-- right sidebar content --&gt;
+        &lt;/aside&gt;
+    &lt;/div&gt;
+#+END_EXAMPLE
+
+After removing =.fixed-middle .col= CSS definition, I put in:
+
+#+BEGIN_SRC css
+    .fixed-middle .main-content {
+       flex: 5;
+       order: 2;
+    }
+    .fixed-middle .left-side {
+       flex: 1;
+       order: 1;
+    }
+    .fixed-middle .right-side {
+       flex: 1;
+       order: 3;
+    }
+#+END_SRC
+
+This tells flexbox to let the main content area grow to 5 times the size of the sidebars, but make sure the left side bar&#39;s content comes first in the row.
+
+** Header and Footer Redux
+   :PROPERTIES:
+   :CUSTOM_ID: header-and-footer-redux
+   :END:
+
+I wanted to extend this even further, so the case where you may have multiple &quot;widgets&quot; in the header or footer, and so redid the same idea for the those, but keeping the flex to 1.
+
+If I ended up with a 2/3 widget and 1/3 widget, I could mark them with appropriate classes and set the flex accordingly.
+
+** Making it responsive
+   :PROPERTIES:
+   :CUSTOM_ID: making-it-responsive
+   :END:
+
+This turned out to be really easy, and all I needed to do is wrap the flexbox and absolute positioning in a media query.
+
+I had put the page header after the main content, but that didn&#39;t look as good, so I moved that to the top.
+
+The image was misbehaving as well, so I introduced an =.img-responsive= class that limited the width to 100%.
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2016/11/installing-wordpress-things-without-ftp.org</id>
+      <updated>2019-04-27T06:24:39-05:00</updated>
+      <title>Installing WordPress Things Without FTP</title>
+      <content>* Installing WordPress Things Without FTP
+  :PROPERTIES:
+  :CUSTOM_ID: installing-wordpress-things-without-ftp
+  :END:
+
+- published date: 2016-11-14 00:21
+- keywords: [&quot;installation&quot;, &quot;plugins&quot;, &quot;themes&quot;, &quot;wordpress&quot;]
+- source: https://codex.wordpress.org/Editing_wp-config.php#WordPress_Upgrade_Constants
+
+Recently having set up a couple of WordPress sandbox areas, which would not have any FTP access points for upgrading and installing WP themes and plugins, I ran across this feature where the WP install can &quot;reach out&quot; and pull in the items it needs, rather than telling the WP repository to push the items to the site.
+
+In the [[https://codex.wordpress.org/Editing_wp-config.php#WordPress_Upgrade_Constants][codex]] there is a section on &quot;WordPress Upgrade Constants&quot;, and in particular it describes =FS_METHOD= which turns the nature of installing upgrades around.
+
+By adding the following line to the =wp-config.php= file, you can enable this behaviour:
+
+#+BEGIN_EXAMPLE
+    define(&#39;FS_METHOD&#39;, &#39;direct&#39;);
+#+END_EXAMPLE
+
+Putting that at the end of the file turns on this ability, which was a revelation for working on these sandbox sites.
+
+This is what the page has to say:
+
+#+BEGIN_QUOTE
+  FS_METHOD forces the filesystem method. It should only be &quot;direct&quot;, &quot;ssh2&quot;, &quot;ftpext&quot;, or &quot;ftpsockets&quot;. Generally, you should only change this if you are experiencing update problems. If you change it and it doesn&#39;t help, change it back/remove it. Under most circumstances, setting it to &#39;ftpsockets&#39; will work if the automatically chosen method does not. Note that your selection here has serious security implications. If you are not familiar with them, you should seek help before making a change.
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+
+  - (Primary Preference) &quot;direct&quot; forces it to use Direct File I/O requests from within PHP. It is the option chosen by default.
+  - (Secondary Preference) &quot;ssh2&quot; is to force the usage of the SSH PHP Extension if installed
+  - (3rd Preference) &quot;ftpext&quot; is to force the usage of the FTP PHP Extension for FTP Access, and finally
+  - (4th Preference) &quot;ftpsockets&quot; utilises the PHP Sockets Class for FTP Access.
+#+END_QUOTE
+
+I chose to use =direct= for the sandboxes.
+
+Take the warning about security implications seriously. You don&#39;t want any production servers to be able to update if someone gains access.
+
+I&#39;ve handled production upgrades by moving the updated software up to the production machine myself /after/ testing the upgrades. There is /no/ FTP (secure or otherwise) on my production installations. BTDT got burned badly.
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2016/05/wordcamp-mpls-diving-back-into-wordpress.org</id>
+      <updated>2019-04-27T06:24:39-05:00</updated>
+      <title>WordCamp Minneapolis 2016: Diving Back Into WordPress</title>
+      <content>#+OPTIONS: toc:5
+
+
+* WordCamp Minneapolis 2016: Diving Back Into WordPress
+
+  - published date: 2016-05-23 04:10
+  - keywords: [&quot;custom-themes&quot;, &quot;relearning&quot;, &quot;themes&quot;, &quot;wordcamp&quot;, &quot;wordpress&quot;]
+
+  [[https://2016.minneapolis.wordcamp.org/files/2016/02/wordpress-logo-2016.png]]
+
+  This past weekend, May 20-22, I attended [[https://2016.minneapolis.wordcamp.org/][WordCamp Minneapolis 2016]] (twitter hash tag [[http://twitter.com/search?q=%23wcmple][#wcmpls]]) which was a *huge* lot of fun. I haven&#39;t looked at WordPress and PHP in years, at least since around 2007. A lot has changed, and a lot hasn&#39;t changed. I also found a really welcoming community among the #wcmpls crowd.
+
+  Since I stopped using it, WordPress has only continued to grow and improve, thanks to the dedicated efforts of the WordPress open source community and project leaders.
+
+  It was also great to step away from the Ruby on Rails server-side environment I&#39;ve been running in for the past many years and engage in a bit of nostalgia in PHP (and perhaps some /nastalgia/[fn:1] as well).
+
+  One of the things that made this event so much fun for me was all the people I already knew through [[http://gdiminneapolis.com][GDI]].
+
+  https://s3.amazonaws.com/swaac.tamouse.org/images/wcmpls-gdi-attendees.jpg
+
+  Our merry band, we happy few. GDI Mpls
+
+** Friday Foundation
+
+   For the first time, #wcmpls had a Friday-before-the-conference technical day, and I chose to dive deep into the development track and learn about creating a custom theme from scratch.
+
+   This was wonderful because it met my dual needs of expressing my creativity in software building and relearning and extending my knowledge into the platform.
+
+   I ended up a little frustrated with the day, because what I was building didn&#39;t work as I expected. Not so unusual during these massive teaching days; I certainly wouldn&#39;t expect them to hold up everything until I understood what I was doing wrong.
+
+** Saturday
+
+   Sessions, sessions, sessions! I tended to pick the more tech/dev side of things and was rewarded with some great topics. There were several that were quite a bit more &quot;junior&quot; in my experience, such as the JavaScript with WordPress sessions, where it seems that JavaScript is enjoying a lot of attention, but has not yet penetrated into the mainstream of things.
+
+   Likewise, there&#39;s still a bit of a feeling I got that as far as development practices go, things are still sometimes pretty loose as far as source control, continuous testing/integration, and what-not.
+
+   From my &quot;can&#39;t leave it unfinished&quot; feeling from Friday, I spent a fair bit of time hitting up other people and working on getting a working custom theme with custom post types and custom taxonomy in place, even using bootstrap to drive the theme, which I find pretty awesome.
+
+   There was this thing called the &quot;Happy Bar&quot; (I think) -- which I didn&#39;t find out what it was until late Sunday afternoon, at which point I went over and /promptly/ got great answers for some lingering questions.
+
+   My prior experience extended to child themes and small changes here and there in CSS and layout, but having a packaged custom theme example is really great.
+
+   #+BEGIN_QUOTE
+   The example custom theme code can be seen out on [[https://github.com/tamouse/example-wordpress-theme-creation-wcmpls16][github]] and there&#39;s a [[http://wp.pontiki.io/demo-custom-theme/][demo]] available, too. {: .text-right}
+   #+END_QUOTE
+
+   As often happens, while you&#39;re trying to solve one problem, you come with another, and in the midst of that, an idea is spawned to automate something, and then another yak is ready for shaving. Randall Monroe captures this, of course:
+
+   [[http://imgs.xkcd.com/comics/automation.png]]
+
+   So, yeah, part of the day I worked on building a [[http://whatisthor.com][Thor]] tool to automatically build a [[http://vagrantup.com][Vagrant]] box provisioned with [[http://ansible.com][Ansible]] that would be usable as a [[https://wordpress.org][WordPress]] custom theme and plugin development environment. Yeah, it&#39;s still in progress ...
+
+   But at least I did get a custom theme, custom post type, and custom taxonomy built! Yay!
+
+*** Saturday Talks
+
+    There were lots of great talks and speakers. I only attended two talks on Saturday, and they were awesome.
+
+**** Amy Gebhardt&#39;s /From Junior to Senior: Why We Teach/
+
+     [[http://twitter.com/amlyhamm][Amy]] is a friend whom I have the pleasure of volunteering with at [[http://gdiminneapolis.com][Girl Develop It]]. Her talk explored a bit of what goes on at GDI, whose mission is the teach beginning HTML, CSS, and JavaScript to Women. The hope is to bring diversity into the web development world.
+
+     With that, and with all the bootcamps, however, there is a backpressure created as many firms and agencies don&#39;t wish to hire inexperienced or junior developers.
+
+     Amy&#39;s talk struck right to the heart of this, outlining why it&#39;s a good idea, and once you decide to try it, how to engage them, and then how to bring them up to speed once they join your organization.
+
+     In her usual brilliant and high-energy way, Amy provided a lot of human and humane reasons for all of this, and presented her own difficulties in dealing with the third step of this, handling your own work and reactions when working with someone who needs a lot of hand-holding.
+
+     - [[http://amlyhamm.com/talks/wcmpls/from-junior-to-senior/][Slides from Amy&#39;s Talk]]
+
+     https://s3.amazonaws.com/swaac.tamouse.org/images/amlyhamm-junior-dev-talk.jpg
+
+     Amy Gebhardt brings the excitement! Credit: @amlyhamm
+
+**** Eryn O&#39;Neil&#39;s /Programmers Can UX Too: Avoiding the Programmer&#39;s User Interface/
+
+     Eryn&#39;s talk was very enjoyable, she has rather good comedic timing, and knows her audience. (In fact, she spent quite a bit of time up front making sure she /had/ the right audience, inviting people to leave if they though they wouldn&#39;t get much out of her talk.)
+
+     Eryn&#39;s message is right there in the title: as a developer, you, too, /must/ understand enough about what your user is trying to accomplish, and that you really need to make your software enjoyable enough for the user to operate that they&#39;ll continue to do so.
+
+     My comment to Eryn afterwards was that I was struck (again) by the importance of paying attention to the user, whom all the value of your code resides in. There are intrinsic values, certainly, and your own aesthetic values, but the actual value rests on whether or not the user will use your code. We build these things not to sit in a repository, but to be out in the world, solving problems for people.
+
+     - [[http://www.slideshare.net/eryno/programmers-can-ux-too-minnewebcon-2014][Eryn&#39;s slides]]
+
+     https://s3.amazonaws.com/swaac.tamouse.org/images/wcmplw-eryn-oneil-the-programmers-ux.jpg
+
+     Eryn O&#39;Niel showing us the Programmer&#39;s UX (unph) Credit: @ChrisEdwardsCE
+
+** Sunday
+
+   The morning was taken up with a brunch at the [Fountain Room] in downtown Minneapolis, which if you&#39;ve never been is pretty doggone spectacular. One of the top spots for wedding receptions, apparently.
+
+   https://s3.amazonaws.com/swaac.tamouse.org/images/fountain-room-pano-20160522-rot.jpg
+
+   [[https://s3.amazonaws.com/swaac.tamouse.org/images/fountain-room-pano-20160522.jpg][big pano]]
+
+   Fountain Room, Minneapolis, Panoramic Photo
+
+*** Lightning Talks
+
+    The lightning talks were rather good, but I think the first two were speaking to bloggers as a business more than mere devs.
+
+
+**** Shawn Pfunder&#39;s /Bicycle Freelancing/.
+
+     Shawn uses a bicycle shop as analogy and metaphor for creating your own business.
+
+     5 main points:
+
+     - build a tribe
+     - secure space
+     - get together
+     - teach others
+     - get personal
+
+     https://s3.amazonaws.com/swaac.tamouse.org/images/wcmpls-pfunder-bicycle-freelancing.jpg
+
+     Shawn Pfunder on how your business should be like a bike shop. Credit: ~@_horneck~
+
+**** Aaron Rosell&#39;s /Why Email Newsletters Help Bloggers Build Influence/
+
+     Aaron presented a case study of one of his clients, who runs a fashion blog. She began also putting out a few different newsletters:
+
+     - blog teaser
+     - news / article / interest aggregator, not limited to fashion
+     - weekend edition, more articles, lots of personal stuff, things not found on the blog itself.
+
+     Aaron&#39;s points are that if you&#39;re a serious blogger, consider adding an e-mail (or e-mails) to your blog, and capture more attention, more readers, make yourself more personable, more accessible, and in addition, gather a lot more data about your readers so you understand them better.
+
+**** Cate DeRosia&#39;s /Why You Should Embrace Failure/
+
+     Cate&#39;s talk restated something most people have heard before, but that bears repeating often, as it&#39;s something that hasn&#39;t been fully grokked and integrated into our culture very well:
+
+     #+BEGIN_QUOTE
+     &quot;We learn from failure&quot;
+     #+END_QUOTE
+
+     It&#39;s really important to remember that when you&#39;ve just deleted the corporate database, or cost the company $100,000 in accidental overcharges (okay, it only looked like it was $7000, and it was only a data error, but still...). The key thing is to learn from those mistakes. Fix the causes of the errors so they won&#39;t happen again. Fix the causes of the causes of the errors, find the root cause and fix that. Keep improving.
+
+     Ultimately, failing can be a very positive experience once we get over the fear and frustration. That won&#39;t go away, we are human after all, but we don&#39;t have to let those feelings rule us.
+
+     https://s3.amazonaws.com/swaac.tamouse.org/images/wcmpls-cate-derosio-learn-from-failure.jpg
+
+     Cate DeRosia helping us to embrace our failures in order to learn and grow. Credit: @topher1kenobe
+
+*** Sunday Sessions
+
+    There were fewer talks on Saturday, only in the afternoon. I went all in on the JavaScript talks:
+
+**** Solomon Scott&#39;s /JavaScript &lt;3 WordPress/
+
+     Solomon is a true lover of JavaScript (as am I) and his passion shows through quite well.
+
+     This was an important talk for me, not from the overview of JavaScript Solomon presented, but from the eagerness of the audience, and my own interest, in bringing the two worlds together. On Friday, I had just learned how to intergrate the styles and scripts I could make for a custom theme or plugin, and Solomon provided for me the binding of modern JavaScript development with WordPress integration. It was really nice.
+
+     He does speak way too fast, though. :D
+
+     - [[http://solomonscott.com/index.php/javascript-and-wordpress/][JavaScript &lt;3 WordPress slides]]
+
+     https://s3.amazonaws.com/swaac.tamouse.org/images/wcmpls-solomonscott-wp-heart-js.jpg
+
+     Solomon Scott showing some love. Credit: @Julie381Julie
+
+**** Josh Broton&#39;s /WordPress+React: A Match Made In Heaven/
+
+     Wow. Josh is like the most dynamic speaker ever. He&#39;s bouncing around the podium, his slides are just /lousy/ with animated GIFs and he&#39;s astoundingly funny and engaging. That&#39;s just the outside.
+
+     Inside, Josh&#39;s talk was super engaging, and super informative. For most of the people attending, I think React is a completely new concept, but I was quite eager to see how it could be used.
+
+     The upshot, and this is the same conclusion I&#39;ve reached on the Rails side, is that WordPress can and should be used only as an API source (your web service) and completely eschew any of it&#39;s own views. It only delivers up JSON to a Single Page App (SPA) which is written in a way that is really outside the entire WordPress Loop.
+
+     When the user comes in to your site, the main WordPress page would just deliver the SPA to the browser, and subsequent interaction with WordPress would be entirely AJAX-driven.
+
+     It&#39;s quite compelling, I think, and it will be interesting to see how much traction this concept gets in the WP community. I like it a lot.
+
+     - No slides yet for Josh&#39;s talk. Coming soon, I hope.
+
+     https://s3.amazonaws.com/swaac.tamouse.org/images/wcmpls-josh-broton-its-just-js-but-its-not-but-it-is.jpg
+
+     Josh Broton: &quot;React: It&#39;s just Javascript, but it&#39;s not, but it is.&quot; Credit: @foundartphotog
+
+** Conclusion
+
+   I was pretty tired, but also pretty jazzed. I had such a great time, and I&#39;m so happy to those who made this possible.
+
+   A special shout-out to [[https://twitter.com/marktimemedia][Michelle Schulp]] who organized this super event, and lovingly opened up a space for me at the last minute. Most excellent work!
+
+   Images were taken from the #wcmpls twitter search feed. Copied without persmission, credit goes to the originators. Apologies all around. I do appreciate your work.
+
+** Footnotes
+
+[fn:1] &quot;Nastalgia&quot; is just a word I made-up by accident when referring to that feeling where you look at something in the past and it makes you a bit sick.
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2015/12/self-referential-models-categories.org</id>
+      <updated>2019-04-27T06:24:39-05:00</updated>
+      <title>Self-referential Models: Categories</title>
+      <content>* Self-referential Models: Categories
+  :PROPERTIES:
+  :CUSTOM_ID: self-referential-models-categories
+  :END:
+
+- published date: 2015-12-15 19:37
+- keywords: [&quot;examples&quot;, &quot;howtos&quot;, &quot;rails&quot;, &quot;self-referencing-models&quot;]
+- source: https://github.com/tamouse/example_nested_category
+
+A series of questions from the IRC #RubyOnRails channel on Freenode prompted this example about doing nested, self-referential models.
+
+- content item {:toc}
+
+** Self-referential Models
+   :PROPERTIES:
+   :CUSTOM_ID: self-referential-models
+   :END:
+
+The Ruby on Rails Guide [[http://guides.rubyonrails.org/association_basics.html][Association Basics]] has a short segment on doing [[http://guides.rubyonrails.org/association_basics.html#self-joins][&quot;self joins&quot;]] that provides an example of doing this.
+
+For my example (and the example the OP was working on), the model was categories, which could have parent categories, child categories and sibling categories.
+
+** Category Tree
+   :PROPERTIES:
+   :CUSTOM_ID: category-tree
+   :END:
+
+#+CAPTION: Category Tree
+[[file:%7B%7B%20site.baseurl%20%7D%7D/images/category-tree.gif]]
+
+In the figure above, a tree of categories show the concept of parents, children, and siblings. &quot;Category Root&quot; has no parent, and is the root of the tree. &quot;Category A&quot; has one parent, &quot;Category Root&quot;, 2 siblings &quot;Category B&quot; and &quot;Category C&quot;, and 2 children, &quot;Category A.1&quot; and &quot;Category A.2&quot;.
+
+** Designing the Model and the database table.
+   :PROPERTIES:
+   :CUSTOM_ID: designing-the-model-and-the-database-table.
+   :END:
+
+Representing this in a Rails model gets interesting.
+
+We need some way of saying a category has a parent. This is a *foreign key* that points back to the category&#39;s table&#39;s =id= field.
+
+It turns out this is the only specific addition we&#39;ll need to make to the table, and rest will be done by the Model class.
+
+Keeping it simple, we&#39;ll call that field =parent_id= following Rails&#39;s naming conventions for putting the =_id= on the foreign key and the name of the relationship as the foreign key.
+
+*** The migration
+    :PROPERTIES:
+    :CUSTOM_ID: the-migration
+    :END:
+
+Here&#39;s what the migration might look like:
+
+#+BEGIN_SRC ruby
+    class CreateCategories &lt; ActiveRecord::Migration
+      def change
+        create_table :categories do |t|
+          t.string :name
+          t.integer :parent_id, index
+          t.timestamps null: false
+        end
+        add_foreign_key :categories, :categories, column: :parent_id, primary_key: :id
+      end
+    end
+#+END_SRC
+
+(N.B.: you need to create the foreign key after the table it&#39;s referencing has been created, so make sure the foreign key definition is outsite the =create_table= block.)
+
+*** The model
+    :PROPERTIES:
+    :CUSTOM_ID: the-model
+    :END:
+
+Turning to the model now, we have to put in the directives that tell Rails how to use this self-referecing foreign key.
+
+#+BEGIN_SRC ruby
+    class Category &lt; ActiveRecord::Base
+      belongs_to :parent, class_name: &quot;Category&quot;
+      has_many :children, class_name: &quot;Category&quot;, foreign_key: :parent_id
+    end
+#+END_SRC
+
+This is all we need to be able to be able to link up a category with it&#39;s parent, and to be able to find the children of a parent.
+
+When the parent is nil, the category has no parent. As of yet, there is nothing to prevent many root nodes as nothing forces a category node to have a parent.
+
+Let&#39;s try a few of these out:
+
+#+BEGIN_SRC ruby
+    root = Category.create name: &quot;Root&quot;
+    # =&gt; #&lt;Category:0x007fd0d983cc08 id: 326, name: &quot;Root&quot;, parent_id: nil, created_at: Wed, 16 Dec 2015 02:15:18 UTC +00:00, updated_at: Wed, 16 Dec 2015 02:15:18 UTC +00:00&gt;
+    a = Category.create name: &quot;A&quot;, parent: root
+    # =&gt; #&lt;Category:0x007fd0dd9e3d50 id: 327, name: &quot;A&quot;, parent_id: 326, created_at: Wed, 16 Dec 2015 02:17:01 UTC +00:00, updated_at: Wed, 16 Dec 2015 02:17:01 UTC +00:00&gt;
+    a1 = Category.create name: &quot;A.1&quot;, parent: a
+    # =&gt; #&lt;Category:0x007fd0dd91e3c0 id: 328, name: &quot;A.1&quot;, parent_id: 327, created_at: Wed, 16 Dec 2015 02:17:53 UTC +00:00, updated_at: Wed, 16 Dec 2015 02:17:53 UTC +00:00&gt;
+    a1.parent
+    # =&gt; #&lt;Category:0x007fd0dd9e3d50 id: 327, name: &quot;A&quot;, parent_id: 326, created_at: Wed, 16 Dec 2015 02:17:01 UTC +00:00, updated_at: Wed, 16 Dec 2015 02:17:01 UTC +00:00&gt;
+    root.parent
+    # =&gt; nil
+    root.children
+    # =&gt; [#&lt;Category:0x007fd0dc6a3010  id: 327,  name: &quot;A&quot;,  parent_id: 326,  created_at: Wed, 16 Dec 2015 02:17:01 UTC +00:00,  updated_at: Wed, 16 Dec 2015 02:17:01 UTC +00:00&gt;]
+#+END_SRC
+
+We can see that &quot;A.1&quot;&#39;s parent is &quot;A&quot;, and the &quot;ROOT&quot; has no parent at all, as we expect.
+
+** Extending a class with &quot;nice&quot; methods.
+   :PROPERTIES:
+   :CUSTOM_ID: extending-a-class-with-nice-methods.
+   :END:
+
+It&#39;s easy enough to use something like =if category.parent.nil?= to find out if the current category is the root of the tree. We could make it a bit more clear though by adding in some predicate methods on the instances:
+
+#+BEGIN_SRC ruby
+    def is_parent?
+      !!self.parent.nil?
+    end
+#+END_SRC
+
+*** Aside: what&#39;s up with that bang-bang?
+    :PROPERTIES:
+    :CUSTOM_ID: aside-whats-up-with-that-bang-bang
+    :END:
+
+=!!= is the double negative, which ensures that whatever result of the expression, it *always* evaluates to =true= or =false= only, i.e., not =nil=, and not some other value. This is somewhat of a debate; some people absolutely hate the =!!= because it&#39;s a bit jarring, others want to be absolutely sure no other values leak through. Leave it off if it bothers you.
+
+Besides parent, you might want to know if the node is /not/ a parent. You can always say =!category.parent?=, but there&#39;s a solitary bang operator again waiting to be missed. If we use another method here we can obtain more readability.
+
+#+BEGIN_SRC ruby
+    def has_parent?
+      !!self.parent.present?
+    end
+#+END_SRC
+
+** You promised me a sister!
+   :PROPERTIES:
+   :CUSTOM_ID: you-promised-me-a-sister
+   :END:
+
+What about siblings? This also turns out to be fairly easy.
+
+#+BEGIN_SRC ruby
+    def siblings
+      if parent
+        parent.children.where.not(id: self.id)
+      else
+        Category.top_level.where.not(id: self.id)
+      end
+    end
+#+END_SRC
+
+This gives all the children of the current node&#39;s parent without itself. In addition, there is the special case where the current node has no parent, so we get all the /other/ nodes without parents.
+
+** Ensuring there is only one root node
+   :PROPERTIES:
+   :CUSTOM_ID: ensuring-there-is-only-one-root-node
+   :END:
+
+Earlier I made mention that this model so far doesn&#39;t guarantee there will only ever be one root of the category tree. It is /perfectly/ okay to have multiple root nodes if that fits your need. In this particular instance I only want one root.
+
+To do this, we will ensure that any new category added to the class will always have it&#39;s parent set to the root node, unless the parent is passed in. But what about setting the very first category where there are no other nodes? It turns out this is rather simple to accomodate as well without doing a lot of conditionals.
+
+#+BEGIN_SRC ruby
+    def ensure_one_root
+      self.parent = self.class.root if parent_id.nil?
+    end
+#+END_SRC
+
+This looks at the current object =self= and sees if the parent id is presently nil. If it is, it then searches for the current root of the class and returns it. The &quot;magic&quot; happens when there is no root, i.e. the first one in the class, =self.class.root= returns nil, setting the parent ID to =nil=, just what we want.
+
+Subsequent saves will make sure that the category will at least point to the root.
+
+** Ensuring that root stays root
+   :PROPERTIES:
+   :CUSTOM_ID: ensuring-that-root-stays-root
+   :END:
+
+&quot;But wait!&quot; you say, &quot;what happens if I set the root&#39;s parent to a specific category id? What happens then, mousegirl?&quot;
+
+It&#39;s true, with that method =ensure_one_root= up there, you can /lose/ the root of the tree if there is no root. Let&#39;s add a guard and stop the save if that&#39;s tried:
+
+#+BEGIN_SRC ruby
+    def ensure_one_root
+      return false if self == self.class.root
+      self.parent = self.class.root if parent_id.nil?
+    end
+#+END_SRC
+
+The guard clause will find out if the current object =self= is the same as the root by fetching the root via the class method. Returning false from the callback ends the save operation.
+
+** Changing the root
+   :PROPERTIES:
+   :CUSTOM_ID: changing-the-root
+   :END:
+
+Sometimes you do want to change the root. For this, we will need to create an /atomic/ operation because we need to change two values simultaneiously, and step around the before save callback, which is some trickiness.
+
+First we will make a class method that will do the actual swap. In this sort of operation, we&#39;d probably be as likely to want to use the class method as the instance method, so we&#39;ll define it in one place. My personal preference is to put these sorts of things up in the class, but there&#39;s no hard-and-fast rule about it, to my knowledge. (Please comment if you find otherwise?)
+
+#+BEGIN_SRC ruby
+    def self.make_root(other)
+      self.transaction do
+        old_root = self.root
+        old_root.update_column(:parent_id, other.id)
+        other.update_column(:parent_id, nil)
+      end
+    end
+#+END_SRC
+
+We&#39;re using =update_column= (which calls =update_columns= underneath) in order to bypass the =before_save= callback. [[http://api.rubyonrails.org/classes/ActiveRecord/Persistence.html#method-i-update_column][(reference)]]
+
+Next we&#39;ll add an instance method that just calls the class method:
+
+#+BEGIN_SRC ruby
+     def make_root
+       self.class.make_root(self)
+     end
+#+END_SRC
+
+And we can see it works:
+
+#+BEGIN_SRC ruby
+    root = Category.create name: &quot;ROOT&quot;
+    # =&gt; #&lt;Category:0x007f9cbb792480 id: 4, name: &quot;ROOT&quot;, parent_id: nil, created_at: Wed, 16 Dec 2015 03:27:01 UTC +00:00, updated_at: Wed, 16 Dec 2015 03:27:01 UTC +00:00&gt;
+    other = Category.create name: &quot;OTHER&quot;
+    # =&gt; #&lt;Category:0x007f9cbd9ca408 id: 5, name: &quot;OTHER&quot;, parent_id: 4, created_at: Wed, 16 Dec 2015 03:27:12 UTC +00:00, updated_at: Wed, 16 Dec 2015 03:27:12 UTC +00:00&gt;
+    other.make_root
+    #   (0.1ms)  begin transaction
+    #  Category Load (0.1ms)  SELECT  &quot;categories&quot;.* FROM &quot;categories&quot; WHERE &quot;categories&quot;.&quot;parent_id&quot; IS NULL  ORDER BY &quot;categories&quot;.&quot;id&quot; ASC LIMIT 1
+    #  SQL (0.3ms)  UPDATE &quot;categories&quot; SET &quot;parent_id&quot; = 5 WHERE &quot;categories&quot;.&quot;id&quot; = ?  [[&quot;id&quot;, 4]]
+    #  SQL (0.4ms)  UPDATE &quot;categories&quot; SET &quot;parent_id&quot; = NULL WHERE &quot;categories&quot;.&quot;id&quot; = ?  [[&quot;id&quot;, 5]]
+    #   (1.7ms)  commit transaction
+    # =&gt; true
+    #
+    # NOTE: the transaction is doing both updates safely. if one fails,
+    # they both fail
+
+    other.is_root?
+    # =&gt; true
+
+    # Because root was changed in the database, but our local instance of
+    # it hasn&#39;t been updated, we need to reload it. This can often be a
+    # problem if you don&#39;t remember to do this!
+    root.reload
+    root.is_root?
+    # =&gt; false
+#+END_SRC
+
+** Siblings, redux
+   :PROPERTIES:
+   :CUSTOM_ID: siblings-redux
+   :END:
+
+For a single-root system, we don&#39;t need the special case of =siblings=, but it turns out it works anyway, returning an empty relationship because there can be no other top-level ndoes. I think it&#39;s a better solution to return an empty relationship in this case as it unifies the expected return with a non-root node with no siblings. (For example, Category C.1 in the diagram at the top.)
+
+** The class code:
+   :PROPERTIES:
+   :CUSTOM_ID: the-class-code
+   :END:
+
+Here&#39;s our final code:
+
+#+BEGIN_SRC ruby
+    class Category &lt; ActiveRecord::Base
+      belongs_to :parent, class_name: &quot;Category&quot;
+      has_many :children, class_name: &quot;Category&quot;, foreign_key: :parent_id
+
+      scope :with_children, -&gt;() { joins(:children).distinct }
+      scope :top_level, -&gt;() { where(parent_id: nil) }
+
+      before_save :ensure_one_root
+
+      ##
+      # CLASS METHODS
+      ##
+
+      def self.root
+        self.top_level.first
+      end
+
+      def self.make_root(other)
+        self.transaction do
+          old_root = self.root
+          old_root.update_column(:parent_id, other.id)
+          other.update_column(:parent_id, nil)
+        end
+      end
+
+      ##
+      # INSTANCE METHODS
+      ##
+
+      def siblings
+        if parent
+          parent.children.where.not(id: self.id)
+        else
+          Category.top_level.where.not(id: self.id)
+        end
+      end
+
+      def has_parent?
+        self.parent.present?
+      end
+
+      def is_leaf?
+        self.children.empty?
+      end
+
+      def is_root?
+        self.parent.nil?
+      end
+
+      def make_root
+        self.class.make_root(self)
+      end
+
+      private
+
+      def ensure_one_root
+        return false if self == self.class.root
+        self.parent = self.class.root if parent_id.nil?
+      end
+
+    end
+#+END_SRC
+
+You can see this application with tests at the [[https://github.com/tamouse/example_nested_category][Github Repository]].
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2015/11/link-getting-testy.org</id>
+      <updated>2019-04-27T06:24:39-05:00</updated>
+      <title>Link: Getting Testy</title>
+      <content>* Link: Getting Testy
+  :PROPERTIES:
+  :CUSTOM_ID: link-getting-testy
+  :END:
+
+- published date: 2015-11-13 08:44
+- keywords: [&quot;link&quot;, &quot;randy-coulman&quot;, &quot;tdd&quot;, &quot;testing&quot;]
+- source: http://randycoulman.com/blog/categories/getting-testy/
+
+Randy Coulman has written a [[http://randycoulman.com/blog/categories/getting-testy/][series on testing]] that I think you&#39;ll find useful.
 </content>
       <author>
         <name>Tamara Temple</name>

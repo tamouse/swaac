@@ -1,6 +1,6 @@
 * LINK: [[https://css-tricks.com/aria-spackle-not-rebar/][ARIA is Spackle, Not Rebar]]
 
-- Time-stamp: <2018-11-04 10:02:04 tamara>
+- Time-stamp: <2019-02-02 17:27:14 tamara>
 - published date: [2018-11-04 Sun]
 - keywords: ARIA, accessibility, a11y, link
 
@@ -8,6 +8,8 @@ There's an excellent article over at [[https://css-tricks.com/][CSS Tricks]] by 
 
 I think this sums up the intent nicely:
 
-> Before considering other options, start with markup that semantically describes the content it is wrapping.
+#+BEGIN_QUOTE
+Before considering other options, start with markup that semantically describes the content it is wrapping.
+#+END_QUOTE
 
 And while that is definitely true, it really does help to understand what ARIA is for and how it works. So while we're on the subject, I want to point out the excellent [[https://frontendmasters.com][Frontend Masters]] course: [[https://frontendmasters.com/courses/web-accessibility/][Website Accessibility]] by Jon Kuperman.

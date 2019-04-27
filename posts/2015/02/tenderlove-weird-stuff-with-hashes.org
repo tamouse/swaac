@@ -5,11 +5,11 @@
 
 - published date: 2015-02-13 21:55
 - keywords: ["dup", "freeze", "hash", "performance", "ruby"]
-- source: http://tenderlovemaking.com/2015/02/11/weird-stuff-with-hashes.html
+- source: [[http://tenderlovemaking.com/2015/02/11/weird-stuff-with-hashes.html]]
 
 A great post from @tenderlove on some interesting performance aspects of using strings for keys in hashes:
 
-[[file:%7B%7B%20page.source%20%7D%7D][Weird stuff with hashes]]
+[[http://tenderlovemaking.com/2015/02/11/weird-stuff-with-hashes.html][Weird stuff with hashes]]
 
 tl;dr:
 

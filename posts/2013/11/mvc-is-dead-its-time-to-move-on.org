@@ -5,10 +5,9 @@
 
 - published date: 2013-11-27 13:55
 - keywords: ["design-patterns", "move", "mvc", "programming", "swaac"]
-- source: http://cirw.in/blog/time-to-move-on.html
 - comments: true
 
-A reposting of <{{page.source}}> by [[http://cirw.in/][Conrad Irwin]].
+A reposting of [[http://cirw.in/blog/time-to-move-on.html]] by [[http://cirw.in/][Conrad Irwin]].
 
 #+BEGIN_QUOTE
   * MVC is dead, it's time to MOVE on.

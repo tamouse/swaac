@@ -1,0 +1,39 @@
+* Software as a Craft dev blog
+
+[[./posts/index.org][Full List of Posts]]
+
+This is my swaac (Software as a Craft) web site posts, converted into [[https://orgmode.org/][Emacs Org Mode]] which is another sort of mark-down type writing experience, only richer than straight Markdown. Org mode includes a richer environment for editing code snippets, which is part-and-parcel of *this* particular web site. Org mode is also a great way to organize thoughts and concepts. The major inhibiting factor has been how to publish the results. I'm just stuffing these onto github, which handles org formatting at least as well as it does Markdown. This feels like the least restrictive way for me to write my devblog.
+
+The posts are in the [[./posts][posts]] directory. The other directories are only temporary in case I need to do some editing and have the original around.
+
+If you're looking for the Atom feed, it is [[https://tamouse.github.io/swaac/feed.xml][here]].
+
+If you're looking for the "learning" entry it is [[./posts/learning.org][here (./posts/learning.org)]]
+
+Each directory also has an ~index.org~ file in it listing the posts for that directory.
+
+** Issues, Questions, Comments
+
+Please feel free to file an [[https://github.com/tamouse/swaac-org/issues][issue]] on the repo if you
+
+- find any problems, such as typos, broken links, weird formatting, and so on
+- if you have questions about the content, or about something related to the content
+- if you have any comments, I'd love to hear them
+- if you have requests for posts, I won't promise to write them, but I might, so fire away
+- if you want to make a [[https://github.com/tamouse/swaac-org/pulls][pull request]], I promise to at least look at it and give you feedback
+
+** License
+
+This content is licensed [[http://creativecommons.org/licenses/by-nc-sa/4.0/][CC BY-NC-SA 4.0]], a Creative Commons license: Attribution, Non-commercial, Share-Alike 4.0, International.
+
+** Code of Conduct / Contributor Covenant
+
+This project adheres to the [[https://www.contributor-covenant.org/version/1/4/code-of-conduct][Code of Conduct v1.4]]. Report issues regarding this to me at my email below.
+
+** Contact
+
+   - Email: [[mailto:tamara@tamouse.org][tamara@tamouse.org]]
+   - Github: [[https://github.com/tamouse/][tamouse]]
+   - Twitter: [[https://twitter.com/tamouse][@tamouse]]
+   - Discord: tamouse#3242
+   - LinkedIn: [[https://linkedin.com/in/tamaratemple][linkedin.com/in/tamaratemple]]

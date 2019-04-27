@@ -6,12 +6,9 @@
 - description: Part 1 of a series to implement a CMS in the Sinatra web framework
 - saved_link: http://tt.imageshare.s3.amazonaws.com/clippings/saved_pages/A%20Simple%20Content%20Management%20System%20in%20Sinatra.html
 
-
-{{ page.description }}
-
 ## Summary
 
-[Sinatra] is a cute little web application mini-framework, that primarily sets up controllers and views,
+ is a cute little web application mini-framework, that primarily sets up controllers and views,
 processing routes and generating responses.
 
 It can be quite fun to work with something light-weight like this rather than doing

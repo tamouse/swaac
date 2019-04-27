@@ -1,15 +1,12 @@
 * first vs. take
-  :PROPERTIES:
-  :CUSTOM_ID: first-vs.take
-  :END:
 
 - published date: 2015-02-03 03:37
 - keywords: ["avdi", "enumerators", "lazy", "lazy-enumerators", "ruby", "rubytapas"]
-- source: http://rubytapas.dpdcart.com/subscriber/post?id=677
+- source: [[http://rubytapas.dpdcart.com/subscriber/post?id=677]]
 
 The difference between =first= and =take= is subtle.
 
-As [[http://about.avdi.org][Avdi]] shows in [[file:%7B%7Bpage.source%7D%7D][RubyTapas #278]] [[#footnote1][[1]]], the =take= and =first= method on =Enumerators= do something quite different.
+As [[http://about.avdi.org][Avdi]] shows in [[http://rubytapas.dpdcart.com/subscriber/post?id=677][RubyTapas #278]][fn:1], the =take= and =first= method on =Enumerators= do something quite different.
 
 =take= by itself will return another enumerator in the chain, including a lazy enumerator if that's what it's chained to.
 
@@ -44,8 +41,5 @@ As [[http://about.avdi.org][Avdi]] shows in [[file:%7B%7Bpage.source%7D%7D][Ruby
 #+END_EXAMPLE
 
 ** Footnotes
-   :PROPERTIES:
-   :CUSTOM_ID: footnotes
-   :END:
 
-1. [[http://www.rubytapas.com][RubyTapas]] is a few-times-a-week videocast series put out by [[http://about.avdi.org][Avdi]]. At 9USD$ a month, well worth the price.
+[fn:1] [[http://www.rubytapas.com][RubyTapas]] is a few-times-a-week videocast series put out by [[http://about.avdi.org][Avdi]]. At 9USD$ a month, well worth the price.

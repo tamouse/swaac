@@ -249,7 +249,7 @@ And we can see it works:
    :CUSTOM_ID: siblings-redux
    :END:
 
-For a single-root system, we don't need the special case of =siblings=, but it turns out it works anyway, returning an empty relationship because there can be no other top-level ndoes. I think it's a better solution to return an empty relationship in this case as it unifies the expected return with a non-root node with no siblings. (For example, Category C.1 in the [[#diagram][diagram]] at the top.)
+For a single-root system, we don't need the special case of =siblings=, but it turns out it works anyway, returning an empty relationship because there can be no other top-level ndoes. I think it's a better solution to return an empty relationship in this case as it unifies the expected return with a non-root node with no siblings. (For example, Category C.1 in the diagram at the top.)
 
 ** The class code:
    :PROPERTIES:
@@ -322,4 +322,4 @@ Here's our final code:
     end
 #+END_SRC
 
-You can see this application with tests at the [[file:%7B%7Bpage.source%7D%7D][Github Repository]].
+You can see this application with tests at the [[https://github.com/tamouse/example_nested_category][Github Repository]].
