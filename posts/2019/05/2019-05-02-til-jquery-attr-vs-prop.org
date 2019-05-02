@@ -1,0 +1,31 @@
+#+COMMENT -*- time-stamp-line-limit: 20; time-stamp-count: 2 -*-
+#+TITLE: TIL: jQuery .attr() vs .prop()
+#+DATE: [2019-05-02 Thu]
+#+KEYWORDS: jQuery, attr, prop
+#+DESCRIPTION: Today, I learned another difference between jQuery's .attr() and .prop() methods
+
+* TIL: jQuery .attr() vs .prop()
+   - last update: Time-stamp: <2019-05-02 08:14:03 tamara>
+
+** Intro
+
+   Sometime in the past, jQuery only had an ~.attr()~ method for looking at and setting an element's attributes. More recently, it acquired the ~.prop()~ method for setting a node's properties.
+
+** Radio Button example
+
+   The problem I ran into this with was old code that dealt with toggling radio buttons on a form:
+
+    #+BEGIN_SRC rjsx
+      $('#customer_which_billing_address_service').attr('checked', true);
+    #+END_SRC
+
+    This would set the sense of the attribute in the source, but it wouldn't change the property, so the radio button remained unchecked visually; in addition, when the form was submitted the radio buttons set didn't get posted correctly.
+
+    Changing this to the ~.prop()~ method fixed both problems:
+
+    #+BEGIN_SRC rjsx
+      $('#customer_which_billing_address_parent').prop('checked', false);
+      $('#customer_which_billing_address_service').prop('checked', true);
+    #+END_SRC
+
+    This visually set the proper radio button, and when the form was submitted the correct radio button value was posted.
