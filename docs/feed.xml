@@ -2,10 +2,304 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://github.com/tamouse/swaac</id>
   <title>Tamouse&#39;s Software as a Craft blog</title>
-  <updated>2019-05-02T08:14:03-05:00</updated>
+  <updated>2019-05-27T13:16:50-05:00</updated>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2019/05/2019-05-27-creating-verse-paragraphs-in-kramdown.org</id>
+      <updated>2019-05-27T13:16:50-05:00</updated>
+      <title>2019-05-27-creating-verse-paragraphs-in-kramdown</title>
+      <content>#+OPTIONS: &#39;:nil *:t -:t ::t &lt;:t H:3 \n:nil ^:t arch:headline
+#+OPTIONS: author:t broken-links:nil c:nil creator:nil
+#+OPTIONS: d:(not &quot;LOGBOOK&quot;) date:t e:t email:nil f:t inline:t num:t
+#+OPTIONS: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+OPTIONS: timestamp:t title:t toc:t todo:t |:t
+#+TITLE: 2019-05-27-creating-verse-paragraphs-in-kramdown
+#+DATE: &lt;2019-05-27 Mon&gt;
+#+AUTHOR: Tamara Temple
+#+EMAIL: tamouse@gmail.com
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+CREATOR: Emacs 26.2 (Org mode 9.1.14)
+#+KEYWORDS: markdown, kramdown, verse
+
+In the past, when I&#39;ve wanted to create a verse, perhaps in a blockquote I&#39;ve resorted to using ~&lt;br&gt;~ on every line, which is tedious:
+
+#+BEGIN_SRC markdown
+  &gt; Listen, little children, all,&lt;br&gt;
+  &gt; Listen to our earnest call:&lt;br&gt;
+  &gt; You are very young, &#39;tis true,&lt;br&gt;
+  &gt; But there&#39;s much that you can do.&lt;br&gt;
+  &gt; Even you can plead with men&lt;br&gt;
+  &gt; That they buy not slaves again,&lt;br&gt;
+  &gt; And that those they have may be&lt;br&gt;
+  &gt; Quickly set at liberty.&lt;br&gt;
+
+#+END_SRC
+
+In ~kramdown~, the default markdown processor in [[Jekyll]] these days, there&#39;s an easier way:
+
+#+BEGIN_SRC markdown
+  &gt; Listen, little children, all,
+  &gt; Listen to our earnest call:
+  &gt; You are very young, &#39;tis true,
+  &gt; But there&#39;s much that you can do.
+  &gt; Even you can plead with men
+  &gt; That they buy not slaves again,
+  &gt; And that those they have may be
+  &gt; Quickly set at liberty.
+  {: style=&quot;white-space: pre-line&quot;}
+#+END_SRC
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/learning.org</id>
+      <updated>2019-05-27T13:10:28-05:00</updated>
+      <title>Resources for learning how to program, especially how to program in Ruby and Rails</title>
+      <content>* Resources for learning how to program, especially how to program in Ruby and Rails
+
+- last updated Time-stamp: &lt;2018-12-30 12:42:51 tamara&gt;
+
+** Introduction
+
+Many people ask me &quot;How do I learn to program?&quot; and &quot;What book(!) should I read to learn Rails?&quot;.
+
+These are legitimate questions, but they aren&#39;t necessarily the right questions to ask in order to begin the journey of becoming a software craftsperson.
+
+Better questions, I feel, are:
+
+- What resources do you recommend for beginners?
+- Where can I go for help?
+
+I&#39;ve been finding things around the &#39;net that can greatly help people new to programming, new to web development, new to Rails, and so on.
+
+--------------
+
+*UPDATE:* I&#39;ve created a section for the [[./beginners-section.org][Absolute Beginner]] as well, you might find it useful.
+
+This is a quick, short list of things. I urge you to seek them out, and seek out others as well, and create your /own/ list of learning resources. People will begin to ask you, and it&#39;s nice to have something handy.
+
+Also, [[https://www.codefellows.org/blog/this-is-why-learning-rails-is-hard][learning Rails is hard]]. But don&#39;t despair! The key to learning is break things down, focusing and practicing small things, and build up a lot of skills slowly. (&quot;Wax on, wax off.&quot; &quot;Ok, Mr. Myagi.&quot;) I&#39;m going to jump ahead and tell you to download the first chapter (free) of Justin Weiss&#39;s book [[https://www.justinweiss.com/practicing-rails/][Practicing Rails]]. Search for &quot;first chapter&quot; and fill out the form to get it. You&#39;re also signing up to get e-mail from Justin, but it&#39;s always good stuff.
+
+--------------
+
+/Update Sun Jun 8 11:39:13 2014:/ Recently came across web post [[http://astonj.com/tech/best-way-to-learn-ruby-rails/][Best Way To Learn Ruby and Rails]] and must say it is a great compilation of resources. In addition, Ashton puts the focus right at the heart of the matter: you have learn /both/ Ruby /and/ Rails.
+
+--------------
+
+** Books
+
+ - [[https://www.goodreads.com/book/show/13590009-think-like-a-programmer][*Think Like a Programmer: An Introduction to Creative Problem Solving*]] by V. Anton Spraul.
+
+   Spraul&#39;s purpose in this book is not to teach you how to write a program, but to begin to understand the problem-solving approach that is inherent in good programmers. Like so many skills, programming is driven by the desire and vision of the practitioner. A painter uses brushes, canvas, paints, other media to create a work of art, but it isn&#39;t the tools, it isn&#39;t the specific techniques, and it isn&#39;t even the particular skill the painter has that makes a good work of art; it is their composition, the melding of media and surface, the use of different techniques, and practice in developing the skills that come together to form the work of art. Spraul is going to take you deeper than just the syntax, semantics, and data structures of software to the heart of what makes a good programmer: the ability to creatively find and generate solutions to problems.
+
+ - [[https://www.goodreads.com/book/show/520.Learn_to_Program][*Learn to Program*]] by Chris Pine.
+
+   To be honest, I have not looked through this book. It is, however, nearly universally recommended to people new to programming. The original tutorial is available online for free as well: [[https://pine.fm/LearnToProgram/]]. LtP was featured on the great webcomic [[http://www.unshelved.com/2014-7-25][Unshelved]].
+
+ - [[https://pragprog.com/book/tpp/the-pragmatic-programmer][**The Pragmatic Programmer]] by Andrew Hunt and David Thomas
+
+   This is the best modern treatise on the craft of programming. It represents the best of experiences programmers have come to appreciate during years of development. I read this book after years of practice, and found everything in it to ring true. (The thought &quot;I could have written this!&quot; came up frequently.) This book is not about any specific language or technology, but spans the gamut of software development. This is a must-have for practitioners.
+
+ - [[https://www.goodreads.com/book/show/79766.A_Pattern_Language][*A Pattern Language: Towns, Buildings, Construction*]] by Christopher Alexander.
+
+   You may be wondering why I&#39;ve included a book on building construction. The answer is quite simple: the concepts in building towns and houses is nearly directly translatable to building software applications and systems. One part of being an excellent craftsperson is being able to apply abstract learning in different problem domains. If you are an expert in writing software, you are almost /never/ going to be solving problems only for other software developers. (You can and should do so, but the client and users are generally non-programmers.) Thus you&#39;re most likely going to be working in someone else&#39;s domain of expertise. Alexander&#39;s views on architecture apply to software architecture as well.
+
+ - [[http://shop.oreilly.com/product/9780596510046.do][*Beautiful Code*]] by Andy Oram and Greg Wilson.
+
+   A book with a purpose, that isn&#39;t a how to, so much as a how to think. It&#39;s a collection of essays by various software developers on what they think makes code beautiful. In all, the following holds true:
+
+   1. First, make it correct.
+   2. Second, make it pretty.
+   3. Third, make it fast.
+
+ - *Programming Proverbs* by Henry F. Ledgard
+
+   This book, published in 1975, and a subsequent volume dedicated to the Pascal language published in 1979, were essential to me back when I was in university learning computer science. They&#39;re out of print now, so I&#39;m starting a blog series covering them. [[file:%7B%7Bsite.baseurl%7D%7D%7B%%20link%20_posts/2017-07-23-pp-introduction.markdown%20%%7D][Programming Proverbs: Introduction]]
+
+ - [[https://leanpub.com/systemdesignheuristics][*Systems Design Heuristics*]] - by the late, great Jerry Wienberg.
+
+   Jerry was a friend as well as a teacher. I miss him enourmously. This book is full of his thoughts and writings on how one should do systems design. As the title implies, there are no rules, but there are some heuristics one can apply to the overall design and architecture of systems.
+
+
+*** Object-Oriented Programming
+
+ - [[https://www.sandimetz.com/99bottles][*99 Bottles of OOP*]] by Sandi Metz and Katrina Owen.
+
+   A recent book, representing the absolute best by two teachers of software engineering. Sandi has been teaching Object-oriented programming for decades, and Katrina brings in her expertise with refactoring, resulting in a deep book that stretches beyond the basics and deep into the structures and understanding of object systems and idioms. It brings up to date the actual concepts of refactoring, test-driven development, naming things, reducing code &quot;smells&quot; and making code more easily and economically maintainable and sustainable. They take all the buzzwords and unbuzzify them into practical, useful methodologies and techniques.
+
+*** Ruby-specific
+
+ - [[https://www.goodreads.com/book/show/9364729-eloquent-ruby][*Eloquent Ruby*]] by Russ Olsen.
+
+   Olsen&#39;s approach in this book is to go far beyond just learning a programming language, but a way to learning the idioms and the &quot;Ruby Way&quot;. Even if your chosen language is something other than Ruby, reading this book will give you an appreciation for how to delve into a language and get the most out of it.
+
+ - [[http://www.confidentruby.com/][*Confident Ruby*]] by Avdi Grimm.
+
+   More than any other book I&#39;ve read on Ruby, &quot;Confident Ruby&quot; has affected my coding habits more than any other. If Ruby is about making programmers happy, /Confident Ruby/ is about making programming joyful, and not just in the immediate, but being able to look at code you&#39;ve written in the future and recall the joy. /Confident Ruby/ seeks to combat software rot from the get-go.
+
+ - [[http://www.amazon.com/The-Well-Grounded-Rubyist-David-Black/dp/1617291692][*Well-Grounded Rubyist*]] by David A. Black
+
+   Also known as the &quot;Black Book&quot; (because of the author&#39;s name), WGR is the successor to /Ruby for Rails/ by Black that provided me with the much-needed introduction to how to write Ruby code, with the idea of using it in Ruby for Rails. This book is a fabulous primer on the Ruby idioms and expressions that help make one a good Ruby programmer.
+
+ - [[http://www.poodr.com/][*Practical Object-Oriented Design in Ruby*]] by Sandi Metz
+
+   This book provides a deeply-needed introduction to object-oriented design, specifically targeted to the Ruby language. Ruby is one of the richest languages in which to express object-oriented patterns, but it is easy to fall of the OO wagon and start to get things messed up. Sandi provides the thinking tools necessary to decide how to structure your code for better maintainability, extensibility and testability. Comprehension and forward communication of the choices made during software design are crucial to programming, and Sandi is one of the very best at explaining things.
+
+*** Rails-specific
+
+ - [[http://www.manning.com/bigg2/][*Rails 4 in Action*]] by Ryan Bigg, Yehuda Katz, Steve Klabnik, and Rebecca Skinner.
+
+   A follow-on the highly successful Rails 3 in Action, R4iA has been completely rewritten, with new examples, case study, and all the great new features in Rails 4.
+
+   A great book for beginning Rails developers to start with, and for intermediate developers to step up their game.
+
+ - [[https://www.justinweiss.com/practicing-rails/][*Practicing Rails*]] by [[http://www.justinweiss.com][Justin Weiss]].
+
+   The first chapter alone (free!) is worth a download and very thorough read. Justin has provided one of the most effective strategies for learning just about /anything/ skill based, and it&#39;s especially effective for learning software skills. The focus of the book and the examples and such are obviously Rails, but the first chapter is applicable to anything.
+
+*** JavaScript-specific
+
+ - [[https://www.goodreads.com/book/show/2998152-javascript][*JavaScript: The Good Parts*]] by David Crockford.
+
+   JavaScript is a vast, sprawling language and ecosystem, and has been maligned for much poor code on the web. Crockford extracts out the parts that are really useful, giving the reader a better grounding. This book is the progenitor of many of the JavaScript frameworks that have come up the past few years, as well as CoffeeScript and other *Script derivatives.
+
+ - [[https://github.com/getify/You-Dont-Know-JS][*You Don&#39;t Know JS series*]] by [[https://github.com/getify][Kyle Simpson]].
+
+   A /tour de force/ by one of the great teachers and evangelists of JavaScript, Kyle&#39;s &quot;You Don&#39;t Know JS&quot; series is a must-read collection of books. You can get the books in raw form on-line at the above address, and you can get the published e-books at your favourite vendor.
+
+ - [[http://eloquentjavascript.net/][*Eloquent Javascript*]] by Marijn Haverbeke.
+
+   When I was more naive about JS, I wrote a bit of a negative review of this book. Subsequently, I&#39;ve learned of it&#39;s true eloquence and meaning in giving a model of how to organize and implement modern JS. The subtitle &quot;A modern introduction to programming&quot; is still a bit misleading, perhaps, because you have to understand a fair bit of JavaScript /and/ programming to get the message, I feel. But that&#39;s just a quibble at this point. Read this before you strike out on creating a client-based JS application; you won&#39;t regret it.
+
+ - *Test-Driven JavaScript Development* by Christian Johansen (Addison-Wesley Professional, September 2010, ISBN 9780321683915)
+
+   (The [[http://www.informit.com/store/test-driven-javascript-development-9780321684042][ebook]] for this title is ridiculously expensive. I read it via [[https://learning.oreilly.com/library/view/test-driven-javascript-development/9780321684097/][safarionline]].)
+
+   This book provides some great insights into testing JavaScript applications. Released in 2010, the things that are out of date are the specific tools used for testing, /however/, the concepts for writing tests and performing test-driven Javascript development are still very appropriate.
+
+ - [[https://leanpub.com/javascriptallongesix][*JavaScript Allongé*]] by Reginald &quot;raganwald&quot; Braithwait
+
+   Using the metaphor of a coffee barista, Reg goes in depth on thinking about how JavaScript works; this is not a practical book from the standpoint of &quot;tell me what code to write&quot;, but rather from the standpoint of knowing how JavaScript works inside so you can write better code yourself.
+
+
+*** HTML and CSS Specific
+
+ - [[https://www.amazon.com/HTML-CSS-Design-Build-Websites/dp/1118008189?ie=UTF8&amp;*Version*=1&amp;*entries*=0][*HTML and CSS Design and Build Websites*]] by Jon Duckett.
+
+   This book has been recommended by several people in the [GDI] courses I&#39;ve been helping in. A very visual approach, using full-colour photographs to explain the two declarative languages.
+
+** Web sites
+
+ This is just going to be a list of sites I&#39;ve found or been pointed at for helping people learn to program. These are most definitely biased towards Ruby and Rails, as that is my current area of concentration, and generate the most requests that come to me.
+
+ - [[http://www.theodinproject.com/home][*The Odin Project*]] -- pulling together a curriculum from around the web, this is a curation site that gives order and structure to learning how to develop web applications.
+
+ - [[http://codekata.com/][*Code Kata*]] -- Dave Thomas&#39;s site that lists a great set of coding exercises. You can work these more than once, in fact that is what you do with kata.
+
+ - [[http://exercism.io/][*Exercism.IO*]] -- a site devoted to helping people learn and think deeply about writing excellent code. It has projects you implement and then get feedback on from others, and allows you to give feedback as well.
+
+ - [[http://docs.railsbridge.org/docs/][*RailsBridge*]] -- a site devoted to helping people get up and running on learning Ruby on Rails, with emphasis on reaching out to women and LGBTQ folks. RailsBridge workshops are run around the world and the documents here can be used individually to help turn your computer into a development machine. What so often isn&#39;t addressed directly by very many of these sites and books is the ecosystem that one has to learn as well: a coding editor, the command line, rake, irb/pry, git, heroku if that is your choice for deployment (which I do recommend for small beginner projects so you can show it off to your friends); RailsBridge tutorials include these very important tools.
+
+ - [[http://guides.railsgirls.com/][*RailsGirls Guides*]] -- I haven&#39;t explored these in depth yet, I just got the site yesterday. However, I can see just from the list of guides these would be pretty great, just like the RailsBridge site above.
+
+ - [[http://www.railstutorial.org/][*Hartl&#39;s Rails Tutorial*]] -- the most often recommended site to learn how to create web applications in Rails, it goes beyond the Rails stack itself, teaching Ruby, HTML5, CSS3, JavaScript, user authentication and authorization, data modeling, and so on. While Michael sells the book, tutorials, and screen casts, the text of the tutorial online is free at http://www.railstutorial.org/book. Considerable work has gone into this effort, however, so if you can afford to, please purchase at least the book.
+
+ - [[https://www.codeschool.com/][*CodeSchool*]] -- learn from the &quot;Comfort of your own browser&quot;. Codeschool has web casts, coding practices, challenges, and so on.
+
+ - [[http://codeacademy.com][*CodeAcademy*]] -- although I do not personally like the way one interacts with the web site, it does offer an gentle introduction to ruby, javascript, python and other subjects in an immediate feedback environment.
+
+ - [[https://www.khanacademy.org/computing/cs][*Kahn Academy*]] -- learning to program with JavaScript (if you are just starting out, JS is a fine language to learn. It&#39;s fairly ubiquitous in the online world.). Their approach is teaching young folks, which might or might not appeal.
+
+ - [[http://railscasts.com/][*RailsCasts*]] -- another super awesome effort has been put together by Ryan Bates. Current production is on hiatus, so the $9/month fee for the full screen casts is being pro-rated, so you can buy in for $9 and there won&#39;t be further monthly charges until production starts up again.
+
+ - [[https://www.rubytapas.com/frequently-asked-questions/][*RubyTapas*]] -- Avdi Grimm is a fabulous Ruby and Rails mentor and guide, who puts out two very short screen casts a week (tapas -- small plates). These are really impeccably done, and I personally love listening to Avdi talk.
+
+ - [[http://learncodethehardway.org/][*LearnCodeTheHardWay*]] -- provides online versions of books and tutorials for [[http://learnpythonthehardway.org/book/][*Python*]], [[http://ruby.learncodethehardway.org/book/][*Ruby*]], [[http://c.learncodethehardway.org/book/][*C*]], [[http://sql.learncodethehardway.org/book/][*SQL*]], [[http://regex.learncodethehardway.org/book/][*Regular Expressions*]] and more.
+
+ - [[http://www.rubykoans.com/][*Ruby Koans*]] -- &quot;koans&quot; are an Eastern discipline tradition: small, repeated exercises to learn skills and build them into your muscles and memory, so you can use them without thinking consciously about them. In this sense, the ruby koans are small exercises intended to lead you on the way to learning ruby. I can&#39;t say if they&#39;re that successful, but some people definitely enjoy this progressive way of learning. The ruby koans definitely guide you in the way of test-first development, which is a beneficial practice for all to know.
+
+ - [[https://thoughtbot.com/upcase][*Upcase, by Thoughtbot*]] -- not a bootcamp, a finishing school. Where to go to level-up.
+
+** Podcasts
+
+ I am not such a big fan of podcasts, but that has more to do with my personal learning style. Nevertheless, there are some great pocasts out there.
+
+ - [[http://www.greaterthancode.com/][*Greater Than Code*]] Also known as =&gt;Code=, this is a podcast that&#39;s more about people that practice software development and allied things, about management of such people, and making all our lives better.
+
+ - [[http://frontendhappyhour.com/][**Frontend Happy Hour]] A handful of front end developers, including Brian Holt, Jem Young, Ryan Burgess, Augustus Yuan, and Stacy London, joined by various guests. It&#39;s a fun podcast, each week with a special word or phrase that when uttered, everyone takes a drink.
+
+ - [[http://www.codenewbie.org/][*CodeNewbies*]] -- started off as a twitter chat, and grew into a thing, CodeNewbies offers podcasts on topics that range far and wide. Recent topics have included Scrum/Agile methods, maintaining your mental health while programming, interviews with folks who have created significant web sites (Gina Trapani of LifeHacker!!), mobile, databases, single-page apps, you name it. One of the best aspects I can see directly is that this is a /very/ open, diverse collaboration.
+
+** Teaching Organizations
+
+ These are the ones I&#39;m familiar with at this point in time (late 2015) in the Twin Cities area:
+
+ - [[https://frontendmasters.com/][*Frontend Masters*]] -- Based out of Savage, MN, they offer both live in-person and online courses, and they have recorded all the training sessions for on-demand viewing if you&#39;re a member. The quality of these sessions and the videos are extremely good (these are not your twitch.tv live sessions of someone rambling about their code as they hack away) All the courses I&#39;ve taken and viewed are fantastic.
+
+   FrontendMasters tackles intermediate and advanced topics in developing on the front end of web applications. Heavy into JavaScript, libraries, frameworks, techniques, and so on.
+
+** Bootcamps
+
+ These are becoming quite popular, if expensive, but they seem to provide what&#39;s being offered: intensive training in the skills necessary to become a web application developer, with experience and skills in the entire lifecycle of modern software development. I can&#39;t really provide much information on them, as I&#39;ve never experienced them. [[http://www.bootcamps.in/][Bootcamps.in]] provides at least a first-glance at several bootcamps.
+
+** Conferences and Meetups
+
+ Going to conferences, hanging out, meeting like-minded people, and generally instilling one&#39;s self into the millieau of the Ruby and Rails communities can be extremely rewarding. Even if you&#39;re not the conference type, make an effort to find people in your area to talk to.
+
+ There&#39;s lots of other meetups in the Twin Cities I&#39;m regularly trying to attend:
+
+ - [[https://www.meetup.com/Women-Who-Code-Twin-Cities/][Women Who Code Twin Cities]]
+ - [[https://www.meetup.com/ruby-mn/][Ruby.MN]]
+ - [[https://www.meetup.com/JavaScriptMN/][JavaScript.MN]]
+ - [[https://www.meetup.com/React-Minneapolis-Meetup/][React Minneapolis Meeetup]]
+ - [[https://www.meetup.com/Elixir-MN/][Elixir MN]]
+ - [[https://www.meetup.com/Minneapolis-St-Paul-WordPress-User-Group/][MSP WP]]
+
+** More Advanced
+
+If you want to go deep and learn more about computer science, the book [[https://mitpress.mit.edu/sicp/][/Structure and Interpretation of Computer Programs/]] is probably your best bet in terms of a real CS text book that&#39;s available online for free. It&#39;s not a tutorial, but there are exercises in the text. The book uses Scheme, a lisp-like programming language. Everyone should learn a little lisp at some point. :) However it&#39;s not mandatory one use Scheme (or Clojure as the local Clojure user group has been doing). The analytical concepts apply across all languages. If you&#39;re focused on JavaScript or Ruby, you can work the examples in those languages, too.
+
+The afore-mentioned Frontend Masters has been producing some much more advanced courses lately:
+
+- [[https://frontendmasters.com/courses/computer-science/][Four Semesters of Computer Science in 5 Hours]] with [[https://frontendmasters.com/teachers/brian-holt/][Brian Holt]]
+
+- [[https://frontendmasters.com/courses/computer-science-2/][Four Semesters of Computer Science in 5 Hours, Part 2]] with Brian Holt
+
+- [[https://frontendmasters.com/courses/practical-algorithms/][A Practical Guide to Algorithms with JavaScript]] with [[https://frontendmasters.com/teachers/bianca-gandolfo/][Bianca Gandolfo]]
+
+- [[https://frontendmasters.com/courses/data-structures-interviews/][Introduction to Data Structures for Interviews]] with Bianca Gandolfo
+
+- With Will Sentance:
+
+  - [[https://frontendmasters.com/courses/javascript-hard-parts/][JavaScript: The Hard Parts]]
+
+  - [[https://frontendmasters.com/courses/javascript-new-hard-parts/][JavaScript: The New Hard Parts]]
+
+  - [[https://frontendmasters.com/courses/object-oriented-js/][JavaScript: The Hard Parts of Object Oriented JavaScript]]
+
+I&#39;m just going to list [[https://frontendmasters.com/teachers/kyle-simpson/][Kyle Simpson&#39;s entire collection]] because they are *all* great
+
+Other fav instructors:
+
+- [[https://frontendmasters.com/teachers/scott-moss/][Scott Moss]]
+- [[https://frontendmasters.com/teachers/shirley-wu/][Shirley Wu]]
+- [[https://frontendmasters.com/teachers/kentcdodds/][Kent C. Dodds]]
+- [[https://frontendmasters.com/teachers/jem-young/][Jem Young]]
+- [[https://frontendmasters.com/teachers/lukas-ruebbelke/][Lukas Reubbelke]]
+- [[https://frontendmasters.com/teachers/sarah-drasner/][Sarah Drasner]]
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2019/05/2019-05-02-til-jquery-attr-vs-prop.org</id>
-      <updated>2019-05-02T08:14:03-05:00</updated>
+      <updated>2019-05-27T13:10:28-05:00</updated>
       <title>TIL: jQuery .attr() vs .prop()</title>
       <content>#+COMMENT -*- time-stamp-line-limit: 20; time-stamp-count: 2 -*-
 #+TITLE: TIL: jQuery .attr() vs .prop()
@@ -46,7 +340,7 @@
     </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2019/04/2019-04-27-flash-toastr-using-react-hooks.org</id>
-      <updated>2019-04-27T16:28:56-05:00</updated>
+      <updated>2019-05-27T13:10:28-05:00</updated>
       <title>FlashToastr React Component using React Hooks</title>
       <content>#+TITLE: 2019-04-27-flash-toastr-using-react-hooks
 #+DATE: &lt;2019-04-27 Sat&gt;
@@ -109,88 +403,84 @@
       </author>
     </entry>
     <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/10/link-ARIA-is-spackle-not-rebar.org</id>
-      <updated>2019-04-27T06:24:39-05:00</updated>
-      <title>LINK: [[https://css-tricks.com/aria-spackle-not-rebar/][ARIA is Spackle, Not Rebar]]</title>
-      <content>* LINK: [[https://css-tricks.com/aria-spackle-not-rebar/][ARIA is Spackle, Not Rebar]]
-
-- Time-stamp: &lt;2019-02-02 17:27:14 tamara&gt;
-- published date: [2018-11-04 Sun]
-- keywords: ARIA, accessibility, a11y, link
-
-There&#39;s an excellent article over at [[https://css-tricks.com/][CSS Tricks]] by Eric Bailey, [[https://css-tricks.com/aria-spackle-not-rebar/][ARIA is Spackle, Not Rebar]], written November 2017, that lays out the reasons when to use ARIA ([[https://www.w3.org/WAI/standards-guidelines/aria/][Accessible Rich Internet Applications Suite]]) directly, and most importantly in my view, when _not_ to use it explicitly (tl;dr: most of the time).
-
-I think this sums up the intent nicely:
-
-#+BEGIN_QUOTE
-Before considering other options, start with markup that semantically describes the content it is wrapping.
-#+END_QUOTE
-
-And while that is definitely true, it really does help to understand what ARIA is for and how it works. So while we&#39;re on the subject, I want to point out the excellent [[https://frontendmasters.com][Frontend Masters]] course: [[https://frontendmasters.com/courses/web-accessibility/][Website Accessibility]] by Jon Kuperman.
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2017/07/playing-games-with-the-checked-pseudo-selector.org</id>
-      <updated>2019-04-27T06:24:39-05:00</updated>
-      <title>Playing games with the :checked pseudo-selector</title>
-      <content>* Playing games with the :checked pseudo-selector
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2019/04/2019-04-14-use-key-instead-of-compoenent-did-update.org</id>
+      <updated>2019-05-27T13:10:28-05:00</updated>
+      <title>TIL: Use key instead of componentDidUpdate</title>
+      <content>#+COMMENT -*- time-stamp-line-limit: 12; time-stamp-count: 2 -*-
+* TIL: Use key instead of componentDidUpdate
   :PROPERTIES:
-  :CAPTURE_DATE: 2017-07-06 01:25
+  :LAST_UPDATE: Time-stamp: &lt;2019-04-19 19:11:28 tamara&gt;
+  :CAPTURE_DATE: [2019-04-19 Fri 19:05]
+  :KEYWORDS: react, componentDidUpdate, key prop
   :END:
 
-- keywords: css, checked
-- source: [[https://codepen.io/tamouse/pen/YQjVNb?editors=1100]]
+- last update: Time-stamp: &lt;2018-09-16 14:32:23 tamara.temple&gt;
+- capture date: [2019-04-19 Fri 19:07]
+- keywords: react, componentDidUpdate, key prop
 
-I&#39;m not sure what made me think of this, but I got a wild hair and thought I&#39;d try it out.
+Watching Ryan Florence over at [[https://www.reacttraining.com][reacttraining.com]] in the [[https://courses.reacttraining.com/courses/354571/lectures/5449516][Reach Catchup componentWillReceiveProps video]], towards the end, after explaining how to use ~componentDidUpdate~ to retrieve updated props / state based on a new prop, he then goes on to say you can do this a lot easier by setting the component&#39;s ~key~ to the thing you&#39;re checking in ~cDU~ and just make React create a whole new instance.
 
-The =:checked= CSS pseudo-selector lets you select a /checked/ checkbox or radio button. The question I wondered, would this be a cheap-azz way of making a sliding sidebar? And the answer is, yes it could.
+This is so easy it&#39;s just astounding how much it makes sense.
 
-Over at [[https://codepen.io/tamouse/pen/YQjVNb?editors=1100][codepen]] I left a pen showing just that:
+** an example
 
-#+BEGIN_HTML
-  &lt;iframe height=&quot;265&quot; scrolling=&quot;no&quot; title=&quot;what can you do with :checked?&quot; src=&quot;//codepen.io/tamouse/embed/YQjVNb/?height=265&amp;amp;theme-id=0&amp;amp;default-tab=result&amp;amp;embed-version=2&quot; frameborder=&quot;no&quot; allowtransparency=&quot;true&quot; allowfullscreen=&quot;true&quot; style=&quot;width: 100%;&quot;&gt;
-See the Pen what can you do with :checked? by Tamara Temple (@tamouse)
-on CodePen.
-  &lt;/iframe&gt;
-#+END_HTML
+Let&#39;s say you have a collection of notes to display, with the following structure:
 
-Some of the interesting bits:
-
-- The body is set to =display: flex= and =flex-direction: row=, which would normally put the 3 major body parts, =input=, =aside=, and =article= horizontally, but,
-
-- The input checkbox is positioned absolute taking it out of the flex flow, so only the =aside= and =article= are flexed
-
-- After setting everything up for the &quot;normal&quot; state, with the checkbox /un/checked, and the sidebar /hidden/, I added the last CSS rule to display the sidebar when the input checkbox is checked.
-
-*** normal state
-
-#+BEGIN_SRC css
-    .sidebar {
-      width: 20px;
-      background: tomato;
-      padding-top: 40px;
-      &gt; * {
-        display: none;
+#+BEGIN_SRC rjsx
+  {
+    &quot;notes&quot;: [
+      {
+	&quot;id&quot;: Int,
+	&quot;body&quot;: String,
+	&quot;createdAt&quot;: String,
+	&quot;updatedAt&quot;: String,
+	&quot;creator&quot;: {
+	  &quot;name&quot;: String
+	},
+	&quot;public&quot;: Boolean
       }
-    }
+    ]
+  }
+
 #+END_SRC
 
-*** checked state
+Let&#39;s say this is our component:
 
-#+BEGIN_SRC css
-    input.sidebar-toggle:checked ~ .sidebar {
-        width: 200px;
-      &gt; * {
-        display: inherit;
-      }
-    }
+#+BEGIN_SRC rjsx
+  const Notes = ({ notes }) =&gt; (
+    &lt;NoteList&gt;
+      {notes &amp;&amp; notes.length &gt; 0 ? (
+	notes.map((note, index) =&gt; &lt;Note key={index} note={note} /&gt;)
+      ) : (
+	&lt;NoNotes /&gt;
+      )}
+    &lt;/NoteList&gt;
+  )
 #+END_SRC
 
-Of course, this could be taken in all sorts of directions, but I wanted to try this out to see if it works.
+
+If for some reason you need to manage state for each note, perhaps because you&#39;re modifying it in place (i.e. within the row), or you delete a note, or add a note, you might need to keep the state updated based on update props. If the note changes, you may need to perform refetch to get the updated info.
+
+Or so you might think.
+
+Instead, by using the ~note.id~ as the ~key~, you can easily make React produce a new instance.
+
+#+BEGIN_SRC rjsx
+  const Notes = ({ notes }) =&gt; (
+    &lt;NoteList&gt;
+      {notes &amp;&amp; notes.length &gt; 0 ? (
+	notes.map(note =&gt; &lt;Note key={note.id} note={note} /&gt;)
+      ) : (
+	&lt;NoNotes /&gt;
+      )}
+    &lt;/NoteList&gt;
+  )
+#+END_SRC
+
+
+If the id of the particular note in that sequence changes, React will re-instantiate the ~Note~ and whatever you do to initialize it is done with the new note.
+
+This may not be the best example, but the concept is what&#39;s important for me to remember. I have a habit of just using the map index instead of something more useful to React.
 </content>
       <author>
         <name>Tamara Temple</name>
@@ -198,41 +488,43 @@ Of course, this could be taken in all sorts of directions, but I wanted to try t
       </author>
     </entry>
     <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2017/04/link-decorating-activerecord.org</id>
-      <updated>2019-04-27T06:24:39-05:00</updated>
-      <title>Link: Decorating ActiveRecord</title>
-      <content>* Link: Decorating ActiveRecord
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2019/04/2019-04-05-til-mounting-standalone-react-client-as-a-rails-react_component_works.org</id>
+      <updated>2019-05-27T13:10:28-05:00</updated>
+      <title>TIL: mounting stand-alone react client as a react_component in react-rails :rails:react:</title>
+      <content>#+COMMENT -*- time-stamp-line-limit: 12; time-stamp-count: 2 -*-
+* TIL: mounting stand-alone react client as a react_component in react-rails :rails:react:
   :PROPERTIES:
-  :CUSTOM_ID: link-decorating-activerecord
+  :CAPTURE_DATE: [2019-04-05 Fri 00:40]
+  :last_update: Time-stamp: &lt;2019-04-05 00:59:22 tamara&gt;
+  :END:
+  :LOGBOOK:
+  CLOCK: [2019-04-05 Fri 00:41]--[2019-04-05 Fri 00:50] =&gt;  0:09
   :END:
 
-- published date: 2017-04-06 23:01
-- keywords: [&quot;activerecord&quot;, &quot;decorators&quot;, &quot;links&quot;, &quot;rails&quot;, &quot;tl-dr&quot;]
-- source: [[https://robots.thoughtbot.com/decorating-activerecord]]
+  - last updated: Time-stamp: &lt;2019-04-05 00:59:22 tamara&gt;
+  - capture date: [2019-04-05 Fri 00:40]
+  - keywords: react-rails, rails, react
 
-This came across my path this week: [[https://robots.thoughtbot.com/authors/joel-quenneville][Joël Quenneville]]&#39;s article, [[https://robots.thoughtbot.com/decorating-activerecord][Decorating ActiveRecord]], which outlines some hazards when you go about decorating ActiveRecord models.
+  This should have been obvious, but for some reason seemed like it was the &quot;wrong&quot; way to do this.
 
-Do read the article, it&#39;s good.
+  We have a product that we&#39;re converting slowly to react-based components. One of the central philosophies has been to build towards a standalone react client, and move the rails app to be more strictly an API provider.
 
---------------
+  I started out using the standard ~ReactDom~ style of mounting the application to the page. This has worked well so far, until we ran into a strange issue.
 
-Here&#39;s the tl;dr for my memory:
+  The library ~styled-components~ has been something we&#39;ve adopted for putting our CSS in JS. However it has a problem: if multiple copies are loaded on the page in different bundles, it gets confused and the styles seem to go missing.
 
-#+BEGIN_QUOTE
-  If you&#39;re decorating an ActiveRecord or ActiveModel object in Rails, you probably want to define the following to ensure the decorator works the way you expect instead of silently delegating to the underlying object:
-#+END_QUOTE
+  My first reaction was to remove all the ~styled-components~ and go with inline style objects instead.
 
-#+BEGIN_HTML
-  &lt;blockquote&gt;
-#+END_HTML
+  However, my colleague pointed out that we could *also* just build one bundle which would keep the issue at bay.
 
-```ruby linenos class Profile &lt; SimpleDelegator extend ActiveModel::Naming
+  I ran an experiment to do this, and it worked. The essential parts are:
 
-def to_model self end end ```
+  1. Create a new component, in my case I named it ~ReactClient~, in the ~app/javascript/components/~ directory.
+     - the component essentially just imports the ~App~ and renders it.
+  2. Change the layout where you&#39;re loading the app to instead issue and ERB call to ~react_component~ that calls ~ReactClient~, possibly adding props options and HTML options.
+  3. Remove the ~webpacker~ packs the build the client.
 
-#+BEGIN_HTML
-  &lt;/blockquote&gt;
-#+END_HTML
+  This worked really well, with the caveat that the application bundle is rather large since it now contains everything.
 </content>
       <author>
         <name>Tamara Temple</name>
@@ -240,32 +532,23 @@ def to_model self end end ```
       </author>
     </entry>
     <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2017/02/gitlab-database-outage-post-mortem.org</id>
-      <updated>2019-04-27T06:24:39-05:00</updated>
-      <title>Gitlab Database Outage Post-Mortem</title>
-      <content>* Gitlab Database Outage Post-Mortem
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2019/04/2019-04-05-link-how-to-access-production-data-in-rails-migrations.org</id>
+      <updated>2019-05-27T13:10:28-05:00</updated>
+      <title>Link: [[https://www.gregnavis.com/articles/how-to-access-production-data-in-rails-migrations.html][How to Access Production Data in Rails Migrations]] :rails:migrations:data:</title>
+      <content>#+COMMENT -*- time-stamp-line-limit: 12; time-stamp-count: 2 -*-
+* Link: [[https://www.gregnavis.com/articles/how-to-access-production-data-in-rails-migrations.html][How to Access Production Data in Rails Migrations]] :rails:migrations:data:
+     :PROPERTIES:
+     :CAPTURE_DATE: [2019-04-05 Fri 00:35]
+     :last_update: Time-stamp: &lt;2019-04-05 00:56:37 tamara&gt;
+     :END:
 
-  - published date: 2017-02-11 01:54
-  - keywords: [&quot;database-outage&quot;, &quot;devops&quot;, &quot;gitlab&quot;, &quot;post-mortem&quot;]
-  - source: https://about.gitlab.com/2017/02/10/postmortem-of-database-outage-of-january-31/
+     - last update: Time-stamp: &lt;2019-04-05 00:56:37 tamara&gt;
+     - keywords: rails, migrations, data
+     - capture date: [2019-04-05 Fri 00:35]
 
-  Back at the end of January 2017, git SaaS provider [[https://gitlab.com][Gitlab]] reported a disaster of epic proportions:
+     This article represents standard practice when you have to access actual data in the database (i.e. production) when running a migration. The example they use of adding a slug is pretty straight-forward. Beware, though, when modifying a table that has a huge number of records as this will effectively lock out the table while the migration is running. If you do go this route, better to schedule the down time.
 
-  #+BEGIN_QUOTE
-  On January 31st 2017, we experienced a major service outage for one of our products, the online service GitLab.com. The outage was caused by an accidental removal of data from our primary database server.
-  #+END_QUOTE
-
-  #+BEGIN_QUOTE
-  This incident caused the GitLab.com service to be unavailable for many hours. We also lost some production data that we were eventually unable to recover. Specifically, we lost modifications to database data such as projects, comments, user accounts, issues and snippets, that took place between 17:20 and 00:00 UTC on January 31. Our best estimate is that it affected roughly 5,000 projects, 5,000 comments and 700 new user accounts. Code repositories or wikis hosted on GitLab.com were unavailable during the outage, but were not affected by the data loss. GitLab Enterprise customers, GitHost customers, and self-hosted GitLab CE users were not affected by the outage, or the data loss.
-  #+END_QUOTE
-
-  They had destroyed the database holding all their repository information, and then could not find any viable backups.
-
-  *Today, 11 February 2017,* they released a [[https://about.gitlab.com/2017/02/10/postmortem-of-database-outage-of-january-31/][post-mortem]] of the situation, providing something few companies have /ever/ done: transparency and openness into a major devops disaster so that /everyone/ can learn.
-
-  They list several items in the Root Cause Analysis section, and provide a list of mitigation and recovery improvements now underway.
-
-  *Major kudos to Gitlab!*
+     Of particular importance is to create the ActiveRecord models in the migration for the tables being modified. Do *not* use the actual models to avoid callbacks, validations, and the like.
 </content>
       <author>
         <name>Tamara Temple</name>
@@ -273,32 +556,63 @@ def to_model self end end ```
       </author>
     </entry>
     <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2016/12/todo-app-using-just-react-with-pojs-no-jsx-or-es6.org</id>
-      <updated>2019-04-27T06:24:39-05:00</updated>
-      <title>Todo app using just React with POJS - no JSX or ES6</title>
-      <content>* Todo app using just React with POJS - no JSX or ES6
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2019/04/2019-04-05-common-error-not-clearing-selected-value.org</id>
+      <updated>2019-05-27T13:10:28-05:00</updated>
+      <title>Fixing a common problem: not clearing a selected option before setting a new selected option</title>
+      <content>* Fixing a common problem: not clearing a selected option before setting a new selected option
   :PROPERTIES:
-  :CUSTOM_ID: todo-app-using-just-react-with-pojs---no-jsx-or-es6
+  :KEYWORDS: javascript, jquery
+  :CAPTURE_DATE: Fri Apr  5 01:11:42 2019
+  :LAST_UPDATE: Time-stamp: &lt;2019-04-05 01:54:31 tamara&gt;
   :END:
 
-- published date: 2016-12-03 09:56
-- keywords: [&quot;brian-holt&quot;, &quot;frontend-masters&quot;, &quot;javascript&quot;, &quot;learning&quot;, &quot;react&quot;, &quot;todoapp&quot;]
-- source: https://github.com/tamouse/todo-react-nojsx
+- keywords: javascript, jquery
+- capture date: Fri Apr  5 01:11:42 2019
+- last updated: Time-stamp: &lt;2019-04-05 01:54:31 tamara&gt;
 
-I just moderated the [[https://frontendmasters.com][Frontend Masters]] class &quot;Complete Introduction to React&quot; taught by [[https://twitter.com/holtbt][Brian Holt]] of Netflix and Reddit fame.
+** Intro
 
-It was a great course, but as moderator I was doing a lot of things to keep the chat room flowing and didn&#39;t get to pay much attention to the detail Brian was presenting, and definitely didn&#39;t have time in class to try out stuff.
+This was a problem that our customers found (OOPS! :( ) that caused the wrong itme to be sent up to the server. What was most interesting about this is the way it presented itself was it was only failing in Safari on macOS. It worked as &quot;expected&quot; on both Chrome and Firefox.
 
-So I thought I&#39;d just give the first bit of Brian&#39;s presentation a go, where we just worked with React as a plain JS library, nothing fancy, no JSX transpiling, etc.
+** The problem
 
-[[https://github.com/tamouse/todo-react-nojsx][This]] is the result, the canonical single page Todo application.
+The problem was that when the user selected and option button, the app was using jQuery to change a hidden select tag by marking the option `selected`. The issue was the originally selected item was not cleared.
 
-It was pretty easy, and pretty fun. I kept only to the [[https://facebook.github.io/react/docs/][React docs]], especially
+So in the case of Chrome and Firefox, in particular, they used the *first* selected option, while Safari used the *last* selected option. Neither are particularly right or wrong, and open to interpretation.
 
-- [[https://facebook.github.io/react/docs/react-without-es6.html][React Without ES6 - React]]
-- [[https://facebook.github.io/react/docs/react-without-jsx.html][React Without JSX - React]]
+** The solution
 
-I&#39;m pleased with the experiement.
+The answer is that before setting an item &quot;selected&quot;, remove all the existing &quot;selected&quot; options. Theoretically there should be only one, however unless there&#39;s some ungodly number of options that it might affect perceived performance, it&#39;s easiest to just clear every option, first.
+
+** Some code
+
+THis is a tiny bit of jQuery that implemented the fix:
+
+#+BEGIN_SRC js
+  function setTaskType(type) {
+      // missing this caused the problem
+      $(&#39;#task_task_type_id option&#39;)
+	  .attr(&#39;selected&#39;, false);
+
+      // this was the original
+      $(&#39;#task_task_type_id option&#39;)
+	  .filter(function() { return $.trim( $(this).text() ) == type; })
+	  .attr(&#39;selected&#39;,true);
+  }
+#+END_SRC
+
+** Other thoughts
+
+I&#39;m calling this a &quot;common error&quot; because I&#39;ve seen this exact problem crop up in other circumstances, perhaps a dozen times. If *I&#39;ve* seen it that often, and I haven&#39;t been writing a lot of JS for very long (a handful of years), it&#39;s probably something that happens more often. It&#39;s easy to forget it. It&#39;s even easier to neglect to test this, especially if it looks like it&#39;s working on one browser.
+
+I think, in actuality, if this feature had been tested by pressing random buttons, in different orders, and selecting different options more than once, this error might have shown up a lot earlier, and on all browsers, too. That it showed up in the customers&#39; world is a let down. That it took one line to fix was pure luck.
+
+#+BEGIN_COMMENT
+Local Variables:
+time-stamp-count: 2
+time-stamp-line-limit: 20
+End:
+#+END_COMMENT
 </content>
       <author>
         <name>Tamara Temple</name>
@@ -306,132 +620,54 @@ I&#39;m pleased with the experiement.
       </author>
     </entry>
     <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2016/12/flexbox-website-with-fixed-headers-and-footer.org</id>
-      <updated>2019-04-27T06:24:39-05:00</updated>
-      <title>flexbox website with fixed headers and footer</title>
-      <content>* flexbox website with fixed headers and footer
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2019/03/2019-03-07-til-fixing-a-capybara-problem-scrolling-submit-into-view-on-a-modal.org</id>
+      <updated>2019-05-27T13:10:28-05:00</updated>
+      <title>TIL: Fixing a Capybara Problem Scrolling the Submit Button Into View on a Modal Form Test</title>
+      <content>#+COMMENT -*- time-stamp-line-limit: 12; time-stamp-count: 2 -*-
+* TIL: Fixing a Capybara Problem Scrolling the Submit Button Into View on a Modal Form Test
   :PROPERTIES:
-  :CUSTOM_ID: flexbox-website-with-fixed-headers-and-footer
+  :LAST_UPDATE: Time-stamp: &lt;2019-03-06 18:44:57 tamara&gt;
+  :CAPTURE_DATE: [2019-03-06 Wed]
+  :KEYWORDS: testing, capybara, scrolling, modal
   :END:
 
-- published date: 2016-12-04 14:31
-- keywords: [&quot;css&quot;, &quot;flexbox&quot;]
+  - last_update: Time-stamp: &lt;2019-03-06 18:44:57 tamara&gt;
+  - capture_date: [2019-03-06 Wed]
+  - keywords: testing, capybara, scrolling, modal
 
-I was playing around with some React stuff and came upon a basic layout issue. I wanted to have the standard header + footer + main + sidebar sort of layout, but I wanted to do it flexbox. I also wanted the header and footer to be fixed to the top and bottom, respectively, and for the main content to be able to scroll inside it.
+** Background
 
-*UPDATE!!* Now with more responsive!
+   In [[https://www.kickserv.com/][the product I work on]], we have a form to let a user create a new customer during the editing of a job. This form is quite long. In the test, the only required field, the Customer&#39;s name, is filled in, and the new customer modal form is submitted.
 
-The results can be seen at [[https://github.com/tamouse/sample-flex-website-layout][this repo]], and a demo at [[https://tamouse.github.io/sample-flex-website-layout/][Flex Standard Layout (demo)]].
+** Problem
 
-** Page Boundaries: Header and Footer
-   :PROPERTIES:
-   :CUSTOM_ID: page-boundaries-header-and-footer
-   :END:
+   Since the form is so long, the submit button is not visible on the page, so [[http://teamcapybara.github.io/capybara/][Capybara]] cannot find it to click on it.
 
-Making the header and footer fixed to top and bottom is fairly easy. The following attributes generally work well:
+** Solution
 
-#+BEGIN_SRC css
-    .fixed-top, .fixed-bottom {
-      position: aboslute;
-      height: 40px;
-    }
-    .fixed-top { top: 0 }
-    .fixed-bottom { bottom: 0 }
-#+END_SRC
+   Scroll the modal so the submit button comes into view.
 
-** Full-height columns
-   :PROPERTIES:
-   :CUSTOM_ID: full-height-columns
-   :END:
+   If you execute the following line in a Capybara test:
 
-Getting columns of equal height is a bit tricksier, and I resorted to what seems like a hack.
+   #+BEGIN_SRC ruby
+     page.execute_script &quot;window.scrollBy(0,10000)&quot;
+   #+END_SRC
 
-#+BEGIN_SRC css
-    .fixed-middle {
-      position: absolute;
-      top: 40px;
-      bottom: 40px;
-      overflow: hidden;
+   it will scroll the window down, however, the modal isn&#39;t really sitting inside the window. It&#39;s definitely part of the DOM, but we need to scroll the modal itself.
 
-    }
+   So we grab the *modal DOM element* and tell it to scroll down:
 
-    .fixed-middle .column {
-      overflow: auto;
-    }
-#+END_SRC
+   #+BEGIN_SRC ruby
+     page.execute_script &quot;document.getElementById(&#39;new-customer-modal&#39;).scroll(0, 10000)&quot;
+   #+END_SRC
 
-** Where&#39;s the flex?
-   :PROPERTIES:
-   :CUSTOM_ID: wheres-the-flex
-   :END:
+   which makes the submit button come into view, and then the Capybara ~.click~ method works.
 
-This isn&#39;t very flexy yet, so I added in some goodness for that:
+** Caveats
 
-#+BEGIN_SRC css
-    .fixed-middle {
-      dislplay: flex
-    }
-    .fixed-middle .col {
-      flex: 1
-    }
-#+END_SRC
+   This works when you&#39;re using Chrome (visible or headless). It does *not* work in IE11 or lower, nor does it work in Safari mobile.
 
-Much better, but then the sidebars and central main content area are all the same width. I want the content area to dominate.
-
-I arranged the main content part to come before the sidebars, like so:
-
-#+BEGIN_EXAMPLE
-    &lt;div class=&quot;fixed-middle&quot;&gt;
-        &lt;main class=&quot;main-content&quot; role=&quot;main&quot;&gt;
-            &lt;!-- main content --&gt;
-        &lt;/main&gt;
-        &lt;aside class=&quot;left-side&quot;&gt;
-            &lt;!-- left side bar content --&gt;
-        &lt;/aside&gt;
-        &lt;aside class=&quot;right-side&quot;&gt;
-            &lt;!-- right sidebar content --&gt;
-        &lt;/aside&gt;
-    &lt;/div&gt;
-#+END_EXAMPLE
-
-After removing =.fixed-middle .col= CSS definition, I put in:
-
-#+BEGIN_SRC css
-    .fixed-middle .main-content {
-       flex: 5;
-       order: 2;
-    }
-    .fixed-middle .left-side {
-       flex: 1;
-       order: 1;
-    }
-    .fixed-middle .right-side {
-       flex: 1;
-       order: 3;
-    }
-#+END_SRC
-
-This tells flexbox to let the main content area grow to 5 times the size of the sidebars, but make sure the left side bar&#39;s content comes first in the row.
-
-** Header and Footer Redux
-   :PROPERTIES:
-   :CUSTOM_ID: header-and-footer-redux
-   :END:
-
-I wanted to extend this even further, so the case where you may have multiple &quot;widgets&quot; in the header or footer, and so redid the same idea for the those, but keeping the flex to 1.
-
-If I ended up with a 2/3 widget and 1/3 widget, I could mark them with appropriate classes and set the flex accordingly.
-
-** Making it responsive
-   :PROPERTIES:
-   :CUSTOM_ID: making-it-responsive
-   :END:
-
-This turned out to be really easy, and all I needed to do is wrap the flexbox and absolute positioning in a media query.
-
-I had put the page header after the main content, but that didn&#39;t look as good, so I moved that to the top.
-
-The image was misbehaving as well, so I introduced an =.img-responsive= class that limited the width to 100%.
+   The same issue can arise when using [[http://nightwatchjs.org/][NightWatch.js]], with a similar solution to scroll the modal rather than the window.
 </content>
       <author>
         <name>Tamara Temple</name>
@@ -439,251 +675,52 @@ The image was misbehaving as well, so I introduced an =.img-responsive= class th
       </author>
     </entry>
     <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2016/11/installing-wordpress-things-without-ftp.org</id>
-      <updated>2019-04-27T06:24:39-05:00</updated>
-      <title>Installing WordPress Things Without FTP</title>
-      <content>* Installing WordPress Things Without FTP
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2019/01/2019-01-21-TIL-adding-a-new-html-tag-when-creating-a-react-portal.org</id>
+      <updated>2019-05-27T13:10:28-05:00</updated>
+      <title>TIL: Adding a new HTML tag name when creating a React Portal</title>
+      <content>* TIL: Adding a new HTML tag name when creating a React Portal
   :PROPERTIES:
-  :CUSTOM_ID: installing-wordpress-things-without-ftp
+  :KEYWORDS: react, portal, html, tag names
+  :CAPTURE_DATE: Mon Jan 21 16:49:12 2019
+  :LAST_UPDATE: Time-stamp: &lt;2019-01-21 17:06:24 tamara.temple&gt;
   :END:
 
-- published date: 2016-11-14 00:21
-- keywords: [&quot;installation&quot;, &quot;plugins&quot;, &quot;themes&quot;, &quot;wordpress&quot;]
-- source: https://codex.wordpress.org/Editing_wp-config.php#WordPress_Upgrade_Constants
+- keywords: react, portal, html, tag names
+- capture date: Mon Jan 21 16:49:12 2019
+- last updated: Time-stamp: &lt;2019-01-21 17:06:24 tamara.temple&gt;
 
-Recently having set up a couple of WordPress sandbox areas, which would not have any FTP access points for upgrading and installing WP themes and plugins, I ran across this feature where the WP install can &quot;reach out&quot; and pull in the items it needs, rather than telling the WP repository to push the items to the site.
+I was working on a replacement for the ~Modal~ component in ~react-bootstrap~ since it is clear the library is moving away from where we want to be with our app.
 
-In the [[https://codex.wordpress.org/Editing_wp-config.php#WordPress_Upgrade_Constants][codex]] there is a section on &quot;WordPress Upgrade Constants&quot;, and in particular it describes =FS_METHOD= which turns the nature of installing upgrades around.
+While doing so, I noticed it was difficult to find the Portal that react creates in the DOM tree, since I was using just a regular old ~&lt;div&gt;~ element. Given in HTML5 you can invent your own HTML tag names (which Web Components and CSS Components take advantage of as well).
 
-By adding the following line to the =wp-config.php= file, you can enable this behaviour:
+So I called the created element ~&lt;modal-portal&gt;~ and it&#39;s quite visible when it shows up in the DOM, and it makes an easy grab handle for testing.
 
-#+BEGIN_EXAMPLE
-    define(&#39;FS_METHOD&#39;, &#39;direct&#39;);
-#+END_EXAMPLE
+In my ~ModalPortal~ component, the code looks like this:
 
-Putting that at the end of the file turns on this ability, which was a revelation for working on these sandbox sites.
+#+name: ModalPortal.js
+#+begin_src rjsx
+    constructor(props) {
+      super(props)
+      this.el = document.createElement(&quot;modal-portal&quot;)
+      this.modalRoot = document.querySelector(this.props.selector || &quot;body&quot;)
+    }
+#+end_src
 
-This is what the page has to say:
+In the DOM, the component looks like this:
 
-#+BEGIN_QUOTE
-  FS_METHOD forces the filesystem method. It should only be &quot;direct&quot;, &quot;ssh2&quot;, &quot;ftpext&quot;, or &quot;ftpsockets&quot;. Generally, you should only change this if you are experiencing update problems. If you change it and it doesn&#39;t help, change it back/remove it. Under most circumstances, setting it to &#39;ftpsockets&#39; will work if the automatically chosen method does not. Note that your selection here has serious security implications. If you are not familiar with them, you should seek help before making a change.
-#+END_QUOTE
+#+BEGIN_SRC html
+  &lt;modal-portal&gt;
+    &lt;div class=&quot;modal fade in&quot; style=&quot;display: block;&quot;&gt;...&lt;/div&gt;
+  &lt;/modal-portal&gt;
+#+END_SRC
 
-#+BEGIN_QUOTE
 
-  - (Primary Preference) &quot;direct&quot; forces it to use Direct File I/O requests from within PHP. It is the option chosen by default.
-  - (Secondary Preference) &quot;ssh2&quot; is to force the usage of the SSH PHP Extension if installed
-  - (3rd Preference) &quot;ftpext&quot; is to force the usage of the FTP PHP Extension for FTP Access, and finally
-  - (4th Preference) &quot;ftpsockets&quot; utilises the PHP Sockets Class for FTP Access.
-#+END_QUOTE
-
-I chose to use =direct= for the sandboxes.
-
-Take the warning about security implications seriously. You don&#39;t want any production servers to be able to update if someone gains access.
-
-I&#39;ve handled production upgrades by moving the updated software up to the production machine myself /after/ testing the upgrades. There is /no/ FTP (secure or otherwise) on my production installations. BTDT got burned badly.
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2016/05/wordcamp-mpls-diving-back-into-wordpress.org</id>
-      <updated>2019-04-27T06:24:39-05:00</updated>
-      <title>WordCamp Minneapolis 2016: Diving Back Into WordPress</title>
-      <content>#+OPTIONS: toc:5
-
-
-* WordCamp Minneapolis 2016: Diving Back Into WordPress
-
-  - published date: 2016-05-23 04:10
-  - keywords: [&quot;custom-themes&quot;, &quot;relearning&quot;, &quot;themes&quot;, &quot;wordcamp&quot;, &quot;wordpress&quot;]
-
-  [[https://2016.minneapolis.wordcamp.org/files/2016/02/wordpress-logo-2016.png]]
-
-  This past weekend, May 20-22, I attended [[https://2016.minneapolis.wordcamp.org/][WordCamp Minneapolis 2016]] (twitter hash tag [[http://twitter.com/search?q=%23wcmple][#wcmpls]]) which was a *huge* lot of fun. I haven&#39;t looked at WordPress and PHP in years, at least since around 2007. A lot has changed, and a lot hasn&#39;t changed. I also found a really welcoming community among the #wcmpls crowd.
-
-  Since I stopped using it, WordPress has only continued to grow and improve, thanks to the dedicated efforts of the WordPress open source community and project leaders.
-
-  It was also great to step away from the Ruby on Rails server-side environment I&#39;ve been running in for the past many years and engage in a bit of nostalgia in PHP (and perhaps some /nastalgia/[fn:1] as well).
-
-  One of the things that made this event so much fun for me was all the people I already knew through [[http://gdiminneapolis.com][GDI]].
-
-  https://s3.amazonaws.com/swaac.tamouse.org/images/wcmpls-gdi-attendees.jpg
-
-  Our merry band, we happy few. GDI Mpls
-
-** Friday Foundation
-
-   For the first time, #wcmpls had a Friday-before-the-conference technical day, and I chose to dive deep into the development track and learn about creating a custom theme from scratch.
-
-   This was wonderful because it met my dual needs of expressing my creativity in software building and relearning and extending my knowledge into the platform.
-
-   I ended up a little frustrated with the day, because what I was building didn&#39;t work as I expected. Not so unusual during these massive teaching days; I certainly wouldn&#39;t expect them to hold up everything until I understood what I was doing wrong.
-
-** Saturday
-
-   Sessions, sessions, sessions! I tended to pick the more tech/dev side of things and was rewarded with some great topics. There were several that were quite a bit more &quot;junior&quot; in my experience, such as the JavaScript with WordPress sessions, where it seems that JavaScript is enjoying a lot of attention, but has not yet penetrated into the mainstream of things.
-
-   Likewise, there&#39;s still a bit of a feeling I got that as far as development practices go, things are still sometimes pretty loose as far as source control, continuous testing/integration, and what-not.
-
-   From my &quot;can&#39;t leave it unfinished&quot; feeling from Friday, I spent a fair bit of time hitting up other people and working on getting a working custom theme with custom post types and custom taxonomy in place, even using bootstrap to drive the theme, which I find pretty awesome.
-
-   There was this thing called the &quot;Happy Bar&quot; (I think) -- which I didn&#39;t find out what it was until late Sunday afternoon, at which point I went over and /promptly/ got great answers for some lingering questions.
-
-   My prior experience extended to child themes and small changes here and there in CSS and layout, but having a packaged custom theme example is really great.
-
-   #+BEGIN_QUOTE
-   The example custom theme code can be seen out on [[https://github.com/tamouse/example-wordpress-theme-creation-wcmpls16][github]] and there&#39;s a [[http://wp.pontiki.io/demo-custom-theme/][demo]] available, too. {: .text-right}
-   #+END_QUOTE
-
-   As often happens, while you&#39;re trying to solve one problem, you come with another, and in the midst of that, an idea is spawned to automate something, and then another yak is ready for shaving. Randall Monroe captures this, of course:
-
-   [[http://imgs.xkcd.com/comics/automation.png]]
-
-   So, yeah, part of the day I worked on building a [[http://whatisthor.com][Thor]] tool to automatically build a [[http://vagrantup.com][Vagrant]] box provisioned with [[http://ansible.com][Ansible]] that would be usable as a [[https://wordpress.org][WordPress]] custom theme and plugin development environment. Yeah, it&#39;s still in progress ...
-
-   But at least I did get a custom theme, custom post type, and custom taxonomy built! Yay!
-
-*** Saturday Talks
-
-    There were lots of great talks and speakers. I only attended two talks on Saturday, and they were awesome.
-
-**** Amy Gebhardt&#39;s /From Junior to Senior: Why We Teach/
-
-     [[http://twitter.com/amlyhamm][Amy]] is a friend whom I have the pleasure of volunteering with at [[http://gdiminneapolis.com][Girl Develop It]]. Her talk explored a bit of what goes on at GDI, whose mission is the teach beginning HTML, CSS, and JavaScript to Women. The hope is to bring diversity into the web development world.
-
-     With that, and with all the bootcamps, however, there is a backpressure created as many firms and agencies don&#39;t wish to hire inexperienced or junior developers.
-
-     Amy&#39;s talk struck right to the heart of this, outlining why it&#39;s a good idea, and once you decide to try it, how to engage them, and then how to bring them up to speed once they join your organization.
-
-     In her usual brilliant and high-energy way, Amy provided a lot of human and humane reasons for all of this, and presented her own difficulties in dealing with the third step of this, handling your own work and reactions when working with someone who needs a lot of hand-holding.
-
-     - [[http://amlyhamm.com/talks/wcmpls/from-junior-to-senior/][Slides from Amy&#39;s Talk]]
-
-     https://s3.amazonaws.com/swaac.tamouse.org/images/amlyhamm-junior-dev-talk.jpg
-
-     Amy Gebhardt brings the excitement! Credit: @amlyhamm
-
-**** Eryn O&#39;Neil&#39;s /Programmers Can UX Too: Avoiding the Programmer&#39;s User Interface/
-
-     Eryn&#39;s talk was very enjoyable, she has rather good comedic timing, and knows her audience. (In fact, she spent quite a bit of time up front making sure she /had/ the right audience, inviting people to leave if they though they wouldn&#39;t get much out of her talk.)
-
-     Eryn&#39;s message is right there in the title: as a developer, you, too, /must/ understand enough about what your user is trying to accomplish, and that you really need to make your software enjoyable enough for the user to operate that they&#39;ll continue to do so.
-
-     My comment to Eryn afterwards was that I was struck (again) by the importance of paying attention to the user, whom all the value of your code resides in. There are intrinsic values, certainly, and your own aesthetic values, but the actual value rests on whether or not the user will use your code. We build these things not to sit in a repository, but to be out in the world, solving problems for people.
-
-     - [[http://www.slideshare.net/eryno/programmers-can-ux-too-minnewebcon-2014][Eryn&#39;s slides]]
-
-     https://s3.amazonaws.com/swaac.tamouse.org/images/wcmplw-eryn-oneil-the-programmers-ux.jpg
-
-     Eryn O&#39;Niel showing us the Programmer&#39;s UX (unph) Credit: @ChrisEdwardsCE
-
-** Sunday
-
-   The morning was taken up with a brunch at the [Fountain Room] in downtown Minneapolis, which if you&#39;ve never been is pretty doggone spectacular. One of the top spots for wedding receptions, apparently.
-
-   https://s3.amazonaws.com/swaac.tamouse.org/images/fountain-room-pano-20160522-rot.jpg
-
-   [[https://s3.amazonaws.com/swaac.tamouse.org/images/fountain-room-pano-20160522.jpg][big pano]]
-
-   Fountain Room, Minneapolis, Panoramic Photo
-
-*** Lightning Talks
-
-    The lightning talks were rather good, but I think the first two were speaking to bloggers as a business more than mere devs.
-
-
-**** Shawn Pfunder&#39;s /Bicycle Freelancing/.
-
-     Shawn uses a bicycle shop as analogy and metaphor for creating your own business.
-
-     5 main points:
-
-     - build a tribe
-     - secure space
-     - get together
-     - teach others
-     - get personal
-
-     https://s3.amazonaws.com/swaac.tamouse.org/images/wcmpls-pfunder-bicycle-freelancing.jpg
-
-     Shawn Pfunder on how your business should be like a bike shop. Credit: ~@_horneck~
-
-**** Aaron Rosell&#39;s /Why Email Newsletters Help Bloggers Build Influence/
-
-     Aaron presented a case study of one of his clients, who runs a fashion blog. She began also putting out a few different newsletters:
-
-     - blog teaser
-     - news / article / interest aggregator, not limited to fashion
-     - weekend edition, more articles, lots of personal stuff, things not found on the blog itself.
-
-     Aaron&#39;s points are that if you&#39;re a serious blogger, consider adding an e-mail (or e-mails) to your blog, and capture more attention, more readers, make yourself more personable, more accessible, and in addition, gather a lot more data about your readers so you understand them better.
-
-**** Cate DeRosia&#39;s /Why You Should Embrace Failure/
-
-     Cate&#39;s talk restated something most people have heard before, but that bears repeating often, as it&#39;s something that hasn&#39;t been fully grokked and integrated into our culture very well:
-
-     #+BEGIN_QUOTE
-     &quot;We learn from failure&quot;
-     #+END_QUOTE
-
-     It&#39;s really important to remember that when you&#39;ve just deleted the corporate database, or cost the company $100,000 in accidental overcharges (okay, it only looked like it was $7000, and it was only a data error, but still...). The key thing is to learn from those mistakes. Fix the causes of the errors so they won&#39;t happen again. Fix the causes of the causes of the errors, find the root cause and fix that. Keep improving.
-
-     Ultimately, failing can be a very positive experience once we get over the fear and frustration. That won&#39;t go away, we are human after all, but we don&#39;t have to let those feelings rule us.
-
-     https://s3.amazonaws.com/swaac.tamouse.org/images/wcmpls-cate-derosio-learn-from-failure.jpg
-
-     Cate DeRosia helping us to embrace our failures in order to learn and grow. Credit: @topher1kenobe
-
-*** Sunday Sessions
-
-    There were fewer talks on Saturday, only in the afternoon. I went all in on the JavaScript talks:
-
-**** Solomon Scott&#39;s /JavaScript &lt;3 WordPress/
-
-     Solomon is a true lover of JavaScript (as am I) and his passion shows through quite well.
-
-     This was an important talk for me, not from the overview of JavaScript Solomon presented, but from the eagerness of the audience, and my own interest, in bringing the two worlds together. On Friday, I had just learned how to intergrate the styles and scripts I could make for a custom theme or plugin, and Solomon provided for me the binding of modern JavaScript development with WordPress integration. It was really nice.
-
-     He does speak way too fast, though. :D
-
-     - [[http://solomonscott.com/index.php/javascript-and-wordpress/][JavaScript &lt;3 WordPress slides]]
-
-     https://s3.amazonaws.com/swaac.tamouse.org/images/wcmpls-solomonscott-wp-heart-js.jpg
-
-     Solomon Scott showing some love. Credit: @Julie381Julie
-
-**** Josh Broton&#39;s /WordPress+React: A Match Made In Heaven/
-
-     Wow. Josh is like the most dynamic speaker ever. He&#39;s bouncing around the podium, his slides are just /lousy/ with animated GIFs and he&#39;s astoundingly funny and engaging. That&#39;s just the outside.
-
-     Inside, Josh&#39;s talk was super engaging, and super informative. For most of the people attending, I think React is a completely new concept, but I was quite eager to see how it could be used.
-
-     The upshot, and this is the same conclusion I&#39;ve reached on the Rails side, is that WordPress can and should be used only as an API source (your web service) and completely eschew any of it&#39;s own views. It only delivers up JSON to a Single Page App (SPA) which is written in a way that is really outside the entire WordPress Loop.
-
-     When the user comes in to your site, the main WordPress page would just deliver the SPA to the browser, and subsequent interaction with WordPress would be entirely AJAX-driven.
-
-     It&#39;s quite compelling, I think, and it will be interesting to see how much traction this concept gets in the WP community. I like it a lot.
-
-     - No slides yet for Josh&#39;s talk. Coming soon, I hope.
-
-     https://s3.amazonaws.com/swaac.tamouse.org/images/wcmpls-josh-broton-its-just-js-but-its-not-but-it-is.jpg
-
-     Josh Broton: &quot;React: It&#39;s just Javascript, but it&#39;s not, but it is.&quot; Credit: @foundartphotog
-
-** Conclusion
-
-   I was pretty tired, but also pretty jazzed. I had such a great time, and I&#39;m so happy to those who made this possible.
-
-   A special shout-out to [[https://twitter.com/marktimemedia][Michelle Schulp]] who organized this super event, and lovingly opened up a space for me at the last minute. Most excellent work!
-
-   Images were taken from the #wcmpls twitter search feed. Copied without persmission, credit goes to the originators. Apologies all around. I do appreciate your work.
-
-** Footnotes
-
-[fn:1] &quot;Nastalgia&quot; is just a word I made-up by accident when referring to that feeling where you look at something in the past and it makes you a bit sick.
+#+BEGIN_COMMENT
+Local Variables:
+time-stamp-count: 2
+time-stamp-line-limit: 20
+End:
+#+END_COMMENT
 </content>
       <author>
         <name>Tamara Temple</name>
