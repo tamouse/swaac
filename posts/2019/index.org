@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 - [[./05/2019-05-31-prefer-pluck-to-map.org]]
+=======
+- [[./05/2019-05-27-creating-verse-paragraphs-in-kramdown.org]]
+>>>>>>> e4823c39d4ac1e8ab578b361f04715f9afcf9d1e
 - [[./05/2019-05-02-til-jquery-attr-vs-prop.org]]
 - [[./04/2019-04-27-flash-toastr-using-react-hooks.org]]
 - [[./04/2019-04-14-use-key-instead-of-compoenent-did-update.org]]
