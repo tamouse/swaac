@@ -2,7 +2,91 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://github.com/tamouse/swaac</id>
   <title>Tamouse&#39;s Software as a Craft blog</title>
-  <updated>2019-05-02T08:14:03-05:00</updated>
+  <updated>2019-05-31T13:29:08-05:00</updated>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2019/05/2019-05-31-prefer-pluck-to-map.org</id>
+      <updated>2019-05-31T13:29:08-05:00</updated>
+      <title>2019-05-31-prefer-pluck-to-map</title>
+      <content>#+OPTIONS: &#39;:nil *:t -:t ::t &lt;:t H:3 \n:nil ^:t arch:headline
+#+OPTIONS: author:t broken-links:nil c:nil creator:nil
+#+OPTIONS: d:(not &quot;LOGBOOK&quot;) date:t e:t email:nil f:t inline:t num:t
+#+OPTIONS: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+OPTIONS: timestamp:t title:t toc:t todo:t |:t
+#+TITLE: 2019-05-31-prefer-pluck-to-map
+#+DATE: &lt;2019-05-31 Fri&gt;
+#+AUTHOR: Tamara Temple
+#+EMAIL: tamouse@gmail.com
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+CREATOR: Emacs 26.1 (Org mode 9.1.9)
+
+** Remember:
+
+
+#+CAPTION: prefer pluck to map
+[[../../../images/prefer-pluck-to-map.jpg]]
+
+
+   When extracting specific columns from an ActiveRecord::Collection, prefer ~pluck(:field1, :field2, :field3)~ to ~map{|row| [row[:field], row[:field], row[:field]]}~. This more often comes up when you want just the ~:id~, for example:
+
+   #+BEGIN_SRC ruby
+     @work_task_type = @account
+			 .task_types
+			 .where(name: &quot;Work&quot;)
+			 .pluck(:id)
+
+     # vs
+
+     @work_task_type = @account
+			 .task_types
+			 .where(name: &quot;Work&quot;)
+			 .map(&amp;:id)
+
+   #+END_SRC
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/02/how-to-reset-ios-simulator.org</id>
+      <updated>2019-05-31T13:28:47-05:00</updated>
+      <title>How to reset iOS simulator</title>
+      <content>#+OPTIONS: &#39;:nil *:t -:t ::t &lt;:t H:3 \n:nil ^:t arch:headline
+#+OPTIONS: author:t broken-links:nil c:nil creator:nil
+#+OPTIONS: d:(not &quot;LOGBOOK&quot;) date:t e:t email:nil f:t inline:t num:t
+#+OPTIONS: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+OPTIONS: timestamp:t title:t toc:t todo:t |:t
+#+TITLE: how-to-reset-ios-simulator
+#+DATE: &lt;2018-02-15 Thu&gt;
+#+AUTHOR: Tamara Temple
+#+EMAIL: tamouse@gmail.com
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+CREATOR: Emacs 26.1 (Org mode 9.1.9)
+#+KEYWORDS: ios, simulator, development, reset
+
+* How to reset iOS simulator
+
+I ran into an issue recently where I was trying to debug a problem in a project, but had a problem accessing the right data server since I was logged into a local development server, and really needed to get back to the &quot;new app&quot; state.
+
+I searched for &quot;reset xcode simulator&quot; via DDG and first hit came up with &lt;https://stackoverflow.com/questions/16195859/reset-ios-simulator-application-data-to-run-app-for-first-time#16195931&gt; which gave me an answer.
+
+The command line versions work, but it can be a pain to get the UDID for the simulator. Doing it from the running simulator was easier, but of course the menu options are different than discussed in the stackoverflow answer.
+
+I found it on the Simulator (Version 10.0 (SimulatorApp-835.2.1) seen in the following screen shot:
+
+#+CAPTION: Reset IOS Simulator Screenshot
+[[../../../images/reset-ios-simulator.png]]
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2019/05/2019-05-02-til-jquery-attr-vs-prop.org</id>
       <updated>2019-05-02T08:14:03-05:00</updated>
@@ -432,258 +516,6 @@ This turned out to be really easy, and all I needed to do is wrap the flexbox an
 I had put the page header after the main content, but that didn&#39;t look as good, so I moved that to the top.
 
 The image was misbehaving as well, so I introduced an =.img-responsive= class that limited the width to 100%.
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2016/11/installing-wordpress-things-without-ftp.org</id>
-      <updated>2019-04-27T06:24:39-05:00</updated>
-      <title>Installing WordPress Things Without FTP</title>
-      <content>* Installing WordPress Things Without FTP
-  :PROPERTIES:
-  :CUSTOM_ID: installing-wordpress-things-without-ftp
-  :END:
-
-- published date: 2016-11-14 00:21
-- keywords: [&quot;installation&quot;, &quot;plugins&quot;, &quot;themes&quot;, &quot;wordpress&quot;]
-- source: https://codex.wordpress.org/Editing_wp-config.php#WordPress_Upgrade_Constants
-
-Recently having set up a couple of WordPress sandbox areas, which would not have any FTP access points for upgrading and installing WP themes and plugins, I ran across this feature where the WP install can &quot;reach out&quot; and pull in the items it needs, rather than telling the WP repository to push the items to the site.
-
-In the [[https://codex.wordpress.org/Editing_wp-config.php#WordPress_Upgrade_Constants][codex]] there is a section on &quot;WordPress Upgrade Constants&quot;, and in particular it describes =FS_METHOD= which turns the nature of installing upgrades around.
-
-By adding the following line to the =wp-config.php= file, you can enable this behaviour:
-
-#+BEGIN_EXAMPLE
-    define(&#39;FS_METHOD&#39;, &#39;direct&#39;);
-#+END_EXAMPLE
-
-Putting that at the end of the file turns on this ability, which was a revelation for working on these sandbox sites.
-
-This is what the page has to say:
-
-#+BEGIN_QUOTE
-  FS_METHOD forces the filesystem method. It should only be &quot;direct&quot;, &quot;ssh2&quot;, &quot;ftpext&quot;, or &quot;ftpsockets&quot;. Generally, you should only change this if you are experiencing update problems. If you change it and it doesn&#39;t help, change it back/remove it. Under most circumstances, setting it to &#39;ftpsockets&#39; will work if the automatically chosen method does not. Note that your selection here has serious security implications. If you are not familiar with them, you should seek help before making a change.
-#+END_QUOTE
-
-#+BEGIN_QUOTE
-
-  - (Primary Preference) &quot;direct&quot; forces it to use Direct File I/O requests from within PHP. It is the option chosen by default.
-  - (Secondary Preference) &quot;ssh2&quot; is to force the usage of the SSH PHP Extension if installed
-  - (3rd Preference) &quot;ftpext&quot; is to force the usage of the FTP PHP Extension for FTP Access, and finally
-  - (4th Preference) &quot;ftpsockets&quot; utilises the PHP Sockets Class for FTP Access.
-#+END_QUOTE
-
-I chose to use =direct= for the sandboxes.
-
-Take the warning about security implications seriously. You don&#39;t want any production servers to be able to update if someone gains access.
-
-I&#39;ve handled production upgrades by moving the updated software up to the production machine myself /after/ testing the upgrades. There is /no/ FTP (secure or otherwise) on my production installations. BTDT got burned badly.
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2016/05/wordcamp-mpls-diving-back-into-wordpress.org</id>
-      <updated>2019-04-27T06:24:39-05:00</updated>
-      <title>WordCamp Minneapolis 2016: Diving Back Into WordPress</title>
-      <content>#+OPTIONS: toc:5
-
-
-* WordCamp Minneapolis 2016: Diving Back Into WordPress
-
-  - published date: 2016-05-23 04:10
-  - keywords: [&quot;custom-themes&quot;, &quot;relearning&quot;, &quot;themes&quot;, &quot;wordcamp&quot;, &quot;wordpress&quot;]
-
-  [[https://2016.minneapolis.wordcamp.org/files/2016/02/wordpress-logo-2016.png]]
-
-  This past weekend, May 20-22, I attended [[https://2016.minneapolis.wordcamp.org/][WordCamp Minneapolis 2016]] (twitter hash tag [[http://twitter.com/search?q=%23wcmple][#wcmpls]]) which was a *huge* lot of fun. I haven&#39;t looked at WordPress and PHP in years, at least since around 2007. A lot has changed, and a lot hasn&#39;t changed. I also found a really welcoming community among the #wcmpls crowd.
-
-  Since I stopped using it, WordPress has only continued to grow and improve, thanks to the dedicated efforts of the WordPress open source community and project leaders.
-
-  It was also great to step away from the Ruby on Rails server-side environment I&#39;ve been running in for the past many years and engage in a bit of nostalgia in PHP (and perhaps some /nastalgia/[fn:1] as well).
-
-  One of the things that made this event so much fun for me was all the people I already knew through [[http://gdiminneapolis.com][GDI]].
-
-  https://s3.amazonaws.com/swaac.tamouse.org/images/wcmpls-gdi-attendees.jpg
-
-  Our merry band, we happy few. GDI Mpls
-
-** Friday Foundation
-
-   For the first time, #wcmpls had a Friday-before-the-conference technical day, and I chose to dive deep into the development track and learn about creating a custom theme from scratch.
-
-   This was wonderful because it met my dual needs of expressing my creativity in software building and relearning and extending my knowledge into the platform.
-
-   I ended up a little frustrated with the day, because what I was building didn&#39;t work as I expected. Not so unusual during these massive teaching days; I certainly wouldn&#39;t expect them to hold up everything until I understood what I was doing wrong.
-
-** Saturday
-
-   Sessions, sessions, sessions! I tended to pick the more tech/dev side of things and was rewarded with some great topics. There were several that were quite a bit more &quot;junior&quot; in my experience, such as the JavaScript with WordPress sessions, where it seems that JavaScript is enjoying a lot of attention, but has not yet penetrated into the mainstream of things.
-
-   Likewise, there&#39;s still a bit of a feeling I got that as far as development practices go, things are still sometimes pretty loose as far as source control, continuous testing/integration, and what-not.
-
-   From my &quot;can&#39;t leave it unfinished&quot; feeling from Friday, I spent a fair bit of time hitting up other people and working on getting a working custom theme with custom post types and custom taxonomy in place, even using bootstrap to drive the theme, which I find pretty awesome.
-
-   There was this thing called the &quot;Happy Bar&quot; (I think) -- which I didn&#39;t find out what it was until late Sunday afternoon, at which point I went over and /promptly/ got great answers for some lingering questions.
-
-   My prior experience extended to child themes and small changes here and there in CSS and layout, but having a packaged custom theme example is really great.
-
-   #+BEGIN_QUOTE
-   The example custom theme code can be seen out on [[https://github.com/tamouse/example-wordpress-theme-creation-wcmpls16][github]] and there&#39;s a [[http://wp.pontiki.io/demo-custom-theme/][demo]] available, too. {: .text-right}
-   #+END_QUOTE
-
-   As often happens, while you&#39;re trying to solve one problem, you come with another, and in the midst of that, an idea is spawned to automate something, and then another yak is ready for shaving. Randall Monroe captures this, of course:
-
-   [[http://imgs.xkcd.com/comics/automation.png]]
-
-   So, yeah, part of the day I worked on building a [[http://whatisthor.com][Thor]] tool to automatically build a [[http://vagrantup.com][Vagrant]] box provisioned with [[http://ansible.com][Ansible]] that would be usable as a [[https://wordpress.org][WordPress]] custom theme and plugin development environment. Yeah, it&#39;s still in progress ...
-
-   But at least I did get a custom theme, custom post type, and custom taxonomy built! Yay!
-
-*** Saturday Talks
-
-    There were lots of great talks and speakers. I only attended two talks on Saturday, and they were awesome.
-
-**** Amy Gebhardt&#39;s /From Junior to Senior: Why We Teach/
-
-     [[http://twitter.com/amlyhamm][Amy]] is a friend whom I have the pleasure of volunteering with at [[http://gdiminneapolis.com][Girl Develop It]]. Her talk explored a bit of what goes on at GDI, whose mission is the teach beginning HTML, CSS, and JavaScript to Women. The hope is to bring diversity into the web development world.
-
-     With that, and with all the bootcamps, however, there is a backpressure created as many firms and agencies don&#39;t wish to hire inexperienced or junior developers.
-
-     Amy&#39;s talk struck right to the heart of this, outlining why it&#39;s a good idea, and once you decide to try it, how to engage them, and then how to bring them up to speed once they join your organization.
-
-     In her usual brilliant and high-energy way, Amy provided a lot of human and humane reasons for all of this, and presented her own difficulties in dealing with the third step of this, handling your own work and reactions when working with someone who needs a lot of hand-holding.
-
-     - [[http://amlyhamm.com/talks/wcmpls/from-junior-to-senior/][Slides from Amy&#39;s Talk]]
-
-     https://s3.amazonaws.com/swaac.tamouse.org/images/amlyhamm-junior-dev-talk.jpg
-
-     Amy Gebhardt brings the excitement! Credit: @amlyhamm
-
-**** Eryn O&#39;Neil&#39;s /Programmers Can UX Too: Avoiding the Programmer&#39;s User Interface/
-
-     Eryn&#39;s talk was very enjoyable, she has rather good comedic timing, and knows her audience. (In fact, she spent quite a bit of time up front making sure she /had/ the right audience, inviting people to leave if they though they wouldn&#39;t get much out of her talk.)
-
-     Eryn&#39;s message is right there in the title: as a developer, you, too, /must/ understand enough about what your user is trying to accomplish, and that you really need to make your software enjoyable enough for the user to operate that they&#39;ll continue to do so.
-
-     My comment to Eryn afterwards was that I was struck (again) by the importance of paying attention to the user, whom all the value of your code resides in. There are intrinsic values, certainly, and your own aesthetic values, but the actual value rests on whether or not the user will use your code. We build these things not to sit in a repository, but to be out in the world, solving problems for people.
-
-     - [[http://www.slideshare.net/eryno/programmers-can-ux-too-minnewebcon-2014][Eryn&#39;s slides]]
-
-     https://s3.amazonaws.com/swaac.tamouse.org/images/wcmplw-eryn-oneil-the-programmers-ux.jpg
-
-     Eryn O&#39;Niel showing us the Programmer&#39;s UX (unph) Credit: @ChrisEdwardsCE
-
-** Sunday
-
-   The morning was taken up with a brunch at the [Fountain Room] in downtown Minneapolis, which if you&#39;ve never been is pretty doggone spectacular. One of the top spots for wedding receptions, apparently.
-
-   https://s3.amazonaws.com/swaac.tamouse.org/images/fountain-room-pano-20160522-rot.jpg
-
-   [[https://s3.amazonaws.com/swaac.tamouse.org/images/fountain-room-pano-20160522.jpg][big pano]]
-
-   Fountain Room, Minneapolis, Panoramic Photo
-
-*** Lightning Talks
-
-    The lightning talks were rather good, but I think the first two were speaking to bloggers as a business more than mere devs.
-
-
-**** Shawn Pfunder&#39;s /Bicycle Freelancing/.
-
-     Shawn uses a bicycle shop as analogy and metaphor for creating your own business.
-
-     5 main points:
-
-     - build a tribe
-     - secure space
-     - get together
-     - teach others
-     - get personal
-
-     https://s3.amazonaws.com/swaac.tamouse.org/images/wcmpls-pfunder-bicycle-freelancing.jpg
-
-     Shawn Pfunder on how your business should be like a bike shop. Credit: ~@_horneck~
-
-**** Aaron Rosell&#39;s /Why Email Newsletters Help Bloggers Build Influence/
-
-     Aaron presented a case study of one of his clients, who runs a fashion blog. She began also putting out a few different newsletters:
-
-     - blog teaser
-     - news / article / interest aggregator, not limited to fashion
-     - weekend edition, more articles, lots of personal stuff, things not found on the blog itself.
-
-     Aaron&#39;s points are that if you&#39;re a serious blogger, consider adding an e-mail (or e-mails) to your blog, and capture more attention, more readers, make yourself more personable, more accessible, and in addition, gather a lot more data about your readers so you understand them better.
-
-**** Cate DeRosia&#39;s /Why You Should Embrace Failure/
-
-     Cate&#39;s talk restated something most people have heard before, but that bears repeating often, as it&#39;s something that hasn&#39;t been fully grokked and integrated into our culture very well:
-
-     #+BEGIN_QUOTE
-     &quot;We learn from failure&quot;
-     #+END_QUOTE
-
-     It&#39;s really important to remember that when you&#39;ve just deleted the corporate database, or cost the company $100,000 in accidental overcharges (okay, it only looked like it was $7000, and it was only a data error, but still...). The key thing is to learn from those mistakes. Fix the causes of the errors so they won&#39;t happen again. Fix the causes of the causes of the errors, find the root cause and fix that. Keep improving.
-
-     Ultimately, failing can be a very positive experience once we get over the fear and frustration. That won&#39;t go away, we are human after all, but we don&#39;t have to let those feelings rule us.
-
-     https://s3.amazonaws.com/swaac.tamouse.org/images/wcmpls-cate-derosio-learn-from-failure.jpg
-
-     Cate DeRosia helping us to embrace our failures in order to learn and grow. Credit: @topher1kenobe
-
-*** Sunday Sessions
-
-    There were fewer talks on Saturday, only in the afternoon. I went all in on the JavaScript talks:
-
-**** Solomon Scott&#39;s /JavaScript &lt;3 WordPress/
-
-     Solomon is a true lover of JavaScript (as am I) and his passion shows through quite well.
-
-     This was an important talk for me, not from the overview of JavaScript Solomon presented, but from the eagerness of the audience, and my own interest, in bringing the two worlds together. On Friday, I had just learned how to intergrate the styles and scripts I could make for a custom theme or plugin, and Solomon provided for me the binding of modern JavaScript development with WordPress integration. It was really nice.
-
-     He does speak way too fast, though. :D
-
-     - [[http://solomonscott.com/index.php/javascript-and-wordpress/][JavaScript &lt;3 WordPress slides]]
-
-     https://s3.amazonaws.com/swaac.tamouse.org/images/wcmpls-solomonscott-wp-heart-js.jpg
-
-     Solomon Scott showing some love. Credit: @Julie381Julie
-
-**** Josh Broton&#39;s /WordPress+React: A Match Made In Heaven/
-
-     Wow. Josh is like the most dynamic speaker ever. He&#39;s bouncing around the podium, his slides are just /lousy/ with animated GIFs and he&#39;s astoundingly funny and engaging. That&#39;s just the outside.
-
-     Inside, Josh&#39;s talk was super engaging, and super informative. For most of the people attending, I think React is a completely new concept, but I was quite eager to see how it could be used.
-
-     The upshot, and this is the same conclusion I&#39;ve reached on the Rails side, is that WordPress can and should be used only as an API source (your web service) and completely eschew any of it&#39;s own views. It only delivers up JSON to a Single Page App (SPA) which is written in a way that is really outside the entire WordPress Loop.
-
-     When the user comes in to your site, the main WordPress page would just deliver the SPA to the browser, and subsequent interaction with WordPress would be entirely AJAX-driven.
-
-     It&#39;s quite compelling, I think, and it will be interesting to see how much traction this concept gets in the WP community. I like it a lot.
-
-     - No slides yet for Josh&#39;s talk. Coming soon, I hope.
-
-     https://s3.amazonaws.com/swaac.tamouse.org/images/wcmpls-josh-broton-its-just-js-but-its-not-but-it-is.jpg
-
-     Josh Broton: &quot;React: It&#39;s just Javascript, but it&#39;s not, but it is.&quot; Credit: @foundartphotog
-
-** Conclusion
-
-   I was pretty tired, but also pretty jazzed. I had such a great time, and I&#39;m so happy to those who made this possible.
-
-   A special shout-out to [[https://twitter.com/marktimemedia][Michelle Schulp]] who organized this super event, and lovingly opened up a space for me at the last minute. Most excellent work!
-
-   Images were taken from the #wcmpls twitter search feed. Copied without persmission, credit goes to the originators. Apologies all around. I do appreciate your work.
-
-** Footnotes
-
-[fn:1] &quot;Nastalgia&quot; is just a word I made-up by accident when referring to that feeling where you look at something in the past and it makes you a bit sick.
 </content>
       <author>
         <name>Tamara Temple</name>

@@ -1,0 +1,37 @@
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+OPTIONS: author:t broken-links:nil c:nil creator:nil
+#+OPTIONS: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:t
+#+OPTIONS: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+OPTIONS: timestamp:t title:t toc:t todo:t |:t
+#+TITLE: 2019-05-31-prefer-pluck-to-map
+#+DATE: <2019-05-31 Fri>
+#+AUTHOR: Tamara Temple
+#+EMAIL: tamouse@gmail.com
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+CREATOR: Emacs 26.1 (Org mode 9.1.9)
+
+** Remember:
+
+
+#+CAPTION: prefer pluck to map
+[[../../../images/prefer-pluck-to-map.jpg]]
+
+
+   When extracting specific columns from an ActiveRecord::Collection, prefer ~pluck(:field1, :field2, :field3)~ to ~map{|row| [row[:field], row[:field], row[:field]]}~. This more often comes up when you want just the ~:id~, for example:
+
+   #+BEGIN_SRC ruby
+     @work_task_type = @account
+			 .task_types
+			 .where(name: "Work")
+			 .pluck(:id)
+
+     # vs
+
+     @work_task_type = @account
+			 .task_types
+			 .where(name: "Work")
+			 .map(&:id)
+
+   #+END_SRC
