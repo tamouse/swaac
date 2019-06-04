@@ -2,17 +2,17 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://github.com/tamouse/swaac</id>
   <title>Tamouse&#39;s Software as a Craft blog</title>
-  <updated>2019-06-04T10:26:09-05:00</updated>
+  <updated>2019-06-04T10:30:14-05:00</updated>
     <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2019/06/2019-06-03-two-flexbox-links.org</id>
-      <updated>2019-06-04T10:26:09-05:00</updated>
-      <title>2019-06-03-two-flexbox-links</title>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2019/06/2019-06-03-some-flexbox-links.org</id>
+      <updated>2019-06-04T10:30:14-05:00</updated>
+      <title>2019-06-03-some-flexbox-links</title>
       <content>#+OPTIONS: &#39;:nil *:t -:t ::t &lt;:t H:3 \n:nil ^:t arch:headline
 #+OPTIONS: author:t broken-links:nil c:nil creator:nil
-#+OPTIONS: d:(not &quot;LOGBOOK&quot;) date:t e:t email:nil f:t inline:t num:t
+#+OPTIONS: d:(not &quot;LOGBOOK&quot;) date:t e:t email:nil f:t inline:t num:nil
 #+OPTIONS: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
-#+OPTIONS: timestamp:t title:t toc:t todo:t |:t
-#+TITLE: 2019-06-03-two-flexbox-links
+#+OPTIONS: timestamp:t title:t toc:nil todo:t |:t
+#+TITLE: 2019-06-03-some-flexbox-links
 #+DATE: &lt;2019-06-04 Tue&gt;
 #+AUTHOR: Tamara Temple
 #+EMAIL: tamouse@gmail.com
