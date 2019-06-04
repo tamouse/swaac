@@ -1,0 +1,44 @@
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+OPTIONS: author:t broken-links:nil c:nil creator:nil
+#+OPTIONS: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:t
+#+OPTIONS: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+OPTIONS: timestamp:t title:t toc:t todo:t |:t
+#+TITLE: 2019-06-03-two-flexbox-links
+#+DATE: <2019-06-04 Tue>
+#+AUTHOR: Tamara Temple
+#+EMAIL: tamouse@gmail.com
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+CREATOR: Emacs 26.1 (Org mode 9.1.9)
+
+Hat-tip to @Andrea on WHCTC slack
+
+** Flexbox Patterns
+
+   Link: [[https://www.flexboxpatterns.com/][Flexbox Patterns]]
+
+   Tagline: Build awesome user interfaces with CSS flexbox. Examples and source code included.
+
+   Description: Flexbox is awesome, but it introduces many new concepts that can make it difficult to use. These interactive examples will show you practical ways to use it to build UI components. They start out simple and get more complex near the end. You can start using these patterns in your own code right away, though I recommend you apply accessibility best practices to the markup (like using semantic HTML5 elements).
+
+** Solved by Flexbox
+
+   Link: [[https://philipwalton.github.io/solved-by-flexbox/][Solved by Flexbox]]
+
+   Tagline: Cleaner, hack-free CSS
+
+   Description: CSS has been lacking proper layout mechanisms for far too long. Transitions, animations, filters, all of these are great and useful additions to the language, but they don't address the major problems that Web developers have been complaining about for what seems like an eternity.
+
+   Finally, thanks to Flexbox, we have a solution.
+
+   This site is not another CSS framework. Instead, its purpose is to showcase problems once hard or impossible to solve with CSS alone, now made trivially easy with Flexbox. And with the recent release of Internet Explorer 11 and Safari 6.1, the latest Flexbox spec is now supported in every modern browser.
+
+   Check out the demos below. View the styles in the Web inspector or dive into the source to see just how easy CSS layout will become once Flexbox becomes mainstream.
+
+
+** How to examine Flexbox layouts in Firefox
+
+   Link: [[https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector/How_to/Examine_Flexbox_layouts][CSS Flexbox Inspector: Examine Flexbox layouts]]
+
+   Description: The Flexbox Inspector allows you to examine CSS Flexbox Layouts using the Firefox DevTools, discovering flex containers on a page, examining and modifying them, debugging layout issues, and more.

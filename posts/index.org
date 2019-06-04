@@ -1,4 +1,5 @@
 - [[./learning.org]]
+- [[./2019/06/2019-06-03-two-flexbox-links.org]]
 - [[./2019/05/2019-05-31-prefer-pluck-to-map.org]]
 - [[./2019/05/2019-05-27-creating-verse-paragraphs-in-kramdown.org]]
 - [[./2019/05/2019-05-02-til-jquery-attr-vs-prop.org]]
