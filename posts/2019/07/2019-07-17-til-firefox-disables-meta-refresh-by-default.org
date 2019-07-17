@@ -1,0 +1,29 @@
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+OPTIONS: author:t broken-links:nil c:nil creator:nil
+#+OPTIONS: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:t
+#+OPTIONS: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+OPTIONS: timestamp:t title:t toc:t todo:t |:t
+#+TITLE: 2019-07-17-til-firefox-disables-meta-refresh-by-default
+#+DATE: <2019-07-17 Wed>
+#+AUTHOR: Tamara Temple
+#+EMAIL: tamouse@gmail.com
+#+KEYWORDS: firefox, refresh
+#+DESCRIPTION: Today I learned about meta refresh on firefox browsers
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+CREATOR: Emacs 26.1 (Org mode 9.1.9)
+
+** TIL: Firefox disables the meta refresh header by default
+
+This came up with a story I was implementing, where we wanted an interstitial page to show up after a new client signs up for our product, basically a "Thank You" page, which is needed for tracking stuff in google analytics.
+
+I thought to use the ~meta http-equiv=refresh~ header, which I've used for a very long time. Come to learn, however, the the Firefox browser disables this header by default.
+
+See https://stackoverflow.com/questions/29645340/why-does-meta-refresh-not-work-in-firefox
+
+Because we don't want to force users to update their browser configurations before signing up for an account, I used the JavaScript redirect method instead.
+
+I really hope browser writers don't decide that method is too risky for browser users; it would mean a lot of client apps might no longer work all of a sudden.
+
+This is why we can't have nice things :(
