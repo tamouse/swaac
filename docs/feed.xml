@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://github.com/tamouse/swaac</id>
   <title>Tamouse&#39;s Software as a Craft blog</title>
-  <updated>2019-08-01T18:23:16-05:00</updated>
+  <updated>2019-08-01T18:28:02-05:00</updated>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2019/08/2019-08-01-programmer-s-primary-language.org</id>
-      <updated>2019-08-01T18:23:16-05:00</updated>
+      <updated>2019-08-01T18:28:02-05:00</updated>
       <title>2019-08-01-programmer-s-primary-language</title>
       <content>## What&#39;s a Programmer&#39;s Primary Language?
 
@@ -15,7 +15,7 @@ So that&#39;s a really old joke, and I&#39;d thought I&#39;d written something a
 
 There&#39;s a funny comic that goes around from time to time (I&#39;d thought it was one of Randall Monroe&#39;s, but it&#39;s not): https://www.osnews.com/story/19266/wtfsm/
 
-[[file:~/Sites/swaac/images/wtfm.jpg][file:~/Sites/swaac/images/wtfm.jpg]]
+[[wtfsm.jpg]]
 
 It&#39;s often sourced from [[http://commadot.com/wtf-per-minute/][this blog entry]] with a computer-drawn version, but I rather like the original.
 </content>
