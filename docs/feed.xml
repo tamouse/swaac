@@ -2,14 +2,30 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://github.com/tamouse/swaac</id>
   <title>Tamouse&#39;s Software as a Craft blog</title>
-  <updated>2019-08-01T18:28:02-05:00</updated>
+  <updated>2019-08-01T18:32:32-05:00</updated>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2019/08/2019-08-01-programmer-s-primary-language.org</id>
-      <updated>2019-08-01T18:28:02-05:00</updated>
+      <updated>2019-08-01T18:32:32-05:00</updated>
       <title>2019-08-01-programmer-s-primary-language</title>
-      <content>## What&#39;s a Programmer&#39;s Primary Language?
+      <content>#+OPTIONS: &#39;:nil *:t -:t ::t &lt;:t H:3 \n:nil ^:t arch:headline
+#+OPTIONS: author:t broken-links:nil c:nil creator:nil
+#+OPTIONS: d:(not &quot;LOGBOOK&quot;) date:t e:t email:nil f:t inline:t num:t
+#+OPTIONS: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+OPTIONS: timestamp:t title:t toc:t todo:t |:t
+#+TITLE: 2019-08-01-programmer-s-primary-language
+#+DATE: &lt;2019-08-01 Thu&gt;
+#+AUTHOR: Tamara Temple
+#+EMAIL: tamouse@gmail.com
+#+KEYWORDS: joke, primary language, wtfsm
+#+DESCRIPTION: an old programmer&#39;s joke
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+CREATOR: Emacs 26.2 (Org mode 9.1.9)
 
-Profanity
+** What&#39;s a Programmer&#39;s Primary Language?
+
+*Profanity*
 
 So that&#39;s a really old joke, and I&#39;d thought I&#39;d written something about it long ago.
 

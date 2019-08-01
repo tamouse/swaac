@@ -1,6 +1,22 @@
-## What's a Programmer's Primary Language?
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+OPTIONS: author:t broken-links:nil c:nil creator:nil
+#+OPTIONS: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:t
+#+OPTIONS: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+OPTIONS: timestamp:t title:t toc:t todo:t |:t
+#+TITLE: 2019-08-01-programmer-s-primary-language
+#+DATE: <2019-08-01 Thu>
+#+AUTHOR: Tamara Temple
+#+EMAIL: tamouse@gmail.com
+#+KEYWORDS: joke, primary language, wtfsm
+#+DESCRIPTION: an old programmer's joke
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+CREATOR: Emacs 26.2 (Org mode 9.1.9)
 
-Profanity
+** What's a Programmer's Primary Language?
+
+*Profanity*
 
 So that's a really old joke, and I'd thought I'd written something about it long ago.
 
