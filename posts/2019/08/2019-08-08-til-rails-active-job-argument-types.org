@@ -1,0 +1,24 @@
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+OPTIONS: author:t broken-links:nil c:nil creator:nil
+#+OPTIONS: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:nil
+#+OPTIONS: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+OPTIONS: timestamp:t title:t toc:nil todo:t |:t
+#+TITLE: TIL: Rails ActiveJob Supported Argument Types
+#+DATE: <2019-08-08 Thu>
+#+AUTHOR: Tamara Temple
+#+EMAIL: tamouse@gmail.com
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+CREATOR: Emacs 26.2 (Org mode 9.1.9)
+
+
+[[https://edgeguides.rubyonrails.org/active_job_basics.html#supported-types-for-arguments][Rails Guides: ActiveJob Supported Argument Types]]
+
+This came up because of a cascade of things:
+
+1. Having an exception thrown during an ActiveJob task
+2. The rescue calling ActiveMailer with the rescued exception as an argument, with the ~.deliver_later~ option
+3. This caused another ActiveJob to be created for the mailer, with an argument that violates the above restriction.
+
+The solution, in this case is pretty easy: call the mailer with ~.deliver_now~ instead, since it's already a background job.

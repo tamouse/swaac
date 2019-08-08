@@ -2,7 +2,41 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://github.com/tamouse/swaac</id>
   <title>Tamouse&#39;s Software as a Craft blog</title>
-  <updated>2019-08-01T18:32:32-05:00</updated>
+  <updated>2019-08-08T17:18:45-05:00</updated>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2019/08/2019-08-08-til-rails-active-job-argument-types.org</id>
+      <updated>2019-08-08T17:18:45-05:00</updated>
+      <title>2019-08-08-til-rails-active-job-argument-types</title>
+      <content>#+OPTIONS: &#39;:nil *:t -:t ::t &lt;:t H:3 \n:nil ^:t arch:headline
+#+OPTIONS: author:t broken-links:nil c:nil creator:nil
+#+OPTIONS: d:(not &quot;LOGBOOK&quot;) date:t e:t email:nil f:t inline:t num:nil
+#+OPTIONS: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+OPTIONS: timestamp:t title:t toc:nil todo:t |:t
+#+TITLE: TIL: Rails ActiveJob Supported Argument Types
+#+DATE: &lt;2019-08-08 Thu&gt;
+#+AUTHOR: Tamara Temple
+#+EMAIL: tamouse@gmail.com
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+CREATOR: Emacs 26.2 (Org mode 9.1.9)
+
+
+[[https://edgeguides.rubyonrails.org/active_job_basics.html#supported-types-for-arguments][Rails Guides: ActiveJob Supported Argument Types]]
+
+This came up because of a cascade of things:
+
+1. Having an exception thrown during an ActiveJob task
+2. The rescue calling ActiveMailer with the rescued exception as an argument, with the ~.deliver_later~ option
+3. This caused another ActiveJob to be created for the mailer, with an argument that violates the above restriction.
+
+The solution, in this case is pretty easy: call the mailer with ~.deliver_now~ instead, since it&#39;s already a background job.
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2019/08/2019-08-01-programmer-s-primary-language.org</id>
       <updated>2019-08-01T18:32:32-05:00</updated>
@@ -393,70 +427,6 @@ Before considering other options, start with markup that semantically describes 
 #+END_QUOTE
 
 And while that is definitely true, it really does help to understand what ARIA is for and how it works. So while we&#39;re on the subject, I want to point out the excellent [[https://frontendmasters.com][Frontend Masters]] course: [[https://frontendmasters.com/courses/web-accessibility/][Website Accessibility]] by Jon Kuperman.
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2017/07/playing-games-with-the-checked-pseudo-selector.org</id>
-      <updated>2019-04-27T06:24:39-05:00</updated>
-      <title>Playing games with the :checked pseudo-selector</title>
-      <content>* Playing games with the :checked pseudo-selector
-  :PROPERTIES:
-  :CAPTURE_DATE: 2017-07-06 01:25
-  :END:
-
-- keywords: css, checked
-- source: [[https://codepen.io/tamouse/pen/YQjVNb?editors=1100]]
-
-I&#39;m not sure what made me think of this, but I got a wild hair and thought I&#39;d try it out.
-
-The =:checked= CSS pseudo-selector lets you select a /checked/ checkbox or radio button. The question I wondered, would this be a cheap-azz way of making a sliding sidebar? And the answer is, yes it could.
-
-Over at [[https://codepen.io/tamouse/pen/YQjVNb?editors=1100][codepen]] I left a pen showing just that:
-
-#+BEGIN_HTML
-  &lt;iframe height=&quot;265&quot; scrolling=&quot;no&quot; title=&quot;what can you do with :checked?&quot; src=&quot;//codepen.io/tamouse/embed/YQjVNb/?height=265&amp;amp;theme-id=0&amp;amp;default-tab=result&amp;amp;embed-version=2&quot; frameborder=&quot;no&quot; allowtransparency=&quot;true&quot; allowfullscreen=&quot;true&quot; style=&quot;width: 100%;&quot;&gt;
-See the Pen what can you do with :checked? by Tamara Temple (@tamouse)
-on CodePen.
-  &lt;/iframe&gt;
-#+END_HTML
-
-Some of the interesting bits:
-
-- The body is set to =display: flex= and =flex-direction: row=, which would normally put the 3 major body parts, =input=, =aside=, and =article= horizontally, but,
-
-- The input checkbox is positioned absolute taking it out of the flex flow, so only the =aside= and =article= are flexed
-
-- After setting everything up for the &quot;normal&quot; state, with the checkbox /un/checked, and the sidebar /hidden/, I added the last CSS rule to display the sidebar when the input checkbox is checked.
-
-*** normal state
-
-#+BEGIN_SRC css
-    .sidebar {
-      width: 20px;
-      background: tomato;
-      padding-top: 40px;
-      &gt; * {
-        display: none;
-      }
-    }
-#+END_SRC
-
-*** checked state
-
-#+BEGIN_SRC css
-    input.sidebar-toggle:checked ~ .sidebar {
-        width: 200px;
-      &gt; * {
-        display: inherit;
-      }
-    }
-#+END_SRC
-
-Of course, this could be taken in all sorts of directions, but I wanted to try this out to see if it works.
 </content>
       <author>
         <name>Tamara Temple</name>
