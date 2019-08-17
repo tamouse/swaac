@@ -1,0 +1,31 @@
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline author:t broken-links:nil
+#+OPTIONS: c:nil creator:nil d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:nil
+#+OPTIONS: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t timestamp:t title:t toc:nil
+#+OPTIONS: todo:t |:t
+#+TITLE: Generating Consistent Faker Values in JavaScript
+#+DATE: <2019-08-17 Sat>
+#+AUTHOR: Tamara Temple
+#+EMAIL: tamouse@gmail.com
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+CREATOR: Emacs 27.0.50 (Org mode 9.1.14)
+
+So this is good to know. I hadn't seen this before.
+
+When using [[https://github.com/Marak/Faker.js][faker.js]], you can generate the exact same data each time by setting the *seed*:
+
+#+BEGIN_SRC javascript
+  import faker from "faker"
+
+  faker.seed(123);
+
+  export const testData = {
+      id: faker.number.uuid(),
+      name: `${faker.name.firstName()} ${faker.name.lastName()}`,
+      email: fakcer.internat.email()
+  }
+
+#+END_SRC
+
+Which would give the same data each time.

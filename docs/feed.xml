@@ -2,10 +2,51 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://github.com/tamouse/swaac</id>
   <title>Tamouse&#39;s Software as a Craft blog</title>
-  <updated>2019-08-08T17:18:45-05:00</updated>
+  <updated>2019-08-17T04:14:45-05:00</updated>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2019/08/2019-08-17-generating-consisten-faker-values-in-javascript.org</id>
+      <updated>2019-08-17T04:14:45-05:00</updated>
+      <title>2019-08-17-generating-consisten-faker-values-in-javascript</title>
+      <content>#+OPTIONS: &#39;:nil *:t -:t ::t &lt;:t H:3 \n:nil ^:t arch:headline author:t broken-links:nil
+#+OPTIONS: c:nil creator:nil d:(not &quot;LOGBOOK&quot;) date:t e:t email:nil f:t inline:t num:nil
+#+OPTIONS: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t timestamp:t title:t toc:nil
+#+OPTIONS: todo:t |:t
+#+TITLE: Generating Consistent Faker Values in JavaScript
+#+DATE: &lt;2019-08-17 Sat&gt;
+#+AUTHOR: Tamara Temple
+#+EMAIL: tamouse@gmail.com
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+CREATOR: Emacs 27.0.50 (Org mode 9.1.14)
+
+So this is good to know. I hadn&#39;t seen this before.
+
+When using [[https://github.com/Marak/Faker.js][faker.js]], you can generate the exact same data each time by setting the *seed*:
+
+#+BEGIN_SRC javascript
+  import faker from &quot;faker&quot;
+
+  faker.seed(123);
+
+  export const testData = {
+      id: faker.number.uuid(),
+      name: `${faker.name.firstName()} ${faker.name.lastName()}`,
+      email: fakcer.internat.email()
+  }
+
+#+END_SRC
+
+Which would give the same data each time.
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2019/08/2019-08-08-til-rails-active-job-argument-types.org</id>
-      <updated>2019-08-08T17:18:45-05:00</updated>
+      <updated>2019-08-17T04:03:23-05:00</updated>
       <title>2019-08-08-til-rails-active-job-argument-types</title>
       <content>#+OPTIONS: &#39;:nil *:t -:t ::t &lt;:t H:3 \n:nil ^:t arch:headline
 #+OPTIONS: author:t broken-links:nil c:nil creator:nil
@@ -39,7 +80,7 @@ The solution, in this case is pretty easy: call the mailer with ~.deliver_now~ i
     </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2019/08/2019-08-01-programmer-s-primary-language.org</id>
-      <updated>2019-08-01T18:32:32-05:00</updated>
+      <updated>2019-08-17T04:03:23-05:00</updated>
       <title>2019-08-01-programmer-s-primary-language</title>
       <content>#+OPTIONS: &#39;:nil *:t -:t ::t &lt;:t H:3 \n:nil ^:t arch:headline
 #+OPTIONS: author:t broken-links:nil c:nil creator:nil
@@ -76,7 +117,7 @@ It&#39;s often sourced from [[http://commadot.com/wtf-per-minute/][this blog ent
     </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2019/07/2019-07-17-til-firefox-disables-meta-refresh-by-default.org</id>
-      <updated>2019-07-17T13:05:05-05:00</updated>
+      <updated>2019-08-17T04:03:23-05:00</updated>
       <title>2019-07-17-til-firefox-disables-meta-refresh-by-default</title>
       <content>#+OPTIONS: &#39;:nil *:t -:t ::t &lt;:t H:3 \n:nil ^:t arch:headline
 #+OPTIONS: author:t broken-links:nil c:nil creator:nil
@@ -115,7 +156,7 @@ This is why we can&#39;t have nice things :(
     </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2019/06/2019-06-03-some-flexbox-links.org</id>
-      <updated>2019-06-04T10:30:14-05:00</updated>
+      <updated>2019-08-17T04:03:23-05:00</updated>
       <title>2019-06-03-some-flexbox-links</title>
       <content>#+OPTIONS: &#39;:nil *:t -:t ::t &lt;:t H:3 \n:nil ^:t arch:headline
 #+OPTIONS: author:t broken-links:nil c:nil creator:nil
@@ -169,7 +210,7 @@ Hat-tip to @Andrea on WHCTC slack
     </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2019/05/2019-05-31-prefer-pluck-to-map.org</id>
-      <updated>2019-05-31T13:32:29-05:00</updated>
+      <updated>2019-08-17T04:03:23-05:00</updated>
       <title>2019-05-31-prefer-pluck-to-map</title>
       <content>#+OPTIONS: &#39;:nil *:t -:t ::t &lt;:t H:3 \n:nil ^:t arch:headline
 #+OPTIONS: author:t broken-links:nil c:nil creator:nil
@@ -216,7 +257,7 @@ Hat-tip to @Andrea on WHCTC slack
     </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2019/05/2019-05-27-creating-verse-paragraphs-in-kramdown.org</id>
-      <updated>2019-05-31T13:30:18-05:00</updated>
+      <updated>2019-08-17T04:03:23-05:00</updated>
       <title>2019-05-27-creating-verse-paragraphs-in-kramdown</title>
       <content>#+OPTIONS: &#39;:nil *:t -:t ::t &lt;:t H:3 \n:nil ^:t arch:headline
 #+OPTIONS: author:t broken-links:nil c:nil creator:nil
@@ -267,45 +308,8 @@ In ~kramdown~, the default markdown processor in [[Jekyll]] these days, there&#3
       </author>
     </entry>
     <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/02/how-to-reset-ios-simulator.org</id>
-      <updated>2019-05-31T13:28:47-05:00</updated>
-      <title>How to reset iOS simulator</title>
-      <content>#+OPTIONS: &#39;:nil *:t -:t ::t &lt;:t H:3 \n:nil ^:t arch:headline
-#+OPTIONS: author:t broken-links:nil c:nil creator:nil
-#+OPTIONS: d:(not &quot;LOGBOOK&quot;) date:t e:t email:nil f:t inline:t num:t
-#+OPTIONS: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
-#+OPTIONS: timestamp:t title:t toc:t todo:t |:t
-#+TITLE: how-to-reset-ios-simulator
-#+DATE: &lt;2018-02-15 Thu&gt;
-#+AUTHOR: Tamara Temple
-#+EMAIL: tamouse@gmail.com
-#+LANGUAGE: en
-#+SELECT_TAGS: export
-#+EXCLUDE_TAGS: noexport
-#+CREATOR: Emacs 26.1 (Org mode 9.1.9)
-#+KEYWORDS: ios, simulator, development, reset
-
-* How to reset iOS simulator
-
-I ran into an issue recently where I was trying to debug a problem in a project, but had a problem accessing the right data server since I was logged into a local development server, and really needed to get back to the &quot;new app&quot; state.
-
-I searched for &quot;reset xcode simulator&quot; via DDG and first hit came up with &lt;https://stackoverflow.com/questions/16195859/reset-ios-simulator-application-data-to-run-app-for-first-time#16195931&gt; which gave me an answer.
-
-The command line versions work, but it can be a pain to get the UDID for the simulator. Doing it from the running simulator was easier, but of course the menu options are different than discussed in the stackoverflow answer.
-
-I found it on the Simulator (Version 10.0 (SimulatorApp-835.2.1) seen in the following screen shot:
-
-#+CAPTION: Reset IOS Simulator Screenshot
-[[../../../images/reset-ios-simulator.png]]
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2019/05/2019-05-02-til-jquery-attr-vs-prop.org</id>
-      <updated>2019-05-02T08:14:03-05:00</updated>
+      <updated>2019-08-17T04:03:23-05:00</updated>
       <title>TIL: jQuery .attr() vs .prop()</title>
       <content>#+COMMENT -*- time-stamp-line-limit: 20; time-stamp-count: 2 -*-
 #+TITLE: TIL: jQuery .attr() vs .prop()
@@ -346,7 +350,7 @@ I found it on the Simulator (Version 10.0 (SimulatorApp-835.2.1) seen in the fol
     </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2019/04/2019-04-27-flash-toastr-using-react-hooks.org</id>
-      <updated>2019-04-27T16:28:56-05:00</updated>
+      <updated>2019-08-17T04:03:23-05:00</updated>
       <title>FlashToastr React Component using React Hooks</title>
       <content>#+TITLE: 2019-04-27-flash-toastr-using-react-hooks
 #+DATE: &lt;2019-04-27 Sat&gt;
@@ -409,24 +413,84 @@ I found it on the Simulator (Version 10.0 (SimulatorApp-835.2.1) seen in the fol
       </author>
     </entry>
     <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/10/link-ARIA-is-spackle-not-rebar.org</id>
-      <updated>2019-04-27T06:24:39-05:00</updated>
-      <title>LINK: [[https://css-tricks.com/aria-spackle-not-rebar/][ARIA is Spackle, Not Rebar]]</title>
-      <content>* LINK: [[https://css-tricks.com/aria-spackle-not-rebar/][ARIA is Spackle, Not Rebar]]
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2019/04/2019-04-14-use-key-instead-of-compoenent-did-update.org</id>
+      <updated>2019-08-17T04:03:23-05:00</updated>
+      <title>TIL: Use key instead of componentDidUpdate</title>
+      <content>#+COMMENT -*- time-stamp-line-limit: 12; time-stamp-count: 2 -*-
+* TIL: Use key instead of componentDidUpdate
+  :PROPERTIES:
+  :LAST_UPDATE: Time-stamp: &lt;2019-04-19 19:11:28 tamara&gt;
+  :CAPTURE_DATE: [2019-04-19 Fri 19:05]
+  :KEYWORDS: react, componentDidUpdate, key prop
+  :END:
 
-- Time-stamp: &lt;2019-02-02 17:27:14 tamara&gt;
-- published date: [2018-11-04 Sun]
-- keywords: ARIA, accessibility, a11y, link
+- last update: Time-stamp: &lt;2018-09-16 14:32:23 tamara.temple&gt;
+- capture date: [2019-04-19 Fri 19:07]
+- keywords: react, componentDidUpdate, key prop
 
-There&#39;s an excellent article over at [[https://css-tricks.com/][CSS Tricks]] by Eric Bailey, [[https://css-tricks.com/aria-spackle-not-rebar/][ARIA is Spackle, Not Rebar]], written November 2017, that lays out the reasons when to use ARIA ([[https://www.w3.org/WAI/standards-guidelines/aria/][Accessible Rich Internet Applications Suite]]) directly, and most importantly in my view, when _not_ to use it explicitly (tl;dr: most of the time).
+Watching Ryan Florence over at [[https://www.reacttraining.com][reacttraining.com]] in the [[https://courses.reacttraining.com/courses/354571/lectures/5449516][Reach Catchup componentWillReceiveProps video]], towards the end, after explaining how to use ~componentDidUpdate~ to retrieve updated props / state based on a new prop, he then goes on to say you can do this a lot easier by setting the component&#39;s ~key~ to the thing you&#39;re checking in ~cDU~ and just make React create a whole new instance.
 
-I think this sums up the intent nicely:
+This is so easy it&#39;s just astounding how much it makes sense.
 
-#+BEGIN_QUOTE
-Before considering other options, start with markup that semantically describes the content it is wrapping.
-#+END_QUOTE
+** an example
 
-And while that is definitely true, it really does help to understand what ARIA is for and how it works. So while we&#39;re on the subject, I want to point out the excellent [[https://frontendmasters.com][Frontend Masters]] course: [[https://frontendmasters.com/courses/web-accessibility/][Website Accessibility]] by Jon Kuperman.
+Let&#39;s say you have a collection of notes to display, with the following structure:
+
+#+BEGIN_SRC rjsx
+  {
+    &quot;notes&quot;: [
+      {
+	&quot;id&quot;: Int,
+	&quot;body&quot;: String,
+	&quot;createdAt&quot;: String,
+	&quot;updatedAt&quot;: String,
+	&quot;creator&quot;: {
+	  &quot;name&quot;: String
+	},
+	&quot;public&quot;: Boolean
+      }
+    ]
+  }
+
+#+END_SRC
+
+Let&#39;s say this is our component:
+
+#+BEGIN_SRC rjsx
+  const Notes = ({ notes }) =&gt; (
+    &lt;NoteList&gt;
+      {notes &amp;&amp; notes.length &gt; 0 ? (
+	notes.map((note, index) =&gt; &lt;Note key={index} note={note} /&gt;)
+      ) : (
+	&lt;NoNotes /&gt;
+      )}
+    &lt;/NoteList&gt;
+  )
+#+END_SRC
+
+
+If for some reason you need to manage state for each note, perhaps because you&#39;re modifying it in place (i.e. within the row), or you delete a note, or add a note, you might need to keep the state updated based on update props. If the note changes, you may need to perform refetch to get the updated info.
+
+Or so you might think.
+
+Instead, by using the ~note.id~ as the ~key~, you can easily make React produce a new instance.
+
+#+BEGIN_SRC rjsx
+  const Notes = ({ notes }) =&gt; (
+    &lt;NoteList&gt;
+      {notes &amp;&amp; notes.length &gt; 0 ? (
+	notes.map(note =&gt; &lt;Note key={note.id} note={note} /&gt;)
+      ) : (
+	&lt;NoNotes /&gt;
+      )}
+    &lt;/NoteList&gt;
+  )
+#+END_SRC
+
+
+If the id of the particular note in that sequence changes, React will re-instantiate the ~Note~ and whatever you do to initialize it is done with the new note.
+
+This may not be the best example, but the concept is what&#39;s important for me to remember. I have a habit of just using the map index instead of something more useful to React.
 </content>
       <author>
         <name>Tamara Temple</name>
