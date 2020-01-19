@@ -39,6 +39,7 @@
 - [[./04/specifying-target-equals-blank-on-an-anchor-in-a-markdown-document.org]]
 - [[./04/resetting-emacs-colours-after-working-with-guard.org]]
 - [[./04/link-decorating-activerecord.org]]
+- [[./03/more-html5-semantics.org]]
 - [[./02/links-flexbox-tutorials-and-posts.org]]
 - [[./02/how-i-set-up-my-local-wordpress-development-environment-using-vagrant-and-ansible.org]]
 - [[./02/gitlab-database-outage-post-mortem.org]]

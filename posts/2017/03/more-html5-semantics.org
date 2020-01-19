@@ -1,0 +1,13 @@
+*** More HTML5 Semantics: Changes to Existing Features
+    :PROPERTIES:
+    :CAPTURE_DATE: [2017-03-02 Thu 08:32]
+    :LINK:     https://www.sitepoint.com/more-html5-semantics-changes-to-existing-features/?utm_source=frontendfocus&utm_medium=email
+    :TITLE:    More HTML5 Semantics: Changes to Existing Features
+    :DESCRIPTION: While new elements and APIs have been the primary focus of HTML5, this latest iteration of web markup has also brought with it changes to existing elements.
+    :END:
+
+Link to article [[https://www.sitepoint.com/more-html5-semantics-changes-to-existing-features/][More HTML5 Semantics: Changes to Existing Features]]
+
+> "While new elements and APIs have been the primary focus of HTML5, this latest iteration of web markup has also brought with it changes to existing elements."
+
+

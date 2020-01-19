@@ -1,5 +1,6 @@
 - [[./12/todo-app-using-just-react-with-pojs-no-jsx-or-es6.org]]
 - [[./12/js-app-config-pattern.org]]
+- [[./12/html-color-codes.org]]
 - [[./12/flexbox-website-with-fixed-headers-and-footer.org]]
 - [[./12/changing-the-return-to-shop-link-and-text-in-an-empty-woocommerce-cart.org]]
 - [[./11/tool-font-style-matcher.org]]

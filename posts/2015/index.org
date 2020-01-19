@@ -43,6 +43,7 @@
 - [[./03/rails-question-getting-x-where-there-are-no-y.org]]
 - [[./03/link-sharing-rails-views-with-jekyll.org]]
 - [[./03/link-how-to-use-the-html5-sectioning-elements.org]]
+- [[./03/how-to-use-alt-text-attribute-properly.org]]
 - [[./03/a-new-release-of-jekyllpress.org]]
 - [[./02/tenderlove-weird-stuff-with-hashes.org]]
 - [[./02/reactjs-course-with-frontend-masters.org]]
