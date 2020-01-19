@@ -2,7 +2,68 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://github.com/tamouse/swaac</id>
   <title>Tamouse&#39;s Software as a Craft blog</title>
-  <updated>2020-01-19T02:46:50-06:00</updated>
+  <updated>2020-01-19T03:04:11-06:00</updated>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2020/01/in-rails-prefer-use_zone-to-zone.md</id>
+      <updated>2020-01-19T03:04:11-06:00</updated>
+      <title>in-rails-prefer-use_zone-to-zone</title>
+      <content>&gt; Rails better practice for dealing with altering the current process&#39;s timezone
+
+# In Rails, Prefer \`.use\_zone\` to \`.zone=\`
+
+I had thought to write a post on this, but never got around to it.
+
+[Prathamesh Sonpatki](https://prathamesh.tech/) [beat me to it :\)](https://prathamesh.tech/2019/07/11/use-time-use_zone-to-navigate-timezone/)
+
+Essentially, this is the practice I use:
+
+```text
+Time.use_zone(current_user.timezone) do 
+  # Do Time and DateTime operations under the auspices of the
+  # current user&#39;s timezone setting.
+  
+  Time.current # The current time in the current user&#39;s timezone
+  Time.zone.now # Equivalent to the above
+end
+```
+
+It&#39;s better than just supposing that `Time.zone` has been set somewhere in the current process, **or** that `Time.zone` has been set to what the code in the block _expects it to be!_
+
+## In Testing ##
+
+The biggest source of error that I&#39;ve encountered for this isn&#39;t in requests, but actually in the spec test cases for the product. Some test cases blythely set `Time.zone` in a before action, but never reset it in an after action.
+
+If possible, wrap the time zone use inside an `around` action:
+
+```text
+around(:each) do |example|
+  Time.use_zone(some_timezone) do
+    yield example
+  end
+end
+```
+
+### With [Timecop](https://github.com/travisjeffery/timecop) ###
+
+Since Timecop is essentially mocking the system clock, you can use it with `.use_zone` with impunity.
+
+```text
+around do |example|
+  Timecop.freeze do
+    @account = Fabricate(:account)
+    Time.use_zone(account.timezone) do
+      yield example
+    end
+  end
+end
+```
+
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2019/08/2019-08-17-generating-consisten-faker-values-in-javascript.org</id>
       <updated>2020-01-19T02:46:50-06:00</updated>
@@ -248,6 +309,327 @@ I&#39;m doing the same trick as before about grabbing the actual checkbox by usi
 This test uses the testing library&#39;s ~rerender~ method, which is used to apply different props. In this case the props for the compoonent are controlled above this component, so this is actually a valid test matching how it would work in the user&#39;s environment.
 
 For the rerender, I&#39;m passing in a value for the mobile phone number, which is used to determine whether the checkbox is en-/disabled.
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2020/01/gatsby-categories-and-tags.md</id>
+      <updated>2019-12-21T17:26:11-06:00</updated>
+      <title>gatsby-categories-and-tags</title>
+      <content>---
+description: Organizing entries
+---
+
+# Categories and Tags
+
+I&#39;ve been re-writing my on-line recipe collection using Gatsby as an exercise. In the original Jekyll site, I had recipes organized into categories like chapters in a printed cookbook, and tags that allowed more fine-detailed structure, listing such things as ingredients, cuising type, and other things like being gluten-free. Both categories and tags were stored as entries in the frontmatter of each recipe in the collection.
+
+To make that work, I needed to write a Jekyll plug-in to generate the category and tag pages. And to make it work in Gatsby, I needed to write something in `gatsby-node.js`
+
+### Categories as Subdirectories
+
+Instead of putting the category in the frontmatter, I decided to organize the recipe markdown into subdirectories under the `recipes/` content directory.
+
+#### A hook for categories
+
+To pull out the categories, I created a custom hook `useCategories` to run a static query and return the collection of category names:
+
+```javascript
+import { graphql, useStaticQuery } from &quot;gatsby&quot;
+export const useRecipeCategories = () =&gt; {
+  const { allDirectory } = useStaticQuery(
+    graphql`
+      query RECIPE_CATEGORIES {
+        allDirectory(filter: { absolutePath: { glob: &quot;**/recipes/*&quot; } }) {
+          nodes {
+            relativePath
+          }
+        }
+      }
+    `
+  )
+  return allDirectory.nodes.map(category =&gt; category.relativePath)
+}
+```
+
+Putting that query into the GraphiQL IDE, the response is:
+
+```text
+{
+  &quot;data&quot;: {
+    &quot;allDirectory&quot;: {
+      &quot;nodes&quot;: [
+        {
+          &quot;relativePath&quot;: &quot;baked-goods&quot;
+        },
+        {
+          &quot;relativePath&quot;: &quot;desserts&quot;
+        },
+        {
+          &quot;relativePath&quot;: &quot;breakfast&quot;
+        },
+        {
+          &quot;relativePath&quot;: &quot;drinks&quot;
+        },
+        {
+          &quot;relativePath&quot;: &quot;main-dishes&quot;
+        },
+        {
+          &quot;relativePath&quot;: &quot;kitchen-tips&quot;
+        },
+        {
+          &quot;relativePath&quot;: &quot;appetizers&quot;
+        },
+        {
+          &quot;relativePath&quot;: &quot;pizza&quot;
+        },
+        {
+          &quot;relativePath&quot;: &quot;salads&quot;
+        },
+        {
+          &quot;relativePath&quot;: &quot;sandwiches&quot;
+        },
+        {
+          &quot;relativePath&quot;: &quot;sauces&quot;
+        },
+        {
+          &quot;relativePath&quot;: &quot;side-dishes&quot;
+        },
+        {
+          &quot;relativePath&quot;: &quot;soups&quot;
+        }
+      ]
+    }
+  }
+}
+```
+
+That gives me a nice, reusable list of categories anywhere in the site.
+
+#### Generating the Table of Contents
+
+The `CategoriesMenu` component creates a list of the categories with links to each category page:
+
+```javascript
+import React from &quot;react&quot;
+import { Link } from &quot;gatsby&quot;
+import { useRecipeCategories } from &quot;../hooks/useCategories.js&quot;
+
+export default () =&gt; {
+  const categories = useRecipeCategories()
+
+  return (
+    &lt;ul&gt;
+      {categories.map((category, index) =&gt; (
+        &lt;li key={`category-menu-item-${index}`}&gt;
+          &lt;Link to={`/${category}/`}&gt;{category}&lt;/Link&gt;
+        &lt;/li&gt;
+      ))}
+    &lt;/ul&gt;
+  )
+}
+
+```
+
+\(I&#39;m still in the midst of generating a style for the site, so eventually the `ul` and `li` will get replaced with some styled components. That&#39;s not important for this discussion.\)
+
+The `Link` to each category page expects them to be a page at the root of the route. These pages are not in the repo itself, and must be generated. The code to generate the category page is in `gatsby-node.js` :
+
+```javascript
+const { createFilePath } = require(`gatsby-source-filesystem`)
+const path = require(`path`)
+
+exports.createPages = ({ actions, graphql }) =&gt; {
+  // ...
+  const categoryTemplate = path.resolve(&quot;./src/templates/categoryTemplate.js&quot;)
+
+  return graphql(`
+    {
+      # .. other queries
+      allDirectory(filter: { absolutePath: { glob: &quot;**/recipes/*&quot; } }) {
+        nodes {
+          relativePath
+        }
+      }
+    }
+  `).then(result =&gt; {
+
+    // ... stuff for mdx pages
+
+    const categories = result.data.allDirectory.nodes
+    categories.forEach(category =&gt; {
+      createPage({
+        path: &quot;/&quot; + category.relativePath + &quot;/&quot;,
+        component: categoryTemplate,
+        context: {
+          category: category.relativePath,
+        },
+      })
+    })
+    
+    // ... more stuff
+  })
+}
+
+```
+
+The partial graphql query returns the relative paths from the recipes area, which is the same as we do in the `useCategories` hook; there ought to be a way to reuse that, but here it&#39;s part of a larger query \(redacted from the example\). Looping through the categories, I&#39;m running `createPage` on each node \(i.e. category\) and building a page using a template, quite like one does for making Markdown/MDX pages. The context contains the category &quot;slug&quot;, which is created below.
+
+The categories need to be made into nodes:
+
+```javascript
+exports.onCreateNode = ({ node, actions, getNode }) =&gt; {
+  const { createNodeField } = actions
+  if (node.internal.type === `Mdx`) {
+    const value = createFilePath({ node, getNode })
+    // .. other nodes
+    createNodeField({
+      name: `recipeCategory`,
+      node,
+      value: value.split(&quot;/&quot;)[1],
+    })
+  }
+}
+```
+
+This is pretty similar again to how you make slugs for Markdown/MDX psges. The `value` comes from file path created in line 4, and it looks like `/:relativePath/:recipeFilename/`. Since what we&#39;re looking for is the recipe category, that is the `:relativePath` in the string above. Splitting on the divider gives a `null` first value in the array, and `:relativePath` in the second slot, so the index is 1 to pull it out. There&#39;s probably better ways to do this, but this works.
+
+### Tag pages
+
+Tag pages are also created in `gatsby-node.js` but the way tags are collected to start with is very different from categories. Categories are determined by placement in a subdirectory, but tags are declared in the frontmatter of the recipe MDX file.
+
+\(One _could_ do the same thing with categories, using a field in the frontmatter, but after working with that form in the Jekyll version for years, I&#39;ve decided doing them as subdirectories made more sense to me.\)
+
+Going back to the `gatsby-node.js` file, the full query looks like this:
+
+```graphql
+    {
+      allMdx {
+        nodes {
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            tags
+          }
+          fileAbsolutePath
+        }
+      }
+      allDirectory(filter: { absolutePath: { glob: &quot;**/recipes/*&quot; } }) {
+        nodes {
+          relativePath
+        }
+      }
+    }
+
+```
+
+In this case, we need to collect the _unique_ tags from every recipe file, so while we are shooting the list building the recipe pages, we&#39;ll also collect the tags into a Set:
+
+```graphql
+    const recipes = result.data.allMdx.nodes
+    let tags = new Set()
+
+    // create page for each mdx file
+    recipes.forEach(recipe =&gt; {
+      createPage(/* .. for each recipe page .. */)
+
+      if (recipe &amp;&amp; recipe.frontmatter &amp;&amp; recipe.frontmatter.tags) {
+        recipe.frontmatter.tags.map(tag =&gt; {
+          tags.add(tag)
+        })
+      }
+    })
+```
+
+If there are a collection of tags in the recipe file, this adds them to the `tags` Set, which ensures only unique tags are collected.
+
+Further down, we need to create the tag _pages_ :
+
+```javascript
+    tags.forEach(tag =&gt; {
+      createPage({
+        path: `/tags/${tag}/`,
+        component: tagTemplate,
+        context: {
+          tag,
+        },
+      })
+    })
+```
+
+### Putting Categories and Tags to use
+
+#### The Category Menu in the Sidebar
+
+I decided for this design iteration to put the categories into a sidebar arrangement \(I still haven&#39;t done any styling on this\). Recall the code up at **Generating the table of contents**: 
+
+```jsx
+return (
+    &lt;ul&gt;
+      {categories.map((category, index) =&gt; (
+        &lt;li key={`category-menu-item-${index}`}&gt;
+          &lt;Link to={`/${category}/`}&gt;{category}&lt;/Link&gt;
+        &lt;/li&gt;
+      ))}
+    &lt;/ul&gt;
+  )
+```
+
+which generates a link to each category page. This is mounted in the Sidebar.
+
+#### Tag links in each recipe display
+
+Tags are a little different at this point: they are only listed in each individual recipe page, using the `TagList` component:
+
+```jsx
+import React from &quot;react&quot;
+import { Link } from &quot;gatsby&quot;
+import styled from &quot;styled-components&quot;
+
+export default ({ tags }) =&gt; {
+  if (!tags || tags.length &lt; 1) {
+    return null
+  }
+  return (
+    &lt;TagListWrapper&gt;
+      {tags.map((tag, index) =&gt; {
+        return (
+          &lt;TagListItem key={`tag-item-${index}`}&gt;
+            &lt;Link to={`/tags/${tag}/`}&gt;{tag}&lt;/Link&gt;
+          &lt;/TagListItem&gt;
+        )
+      })}
+    &lt;/TagListWrapper&gt;
+  )
+}
+
+const TagListWrapper = styled.ul`
+  display: inline;
+  list-style: none;
+`
+const TagListItem = styled.li`
+  display: inline-block;
+  &amp;:after {
+    content: &quot;, &quot;;
+    padding-right: 0.5em;
+  }
+  &amp;:last-child:after {
+    content: &quot;&quot;;
+  }
+`
+```
+
+\(Yay, some styling\)
+
+Eventually, I&#39;m going to want a tag cloud of some sort, too.
+
+That&#39;s basically it. It took a minute for me to go from looking at how the Markdown / MDX in every gatsby tutorial worked, and had to work out how to generate the pages from other data queries. This seems pretty simple, but seems to be lacking from the tutorials.
+
 </content>
       <author>
         <name>Tamara Temple</name>
@@ -511,84 +893,6 @@ In ~kramdown~, the default markdown processor in [[Jekyll]] these days, there&#3
   &gt; Quickly set at liberty.
   {: style=&quot;white-space: pre-line&quot;}
 #+END_SRC
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/02/how-to-reset-ios-simulator.org</id>
-      <updated>2019-05-31T13:28:47-05:00</updated>
-      <title>How to reset iOS simulator</title>
-      <content>#+OPTIONS: &#39;:nil *:t -:t ::t &lt;:t H:3 \n:nil ^:t arch:headline
-#+OPTIONS: author:t broken-links:nil c:nil creator:nil
-#+OPTIONS: d:(not &quot;LOGBOOK&quot;) date:t e:t email:nil f:t inline:t num:t
-#+OPTIONS: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
-#+OPTIONS: timestamp:t title:t toc:t todo:t |:t
-#+TITLE: how-to-reset-ios-simulator
-#+DATE: &lt;2018-02-15 Thu&gt;
-#+AUTHOR: Tamara Temple
-#+EMAIL: tamouse@gmail.com
-#+LANGUAGE: en
-#+SELECT_TAGS: export
-#+EXCLUDE_TAGS: noexport
-#+CREATOR: Emacs 26.1 (Org mode 9.1.9)
-#+KEYWORDS: ios, simulator, development, reset
-
-* How to reset iOS simulator
-
-I ran into an issue recently where I was trying to debug a problem in a project, but had a problem accessing the right data server since I was logged into a local development server, and really needed to get back to the &quot;new app&quot; state.
-
-I searched for &quot;reset xcode simulator&quot; via DDG and first hit came up with &lt;https://stackoverflow.com/questions/16195859/reset-ios-simulator-application-data-to-run-app-for-first-time#16195931&gt; which gave me an answer.
-
-The command line versions work, but it can be a pain to get the UDID for the simulator. Doing it from the running simulator was easier, but of course the menu options are different than discussed in the stackoverflow answer.
-
-I found it on the Simulator (Version 10.0 (SimulatorApp-835.2.1) seen in the following screen shot:
-
-#+CAPTION: Reset IOS Simulator Screenshot
-[[../../../images/reset-ios-simulator.png]]
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2019/05/2019-05-02-til-jquery-attr-vs-prop.org</id>
-      <updated>2019-05-02T08:14:03-05:00</updated>
-      <title>TIL: jQuery .attr() vs .prop()</title>
-      <content>#+COMMENT -*- time-stamp-line-limit: 20; time-stamp-count: 2 -*-
-#+TITLE: TIL: jQuery .attr() vs .prop()
-#+DATE: [2019-05-02 Thu]
-#+KEYWORDS: jQuery, attr, prop
-#+DESCRIPTION: Today, I learned another difference between jQuery&#39;s .attr() and .prop() methods
-
-* TIL: jQuery .attr() vs .prop()
-   - last update: Time-stamp: &lt;2019-05-02 08:14:03 tamara&gt;
-
-** Intro
-
-   Sometime in the past, jQuery only had an ~.attr()~ method for looking at and setting an element&#39;s attributes. More recently, it acquired the ~.prop()~ method for setting a node&#39;s properties.
-
-** Radio Button example
-
-   The problem I ran into this with was old code that dealt with toggling radio buttons on a form:
-
-    #+BEGIN_SRC rjsx
-      $(&#39;#customer_which_billing_address_service&#39;).attr(&#39;checked&#39;, true);
-    #+END_SRC
-
-    This would set the sense of the attribute in the source, but it wouldn&#39;t change the property, so the radio button remained unchecked visually; in addition, when the form was submitted the radio buttons set didn&#39;t get posted correctly.
-
-    Changing this to the ~.prop()~ method fixed both problems:
-
-    #+BEGIN_SRC rjsx
-      $(&#39;#customer_which_billing_address_parent&#39;).prop(&#39;checked&#39;, false);
-      $(&#39;#customer_which_billing_address_service&#39;).prop(&#39;checked&#39;, true);
-    #+END_SRC
-
-    This visually set the proper radio button, and when the form was submitted the correct radio button value was posted.
 </content>
       <author>
         <name>Tamara Temple</name>

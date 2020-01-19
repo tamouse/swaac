@@ -5,6 +5,7 @@ require 'erb'
 require 'time'
 require 'logger'
 require 'fileutils'
+require 'pry'
 
 logger = Logger.new(STDOUT)
 logger.level = Logger::DEBUG
@@ -17,7 +18,7 @@ task :build_indexes do
   Dir.chdir('posts') do |postsDir|
     File.write(
       'index.org',
-      Dir['**/*.org']
+      Dir['**/*.{org,md,markdown}']
         .sort
         .reverse
         .uniq
@@ -34,7 +35,7 @@ task :build_indexes do
       logger.debug "In dir #{dir}"
       File.write(
         'index.org',
-        Dir['./**/*.org']
+        Dir['./**/*.{org,md,markdown}']
           .sort
           .reverse
           .uniq
@@ -57,9 +58,10 @@ task :mkfeed do
     title: "Tamouse's Software as a Craft blog",
   }
 
-  posts = Dir['posts/**/*.org'].map do |file|
+  posts = Dir['posts/**/*.{org,md,markdown}'].map do |file|
     next if file =~ /index.org/
-    { entry: Entry.new(file).entry }
+    entry = Entry.new(file).entry
+    { entry: entry }
   end.compact.sort_by{|entry| entry[:entry][:updated]}.reverse.take(10)
 
   feed[:updated] = posts.first[:entry][:updated]
@@ -77,7 +79,7 @@ task :pandoc do
     logger.info("Converting #{file} to #{outfile}")
     system "pandoc -s --highlight=zenburn --wrap=none -o #{outfile} #{file}"
   end
-
+  
 end
 
 
@@ -105,10 +107,10 @@ desc 'rewrite markdown so it can be parsed by pandoc'
 task :rewrite, :infile do |t, args|
   infile = args[:infile]
   logger.info("processing #{infile}")
-
+  
   text = File.read(infile)
   FileUtils.mv(infile, "#{infile}.bak")
-
+  
   (_, fm, body) = text.split(/^---$/m)
   fm_hash = YAML.load(fm)
   fm_hash.delete("layout")
