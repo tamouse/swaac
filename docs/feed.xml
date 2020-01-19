@@ -2,7 +2,164 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://github.com/tamouse/swaac</id>
   <title>Tamouse&#39;s Software as a Craft blog</title>
-  <updated>2020-01-19T03:04:11-06:00</updated>
+  <updated>2020-01-19T03:49:20-06:00</updated>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2017/01/module-extends-self.org</id>
+      <updated>2020-01-19T03:49:20-06:00</updated>
+      <title>Module extend self</title>
+      <content>#+OPTIONS: &#39;:nil *:t -:t ::t &lt;:t H:3 \n:nil ^:t arch:headline author:t broken-links:nil
+#+OPTIONS: c:nil creator:nil d:(not &quot;LOGBOOK&quot;) date:t e:t email:nil f:t inline:t num:nil
+#+OPTIONS: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t timestamp:t title:t toc:nil
+#+OPTIONS: todo:t |:t
+#+TITLE: module-extends-self
+#+DATE: &lt;2020-01-19 Sun&gt;
+#+AUTHOR: Tamara Temple
+#+EMAIL: tamouse@gmail.com
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+CREATOR: Emacs 26.2 (Org mode 9.1.9)
+
+* Module extend self
+
+  #+SOURCE: https://medium.com/@vsavkin/hexagonal-architecture-for-rails-developers-8b1fee64a613
+
+  Buried in this blog post, I found an interesting construction. See
+  the Example =module OrderRepository=.
+
+  I had never seen the =extend self= construct before, so I did a
+  little playing around in Pry.
+
+  Using =extend self= in a module is similar to calling =class &lt;&lt;
+  self ... end= with all the method definitions inside it. It&#39;s yet
+  another way to get access to a module&#39;s eigenclass.
+
+  This goes along with using =def self.my_method= and using
+  =module_function= to also making piecemeal module methods, the main
+  distinction being that using =def self.my_method= creates a method
+  that the *only* receiver will be the module itself, not any classes
+  that include the module.
+
+  #+begin_src ruby
+    module MyMod
+      extend self
+
+      def hi_there
+        &quot;hi there from inside MyMod&quot;
+      end
+
+      private
+
+      def go_away
+        &quot;go away now inside MyMod&quot;
+      end
+    end
+
+    MyMod.hi_there #=&gt; &quot;hi there from inside MyMod&quot;
+    MyMod.go_away
+
+    class MyClass
+      include MyMod
+
+      def call_hi_there
+        hi_there
+      end
+    end
+
+    MyClass.hi_there
+    MyClass.new.hi_there #=&gt; &quot;hi there from inside MyMod&quot;
+    MyClass.call_hi_there
+    MyClass.new.call_hi_there #=&gt; &quot;hi there from inside MyMod&quot;
+    MyClass.go_away
+    MyClass.new.go_away
+
+    module YourMod
+      class &lt;&lt; self
+        def hi_there
+          &quot;hi there from inside YourMod&quot;
+        end
+
+        private
+
+        def go_away
+          &quot;go away now inside YourMod&quot;
+        end
+      end
+
+      def que?
+        &quot;que? inside YourMod&quot;
+      end
+    end
+
+    YourMod.hi_there #=&gt; &quot;hi there from inside YourMod&quot;
+    YourMod.go_away
+    YourMod.que?
+
+    module TheirMod
+      def hi_there
+        &quot;hi there from inside TheirMod&quot;
+      end
+
+      method_function :hi_there
+    end
+
+    TheirMod.hi_there #=&gt; &quot;hi there from inside TheirMod&quot;
+
+    module ItsMod
+      def self.hi_there
+        &quot;hi there from inside ItsMod&quot;
+      end
+    end
+
+    ItsMod.hi_there #=&gt; &quot;hi there from inside ItsMod&quot;
+
+
+    class YourClass
+      include YourMod
+
+      def call_hi_there
+        hi_there
+      end
+    end
+
+    YourClass.new.hi_there #=&gt; NoMethodError: undefined method `hi_there&#39; for #&lt;YourClass:0x007f50d0307cd0&gt;
+    YourClass.new.call_hi_there #=&gt; NameError: undefined local variable or method `hi_there&#39; for #&lt;YourClass:0x007f50d021aae8&gt;
+
+    class TheirClass
+      include TheirMod
+
+      def call_hi_there
+        hi_there
+      end
+    end
+
+    TheirClass.new.hi_there #=&gt; NoMethodError: private method `hi_there&#39; called for #&lt;TheirClass:0x007f50d0978880&gt;
+    TheirClass.new.call_hi_there #=&gt; &quot;hi there from inside TheirMod&quot;
+
+    class ItsClass
+      include ItsMod
+
+      def call_hi_there
+        hi_there # not available!
+      end
+
+      def really_call_hi_there
+        ItsMod.hi_there
+      end
+    end
+
+    ItsClass.new.hi_there #=&gt; NoMethodError: undefined method `hi_there&#39; for #&lt;ItsClass:0x007f50d0859aa8&gt;
+    ItsClass.new.call_hi_there #=&gt; NameError: undefined local variable or method `hi_there&#39; for #&lt;ItsClass:0x007f50d0817450&gt;
+    ItsClass.new.really_call_hi_there #=&gt; &quot;hi there from inside ItsMod&quot;
+
+  #+end_src
+
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2020/01/in-rails-prefer-use_zone-to-zone.md</id>
       <updated>2020-01-19T03:04:11-06:00</updated>
@@ -841,58 +998,6 @@ Hat-tip to @Andrea on WHCTC slack
 			 .map(&amp;:id)
 
    #+END_SRC
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2019/05/2019-05-27-creating-verse-paragraphs-in-kramdown.org</id>
-      <updated>2019-05-31T13:30:18-05:00</updated>
-      <title>2019-05-27-creating-verse-paragraphs-in-kramdown</title>
-      <content>#+OPTIONS: &#39;:nil *:t -:t ::t &lt;:t H:3 \n:nil ^:t arch:headline
-#+OPTIONS: author:t broken-links:nil c:nil creator:nil
-#+OPTIONS: d:(not &quot;LOGBOOK&quot;) date:t e:t email:nil f:t inline:t num:t
-#+OPTIONS: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
-#+OPTIONS: timestamp:t title:t toc:t todo:t |:t
-#+TITLE: 2019-05-27-creating-verse-paragraphs-in-kramdown
-#+DATE: &lt;2019-05-27 Mon&gt;
-#+AUTHOR: Tamara Temple
-#+EMAIL: tamouse@gmail.com
-#+LANGUAGE: en
-#+SELECT_TAGS: export
-#+EXCLUDE_TAGS: noexport
-#+CREATOR: Emacs 26.2 (Org mode 9.1.14)
-#+KEYWORDS: markdown, kramdown, verse
-
-In the past, when I&#39;ve wanted to create a verse, perhaps in a blockquote I&#39;ve resorted to using ~&lt;br&gt;~ on every line, which is tedious:
-
-#+BEGIN_SRC markdown
-  &gt; Listen, little children, all,&lt;br&gt;
-  &gt; Listen to our earnest call:&lt;br&gt;
-  &gt; You are very young, &#39;tis true,&lt;br&gt;
-  &gt; But there&#39;s much that you can do.&lt;br&gt;
-  &gt; Even you can plead with men&lt;br&gt;
-  &gt; That they buy not slaves again,&lt;br&gt;
-  &gt; And that those they have may be&lt;br&gt;
-  &gt; Quickly set at liberty.&lt;br&gt;
-
-#+END_SRC
-
-In ~kramdown~, the default markdown processor in [[Jekyll]] these days, there&#39;s an easier way:
-
-#+BEGIN_SRC markdown
-  &gt; Listen, little children, all,
-  &gt; Listen to our earnest call:
-  &gt; You are very young, &#39;tis true,
-  &gt; But there&#39;s much that you can do.
-  &gt; Even you can plead with men
-  &gt; That they buy not slaves again,
-  &gt; And that those they have may be
-  &gt; Quickly set at liberty.
-  {: style=&quot;white-space: pre-line&quot;}
-#+END_SRC
 </content>
       <author>
         <name>Tamara Temple</name>

@@ -46,3 +46,4 @@
 - [[./01/til-providing-defaults-for-envvars.org]]
 - [[./01/til-call-done-to-fire-async-mocha-tests.org]]
 - [[./01/my-first-proxy-slash-adapter-for-an-express-dot-js-app.org]]
+- [[./01/module-extends-self.org]]

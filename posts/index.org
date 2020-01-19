@@ -97,6 +97,7 @@
 - [[./2017/01/til-providing-defaults-for-envvars.org]]
 - [[./2017/01/til-call-done-to-fire-async-mocha-tests.org]]
 - [[./2017/01/my-first-proxy-slash-adapter-for-an-express-dot-js-app.org]]
+- [[./2017/01/module-extends-self.org]]
 - [[./2016/12/todo-app-using-just-react-with-pojs-no-jsx-or-es6.org]]
 - [[./2016/12/js-app-config-pattern.org]]
 - [[./2016/12/flexbox-website-with-fixed-headers-and-footer.org]]
