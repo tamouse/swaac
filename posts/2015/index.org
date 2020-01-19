@@ -51,4 +51,5 @@
 - [[./01/using-packer-and-vagrant-to-build-virtual-machines.org]]
 - [[./01/rails-4-dot-2-config-for.org]]
 - [[./01/link-stop-writing-rails-controllers.org]]
+- [[./01/just-use-double-quotes.org]]
 - [[./01/emacs-org-mode.org]]

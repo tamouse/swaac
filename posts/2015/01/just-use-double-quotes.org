@@ -1,0 +1,9 @@
+* [[http://viget.com/extend/just-use-double-quoted-ruby-strings?utm_source=rubyweekly&utm_medium=email][Just use double quoted strings]] [2015-01-25 Sun 08:55]
+
+  #+AUTHOR: Lawson Kurtz
+  #+TWITTER: @LawsonKurtz
+  #+DATE: [2015-01-22 Thu]
+
+  tl;dr: there is no significant performance difference, compared the
+  human problems of misunderstanding or forgetting to change from
+  single to double when you do decide to interpolate.

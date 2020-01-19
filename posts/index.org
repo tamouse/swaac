@@ -194,6 +194,7 @@
 - [[./2015/01/using-packer-and-vagrant-to-build-virtual-machines.org]]
 - [[./2015/01/rails-4-dot-2-config-for.org]]
 - [[./2015/01/link-stop-writing-rails-controllers.org]]
+- [[./2015/01/just-use-double-quotes.org]]
 - [[./2015/01/emacs-org-mode.org]]
 - [[./2014/12/repost-rspec-3-and-deprecated-and-return-blocks.org]]
 - [[./2014/11/how-to-converting-instance-variables-to-yaml-in-ruby.org]]
