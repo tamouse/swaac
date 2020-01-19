@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://github.com/tamouse/swaac</id>
   <title>Tamouse&#39;s Software as a Craft blog</title>
-  <updated>2019-08-17T04:14:45-05:00</updated>
+  <updated>2020-01-19T02:46:50-06:00</updated>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2019/08/2019-08-17-generating-consisten-faker-values-in-javascript.org</id>
-      <updated>2019-08-17T04:14:45-05:00</updated>
+      <updated>2020-01-19T02:46:50-06:00</updated>
       <title>2019-08-17-generating-consisten-faker-values-in-javascript</title>
       <content>#+OPTIONS: &#39;:nil *:t -:t ::t &lt;:t H:3 \n:nil ^:t arch:headline author:t broken-links:nil
 #+OPTIONS: c:nil creator:nil d:(not &quot;LOGBOOK&quot;) date:t e:t email:nil f:t inline:t num:nil
@@ -45,8 +45,218 @@ Which would give the same data each time.
       </author>
     </entry>
     <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2019-08-29-testing-react-checkbox-component.org</id>
+      <updated>2020-01-19T02:46:50-06:00</updated>
+      <title>Testing React Checkbox Component</title>
+      <content>* Testing React Checkbox Component
+
+published date: [2019-08-29 Thu]
+
+keywords: react, testing, checkbox, querySelector, rerender, queryByTestId, testing-library
+
+Recently, I built a partial form section that included a couple of checkboxes, and I wanted to verify their operation with a unit test.
+
+I&#39;m using [[https://testing-library.com/docs/intro][testing-library]], including the react-specific methods. I&#39;m finding this a godsend in making tests easier to write and understand.
+
+Testing and debugging react components is still fraught with uncertainty for me, I&#39;m still learning and fumbling my way around. Hooks have made writing components much easier, without a doubt, yet there are still times I just don&#39;t know what&#39;s happening.
+
+In this particular episode, your intrepid frontend dev (me) had to find out three things about the form segment:
+
+1. a lookup (autosuggest) field was completely hidden until a partcular checkbox was set.
+2. another checkbox was disabled until another field had data in it.
+3. a specific row of the form would appear only when another value was true.
+
+For our purposes here, only 1 and 2 are of interest.
+
+** Displaying a field form when a checkbox is setfield
+
+For this form row, the code under test looks like this:
+
+#+BEGIN_SRC rjsx
+  const ServiceLocation = ({ name, value, initialValue, onSelectParent }) =&gt; {
+    const [serviceArea, setServiceArea] = useState(!!value)
+    const toggleCheckbox = () =&gt; {
+      setServiceArea(!serviceArea)
+    }
+    return (
+      &lt;FormField name={name}&gt;
+        &lt;FormFieldSubRow&gt;
+          &lt;Checkbox
+            value={serviceArea}
+            onChange={toggleCheckbox}
+            data-testid=&quot;service-area-checkbox&quot;
+          &gt;
+            {&quot; &quot;}
+            {I18n.t(&quot;service_location.label&quot;, { scope: i18nScope })}
+          &lt;/Checkbox&gt;{&quot; &quot;}
+          {serviceArea ? (
+            &lt;CustomerLookupWrapper data-testid=&quot;customer-lookup-wrapper&quot;&gt;
+              &lt;CustomerLookup
+                name={name}
+                initialValue={initialValue}
+                placeholder=&quot;Parent&quot;
+                onSelect={onSelectParent}
+              /&gt;
+            &lt;/CustomerLookupWrapper&gt;
+          ) : null}
+        &lt;/FormFieldSubRow&gt;
+      &lt;/FormField&gt;
+    )
+  }
+#+END_SRC
+
+Placing the ~data-testid~ &quot;service-area-checkbox&quot; on the ~Checkbox~ component gives the test a way of finding the DOM element it needs to work with. The &quot;customer-lookup-wrapper&quot; `data-testid` will be used to determine if the second element shows up when the that checkbox is clicked.
+
+The spec for this looks like:
+
+#+BEGIN_SRC rjsx
+    it(&quot;displays the parent lookup field when the service location checkbox becomes checked&quot;, async () =&gt; {
+      const LOOKUP_WRAPPER_TESTID = &quot;customer-lookup-wrapper&quot;
+      const props = {
+        fields: {},
+        parent: {},
+        handleChange: jest.fn(),
+        onDuplicateCustomerName: jest.fn(),
+        onSelectParent: jest.fn()
+      }
+
+      const { queryByTestId, getByTestId, rerender } = render(
+        &lt;Providers&gt;
+          &lt;CustomerInfoFormSection {...props} /&gt;
+        &lt;/Providers&gt;
+      )
+
+      const serviceAreaCheckbox = getByTestId(&quot;service-area-checkbox&quot;)
+      const checkBoxActual = serviceAreaCheckbox.querySelector(
+        &quot;input[type=checkbox]&quot;
+      )
+
+      /* PRECONDITIONS */
+      expect(queryByTestId(LOOKUP_WRAPPER_TESTID)).not.toBeInTheDocument()
+      expect(checkBoxActual.checked).toEqual(false)
+
+      /* ACTION */
+      fireEvent.click(checkBoxActual)
+
+      /* VERIFY */
+      expect(checkBoxActual.checked).toEqual(true)
+      expect(queryByTestId(LOOKUP_WRAPPER_TESTID)).toBeInTheDocument()
+    })
+#+END_SRC
+
+The two line where things get really interesting are:
+
+#+BEGIN_SRC rjsx
+      const serviceAreaCheckbox = getByTestId(&quot;service-area-checkbox&quot;)
+      const checkBoxActual = serviceAreaCheckbox.querySelector(
+        &quot;input[type=checkbox]&quot;
+      )
+#+END_SRC
+
+We can get the ~Checkbox~ component with the first line, but this only gets us the label wrapper and not the actual checkbox, so the second line pulls up the actual checkbox from within it.
+
+The rendered code from the ~Checkbox~ component looks like this:
+
+#+BEGIN_SRC html
+      &lt;label
+        class=&quot;sc-kAzzGY dXoiwv&quot;
+        data-testid=&quot;service-area-checkbox&quot;
+      &gt;
+        &lt;input
+          class=&quot;sc-cSHVUG bYZObx&quot;
+          type=&quot;checkbox&quot;
+        /&gt;
+
+        service_location.label
+      &lt;/label&gt;
+#+END_SRC
+
+The funky looking classes are the result of ~style-components~. What&#39;s interesting to note is that the ~data-testid~ was placed on the ~label~ node. Using ~querySelector~ let&#39;s me pull out the actual checkbox, which is an HTML element of type &quot;checkbox&quot;.
+
+From there, verifying the preconditions and postconditions becomes fairly easy:
+
+- the state of the check box (ie. checked or not checked) is avalable as a property of the element
+- using ~queryByTestId~ tests whether the particular element is in the document or not
+
+Making the change happens with the ~fireEvent.click~. (/Note:/ the ~change~ event doesn&#39;t work for checkboxes. See: https://github.com/testing-library/react-testing-library/pull/178/files#diff-04c6e90faac2675aa89e2176d2eec7d8R631 ) (and beware the drift of time as well...)
+
+** Verifying a checkbox is en-/disabled based on another value
+
+This case shows something a little different, and shows how to approach changing props as related to component testing.
+
+The code under test in this case is:
+
+#+BEGIN_SRC rjsx
+  const SmsNotifications = ({ name, value, onChange, isMobileSet }) =&gt; {
+    return (
+      &lt;FormField name={name} label={null}&gt;
+        &lt;div&gt;
+          &lt;strong&gt;{I18n.t(&quot;notify_via_sms.title&quot;, { scope: i18nScope })}&lt;/strong&gt;
+          &lt;Checkbox
+            name={name}
+            value={value || &quot;&quot;}
+            onChange={onChange}
+            disabled={isMobileSet ? null : &quot;disabled&quot;}
+            wrap={&quot;wrap&quot;}
+            data-testid=&quot;notify-via-sms-checkbox&quot;
+          &gt;
+            {&quot; &quot;}
+            {I18n.t(&quot;notify_via_sms.label&quot;, { scope: i18nScope })}
+          &lt;/Checkbox&gt;
+        &lt;/div&gt;
+      &lt;/FormField&gt;
+    )
+  }
+
+#+END_SRC
+
+The spec test for this feature is:
+
+#+BEGIN_SRC rjsx
+    it(&quot;enables the notify via sms checkbox when the mobile field has a value&quot;, () =&gt; {
+      const NOTIFY_CHECKBOX_TESTID = &quot;notify-via-sms-checkbox&quot;
+
+      const props = {
+        fields: {},
+        handleChange: jest.fn(),
+        onDuplicateCustomerName: jest.fn(),
+        onSelectParent: jest.fn()
+      }
+      const { queryByTestId, getByTestId, rerender } = render(
+        &lt;Providers&gt;
+          &lt;CustomerInfoFormSection {...props} /&gt;
+        &lt;/Providers&gt;
+      )
+      const notifyCheckBoxComponent = getByTestId(NOTIFY_CHECKBOX_TESTID)
+      const checkBoxActual = notifyCheckBoxComponent.querySelector(
+        &quot;input[type=checkbox]&quot;
+      )
+      expect(checkBoxActual.disabled).toEqual(true)
+
+      rerender(
+        &lt;Providers&gt;
+          &lt;CustomerInfoFormSection {...props} fields={{ mobile: &quot;555121&quot; }} /&gt;
+        &lt;/Providers&gt;
+      )
+
+      expect(checkBoxActual.disabled).toEqual(false)
+    })
+#+END_SRC
+
+I&#39;m doing the same trick as before about grabbing the actual checkbox by using ~querySelect~ on the element returned with ~getByTestId(&quot;NOTIFY_CHECKBOX_TESTID&quot;)~. This provides access to the ~disabled~ property.
+
+This test uses the testing library&#39;s ~rerender~ method, which is used to apply different props. In this case the props for the compoonent are controlled above this component, so this is actually a valid test matching how it would work in the user&#39;s environment.
+
+For the rerender, I&#39;m passing in a value for the mobile phone number, which is used to determine whether the checkbox is en-/disabled.
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2019/08/2019-08-08-til-rails-active-job-argument-types.org</id>
-      <updated>2019-08-17T04:03:23-05:00</updated>
+      <updated>2019-08-08T17:18:45-05:00</updated>
       <title>2019-08-08-til-rails-active-job-argument-types</title>
       <content>#+OPTIONS: &#39;:nil *:t -:t ::t &lt;:t H:3 \n:nil ^:t arch:headline
 #+OPTIONS: author:t broken-links:nil c:nil creator:nil
@@ -80,7 +290,7 @@ The solution, in this case is pretty easy: call the mailer with ~.deliver_now~ i
     </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2019/08/2019-08-01-programmer-s-primary-language.org</id>
-      <updated>2019-08-17T04:03:23-05:00</updated>
+      <updated>2019-08-01T18:32:32-05:00</updated>
       <title>2019-08-01-programmer-s-primary-language</title>
       <content>#+OPTIONS: &#39;:nil *:t -:t ::t &lt;:t H:3 \n:nil ^:t arch:headline
 #+OPTIONS: author:t broken-links:nil c:nil creator:nil
@@ -117,7 +327,7 @@ It&#39;s often sourced from [[http://commadot.com/wtf-per-minute/][this blog ent
     </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2019/07/2019-07-17-til-firefox-disables-meta-refresh-by-default.org</id>
-      <updated>2019-08-17T04:03:23-05:00</updated>
+      <updated>2019-07-17T13:05:05-05:00</updated>
       <title>2019-07-17-til-firefox-disables-meta-refresh-by-default</title>
       <content>#+OPTIONS: &#39;:nil *:t -:t ::t &lt;:t H:3 \n:nil ^:t arch:headline
 #+OPTIONS: author:t broken-links:nil c:nil creator:nil
@@ -156,7 +366,7 @@ This is why we can&#39;t have nice things :(
     </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2019/06/2019-06-03-some-flexbox-links.org</id>
-      <updated>2019-08-17T04:03:23-05:00</updated>
+      <updated>2019-06-04T10:30:14-05:00</updated>
       <title>2019-06-03-some-flexbox-links</title>
       <content>#+OPTIONS: &#39;:nil *:t -:t ::t &lt;:t H:3 \n:nil ^:t arch:headline
 #+OPTIONS: author:t broken-links:nil c:nil creator:nil
@@ -210,7 +420,7 @@ Hat-tip to @Andrea on WHCTC slack
     </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2019/05/2019-05-31-prefer-pluck-to-map.org</id>
-      <updated>2019-08-17T04:03:23-05:00</updated>
+      <updated>2019-05-31T13:32:29-05:00</updated>
       <title>2019-05-31-prefer-pluck-to-map</title>
       <content>#+OPTIONS: &#39;:nil *:t -:t ::t &lt;:t H:3 \n:nil ^:t arch:headline
 #+OPTIONS: author:t broken-links:nil c:nil creator:nil
@@ -257,7 +467,7 @@ Hat-tip to @Andrea on WHCTC slack
     </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2019/05/2019-05-27-creating-verse-paragraphs-in-kramdown.org</id>
-      <updated>2019-08-17T04:03:23-05:00</updated>
+      <updated>2019-05-31T13:30:18-05:00</updated>
       <title>2019-05-27-creating-verse-paragraphs-in-kramdown</title>
       <content>#+OPTIONS: &#39;:nil *:t -:t ::t &lt;:t H:3 \n:nil ^:t arch:headline
 #+OPTIONS: author:t broken-links:nil c:nil creator:nil
@@ -308,8 +518,45 @@ In ~kramdown~, the default markdown processor in [[Jekyll]] these days, there&#3
       </author>
     </entry>
     <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2018/02/how-to-reset-ios-simulator.org</id>
+      <updated>2019-05-31T13:28:47-05:00</updated>
+      <title>How to reset iOS simulator</title>
+      <content>#+OPTIONS: &#39;:nil *:t -:t ::t &lt;:t H:3 \n:nil ^:t arch:headline
+#+OPTIONS: author:t broken-links:nil c:nil creator:nil
+#+OPTIONS: d:(not &quot;LOGBOOK&quot;) date:t e:t email:nil f:t inline:t num:t
+#+OPTIONS: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+OPTIONS: timestamp:t title:t toc:t todo:t |:t
+#+TITLE: how-to-reset-ios-simulator
+#+DATE: &lt;2018-02-15 Thu&gt;
+#+AUTHOR: Tamara Temple
+#+EMAIL: tamouse@gmail.com
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+CREATOR: Emacs 26.1 (Org mode 9.1.9)
+#+KEYWORDS: ios, simulator, development, reset
+
+* How to reset iOS simulator
+
+I ran into an issue recently where I was trying to debug a problem in a project, but had a problem accessing the right data server since I was logged into a local development server, and really needed to get back to the &quot;new app&quot; state.
+
+I searched for &quot;reset xcode simulator&quot; via DDG and first hit came up with &lt;https://stackoverflow.com/questions/16195859/reset-ios-simulator-application-data-to-run-app-for-first-time#16195931&gt; which gave me an answer.
+
+The command line versions work, but it can be a pain to get the UDID for the simulator. Doing it from the running simulator was easier, but of course the menu options are different than discussed in the stackoverflow answer.
+
+I found it on the Simulator (Version 10.0 (SimulatorApp-835.2.1) seen in the following screen shot:
+
+#+CAPTION: Reset IOS Simulator Screenshot
+[[../../../images/reset-ios-simulator.png]]
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2019/05/2019-05-02-til-jquery-attr-vs-prop.org</id>
-      <updated>2019-08-17T04:03:23-05:00</updated>
+      <updated>2019-05-02T08:14:03-05:00</updated>
       <title>TIL: jQuery .attr() vs .prop()</title>
       <content>#+COMMENT -*- time-stamp-line-limit: 20; time-stamp-count: 2 -*-
 #+TITLE: TIL: jQuery .attr() vs .prop()
@@ -342,155 +589,6 @@ In ~kramdown~, the default markdown processor in [[Jekyll]] these days, there&#3
     #+END_SRC
 
     This visually set the proper radio button, and when the form was submitted the correct radio button value was posted.
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2019/04/2019-04-27-flash-toastr-using-react-hooks.org</id>
-      <updated>2019-08-17T04:03:23-05:00</updated>
-      <title>FlashToastr React Component using React Hooks</title>
-      <content>#+TITLE: 2019-04-27-flash-toastr-using-react-hooks
-#+DATE: &lt;2019-04-27 Sat&gt;
-#+AUTHOR: Tamara Temple
-#+EMAIL: tamouse@gmail.com
-#+LANGUAGE: en
-#+SELECT_TAGS: export
-#+EXCLUDE_TAGS: noexport
-#+CREATOR: Emacs 26.1 (Org mode 9.1.9)
-#+OPTIONS: html-link-use-abs-url:nil html-postamble:auto
-#+OPTIONS: html-preamble:t html-scripts:t html-style:t html5-fancy:t
-#+OPTIONS: tex:t
-#+HTML_DOCTYPE: html5
-#+HTML_CONTAINER: div
-#+DESCRIPTION: An example implementation to learn react hooks
-#+KEYWORDS: react,hooks,context,component,flash messages,toastr
-#+HTML_LINK_HOME:
-#+HTML_LINK_UP:
-#+HTML_MATHJAX:
-#+HTML_HEAD: &lt;link rel=&quot;stylesheet&quot; href=&quot;../../../others/style.css&quot; /&gt;
-#+HTML_HEAD_EXTRA:
-#+SUBTITLE:
-#+INFOJS_OPT:
-#+CREATOR: &lt;a href=&quot;https://www.gnu.org/software/emacs/&quot;&gt;Emacs&lt;/a&gt; 26.1 (&lt;a href=&quot;https://orgmode.org&quot;&gt;Org&lt;/a&gt; mode 9.1.9)
-#+LATEX_HEADER:
-
-* FlashToastr React Component using React Hooks
-
-  Today I set out on a learning journey. I&#39;d been looking at React&#39;s Hooks implementation for a bit, but haven&#39;t really gone out to make anything.
-
-  The app I work on, Kickserv, has a Redux-based Flash message component that used in the new React-based client. It&#39;s rather large, and totally over-engineered for the need it&#39;s fulfilling.
-
-  Roll up with Hooks in React 16.8 getting full support, and I figured it&#39;s really time to buckle down and learn them.
-
-** First mis-direction
-
-   Initially, I thought I would be able to do this using only ~useState~ in the hook. This led to a few hours of hair-pulling, the wailing of gnashing of teeth, and a few good swears. It turns out I was missing something really important:
-
-   &gt; When you use ~useState~, *it&#39;s actually creating new state*
-
-   This is probably obvious, and it shouldn&#39;t need stating, but it was breaking me. See, for the flash message thing, it&#39;s treated sort of like a modal, but not really. It needs a context to be able to let a component anywhere within the app be able to submit a flash message to it, and have the little toastr overlay alert show up. In this app, there is only one, they don&#39;t stack up like notifications do in other systems, they just show up at the top of the page until dismissed by the user, a la Rails&#39; flash messages.
-
-** Enter Context
-
-   What I figured out finally was that I needed a context that would keep state across the app and for the flash components themselves. This turned out to be pretty nifty and solved things quite nicely.
-
-   The context holds information on what the flash message is, what level of message it is, and whether the message is showing or not. In addition, it has setters for each of these. The context provider .. erm .. provides them, and the hook picks them up with ~useContext~, implements 2 convenience functions for setting/showing the flash, and another for closing it.
-
-** Storybook View
-
-   The component is illustrated using storybook, and can be seen at [[https://flash_toastr.surge.sh/]] .
-
-** Github Repo
-
-   The repo containing the code is out at [[https://github.com/tamouse/flash_toaster]] if you want to play around with it or something.
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2019/04/2019-04-14-use-key-instead-of-compoenent-did-update.org</id>
-      <updated>2019-08-17T04:03:23-05:00</updated>
-      <title>TIL: Use key instead of componentDidUpdate</title>
-      <content>#+COMMENT -*- time-stamp-line-limit: 12; time-stamp-count: 2 -*-
-* TIL: Use key instead of componentDidUpdate
-  :PROPERTIES:
-  :LAST_UPDATE: Time-stamp: &lt;2019-04-19 19:11:28 tamara&gt;
-  :CAPTURE_DATE: [2019-04-19 Fri 19:05]
-  :KEYWORDS: react, componentDidUpdate, key prop
-  :END:
-
-- last update: Time-stamp: &lt;2018-09-16 14:32:23 tamara.temple&gt;
-- capture date: [2019-04-19 Fri 19:07]
-- keywords: react, componentDidUpdate, key prop
-
-Watching Ryan Florence over at [[https://www.reacttraining.com][reacttraining.com]] in the [[https://courses.reacttraining.com/courses/354571/lectures/5449516][Reach Catchup componentWillReceiveProps video]], towards the end, after explaining how to use ~componentDidUpdate~ to retrieve updated props / state based on a new prop, he then goes on to say you can do this a lot easier by setting the component&#39;s ~key~ to the thing you&#39;re checking in ~cDU~ and just make React create a whole new instance.
-
-This is so easy it&#39;s just astounding how much it makes sense.
-
-** an example
-
-Let&#39;s say you have a collection of notes to display, with the following structure:
-
-#+BEGIN_SRC rjsx
-  {
-    &quot;notes&quot;: [
-      {
-	&quot;id&quot;: Int,
-	&quot;body&quot;: String,
-	&quot;createdAt&quot;: String,
-	&quot;updatedAt&quot;: String,
-	&quot;creator&quot;: {
-	  &quot;name&quot;: String
-	},
-	&quot;public&quot;: Boolean
-      }
-    ]
-  }
-
-#+END_SRC
-
-Let&#39;s say this is our component:
-
-#+BEGIN_SRC rjsx
-  const Notes = ({ notes }) =&gt; (
-    &lt;NoteList&gt;
-      {notes &amp;&amp; notes.length &gt; 0 ? (
-	notes.map((note, index) =&gt; &lt;Note key={index} note={note} /&gt;)
-      ) : (
-	&lt;NoNotes /&gt;
-      )}
-    &lt;/NoteList&gt;
-  )
-#+END_SRC
-
-
-If for some reason you need to manage state for each note, perhaps because you&#39;re modifying it in place (i.e. within the row), or you delete a note, or add a note, you might need to keep the state updated based on update props. If the note changes, you may need to perform refetch to get the updated info.
-
-Or so you might think.
-
-Instead, by using the ~note.id~ as the ~key~, you can easily make React produce a new instance.
-
-#+BEGIN_SRC rjsx
-  const Notes = ({ notes }) =&gt; (
-    &lt;NoteList&gt;
-      {notes &amp;&amp; notes.length &gt; 0 ? (
-	notes.map(note =&gt; &lt;Note key={note.id} note={note} /&gt;)
-      ) : (
-	&lt;NoNotes /&gt;
-      )}
-    &lt;/NoteList&gt;
-  )
-#+END_SRC
-
-
-If the id of the particular note in that sequence changes, React will re-instantiate the ~Note~ and whatever you do to initialize it is done with the new note.
-
-This may not be the best example, but the concept is what&#39;s important for me to remember. I have a habit of just using the map index instead of something more useful to React.
 </content>
       <author>
         <name>Tamara Temple</name>
