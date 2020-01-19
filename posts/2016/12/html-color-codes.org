@@ -1,15 +1,16 @@
-*** HTML Color Codes                   :webdesign:tools:color:css:html:swaac:
-    :PROPERTIES:
-    :CAPTURE_DATE: [2016-12-14 Wed 19:31]
-    :LINK:     http://htmlcolorcodes.com/
-    :TITLE:    HTML Color Codes
-    :END:
+f* Link: [[http://htmlcolorcodes.com/][HTML Color Codes]]               :webdesign:tools:color:css:html:swaac:
+  :PROPERTIES:
+  :CAPTURE_DATE: [2016-12-14 Wed 19:31]
+  :LINK:     http://htmlcolorcodes.com/
+  :TITLE:    HTML Color Codes
+  :END:
 
+  [[http://htmlcolorcodes.com/][HTML Color Codes]]
 
-    Get HTML color codes, Hex color codes, RGB and HSL values
-    with our color picker, color chart and HTML color names. Let's
-    go!
+  Get HTML color codes, Hex color codes, RGB and HSL values
+  with our color picker, color chart and HTML color names. Let's
+  go!
 
-    Easily find HTML color codes for your website using our
-    color picker, color chart and HTML color names with Hex color codes,
-    RGB and HSL values.
+  Easily find HTML color codes for your website using our
+  color picker, color chart and HTML color names with Hex color codes,
+  RGB and HSL values.
