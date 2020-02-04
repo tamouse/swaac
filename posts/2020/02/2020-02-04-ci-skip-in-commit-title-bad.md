@@ -17,7 +17,7 @@ When the list of commits is included in a merge commit's message body, the skip 
 [ci skip] fix some typos
 ```
 
-The directive will should up in the merge commit message body.
+The directive will show up in the merge commit message body in the list of commits.
 
 
 ## good commit message:
