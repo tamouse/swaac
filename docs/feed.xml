@@ -2,7 +2,50 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://github.com/tamouse/swaac</id>
   <title>Tamouse&#39;s Software as a Craft blog</title>
-  <updated>2020-01-19T04:27:23-06:00</updated>
+  <updated>2020-02-04T14:32:41-06:00</updated>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2020/02/2020-02-04-ci-skip-in-commit-title-bad.md</id>
+      <updated>2020-02-04T14:32:41-06:00</updated>
+      <title>2020-02-04-ci-skip-in-commit-title-bad</title>
+      <content>---
+title: &quot;TIL: putting [ci skip] in the commit message title breaks merge builds&quot;
+date: 2020-02-04T13:04:05-0600
+categories: [git]
+tags: [git, CI, builds, merges, commit-messages, skip]
+---
+
+A common way to keep a specific commit from triggering a build on continuous integration services, such as travis and circle (maybe others) is to use `[ci skip]` or `[skip ci]` in the commit message.
+
+If the skip directive is put in the commit message&#39;s first line, which is treated as the commit message **title**, it can cause problems for merges down the line.
+
+When the list of commits is included in a merge commit&#39;s message body, the skip directive shows up, which causes the merge build to be skipped as well.
+
+## bad commit message:
+
+``` text
+[ci skip] fix some typos
+```
+
+The directive will should up in the merge commit message body.
+
+
+## good commit message:
+
+``` text
+updated the README
+
+- fixed some typos and broken links
+
+[ci skip]
+```
+
+Only the title shows up in the merge commit message body, the skip directive does not.
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2016/12/html-color-codes.org</id>
       <updated>2020-01-19T04:27:23-06:00</updated>
@@ -892,40 +935,6 @@ Eventually, I&#39;m going to want a tag cloud of some sort, too.
 
 That&#39;s basically it. It took a minute for me to go from looking at how the Markdown / MDX in every gatsby tutorial worked, and had to work out how to generate the pages from other data queries. This seems pretty simple, but seems to be lacking from the tutorials.
 
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2019/08/2019-08-08-til-rails-active-job-argument-types.org</id>
-      <updated>2019-08-08T17:18:45-05:00</updated>
-      <title>2019-08-08-til-rails-active-job-argument-types</title>
-      <content>#+OPTIONS: &#39;:nil *:t -:t ::t &lt;:t H:3 \n:nil ^:t arch:headline
-#+OPTIONS: author:t broken-links:nil c:nil creator:nil
-#+OPTIONS: d:(not &quot;LOGBOOK&quot;) date:t e:t email:nil f:t inline:t num:nil
-#+OPTIONS: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
-#+OPTIONS: timestamp:t title:t toc:nil todo:t |:t
-#+TITLE: TIL: Rails ActiveJob Supported Argument Types
-#+DATE: &lt;2019-08-08 Thu&gt;
-#+AUTHOR: Tamara Temple
-#+EMAIL: tamouse@gmail.com
-#+LANGUAGE: en
-#+SELECT_TAGS: export
-#+EXCLUDE_TAGS: noexport
-#+CREATOR: Emacs 26.2 (Org mode 9.1.9)
-
-
-[[https://edgeguides.rubyonrails.org/active_job_basics.html#supported-types-for-arguments][Rails Guides: ActiveJob Supported Argument Types]]
-
-This came up because of a cascade of things:
-
-1. Having an exception thrown during an ActiveJob task
-2. The rescue calling ActiveMailer with the rescued exception as an argument, with the ~.deliver_later~ option
-3. This caused another ActiveJob to be created for the mailer, with an argument that violates the above restriction.
-
-The solution, in this case is pretty easy: call the mailer with ~.deliver_now~ instead, since it&#39;s already a background job.
 </content>
       <author>
         <name>Tamara Temple</name>

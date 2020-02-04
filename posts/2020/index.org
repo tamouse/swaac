@@ -1,2 +1,3 @@
+- [[./02/2020-02-04-ci-skip-in-commit-title-bad.md]]
 - [[./01/in-rails-prefer-use_zone-to-zone.md]]
 - [[./01/gatsby-categories-and-tags.md]]
