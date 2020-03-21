@@ -53,4 +53,21 @@ which will run emacsclient to use the currently running instance of emacs, *and*
 
 I initially used the command line arguments I normally run emacsclient with: `-c -n`, which say to open a new frame and not to wait for the editing session to finish. Bad move. If the git command is not forced to wait while I modify the commit message, it assumes it wasn't changed and aborts the commit. I also didn't want to have it be spawning new frames since that just gets messy if I forget to close them, which I most often do.
 
+### I hear you, you don't use emacs ###
+
+You aren't a dinosaur like I am, I got you.
+
+You can run VSCode from the command line, or Atom, etc., etc., etc..  I'm not going to teach you how to set that up, *but you should learn how if you don't because it will speed up your work.*
+
+Here are some of the alternative:
+
+- VSCode: `git config -global core.editor code`
+- Atom: `git config --global core.editor atom`
+- Vim: `git config --global core.editor vim`
+
+## Git-mode in Editors ##
+
+Most modern-day editors have a means of running git commands from inside the editor. This is often a far richer environment, closer to a GUI tool, really, than the command line offers. I use `magit` in emacs all the time, but I also use the command line all the time; some operations are better for one than the other. (By the way, `magit` has seriously the very best implementation for doing an interactive rebase, i.e., squashing your commits.)
+
+
 
