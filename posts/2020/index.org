@@ -1,3 +1,7 @@
+- [[./2020-03-10-using-rails-url-helpers-outside-a-controller.md]]
+- [[./03/2020-03-21-setting-git-default-editor.md]]
+- [[./02/2020-02-10-git-follies-prefacing-commit-msg-with-ticket-number.md]]
+- [[./02/2020-02-05-git-follies-save-points-and-silent-reverts.md]]
 - [[./02/2020-02-04-ci-skip-in-commit-title-bad.md]]
 - [[./01/in-rails-prefer-use_zone-to-zone.md]]
 - [[./01/gatsby-categories-and-tags.md]]
