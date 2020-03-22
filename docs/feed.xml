@@ -2,12 +2,483 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://github.com/tamouse/swaac</id>
   <title>Tamouse&#39;s Software as a Craft blog</title>
-  <updated>2020-03-21T04:55:22-05:00</updated>
+  <updated>2020-03-22T18:07:47-05:00</updated>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2020/02/2020-02-10-git-follies-prefacing-commit-msg-with-ticket-number.md</id>
+      <updated>2020-03-22T18:07:47-05:00</updated>
+      <title>2020-02-10-git-follies-prefacing-commit-msg-with-ticket-number</title>
+      <content>---
+title: &quot;How To: Preface your git commit messages with the Jira ticket number&quot;
+date: 2020-02-10T08:57:37-0600
+categories: [&quot;git&quot;]
+tags: [git-follies, commit-message, jira, how-to]
+published: true
+---
+
+This is something you can build into your project&#39;s git hooks, that will preface your commit messages with the Jira ticket number based on the branch name.
+
+[WIP]
+
+We want something that will pull the tracking ticket number from the branch, like so:
+
+| branch name                     | message prefix |
+|:-------------------------------:|:--------------:|
+| `kick-1234-this-cool-feature`   | `[KICK-1234]`  |
+| `bug/KICK-789-woops`            | `[KICK-789]`   |
+| `feature/kick_2100_the_precept` | `[KICK-2100]`  |
+| `777_sunset_life`               | `[777]`        |
+|                                 |                |
+
+Create a hook for `.git/hooks/prepare-commit-msg` with the following script:
+
+``` shell
+# Current branch name: &quot;KICK-3586_revert_nullable_custom_field_creation&quot;
+$ git rev-parse --abbrev-ref HEAD | ruby -ne &#39;ticket = %r{^(?&lt;proj&gt;\w+)[-_ ](?&lt;num&gt;\d+)}.match($_).named_captures; puts &quot;[#{ticket[&quot;proj&quot;].upcase}-#{ticket[&quot;num&quot;]}]&quot; &#39;
+# =&gt; [KICK-3586]
+
+```
+
+Make sure the hook is executable.
+
+
+When you make a commit, git will execute `.git/hooks/prepare-commit-msg .git/COMMIT_MESSAGE`
+
+Adding the hook to a code repo.
+
+
+
+
+Inspiration: https://medium.com/better-programming/how-to-automatically-add-the-ticket-number-in-git-commit-message-bda5426ded05
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2020/01/in-rails-prefer-use_zone-to-zone.md</id>
+      <updated>2020-03-22T18:07:19-05:00</updated>
+      <title>in-rails-prefer-use_zone-to-zone</title>
+      <content>---
+title: &quot;Prefer Time.use_zone to Time.zone in Rails&quot;
+date: 2020-01-19
+categories: [rails]
+tags: [timezones]
+---
+
+&gt; Rails better practice for dealing with altering the current process&#39;s timezone
+
+# In Rails, Prefer \`.use\_zone\` to \`.zone=\`
+
+I had thought to write a post on this, but never got around to it.
+
+[Prathamesh Sonpatki](https://prathamesh.tech/) [beat me to it :\)](https://prathamesh.tech/2019/07/11/use-time-use_zone-to-navigate-timezone/)
+
+Essentially, this is the practice I use:
+
+```text
+Time.use_zone(current_user.timezone) do 
+  # Do Time and DateTime operations under the auspices of the
+  # current user&#39;s timezone setting.
+  
+  Time.current # The current time in the current user&#39;s timezone
+  Time.zone.now # Equivalent to the above
+end
+```
+
+It&#39;s better than just supposing that `Time.zone` has been set somewhere in the current process, **or** that `Time.zone` has been set to what the code in the block _expects it to be!_
+
+## In Testing ##
+
+The biggest source of error that I&#39;ve encountered for this isn&#39;t in requests, but actually in the spec test cases for the product. Some test cases blythely set `Time.zone` in a before action, but never reset it in an after action.
+
+If possible, wrap the time zone use inside an `around` action:
+
+```text
+around(:each) do |example|
+  Time.use_zone(some_timezone) do
+    yield example
+  end
+end
+```
+
+### With [Timecop](https://github.com/travisjeffery/timecop) ###
+
+Since Timecop is essentially mocking the system clock, you can use it with `.use_zone` with impunity.
+
+```text
+around do |example|
+  Timecop.freeze do
+    @account = Fabricate(:account)
+    Time.use_zone(account.timezone) do
+      yield example
+    end
+  end
+end
+```
+
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2020/01/gatsby-categories-and-tags.md</id>
+      <updated>2020-03-22T18:05:13-05:00</updated>
+      <title>gatsby-categories-and-tags</title>
+      <content>---
+title: &quot;Gatsby Categories and Tags&quot;
+date: 2020-02-01
+
+## Categories and Tags in Gatsby ##
+
+I&#39;ve been re-writing my on-line recipe collection using Gatsby as an exercise. In the original Jekyll site, I had recipes organized into categories like chapters in a printed cookbook, and tags that allowed more fine-detailed structure, listing such things as ingredients, cuising type, and other things like being gluten-free. Both categories and tags were stored as entries in the frontmatter of each recipe in the collection.
+
+To make that work, I needed to write a Jekyll plug-in to generate the category and tag pages. And to make it work in Gatsby, I needed to write something in `gatsby-node.js`
+
+### Categories as Subdirectories
+
+Instead of putting the category in the frontmatter, I decided to organize the recipe markdown into subdirectories under the `recipes/` content directory.
+
+#### A hook for categories
+
+To pull out the categories, I created a custom hook `useCategories` to run a static query and return the collection of category names:
+
+```javascript
+import { graphql, useStaticQuery } from &quot;gatsby&quot;
+export const useRecipeCategories = () =&gt; {
+  const { allDirectory } = useStaticQuery(
+    graphql`
+      query RECIPE_CATEGORIES {
+        allDirectory(filter: { absolutePath: { glob: &quot;**/recipes/*&quot; } }) {
+          nodes {
+            relativePath
+          }
+        }
+      }
+    `
+  )
+  return allDirectory.nodes.map(category =&gt; category.relativePath)
+}
+```
+
+Putting that query into the GraphiQL IDE, the response is:
+
+```text
+{
+  &quot;data&quot;: {
+    &quot;allDirectory&quot;: {
+      &quot;nodes&quot;: [
+        {
+          &quot;relativePath&quot;: &quot;baked-goods&quot;
+        },
+        {
+          &quot;relativePath&quot;: &quot;desserts&quot;
+        },
+        {
+          &quot;relativePath&quot;: &quot;breakfast&quot;
+        },
+        {
+          &quot;relativePath&quot;: &quot;drinks&quot;
+        },
+        {
+          &quot;relativePath&quot;: &quot;main-dishes&quot;
+        },
+        {
+          &quot;relativePath&quot;: &quot;kitchen-tips&quot;
+        },
+        {
+          &quot;relativePath&quot;: &quot;appetizers&quot;
+        },
+        {
+          &quot;relativePath&quot;: &quot;pizza&quot;
+        },
+        {
+          &quot;relativePath&quot;: &quot;salads&quot;
+        },
+        {
+          &quot;relativePath&quot;: &quot;sandwiches&quot;
+        },
+        {
+          &quot;relativePath&quot;: &quot;sauces&quot;
+        },
+        {
+          &quot;relativePath&quot;: &quot;side-dishes&quot;
+        },
+        {
+          &quot;relativePath&quot;: &quot;soups&quot;
+        }
+      ]
+    }
+  }
+}
+```
+
+That gives me a nice, reusable list of categories anywhere in the site.
+
+#### Generating the Table of Contents
+
+The `CategoriesMenu` component creates a list of the categories with links to each category page:
+
+```javascript
+import React from &quot;react&quot;
+import { Link } from &quot;gatsby&quot;
+import { useRecipeCategories } from &quot;../hooks/useCategories.js&quot;
+
+export default () =&gt; {
+  const categories = useRecipeCategories()
+
+  return (
+    &lt;ul&gt;
+      {categories.map((category, index) =&gt; (
+        &lt;li key={`category-menu-item-${index}`}&gt;
+          &lt;Link to={`/${category}/`}&gt;{category}&lt;/Link&gt;
+        &lt;/li&gt;
+      ))}
+    &lt;/ul&gt;
+  )
+}
+
+```
+
+\(I&#39;m still in the midst of generating a style for the site, so eventually the `ul` and `li` will get replaced with some styled components. That&#39;s not important for this discussion.\)
+
+The `Link` to each category page expects them to be a page at the root of the route. These pages are not in the repo itself, and must be generated. The code to generate the category page is in `gatsby-node.js` :
+
+```javascript
+const { createFilePath } = require(`gatsby-source-filesystem`)
+const path = require(`path`)
+
+exports.createPages = ({ actions, graphql }) =&gt; {
+  // ...
+  const categoryTemplate = path.resolve(&quot;./src/templates/categoryTemplate.js&quot;)
+
+  return graphql(`
+    {
+      # .. other queries
+      allDirectory(filter: { absolutePath: { glob: &quot;**/recipes/*&quot; } }) {
+        nodes {
+          relativePath
+        }
+      }
+    }
+  `).then(result =&gt; {
+
+    // ... stuff for mdx pages
+
+    const categories = result.data.allDirectory.nodes
+    categories.forEach(category =&gt; {
+      createPage({
+        path: &quot;/&quot; + category.relativePath + &quot;/&quot;,
+        component: categoryTemplate,
+        context: {
+          category: category.relativePath,
+        },
+      })
+    })
+    
+    // ... more stuff
+  })
+}
+
+```
+
+The partial graphql query returns the relative paths from the recipes area, which is the same as we do in the `useCategories` hook; there ought to be a way to reuse that, but here it&#39;s part of a larger query \(redacted from the example\). Looping through the categories, I&#39;m running `createPage` on each node \(i.e. category\) and building a page using a template, quite like one does for making Markdown/MDX pages. The context contains the category &quot;slug&quot;, which is created below.
+
+The categories need to be made into nodes:
+
+```javascript
+exports.onCreateNode = ({ node, actions, getNode }) =&gt; {
+  const { createNodeField } = actions
+  if (node.internal.type === `Mdx`) {
+    const value = createFilePath({ node, getNode })
+    // .. other nodes
+    createNodeField({
+      name: `recipeCategory`,
+      node,
+      value: value.split(&quot;/&quot;)[1],
+    })
+  }
+}
+```
+
+This is pretty similar again to how you make slugs for Markdown/MDX psges. The `value` comes from file path created in line 4, and it looks like `/:relativePath/:recipeFilename/`. Since what we&#39;re looking for is the recipe category, that is the `:relativePath` in the string above. Splitting on the divider gives a `null` first value in the array, and `:relativePath` in the second slot, so the index is 1 to pull it out. There&#39;s probably better ways to do this, but this works.
+
+### Tag pages
+
+Tag pages are also created in `gatsby-node.js` but the way tags are collected to start with is very different from categories. Categories are determined by placement in a subdirectory, but tags are declared in the frontmatter of the recipe MDX file.
+
+\(One _could_ do the same thing with categories, using a field in the frontmatter, but after working with that form in the Jekyll version for years, I&#39;ve decided doing them as subdirectories made more sense to me.\)
+
+Going back to the `gatsby-node.js` file, the full query looks like this:
+
+```graphql
+    {
+      allMdx {
+        nodes {
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            tags
+          }
+          fileAbsolutePath
+        }
+      }
+      allDirectory(filter: { absolutePath: { glob: &quot;**/recipes/*&quot; } }) {
+        nodes {
+          relativePath
+        }
+      }
+    }
+
+```
+
+In this case, we need to collect the _unique_ tags from every recipe file, so while we are shooting the list building the recipe pages, we&#39;ll also collect the tags into a Set:
+
+```graphql
+    const recipes = result.data.allMdx.nodes
+    let tags = new Set()
+
+    // create page for each mdx file
+    recipes.forEach(recipe =&gt; {
+      createPage(/* .. for each recipe page .. */)
+
+      if (recipe &amp;&amp; recipe.frontmatter &amp;&amp; recipe.frontmatter.tags) {
+        recipe.frontmatter.tags.map(tag =&gt; {
+          tags.add(tag)
+        })
+      }
+    })
+```
+
+If there are a collection of tags in the recipe file, this adds them to the `tags` Set, which ensures only unique tags are collected.
+
+Further down, we need to create the tag _pages_ :
+
+```javascript
+    tags.forEach(tag =&gt; {
+      createPage({
+        path: `/tags/${tag}/`,
+        component: tagTemplate,
+        context: {
+          tag,
+        },
+      })
+    })
+```
+
+### Putting Categories and Tags to use
+
+#### The Category Menu in the Sidebar
+
+I decided for this design iteration to put the categories into a sidebar arrangement \(I still haven&#39;t done any styling on this\). Recall the code up at **Generating the table of contents**: 
+
+```jsx
+return (
+    &lt;ul&gt;
+      {categories.map((category, index) =&gt; (
+        &lt;li key={`category-menu-item-${index}`}&gt;
+          &lt;Link to={`/${category}/`}&gt;{category}&lt;/Link&gt;
+        &lt;/li&gt;
+      ))}
+    &lt;/ul&gt;
+  )
+```
+
+which generates a link to each category page. This is mounted in the Sidebar.
+
+#### Tag links in each recipe display
+
+Tags are a little different at this point: they are only listed in each individual recipe page, using the `TagList` component:
+
+```jsx
+import React from &quot;react&quot;
+import { Link } from &quot;gatsby&quot;
+import styled from &quot;styled-components&quot;
+
+export default ({ tags }) =&gt; {
+  if (!tags || tags.length &lt; 1) {
+    return null
+  }
+  return (
+    &lt;TagListWrapper&gt;
+      {tags.map((tag, index) =&gt; {
+        return (
+          &lt;TagListItem key={`tag-item-${index}`}&gt;
+            &lt;Link to={`/tags/${tag}/`}&gt;{tag}&lt;/Link&gt;
+          &lt;/TagListItem&gt;
+        )
+      })}
+    &lt;/TagListWrapper&gt;
+  )
+}
+
+const TagListWrapper = styled.ul`
+  display: inline;
+  list-style: none;
+`
+const TagListItem = styled.li`
+  display: inline-block;
+  &amp;:after {
+    content: &quot;, &quot;;
+    padding-right: 0.5em;
+  }
+  &amp;:last-child:after {
+    content: &quot;&quot;;
+  }
+`
+```
+
+\(Yay, some styling\)
+
+Eventually, I&#39;m going to want a tag cloud of some sort, too.
+
+That&#39;s basically it. It took a minute for me to go from looking at how the Markdown / MDX in every gatsby tutorial worked, and had to work out how to generate the pages from other data queries. This seems pretty simple, but seems to be lacking from the tutorials.
+
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2020/03/2020-03-10-using-rails-url-helpers-outside-a-controller.md</id>
+      <updated>2020-03-22T18:03:09-05:00</updated>
+      <title>2020-03-10-using-rails-url-helpers-outside-a-controller</title>
+      <content>---
+title: &quot;Using Rails url_helpers outside a controller context&quot;
+date: 2020-03-10T20:38
+categories: [rails]
+tags: [rails, helpers, url_helpers]
+---
+
+Sometimes I want to use a Rails url helper method outside the controller context.
+
+Link: [Explanation on StackOverflow](https://stackoverflow.com/a/5456103 &quot;good examples for doing this&quot;)
+
+In essence:
+
+``` ruby
+Rails.application.routes.url_helpers.new_post_path
+```
+
+
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2020/03/2020-03-21-setting-git-default-editor.md</id>
-      <updated>2020-03-21T04:55:22-05:00</updated>
+      <updated>2020-03-22T18:02:38-05:00</updated>
       <title>2020-03-21-setting-git-default-editor</title>
       <content>---
+title: &quot;Setting git&#39;s default editor&quot;
+date: 2020-03-21
 category: tools
 keywords: git, editor, emacs
 ---
@@ -62,89 +533,24 @@ which will run emacsclient to use the currently running instance of emacs, *and*
 
 I initially used the command line arguments I normally run emacsclient with: `-c -n`, which say to open a new frame and not to wait for the editing session to finish. Bad move. If the git command is not forced to wait while I modify the commit message, it assumes it wasn&#39;t changed and aborts the commit. I also didn&#39;t want to have it be spawning new frames since that just gets messy if I forget to close them, which I most often do.
 
+### I hear you, you don&#39;t use emacs ###
 
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2020/2020-03-10-using-rails-url-helpers-outside-a-controller.md</id>
-      <updated>2020-03-10T20:42:10-05:00</updated>
-      <title>2020-03-10-using-rails-url-helpers-outside-a-controller</title>
-      <content>---
-layout: post
-title: &quot;Using Rails url_helpers outside a controller context&quot;
-date: 2020-03-10T20:38
-categories: [rails]
-tags: [rails, helpers, url_helpers]
-source: https://stackoverflow.com/a/5456103
----
+You aren&#39;t a dinosaur like I am, I got you.
 
-Sometimes I want to use a Rails url helper method outside the controller context.
+You can run VSCode from the command line, or Atom, etc., etc., etc..  I&#39;m not going to teach you how to set that up, *but you should learn how if you don&#39;t because it will speed up your work.*
 
-Link: [Explanation on StackOverflow](https://stackoverflow.com/a/5456103 &quot;good examples for doing this&quot;)
+Here are some of the alternative:
 
-In essence:
+- VSCode: `git config -global core.editor code`
+- Atom: `git config --global core.editor atom`
+- Vim: `git config --global core.editor vim`
 
-``` ruby
-Rails.application.routes.url_helpers.new_post_path
-```
+## Git-mode in Editors ##
 
-
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2020/02/2020-02-10-git-follies-prefacing-commit-msg-with-ticket-number.md</id>
-      <updated>2020-02-10T09:10:39-06:00</updated>
-      <title>2020-02-10-git-follies-prefacing-commit-msg-with-ticket-number</title>
-      <content>---
-title: &quot;How To: Preface your git commit messages with the Jira ticket number&quot;
-date: 2020-02-10T08:57:37-0600
-categories: [&quot;git&quot;]
-tags: [git-follies, commit-message, jira, how-to]
-published: false
----
-
-This is something you can build into your project&#39;s git hooks, that will preface your commit messages with the Jira ticket number based on the branch name.
-
-[WIP]
-
-We want something that will pull the tracking ticket number from the branch, like so:
-
-| branch name                     | message prefix |
-|:-------------------------------:|:--------------:|
-| `kick-1234-this-cool-feature`   | `[KICK-1234]`  |
-| `bug/KICK-789-woops`            | `[KICK-789]`   |
-| `feature/kick_2100_the_precept` | `[KICK-2100]`  |
-| `777_sunset_life`               | `[777]`        |
-|                                 |                |
-
-Create a hook for `.git/hooks/prepare-commit-msg` with the following script:
-
-``` shell
-# Current branch name: &quot;KICK-3586_revert_nullable_custom_field_creation&quot;
-$ git rev-parse --abbrev-ref HEAD | ruby -ne &#39;ticket = %r{^(?&lt;proj&gt;\w+)[-_ ](?&lt;num&gt;\d+)}.match($_).named_captures; puts &quot;[#{ticket[&quot;proj&quot;].upcase}-#{ticket[&quot;num&quot;]}]&quot; &#39;
-# =&gt; [KICK-3586]
-
-```
-
-Make sure the hook is executable.
-
-
-When you make a commit, git will execute `.git/hooks/prepare-commit-msg .git/COMMIT_MESSAGE`
-
-Adding the hook to a code repo.
+Most modern-day editors have a means of running git commands from inside the editor. This is often a far richer environment, closer to a GUI tool, really, than the command line offers. I use `magit` in emacs all the time, but I also use the command line all the time; some operations are better for one than the other. (By the way, `magit` has seriously the very best implementation for doing an interactive rebase, i.e., squashing your commits.)
 
 
 
-
-Inspiration: https://medium.com/better-programming/how-to-automatically-add-the-ticket-number-in-git-commit-message-bda5426ded05
 </content>
       <author>
         <name>Tamara Temple</name>
@@ -335,182 +741,6 @@ Link to article [[https://www.sitepoint.com/more-html5-semantics-changes-to-exis
 
    See: [[https://caneadventures.blog/2019/12/02/alt-text-on-social-media/][Alt text on Social Media, Cane Adventures blog]] for a perspective on using alt text from a visually impaired blogger
    
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2015/01/just-use-double-quotes.org</id>
-      <updated>2020-01-19T03:54:57-06:00</updated>
-      <title>[[http://viget.com/extend/just-use-double-quoted-ruby-strings?utm_source=rubyweekly&amp;utm_medium=email][Just use double quoted strings]] [2015-01-25 Sun 08:55]</title>
-      <content>* [[http://viget.com/extend/just-use-double-quoted-ruby-strings?utm_source=rubyweekly&amp;utm_medium=email][Just use double quoted strings]] [2015-01-25 Sun 08:55]
-
-  #+AUTHOR: Lawson Kurtz
-  #+TWITTER: @LawsonKurtz
-  #+DATE: [2015-01-22 Thu]
-
-  tl;dr: there is no significant performance difference, compared the
-  human problems of misunderstanding or forgetting to change from
-  single to double when you do decide to interpolate.
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2017/01/module-extends-self.org</id>
-      <updated>2020-01-19T03:49:20-06:00</updated>
-      <title>Module extend self</title>
-      <content>#+OPTIONS: &#39;:nil *:t -:t ::t &lt;:t H:3 \n:nil ^:t arch:headline author:t broken-links:nil
-#+OPTIONS: c:nil creator:nil d:(not &quot;LOGBOOK&quot;) date:t e:t email:nil f:t inline:t num:nil
-#+OPTIONS: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t timestamp:t title:t toc:nil
-#+OPTIONS: todo:t |:t
-#+TITLE: module-extends-self
-#+DATE: &lt;2020-01-19 Sun&gt;
-#+AUTHOR: Tamara Temple
-#+EMAIL: tamouse@gmail.com
-#+LANGUAGE: en
-#+SELECT_TAGS: export
-#+EXCLUDE_TAGS: noexport
-#+CREATOR: Emacs 26.2 (Org mode 9.1.9)
-
-* Module extend self
-
-  #+SOURCE: https://medium.com/@vsavkin/hexagonal-architecture-for-rails-developers-8b1fee64a613
-
-  Buried in this blog post, I found an interesting construction. See
-  the Example =module OrderRepository=.
-
-  I had never seen the =extend self= construct before, so I did a
-  little playing around in Pry.
-
-  Using =extend self= in a module is similar to calling =class &lt;&lt;
-  self ... end= with all the method definitions inside it. It&#39;s yet
-  another way to get access to a module&#39;s eigenclass.
-
-  This goes along with using =def self.my_method= and using
-  =module_function= to also making piecemeal module methods, the main
-  distinction being that using =def self.my_method= creates a method
-  that the *only* receiver will be the module itself, not any classes
-  that include the module.
-
-  #+begin_src ruby
-    module MyMod
-      extend self
-
-      def hi_there
-        &quot;hi there from inside MyMod&quot;
-      end
-
-      private
-
-      def go_away
-        &quot;go away now inside MyMod&quot;
-      end
-    end
-
-    MyMod.hi_there #=&gt; &quot;hi there from inside MyMod&quot;
-    MyMod.go_away
-
-    class MyClass
-      include MyMod
-
-      def call_hi_there
-        hi_there
-      end
-    end
-
-    MyClass.hi_there
-    MyClass.new.hi_there #=&gt; &quot;hi there from inside MyMod&quot;
-    MyClass.call_hi_there
-    MyClass.new.call_hi_there #=&gt; &quot;hi there from inside MyMod&quot;
-    MyClass.go_away
-    MyClass.new.go_away
-
-    module YourMod
-      class &lt;&lt; self
-        def hi_there
-          &quot;hi there from inside YourMod&quot;
-        end
-
-        private
-
-        def go_away
-          &quot;go away now inside YourMod&quot;
-        end
-      end
-
-      def que?
-        &quot;que? inside YourMod&quot;
-      end
-    end
-
-    YourMod.hi_there #=&gt; &quot;hi there from inside YourMod&quot;
-    YourMod.go_away
-    YourMod.que?
-
-    module TheirMod
-      def hi_there
-        &quot;hi there from inside TheirMod&quot;
-      end
-
-      method_function :hi_there
-    end
-
-    TheirMod.hi_there #=&gt; &quot;hi there from inside TheirMod&quot;
-
-    module ItsMod
-      def self.hi_there
-        &quot;hi there from inside ItsMod&quot;
-      end
-    end
-
-    ItsMod.hi_there #=&gt; &quot;hi there from inside ItsMod&quot;
-
-
-    class YourClass
-      include YourMod
-
-      def call_hi_there
-        hi_there
-      end
-    end
-
-    YourClass.new.hi_there #=&gt; NoMethodError: undefined method `hi_there&#39; for #&lt;YourClass:0x007f50d0307cd0&gt;
-    YourClass.new.call_hi_there #=&gt; NameError: undefined local variable or method `hi_there&#39; for #&lt;YourClass:0x007f50d021aae8&gt;
-
-    class TheirClass
-      include TheirMod
-
-      def call_hi_there
-        hi_there
-      end
-    end
-
-    TheirClass.new.hi_there #=&gt; NoMethodError: private method `hi_there&#39; called for #&lt;TheirClass:0x007f50d0978880&gt;
-    TheirClass.new.call_hi_there #=&gt; &quot;hi there from inside TheirMod&quot;
-
-    class ItsClass
-      include ItsMod
-
-      def call_hi_there
-        hi_there # not available!
-      end
-
-      def really_call_hi_there
-        ItsMod.hi_there
-      end
-    end
-
-    ItsClass.new.hi_there #=&gt; NoMethodError: undefined method `hi_there&#39; for #&lt;ItsClass:0x007f50d0859aa8&gt;
-    ItsClass.new.call_hi_there #=&gt; NameError: undefined local variable or method `hi_there&#39; for #&lt;ItsClass:0x007f50d0817450&gt;
-    ItsClass.new.really_call_hi_there #=&gt; &quot;hi there from inside ItsMod&quot;
-
-  #+end_src
-
 </content>
       <author>
         <name>Tamara Temple</name>

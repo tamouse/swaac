@@ -1,3 +1,10 @@
+---
+title: "Prefer Time.use_zone to Time.zone in Rails"
+date: 2020-01-19
+categories: [rails]
+tags: [timezones]
+---
+
 > Rails better practice for dealing with altering the current process's timezone
 
 # In Rails, Prefer \`.use\_zone\` to \`.zone=\`

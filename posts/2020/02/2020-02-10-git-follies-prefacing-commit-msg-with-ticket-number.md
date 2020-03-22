@@ -3,7 +3,7 @@ title: "How To: Preface your git commit messages with the Jira ticket number"
 date: 2020-02-10T08:57:37-0600
 categories: ["git"]
 tags: [git-follies, commit-message, jira, how-to]
-published: false
+published: true
 ---
 
 This is something you can build into your project's git hooks, that will preface your commit messages with the Jira ticket number based on the branch name.
