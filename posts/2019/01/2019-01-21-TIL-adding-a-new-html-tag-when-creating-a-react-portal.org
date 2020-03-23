@@ -1,13 +1,16 @@
+
+*WARNING: This is old and likely obsolete.*
+
 * TIL: Adding a new HTML tag name when creating a React Portal
   :PROPERTIES:
   :KEYWORDS: react, portal, html, tag names
   :CAPTURE_DATE: Mon Jan 21 16:49:12 2019
-  :LAST_UPDATE: Time-stamp: <2019-01-21 17:06:24 tamara.temple>
+  :LAST_UPDATE: Time-stamp: <2020-03-23 05:09:13 tamara>
   :END:
 
 - keywords: react, portal, html, tag names
 - capture date: Mon Jan 21 16:49:12 2019
-- last updated: Time-stamp: <2019-01-21 17:06:24 tamara.temple>
+- last updated: Time-stamp: <2020-03-23 05:09:13 tamara>
 
 I was working on a replacement for the ~Modal~ component in ~react-bootstrap~ since it is clear the library is moving away from where we want to be with our app.
 

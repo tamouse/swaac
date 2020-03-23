@@ -3,6 +3,8 @@
   :CUSTOM_ID: using-git-to-deploy-a-static-site
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2016-01-12 20:42
 - keywords: ["deployment", "git", "jekyll"]
 - source:

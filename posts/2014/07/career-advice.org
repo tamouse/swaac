@@ -4,9 +4,8 @@
   :END:
 
 - published date: 2014-07-12 13:56:33 -0500
+- category: opinion  
 - keywords: ["advice", "careers", "programming", "strategies", "swaac"]
-- source:
-- redirect_from: ["/blog/2014/07/12/career-advice/"]
 
 Something that comes up quite often on IRC is the question: "How do I get a job programming Ruby?", usually from people new to programming. I decided to post my response.
 

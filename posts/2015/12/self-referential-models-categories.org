@@ -3,6 +3,8 @@
   :CUSTOM_ID: self-referential-models-categories
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2015-12-15 19:37
 - keywords: ["examples", "howtos", "rails", "self-referencing-models"]
 - source: https://github.com/tamouse/example_nested_category

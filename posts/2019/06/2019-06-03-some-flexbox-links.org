@@ -12,6 +12,9 @@
 #+EXCLUDE_TAGS: noexport
 #+CREATOR: Emacs 26.1 (Org mode 9.1.9)
 
+
+*WARNING: This is old and likely obsolete.*
+
 Hat-tip to @Andrea on WHCTC slack
 
 ** Flexbox Patterns

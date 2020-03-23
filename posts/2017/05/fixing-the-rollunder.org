@@ -1,3 +1,5 @@
+*WARNING: This is old and likely obsolete.*
+
 * Fixing the Roll-under for Fixed-Top Layouts
 
 - published date: 2017-05-13 11:46

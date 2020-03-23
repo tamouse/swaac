@@ -1,12 +1,13 @@
 * The Tenets of Toast and Tech
   :PROPERTIES:
   :CAPTURE_DATE: [2018-12-12 Wed]
-  :last_update: Time-stamp: <2019-04-05 01:09:23 tamara>
+  :last_update: Time-stamp: <2020-03-23 05:08:54 tamara>
   :END:
 
-  - last_updated: Time-stamp: <2019-04-05 01:09:23 tamara>
+  - last_updated: Time-stamp: <2020-03-23 05:08:54 tamara>
   - keywords: Learning Space, Toast and Tech
   - capture date: [2018-12-12 Wed]
+  - category: philosophy
 
   As some of you following know, I've led this thing on Tuesday nights called "Toast & Tech" for about 3 years [starting in the Autumn of 2015], nominally under the organization at .@GDImpls, the Minneapolis chapter of .@girldevelopit.
 

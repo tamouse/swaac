@@ -3,6 +3,10 @@
   :CUSTOM_ID: css-tricks-drop-caps
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
+
+
 - published date: 2013-08-25 19:44
 - keywords: ["css", "design", "drop-caps", "howtos", "swaac"]
 - source:

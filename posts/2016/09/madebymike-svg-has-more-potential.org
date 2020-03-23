@@ -3,6 +3,8 @@
   :CUSTOM_ID: link-madebymike---svg-has-more-potential
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2016-09-26 18:46
 - keywords: ["css", "image", "links", "svg", "webdev"]
 - source:

@@ -1,5 +1,7 @@
 * First thing I learned about working with Elixir
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2015-06-30 13:16
 - keywords: ["elixir", "first-thing", "new-lang"]
 - source: http://elixir-lang.org

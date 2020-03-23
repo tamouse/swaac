@@ -1,3 +1,5 @@
+*WARNING: This is old and likely obsolete.*
+
 * Changing the "Return To Shop" link and text in an empty WooCommerce cart
   :PROPERTIES:
   :CUSTOM_ID: changing-the-return-to-shop-link-and-text-in-an-empty-woocommerce-cart

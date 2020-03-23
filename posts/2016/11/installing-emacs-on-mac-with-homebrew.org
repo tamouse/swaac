@@ -1,3 +1,5 @@
+*WARNING: This is old and likely obsolete.*
+
 * installing emacs on Mac with homebrew
   :PROPERTIES:
   :CUSTOM_ID: installing-emacs-on-mac-with-homebrew

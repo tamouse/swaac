@@ -1,6 +1,6 @@
 * Git Merge "dry run"
 
-- Time-stamp: <2018-11-04 08:22:45 tamara>
+- Time-stamp: <2020-03-23 05:05:14 tamara>
 - published date: 2018-02-28 10:30
 - keywords: git, merge, dry run, tools
 
@@ -10,7 +10,7 @@ In the sample below, =BRANCH= is being merged *into* =TARGET=.
 
 #+BEGIN_SRC sh
     git checkout $TARGET
-    git merge --no-commit --no-ff $BRANCH
+    git merge --no-commit --no-ff --no-edit $BRANCH
     git diff --cached
     git merge --abort
 #+END_SRC

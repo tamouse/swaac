@@ -3,6 +3,8 @@
   :CUSTOM_ID: multi-file-uploads-and-multiple-selects
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2013-10-22 10:45
 - keywords: ["code", "javascript", "multi-file-uploads", "swaac", "user-experience", "user-feedback", "ux"]
 - source: http://www.raymondcamden.com/index.cfm/2013/10/1/MultiFile-Uploads-and-Multiple-Selects

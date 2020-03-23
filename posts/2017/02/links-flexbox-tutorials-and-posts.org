@@ -1,3 +1,5 @@
+*WARNING: This is old and likely obsolete.*
+
 * Links: Flexbox tutorials and posts
   :PROPERTIES:
   :CUSTOM_ID: links-flexbox-tutorials-and-posts

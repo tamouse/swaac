@@ -1,5 +1,8 @@
 * Caption Hover Effects in CSS3
 
+*WARNING: this is old and likely obsolete.*
+
+
 - date: 2013-07-06 12:14
 - tags: [tech, css3, ui, links]
 

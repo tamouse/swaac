@@ -1,6 +1,8 @@
 #+TITLE: Hack of the Day: Comments in package.json?
 
-- Time-stamp: <2018-09-16 14:29:12 tamara.temple> - convert to org mode
+*WARNING: This is old and likely obsolete.*
+
+- Time-stamp: <2020-03-23 05:01:32 tamara> - convert to org mode
 - original date: 2017-08-08 15:32
 - keywords: hacks, package.json, comments
 

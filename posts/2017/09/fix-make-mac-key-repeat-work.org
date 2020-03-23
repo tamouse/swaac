@@ -1,3 +1,6 @@
+
+*WARNING: This is old and likely obsolete.*
+
 * Fix: Make Mac key repeat work
   :PROPERTIES:
   :CUSTOM_ID: fix-make-mac-key-repeat-work

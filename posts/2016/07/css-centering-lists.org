@@ -1,5 +1,7 @@
 #+TITLE: CSS Centering a List Horizontally and Vertically
 
+*WARNING: This is old and likely obsolete.*
+
 A common issue folks encounter in CSS land is the vertical and horizontal centering of something that the exact height and width cannot be predetermined.
 
 Over on [[https://css-tricks.com/][css-tricks]], there's a general set of guidelines to do this. I prefer [[https://css-tricks.com/centering-css-complete-guide/#both-unknown][this solution]] over the others mentioned.

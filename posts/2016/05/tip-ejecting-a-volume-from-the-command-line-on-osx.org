@@ -3,6 +3,8 @@
   :CUSTOM_ID: tip-ejecting-a-volume-from-the-command-line-on-osx
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2016-05-28 06:39
 - keywords: ["command-line", "diskutil", "eject", "osx", "tips"]
 - source:

@@ -3,6 +3,8 @@
   :CUSTOM_ID: link-how-to-use-the-html5-sectioning-elements
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2015-03-05 21:34
 - keywords: ["html", "html5", "links", "sectioning", "tutorials"]
 - source:

@@ -2,6 +2,9 @@
 
 #+DATE: 2016-07-09 01:18
 
+*WARNING: This is old and likely obsolete.*
+
+
 Notes and reflections on learning [[https://facebook.github.io/react-native/][ReactNative]], from a workshop by [[https://github.com/hendrixer][Scott Moss]] at [[https://frontendmasters.com/][FrontendMasters]].
 
 ** What is ReactNative?

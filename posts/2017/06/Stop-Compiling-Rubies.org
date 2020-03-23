@@ -2,6 +2,8 @@
 #+AUTHOR: Tamara Temple [[mailto:tamara@tamouse.org][tamara@tamouse.org]]
 #+DATE: 2017-06-06T21:35
 
+*WARNING: This is old and likely obsolete.*
+
 * Stop Compiling Ruby For Provisioning!
 
 - keywords: devops, provisioning, brightbox, ruby

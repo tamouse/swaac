@@ -1,3 +1,5 @@
+*WARNING: This is old and likely obsolete.*
+
 * TIL: target="_blank" with no rel="noopener"
   :PROPERTIES:
   :CUSTOM_ID: til-target_blank-with-no-relnoopener

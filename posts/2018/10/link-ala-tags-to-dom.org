@@ -1,6 +1,9 @@
+
+*WARNING: This is old and likely obsolete.*
+
 * Link: [[https://alistapart.com/article/tags-to-dom][Tags to DOM]]
 
-- Time-stamp: <2018-11-04 10:00:32 tamara>
+- Time-stamp: <2020-03-23 05:07:16 tamara>
 - published date: [2018-11-04 Sun]
 - keywords: link, deep dive, html tags, DOM construction
 

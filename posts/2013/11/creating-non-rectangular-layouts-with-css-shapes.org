@@ -3,6 +3,8 @@
   :CUSTOM_ID: creating-non-rectangular-layouts-with-css-shapes
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2013-11-13 18:52
 - keywords: ["css", "swaac", "ui", "user-interface", "web-design"]
 - source: http://sarasoueidan.com/blog/css-shapes/

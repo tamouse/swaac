@@ -3,6 +3,8 @@
   :CUSTOM_ID: scorched
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2013-09-29 14:00
 - keywords: ["controller", "framework", "minimal", "ruby", "swaac", "web"]
 - source: http://scorchedrb.com/

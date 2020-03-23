@@ -1,3 +1,6 @@
+
+*WARNING: This is old and likely obsolete.*
+
 * Talk: Learning React+GraphQL+Apollo with Rails GraphQL API All At Once
   :PROPERTIES:
   :CUSTOM_ID: talk-learning-reactgraphqlapollo-with-rails-graphql-api-all-at-once

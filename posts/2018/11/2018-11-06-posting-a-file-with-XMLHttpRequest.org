@@ -1,6 +1,9 @@
+
+*WARNING: This is old and likely obsolete.*
+
 * RESEARCH: Posting a file with XMLHttpRequest
 
-- Time-stamp: <2018-11-06 14:26:38 tamara>
+- Time-stamp: <2020-03-23 05:07:31 tamara>
 - published date: [2018-11-06 Tue 13:46]
 - keywords: XMLHttpRequest, file upload, JavaScript, research, React
 

@@ -4,8 +4,11 @@
 #+KEYWORDS: jQuery, attr, prop
 #+DESCRIPTION: Today, I learned another difference between jQuery's .attr() and .prop() methods
 
+
+*WARNING: This is old and likely obsolete.*
+
 * TIL: jQuery .attr() vs .prop()
-   - last update: Time-stamp: <2019-05-02 08:14:03 tamara>
+   - last update: Time-stamp: <2020-03-23 05:12:08 tamara>
 
 ** Intro
 

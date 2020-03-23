@@ -1,3 +1,6 @@
+
+*WARNING: This is old and likely obsolete.*
+
 * Polyfill for JavaScript's ~CustomEvent~ constructor
 
 I had a project I needed to use a non-DOM event with, where a couple of React components were signaling a change in state, and they didn't share any context.

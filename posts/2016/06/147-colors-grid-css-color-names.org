@@ -3,6 +3,8 @@
   :CUSTOM_ID: link-147-colors-grid---css-color-names
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2016-06-16 08:21
 - keywords: ["colour-names", "colours", "css"]
 - source:

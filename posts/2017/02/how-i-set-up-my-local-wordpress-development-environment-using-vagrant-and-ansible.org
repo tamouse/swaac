@@ -1,3 +1,5 @@
+*WARNING: This is old and likely obsolete.*
+
 * How I Set Up my Local WordPress Development Environment Using Vagrant and Ansible
   :PROPERTIES:
   :CUSTOM_ID: how-i-set-up-my-local-wordpress-development-environment-using-vagrant-and-ansible

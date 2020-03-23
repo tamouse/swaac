@@ -3,6 +3,8 @@
   :CUSTOM_ID: a-guide-to-ruby-collections-archives---sitepoint
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2013-11-01 13:43
 - keywords: ["arrays", "collections", "enumerable", "enumerator", "hashes", "ranges", "ruby", "sets", "swaac"]
 - source: http://www.sitepoint.com/series/a-guide-to-ruby-collections/

@@ -3,6 +3,8 @@
   :CUSTOM_ID: a-set-of-reactjs-demos
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2016-05-13 13:02
 - keywords: ["demos", "javascript", "reactjs", "sam-slotsky", "videos"]
 - source:

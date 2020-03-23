@@ -13,6 +13,9 @@
 #+CREATOR: Emacs 26.1 (Org mode 9.1.9)
 #+KEYWORDS: ios, simulator, development, reset
 
+
+*WARNING: This is old and likely obsolete.*
+
 * How to reset iOS simulator
 
 I ran into an issue recently where I was trying to debug a problem in a project, but had a problem accessing the right data server since I was logged into a local development server, and really needed to get back to the "new app" state.

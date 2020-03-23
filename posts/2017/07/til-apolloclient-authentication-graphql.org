@@ -1,6 +1,9 @@
 #+TITLE: TIL: ApolloClient Authentication (graphql)
 
-- Time-stamp: <2018-09-16 14:57:04 tamara.temple>
+
+*WARNING: This is old and likely obsolete.*
+
+- Time-stamp: <2020-03-23 05:01:13 tamara>
 - original date: 2017-07-22 02:19
 - keywords: webdev, graphql, react, apollo-client
 

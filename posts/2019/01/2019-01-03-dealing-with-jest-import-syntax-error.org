@@ -1,7 +1,10 @@
 
+*WARNING: This is old and likely obsolete.*
+
+
 * TIL: Dealing with a jest ~import~ SyntaxError
 
-- Time-stamp: <2019-01-03 14:54:57 tamara>
+- Time-stamp: <2020-03-23 05:09:10 tamara>
 - capture-date: [2019-01-03 Thu]
 - keywords: jest, import, SyntaxError, transformIgnorePatterns
 

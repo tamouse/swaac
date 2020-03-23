@@ -3,6 +3,8 @@
   :CUSTOM_ID: essential-tools-for-starting-a-rails-app-in-2013-pete-keen
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2013-09-20 17:54
 - keywords: ["rails", "swaac", "tools"]
 - source: http://www.petekeen.net/essential-tools-for-starting-a-rails-app-in-2013

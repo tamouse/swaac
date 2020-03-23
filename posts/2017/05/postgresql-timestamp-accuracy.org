@@ -1,3 +1,5 @@
+*WARNING: This is old and likely obsolete.*
+
 * Postgresql Timestamp Accuracy and Precision
 
 - published date: 2017-05-09 21:31

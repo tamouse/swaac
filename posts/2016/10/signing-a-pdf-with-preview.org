@@ -1,3 +1,5 @@
+*WARNING: This is old and likely obsolete.*
+
 * Signing a PDF with Preview
   :PROPERTIES:
   :CUSTOM_ID: signing-a-pdf-with-preview

@@ -3,6 +3,8 @@
   :CUSTOM_ID: ruby---cant-get-page-data-from-jekyll-plugin---stack-overflow
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2013-10-15 10:54
 - keywords: ["answers", "issues", "jekyll", "stackoverflow", "swaac"]
 - source: http://stackoverflow.com/questions/10264249/cant-get-page-data-from-jekyll-plugin

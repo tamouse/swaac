@@ -1,3 +1,5 @@
+*WARNING: This is old and likely obsolete.*
+
 * TIL: Providing Defaults For EnvVars in Python 3
   :PROPERTIES:
   :CUSTOM_ID: til-providing-defaults-for-envvars-in-python-3

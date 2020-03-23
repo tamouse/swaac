@@ -3,6 +3,8 @@
   :CUSTOM_ID: link-the-worst-mistake-in-computer-science
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2015-09-02 10:07
 - keywords: ["null", "programming"]
 - source: https://www.lucidchart.com/techblog/2015/08/31/the-worst-mistake-of-computer-science/

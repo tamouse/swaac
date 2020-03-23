@@ -3,6 +3,8 @@
   :CUSTOM_ID: devops-for-developers-video-series
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2013-11-17 21:25
 - keywords: ["devops", "swaac", "videos"]
 - source:

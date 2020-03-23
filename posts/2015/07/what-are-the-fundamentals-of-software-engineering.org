@@ -1,11 +1,13 @@
-* 
+* What are the fundamentals of software engineering?
   :PROPERTIES:
   :CUSTOM_ID: section
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2015-07-03 14:01
 - keywords: ["concepts", "learning", "point-of-view", "software-engineering", "swaac"]
-- source:
+- category: philosophy
 
 I was recently matched to a question on [[http://quora.com][Quora]] that asked:
 

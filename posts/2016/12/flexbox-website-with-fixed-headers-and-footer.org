@@ -1,3 +1,5 @@
+*WARNING: This is old and likely obsolete.*
+
 * flexbox website with fixed headers and footer
   :PROPERTIES:
   :CUSTOM_ID: flexbox-website-with-fixed-headers-and-footer

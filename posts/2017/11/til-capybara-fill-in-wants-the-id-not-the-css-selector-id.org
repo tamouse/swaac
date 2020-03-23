@@ -1,3 +1,6 @@
+
+*WARNING: This is old and likely obsolete.*
+
 * TIL: Capybara fill\_in wants the id, not the CSS selector id
   :PROPERTIES:
   :CUSTOM_ID: til-capybara-fill_in-wants-the-id-not-the-css-selector-id

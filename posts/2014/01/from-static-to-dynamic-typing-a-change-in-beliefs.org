@@ -4,9 +4,9 @@
   :END:
 
 - published date: 2014-01-06 02:33
+- category: philosophy
 - keywords: ["duck-typing", "howtos", "swaac"]
-- source:
-- redirect_from: ["/blog/2014/01/06/from-static-to-dynamic-typing-a-change-in-beliefs/"]
+
 
 [[http://sandymetz.com][Sandy Metz]]'s Book, [[https://www.goodreads.com/book/show/18090276-practical-object-oriented-design-in-ruby][Practical Object-Oriented Design in Ruby]], she discusses the paradigm shift needed to believe that dynamically typed languages, such as Ruby, can be better than statically typed languages.
 

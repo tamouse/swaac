@@ -1,3 +1,5 @@
+*WARNING: This is old and likely obsolete.*
+
 * List of awesome accessibility resources
 
 - published date: 2017-05-14 23:25

@@ -3,6 +3,8 @@
   :CUSTOM_ID: apollo-graphql-container-with-queries
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2017-09-19T18:29
 - keywords: graphql, react, apollo, api
 

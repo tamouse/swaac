@@ -3,6 +3,8 @@
   :CUSTOM_ID: tweet-by-c089-hidden-costs-of-poor-programming
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2015-12-01 07:27
 - keywords: ["productivity", "programming", "twitter"]
 - source: https://twitter.com/c089/status/671624868908126208

@@ -1,6 +1,9 @@
+
+*WARNING: This is old and likely obsolete.*
+
 * LINK: [[https://css-tricks.com/aria-spackle-not-rebar/][ARIA is Spackle, Not Rebar]]
 
-- Time-stamp: <2019-02-02 17:27:14 tamara>
+- Time-stamp: <2020-03-23 05:07:13 tamara>
 - published date: [2018-11-04 Sun]
 - keywords: ARIA, accessibility, a11y, link
 

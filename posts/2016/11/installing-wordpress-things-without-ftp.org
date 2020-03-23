@@ -1,3 +1,5 @@
+*WARNING: This is old and likely obsolete.*
+
 * Installing WordPress Things Without FTP
   :PROPERTIES:
   :CUSTOM_ID: installing-wordpress-things-without-ftp

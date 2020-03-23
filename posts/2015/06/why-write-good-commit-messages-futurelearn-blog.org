@@ -3,6 +3,8 @@
   :CUSTOM_ID: link-why-write-good-commit-messages-futurelearn-blog
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2015-06-25 14:54
 - keywords: ["commit", "communication", "emoji", "git", "links", "messages", "tbp", "teamwork", "tiny-best-practices", "utf-8"]
 - source:

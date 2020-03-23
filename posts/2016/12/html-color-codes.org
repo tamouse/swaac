@@ -1,3 +1,5 @@
+*WARNING: This is old and likely obsolete.*
+
 f* Link: [[http://htmlcolorcodes.com/][HTML Color Codes]]               :webdesign:tools:color:css:html:swaac:
   :PROPERTIES:
   :CAPTURE_DATE: [2016-12-14 Wed 19:31]

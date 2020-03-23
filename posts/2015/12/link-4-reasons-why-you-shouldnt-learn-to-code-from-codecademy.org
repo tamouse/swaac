@@ -3,6 +3,8 @@
   :CUSTOM_ID: link-4-reasons-why-you-shouldnt-learn-to-code-from-codecademy
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2015-12-03 00:14
 - keywords: ["code-academy", "fails", "learning"]
 - source: http://www.makeuseof.com/tag/4-reasons-shouldnt-learn-code-codeacademy/

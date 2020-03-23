@@ -3,6 +3,8 @@
   :CUSTOM_ID: adding-real-time-to-rails-with-socket.io-node.js-and-backbone.js-with-demo---liam-kaufman
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2013-09-24 23:18
 - keywords: ["backbone-js", "node-js", "rails", "real-time", "socket.io", "swaac"]
 - source: http://liamkaufman.com/blog/2012/02/25/adding_real-time_to_rails_with_socket.IO_nodejs_and_backbonejs_with_demo/

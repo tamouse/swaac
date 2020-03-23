@@ -1,6 +1,9 @@
+
+*WARNING: This is old and likely obsolete.*
+
 * [2018-11-06 Tue 08:40] TIL: serving static files in storybook
 
-  - last_update: Time-stamp: <2018-11-06 08:56:46 tamara>
+  - last_update: Time-stamp: <2020-03-23 05:07:36 tamara>
   - capture_date: [2018-11-06 Tue 08:40]
   - keywords: storybook, test data, static assets
 

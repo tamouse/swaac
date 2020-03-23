@@ -1,7 +1,10 @@
-* Unit Testing Backbone.JS Applications
+* Link: Unit Testing Backbone.JS Applications
+
+*Warning: this is old, and likely obsolete.*
+
 
 - date: 2013-02-25 16:01
-- categories: [swaac]
+- category: testing
 - tags: [software, development, testing, unit-testing, backbone-js, javascript, node-js, test-em, mocha-js, sinon-js, chai-js, web-apps]
 - source: http://www.sitepoint.com/unit-testing-backbone-js-applications/
 

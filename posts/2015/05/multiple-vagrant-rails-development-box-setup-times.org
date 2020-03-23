@@ -3,6 +3,8 @@
   :CUSTOM_ID: multiple-vagrant-rails-development-box-setup-times
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2015-05-09 21:12
 - keywords: ["development", "rails", "vagrant"]
 - source:
@@ -389,38 +391,38 @@ Elapsed time: approximately 15 seconds.
 
 *FIFTEEN SECONDS*
 
-* FIFTEEN SECONDS ?!?!?
-  :PROPERTIES:
-  :CUSTOM_ID: fifteen-seconds
-  :END:
+** FIFTEEN SECONDS ?!?!?
+   :PROPERTIES:
+   :CUSTOM_ID: fifteen-seconds
+   :END:
 
-{:.no_toc}
+ {:.no_toc}
 
---------------
+ --------------
 
-* Conclusions
-  :PROPERTIES:
-  :CUSTOM_ID: conclusions
-  :END:
+** Conclusions
+   :PROPERTIES:
+   :CUSTOM_ID: conclusions
+   :END:
 
-From scratch to a running Rails app, times are in approximate minutes:
+ From scratch to a running Rails app, times are in approximate minutes:
 
-| package                                       | download     | provision     | create app     | total     |
-|-----------------------------------------------+--------------+---------------+----------------+-----------|
-| debian jessie 8 + manual                      | 12           | 35            | 1              | 48        |
-| Jason Hsu debian wheezy 7 + rvm               | 22           | 2             | 25             | 49        |
-| Jason Hsu debian wheezy 7 + rvm -- REDO       | 22           | 3             | 2              | 27        |
-| ubuntu trusty + ansible                       | 16           | 12            | 1              | 29        |
-| debian jessie 8 + ansible                     | 12           | 10            | 1              | 23        |
-| :------------------------------------------   | ---------:   | ----------:   | -----------:   | ------:   |
+ | package                                       | download     | provision     | create app     | total     |
+ |-----------------------------------------------+--------------+---------------+----------------+-----------|
+ | debian jessie 8 + manual                      | 12           | 35            | 1              | 48        |
+ | Jason Hsu debian wheezy 7 + rvm               | 22           | 2             | 25             | 49        |
+ | Jason Hsu debian wheezy 7 + rvm -- REDO       | 22           | 3             | 2              | 27        |
+ | ubuntu trusty + ansible                       | 16           | 12            | 1              | 29        |
+ | debian jessie 8 + ansible                     | 12           | 10            | 1              | 23        |
+ | :------------------------------------------   | ---------:   | ----------:   | -----------:   | ------:   |
 
-{:.table}
+ {:.table}
 
-Your mileage will vary, of course, but if you are going the vagrant route, plan on about a half-hour to be fully up and running with a development-ready rails kit. Using a pre-built package such as Jason's is a great idea, provided you also understand the underlying assumptions that package is making. This is true also of using things like my starter kit, as well.
+ Your mileage will vary, of course, but if you are going the vagrant route, plan on about a half-hour to be fully up and running with a development-ready rails kit. Using a pre-built package such as Jason's is a great idea, provided you also understand the underlying assumptions that package is making. This is true also of using things like my starter kit, as well.
 
-* Going Forward
-  :PROPERTIES:
-  :CUSTOM_ID: going-forward
-  :END:
+** Going Forward
+   :PROPERTIES:
+   :CUSTOM_ID: going-forward
+   :END:
 
-Whatever means you choose to arrive at your development box, you should take steps to preserve it as well. Repackage the VM and save the box file somewhere you can retrieve it, with all your personal customizations and so on. I'll write a future blog post on that.
+ Whatever means you choose to arrive at your development box, you should take steps to preserve it as well. Repackage the VM and save the box file somewhere you can retrieve it, with all your personal customizations and so on. I'll write a future blog post on that.

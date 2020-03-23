@@ -2,6 +2,8 @@
 
 #+DATE: 2016-07-09 01:16
 
+*WARNING: This is old and likely obsolete.*
+
 Working on a new app today, the problem was creating an email that contained brand images.
 
 The issue was getting the =image_url= tag to provide the full and complete URL to the images which were in =app/assets/images/=.

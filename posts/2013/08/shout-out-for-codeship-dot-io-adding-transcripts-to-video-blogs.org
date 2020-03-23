@@ -5,8 +5,6 @@
 
 - published date: 2013-08-08 18:59
 - keywords: ["a11y", "praise", "swaac", "testing"]
-- source:
-- redirect_from: ["/blog/2013/08/08/shout-out-for-codeship-dot-io-adding-transcripts-to-video-blogs/"]
 
 In which your humble correspondent sings the praises for some people really trying to get it.
 

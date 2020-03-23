@@ -4,9 +4,8 @@
   :END:
 
 - published date: 2013-12-20 02:28
+- category: philosophy
 - keywords: ["codeacademy", "education", "learning", "swaac"]
-- source:
-- redirect_from: ["/blog/2013/12/20/this-is-why-i-dont-like-sites-like-codeacademy/"]
 
 The biggest problem I have with sites like [[http://codeacademy.ocm][CodeAcademy]] is shown in the following screenshot:
 

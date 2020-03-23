@@ -1,9 +1,13 @@
 * Stop Writing Rails Controllers
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2015-01-29 21:07
 - keywords: ["controllers", "data-driven-controllers", "links", "rails", "rethinking-rails", "thin-controllers"]
 - source: http://spin.atomicobject.com/2015/01/26/data-driven-rails-controllers/
 - author: {"name"=>"Shawn Anderson", "url"=>"http://spin.atomicobject.com/author/shawn-anderson/"}
+
+*update:* perhaps a better philosophy is expressed by Sandi Metz in POODR and really, embrace Ruby's object oriented-ness, and write thing controllers, models, views, everything structural about Rails.
 
 Good article, thought provoking. Makes one think about how much code one must write and how it's possibly better to just use data to configure things, /a la/ =config/routes.rb=. The actual controllers end up being so thin and repetative, maybe all that needs to happen is specify some basic information and generate the code.
 

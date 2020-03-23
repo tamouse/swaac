@@ -3,6 +3,7 @@
   :CUSTOM_ID: link-the-manuscripts-of-edsger-w.-dijkstra
   :END:
 
+- category: history
 - published date: 2016-05-30 08:18
 - keywords: ["archive", "correspondence", "dijkstra", "ewd"]
 - source:

@@ -3,6 +3,8 @@
   :CUSTOM_ID: devops-toolbox-introduction
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2013-10-08 22:17
 - keywords: ["deployment", "devops", "swaac", "sysadmin", "tools"]
 - source: http://chrislaco.com/devops-toolbox/introduction/

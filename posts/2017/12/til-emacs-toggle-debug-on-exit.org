@@ -1,3 +1,6 @@
+
+*WARNING: This is old and likely obsolete.*
+
 * TIL: emacs toggle-debug-on-exit
   :PROPERTIES:
   :CUSTOM_ID: til-emacs-toggle-debug-on-exit

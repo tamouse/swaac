@@ -3,6 +3,8 @@
   :CUSTOM_ID: link-the-average-web-page-data-from-analyzing-8-million-websites
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2016-08-17 14:09
 - keywords: ["analysis", "catalin-rosu", "charts", "css-tricks", "graphs", "html-content", "links", "web-site-analysis", "www"]
 - source:

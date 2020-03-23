@@ -3,6 +3,8 @@
   :CUSTOM_ID: free-free-100s-of-free-programming-books
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2013-10-20 23:33
 - keywords: ["books", "free", "programming", "swaac"]
 - source:

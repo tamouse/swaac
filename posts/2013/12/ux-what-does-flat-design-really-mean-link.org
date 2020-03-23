@@ -4,9 +4,8 @@
   :END:
 
 - published date: 2013-12-23 23:53
+- category: opinion
 - keywords: ["design", "swaac", "ux", "web"]
-- source:
-- redirect_from: ["/blog/2013/12/23/ux-what-does-flat-design-really-mean-link/"]
 
 In a really good article, [[https://medium.com/building-things-on-the-internet/7c697fbbe8be][/Is your interface what it needs to be?/]] on [[http://medium.com][Medium]], [[https://medium.com/@HugoMNL][Andrei Gonzales]] explains why the current "Flat Design" trend is more than just a fad, and how to look deeper into choices made for user interaction (UX) design.
 

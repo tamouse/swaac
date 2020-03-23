@@ -1,5 +1,7 @@
 * Playing Around with Thor Generators
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2014-03-08 15:06
 - keywords: ["automation", "fun-with-programming", "ruby", "swaac", "thor", "tools"]
 - source:

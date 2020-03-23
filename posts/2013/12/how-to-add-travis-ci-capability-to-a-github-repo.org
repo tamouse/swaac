@@ -3,6 +3,8 @@
   :CUSTOM_ID: how-to-add-travis-ci-capability-to-a-github-repo
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2013-12-23 16:39
 - keywords: ["continuous-integration", "programming", "swaac", "testing"]
 - source:

@@ -3,6 +3,8 @@
   :CUSTOM_ID: klabnik-waxes-tweet-on-continuous-delivery
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2015-10-30 09:45
 - keywords: ["continuous-delivery", "deployment", "klabnik", "release-cycles"]
 - source: URL

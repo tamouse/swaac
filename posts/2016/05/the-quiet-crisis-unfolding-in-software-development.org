@@ -3,6 +3,7 @@
   :CUSTOM_ID: link-the-quiet-crisis-unfolding-in-software-development
   :END:
 
+- category: opinion
 - published date: 2016-05-30 07:51
 - keywords: ["humane", "management", "teams"]
 - source:

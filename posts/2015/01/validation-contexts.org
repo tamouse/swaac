@@ -1,5 +1,7 @@
 * Validation Contexts
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2015-01-20 06:27
 - keywords: ["justin-weiss", "links", "practicing-rails", "rails", "swaac", "validation"]
 - source: [[http://www.justinweiss.com/blog/2014/09/15/a-lightweight-way-to-handle-different-validation-situations/]]
