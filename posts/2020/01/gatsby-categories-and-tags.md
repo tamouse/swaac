@@ -1,6 +1,7 @@
 ---
 title: "Gatsby Categories and Tags"
 date: 2020-02-01
+---
 
 ## Categories and Tags in Gatsby ##
 
