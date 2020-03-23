@@ -63,8 +63,8 @@ You can run VSCode from the command line, or Atom, etc., etc., etc..  I'm not go
 
 Here are some of the alternative:
 
-- VSCode: `git config -global core.editor code`
-- Atom: `git config --global core.editor atom`
+- VSCode: `git config -global core.editor "code -w"`
+- Atom: `git config --global core.editor "atom -w"`
 - Vim: `git config --global core.editor vim`
 
 ## Git-mode in Editors ##
