@@ -2,7 +2,42 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://github.com/tamouse/swaac</id>
   <title>Tamouse&#39;s Software as a Craft blog</title>
-  <updated>2020-03-23T05:19:55-05:00</updated>
+  <updated>2020-03-23T10:23:17-05:00</updated>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2020/03/2020-03-23-books-on-software-estimating.md</id>
+      <updated>2020-03-23T10:23:17-05:00</updated>
+      <title>2020-03-23-books-on-software-estimating</title>
+      <content>---
+title: &quot;Books and Resources on Software Estimating&quot;
+date: 2020-03-23T10:15
+category: books
+tags: [estimating, management]
+---
+
+Someone was asking for some youtube / vimeos on software engineering. I don&#39;t have any. I learned this back in that dark ages.
+
+My first thought was to head to [The Pragmatic Programmer](https://pragprog.com/book/tpp20/the-pragmatic-programmer-20th-anniversary-edition), and sure enough there is a section on estimating.
+
+Next thought was look at [Code Complete](https://en.wikipedia.org/wiki/Code_Complete), which also has an even more detailed look at estimating. The is also a section on **Additional Resources on Software Estimation**:
+
+&gt; Here are some additional references about software estimation:
+&gt; Boehm, Barry, et al. Software Cost Estimation with Cocomo II. Boston, MA: Addison-Wesley, 2000. This book describes the ins and outs of the Cocomo II estimating model, which is undoubtedly the most popular model in use today.
+&gt; Boehm, Barry W. Software Engineering Economics. Englewood Cliffs, NJ: Prentice Hall, 1981. This older book contains an exhaustive treatment of software-project estimation considered more generally than in Boehm&#39;s newer book.
+&gt; Humphrey, Watts S. A Discipline for Software Engineering. Reading, MA: Addison-Wesley, 1995. Chapter 5 of this book describes Humphrey&#39;s Probe method, which is a technique for estimating work at the individual developer level.
+&gt; Conte, S. D., H. E. Dunsmore, and V. Y. Shen. Software Engineering Metrics and Models. Menlo Park, CA: Benjamin/Cummings, 1986. Chapter 6 contains a good survey of estimation techniques, including a history of estimation, statistical models, theoretically based models, and composite models. The book also demonstrates the use of each estimation technique on a database of projects and compares the estimates to the projects&#39; actual lengths.
+&gt; Gilb, Tom. Principles of Software Engineering Management. Wokingham, England: Addison-Wesley, 1988. The title[…]”
+
+*(Excerpt From: Steve McConnell. “Code Complete, Second Edition.” Apple Books. )*
+
+These are old as the hills, being contemporary with my learning the craft. I met most of them, and spent time with Boehm, Humphrey, and Gilb while I was working with Hewlett-Packard.
+
+For modern software estimating, especially in the world of web applications, Gilb is probably still the most germain.
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2020/01/gatsby-categories-and-tags.md</id>
       <updated>2020-03-23T05:19:55-05:00</updated>
@@ -955,48 +990,6 @@ This came up because of a cascade of things:
 3. This caused another ActiveJob to be created for the mailer, with an argument that violates the above restriction.
 
 The solution, in this case is pretty easy: call the mailer with ~.deliver_now~ instead, since it&#39;s already a background job.
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2019/07/2019-07-17-til-firefox-disables-meta-refresh-by-default.org</id>
-      <updated>2020-03-23T05:16:14-05:00</updated>
-      <title>2019-07-17-til-firefox-disables-meta-refresh-by-default</title>
-      <content>#+OPTIONS: &#39;:nil *:t -:t ::t &lt;:t H:3 \n:nil ^:t arch:headline
-#+OPTIONS: author:t broken-links:nil c:nil creator:nil
-#+OPTIONS: d:(not &quot;LOGBOOK&quot;) date:t e:t email:nil f:t inline:t num:nil
-#+OPTIONS: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
-#+OPTIONS: timestamp:t title:t toc:nil todo:t |:t
-#+TITLE: 2019-07-17-til-firefox-disables-meta-refresh-by-default
-#+DATE: &lt;2019-07-17 Wed&gt;
-#+AUTHOR: Tamara Temple
-#+EMAIL: tamouse@gmail.com
-#+KEYWORDS: firefox, refresh
-#+DESCRIPTION: Today I learned about meta refresh on firefox browsers
-#+LANGUAGE: en
-#+SELECT_TAGS: export
-#+EXCLUDE_TAGS: noexport
-#+CREATOR: Emacs 26.1 (Org mode 9.1.9)
-
-
-*WARNING: This is old and likely obsolete.*
-
-** TIL: Firefox disables the meta refresh header by default
-
-This came up with a story I was implementing, where we wanted an interstitial page to show up after a new client signs up for our product, basically a &quot;Thank You&quot; page, which is needed for tracking stuff in google analytics.
-
-I thought to use the ~meta http-equiv=refresh~ header, which I&#39;ve used for a very long time. Come to learn, however, the the Firefox browser disables this header by default.
-
-See https://stackoverflow.com/questions/29645340/why-does-meta-refresh-not-work-in-firefox
-
-Because we don&#39;t want to force users to update their browser configurations before signing up for an account, I used the JavaScript redirect method instead.
-
-I really hope browser writers don&#39;t decide that method is too risky for browser users; it would mean a lot of client apps might no longer work all of a sudden.
-
-This is why we can&#39;t have nice things :(
 </content>
       <author>
         <name>Tamara Temple</name>
