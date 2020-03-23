@@ -3,6 +3,8 @@
   :CUSTOM_ID: cool-things-web-sequence-diagramer
   :END:
 
+*WARNING: This is old and likely obsolete.* /but it does still exist and works well, as of late 2019./
+
 - published date: 2013-12-22 18:29
 - keywords: ["cool-things", "gollum", "programming", "swaac", "tools", "web-sequence-diagrams", "wikis"]
 - source:

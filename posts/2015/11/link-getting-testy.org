@@ -3,6 +3,8 @@
   :CUSTOM_ID: link-getting-testy
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2015-11-13 08:44
 - keywords: ["link", "randy-coulman", "tdd", "testing"]
 - source: http://randycoulman.com/blog/categories/getting-testy/

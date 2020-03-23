@@ -3,6 +3,8 @@
   :CUSTOM_ID: fascinating-article-pushing-the-boundaries-on-css-design
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2013-11-13 18:54
 - keywords: ["css", "howtos", "swaac", "web-design"]
 - source:

@@ -1,5 +1,7 @@
 * Link: 30 CSS Selectors You Must Memorize (tutsplus)
 
+*WARNING: This is old and likely obsolete.*
+
   - capture_date: 2015-09-26 Sat 11:30
 
   Over on tutsplus, the essential [[https://code.tutsplus.com/tutorials/the-30-css-selectors-you-must-memorize--net-16048][list of CSS selectors]] you must memorize!

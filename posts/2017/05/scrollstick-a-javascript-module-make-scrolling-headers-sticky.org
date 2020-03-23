@@ -2,6 +2,8 @@
 #+AUTHOR: Tamara Temple [[mailto:tamara@tamouse.org][tamara@tamouse.org]]
 #+DATE: 2017-05-14T01:37
 
+*WARNING: This is old and likely obsolete.*
+
 * ScrollStick: a JavaScript module to make scrolling headers sticky
 
 - keywords: scripts, javascript, sticky headers, persistent headers

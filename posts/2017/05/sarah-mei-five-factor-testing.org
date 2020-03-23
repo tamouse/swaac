@@ -1,3 +1,5 @@
+*WARNING: This is old and likely obsolete.*
+
 * Sarah Mei: Five Factor Testing
 
 - published date: 2017-05-11 20:16

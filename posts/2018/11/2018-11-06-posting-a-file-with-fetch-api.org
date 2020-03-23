@@ -1,5 +1,8 @@
+
+*WARNING: This is old and likely obsolete.*
+
 * Posting a file using the fetch API
-- Time-stamp: <2018-11-06 13:37:57 tamara>
+- Time-stamp: <2020-03-23 05:07:33 tamara>
 - published date: [2018-11-06 Tue 13:17]
 - keywords: javascript, fetch, file upload
 

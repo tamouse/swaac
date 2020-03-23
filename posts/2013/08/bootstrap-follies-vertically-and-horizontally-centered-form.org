@@ -1,5 +1,7 @@
 * Bootstrap Follies: Vertically and Horizontally Centered Form
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2013-08-11 09:59
 - keywords: ["bootstrap", "css", "design", "howtos", "swaac"]
 

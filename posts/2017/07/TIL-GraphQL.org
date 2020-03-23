@@ -1,6 +1,8 @@
 #+TITLE: TIL: GraphQL
 #+DATE: 2017-07-03 22:14
 
+*WARNING: This is old and likely obsolete.*
+
 
 * TIL: GraphQL
   :PROPERTIES:

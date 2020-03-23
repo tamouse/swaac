@@ -3,6 +3,8 @@
   :CUSTOM_ID: json---how-to-send-raw-post-data-in-a-rails-functional-test---stack-overflow
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2013-09-17 14:09
 - keywords: ["json", "rails", "swaac", "testing"]
 - source: http://stackoverflow.com/questions/2103977/how-to-send-raw-post-data-in-a-rails-functional-test

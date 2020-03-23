@@ -1,6 +1,9 @@
+
+*WARNING: This is old and likely obsolete.*
+
 * LINK: [[https://30-seconds.github.io/30-seconds-of-css/][30 seconds of CSS]]:
 
-- Time-stamp: <2018-11-04 10:02:41 tamara>
+- Time-stamp: <2020-03-23 05:07:10 tamara>
 - published date: [2018-11-04 Sun]
 - keywords: link, css, collection, exercises, learning
 

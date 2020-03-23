@@ -3,6 +3,8 @@
   :CUSTOM_ID: dealing-with-mixed-encodings-in-a-file
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2014-11-02 15:12
 - keywords: ["character-sets", "encoding", "ruby", "swaac"]
 - source:

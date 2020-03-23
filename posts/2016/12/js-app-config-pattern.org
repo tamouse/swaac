@@ -1,3 +1,5 @@
+*WARNING: This is old and likely obsolete.*
+
 * JS App Config Pattern
   :PROPERTIES:
   :CUSTOM_ID: js-app-config-pattern

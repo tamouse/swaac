@@ -3,6 +3,8 @@
   :CUSTOM_ID: implementing-multi-table-full-text-search-with-postgres-in-rails-hashdog-blog
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2013-09-04 10:27
 - keywords: ["postgresql", "rails", "swaac"]
 - source: http://www.hashdog.com/blog/implementing-multi-table-full-text-search-with-postgres-in-rails/

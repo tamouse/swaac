@@ -1,5 +1,7 @@
 * Emacs Org Mode
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2015-01-24 20:24
 - keywords: ["emacs", "org-mode", "swaac"]
 

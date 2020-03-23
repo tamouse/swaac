@@ -1,11 +1,14 @@
-#+COMMENT -*- time-stamp-line-limit: 12; time-stamp-count: 2 -*-
+#+COMMENT -*- time-stamp-line-limit: 20; time-stamp-count: 2 -*-
+
+*WARNING: This is old and likely obsolete.*
+
 * Link: [[https://www.gregnavis.com/articles/how-to-access-production-data-in-rails-migrations.html][How to Access Production Data in Rails Migrations]] :rails:migrations:data:
      :PROPERTIES:
      :CAPTURE_DATE: [2019-04-05 Fri 00:35]
-     :last_update: Time-stamp: <2019-04-05 00:56:37 tamara>
+     :last_update: Time-stamp: <2020-03-23 05:10:24 tamara>
      :END:
 
-     - last update: Time-stamp: <2019-04-05 00:56:37 tamara>
+     - last update: Time-stamp: <2020-03-23 05:10:24 tamara>
      - keywords: rails, migrations, data
      - capture date: [2019-04-05 Fri 00:35]
 

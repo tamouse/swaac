@@ -3,6 +3,8 @@
   :CUSTOM_ID: nginx-takes-the-slippery-road-away-from-open-source
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2013-08-31 06:59
 - keywords: ["nginx", "opensource", "swaac"]
 - source: http://www.infoworld.com/print/225473

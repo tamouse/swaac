@@ -3,6 +3,8 @@
   :CUSTOM_ID: new-hash-operators-in-ruby-2.3
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2016-03-14 23:27
 - keywords: ["hashes", "new-2.3", "operators", "ruby"]
 - source:

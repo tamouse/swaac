@@ -3,6 +3,8 @@
   :CUSTOM_ID: where-do-i-go-next-code-kata
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2015-07-27 00:46
 - keywords: ["exercises", "kata", "learning", "practice"]
 - source:

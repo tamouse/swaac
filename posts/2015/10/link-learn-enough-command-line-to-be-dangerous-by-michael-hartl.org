@@ -3,6 +3,8 @@
   :CUSTOM_ID: link-learn-enough-command-line-to-be-dangerous-by-michael-hartl
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2015-10-12 06:40
 - keywords: ["command-line", "link", "programming", "tutorial"]
 - source:

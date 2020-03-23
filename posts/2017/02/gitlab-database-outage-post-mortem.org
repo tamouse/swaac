@@ -1,3 +1,5 @@
+*WARNING: This is old and likely obsolete.*
+
 * Gitlab Database Outage Post-Mortem
 
   - published date: 2017-02-11 01:54

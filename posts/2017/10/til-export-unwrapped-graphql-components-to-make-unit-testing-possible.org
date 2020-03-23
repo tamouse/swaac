@@ -1,3 +1,6 @@
+
+*WARNING: This is old and likely obsolete.*
+
 * TIL: Export Unwrapped GraphQL Components to make Unit Testing Possible
   :PROPERTIES:
   :CUSTOM_ID: til-export-unwrapped-graphql-components-to-make-unit-testing-possible

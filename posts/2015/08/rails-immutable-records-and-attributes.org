@@ -3,6 +3,8 @@
   :CUSTOM_ID: rails-immutable-records-and-attributes
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2015-08-13 05:58
 - keywords: ["activerecord", "immutability", "rails"]
 - source: http://stackoverflow.com/a/14781183/742446

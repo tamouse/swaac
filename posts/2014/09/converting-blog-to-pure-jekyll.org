@@ -3,10 +3,10 @@
   :CUSTOM_ID: converting-blog-to-pure-jekyll
   :END:
 
+*OBSOLETE: this collection of things is no longer published using Jekyll. It's mainly .org and .md files in a plain old github repo.*
+
 - published date: 2014-09-27 14:29
 - keywords: ["jekyll", "swaac"]
-- source:
-- redirect_from: ["/blog/2014/09/27/converting-blog-to-pure-jekyll/"]
 
 I had originally created this blog using Octopress, but have become disillusioned with the lack of progress in that, and the lack of adoption of nifty new capabilities in [[http://jekyllrb.com][Jekyll]]. So I redid it.
 

@@ -3,6 +3,7 @@
 * The Laws of Software Design
 
 - published date: 2013-09-14 01:37
+- category: philosophy
 - keywords: ["books", "code-simplicity", "design", "max-kanat-alexander", "swaac"]
 
 In his book [[http://www.goodreads.com/book/show/13234063-code-simplicity][/Code Simplicity/]], [[http://www.goodreads.com/mkanat][Max Kanat-Alexander]] lists six laws of software design in an appendix. These are a pretty good set of rules!

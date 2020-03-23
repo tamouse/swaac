@@ -1,3 +1,6 @@
+
+*WARNING: This is old and likely obsolete.*
+
 * Testing React Checkbox Component
 
 published date: [2019-08-29 Thu]

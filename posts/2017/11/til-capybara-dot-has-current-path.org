@@ -1,3 +1,6 @@
+
+*WARNING: This is old and likely obsolete.*
+
 * TIL: Capybara.has_current_path
   :PROPERTIES:
   :CUSTOM_ID: til-capybara.has_current_path

@@ -13,6 +13,9 @@
 #+CREATOR: Emacs 26.2 (Org mode 9.1.14)
 #+KEYWORDS: markdown, kramdown, verse
 
+
+*WARNING: This is old and likely obsolete.*
+
 In the past, when I've wanted to create a verse, perhaps in a blockquote I've resorted to using ~<br>~ on every line, which is tedious:
 
 #+BEGIN_SRC markdown

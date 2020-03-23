@@ -1,14 +1,17 @@
-#+COMMENT -*- time-stamp-line-limit: 12; time-stamp-count: 2 -*-
+#+COMMENT -*- time-stamp-line-limit: 60; time-stamp-count: 2 -*-
+
+*WARNING: This is old and likely obsolete.*
+
 * TIL: mounting stand-alone react client as a react_component in react-rails :rails:react:
   :PROPERTIES:
   :CAPTURE_DATE: [2019-04-05 Fri 00:40]
-  :last_update: Time-stamp: <2019-04-05 00:59:22 tamara>
+  :last_update: Time-stamp: <2020-03-23 05:11:16 tamara>
   :END:
   :LOGBOOK:
   CLOCK: [2019-04-05 Fri 00:41]--[2019-04-05 Fri 00:50] =>  0:09
   :END:
 
-  - last updated: Time-stamp: <2019-04-05 00:59:22 tamara>
+  - last updated: Time-stamp: <2020-03-23 05:11:16 tamara>
   - capture date: [2019-04-05 Fri 00:40]
   - keywords: react-rails, rails, react
 

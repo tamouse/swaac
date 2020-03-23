@@ -1,6 +1,8 @@
 #+TITLE: TIL: Using enzyme's shallow render with MemoryRouter doesn't work
 
-- Time-stamp: <2018-09-16 14:34:19 tamara.temple>
+*WARNING: This is old and likely obsolete.*
+
+- Time-stamp: <2020-03-23 05:01:26 tamara>
 - original date: 2017-08-02 10:54
 - keywords: react, react-router, react-router-dom, memory-router, jest, enzyme, testing
 

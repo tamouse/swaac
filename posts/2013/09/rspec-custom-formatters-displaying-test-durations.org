@@ -1,5 +1,7 @@
 * RSpec Custom Formatters: Displaying Test Durations
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2013-09-01 13:23
 - keywords: ["howtos", "rspec", "ruby", "swaac"]
 

@@ -3,6 +3,8 @@
   :CUSTOM_ID: link-html-and-css-design-and-build-websites
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2016-06-16 08:16
 - keywords: ["book", "css", "html", "learning", "link"]
 - source:

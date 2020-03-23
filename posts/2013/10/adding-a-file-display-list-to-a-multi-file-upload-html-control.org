@@ -5,6 +5,8 @@
 
 * Adding a file display list to a multi-file upload HTML control
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2013-10-22 11:08
 - keywords: ["code", "display", "file-uploads", "javascript", "swaac", "user-experience", "user-feedback", "ux"]
 - source: https://www.raymondcamden.com/2013/09/10/Adding-a-file-display-list-to-a-multifile-upload-HTML-control

@@ -3,6 +3,8 @@
   :CUSTOM_ID: todays-readings-and-stuff
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2015-06-20 21:21
 - keywords: ["misc"]
 - source:

@@ -1,5 +1,7 @@
 * first vs. take
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2015-02-03 03:37
 - keywords: ["avdi", "enumerators", "lazy", "lazy-enumerators", "ruby", "rubytapas"]
 - source: [[http://rubytapas.dpdcart.com/subscriber/post?id=677]]

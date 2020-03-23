@@ -1,10 +1,8 @@
 ---
-layout: post
 title: "Using Rails url_helpers outside a controller context"
 date: 2020-03-10T20:38
 categories: [rails]
 tags: [rails, helpers, url_helpers]
-source: https://stackoverflow.com/a/5456103
 ---
 
 Sometimes I want to use a Rails url helper method outside the controller context.

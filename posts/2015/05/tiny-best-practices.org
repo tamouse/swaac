@@ -3,6 +3,8 @@
   :CUSTOM_ID: tiny-best-practices
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2015-05-26 10:44
 - keywords: ["tbp", "tiny-best-practices"]
 - source:

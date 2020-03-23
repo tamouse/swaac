@@ -1,3 +1,6 @@
+
+*WARNING: This is old and likely obsolete.*
+
 * Making Capybara wait a little longer for just one test
   :PROPERTIES:
   :CUSTOM_ID: making-capybara-wait-a-little-longer-for-just-one-test

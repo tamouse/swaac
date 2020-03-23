@@ -1,3 +1,5 @@
+*WARNING: This is old and likely obsolete.*
+
 * Tool: Font Style Matcher
   :PROPERTIES:
   :CUSTOM_ID: tool-font-style-matcher

@@ -1,3 +1,6 @@
+
+*WARNING: This is old and likely obsolete.*
+
 * Using Current User (Viewer) as root of GraphQL queries
   :PROPERTIES:
   :CUSTOM_ID: using-current-user-viewer-as-root-of-graphql-queries

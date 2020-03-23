@@ -1,6 +1,9 @@
+
+*WARNING: This is old and likely obsolete.*
+
 * Removing entries from an object
 
-- Time-stamp: <2018-11-04 08:21:03 tamara>
+- Time-stamp: <2020-03-23 05:06:10 tamara>
 - date: 2018-05-15 00:38
 - keywords: javascript, lodash, reduce, snippets
 

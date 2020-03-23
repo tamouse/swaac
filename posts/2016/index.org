@@ -9,7 +9,6 @@
 - [[./11/installing-wordpress-things-without-ftp.org]]
 - [[./11/installing-emacs-on-mac-with-homebrew.org]]
 - [[./11/frontendmasters-course-devops-for-frontend-devs.org]]
-- [[./11/ask-me-anything.org]]
 - [[./10/testing-blur-events-in-cucumber-slash-capybara.org]]
 - [[./10/signing-a-pdf-with-preview.org]]
 - [[./10/how-to-set-up-your-own-private-remote-git-repository.org]]

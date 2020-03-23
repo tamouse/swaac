@@ -3,6 +3,8 @@
   :CUSTOM_ID: reactjs-course-with-frontend-masters
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2015-02-13 22:56
 - keywords: ["frontend-masters", "javascript", "js-frameworks", "reactjs"]
 - source:

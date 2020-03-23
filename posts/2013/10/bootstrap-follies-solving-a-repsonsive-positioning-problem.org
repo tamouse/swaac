@@ -3,6 +3,8 @@
   :CUSTOM_ID: bootstrap-follies-solving-a-repsonsive-positioning-problem
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2013-10-24 09:23
 - keywords: ["technology", "twitter-bootstrap"]
 - source:

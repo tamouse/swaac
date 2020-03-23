@@ -3,6 +3,8 @@
   :CUSTOM_ID: possible-bug-ie8-wont-show-table-atargets-is-null-or-not-an-object---datatables-forums
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2013-12-04 12:31
 - keywords: ["errors", "ie", "javascript", "swaac"]
 - source: http://datatables.net/forums/discussion/comment/38391

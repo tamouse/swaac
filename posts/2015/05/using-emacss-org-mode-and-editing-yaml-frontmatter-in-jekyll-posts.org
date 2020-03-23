@@ -3,6 +3,8 @@
   :CUSTOM_ID: using-emacss-org-mode-and-editing-yaml-frontmatter-in-jekyll-posts
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2015-05-25 10:20
 - keywords: ["babel", "emacs", "frontmatter", "jekyll", "learning", "org-mode", "yaml"]
 - source: [[https://gist.github.com/tamouse/eb8432d916459b180007]]

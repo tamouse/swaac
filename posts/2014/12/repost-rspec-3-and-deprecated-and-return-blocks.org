@@ -3,6 +3,8 @@
   :CUSTOM_ID: repost-rspec-3-and-deprecated-.and_return-blocks
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2014-12-22 22:43
 - keywords: ["rspec", "rspec3", "ruby", "swaac"]
 - source:

@@ -3,6 +3,8 @@
   :CUSTOM_ID: link-sharing-rails-views-with-jekyll
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2015-03-08 15:45
 - keywords: ["binding", "howtos", "jekyll", "links", "rails", "rake", "ruby", "tutorials"]
 - source:

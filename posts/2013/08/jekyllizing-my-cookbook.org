@@ -3,6 +3,8 @@
   :CUSTOM_ID: jekyllizing-my-cookbook
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2013-08-26 00:40
 - keywords: ["howtos", "jekyll", "swaac"]
 - source:

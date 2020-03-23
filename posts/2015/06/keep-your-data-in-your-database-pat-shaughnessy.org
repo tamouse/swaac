@@ -3,6 +3,8 @@
   :CUSTOM_ID: link-keep-your-data-in-your-database---pat-shaughnessy
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2015-06-25 14:36
 - keywords: ["databases", "links", "rails", "ruby", "sql", "tbp", "tiny-best-practices"]
 - source:

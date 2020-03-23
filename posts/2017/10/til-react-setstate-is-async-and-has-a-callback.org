@@ -1,3 +1,6 @@
+
+*WARNING: This is old and likely obsolete.*
+
 * TIL: React setState is async, and has a callback
   :PROPERTIES:
   :PUBLISHED_DATE: 2017-10-27T17:35

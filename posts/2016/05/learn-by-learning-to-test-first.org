@@ -3,6 +3,8 @@
   :CUSTOM_ID: link-learn-by-learning-to-test-first
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2016-05-24 07:55
 - keywords: ["javascript", "learning", "ruby", "tdd", "testing"]
 - source:

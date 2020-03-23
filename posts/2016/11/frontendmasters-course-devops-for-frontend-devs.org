@@ -1,3 +1,5 @@
+*WARNING: This is old and likely obsolete.*
+
 * FrontendMasters Course: DevOps for Frontend Devs
   :PROPERTIES:
   :CUSTOM_ID: frontendmasters-course-devops-for-frontend-devs

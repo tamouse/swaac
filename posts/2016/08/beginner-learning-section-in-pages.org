@@ -3,6 +3,8 @@
   :CUSTOM_ID: beginner-learning-section-in-pages
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2016-08-07 09:15
 - keywords: ["beginner", "learning"]
 - source:

@@ -3,6 +3,8 @@
   :CUSTOM_ID: generate-a-full-rails-app-with-a-composer
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2013-10-05 08:15
 - keywords: ["rails", "technology"]
 - source:

@@ -1,5 +1,7 @@
 * Using Packer and Vagrant to Build Virtual Machines
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2015-01-28 00:07
 - keywords: ["codeship", "dev-env", "development", "devops", "packer", "swaac", "vagrant"]
 - source: http://blog.codeship.com/packer-vagrant-tutorial/

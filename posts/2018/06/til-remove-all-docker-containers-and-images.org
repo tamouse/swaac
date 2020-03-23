@@ -1,6 +1,9 @@
+
+*WARNING: This is old and likely obsolete.*
+
 * TIL: Removing all Docker Containers and Images
 
-- Time-stamp: <2018-11-04 08:20:23 tamara>
+- Time-stamp: <2020-03-23 05:06:24 tamara>
 - date: 2018-06-04 11:51
 - keywords: [docker, containers, images, removing]
 

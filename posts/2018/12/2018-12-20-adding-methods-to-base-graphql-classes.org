@@ -1,6 +1,9 @@
+
+*WARNING: This is old and likely obsolete.*
+
 * Adding methods to base GraphQL classes
 
-- Time-stamp: <2018-12-20 09:04:16 tamara>
+- Time-stamp: <2020-03-23 05:08:59 tamara>
 - keywords: graphql
 
 Sometime in the past year I started looking into using the class-based interface with ~graphql-ruby~. Here's an example to provide millisecond precision time as integer:

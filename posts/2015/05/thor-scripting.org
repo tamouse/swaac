@@ -1,5 +1,9 @@
 * Thor Scripting
 
+*WARNING: This is old and likely obsolete.*
+
+- pubdate: 2015-05
+
 So I've been playing around with thor for a whlie, and have a couple of interesting things I've learned.
 
 ** Making "unix-like" options available for commands

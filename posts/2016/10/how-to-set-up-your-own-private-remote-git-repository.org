@@ -1,3 +1,5 @@
+*WARNING: This is old and likely obsolete.*
+
 * How to set up your own private git repository on a remote server
   :PROPERTIES:
   :CUSTOM_ID: how-to-set-up-your-own-private-git-repository-on-a-remote-server

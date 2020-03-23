@@ -1,3 +1,5 @@
+*WARNING: This is old and likely obsolete.*
+
 * Playing games with the :checked pseudo-selector
   :PROPERTIES:
   :CAPTURE_DATE: 2017-07-06 01:25

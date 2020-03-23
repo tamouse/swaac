@@ -1,5 +1,7 @@
 * ActiveRecord: Enhanced Query Objects
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2013-09-20 18:09
 - keywords: ["activerecord", "enhanced-query-objects", "poros", "rails", "scopes", "swaac"]
 - source: http://hasghari.github.io/2013/09/15/active-record-enhanced-query-objects.html?utm_source=rubyweekly&utm_medium=email

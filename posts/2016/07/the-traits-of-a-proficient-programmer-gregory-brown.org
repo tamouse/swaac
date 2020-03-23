@@ -3,6 +3,8 @@
   :CUSTOM_ID: link-the-traits-of-a-proficient-programmer-gregory-brown
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2016-07-23 23:15
 - keywords: ["gregory-brown", "learning", "link", "oreilly", "proficiency", "programming"]
 - source:

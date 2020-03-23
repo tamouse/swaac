@@ -11,6 +11,12 @@
 #+EXCLUDE_TAGS: noexport
 #+CREATOR: Emacs 27.0.50 (Org mode 9.1.14)
 
+
+*WARNING: This is old and likely obsolete.*
+
+
+* Generating Consistent Faker Values in JavaScript
+
 So this is good to know. I hadn't seen this before.
 
 When using [[https://github.com/Marak/Faker.js][faker.js]], you can generate the exact same data each time by setting the *seed*:

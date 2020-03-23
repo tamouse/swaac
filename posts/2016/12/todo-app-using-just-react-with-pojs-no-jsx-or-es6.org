@@ -1,3 +1,5 @@
+*WARNING: This is old and likely obsolete.*
+
 * Todo app using just React with POJS - no JSX or ES6
   :PROPERTIES:
   :CUSTOM_ID: todo-app-using-just-react-with-pojs---no-jsx-or-es6

@@ -3,6 +3,8 @@
   :CUSTOM_ID: pdf-rendering-with-phantomjs---big-elephants
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2013-10-24 23:40
 - keywords: ["pdf", "phantomjs", "swaac"]
 - source: http://big-elephants.com/2012-12/pdf-rendering-with-phantomjs/

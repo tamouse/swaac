@@ -1,3 +1,5 @@
+*WARNING: This is old and likely obsolete.*
+
 * My First Proxy/Adapter for an Express.js app
   :PROPERTIES:
   :CUSTOM_ID: my-first-proxyadapter-for-an-express.js-app

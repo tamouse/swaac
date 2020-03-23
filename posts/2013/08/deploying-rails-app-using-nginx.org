@@ -3,6 +3,8 @@
   :CUSTOM_ID: deploying-rails-app-using-nginx
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2013-08-29 12:49
 - keywords: ["deployment", "rails", "swaac"]
 - source: https://coderwall.com/p/yz8cha

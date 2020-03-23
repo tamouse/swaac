@@ -3,6 +3,8 @@
   :CUSTOM_ID: how-to-converting-instance-variables-to-yaml-in-ruby
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2014-11-02 23:51
 - keywords: ["howtos", "instance-variables", "ruby", "swaac"]
 - source: https://github.com/tamouse/example_converting_instance_variables_to_yaml_in_ruby

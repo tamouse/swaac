@@ -1,3 +1,5 @@
+*WARNING: This is old and likely obsolete.*
+
 * Playing with Grid and Flexbox
   :PROPERTIES:
   :CUSTOM_ID: playing-with-grid-and-flexbox

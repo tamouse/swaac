@@ -1,6 +1,7 @@
 * Programmers Creativity
 
 - date: 2013-08-02 04:51
+- category: philosophy
 - tags: [quotes, creativity]
 
 #+BEGIN_QUOTE

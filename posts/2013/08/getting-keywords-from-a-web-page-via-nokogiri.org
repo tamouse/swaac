@@ -3,6 +3,8 @@
   :CUSTOM_ID: getting-keywords-from-a-web-page-via-nokogiri
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2013-08-29 20:15
 - keywords: ["nokogiri", "ruby", "scraping", "swaac"]
 - source:

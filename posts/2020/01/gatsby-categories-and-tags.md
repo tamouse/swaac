@@ -1,8 +1,8 @@
 ---
-description: Organizing entries
----
+title: "Gatsby Categories and Tags"
+date: 2020-02-01
 
-# Categories and Tags
+## Categories and Tags in Gatsby ##
 
 I've been re-writing my on-line recipe collection using Gatsby as an exercise. In the original Jekyll site, I had recipes organized into categories like chapters in a printed cookbook, and tags that allowed more fine-detailed structure, listing such things as ingredients, cuising type, and other things like being gluten-free. Both categories and tags were stored as entries in the frontmatter of each recipe in the collection.
 

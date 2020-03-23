@@ -1,3 +1,5 @@
+*WARNING: This is old and likely obsolete.*
+
 * Testing blur() events in Cucumber/Capybara
   :PROPERTIES:
   :CUSTOM_ID: testing-blur-events-in-cucumbercapybara

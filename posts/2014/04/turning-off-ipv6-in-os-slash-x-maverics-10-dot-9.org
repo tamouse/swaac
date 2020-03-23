@@ -3,10 +3,10 @@
   :CUSTOM_ID: turning-off-ipv6-in-osx-maverics-10.9
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2014-04-24 09:56:56 -0500
 - keywords: ["ipv6", "networking", "osx", "swaac", "sysadmin"]
-- source:
-- redirect_from: ["/blog/2014/04/24/turning-off-ipv6-in-os-slash-x-maverics-10-dot-9/"]
 
 I recently had a problem connecting via wi-fi at a local restaurant. This is how I solved it.
 

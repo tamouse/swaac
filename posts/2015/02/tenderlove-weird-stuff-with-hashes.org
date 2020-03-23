@@ -3,6 +3,8 @@
   :CUSTOM_ID: tenderlove-weird-stuff-with-hashes
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2015-02-13 21:55
 - keywords: ["dup", "freeze", "hash", "performance", "ruby"]
 - source: [[http://tenderlovemaking.com/2015/02/11/weird-stuff-with-hashes.html]]

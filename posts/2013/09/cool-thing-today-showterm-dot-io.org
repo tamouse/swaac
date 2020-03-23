@@ -1,5 +1,7 @@
 * Cool Thing Today: showterm.io
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2013-09-09 15:10
 - keywords: ["coding", "demos", "show-and-tell", "swaac", "tools"]
 

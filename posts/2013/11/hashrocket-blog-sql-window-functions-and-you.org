@@ -3,6 +3,8 @@
   :CUSTOM_ID: hashrocket-blog---sql-window-functions-and-you
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2013-11-11 06:13
 - keywords: ["activerecord", "rails", "sql", "swaac"]
 - source: http://hashrocket.com/blog/posts/sql-window-functions

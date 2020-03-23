@@ -13,7 +13,10 @@
 #+CREATOR: Emacs 26.2 (Org mode 9.1.9)
 
 
-[[https://edgeguides.rubyonrails.org/active_job_basics.html#supported-types-for-arguments][Rails Guides: ActiveJob Supported Argument Types]]
+*WARNING: This is old and likely obsolete.*
+
+
+* [[https://edgeguides.rubyonrails.org/active_job_basics.html#supported-types-for-arguments][Rails Guides: ActiveJob Supported Argument Types]]
 
 This came up because of a cascade of things:
 

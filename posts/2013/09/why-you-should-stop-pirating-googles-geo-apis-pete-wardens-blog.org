@@ -3,6 +3,9 @@
 
 * Why you should stop pirating Google's geo APIs « Pete Warden's blog
 
+*WARNING: This is old and likely obsolete.*
+
+
 - published date: 2013-09-11 22:49
 - keywords: ["apis", "data-science-toolkit", "gis", "google", "open-software", "swaac"]
 - source: http://petewarden.com/2013/09/09/why-you-should-stop-pirating-googles-geo-apis/
@@ -13,7 +16,7 @@ Instead, use:
 
 - [[http://www.datasciencetoolkit.org/][Data Science Toolkit]], an open VM that wraps a lot of the geo community's greatest open-source projects in a friendly and familiar interface.
 
-** COMMENT copied page
+** copied page
 #+BEGIN_QUOTE
   * Why you should stop pirating Google's geo APIs
     :PROPERTIES:

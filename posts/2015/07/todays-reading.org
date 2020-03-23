@@ -3,6 +3,8 @@
   :CUSTOM_ID: todays-reading
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2015-07-12 11:59
 - keywords: ["links", "nfs", "vagrant"]
 - source:

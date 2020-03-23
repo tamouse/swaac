@@ -1,3 +1,5 @@
+*WARNING: This is old and likely obsolete.*
+
 * When your tools, environment, computer, and everything you know fails you
   :PROPERTIES:
   :CUSTOM_ID: when-your-tools-environment-computer-and-everything-you-know-fails-you

@@ -3,6 +3,8 @@
   :CUSTOM_ID: mvc-is-dead-its-time-to-move-on.
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2013-11-27 13:55
 - keywords: ["design-patterns", "move", "mvc", "programming", "swaac"]
 - comments: true

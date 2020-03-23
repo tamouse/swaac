@@ -3,6 +3,8 @@
   :CUSTOM_ID: user-gui-editing-for-jekyll-sites
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2015-06-14 09:45
 - keywords: ["cms", "jekyll", "user-editing"]
 - source:

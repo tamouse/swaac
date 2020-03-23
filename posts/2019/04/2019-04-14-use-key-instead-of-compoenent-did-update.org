@@ -1,12 +1,15 @@
-#+COMMENT -*- time-stamp-line-limit: 12; time-stamp-count: 2 -*-
+#+COMMENT -*- time-stamp-line-limit: 60; time-stamp-count: 2 -*-
+
+*WARNING: This is old and likely obsolete.*
+
 * TIL: Use key instead of componentDidUpdate
   :PROPERTIES:
-  :LAST_UPDATE: Time-stamp: <2019-04-19 19:11:28 tamara>
+  :LAST_UPDATE: Time-stamp: <2020-03-23 05:11:35 tamara>
   :CAPTURE_DATE: [2019-04-19 Fri 19:05]
   :KEYWORDS: react, componentDidUpdate, key prop
   :END:
 
-- last update: Time-stamp: <2018-09-16 14:32:23 tamara.temple>
+- last update: Time-stamp: <2020-03-23 05:11:35 tamara>
 - capture date: [2019-04-19 Fri 19:07]
 - keywords: react, componentDidUpdate, key prop
 

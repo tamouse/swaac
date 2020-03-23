@@ -3,6 +3,7 @@
   :CUSTOM_ID: link-your-software-is-never-perfect
   :END:
 
+- category: opinion
 - published date: 2016-05-30 07:41
 - keywords: ["improvement", "mindfulness", "swaac"]
 - source:

@@ -3,6 +3,8 @@
   :CUSTOM_ID: terminology-registrar-domain-name-service-web-hosting-service
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2015-10-16 04:20
 - keywords: ["classes", "definitions", "dns", "domain-name-service", "front-end-series", "gdi", "glossary", "providers", "publishing", "registrar", "web-development", "web-hosting", "web-hosting-service", "web-publishing"]
 - source:

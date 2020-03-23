@@ -2,4 +2,6 @@
 
 #+DATE: 2015-07-03 21:29
 
+*WARNING: This is old and likely obsolete.*
+
 Reddit collection of some useful things to know and use in Ruby.

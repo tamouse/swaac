@@ -1,6 +1,9 @@
+
+*WARNING: This is old and likely obsolete.*
+
 * LINK: [[https://thoughtbot.com/upcase][Upcase, by Thoughbot]]
 
-- Time-stamp: <2018-11-04 10:01:18 tamara>
+- Time-stamp: <2020-03-23 05:07:18 tamara>
 - published date: [2018-11-04 Sun]
 - keywords: link, learning, school, tech, level up
 

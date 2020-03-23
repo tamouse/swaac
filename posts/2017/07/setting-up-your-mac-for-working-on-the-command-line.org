@@ -1,5 +1,8 @@
+
+*WARNING: This is old and likely obsolete.*
+
 * Setting up your Mac for working on the command line.
-- Time-stamp: <2018-11-06 09:32:33 tamara>
+- Time-stamp: <2020-03-23 05:01:06 tamara>
 - published date: 2017-07
 - keywords: command line, cli, termoial, mac
 

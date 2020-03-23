@@ -3,6 +3,10 @@
   :CUSTOM_ID: howto-quick-steps-to-install-emacs-24-without-x-on-ubuntu
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
+
+
 - published date: 2014-10-03 09:31
 - keywords: ["emacs", "howtos", "installation", "technology", "ubuntu"]
 - source:

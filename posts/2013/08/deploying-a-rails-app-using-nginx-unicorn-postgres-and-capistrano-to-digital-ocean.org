@@ -3,6 +3,8 @@
   :CUSTOM_ID: deploying-a-rails-app-using-nginx-unicorn-postgres-and-capistrano-to-digital-ocean
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2013-08-29
 - keywords: ["capistrano", "deployment", "devops", "digital-ocean", "nginx", "postgres", "postgresql", "rails", "swaac", "tutorials", "ubuntu", "unicorn"]
 - source: https://coderwall.com/p/yz8cha/deploying-rails-app-using-nginx-unicorn-postgres-and-capistrano-to-digital-ocean

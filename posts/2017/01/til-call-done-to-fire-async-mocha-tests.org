@@ -1,3 +1,5 @@
+*WARNING: This is old and likely obsolete.*
+
 * TIL: Call done() to fire async mocha tests
   :PROPERTIES:
   :CUSTOM_ID: til-call-done-to-fire-async-mocha-tests

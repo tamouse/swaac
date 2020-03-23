@@ -3,6 +3,8 @@
   :CUSTOM_ID: tbp-bistate-booleans-in-rails
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2015-05-26 10:32
 - keywords: ["bistate", "booleans", "rails", "tbp", "tiny-best-practices", "tristate"]
 - source:

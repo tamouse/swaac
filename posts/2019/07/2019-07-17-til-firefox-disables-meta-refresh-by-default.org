@@ -14,6 +14,9 @@
 #+EXCLUDE_TAGS: noexport
 #+CREATOR: Emacs 26.1 (Org mode 9.1.9)
 
+
+*WARNING: This is old and likely obsolete.*
+
 ** TIL: Firefox disables the meta refresh header by default
 
 This came up with a story I was implementing, where we wanted an interstitial page to show up after a new client signs up for our product, basically a "Thank You" page, which is needed for tracking stuff in google analytics.

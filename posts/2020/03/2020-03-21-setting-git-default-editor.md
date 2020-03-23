@@ -1,4 +1,6 @@
 ---
+title: "Setting git's default editor"
+date: 2020-03-21
 category: tools
 keywords: git, editor, emacs
 ---

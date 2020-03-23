@@ -3,6 +3,8 @@
   :CUSTOM_ID: link-just-say-no-to-more-end-to-end-tests-google-dev-blog
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2015-06-06 15:46
 - keywords: ["end-to-end", "links", "testing"]
 - source:

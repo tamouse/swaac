@@ -3,6 +3,8 @@
   :CUSTOM_ID: mass-inserting-data-in-rails-without-killing-your-performance-coffeepowered
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2013-09-03 10:22
 - keywords: ["activerecord", "howtos", "mass-insertion", "performance", "rails", "swaac", "tutorials"]
 - source: https://www.coffeepowered.net/2009/01/23/mass-inserting-data-in-rails-without-killing-your-performance/

@@ -1,3 +1,5 @@
+*WARNING: This is old and likely obsolete.*
+
 * Minimum needed for full height with standard header / main / footer
 
 - published date: 2017-05-14 17:43

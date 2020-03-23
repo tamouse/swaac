@@ -1,5 +1,8 @@
 * [[http://www.garcialo.com/html101/alt2.html][how to use alt text attribute]]
 
+*WARNING: This is old and likely obsolete.*
+
+
   From: [[http://www.garcialo.com/html101/][HTML 101 Because You Were Taught Wrong]] added: [2015-03-17 Tue 07:18]
 
 ** HTML Techniques for providing useful text alternatives: http://www.w3.org/TR/html-alt-techniques/

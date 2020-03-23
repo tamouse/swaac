@@ -1,5 +1,7 @@
 * Rails 4.2 config_for
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2015-01-20 07:30
 - keywords: ["configuration", "rails", "swaac"]
 

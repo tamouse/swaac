@@ -1,6 +1,9 @@
+
+*WARNING: This is old and likely obsolete.*
+
 * TIL: Setting input value in React determines controlled vs uncontrolled
 
-- Time-stamp: <2018-11-04 08:21:22 tamara>
+- Time-stamp: <2020-03-23 05:06:19 tamara>
 - date: 2018-05-04
 - keywords: react, controlled, uncontrolled, input, value
 

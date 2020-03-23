@@ -3,6 +3,8 @@
   :CUSTOM_ID: link-new-site-jekyll-tips
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2015-05-30 20:53
 - keywords: ["jekyll", "learning", "tips"]
 - source: https://plus.google.com/+TamaraTemple/posts/FhBJbJpZm9J

@@ -3,6 +3,8 @@
   :CUSTOM_ID: how-to-reset-your-time-capsule-to-factory-settings-without-losing-your-data
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2013-08-28 09:42
 - keywords: ["admin", "apple", "technology", "time-capsule", "tutorials"]
 - source: http://www.yourdailymac.net/2011/10/how-to-reset-your-time-capsule-to-factory-settings-without-losing-your-data/

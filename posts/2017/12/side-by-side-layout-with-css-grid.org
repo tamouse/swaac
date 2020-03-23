@@ -1,3 +1,6 @@
+
+*WARNING: This is old and likely obsolete.*
+
 * Side-by-side layout with CSS Grid
   :PROPERTIES:
   :CUSTOM_ID: side-by-side-layout-with-css-grid

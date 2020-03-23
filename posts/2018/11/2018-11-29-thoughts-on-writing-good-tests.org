@@ -4,10 +4,10 @@
   :KEYWORDS: testing, learning, good tests
   :END:
 
-- Time-stamp: <2018-11-29 14:54:22 tamara>
+- Time-stamp: <2020-03-23 05:08:22 tamara>
 - current_date: [2018-11-29 Thu]
 - keywords: testing, learning
-
+- category: philosophy
 
 Someone asked this question on the WWCodeTC #learning-to-code Slack channel the other day:
 

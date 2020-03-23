@@ -3,6 +3,8 @@
   :CUSTOM_ID: how-to-translate-nested-polymorphic-attributes-in-activemodelerrors-messages
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2015-06-16 20:56
 - keywords: ["attributes", "errors", "learning", "nested", "polymorphic", "rails", "translation"]
 - source: https://github.com/tamouse/rails-example-how-to-translate-nested-attributes

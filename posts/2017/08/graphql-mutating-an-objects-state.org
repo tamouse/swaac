@@ -1,6 +1,8 @@
 #+TITLE: GraphQL: Mutating an Object's State
 
-- Time-stamp: <2018-09-16 14:23:52 tamara.temple>
+*WARNING: This is old and likely obsolete.*
+
+- Time-stamp: <2020-03-23 05:01:29 tamara>
 - original date: 2017-08-20 11:08
 - keywords: webdev, graphql, ruby, rails
 

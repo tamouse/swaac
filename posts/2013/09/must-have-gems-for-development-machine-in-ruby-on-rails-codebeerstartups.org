@@ -3,6 +3,8 @@
   :CUSTOM_ID: must-have-gems-for-development-machine-in-ruby-on-rails-codebeerstartups
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2013-09-04 11:06
 - keywords: ["development", "gems", "productivity", "rails", "swaac", "tools"]
 - source: http://www.codebeerstartups.com/2013/04/must-have-gems-for-development-machine-in-ruby-on-rails/#!

@@ -3,6 +3,8 @@
   :CUSTOM_ID: rails-question-getting-x-where-there-are-no-y
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2015-03-03 05:38
 - keywords: ["code", "examples", "questions", "rails", "ruby"]
 - source: [[https://github.com/tamouse/example_questions_without_answers]]

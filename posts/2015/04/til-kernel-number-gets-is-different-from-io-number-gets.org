@@ -3,6 +3,8 @@
   :CUSTOM_ID: til-kernelgets-is-different-from-iogets
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2015-04-15 21:33
 - keywords: ["argv", "gets", "learning", "ruby", "til"]
 - source:

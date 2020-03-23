@@ -1,5 +1,9 @@
 #+TITLE: Using Jekyll with Guard and LiveReload
 
+*WARNING: This is old and likely obsolete.*
+
+- pubdate: 2016-01
+
 *UPDATE:* This scheme described here doesn't actually work all that well. What I'm going to suggest is look at the jekyll plugin [[https://github.com/awood/hawkins][=hawkins=]] for a really simple and /working/ method to get live reloading with everything working in Jekyll.
 
 Recently looking around, and chatting with some folks on the =#jekyll= irc channel on freenode, I started to rethink the work I'd done creating the [[https://github.com/tamouse/drink_up_doctor][drink_up_doctor]] gem using [[http://gulpjs.com][Gulp]] to drive the work cycle.

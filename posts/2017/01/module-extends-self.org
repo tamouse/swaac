@@ -11,6 +11,8 @@
 #+EXCLUDE_TAGS: noexport
 #+CREATOR: Emacs 26.2 (Org mode 9.1.9)
 
+*WARNING: This is old and likely obsolete.*
+
 * Module extend self
 
   #+SOURCE: https://medium.com/@vsavkin/hexagonal-architecture-for-rails-developers-8b1fee64a613

@@ -3,6 +3,8 @@
   :CUSTOM_ID: link-how-to-preload-rails-scopes---justin-weiss
   :END:
 
+*WARNING: This is old and likely obsolete.*
+
 - published date: 2015-06-25 14:11
 - keywords: ["associations", "links", "rails", "scopes"]
 - source:
