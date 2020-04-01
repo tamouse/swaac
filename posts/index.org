@@ -1,4 +1,5 @@
 - [[./learning.org]]
+- [[./2020/04/2020-04-01-building-rails-compatible-query-strings-in-javascript.md]]
 - [[./2020/03/2020-03-23-honouring-colour-scheme-in-css.md]]
 - [[./2020/03/2020-03-23-books-on-software-estimating.md]]
 - [[./2020/03/2020-03-21-setting-git-default-editor.md]]
