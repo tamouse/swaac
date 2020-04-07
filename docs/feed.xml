@@ -2,7 +2,49 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://github.com/tamouse/swaac</id>
   <title>Tamouse&#39;s Software as a Craft blog</title>
-  <updated>2020-04-01T14:19:22-05:00</updated>
+  <updated>2020-04-07T09:14:55-05:00</updated>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2020/04/2020-04-07-yil-rails-validators-dont-change-type.md</id>
+      <updated>2020-04-07T09:14:55-05:00</updated>
+      <title>2020-04-07-yil-rails-validators-dont-change-type</title>
+      <content>---
+title: &quot;YIL: Rails validators don&#39;t change parameter type&quot;
+date: 2020-04-07T09:04
+category: rails 
+tags: [validation, type, params]
+---
+
+So I figured this out a while ago, but seems that I forgot to write it down, hence &quot;YIL&quot; - Yesterday I Learned.
+
+I was working with a numeric parameter in Rails, that needed to be a non-negative interger, less than a maximum level. A pretty simple validator :
+
+``` ruby
+validates_numericality_of :age,
+                          :only_integer,
+                          greater_than_or_equal_to: 0,
+                          less_than_or_equal_to: MAX_AGE
+```
+
+The validators work with `age` regardless of whether it&#39;s a number or string; coming in via a parameter from the controller, it will be a string. In a Rails model, this isn&#39;t much of an issue since the variable gets converted to whatever is the right type when the record is persisted.
+
+The case I was working with wasn&#39;t an ActiveRecord however, but just an ActiveModel service object.
+
+In order to fix this for the object model, I used an `after_validation` callback to transform the variable:
+
+``` ruby
+def recast_attributes
+
+  age = age.to_i
+
+end
+```
+
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2020/04/2020-04-01-building-rails-compatible-query-strings-in-javascript.md</id>
       <updated>2020-04-01T14:19:22-05:00</updated>
@@ -990,53 +1032,6 @@ I&#39;m doing the same trick as before about grabbing the actual checkbox by usi
 This test uses the testing library&#39;s ~rerender~ method, which is used to apply different props. In this case the props for the compoonent are controlled above this component, so this is actually a valid test matching how it would work in the user&#39;s environment.
 
 For the rerender, I&#39;m passing in a value for the mobile phone number, which is used to determine whether the checkbox is en-/disabled.
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2019/08/2019-08-17-generating-consisten-faker-values-in-javascript.org</id>
-      <updated>2020-03-23T05:16:14-05:00</updated>
-      <title>Generating Consistent Faker Values in JavaScript</title>
-      <content>#+OPTIONS: &#39;:nil *:t -:t ::t &lt;:t H:3 \n:nil ^:t arch:headline author:t broken-links:nil
-#+OPTIONS: c:nil creator:nil d:(not &quot;LOGBOOK&quot;) date:t e:t email:nil f:t inline:t num:nil
-#+OPTIONS: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t timestamp:t title:t toc:nil
-#+OPTIONS: todo:t |:t
-#+TITLE: Generating Consistent Faker Values in JavaScript
-#+DATE: &lt;2019-08-17 Sat&gt;
-#+AUTHOR: Tamara Temple
-#+EMAIL: tamouse@gmail.com
-#+LANGUAGE: en
-#+SELECT_TAGS: export
-#+EXCLUDE_TAGS: noexport
-#+CREATOR: Emacs 27.0.50 (Org mode 9.1.14)
-
-
-*WARNING: This is old and likely obsolete.*
-
-
-* Generating Consistent Faker Values in JavaScript
-
-So this is good to know. I hadn&#39;t seen this before.
-
-When using [[https://github.com/Marak/Faker.js][faker.js]], you can generate the exact same data each time by setting the *seed*:
-
-#+BEGIN_SRC javascript
-  import faker from &quot;faker&quot;
-
-  faker.seed(123);
-
-  export const testData = {
-      id: faker.number.uuid(),
-      name: `${faker.name.firstName()} ${faker.name.lastName()}`,
-      email: fakcer.internat.email()
-  }
-
-#+END_SRC
-
-Which would give the same data each time.
 </content>
       <author>
         <name>Tamara Temple</name>
