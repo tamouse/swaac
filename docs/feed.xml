@@ -2,7 +2,78 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://github.com/tamouse/swaac</id>
   <title>Tamouse&#39;s Software as a Craft blog</title>
-  <updated>2020-04-07T09:14:55-05:00</updated>
+  <updated>2020-04-08T16:27:36-05:00</updated>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2020/04/2020-04-08-using-keybase-for-secure-git-repos.md</id>
+      <updated>2020-04-08T16:27:36-05:00</updated>
+      <title>2020-04-08-using-keybase-for-secure-git-repos</title>
+      <content>---
+title: &quot;Using Keybase.io for secure git repos&quot;
+date: 2020-04-08T16:06
+category: git 
+tags: [git, keybase, secure, repos]
+---
+
+The [Keybase.io](https://keybase.io) provides a Git server to provide an end-to-end encrypted way to access and store a git remote repo. This is helpful for repos you don&#39;t want visible to the public, at any point. Some private repos are still visible in some ways, but the ones on Keybase enjoy strong encryption all the way through.
+
+## Keybase command line ##
+
+To see the git capabilities, try this from the command line:
+
+``` shell
+
+$ keybase git help
+NAME:
+   keybase git - Manage git repos
+
+USAGE:
+   keybase git &lt;command&gt; [arguments...]
+
+COMMANDS:
+   create	Create a personal or team git repository.
+   delete	Delete a personal or team git repository.
+   gc		Run garbage collection on a personal or team git repository.
+   lfs-config	Configures a keybase git checkout to use LFS
+   list		List the personal and team git repositories you have access to.
+   settings	View and change team repo settings
+   help, h	Shows a list of commands or help for one command
+
+```
+
+## How I use it ##
+
+I have a repo of emacs `org-mode` files kept in a local .git repo. To make a keybase git remote, I do the following things:
+
+``` shell
+
+$ pushd ~/org
+$ keybase git list
+$ keybase git create org-files
+$ git remote rename origin oldorigin
+$ git remote add origin keybase://private/tamouse_/org-files
+$ git push -u origin master
+
+```
+
+## Keybase GUI ##
+
+You can also create a new repository from the Git tab in the Keybase app.
+
+For existing repos, you can get the remote url to set the local git remote to.
+
+### Example ###
+
+![Keybase App Git Tab](../../../images/keybase-git-gui.jpg)
+
+
+
+
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2020/04/2020-04-07-yil-rails-validators-dont-change-type.md</id>
       <updated>2020-04-07T09:14:55-05:00</updated>
@@ -819,219 +890,6 @@ around do |example|
 end
 ```
 
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2019/08/2019-08-29-testing-react-checkbox-component.org</id>
-      <updated>2020-03-23T05:16:14-05:00</updated>
-      <title>Testing React Checkbox Component</title>
-      <content>
-*WARNING: This is old and likely obsolete.*
-
-* Testing React Checkbox Component
-
-published date: [2019-08-29 Thu]
-
-keywords: react, testing, checkbox, querySelector, rerender, queryByTestId, testing-library
-
-Recently, I built a partial form section that included a couple of checkboxes, and I wanted to verify their operation with a unit test.
-
-I&#39;m using [[https://testing-library.com/docs/intro][testing-library]], including the react-specific methods. I&#39;m finding this a godsend in making tests easier to write and understand.
-
-Testing and debugging react components is still fraught with uncertainty for me, I&#39;m still learning and fumbling my way around. Hooks have made writing components much easier, without a doubt, yet there are still times I just don&#39;t know what&#39;s happening.
-
-In this particular episode, your intrepid frontend dev (me) had to find out three things about the form segment:
-
-1. a lookup (autosuggest) field was completely hidden until a partcular checkbox was set.
-2. another checkbox was disabled until another field had data in it.
-3. a specific row of the form would appear only when another value was true.
-
-For our purposes here, only 1 and 2 are of interest.
-
-** Displaying a field form when a checkbox is setfield
-
-For this form row, the code under test looks like this:
-
-#+BEGIN_SRC rjsx
-  const ServiceLocation = ({ name, value, initialValue, onSelectParent }) =&gt; {
-    const [serviceArea, setServiceArea] = useState(!!value)
-    const toggleCheckbox = () =&gt; {
-      setServiceArea(!serviceArea)
-    }
-    return (
-      &lt;FormField name={name}&gt;
-        &lt;FormFieldSubRow&gt;
-          &lt;Checkbox
-            value={serviceArea}
-            onChange={toggleCheckbox}
-            data-testid=&quot;service-area-checkbox&quot;
-          &gt;
-            {&quot; &quot;}
-            {I18n.t(&quot;service_location.label&quot;, { scope: i18nScope })}
-          &lt;/Checkbox&gt;{&quot; &quot;}
-          {serviceArea ? (
-            &lt;CustomerLookupWrapper data-testid=&quot;customer-lookup-wrapper&quot;&gt;
-              &lt;CustomerLookup
-                name={name}
-                initialValue={initialValue}
-                placeholder=&quot;Parent&quot;
-                onSelect={onSelectParent}
-              /&gt;
-            &lt;/CustomerLookupWrapper&gt;
-          ) : null}
-        &lt;/FormFieldSubRow&gt;
-      &lt;/FormField&gt;
-    )
-  }
-#+END_SRC
-
-Placing the ~data-testid~ &quot;service-area-checkbox&quot; on the ~Checkbox~ component gives the test a way of finding the DOM element it needs to work with. The &quot;customer-lookup-wrapper&quot; `data-testid` will be used to determine if the second element shows up when the that checkbox is clicked.
-
-The spec for this looks like:
-
-#+BEGIN_SRC rjsx
-    it(&quot;displays the parent lookup field when the service location checkbox becomes checked&quot;, async () =&gt; {
-      const LOOKUP_WRAPPER_TESTID = &quot;customer-lookup-wrapper&quot;
-      const props = {
-        fields: {},
-        parent: {},
-        handleChange: jest.fn(),
-        onDuplicateCustomerName: jest.fn(),
-        onSelectParent: jest.fn()
-      }
-
-      const { queryByTestId, getByTestId, rerender } = render(
-        &lt;Providers&gt;
-          &lt;CustomerInfoFormSection {...props} /&gt;
-        &lt;/Providers&gt;
-      )
-
-      const serviceAreaCheckbox = getByTestId(&quot;service-area-checkbox&quot;)
-      const checkBoxActual = serviceAreaCheckbox.querySelector(
-        &quot;input[type=checkbox]&quot;
-      )
-
-      /* PRECONDITIONS */
-      expect(queryByTestId(LOOKUP_WRAPPER_TESTID)).not.toBeInTheDocument()
-      expect(checkBoxActual.checked).toEqual(false)
-
-      /* ACTION */
-      fireEvent.click(checkBoxActual)
-
-      /* VERIFY */
-      expect(checkBoxActual.checked).toEqual(true)
-      expect(queryByTestId(LOOKUP_WRAPPER_TESTID)).toBeInTheDocument()
-    })
-#+END_SRC
-
-The two line where things get really interesting are:
-
-#+BEGIN_SRC rjsx
-      const serviceAreaCheckbox = getByTestId(&quot;service-area-checkbox&quot;)
-      const checkBoxActual = serviceAreaCheckbox.querySelector(
-        &quot;input[type=checkbox]&quot;
-      )
-#+END_SRC
-
-We can get the ~Checkbox~ component with the first line, but this only gets us the label wrapper and not the actual checkbox, so the second line pulls up the actual checkbox from within it.
-
-The rendered code from the ~Checkbox~ component looks like this:
-
-#+BEGIN_SRC html
-      &lt;label
-        class=&quot;sc-kAzzGY dXoiwv&quot;
-        data-testid=&quot;service-area-checkbox&quot;
-      &gt;
-        &lt;input
-          class=&quot;sc-cSHVUG bYZObx&quot;
-          type=&quot;checkbox&quot;
-        /&gt;
-
-        service_location.label
-      &lt;/label&gt;
-#+END_SRC
-
-The funky looking classes are the result of ~style-components~. What&#39;s interesting to note is that the ~data-testid~ was placed on the ~label~ node. Using ~querySelector~ let&#39;s me pull out the actual checkbox, which is an HTML element of type &quot;checkbox&quot;.
-
-From there, verifying the preconditions and postconditions becomes fairly easy:
-
-- the state of the check box (ie. checked or not checked) is avalable as a property of the element
-- using ~queryByTestId~ tests whether the particular element is in the document or not
-
-Making the change happens with the ~fireEvent.click~. (/Note:/ the ~change~ event doesn&#39;t work for checkboxes. See: https://github.com/testing-library/react-testing-library/pull/178/files#diff-04c6e90faac2675aa89e2176d2eec7d8R631 ) (and beware the drift of time as well...)
-
-** Verifying a checkbox is en-/disabled based on another value
-
-This case shows something a little different, and shows how to approach changing props as related to component testing.
-
-The code under test in this case is:
-
-#+BEGIN_SRC rjsx
-  const SmsNotifications = ({ name, value, onChange, isMobileSet }) =&gt; {
-    return (
-      &lt;FormField name={name} label={null}&gt;
-        &lt;div&gt;
-          &lt;strong&gt;{I18n.t(&quot;notify_via_sms.title&quot;, { scope: i18nScope })}&lt;/strong&gt;
-          &lt;Checkbox
-            name={name}
-            value={value || &quot;&quot;}
-            onChange={onChange}
-            disabled={isMobileSet ? null : &quot;disabled&quot;}
-            wrap={&quot;wrap&quot;}
-            data-testid=&quot;notify-via-sms-checkbox&quot;
-          &gt;
-            {&quot; &quot;}
-            {I18n.t(&quot;notify_via_sms.label&quot;, { scope: i18nScope })}
-          &lt;/Checkbox&gt;
-        &lt;/div&gt;
-      &lt;/FormField&gt;
-    )
-  }
-
-#+END_SRC
-
-The spec test for this feature is:
-
-#+BEGIN_SRC rjsx
-    it(&quot;enables the notify via sms checkbox when the mobile field has a value&quot;, () =&gt; {
-      const NOTIFY_CHECKBOX_TESTID = &quot;notify-via-sms-checkbox&quot;
-
-      const props = {
-        fields: {},
-        handleChange: jest.fn(),
-        onDuplicateCustomerName: jest.fn(),
-        onSelectParent: jest.fn()
-      }
-      const { queryByTestId, getByTestId, rerender } = render(
-        &lt;Providers&gt;
-          &lt;CustomerInfoFormSection {...props} /&gt;
-        &lt;/Providers&gt;
-      )
-      const notifyCheckBoxComponent = getByTestId(NOTIFY_CHECKBOX_TESTID)
-      const checkBoxActual = notifyCheckBoxComponent.querySelector(
-        &quot;input[type=checkbox]&quot;
-      )
-      expect(checkBoxActual.disabled).toEqual(true)
-
-      rerender(
-        &lt;Providers&gt;
-          &lt;CustomerInfoFormSection {...props} fields={{ mobile: &quot;555121&quot; }} /&gt;
-        &lt;/Providers&gt;
-      )
-
-      expect(checkBoxActual.disabled).toEqual(false)
-    })
-#+END_SRC
-
-I&#39;m doing the same trick as before about grabbing the actual checkbox by using ~querySelect~ on the element returned with ~getByTestId(&quot;NOTIFY_CHECKBOX_TESTID&quot;)~. This provides access to the ~disabled~ property.
-
-This test uses the testing library&#39;s ~rerender~ method, which is used to apply different props. In this case the props for the compoonent are controlled above this component, so this is actually a valid test matching how it would work in the user&#39;s environment.
-
-For the rerender, I&#39;m passing in a value for the mobile phone number, which is used to determine whether the checkbox is en-/disabled.
 </content>
       <author>
         <name>Tamara Temple</name>
