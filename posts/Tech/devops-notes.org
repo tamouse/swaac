@@ -331,14 +331,12 @@
     it's not hard to see why this might be the case - Ansible ends up
     running the same commands.
 *** Anisible and Vagrant                                         :BLOG:SWAAC:
-    :PROPERTIES:
-    :VISIBILITY:folded:
-    :categories: devops
-    :tags:     ansible, vagrant, provisioning
-    :END:
+- VISIBILITY:folded:
+- categories: devops
+- tags:     ansible, vagrant, provisioning
 
-    :categories: devops
-    :tags:     ansible, vagrant, provisioning
+- categories: devops
+- tags:     ansible, vagrant, provisioning
 
     Learning Ansible as a means to provision a Vagrant VM was pretty
     fun. I started looking at creating Vagrant boxes that I could
@@ -395,9 +393,7 @@
     -
       [[http://heeris.id.au/2014/ubuntu-plus-mac-pure-efi-boot/][Ubunutu + Mac: Pure EFI boot]] - because no intermediate
 *** [[https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04?comment=53316][Initial Server Setup with Ubuntu 16.04  DigitalOcean]]
-    :PROPERTIES:
-    :CAPTURE_DATE: [2016-11-29 Tue 20:40]
-    :END:
+- CAPTURE_DATE: [2016-11-29 Tue 20:40]
 
 
  Great tutorial for setting up any server securely.

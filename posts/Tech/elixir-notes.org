@@ -106,15 +106,13 @@
    capture date: [2015-09-16 Wed 23:50]
 ** Books on Elixir
 *** Functional Web Development with Elixir, OTP, and Phoenix: Rethink the Modern Web App by Lance Halvorsen | The Pragmatic Bookshelf
-    :PROPERTIES:
-    :CAPTURE_DATE: [2017-04-17 Mon 18:45]
-    :LINK:     https://pragprog.com/book/lhelph/functional-web-development-with-elixir-otp-and-phoenix
-    :TITLE:    Functional Web Development with Elixir, OTP, and Phoenix: Rethink the Modern Web App by Lance Halvorsen | The Pragmatic Bookshelf
-    :END:
+- CAPTURE_DATE: [2017-04-17 Mon 18:45]
+- LINK:     https://pragprog.com/book/lhelph/functional-web-development-with-elixir-otp-and-phoenix
+- TITLE:    Functional Web Development with Elixir, OTP, and Phoenix: Rethink the Modern Web App by Lance Halvorsen | The Pragmatic Bookshelf
 
-    :CAPTURE_DATE: [2017-04-17 Mon 18:45]
-    :LINK:     https://pragprog.com/book/lhelph/functional-web-development-with-elixir-otp-and-phoenix
-    :TITLE:    Functional Web Development with Elixir, OTP, and Phoenix: Rethink the Modern Web App by Lance Halvorsen | The Pragmatic Bookshelf
+- CAPTURE_DATE: [2017-04-17 Mon 18:45]
+- LINK:     https://pragprog.com/book/lhelph/functional-web-development-with-elixir-otp-and-phoenix
+- TITLE:    Functional Web Development with Elixir, OTP, and Phoenix: Rethink the Modern Web App by Lance Halvorsen | The Pragmatic Bookshelf
 
 *** BOOK: /Programming Elixir/ Notes
 **** .ex vs .exs
@@ -181,9 +179,7 @@
     #+END_SRC
 
 *** embedding quote chars in doctest strings
-    :PROPERTIES:
-    :CAPTURE_DATE: [2017-04-25 Tue 19:46]
-    :END:
+- CAPTURE_DATE: [2017-04-25 Tue 19:46]
 
     You need to double escape embedded quotes in strings you use with
     doctest. For example:
@@ -210,13 +206,11 @@
       "foobar"
     #+END_SRC
 *** Joining strings in Elixir
-    :PROPERTIES:
-    :CAPTURE_DATE: [2017-06-20 Tue 18:20]
-    :URL:      https://stackoverflow.com/questions/20829348/how-to-join-strings-in-elixir
-    :END:
+- CAPTURE_DATE: [2017-06-20 Tue 18:20]
+- URL:      https://stackoverflow.com/questions/20829348/how-to-join-strings-in-elixir
 
-    :CAPTURE_DATE: [2017-06-20 Tue 18:20]
-    :URL:      https://stackoverflow.com/questions/20829348/how-to-join-strings-in-elixir
+- CAPTURE_DATE: [2017-06-20 Tue 18:20]
+- URL:      https://stackoverflow.com/questions/20829348/how-to-join-strings-in-elixir
 
      I had some trouble to find it out(was searching for a solution in
      the String module) so I wanted to share it with you guys.

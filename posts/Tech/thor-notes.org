@@ -40,9 +40,7 @@
 
 
 *** Invoke a thor task by giving only a class option
-    :PROPERTIES:
-    :CAPTURE_DATE: [2016-11-06 Sun 01:11]
-    :END:
+- CAPTURE_DATE: [2016-11-06 Sun 01:11]
 
     From stackoverflow: http://stackoverflow.com/a/7311357/742446
 
@@ -62,9 +60,7 @@
     answered Sep 5 '11 at 17:57 by tfischbach
 
 *** Give thor a default task
-    :PROPERTIES:
-    :CAPTURE_DATE: [2016-11-06 Sun 01:13]
-    :END:
+- CAPTURE_DATE: [2016-11-06 Sun 01:13]
 
     From stackoverflow: http://stackoverflow.com/a/23955971/742446
 

@@ -1,16 +1,14 @@
 
 ** CSS Notes
 *** CSS Variables
-    :PROPERTIES:
-    :CAPTURE_DATE: [2019-03-17 Sun 13:24]
-    :END:
+- CAPTURE_DATE: [2019-03-17 Sun 13:24]
 
 
     [[https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties][CSS Variables at MDN]] defines how to use CSS variables (as opposed to SCSS variables) to hold a value that can be later applied to a property or used in a formula
 
     #+BEGIN_SRC css
 
-      :root {
+- root {
 	--phone-width: 452px; /* theoretical width of a phone, useful for hiding things on small screens behind a @media request */
       }
 
@@ -48,9 +46,7 @@
 
 
 *** Article: Drawing ideas that will make you a better artist
-    :PROPERTIES:
-    :CAPTURE_DATE: [2019-01-22 Tue 08:52]
-    :END:
+- CAPTURE_DATE: [2019-01-22 Tue 08:52]
 
     Scraped repo: https://gitlab.com/scrapings/drawing-ideas-that-will-make-you-a-better-artist
 
@@ -142,15 +138,13 @@
 
     [[https://facebook.github.io/react-native/docs/style.html][Style  React Native  A framework for building native apps using React]]
 *** Building Resizeable Components with Relative CSS Units | CSS-Tricks :css:relative:units:
-    :PROPERTIES:
-    :CAPTURE_DATE: [2016-09-14 Wed 21:24]
-    :LINK:     https://css-tricks.com/building-resizeable-components-relative-css-units/?utm_source=html5weekly&utm_medium=email
-    :TITLE:    Building Resizeable Components with Relative CSS Units | CSS-Tricks
-    :END:
+- CAPTURE_DATE: [2016-09-14 Wed 21:24]
+- LINK:     https://css-tricks.com/building-resizeable-components-relative-css-units/?utm_source=html5weekly&utm_medium=email
+- TITLE:    Building Resizeable Components with Relative CSS Units | CSS-Tricks
 
-    :CAPTURE_DATE: [2016-09-14 Wed 21:24]
-    :LINK:     https://css-tricks.com/building-resizeable-components-relative-css-units/?utm_source=html5weekly&utm_medium=email
-    :TITLE:    Building Resizeable Components with Relative CSS Units | CSS-Tricks
+- CAPTURE_DATE: [2016-09-14 Wed 21:24]
+- LINK:     https://css-tricks.com/building-resizeable-components-relative-css-units/?utm_source=html5weekly&utm_medium=email
+- TITLE:    Building Resizeable Components with Relative CSS Units | CSS-Tricks
 
     description: The following is a guest post by Ahmad
     Shadeed. Ahmad has put together a ton of examples to show off how
@@ -187,9 +181,7 @@
 
    captured at: [2016-01-05 Tue 09:44]
 *** [[https://css-tricks.com/the-power-of-rgba/?utm_source=frontendfocus&utm_medium=email][The Power of the rgba Color Function in CSS  CSS-Tricks]]
-    :PROPERTIES:
-    :CAPTURE_DATE: [2016-11-19 Sat 17:11]
-    :END:
+- CAPTURE_DATE: [2016-11-19 Sat 17:11]
 
   Great article on using rgba for playing with opacity effects.
 
@@ -198,76 +190,66 @@
   Soon Sass will be obsolete :)
 
 *** Experiment: Using Picture Element and VW+VH units as a Lightbox
-    :PROPERTIES:
-    :CAPTURE_DATE: [2016-12-22 Thu 20:26]
-    :LINK:     http://codepen.io/davatron5000/pen/ENOVVV
-    :TITLE:    Experiment: Using Picture Element and VW+VH units as a Lightbox
-    :END:
+- CAPTURE_DATE: [2016-12-22 Thu 20:26]
+- LINK:     http://codepen.io/davatron5000/pen/ENOVVV
+- TITLE:    Experiment: Using Picture Element and VW+VH units as a Lightbox
 
-    :CAPTURE_DATE: [2016-12-22 Thu 20:26]
-    :LINK:     http://codepen.io/davatron5000/pen/ENOVVV
-    :TITLE:    Experiment: Using Picture Element and VW+VH units as a Lightbox
+- CAPTURE_DATE: [2016-12-22 Thu 20:26]
+- LINK:     http://codepen.io/davatron5000/pen/ENOVVV
+- TITLE:    Experiment: Using Picture Element and VW+VH units as a Lightbox
 
     {"selection":"http://fillmurray.com","description":"...","keywords":""}
 
 *** Flywheel | How to use Flexbox to create a modern card design layout
-    :PROPERTIES:
-    :CAPTURE_DATE: [2017-03-02 Thu 08:26]
-    :LINK:     https://getflywheel.com/layout/how-to-use-flexbox-to-create-a-modern-card-design-layout/?utm_source=frontendfocus&utm_medium=email
-    :TITLE:    Flywheel | How to use Flexbox to create a modern card design layout
-    :DESCRIPTION: Layout is a design and WordPress blog covering thought-provoking topics that show you the next step for your business, improve your process, and inspire your designs.
-    :AUTHOR:   Abbey Fitzgerald
-    :DATE_PUBLISHED: [2017-02-21 Tue]
-    :END:
+- CAPTURE_DATE: [2017-03-02 Thu 08:26]
+- LINK:     https://getflywheel.com/layout/how-to-use-flexbox-to-create-a-modern-card-design-layout/?utm_source=frontendfocus&utm_medium=email
+- TITLE:    Flywheel | How to use Flexbox to create a modern card design layout
+- DESCRIPTION: Layout is a design and WordPress blog covering thought-provoking topics that show you the next step for your business, improve your process, and inspire your designs.
+- AUTHOR:   Abbey Fitzgerald
+- DATE_PUBLISHED: [2017-02-21 Tue]
 
-    :CAPTURE_DATE: [2017-03-02 Thu 08:26]
-    :LINK:     https://getflywheel.com/layout/how-to-use-flexbox-to-create-a-modern-card-design-layout/?utm_source=frontendfocus&utm_medium=email
-    :TITLE:    Flywheel | How to use Flexbox to create a modern card design layout
-    :DESCRIPTION: Layout is a design and WordPress blog covering thought-provoking topics that show you the next step for your business, improve your process, and inspire your designs.
-    :AUTHOR:   Abbey Fitzgerald
-    :DATE_PUBLISHED: [2017-02-21 Tue]
+- CAPTURE_DATE: [2017-03-02 Thu 08:26]
+- LINK:     https://getflywheel.com/layout/how-to-use-flexbox-to-create-a-modern-card-design-layout/?utm_source=frontendfocus&utm_medium=email
+- TITLE:    Flywheel | How to use Flexbox to create a modern card design layout
+- DESCRIPTION: Layout is a design and WordPress blog covering thought-provoking topics that show you the next step for your business, improve your process, and inspire your designs.
+- AUTHOR:   Abbey Fitzgerald
+- DATE_PUBLISHED: [2017-02-21 Tue]
 
 
 *** Learn CSS Grid | Jen Simmons
-    :PROPERTIES:
-    :CAPTURE_DATE: [2017-03-02 Thu 09:36]
-    :LINK:     http://jensimmons.com/post/feb-27-2017/learn-css-grid?utm_source=frontendfocus&utm_medium=email
-    :TITLE:    Learn CSS Grid | Jen Simmons
-    :DESCRIPTION: List of resources for learning about CSS Grid
-    :END:
+- CAPTURE_DATE: [2017-03-02 Thu 09:36]
+- LINK:     http://jensimmons.com/post/feb-27-2017/learn-css-grid?utm_source=frontendfocus&utm_medium=email
+- TITLE:    Learn CSS Grid | Jen Simmons
+- DESCRIPTION: List of resources for learning about CSS Grid
 
-    :CAPTURE_DATE: [2017-03-02 Thu 09:36]
-    :LINK:     http://jensimmons.com/post/feb-27-2017/learn-css-grid?utm_source=frontendfocus&utm_medium=email
-    :TITLE:    Learn CSS Grid | Jen Simmons
-    :DESCRIPTION: List of resources for learning about CSS Grid
+- CAPTURE_DATE: [2017-03-02 Thu 09:36]
+- LINK:     http://jensimmons.com/post/feb-27-2017/learn-css-grid?utm_source=frontendfocus&utm_medium=email
+- TITLE:    Learn CSS Grid | Jen Simmons
+- DESCRIPTION: List of resources for learning about CSS Grid
 
 
 *** Learn CSS Layout - floats, positioning, flexbox, grids
-    :PROPERTIES:
-    :CAPTURE_DATE: [2017-03-02 Thu 09:38]
-    :LINK:     https://thecssworkshop.com/?utm_content=buffer32ef9&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer
-    :TITLE:    Learn CSS Layout - floats, positioning, flexbox, grids
-    :DESCRIPTION: A comprehensive self-study course to build practical CSS layout skills. Created by Rachel Andrew.
-    :AUTHOR:   Rachel Andrews
-    :END:
+- CAPTURE_DATE: [2017-03-02 Thu 09:38]
+- LINK:     https://thecssworkshop.com/?utm_content=buffer32ef9&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer
+- TITLE:    Learn CSS Layout - floats, positioning, flexbox, grids
+- DESCRIPTION: A comprehensive self-study course to build practical CSS layout skills. Created by Rachel Andrew.
+- AUTHOR:   Rachel Andrews
     
-    :CAPTURE_DATE: [2017-03-02 Thu 09:38]
-    :LINK:     https://thecssworkshop.com/?utm_content=buffer32ef9&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer
-    :TITLE:    Learn CSS Layout - floats, positioning, flexbox, grids
-    :DESCRIPTION: A comprehensive self-study course to build practical CSS layout skills. Created by Rachel Andrew.
-    :AUTHOR:   Rachel Andrews
+- CAPTURE_DATE: [2017-03-02 Thu 09:38]
+- LINK:     https://thecssworkshop.com/?utm_content=buffer32ef9&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer
+- TITLE:    Learn CSS Layout - floats, positioning, flexbox, grids
+- DESCRIPTION: A comprehensive self-study course to build practical CSS layout skills. Created by Rachel Andrew.
+- AUTHOR:   Rachel Andrews
 
 
 *** Gradient Buttons with Background-Color Change (CSS-only)
-    :PROPERTIES:
-    :CAPTURE_DATE: [2017-03-06 Mon 11:28]
-    :LINK:     http://codepen.io/pirrera/pen/bqVeGx
-    :TITLE:    Gradient Buttons with Background-Color Change (CSS-only)
-    :END:
+- CAPTURE_DATE: [2017-03-06 Mon 11:28]
+- LINK:     http://codepen.io/pirrera/pen/bqVeGx
+- TITLE:    Gradient Buttons with Background-Color Change (CSS-only)
 
-    :CAPTURE_DATE: [2017-03-06 Mon 11:28]
-    :LINK:     http://codepen.io/pirrera/pen/bqVeGx
-    :TITLE:    Gradient Buttons with Background-Color Change (CSS-only)
+- CAPTURE_DATE: [2017-03-06 Mon 11:28]
+- LINK:     http://codepen.io/pirrera/pen/bqVeGx
+- TITLE:    Gradient Buttons with Background-Color Change (CSS-only)
 
       This is the magic, right here:
       #+BEGIN_SRC css
@@ -279,15 +261,13 @@
       After specifying the gradients going from left to right, the
       hover reverses that. Neat idea!
 *** Font style matcher                                 :css:fonts:fout:tools:
-    :PROPERTIES:
-    :CAPTURE_DATE: [2017-03-11 Sat 15:51]
-    :LINK:     https://meowni.ca/font-style-matcher/
-    :TITLE:    Font style matcher
-    :END:
+- CAPTURE_DATE: [2017-03-11 Sat 15:51]
+- LINK:     https://meowni.ca/font-style-matcher/
+- TITLE:    Font style matcher
 
-    :CAPTURE_DATE: [2017-03-11 Sat 15:51]
-    :LINK:     https://meowni.ca/font-style-matcher/
-    :TITLE:    Font style matcher
+- CAPTURE_DATE: [2017-03-11 Sat 15:51]
+- LINK:     https://meowni.ca/font-style-matcher/
+- TITLE:    Font style matcher
 
       To compare fonts to try to eliminate as much FOUT as possible.
 
@@ -302,15 +282,11 @@
 
       #+END_QUOTE
 *** [[https://medium.com/@devdevcharlie/things-nobody-ever-taught-me-about-css-5d16be8d5d0e][Medium: Things Nobody Taught Me About CSS]]                           :css:
-    :PROPERTIES:
-    :CAPTURE_DATE: [2019-03-24 Sun 15:11]
-    :END:
+- CAPTURE_DATE: [2019-03-24 Sun 15:11]
 
 ** CSS TODOs
 *** DONE Research / Learn about CSS Grid positioning         :swaac:css:grid:
-    :PROPERTIES:
-    :CREATED_AT: [2016-10-05 Wed 20:42]
-    :END:
+- CREATED_AT: [2016-10-05 Wed 20:42]
 
  Wrote two codepens on this:
 

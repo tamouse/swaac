@@ -1,8 +1,6 @@
 * Tech Inbox
 ** IDEA: use google sheets API to feed web site data
-   :PROPERTIES:
-   :CAPTURE_DATE: [2018-12-11 Tue 08:01]
-   :END:
+- CAPTURE_DATE: [2018-12-11 Tue 08:01]
 
    #+BEGIN_QUOTE
 

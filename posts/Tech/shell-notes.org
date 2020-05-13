@@ -1,9 +1,7 @@
 * command line shells
 ** Shell Notes
 *** zsh
-    :PROPERTIES:
-    :LOCATION: This has been added to swaac.dev
-    :END:
+- LOCATION: This has been added to swaac.dev
 
     - [[https://support.apple.com/en-us/HT208050][zsh is default on MacOS Catalina]]
 

@@ -2,9 +2,7 @@
 
 ** Notes
 *** [[http://www.saturnflyer.com/blog/jim/2015/01/20/ruby-forwardable-deep-dive/?utm_source%3Drubyweekly&utm_medium%3Demail][Forwardable Deep Dive]] [2015-01-25 Sun]
-    :PROPERTIES:
-    :LOCATION: added to swaac.dev
-    :END:
+- LOCATION: added to swaac.dev
     #+AUTHOR: Jim Gay
 
 
@@ -91,10 +89,8 @@
 ** Ruby Testing
 *** Capybara
 **** DONE Scrolling the window in Capybara          :blog:ruby:spec:capybara:
-   :PROPERTIES:
-   :CAPTURE_DATE: [2019-03-06 Wed 16:45]
-   :LOCATION: added to swaac.dev
-   :END:
+- CAPTURE_DATE: [2019-03-06 Wed 16:45]
+- LOCATION: added to swaac.dev
 
 
    This is a problem when we have a modal that is long and we need to get the "Submit" button.

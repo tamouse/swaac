@@ -2,9 +2,7 @@
 ** WordPress NOTES
 
 *** Install Themes and Plugins with out FTP
-    :PROPERTIES:
-    :URL:      https://tamouse.github.io/swaac/wordpress/2016/11/14/installing-wordpress-things-without-ftp/
-    :END:
+- URL:      https://tamouse.github.io/swaac/wordpress/2016/11/14/installing-wordpress-things-without-ftp/
 
     Link: https://tamouse.github.io/swaac/wordpress/2016/11/14/installing-wordpress-things-without-ftp/
 

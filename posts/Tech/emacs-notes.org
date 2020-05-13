@@ -22,9 +22,7 @@
     created_on: [2015-01-24 Sat 21:47]
 
 *** investigate prodigy emacs package
-    :PROPERTIES:
-    :CAPTURE_DATE: [2017-07-05 Wed 00:39]
-    :END:
+- CAPTURE_DATE: [2017-07-05 Wed 00:39]
 
 
     Seen on Mike Zamansky's blog Emacs 35 Blogging
@@ -33,9 +31,7 @@
 
     Prodigy repo: https://github.com/rejeep/prodigy.el
 *** emacs org-mode blogging tool that can use datetime style file to publish :emacs:project:blogging:
-    :PROPERTIES:
-    :CAPTURE_DATE: [2018-09-03 Mon 11:35]
-    :END:
+- CAPTURE_DATE: [2018-09-03 Mon 11:35]
 
  A possible starting point, but not necessarily: [[https://www.sadiqpk.org/blog/2018/08/08/blogging-with-org-mode.html]]
 
@@ -203,43 +199,37 @@ only searches the mails in the summary buffer and not all the mails.
 *** [[http://www.howardism.org/Technical/Emacs/new-window-manager.html][Emacs is my New Window Manager]] [[2015-01-24 Sat 22:06]]
 *** [[http://planet.emacsen.org/][Planet Emacsen blog aggregator]] [[2015-01-24 Sat 22:18]]
 *** Org Mode - Organize Your Life In Plain Text!            :orgmode:emacs:
-   :PROPERTIES:
-   :CAPTURE_DATE: [2016-08-21 Sun 23:18]
-   :LINK:     http://doc.norang.ca/org-mode.html#Setup
-   :TITLE:    Org Mode - Organize Your Life In Plain Text!
-   :END:
+- CAPTURE_DATE: [2016-08-21 Sun 23:18]
+- LINK:     http://doc.norang.ca/org-mode.html#Setup
+- TITLE:    Org Mode - Organize Your Life In Plain Text!
 
-   :CAPTURE_DATE: [2016-08-21 Sun 23:18]
-   :LINK:     http://doc.norang.ca/org-mode.html#Setup
-   :TITLE:    Org Mode - Organize Your Life In Plain Text!
+- CAPTURE_DATE: [2016-08-21 Sun 23:18]
+- LINK:     http://doc.norang.ca/org-mode.html#Setup
+- TITLE:    Org Mode - Organize Your Life In Plain Text!
 
    description: A description of how I currently use org-mode
 *** org mode - Use prop and prompt together in org-capture-templates - Emacs Stack Exchange
-   :PROPERTIES:
-   :CAPTURE_DATE: [2016-10-07 Fri 14:31]
-   :LINK:     http://emacs.stackexchange.com/questions/21502/use-propp-prompt-together-in-org-capture-templates
-   :TITLE:    org mode - Use `` `` together in org-capture-templates - Emacs Stack Exchange
-   :prop:
-   :END:
+- CAPTURE_DATE: [2016-10-07 Fri 14:31]
+- LINK:     http://emacs.stackexchange.com/questions/21502/use-propp-prompt-together-in-org-capture-templates
+- TITLE:    org mode - Use `` `` together in org-capture-templates - Emacs Stack Exchange
+- prop:
 
 
-   :CAPTURE_DATE: [2016-10-07 Fri 14:31]
-   :LINK:     http://emacs.stackexchange.com/questions/21502/use-propp-prompt-together-in-org-capture-templates
-   :TITLE:    org mode - Use `` `` together in org-capture-templates - Emacs Stack Exchange
+- CAPTURE_DATE: [2016-10-07 Fri 14:31]
+- LINK:     http://emacs.stackexchange.com/questions/21502/use-propp-prompt-together-in-org-capture-templates
+- TITLE:    org mode - Use `` `` together in org-capture-templates - Emacs Stack Exchange
 
    This might be a possibility to solve my riddle about re-using
    entered information. It could be possible to call a method in the
    template that will store it temporarily.
 *** Using Emacs - 11 - Reveal.js presentations | C'est la Z
-  :PROPERTIES:
-  :CAPTURE_DATE: [2016-11-13 Sun 11:47]
-  :LINK:     http://cestlaz.github.io/posts/using-emacs-11-reveal/#.WCikReHx6iC
-  :TITLE:    Using Emacs - 11 - Reveal.js presentations | C'est la Z
-  :END:
+- CAPTURE_DATE: [2016-11-13 Sun 11:47]
+- LINK:     http://cestlaz.github.io/posts/using-emacs-11-reveal/#.WCikReHx6iC
+- TITLE:    Using Emacs - 11 - Reveal.js presentations | C'est la Z
 
-  :CAPTURE_DATE: [2016-11-13 Sun 11:47]
-  :LINK:     http://cestlaz.github.io/posts/using-emacs-11-reveal/#.WCikReHx6iC
-  :TITLE:    Using Emacs - 11 - Reveal.js presentations | C'est la Z
+- CAPTURE_DATE: [2016-11-13 Sun 11:47]
+- LINK:     http://cestlaz.github.io/posts/using-emacs-11-reveal/#.WCikReHx6iC
+- TITLE:    Using Emacs - 11 - Reveal.js presentations | C'est la Z
 
 description: null
 
@@ -261,9 +251,7 @@ selection:
 
 
 *** use file-name-as-directory to concat file names
-    :PROPERTIES:
-    :CAPTURE_DATE: [2019-03-18 Mon 02:37]
-    :END:
+- CAPTURE_DATE: [2019-03-18 Mon 02:37]
 
 
     #+BEGIN_QUOTE
@@ -283,14 +271,10 @@ selection:
     #+END_QUOTE
 
     Trying add subdirectories to org-agenda-files list** Emacs ChangeLog commands
-    :PROPERTIES:
-    :CAPTURE_DATE: [2019-03-18 Mon 02:20]
-    :END:
+- CAPTURE_DATE: [2019-03-18 Mon 02:20]
 
     ~C-x 4 a~ in working file opens entry in the ~ChangeLog~ file.** Article: Why these animals (and one baby) are incredibly jacked (popsci)
-    :PROPERTIES:
-    :CAPTURE_DATE: [2019-01-13 Sun 12:07]
-    :END:
+- CAPTURE_DATE: [2019-01-13 Sun 12:07]
 
     [[file://Users/tamara/GoogleDrive/Documents/downloaded/muscular-animals-babies-myostatin/piedmontese_cattle.jpg][saved article]]
     [[https://gitlab.com/scrapings/muscular-animals-babies-myostatin][GitLab repo]]

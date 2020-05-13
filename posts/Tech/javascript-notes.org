@@ -35,9 +35,7 @@
 
 ** Testing
 *** toBeInTheDocument                         :testing:react:javascript:jest:
-    :PROPERTIES:
-    :CAPTURE_DATE: [2019-08-22 Thu 13:36]
-    :END:
+- CAPTURE_DATE: [2019-08-22 Thu 13:36]
 
 
     Link: [[https://github.com/testing-library/jest-dom#tobeinthedocument]]
@@ -61,9 +59,7 @@
 
 
     .** Does Google Photos have an API?
-    :PROPERTIES:
-    :CAPTURE_DATE: [2019-08-17 Sat 14:03]
-    :END:
+- CAPTURE_DATE: [2019-08-17 Sat 14:03]
 
 
     Yes: [[https://developers.google.com/photos/]]
@@ -138,9 +134,7 @@
 
      - [[https://jaketrent.com/post/return-array-graphql/][Return an Array in GraphQL]]
 *** implementing subscriptions with Graphql-ruby and ActionCable
-    :PROPERTIES:
-    :CAPTURE_DATE: [2019-10-03 Thu 17:05]
-    :END:
+- CAPTURE_DATE: [2019-10-03 Thu 17:05]
 
 **** graphql-ruby documentation
  [[https://graphql-ruby.org/javascript_client/apollo_subscriptions#apollo-2--actioncable][Apollo 2 – ActionCable]]
@@ -442,9 +436,7 @@ Apparently this is a thing that's needed:
      you can't do snapshot testing with them.
 
 **** TIL: using beforeAll and beforeEach in jest tests              :blogged:
-     :PROPERTIES:
-     :CAPTURE_DATE: [2018-01-19 Fri 12:44]
-     :END:
+- CAPTURE_DATE: [2018-01-19 Fri 12:44]
 
      This has been bugging me for awhile. I have wanted to set up things
      in ~beforeAll~ and ~beforeEach~ functions, like I do in RSpec, but
@@ -490,9 +482,7 @@ Apparently this is a thing that's needed:
      #+END_SRC
 
 **** TIL: you can call instance variables and functions on an Enzyme wrapper :blogged:
-     :PROPERTIES:
-     :CAPTURE_DATE: [2018-01-19 Fri 13:19]
-     :END:
+- CAPTURE_DATE: [2018-01-19 Fri 13:19]
 
      Okay, this is very cool. I didn't know this would work BUT IT DOES!
 
@@ -509,13 +499,11 @@ Apparently this is a thing that's needed:
 
 
 *** Maybe, Wrapping components
-    :PROPERTIES:
-    :CAPTURE_DATE: [2017-07-29 Sat 08:58]
-    :URL:      https://javascript-mn.slack.com/archives/C0KMEFZJ9/p1501312238890613
-    :END:
+- CAPTURE_DATE: [2017-07-29 Sat 08:58]
+- URL:      https://javascript-mn.slack.com/archives/C0KMEFZJ9/p1501312238890613
 
-    :CAPTURE_DATE: [2017-07-29 Sat 08:58]
-    :URL:      https://javascript-mn.slack.com/archives/C0KMEFZJ9/p1501312238890613
+- CAPTURE_DATE: [2017-07-29 Sat 08:58]
+- URL:      https://javascript-mn.slack.com/archives/C0KMEFZJ9/p1501312238890613
 
     From the JS.MN Slack #general room:
 
@@ -576,13 +564,9 @@ Apparently this is a thing that's needed:
 
 
 *** Link: Video: [[https://www.twitch.tv/videos/404530952?t=00h16m54s][fun, fun, function - Dan Abramov teaches me React Hooks]] :javascript:react:
-    :PROPERTIES:
-    :CAPTURE_DATE: [2019-04-03 Wed 11:58]
-    :END:
+- CAPTURE_DATE: [2019-04-03 Wed 11:58]
 *** toBeInTheDocument                 :testing:react:javascript:jest:
-    :PROPERTIES:
-    :CAPTURE_DATE: [2019-08-22 Thu 13:36]
-    :END:
+- CAPTURE_DATE: [2019-08-22 Thu 13:36]
 
 
     Link: [[https://github.com/testing-library/jest-dom#tobeinthedocument]]
@@ -614,17 +598,13 @@ Apparently this is a thing that's needed:
 
 
 *** You Probably Don't Need Derived State
-    :PROPERTIES:
-    :CAPTURE_DATE: [2019-03-18 Mon 12:34]
-    :END:
+- CAPTURE_DATE: [2019-03-18 Mon 12:34]
 
     On the [[https://reactjs.org/blog/][react blog]], the post [[https://reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html][You Probably Don't Need Derived State]] talks about an anitpattern of assigning incoming props to internal state, and what you should do instead.
 
 *** TIL: use onKeyUp instead of onKeyPress
-    :PROPERTIES:
-    :CAPTURE_DATE: [2018-10-02 Tue 11:34]
-    :KEYWORDS: react, onKeyUp, onKeyPress
-    :END:
+- CAPTURE_DATE: [2018-10-02 Tue 11:34]
+- KEYWORDS: react, onKeyUp, onKeyPress
 
     In react components, there is a pseudo-event, ~onKeyPress~ that responds to some key presses, but not all. If you want to respond to *any* key event, use ~onKeyUp~ or ~onKeyDown~.
 
@@ -742,9 +722,7 @@ Apparently this is a thing that's needed:
 
 
 *** Fix for error: "adb server version (40) doesn't match this client (39); killing"
-    :PROPERTIES:
-    :CAPTURE_DATE: [2018-08-06 Mon 15:00]
-    :END:
+- CAPTURE_DATE: [2018-08-06 Mon 15:00]
 
     This error: "adb server version (40) doesn't match this client (39); killing" can show up when trying to do an android build on a ReactNative app when using Genymotion simulators. The fix is to use the installed android sdk instead of the Genymotion one. The installed android sdk should be under:
 
@@ -761,15 +739,13 @@ Apparently this is a thing that's needed:
 
     captured at: [2016-01-11 Mon 11:20]
 ** HTTP access control (CORS) - HTTP | MDN
-   :PROPERTIES:
-   :CAPTURE_DATE: [2016-12-10 Sat 15:02]
-   :LINK:     https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
-   :TITLE:    HTTP access control (CORS) - HTTP | MDN
-   :END:
+- CAPTURE_DATE: [2016-12-10 Sat 15:02]
+- LINK:     https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
+- TITLE:    HTTP access control (CORS) - HTTP | MDN
 
-   :CAPTURE_DATE: [2016-12-10 Sat 15:02]
-   :LINK:     https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
-   :TITLE:    HTTP access control (CORS) - HTTP | MDN
+- CAPTURE_DATE: [2016-12-10 Sat 15:02]
+- LINK:     https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
+- TITLE:    HTTP access control (CORS) - HTTP | MDN
 
    #+BEGIN_SRC json
   {
@@ -780,13 +756,11 @@ Apparently this is a thing that's needed:
    #+END_SRC
 ** Webpack
 *** Webpack's resolve.alias feature
-    :PROPERTIES:
-    :CAPTURE_DATE: [2017-05-01 Mon 01:16]
-    :URL:      https://webpack.js.org/configuration/resolve/#resolve-alias
-    :END:
+- CAPTURE_DATE: [2017-05-01 Mon 01:16]
+- URL:      https://webpack.js.org/configuration/resolve/#resolve-alias
 
-    :CAPTURE_DATE: [2017-05-01 Mon 01:16]
-    :URL:      https://webpack.js.org/configuration/resolve/#resolve-alias
+- CAPTURE_DATE: [2017-05-01 Mon 01:16]
+- URL:      https://webpack.js.org/configuration/resolve/#resolve-alias
 
     Create alias for ~import~ or ~require~ so you don't have to use
     ugly relative paths like
@@ -834,9 +808,7 @@ Apparently this is a thing that's needed:
    - http://vuejs.org/
 
 ** prevent LastPass from filling a field
-   :PROPERTIES:
-   :CAPTURE_DATE: [2019-09-25 Wed 13:42]
-   :END:
+- CAPTURE_DATE: [2019-09-25 Wed 13:42]
 
    Source: https://stackoverflow.com/a/44984917/742446
 

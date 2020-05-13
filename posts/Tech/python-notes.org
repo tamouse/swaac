@@ -2,9 +2,7 @@
 ** Python Notes (refile Target)
 
 *** Joining a list of strings with a separator
-    :PROPERTIES:
-    :CAPTURE_DATE: [2016-12-19 Mon]
-    :END:
+- CAPTURE_DATE: [2016-12-19 Mon]
 
     This is rather the exact opposite of the way Ruby does it.
 
@@ -21,9 +19,7 @@
     it's entirely arbitrary.
 
 *** Using boto3 to grab a file from S3
-    :PROPERTIES:
-    :CAPTURE_DATE: [2016-12-19 Mon 17:18]
-    :END:
+- CAPTURE_DATE: [2016-12-19 Mon 17:18]
 
     Upload a local file to S3:
 
@@ -67,9 +63,7 @@
 
 
 *** Magic to make a python script run
-    :PROPERTIES:
-    :CAPTURE_DATE: [2016-12-20 Tue 11:47]
-    :END:
+- CAPTURE_DATE: [2016-12-20 Tue 11:47]
 
 
     When writing a python script that defines a bunch of methods,
@@ -89,15 +83,13 @@
     Including a shebang at the top will make it interpretable from the
     shell, too.
 *** Python ~with~ statement
-    :PROPERTIES:
-    :CAPTURE_DATE: [2016-12-20 Tue 15:34]
-    :LINK:     https://docs.python.org/3/whatsnew/2.6.html#pep-343-the-with-statement
-    :TITLE:    What’s New in Python 2.6 — Python 3.5.2 documentation
-    :END:
+- CAPTURE_DATE: [2016-12-20 Tue 15:34]
+- LINK:     https://docs.python.org/3/whatsnew/2.6.html#pep-343-the-with-statement
+- TITLE:    What’s New in Python 2.6 — Python 3.5.2 documentation
 
-    :CAPTURE_DATE: [2016-12-20 Tue 15:34]
-    :LINK:     https://docs.python.org/3/whatsnew/2.6.html#pep-343-the-with-statement
-    :TITLE:    What’s New in Python 2.6 — Python 3.5.2 documentation
+- CAPTURE_DATE: [2016-12-20 Tue 15:34]
+- LINK:     https://docs.python.org/3/whatsnew/2.6.html#pep-343-the-with-statement
+- TITLE:    What’s New in Python 2.6 — Python 3.5.2 documentation
 
     The ‘with‘ statement clarifies code that previously would use
     try...finally blocks to ensure that clean-up code is executed. In
@@ -115,30 +107,26 @@
 
     #+END_SRC
 *** Ned Batchelder: Lists vs. Tuples
-    :PROPERTIES:
-    :CAPTURE_DATE: [2017-04-15 Sat 12:13]
-    :LINK:     https://nedbatchelder.com/blog/201608/lists_vs_tuples.html
-    :TITLE:    Ned Batchelder: Lists vs. Tuples
-    :END:
+- CAPTURE_DATE: [2017-04-15 Sat 12:13]
+- LINK:     https://nedbatchelder.com/blog/201608/lists_vs_tuples.html
+- TITLE:    Ned Batchelder: Lists vs. Tuples
 
-    :CAPTURE_DATE: [2017-04-15 Sat 12:13]
-    :LINK:     https://nedbatchelder.com/blog/201608/lists_vs_tuples.html
-    :TITLE:    Ned Batchelder: Lists vs. Tuples
+- CAPTURE_DATE: [2017-04-15 Sat 12:13]
+- LINK:     https://nedbatchelder.com/blog/201608/lists_vs_tuples.html
+- TITLE:    Ned Batchelder: Lists vs. Tuples
 
     Response to my question in PyLadies#help_me channel.
 
     To put the Cultural Difference in terms of the C language, lists
     are like arrays, tuples are like structs.
 *** Ned Batchelder: Tag: Python
-    :PROPERTIES:
-    :CAPTURE_DATE: [2017-04-15 Sat 12:16]
-    :LINK:     https://nedbatchelder.com/blog/tag/python.html
-    :TITLE:    Ned Batchelder: Tag: Python
-    :END:
+- CAPTURE_DATE: [2017-04-15 Sat 12:16]
+- LINK:     https://nedbatchelder.com/blog/tag/python.html
+- TITLE:    Ned Batchelder: Tag: Python
 
-    :CAPTURE_DATE: [2017-04-15 Sat 12:16]
-    :LINK:     https://nedbatchelder.com/blog/tag/python.html
-    :TITLE:    Ned Batchelder: Tag: Python
+- CAPTURE_DATE: [2017-04-15 Sat 12:16]
+- LINK:     https://nedbatchelder.com/blog/tag/python.html
+- TITLE:    Ned Batchelder: Tag: Python
 
     Python Posts by Ned Batchelder; useful info, blogging since 2002.
 
@@ -164,7 +152,7 @@
 
           Calculate the area of a room given length and width
 
-          :returns: (area in sq ft, area in sq meters)
+- returns: (area in sq ft, area in sq meters)
 
           >>> calc(10.0,5.0)
           (50.0, 4.645152)
@@ -226,14 +214,10 @@
     not really much supported. This is first class testing in Python!
 
 *** learn how to deep merge dictionaries in Python               :polyconfig:
-    :PROPERTIES:
-    :CAPTURE_DATE: [2017-01-27 Fri 08:08]
-    :END:
+- CAPTURE_DATE: [2017-01-27 Fri 08:08]
 ** PySFTP notes
 *** Opening a connection using a private key file
-    :PROPERTIES:
-    :CAPTURE_DATE: [2016-12-19 Mon]
-    :END:
+- CAPTURE_DATE: [2016-12-19 Mon]
 
     This is pretty straightforward, you can use the ~private_key~
     parameter to give the PEM file:
@@ -317,17 +301,15 @@
      #+END_SRC
 
 **** thisbejim/Pyrebase: A simple python wrapper for the Firebase API.
-     :PROPERTIES:
-     :CAPTURE_DATE: [2017-03-21 Tue 20:43]
-     :LINK:     https://github.com/thisbejim/Pyrebase
-     :TITLE:    thisbejim/Pyrebase: A simple python wrapper for the Firebase API.
-     :DESCRIPTION: Pyrebase - A simple python wrapper for the Firebase API.
-     :END:
+- CAPTURE_DATE: [2017-03-21 Tue 20:43]
+- LINK:     https://github.com/thisbejim/Pyrebase
+- TITLE:    thisbejim/Pyrebase: A simple python wrapper for the Firebase API.
+- DESCRIPTION: Pyrebase - A simple python wrapper for the Firebase API.
 
-     :CAPTURE_DATE: [2017-03-21 Tue 20:43]
-     :LINK:     https://github.com/thisbejim/Pyrebase
-     :TITLE:    thisbejim/Pyrebase: A simple python wrapper for the Firebase API.
-     :DESCRIPTION: Pyrebase - A simple python wrapper for the Firebase API.
+- CAPTURE_DATE: [2017-03-21 Tue 20:43]
+- LINK:     https://github.com/thisbejim/Pyrebase
+- TITLE:    thisbejim/Pyrebase: A simple python wrapper for the Firebase API.
+- DESCRIPTION: Pyrebase - A simple python wrapper for the Firebase API.
 
      this is current one people suggest using. The ones with the
      highest relevance in PyPi are deprecated!!
@@ -344,28 +326,24 @@
     On the slack, PyLadiesTC has a channel: ~#twin-cities~
 
 **** Join PyLadies on Slack!
-     :PROPERTIES:
-     :CAPTURE_DATE: [2017-04-12 Wed 21:35]
-     :LINK:     http://slackin.pyladies.com/
-     :TITLE:    Join PyLadies on Slack!
-     :END:
+- CAPTURE_DATE: [2017-04-12 Wed 21:35]
+- LINK:     http://slackin.pyladies.com/
+- TITLE:    Join PyLadies on Slack!
 
-     :CAPTURE_DATE: [2017-04-12 Wed 21:35]
-     :LINK:     http://slackin.pyladies.com/
-     :TITLE:    Join PyLadies on Slack!
+- CAPTURE_DATE: [2017-04-12 Wed 21:35]
+- LINK:     http://slackin.pyladies.com/
+- TITLE:    Join PyLadies on Slack!
 
      How to sign up for the PyLadies Slack team.
 ** Books
 *** NOT recommended
 **** Python for the Raspberry Pi
-     :PROPERTIES:
-     :AUTHORS:  Blum, Bresnahan
-     :Copyright: 2016
-     :Publisher: Pearson (SAMS imprint)
-     :END:
+- AUTHORS:  Blum, Bresnahan
+- Copyright: 2016
+- Publisher: Pearson (SAMS imprint)
 
-     :AUTHORS:  Blum, Bresnahan
-     :Copyright: 2016
-     :Publisher: Pearson (SAMS imprint)
+- AUTHORS:  Blum, Bresnahan
+- Copyright: 2016
+- Publisher: Pearson (SAMS imprint)
 
      Out of date, covers old versions of the RPi.

@@ -1,10 +1,8 @@
 * Notes on setting up nginx with php
-  :PROPERTIES:
-  :ARCHIVE_TIME: 2015-03-17 Tue 07:25
-  :ARCHIVE_FILE: ~/Dropbox/org/notes.org
-  :ARCHIVE_OLPATH: Software as a Craft/nginx
-  :ARCHIVE_CATEGORY: notes
-  :END:
+- ARCHIVE_TIME: 2015-03-17 Tue 07:25
+- ARCHIVE_FILE: ~/Dropbox/org/notes.org
+- ARCHIVE_OLPATH: Software as a Craft/nginx
+- ARCHIVE_CATEGORY: notes
   2012-07-07
 
 ** Unzip turnkey linux core into new directory in "/Volumes/Music/virtual machines.localized"

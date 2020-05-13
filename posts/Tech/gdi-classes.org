@@ -28,9 +28,7 @@
 
 
 *** Discussion in #random about job salaries
-    :PROPERTIES:
-    :CAPTURE_DATE: [2017-06-05 Mon 15:45]
-    :END:
+- CAPTURE_DATE: [2017-06-05 Mon 15:45]
 
     #+BEGIN_QUOTE
 
@@ -169,10 +167,8 @@
 
 
 *** Discussion on GDIMPLS Slack
-    :PROPERTIES:
-    :CAPTURE_DATE: [2017-03-06 Mon 16:17]
-    :TOPIC:    Y U No Hire Jr Devs?
-    :END:
+- CAPTURE_DATE: [2017-03-06 Mon 16:17]
+- TOPIC:    Y U No Hire Jr Devs?
 
     Jenessa White started off a discussion in the #general chat in
     GDIMpls.slack.com team.
@@ -417,7 +413,7 @@
     It just adds more fuel to an already huge fire
 
     Tessa Kriesel [34 minutes ago]
-    :fire:
+- fire:
 
     tamouse [34 minutes ago]
     i'm not really joking when i say "burn it all down"
@@ -575,7 +571,7 @@
     Thanks @whit1346 for starting this conversation. It needs to be talked about and revisited often.
 
     tamouse [3 minutes ago]
-    :+1:
+- +1:
 
     tamouse [2 minutes ago]
     i sure want to hear from you all on this
@@ -598,9 +594,7 @@
     created_at: [2016-08-21 Sun 22:23]
 
 *** DONE update GDI Starting Up repo                                    :gdi:
-    :PROPERTIES:
-    :CAPTURE_DATE: [2016-11-08 Tue 21:10]
-    :END:
+- CAPTURE_DATE: [2016-11-08 Tue 21:10]
 
     - [X] add GitLab
     - [X] add hub program
@@ -609,24 +603,20 @@
     - [X] add gulp, gulp-sass, gulp-plumber, broswer-sync for workflow automation
 
 *** DONE Review for Elise
-    :PROPERTIES:
-    :CAPTURE_DATE: [2016-11-03 Thu 15:41]
-    :END:
+- CAPTURE_DATE: [2016-11-03 Thu 15:41]
 
 
     [[https://github.com/harrystech/prelaunchr/tree/master/app/views/users][prelaunchrappviewsusers at master  harrystechprelaunchr]] -- some sort
     of Rails app to collect emails
 
 *** DONE add link to git class                                          :gdi:
-    :PROPERTIES:
-    :CAPTURE_DATE: [2016-12-08 Thu 14:45]
-    :LINK:     https://about.gitlab.com/2016/12/08/git-tips-and-tricks/
-    :TITLE:    Git Tips & Tricks | GitLab
-    :END:
+- CAPTURE_DATE: [2016-12-08 Thu 14:45]
+- LINK:     https://about.gitlab.com/2016/12/08/git-tips-and-tricks/
+- TITLE:    Git Tips & Tricks | GitLab
 
-    :CAPTURE_DATE: [2016-12-08 Thu 14:45]
-    :LINK:     https://about.gitlab.com/2016/12/08/git-tips-and-tricks/
-    :TITLE:    Git Tips & Tricks | GitLab
+- CAPTURE_DATE: [2016-12-08 Thu 14:45]
+- LINK:     https://about.gitlab.com/2016/12/08/git-tips-and-tricks/
+- TITLE:    Git Tips & Tricks | GitLab
 
     Handy Git commands for everyday use
 
@@ -674,9 +664,7 @@
 
 ** Falling In Love With Git
 *** [[http://stackoverflow.com/questions/22593087/merging-a-branch-of-a-branch-after-first-branch-is-squashed-when-merged-to-maste][git - Merging a branch of a branch after first branch is squashed when merged to master - Stack Overflow]] :swaac:git:
-    :PROPERTIES:
-    :CAPTURE_DATE: [2016-11-28 Mon 11:21]
-    :END:
+- CAPTURE_DATE: [2016-11-28 Mon 11:21]
 
 *** DONE Redo class to use SourceTree
 
@@ -685,6 +673,4 @@
 ** Stylin with Sass
 
 *** DONE mention CSS variables in Sass class
-    :PROPERTIES:
-    :CAPTURE_DATE: [2016-11-19 Sat 17:12]
-    :END:
+- CAPTURE_DATE: [2016-11-19 Sat 17:12]
