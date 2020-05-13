@@ -1,5 +1,3 @@
-#+STARTUP: content
-
 * Elixir
 
 ** Elixir Meetup notes
@@ -114,6 +112,10 @@
     :TITLE:    Functional Web Development with Elixir, OTP, and Phoenix: Rethink the Modern Web App by Lance Halvorsen | The Pragmatic Bookshelf
     :END:
 
+    :CAPTURE_DATE: [2017-04-17 Mon 18:45]
+    :LINK:     https://pragprog.com/book/lhelph/functional-web-development-with-elixir-otp-and-phoenix
+    :TITLE:    Functional Web Development with Elixir, OTP, and Phoenix: Rethink the Modern Web App by Lance Halvorsen | The Pragmatic Bookshelf
+
 *** BOOK: /Programming Elixir/ Notes
 **** .ex vs .exs
      Files ending in `.ex` are meant to be byte compiled.
@@ -212,6 +214,9 @@
     :CAPTURE_DATE: [2017-06-20 Tue 18:20]
     :URL:      https://stackoverflow.com/questions/20829348/how-to-join-strings-in-elixir
     :END:
+
+    :CAPTURE_DATE: [2017-06-20 Tue 18:20]
+    :URL:      https://stackoverflow.com/questions/20829348/how-to-join-strings-in-elixir
 
      I had some trouble to find it out(was searching for a solution in
      the String module) so I wanted to share it with you guys.

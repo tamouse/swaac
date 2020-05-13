@@ -1,38 +1,36 @@
+* UX Notes
+** [[http://www.givegoodux.com/4-tips-adding-lean-ux-agile-development-process/][4 Tips for Adding Lean UX to an Agile Development Process]]
 
+    As organizations of all shapes and sizes come to grips with the fact that UX is critical to project and product success, a common question resurfaces time and again:
 
-** UX Notes
-*** [[http://www.givegoodux.com/4-tips-adding-lean-ux-agile-development-process/][4 Tips for Adding Lean UX to an Agile Development Process]]
+    “How do we add Lean UX practices to our current process?”
 
-     As organizations of all shapes and sizes come to grips with the fact that UX is critical to project and product success, a common question resurfaces time and again:
+    1) Hire experienced UX analysts and designers; you need at least one
+       experienced, senior UX member capable of sharing the driving.
 
-     “How do we add Lean UX practices to our current process?”
+    2) There must be an “Iteration 0” in your process where “just
+       enough” research, modeling and design happens.
 
-     1) Hire experienced UX analysts and designers; you need at least one
-	experienced, senior UX member capable of sharing the driving.
+    3) Follow a process where UX, design and development work is “chunked”
+       and starts with the core, most broad-reaching areas of features and
+       functionality.
 
-     2) There must be an “Iteration 0” in your process where “just
-	enough” research, modeling and design happens.
+    4) Use a collaborative, parallel work process to keep UX efforts
+       both ahead and behind development efforts.
 
-     3) Follow a process where UX, design and development work is “chunked”
-	and starts with the core, most broad-reaching areas of features and
-	functionality.
+    capture date: [2015-03-19 Thu 16:30]
+** [[http://semantic-ui.com/][Semantic UI Toolkit]]
+   Date: <2013-10-15 Tue 02:19>
 
-     4) Use a collaborative, parallel work process to keep UX efforts
-	both ahead and behind development efforts.
+   UI is the vocabulary of the web.
 
-     capture date: [2015-03-19 Thu 16:30]
-*** [[http://semantic-ui.com/][Semantic UI Toolkit]]
-    Date: <2013-10-15 Tue 02:19>
+   Semantic empowers designers and developers by creating a language
+   for sharing UI.
 
-    UI is the vocabulary of the web.
+   Semantic is an alternative to Twitter Bootstrap and other UI
+   kits. It seems like it's a more readable and usable thing to me. It
+   also is something that seems more easily customizable. It will be
+   interesting to see how it plays out.
 
-    Semantic empowers designers and developers by creating a language
-    for sharing UI.
-
-    Semantic is an alternative to Twitter Bootstrap and other UI
-    kits. It seems like it's a more readable and usable thing to me. It
-    also is something that seems more easily customizable. It will be
-    interesting to see how it plays out.
-
-    Currently looking at using it on a few new sites, along with
-    [[middleman]].
+   Currently looking at using it on a few new sites, along with
+   [[middleman]].

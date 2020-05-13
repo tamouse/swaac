@@ -514,6 +514,9 @@ Apparently this is a thing that's needed:
     :URL:      https://javascript-mn.slack.com/archives/C0KMEFZJ9/p1501312238890613
     :END:
 
+    :CAPTURE_DATE: [2017-07-29 Sat 08:58]
+    :URL:      https://javascript-mn.slack.com/archives/C0KMEFZJ9/p1501312238890613
+
     From the JS.MN Slack #general room:
 
 
@@ -570,9 +573,6 @@ Apparently this is a thing that's needed:
      - Anti-pattern: Erasing state when props change
    - Preferred solutions
    - What about memoization?** Resources for Diversity & Inclusion
-   :PROPERTIES:
-   :CAPTURE_DATE: [2018-12-25 Tue 12:03]
-   :END:
 
 
 *** Link: Video: [[https://www.twitch.tv/videos/404530952?t=00h16m54s][fun, fun, function - Dan Abramov teaches me React Hooks]] :javascript:react:
@@ -606,9 +606,6 @@ Apparently this is a thing that's needed:
 
 
     .** Does Google Photos have an API?
-    :PROPERTIES:
-    :CAPTURE_DATE: [2019-08-17 Sat 14:03]
-    :END:
 
 
     Yes: [[https://developers.google.com/photos/]]
@@ -770,6 +767,10 @@ Apparently this is a thing that's needed:
    :TITLE:    HTTP access control (CORS) - HTTP | MDN
    :END:
 
+   :CAPTURE_DATE: [2016-12-10 Sat 15:02]
+   :LINK:     https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
+   :TITLE:    HTTP access control (CORS) - HTTP | MDN
+
    #+BEGIN_SRC json
   {
       "selection":"",
@@ -783,6 +784,9 @@ Apparently this is a thing that's needed:
     :CAPTURE_DATE: [2017-05-01 Mon 01:16]
     :URL:      https://webpack.js.org/configuration/resolve/#resolve-alias
     :END:
+
+    :CAPTURE_DATE: [2017-05-01 Mon 01:16]
+    :URL:      https://webpack.js.org/configuration/resolve/#resolve-alias
 
     Create alias for ~import~ or ~require~ so you don't have to use
     ugly relative paths like
@@ -838,9 +842,6 @@ Apparently this is a thing that's needed:
 
    Add ~data-lpignore="true"~ to element** How to Practice Daily Life Awareness                            :buddhism:
 
-   :PROPERTIES:
-   :CAPTURE_DATE: [2019-08-31 Sat 22:33]
-   :END:
 
 How to Practice Daily Life Awareness
 
@@ -849,469 +850,469 @@ https://buddhawithin.org.uk/2019/07/03/daily-life-awareness/
 Although we often talk about meditation as the heart of Buddhist practice, perhaps it is more accurate to say that awareness is the heart of Buddhist practice. As well as meditation, this encompasses daily life awareness practice, which is sometimes called mindfulness or remembering; to remember to turn our full attention onto our immediate experience.
 
 
-* Meetups
-** React.MN
-*** React.MN [2017-01-19 Thu]
-**** what's up in react
-     - next.js
-     - reactvr
-     - pigeon-maps
-     - react voice components
-     - react fix it - autogen tests based on failures
-     - react-redux 5.0
-     - rax: similar to preact, inferno, drop-in replacement
-     - prettier: code formatter, changes the layout and format of the file
-       to follow a standard
-**** Presentation: React Router and Optimizations
-     - Val G.
-       - github: valeryg
-       - [[https://github.com/ValeryG/reactmpls-reactrouter-talk][React Router and Optimizing Code Delivery talk]]
+** Meetups
+*** React.MN
+**** React.MN [2017-01-19 Thu]
+***** what's up in react
+      - next.js
+      - reactvr
+      - pigeon-maps
+      - react voice components
+      - react fix it - autogen tests based on failures
+      - react-redux 5.0
+      - rax: similar to preact, inferno, drop-in replacement
+      - prettier: code formatter, changes the layout and format of the file
+	to follow a standard
+***** Presentation: React Router and Optimizations
+      - Val G.
+	- github: valeryg
+	- [[https://github.com/ValeryG/reactmpls-reactrouter-talk][React Router and Optimizing Code Delivery talk]]
 
 
-***** why use a router?
+****** why use a router?
 
-      The first cut in the demo:
+       The first cut in the demo:
 
-      - Components are too complicated, and handling more things than it
-        should.
+       - Components are too complicated, and handling more things than it
+         should.
 
-      - Cannot handle parametric routes.
+       - Cannot handle parametric routes.
 
-      - Cannot be implemented isomorphically.
+       - Cannot be implemented isomorphically.
 
-***** what is a router?
+****** what is a router?
 
-      - yet another react component (keep the paradigm that everything is a
-        component)
+       - yet another react component (keep the paradigm that everything is a
+         component)
 
-      - IndexRoute, IndexRedirect, wildcard routes
+       - IndexRoute, IndexRedirect, wildcard routes
 
-***** optimizating code delivery - code splitting
+****** optimizating code delivery - code splitting
 
-      - carve out large portions and load them only when needed
-      - supported in webpack 2
-      - ~'[name].bundle.js'~
+       - carve out large portions and load them only when needed
+       - supported in webpack 2
+       - ~'[name].bundle.js'~
 
-***** cache busting
+****** cache busting
 
-      - ~'[name].bundle.[chunkhash].js`~
-      - AssetsPlugin
+       - ~'[name].bundle.[chunkhash].js`~
+       - AssetsPlugin
 
-***** split out vendor code
+****** split out vendor code
 
-      - packing and bundling vendor code completely separate from application
-      - separate config file
-      - DllPlugin
-      - build for production since you'll never likely debug vendor code
-      - bundle and dist to team for development
-      - DllReferencePlugin - how to tell application about the vendor Dll
+       - packing and bundling vendor code completely separate from application
+       - separate config file
+       - DllPlugin
+       - build for production since you'll never likely debug vendor code
+       - bundle and dist to team for development
+       - DllReferencePlugin - how to tell application about the vendor Dll
 
-***** react-helmet
+****** react-helmet
 
-      - NFL development team
-      - allow any component to control the ~<head>~
+       - NFL development team
+       - allow any component to control the ~<head>~
 
-***** .
-** JS.MN
+****** .
+*** JS.MN
 
-*** JS.MN [2018-05-30 Wed]
+**** JS.MN [2018-05-30 Wed]
 
-**** drew bret functional programming links
+***** drew bret functional programming links
+
+      #+BEGIN_QUOTE
+      drewbert [9:09 AM]
+      Thanks @Aaron Kvarnlov-Leverty - here are the links corresponding to the resources list above:
+      1. https://medium.com/@cscalfani/so-you-want-to-be-a-functional-programmer-part-1-1f15e387e536
+      2. https://medium.com/javascript-scene/curry-or-partial-application-8150044c78b8
+      3. https://www.youtube.com/watch?v=m3svKOdZijA
+      4. https://drboolean.gitbooks.io/mostly-adequate-guide
+      5. https://egghead.io/courses/professor-frisby-introduces-composable-functional-javascript
+      6. https://frontendmasters.com/courses/functional-javascript
+      7. http://ramdajs.com/
+      8. http://randycoulman.com/blog/2016/05/24/thinking-in-ramda-getting-started
+      9. https://github.com/lodash/lodash/wiki/FP-Guide
+      10. http://elm-lang.org/
+      11. https://guide.elm-lang.org
+      12. http://www.elmbark.com/2016/03/16/mainstream-elm-user-focused-design
+      13. https://www.youtube.com/watch?v=zBHB9i8e3Kc
+      14. https://frontendmasters.com/courses/elm
+      15. https://www.youtube.com/watch?v=DoA4Txr4GUs
+      16. https://www.youtube.com/watch?v=XpDsk374LDE
+      17. http://elm-lang.org/community
+      #+END_QUOTE
+
+      someone posted a photo, but that was pretty useless
+
+**** JS.MN [2018-05-17 Thu]
+
+     Luke from Prime gave an intro to react.
 
      #+BEGIN_QUOTE
-     drewbert [9:09 AM]
-     Thanks @Aaron Kvarnlov-Leverty - here are the links corresponding to the resources list above:
-     1. https://medium.com/@cscalfani/so-you-want-to-be-a-functional-programmer-part-1-1f15e387e536
-     2. https://medium.com/javascript-scene/curry-or-partial-application-8150044c78b8
-     3. https://www.youtube.com/watch?v=m3svKOdZijA
-     4. https://drboolean.gitbooks.io/mostly-adequate-guide
-     5. https://egghead.io/courses/professor-frisby-introduces-composable-functional-javascript
-     6. https://frontendmasters.com/courses/functional-javascript
-     7. http://ramdajs.com/
-     8. http://randycoulman.com/blog/2016/05/24/thinking-in-ramda-getting-started
-     9. https://github.com/lodash/lodash/wiki/FP-Guide
-     10. http://elm-lang.org/
-     11. https://guide.elm-lang.org
-     12. http://www.elmbark.com/2016/03/16/mainstream-elm-user-focused-design
-     13. https://www.youtube.com/watch?v=zBHB9i8e3Kc
-     14. https://frontendmasters.com/courses/elm
-     15. https://www.youtube.com/watch?v=DoA4Txr4GUs
-     16. https://www.youtube.com/watch?v=XpDsk374LDE
-     17. http://elm-lang.org/community
+     Luke Schlangen [9:37 PM]
+     Huge thanks to @nogs for organizing an awesome event!
+
+     Here's the presentation from tonight: https://drive.google.com/file/d/1xoSV3QJkN9z0GfH0DJzFyGCossRch8n4/view?usp=sharing
+     Here's the code from tonight: https://github.com/LukeSchlangen/react-minneapolis-meetup-may-2018
+     Here's the deployed site (blog post included!) https://react-mpls.firebaseapp.com/
+     Where you can make your first Open Source Pull Request: https://github.com/approachable-io/getting-started
+     Where you can watch me struggle to write code (let me know if you're willing to record your own struggles!) https://www.youtube.com/channel/UCrG-GQBjBSoPRpXLU1bsx7w
      #+END_QUOTE
 
-     someone posted a photo, but that was pretty useless
-
-*** JS.MN [2018-05-17 Thu]
-
-    Luke from Prime gave an intro to react.
-
-    #+BEGIN_QUOTE
-    Luke Schlangen [9:37 PM]
-    Huge thanks to @nogs for organizing an awesome event!
-
-    Here's the presentation from tonight: https://drive.google.com/file/d/1xoSV3QJkN9z0GfH0DJzFyGCossRch8n4/view?usp=sharing
-    Here's the code from tonight: https://github.com/LukeSchlangen/react-minneapolis-meetup-may-2018
-    Here's the deployed site (blog post included!) https://react-mpls.firebaseapp.com/
-    Where you can make your first Open Source Pull Request: https://github.com/approachable-io/getting-started
-    Where you can watch me struggle to write code (let me know if you're willing to record your own struggles!) https://www.youtube.com/channel/UCrG-GQBjBSoPRpXLU1bsx7w
-    #+END_QUOTE
-
-*** JS.MN [2016-11-30 Wed]
-
-*** Vue.js
-    - Kevin Wheeler (twilio)
-    - Vue.js
-    - [[https://github.com/kwhinnery/vue-basics][kwhinneryvue-basics A basic Vue.js 2.0 starter app for Node.js]]
-
-**** basic two-way data binding example
-
-     #+BEGIN_SRC html
-    <div id="app">
-      <input type="text" v-model="newTodo">
-      <p>{{ newTodo }}</p>
-    </div>
-     #+END_SRC
-
-     #+BEGIN_SRC javascript
-    new View({
-	el: "#app",
-	data: {
-	    newTodo: ''
-	},
-	methods: {}
-    })
-     #+END_SRC
-
-**** assigning JS methods to DOM events
-
-     #+BEGIN_SRC html
-    <input type="text" v-model="newTodo"
-	   v-on:keydown.enter="add"
-	   <!-- when the enter key is pressed, call
-		method `add` -->
-	   >
-     #+END_SRC
-
-     #+BEGIN_SRC javascript
-    methods: {
-	add: function() {
-	    // do the add stuff
-	}
-    }
-     #+END_SRC
-
-**** some ecosystem stuff
-
-     - grunt
-     - browserify
-     - babelify - browserify plugin
-     - vueify - browserify plugin
-     - node-sass to deal with the embedded styles
-
-
-**** 3 tags in a Vue module
-     - style - css styles
-     - template - html stuff
-     - script - common js module
-
-**** Script
-
-***** data
-      - data can be an object or a function that returns an object
-
-***** components
-      - custom components that are used in this module
-
-
-
-*** Test Problems
-
-    - Github Projects (!?)
-    - Dev Jana
-    -
-
-
-** JavaScript.MN Monthly 18:00-21:00
-   <%%(diary-float t 3 4)>
-   4th Wednesday of the month
-
-* Classes
-
-** Frontend Masters
-
-*** Course notes for You Don't Know Javascript
-**** Course: Basics to Building
-     [2015-04-02 Thu]
-
-**** Instructor: Kyle Simpson (@getify)
-**** grips - templating system
-
-     Real question is how to balance between logic and no-logic in a
-     templating system. Touched on in class on second day.
-
-**** Main drive
-
-     Try to make sure you code is **understandable**.
-
-**** JS CO-ercion vs CON-version:
-
-     JS does coercion. The real distinction to make is *explicit*
-     vs. *implicit*. Explicit coercion uses a function to do the coercion
-     -- you can see it in your code. Implicit is not necessarily visible.
-
-**** Protip: declare your variables before you use them.
-
-     #+begin_src javascript
-       var a;
-
-       a = 123;
-
-       // ES6 features
-
-       let b;
-       const PI = 3.1415926535; // makes it immutable, frozen
-     #+end_src
-
-**** Nested Functions -> Closures -> Module Pattern
-
-     On of the most important concepts in modern JS is the module
-     pattern.
-
-***** IIFE ("iffy")
-
-      Immediately Imvoked Function Expression:
-
-      #+begin_src javascript
-        (function() {
-
-        })();
-      #+end_src
-
-      Used to define modules and collections of executable objects with a
-      public API.
-
-***** The module pattern is for organizing code
-
-      - module: everything inside is *private*
-      - class: everything inside is *public*
-
-      (We don't really like the class concept in JS much.)
-
-**** Event Listening
-
-     "PubSub"
-
-     allows decoupling of modules.
-
-
-
-*** Course: Types, Coercion, and Sharing Code
-    [2015-04-03 Fri]
-
-**** Instructor: Kyle Simpson (@getify)
-
-**** Null as Type
-     =null= is defined as the empty object in the spec.
-     It is distinct from =undefined=., but the distinction might as well
-     be meaningless because of the way people use it. Kyle's
-     recommendation is to just treat them the same.
-
-     =null= and =undefined= are *coercably* the same.
-
-**** Types in JS are *Value Types*
-
-     Other languages' concept of type often refers to *Variable Type*,
-     i.e. C or Java.
-
-**** Weirdisms
-
-     * =-0= (signed zero)
-     * =NaN= (not a number, except.. )
-
-     =Object.is= handles testing for =-0= and =NaN=, and allows for
-     comparisons on these values.
-
-***** Sentinal Values
-
-      Something that has no intrinsic meaning, but is used to mean
-      something, or signal something to the program.
-
-      =NaN=, =-0= are sentinals. Also, something like =indexOf= returns
-      a -1 when it can't find the character in the string. The -1 serves
-      as a sentinal for "not found". This is also known as a "leaky
-      abstraction" because a -1 is not really useful to the calling code
-      except as a sentinal, so it makes for add programming readability.
-
-      #+begin_src javascript
-        foo = "foo";
-
-        if (foo.indexOf("f") !== -1) {
-          alert("Found it");
-        }
-      #+end_src
-
-      Instead, abstract away the leakyness:
-
-      #+begin_src javascript
-        foo = "foo";
-
-        if (~foo.indexOf("f")) {
-          alert("Found it");
-        }
-      #+end_src
-
-      The tilde -operator =~= which does a two's compliment bitwise
-      operation on the value.
-
-**** Natives
-
-     Not really types, not really objects, not primatives.
-
-***** Rules for Use:
-
-      Don't use =new Native(...)= as it sets up something that's not
-      really very useful, and doesn't really make a lot of sense in
-      many cases.
-
-      Use literals to initialize instead where ever possible.
-
-****** Caveat:
-
-       The only way to create a Date object is with =new Date();=
-
-**** The reason coercion is useful to us...
-
-     ... is that it can hide abstractions.
-
-**** Implicit Coercion
-
-     It happens as a *side effect* of another expression or operation.
-
-***** Booleans
-
-      There are *huge* traps with implicit boolean coercions. It seems
-      to operate exactly *backwards* from what one might expect.
-
-      Never do a =\=\== where either side can be true or false values
-      because it will convert them to numbers per the Abstract Equality
-      Algorithm.
-
-      #+begin_src javascrpt
-        if (foo == false) { .. }
-      #+end_src
-
-      - =foo= is coerced to a number
-      - =false= is coerced to a number
-
-      It's quite possible that getting a true out of that might be
-      entirely coincidental.
-
-      This is problematic as it requires people to more deeply
-      understand the Abstract Equality Algorithm than is likely to
-      occur. The obvious reading is just dead wrong about what is
-      happening.
-
-      The general advise is avoid the double equals with true or false
-      values.
-
-**** Sharing Code
-
-     Any time you want to use code in both the server and the browser
-     (or even between programs, etc) put it in a completely separate
-     module and ensure it is decoupled from the rest of the system.
-
-     The rest of the day was a long coding example to show a simple
-     means of sharing validity checks on both the server and the
-     browser.
-
-*** Hapi.js with Ryan Chenkie
-
-    @ryanchenkie on twitter
-    angularcasts.io
-    chenkei on github
-
-**** Repos/chenkie
-     - App: https://github.com/chenkie/fem-instructors-app
-     - API: https://github.com/chenkie/fem-instructors-api
-
-**** Repos/tamouse (forked, working)
-     - App: https://github.com/tamouse/fem-instructors-app
-     - API: https://github.com/tamouse/fem-instructors-api
-
-**** Project: /Users/tamara/Projects/FeM/FeM-Hapi.JS-with-Ryan-Chenkie
-
-**** Hapi.JS: https://hapijs.com/
-
-**** Slides: https://docs.google.com/presentation/d/1EaaM8fGJqp9eUP3-E9Dpec3P5EqbM36PsoFD6z4r8pg/edit#slide=id.g35f391192_00
-
-**** Teaching from the Cloud: https://www.instagram.com/p/BSBf5RZjjS2/
-
-**** lunch: http://www.brasagrillsteakhouse.com/menu/
-
-**** NOTES
-
-     Hapi is "Batteries Included".
-     Yet express is considered bloated, but you have to add so many things
-     to express to make it a full applicaiton.
-
-     - boom: error objects
-     - joi: validation
-     - wreck: http client
-     - hoek: utilities
-     - good: process monitoring
-
-**** Handlers
-
-     ~reply~ returns the respons to the client (Why no ~return~?)
-
-     Minimum needed for a route are ~method~, ~path~, and ~handler~.
-
-**** Routes
-
-***** COMMENT Prerequisites
-
-      A better way: specify some action to happen before the
-      route handler is reached
-
-      - Prerequisite functions are run before anything else
-      - Values can be picked up in the handler
-      - Async operations complete before the handler is reached
-
-      Can be both sync and async
-
-      Can use previously assigned values from previous reqreqs
-
-      Parallel running: put prereqs in an inner array -- these will run in
-      parallel with each other.
-
-      #+BEGIN_SRC javascript
-  config = {
-      pre: [
-	  { method: doThis },
-	  { method: doThat, assign: 'slug' },
-	  [
-	      { method: doThisInParallel },
-	      { method: doThatInParallel }
-	  ]
-      ]
-  }
+**** JS.MN [2016-11-30 Wed]
+
+**** Vue.js
+     - Kevin Wheeler (twilio)
+     - Vue.js
+     - [[https://github.com/kwhinnery/vue-basics][kwhinneryvue-basics A basic Vue.js 2.0 starter app for Node.js]]
+
+***** basic two-way data binding example
+
+      #+BEGIN_SRC html
+     <div id="app">
+       <input type="text" v-model="newTodo">
+       <p>{{ newTodo }}</p>
+     </div>
       #+END_SRC
 
-**** responses / replies
+      #+BEGIN_SRC javascript
+     new View({
+	 el: "#app",
+	 data: {
+	     newTodo: ''
+	 },
+	 methods: {}
+     })
+      #+END_SRC
 
-     Can set header, i.e. "Location", etc., on the reply:
-     https://hapijs.com/api#reply-interface
+***** assigning JS methods to DOM events
 
-**** Errors with Boom https://github.com/hapijs/boom
+      #+BEGIN_SRC html
+     <input type="text" v-model="newTodo"
+	    v-on:keydown.enter="add"
+	    <!-- when the enter key is pressed, call
+		 method `add` -->
+	    >
+      #+END_SRC
 
-**** validation with Joi https://github.com/hapijs/joi
+      #+BEGIN_SRC javascript
+     methods: {
+	 add: function() {
+	     // do the add stuff
+	 }
+     }
+      #+END_SRC
 
-     - data validity
-     - data consistency
-     - security
-     - [X] verify whether validations run before prereqs. The answer is "yes".
-       - apparently can also validate response objects (?!?)
+***** some ecosystem stuff
+
+      - grunt
+      - browserify
+      - babelify - browserify plugin
+      - vueify - browserify plugin
+      - node-sass to deal with the embedded styles
 
 
-**** testing with Hapi: https://github.com/hapijs/lab
+***** 3 tags in a Vue module
+      - style - css styles
+      - template - html stuff
+      - script - common js module
+
+***** Script
+
+****** data
+       - data can be an object or a function that returns an object
+
+****** components
+       - custom components that are used in this module
+
+
+
+**** Test Problems
+
+     - Github Projects (!?)
+     - Dev Jana
+     -
+
+
+*** JavaScript.MN Monthly 18:00-21:00
+    <%%(diary-float t 3 4)>
+    4th Wednesday of the month
+
+** Classes
+
+*** Frontend Masters
+
+**** Course notes for You Don't Know Javascript
+***** Course: Basics to Building
+      [2015-04-02 Thu]
+
+***** Instructor: Kyle Simpson (@getify)
+***** grips - templating system
+
+      Real question is how to balance between logic and no-logic in a
+      templating system. Touched on in class on second day.
+
+***** Main drive
+
+      Try to make sure you code is **understandable**.
+
+***** JS CO-ercion vs CON-version:
+
+      JS does coercion. The real distinction to make is *explicit*
+      vs. *implicit*. Explicit coercion uses a function to do the coercion
+      -- you can see it in your code. Implicit is not necessarily visible.
+
+***** Protip: declare your variables before you use them.
+
+      #+begin_src javascript
+	var a;
+
+	a = 123;
+
+	// ES6 features
+
+	let b;
+	const PI = 3.1415926535; // makes it immutable, frozen
+      #+end_src
+
+***** Nested Functions -> Closures -> Module Pattern
+
+      On of the most important concepts in modern JS is the module
+      pattern.
+
+****** IIFE ("iffy")
+
+       Immediately Imvoked Function Expression:
+
+       #+begin_src javascript
+         (function() {
+
+         })();
+       #+end_src
+
+       Used to define modules and collections of executable objects with a
+       public API.
+
+****** The module pattern is for organizing code
+
+       - module: everything inside is *private*
+       - class: everything inside is *public*
+
+       (We don't really like the class concept in JS much.)
+
+***** Event Listening
+
+      "PubSub"
+
+      allows decoupling of modules.
+
+
+
+**** Course: Types, Coercion, and Sharing Code
+     [2015-04-03 Fri]
+
+***** Instructor: Kyle Simpson (@getify)
+
+***** Null as Type
+      =null= is defined as the empty object in the spec.
+      It is distinct from =undefined=., but the distinction might as well
+      be meaningless because of the way people use it. Kyle's
+      recommendation is to just treat them the same.
+
+      =null= and =undefined= are *coercably* the same.
+
+***** Types in JS are *Value Types*
+
+      Other languages' concept of type often refers to *Variable Type*,
+      i.e. C or Java.
+
+***** Weirdisms
+
+      * =-0= (signed zero)
+      * =NaN= (not a number, except.. )
+
+      =Object.is= handles testing for =-0= and =NaN=, and allows for
+      comparisons on these values.
+
+****** Sentinal Values
+
+       Something that has no intrinsic meaning, but is used to mean
+       something, or signal something to the program.
+
+       =NaN=, =-0= are sentinals. Also, something like =indexOf= returns
+       a -1 when it can't find the character in the string. The -1 serves
+       as a sentinal for "not found". This is also known as a "leaky
+       abstraction" because a -1 is not really useful to the calling code
+       except as a sentinal, so it makes for add programming readability.
+
+       #+begin_src javascript
+         foo = "foo";
+
+         if (foo.indexOf("f") !== -1) {
+           alert("Found it");
+         }
+       #+end_src
+
+       Instead, abstract away the leakyness:
+
+       #+begin_src javascript
+         foo = "foo";
+
+         if (~foo.indexOf("f")) {
+           alert("Found it");
+         }
+       #+end_src
+
+       The tilde -operator =~= which does a two's compliment bitwise
+       operation on the value.
+
+***** Natives
+
+      Not really types, not really objects, not primatives.
+
+****** Rules for Use:
+
+       Don't use =new Native(...)= as it sets up something that's not
+       really very useful, and doesn't really make a lot of sense in
+       many cases.
+
+       Use literals to initialize instead where ever possible.
+
+******* Caveat:
+
+	The only way to create a Date object is with =new Date();=
+
+***** The reason coercion is useful to us...
+
+      ... is that it can hide abstractions.
+
+***** Implicit Coercion
+
+      It happens as a *side effect* of another expression or operation.
+
+****** Booleans
+
+       There are *huge* traps with implicit boolean coercions. It seems
+       to operate exactly *backwards* from what one might expect.
+
+       Never do a =\=\== where either side can be true or false values
+       because it will convert them to numbers per the Abstract Equality
+       Algorithm.
+
+       #+begin_src javascrpt
+         if (foo == false) { .. }
+       #+end_src
+
+       - =foo= is coerced to a number
+       - =false= is coerced to a number
+
+       It's quite possible that getting a true out of that might be
+       entirely coincidental.
+
+       This is problematic as it requires people to more deeply
+       understand the Abstract Equality Algorithm than is likely to
+       occur. The obvious reading is just dead wrong about what is
+       happening.
+
+       The general advise is avoid the double equals with true or false
+       values.
+
+***** Sharing Code
+
+      Any time you want to use code in both the server and the browser
+      (or even between programs, etc) put it in a completely separate
+      module and ensure it is decoupled from the rest of the system.
+
+      The rest of the day was a long coding example to show a simple
+      means of sharing validity checks on both the server and the
+      browser.
+
+**** Hapi.js with Ryan Chenkie
+
+     @ryanchenkie on twitter
+     angularcasts.io
+     chenkei on github
+
+***** Repos/chenkie
+      - App: https://github.com/chenkie/fem-instructors-app
+      - API: https://github.com/chenkie/fem-instructors-api
+
+***** Repos/tamouse (forked, working)
+      - App: https://github.com/tamouse/fem-instructors-app
+      - API: https://github.com/tamouse/fem-instructors-api
+
+***** Project: /Users/tamara/Projects/FeM/FeM-Hapi.JS-with-Ryan-Chenkie
+
+***** Hapi.JS: https://hapijs.com/
+
+***** Slides: https://docs.google.com/presentation/d/1EaaM8fGJqp9eUP3-E9Dpec3P5EqbM36PsoFD6z4r8pg/edit#slide=id.g35f391192_00
+
+***** Teaching from the Cloud: https://www.instagram.com/p/BSBf5RZjjS2/
+
+***** lunch: http://www.brasagrillsteakhouse.com/menu/
+
+***** NOTES
+
+      Hapi is "Batteries Included".
+      Yet express is considered bloated, but you have to add so many things
+      to express to make it a full applicaiton.
+
+      - boom: error objects
+      - joi: validation
+      - wreck: http client
+      - hoek: utilities
+      - good: process monitoring
+
+***** Handlers
+
+      ~reply~ returns the respons to the client (Why no ~return~?)
+
+      Minimum needed for a route are ~method~, ~path~, and ~handler~.
+
+***** Routes
+
+****** COMMENT Prerequisites
+
+       A better way: specify some action to happen before the
+       route handler is reached
+
+       - Prerequisite functions are run before anything else
+       - Values can be picked up in the handler
+       - Async operations complete before the handler is reached
+
+       Can be both sync and async
+
+       Can use previously assigned values from previous reqreqs
+
+       Parallel running: put prereqs in an inner array -- these will run in
+       parallel with each other.
+
+       #+BEGIN_SRC javascript
+   config = {
+       pre: [
+	   { method: doThis },
+	   { method: doThat, assign: 'slug' },
+	   [
+	       { method: doThisInParallel },
+	       { method: doThatInParallel }
+	   ]
+       ]
+   }
+       #+END_SRC
+
+***** responses / replies
+
+      Can set header, i.e. "Location", etc., on the reply:
+      https://hapijs.com/api#reply-interface
+
+***** Errors with Boom https://github.com/hapijs/boom
+
+***** validation with Joi https://github.com/hapijs/joi
+
+      - data validity
+      - data consistency
+      - security
+      - [X] verify whether validations run before prereqs. The answer is "yes".
+	- apparently can also validate response objects (?!?)
+
+
+***** testing with Hapi: https://github.com/hapijs/lab

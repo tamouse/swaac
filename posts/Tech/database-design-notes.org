@@ -1,6 +1,4 @@
-** Database Design Notes
-
-** Database Links
+** Database INBOX
 
 *** Stackoverflow: A beginner's guide to SQL database design [closed]
 

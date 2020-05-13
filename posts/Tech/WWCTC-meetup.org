@@ -1,7 +1,0 @@
-* WWCTC Meetings
-* WWCTC TODOs
-* WWCTC Notes
-*** WWCodeTC Hack night
-    :PROPERTIES:
-    :CAPTURE_DATE: [2017-01-18 Wed 18:49]
-    :END:

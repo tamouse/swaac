@@ -1,4 +1,122 @@
+* command line shells
 ** Shell Notes
+*** zsh
+    :PROPERTIES:
+    :LOCATION: This has been added to swaac.dev
+    :END:
+
+    - [[https://support.apple.com/en-us/HT208050][zsh is default on MacOS Catalina]]
+
+**** online documentation
+
+     - [[http://zsh.sourceforge.net/Doc/Release/zsh_toc.html#SEC_Contents][Table of Contents]]
+     - [[http://zsh.sourceforge.net/FAQ/][FAQ]]
+
+**** oh-my-zsh
+
+     The sine qua non for zsh users: [[https://github.com/robbyrussell/oh-my-zsh/][https://github.com/robbyrussell/oh-my-zsh/]] ([[https://ohmyz.sh/][pretty web site]])
+
+
+**** ZSH NOTES COLLECTOR
+
+***** some zsh options to try
+
+****** case-insensitive globbing
+
+  The zsh option which controls this is CASE_GLOB. Since we want globbing to be case-insensitive, we want to turn the option off, so:
+
+  #+BEGIN_SRC shell
+    setopt NO_CASE_GLOB
+  #+END_SRC
+
+****** tab completion
+
+  In zsh tab completion will replace the wildcard with the actual result.
+
+  #+BEGIN_SRC shell
+    % ls ~/d*<tab>
+  #+END_SRC
+
+  So after the tab you will see:
+
+  #+BEGIN_SRC shell
+    % ls /Users/armin/Desktop /Users/armin/Documents /Users/armin/Downloads
+  #+END_SRC
+
+  Using tab completion this way to see and possibly edit the actual replacement for wildcards is a useful safety net.
+
+  In bash, pressing the tab key *twice* will list possible completions, but not substitute them in the command prompt.
+
+  If you do not like this behavior in zsh then you can change to behavior similar to bash with:
+
+  #+BEGIN_SRC shell
+    setopt GLOB_COMPLETE
+  #+END_SRC
+
+****** saving history when shell exits
+
+  By default, zsh does not save its history when the shell exits. The history is ‘forgotten’ when you close a Terminal window or tab. To make zsh save its history to a file when it exits, you need to set a variable in the shell:
+
+  #+BEGIN_SRC shell
+    HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
+  #+END_SRC
+
+****** using a single history file for all shells
+
+  You can tell zsh to use a single, shared history file across the sessions and append to it rather than overwrite:
+
+  share history across multiple zsh sessions
+  #+BEGIN_SRC shell
+    setopt SHARE_HISTORY
+  #+END_SRC
+
+  append to history
+  #+BEGIN_SRC shell
+    setopt APPEND_HISTORY
+  #+END_SRC
+
+****** write to history file after avery command
+
+  Furthermore, you can tell zsh to update the history file after every command, rather than waiting for the shell to exit:
+
+  add commands as they are typed, not at shell exit
+  #+BEGIN_SRC shell
+    setopt INC_APPEND_HISTORY
+  #+END_SRC
+
+****** removing some things from history file
+
+  When you use a shared history file, it will grow very quickly, and you may want to use some options to clean out duplicates and blanks:
+
+  expire duplicates first:
+  #+BEGIN_SRC shell
+    setopt HIST_EXPIRE_DUPS_FIRST
+  #+END_SRC
+
+  do not store duplications
+  #+BEGIN_SRC shell
+    setopt HIST_IGNORE_DUPS
+  #+END_SRC
+
+  ignore duplicates when searching
+  #+BEGIN_SRC shell
+    setopt HIST_FIND_NO_DUPS
+  #+END_SRC
+
+  remove blank lines from history
+  #+BEGIN_SRC shell
+    setopt HIST_REDUCE_BLANKS
+  #+END_SRC
+
+***** zsh completion
+
+****** links
+
+       - [[http://zsh.sourceforge.net/Doc/Release/Completion-System.html][Official zsh doc completion section]]
+       - [[https://github.com/zsh-users/zsh-completions/blob/master/zsh-completions-howto.org][zsh-users zsh-completions-howto]]
+       - [[https://github.com/zsh-users/zsh/blob/master/Etc/completion-style-guide][zsh-users zsh Completion Guide]]
+       - [[https://github.com/scriptingosx/mac-zsh-completions][Repo of MacOS zsh completions]]
+
 ** Shell TODOs
 ** Shell Oneliners
     #+begin_src shell
@@ -12,3 +130,5 @@
     #+end_src
     link: [[file:~/Dropbox/oneliners]]
     captured_on: [2015-01-26 Mon 06:47]
+
+

@@ -1,3 +1,4 @@
+* DEVOPS INBOX
 ** Docker
 
 *** [[http://docs.docker.com/compose/][Docker Compose]]
@@ -335,6 +336,9 @@
     :categories: devops
     :tags:     ansible, vagrant, provisioning
     :END:
+
+    :categories: devops
+    :tags:     ansible, vagrant, provisioning
 
     Learning Ansible as a means to provision a Vagrant VM was pretty
     fun. I started looking at creating Vagrant boxes that I could

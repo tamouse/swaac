@@ -1,44 +1,44 @@
-** Vagrant Notes
-*** Making Vagrant boxes go faster
+* Vagrant Notes
+** Making Vagrant boxes go faster
 
-   The typical defaults in the Vagrantfile create a wimpy box.
+  The typical defaults in the Vagrantfile create a wimpy box.
 
-   My mac has a boatload of RAM and CPU cores to spare, thus making this a better config for working:
+  My mac has a boatload of RAM and CPU cores to spare, thus making this a better config for working:
 
 
- #+begin_src diff
-    config.vm.provider :virtualbox do |vb|
- -    vb.customize ["modifyvm", :id, "--memory", 1024]
- +    vb.customize ["modifyvm", :id, "--memory", 4096, "--vram", 12, "--cpus", 4, "--natdnshostresolver1", "on"]
-    end
- #+end_src
+#+begin_src diff
+   config.vm.provider :virtualbox do |vb|
+-    vb.customize ["modifyvm", :id, "--memory", 1024]
++    vb.customize ["modifyvm", :id, "--memory", 4096, "--vram", 12, "--cpus", 4, "--natdnshostresolver1", "on"]
+   end
+#+end_src
 
-*** Using a resolver to set the box's IP address
-     Instead of hard wiring in an IP address for the vagrant box, you
-     can have it look up a name in your host machine's /etc/hosts file,
-     thusly:
+** Using a resolver to set the box's IP address
+    Instead of hard wiring in an IP address for the vagrant box, you
+    can have it look up a name in your host machine's /etc/hosts file,
+    thusly:
 
-     At the top of the Vagrant file:
-     #+begin_src ruby
-       require 'resolve'
-     #+end_src
+    At the top of the Vagrant file:
+    #+begin_src ruby
+      require 'resolve'
+    #+end_src
 
-     Then, inside the box configuration:
-     #+begin_src ruby
-       config.vm.provider :virtualbox do |vb|
-         vb.customize ["modifyvm", "--natdnsresolver1", "on"]
-         #...
-       end
+    Then, inside the box configuration:
+    #+begin_src ruby
+      config.vm.provider :virtualbox do |vb|
+        vb.customize ["modifyvm", "--natdnsresolver1", "on"]
+        #...
+      end
 
-       config.vm.network :private_network, ip: Resolv.getaddress('<vagrant box name from hosts>')
-     #+end_src
+      config.vm.network :private_network, ip: Resolv.getaddress('<vagrant box name from hosts>')
+    #+end_src
 
-     And in your /etc/hosts file:
+    And in your /etc/hosts file:
 
-     #+begin_src
-       192.168.80.80	<vagrant box name>
-     #+end_src
+    #+begin_src
+      192.168.80.80	<vagrant box name>
+    #+end_src
 
-     Set the IP address to an appropriate setting for your local
-     network, and give the vagrant box a suitable name for your project
-     and the local network. Using ".dev" as the tld should be good.
+    Set the IP address to an appropriate setting for your local
+    network, and give the vagrant box a suitable name for your project
+    and the local network. Using ".dev" as the tld should be good.

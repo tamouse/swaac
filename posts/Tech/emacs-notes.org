@@ -1,3 +1,4 @@
+* Emacs
 ** Emacs TODOs
 *** DONE use revision control annotation in your editor
     Avdi's blog post on virtuous code
@@ -208,6 +209,10 @@ only searches the mails in the summary buffer and not all the mails.
    :TITLE:    Org Mode - Organize Your Life In Plain Text!
    :END:
 
+   :CAPTURE_DATE: [2016-08-21 Sun 23:18]
+   :LINK:     http://doc.norang.ca/org-mode.html#Setup
+   :TITLE:    Org Mode - Organize Your Life In Plain Text!
+
    description: A description of how I currently use org-mode
 *** org mode - Use prop and prompt together in org-capture-templates - Emacs Stack Exchange
    :PROPERTIES:
@@ -218,6 +223,10 @@ only searches the mails in the summary buffer and not all the mails.
    :END:
 
 
+   :CAPTURE_DATE: [2016-10-07 Fri 14:31]
+   :LINK:     http://emacs.stackexchange.com/questions/21502/use-propp-prompt-together-in-org-capture-templates
+   :TITLE:    org mode - Use `` `` together in org-capture-templates - Emacs Stack Exchange
+
    This might be a possibility to solve my riddle about re-using
    entered information. It could be possible to call a method in the
    template that will store it temporarily.
@@ -227,6 +236,10 @@ only searches the mails in the summary buffer and not all the mails.
   :LINK:     http://cestlaz.github.io/posts/using-emacs-11-reveal/#.WCikReHx6iC
   :TITLE:    Using Emacs - 11 - Reveal.js presentations | C'est la Z
   :END:
+
+  :CAPTURE_DATE: [2016-11-13 Sun 11:47]
+  :LINK:     http://cestlaz.github.io/posts/using-emacs-11-reveal/#.WCikReHx6iC
+  :TITLE:    Using Emacs - 11 - Reveal.js presentations | C'est la Z
 
 description: null
 

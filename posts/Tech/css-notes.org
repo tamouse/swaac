@@ -148,6 +148,10 @@
     :TITLE:    Building Resizeable Components with Relative CSS Units | CSS-Tricks
     :END:
 
+    :CAPTURE_DATE: [2016-09-14 Wed 21:24]
+    :LINK:     https://css-tricks.com/building-resizeable-components-relative-css-units/?utm_source=html5weekly&utm_medium=email
+    :TITLE:    Building Resizeable Components with Relative CSS Units | CSS-Tricks
+
     description: The following is a guest post by Ahmad
     Shadeed. Ahmad has put together a ton of examples to show off how
     using relative units can benefit us. I think a lot
@@ -199,7 +203,13 @@
     :LINK:     http://codepen.io/davatron5000/pen/ENOVVV
     :TITLE:    Experiment: Using Picture Element and VW+VH units as a Lightbox
     :END:
+
+    :CAPTURE_DATE: [2016-12-22 Thu 20:26]
+    :LINK:     http://codepen.io/davatron5000/pen/ENOVVV
+    :TITLE:    Experiment: Using Picture Element and VW+VH units as a Lightbox
+
     {"selection":"http://fillmurray.com","description":"...","keywords":""}
+
 *** Flywheel | How to use Flexbox to create a modern card design layout
     :PROPERTIES:
     :CAPTURE_DATE: [2017-03-02 Thu 08:26]
@@ -209,6 +219,15 @@
     :AUTHOR:   Abbey Fitzgerald
     :DATE_PUBLISHED: [2017-02-21 Tue]
     :END:
+
+    :CAPTURE_DATE: [2017-03-02 Thu 08:26]
+    :LINK:     https://getflywheel.com/layout/how-to-use-flexbox-to-create-a-modern-card-design-layout/?utm_source=frontendfocus&utm_medium=email
+    :TITLE:    Flywheel | How to use Flexbox to create a modern card design layout
+    :DESCRIPTION: Layout is a design and WordPress blog covering thought-provoking topics that show you the next step for your business, improve your process, and inspire your designs.
+    :AUTHOR:   Abbey Fitzgerald
+    :DATE_PUBLISHED: [2017-02-21 Tue]
+
+
 *** Learn CSS Grid | Jen Simmons
     :PROPERTIES:
     :CAPTURE_DATE: [2017-03-02 Thu 09:36]
@@ -216,6 +235,13 @@
     :TITLE:    Learn CSS Grid | Jen Simmons
     :DESCRIPTION: List of resources for learning about CSS Grid
     :END:
+
+    :CAPTURE_DATE: [2017-03-02 Thu 09:36]
+    :LINK:     http://jensimmons.com/post/feb-27-2017/learn-css-grid?utm_source=frontendfocus&utm_medium=email
+    :TITLE:    Learn CSS Grid | Jen Simmons
+    :DESCRIPTION: List of resources for learning about CSS Grid
+
+
 *** Learn CSS Layout - floats, positioning, flexbox, grids
     :PROPERTIES:
     :CAPTURE_DATE: [2017-03-02 Thu 09:38]
@@ -224,12 +250,24 @@
     :DESCRIPTION: A comprehensive self-study course to build practical CSS layout skills. Created by Rachel Andrew.
     :AUTHOR:   Rachel Andrews
     :END:
+    
+    :CAPTURE_DATE: [2017-03-02 Thu 09:38]
+    :LINK:     https://thecssworkshop.com/?utm_content=buffer32ef9&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer
+    :TITLE:    Learn CSS Layout - floats, positioning, flexbox, grids
+    :DESCRIPTION: A comprehensive self-study course to build practical CSS layout skills. Created by Rachel Andrew.
+    :AUTHOR:   Rachel Andrews
+
+
 *** Gradient Buttons with Background-Color Change (CSS-only)
     :PROPERTIES:
     :CAPTURE_DATE: [2017-03-06 Mon 11:28]
     :LINK:     http://codepen.io/pirrera/pen/bqVeGx
     :TITLE:    Gradient Buttons with Background-Color Change (CSS-only)
     :END:
+
+    :CAPTURE_DATE: [2017-03-06 Mon 11:28]
+    :LINK:     http://codepen.io/pirrera/pen/bqVeGx
+    :TITLE:    Gradient Buttons with Background-Color Change (CSS-only)
 
       This is the magic, right here:
       #+BEGIN_SRC css
@@ -241,12 +279,15 @@
       After specifying the gradients going from left to right, the
       hover reverses that. Neat idea!
 *** Font style matcher                                 :css:fonts:fout:tools:
-
     :PROPERTIES:
     :CAPTURE_DATE: [2017-03-11 Sat 15:51]
     :LINK:     https://meowni.ca/font-style-matcher/
     :TITLE:    Font style matcher
     :END:
+
+    :CAPTURE_DATE: [2017-03-11 Sat 15:51]
+    :LINK:     https://meowni.ca/font-style-matcher/
+    :TITLE:    Font style matcher
 
       To compare fonts to try to eliminate as much FOUT as possible.
 
@@ -264,6 +305,7 @@
     :PROPERTIES:
     :CAPTURE_DATE: [2019-03-24 Sun 15:11]
     :END:
+
 ** CSS TODOs
 *** DONE Research / Learn about CSS Grid positioning         :swaac:css:grid:
     :PROPERTIES:

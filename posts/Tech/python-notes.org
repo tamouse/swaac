@@ -1,3 +1,4 @@
+* Python
 ** Python Notes (refile Target)
 
 *** Joining a list of strings with a separator
@@ -94,6 +95,10 @@
     :TITLE:    What’s New in Python 2.6 — Python 3.5.2 documentation
     :END:
 
+    :CAPTURE_DATE: [2016-12-20 Tue 15:34]
+    :LINK:     https://docs.python.org/3/whatsnew/2.6.html#pep-343-the-with-statement
+    :TITLE:    What’s New in Python 2.6 — Python 3.5.2 documentation
+
     The ‘with‘ statement clarifies code that previously would use
     try...finally blocks to ensure that clean-up code is executed. In
     this section, I’ll discuss the statement as it will commonly be
@@ -116,6 +121,10 @@
     :TITLE:    Ned Batchelder: Lists vs. Tuples
     :END:
 
+    :CAPTURE_DATE: [2017-04-15 Sat 12:13]
+    :LINK:     https://nedbatchelder.com/blog/201608/lists_vs_tuples.html
+    :TITLE:    Ned Batchelder: Lists vs. Tuples
+
     Response to my question in PyLadies#help_me channel.
 
     To put the Cultural Difference in terms of the C language, lists
@@ -127,7 +136,12 @@
     :TITLE:    Ned Batchelder: Tag: Python
     :END:
 
+    :CAPTURE_DATE: [2017-04-15 Sat 12:16]
+    :LINK:     https://nedbatchelder.com/blog/tag/python.html
+    :TITLE:    Ned Batchelder: Tag: Python
+
     Python Posts by Ned Batchelder; useful info, blogging since 2002.
+
 *** Doctest
     OMG DOCTEST IS DA BOMB!!!
 
@@ -310,6 +324,11 @@
      :DESCRIPTION: Pyrebase - A simple python wrapper for the Firebase API.
      :END:
 
+     :CAPTURE_DATE: [2017-03-21 Tue 20:43]
+     :LINK:     https://github.com/thisbejim/Pyrebase
+     :TITLE:    thisbejim/Pyrebase: A simple python wrapper for the Firebase API.
+     :DESCRIPTION: Pyrebase - A simple python wrapper for the Firebase API.
+
      this is current one people suggest using. The ones with the
      highest relevance in PyPi are deprecated!!
 
@@ -331,6 +350,9 @@
      :TITLE:    Join PyLadies on Slack!
      :END:
 
+     :CAPTURE_DATE: [2017-04-12 Wed 21:35]
+     :LINK:     http://slackin.pyladies.com/
+     :TITLE:    Join PyLadies on Slack!
 
      How to sign up for the PyLadies Slack team.
 ** Books
@@ -341,4 +363,9 @@
      :Copyright: 2016
      :Publisher: Pearson (SAMS imprint)
      :END:
+
+     :AUTHORS:  Blum, Bresnahan
+     :Copyright: 2016
+     :Publisher: Pearson (SAMS imprint)
+
      Out of date, covers old versions of the RPi.

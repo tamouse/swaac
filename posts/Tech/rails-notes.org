@@ -90,6 +90,8 @@
     :LOCATION: added to swaac.dev
     :END:
 
+    :LOCATION: added to swaac.dev
+
       Blog post: [[http://adamniedzielski.github.io/blog/2015/01/31/11-easy-to-fix-ruby-slash-ruby-on-rails-mistakes/][Adam Niedzeilski: 10 easy-to-fix Ruby / Ruby on Rails mistakes]]
 
       captured: [2015-02-02 Mon 01:45]

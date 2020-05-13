@@ -5,6 +5,8 @@
     :URL:      https://tamouse.github.io/swaac/wordpress/2016/11/14/installing-wordpress-things-without-ftp/
     :END:
 
+    Link: https://tamouse.github.io/swaac/wordpress/2016/11/14/installing-wordpress-things-without-ftp/
+
     Direct installation: add the following line to ~wp-config.php~:
 
     #+BEGIN_SRC php
@@ -78,6 +80,12 @@
     :TITLE:    WordPress Tavern – WordPress News — Free as in Beer.
     :END:
 
+    :CAPTURE_DATE: [2016-11-12 Sat 15:39]
+    :LINK:     https://wptavern.com/
+    :TITLE:    WordPress Tavern – WordPress News — Free as in Beer.
+
+
+
 *** Blog - ChrisLema.com -
     :PROPERTIES:
     :CAPTURE_DATE: [2016-11-12 Sat 15:40]
@@ -85,12 +93,21 @@
     :TITLE:    Blog - ChrisLema.com -
     :END:
 
+    :CAPTURE_DATE: [2016-11-12 Sat 15:40]
+    :LINK:     http://chrislema.com/blog/
+    :TITLE:    Blog - ChrisLema.com -
+
+
 *** Book Area | Digging Into WordPress
     :PROPERTIES:
     :CAPTURE_DATE: [2016-11-12 Sat 15:45]
     :LINK:     https://digwp.com/book/
     :TITLE:    Book Area | Digging Into WordPress
     :END:
+
+    :CAPTURE_DATE: [2016-11-12 Sat 15:45]
+    :LINK:     https://digwp.com/book/
+    :TITLE:    Book Area | Digging Into WordPress
 
 *** Free WordPress Tutorials
     :PROPERTIES:
@@ -100,6 +117,10 @@
     :DESCRIPTION: Learn to build a WordPress site that's authentically you, grows your email list and finds the perfect clients.
     :END:
 
+    :CAPTURE_DATE: [2016-11-12 Sat 15:45]
+    :LINK:     https://www.wp-bff.com/
+    :TITLE:    Free WordPress Tutorials
+    :DESCRIPTION: Learn to build a WordPress site that's authentically you, grows your email list and finds the perfect clients.
 
 *** WordPress Teacher Zac Gordon | Professional Educator, WordPress Expert
     :PROPERTIES:
@@ -109,6 +130,12 @@
     :DESCRIPTION: Zac Gordon is a professional educator with years of experience teaching in the classroom, leading workshops, giving talks and recording online courses. He has taught a range of web related topics from design and development to traditional programming and even robotics. His technological teaching passion is WordPress. He loves being able to empower people to learn how to…
     :END:
 
+    :CAPTURE_DATE: [2016-11-12 Sat 15:45]
+    :LINK:     https://wp.zacgordon.com/
+    :TITLE:    WordPress Teacher Zac Gordon | Professional Educator, WordPress Expert
+    :DESCRIPTION: Zac Gordon is a professional educator with years of experience teaching in the classroom, leading workshops, giving talks and recording online courses. He has taught a range of web related topics from design and development to traditional programming and even robotics. His technological teaching passion is WordPress. He loves being able to empower people to learn how to…
+
+
 *** WordPress and eCommerce Blog and Podcast
     :PROPERTIES:
     :CAPTURE_DATE: [2016-11-12 Sat 15:45]
@@ -116,6 +143,11 @@
     :TITLE:    WordPress and eCommerce Blog and Podcast
     :DESCRIPTION: Tutorials, tips and posts on WordPress , eCommerce how to, themes and plugins, and creating effective digital content.
     :END:
+
+    :CAPTURE_DATE: [2016-11-12 Sat 15:45]
+    :LINK:     https://bobwp.com/
+    :TITLE:    WordPress and eCommerce Blog and Podcast
+    :DESCRIPTION: Tutorials, tips and posts on WordPress , eCommerce how to, themes and plugins, and creating effective digital content.
 
 *** Torque - WordPress News, WP Community Experts | @thetorquemag
     :PROPERTIES:
@@ -125,12 +157,21 @@
     :DESCRIPTION: Current WordPress News. The Torque News Core is a group of WordPress experts that are part of the WordPress community.
     :END:
 
+    :CAPTURE_DATE: [2016-11-12 Sat 15:45]
+    :LINK:     http://torquemag.io/
+    :TITLE:    Torque - WordPress News, WP Community Experts | @thetorquemag
+    :DESCRIPTION: Current WordPress News. The Torque News Core is a group of WordPress experts that are part of the WordPress community.
+
 *** Blog - ChrisLema.com -
     :PROPERTIES:
     :CAPTURE_DATE: [2016-11-12 Sat 15:45]
     :LINK:     http://chrislema.com/blog/
     :TITLE:    Blog - ChrisLema.com -
     :END:
+
+    :CAPTURE_DATE: [2016-11-12 Sat 15:45]
+    :LINK:     http://chrislema.com/blog/
+    :TITLE:    Blog - ChrisLema.com -
 
 *** Get DesktopServer and save time! • ServerPress, LLC.
     :PROPERTIES:
@@ -140,12 +181,23 @@
     :DESCRIPTION: DesktopServer is a tool that is proven to save you time testing, developing, managing, and creating fully functional website servers on your own computer.
     :END:
 
+    :CAPTURE_DATE: [2016-11-12 Sat 15:46]
+    :LINK:     https://serverpress.com/get-desktopserver/
+    :TITLE:    Get DesktopServer and save time! • ServerPress, LLC.
+    :DESCRIPTION: DesktopServer is a tool that is proven to save you time testing, developing, managing, and creating fully functional website servers on your own computer.
+
+
 *** Flywheel | Managed WordPress Hosting Pricing
     :PROPERTIES:
     :CAPTURE_DATE: [2016-11-12 Sat 15:46]
     :LINK:     https://getflywheel.com/pricing/
     :TITLE:    Flywheel | Managed WordPress Hosting Pricing
     :END:
+
+    :CAPTURE_DATE: [2016-11-12 Sat 15:46]
+    :LINK:     https://getflywheel.com/pricing/
+    :TITLE:    Flywheel | Managed WordPress Hosting Pricing
+
 
 *** Free WordPress Tutorials
     :PROPERTIES:
@@ -154,6 +206,11 @@
     :TITLE:    Free WordPress Tutorials
     :DESCRIPTION: Learn to build a WordPress site that's authentically you, grows your email list and finds the perfect clients.
     :END:
+
+    :CAPTURE_DATE: [2016-11-12 Sat 15:46]
+    :LINK:     https://www.wp-bff.com/
+    :TITLE:    Free WordPress Tutorials
+    :DESCRIPTION: Learn to build a WordPress site that's authentically you, grows your email list and finds the perfect clients.
 
 
 *** [[https://www.wordfence.com/blog/2016/11/hacking-27-web-via-wordpress-auto-update/][Hacking 27 of the Web via WordPress Auto-Update - Wordfence]]
