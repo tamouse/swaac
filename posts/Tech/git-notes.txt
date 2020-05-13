@@ -1,0 +1,28 @@
+
+** Git How-tos
+*** Doing a ~git merge~ "Dry Run"
+    :PROPERTIES:
+    :CAPTURE_DATE: [2018-02-28 Wed 07:43]
+    :END:
+
+    From [[https://stackoverflow.com/a/501461/742446][stackoverflow]]:
+
+    #+BEGIN_QUOTE
+
+
+    As noted previously, pass in the --no-commit flag, but to avoid a fast-forward commit, also pass in --no-ff, like so:
+
+    $ git merge --no-commit --no-ff $BRANCH
+    To examine the staged changes:
+
+    $ git diff --cached
+    And you can undo the merge, even if it is a fast-forward merge:
+
+    $ git merge --abort
+
+    #+END_QUOTE
+
+    Pretty straight-forward.
+
+
+** Git Notes

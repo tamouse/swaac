@@ -1,0 +1,164 @@
+* Ruby
+
+** Notes
+*** [[http://www.saturnflyer.com/blog/jim/2015/01/20/ruby-forwardable-deep-dive/?utm_source%3Drubyweekly&utm_medium%3Demail][Forwardable Deep Dive]] [2015-01-25 Sun]
+    :PROPERTIES:
+    :LOCATION: added to swaac.dev
+    :END:
+    #+AUTHOR: Jim Gay
+
+
+
+*** TODO try out moneta in an application
+
+** Books
+
+*** Practical Object Oriented Design in Rails - Sandi Metz
+
+***** On composition vs inheritance, Sandi Metz in POODR
+   #+begin_src markdown
+     > Composition allows you to combine small parts to create more complex
+     > objects such that the whole becomes more than the sum of its
+     > parts. Composed objects tend to consist of simple, discrete entities
+     > that can easily be rearranged into new combinations. These simple
+     > objects are easy to understand, reuse, and test, but because they
+     > combine into a more complicated whole, the operation of the bigger
+     > application may not be as easy to understand as that of the
+     > individual parts.
+
+
+     > Composition, classical inheritance, and behavior sharing via modules
+     > are competing techniques for arranging code. Each has different
+     > costs and benefits; these differences predispose them to be better
+     > at solving slightly different problems.
+
+
+     > These techniques are tools, nothing more, and you’ll become a better
+     > designer if you practice each of them. Learning to use them properly
+     > is a matter of experience and judgment, and one of the best ways to
+     > gain experience is to learn from your own mistakes. The key to
+     > improving your design skills is to attempt these techniques, accept
+     > your errors cheerfully, remain detached from past design decisions,
+     > and refactor mercilessly.
+
+     > As you gain experience, you’ll get better at choosing the correct
+     > technique the first time, your applications will improve.”
+
+
+     Excerpt From: Metz, Sandi. “Practical Object-Oriented Design in Ruby:
+     An Agile Primer (Addison-Wesley Professional Ruby Series).”
+     iBooks. https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewBook?id=038BE4A901A3E1659EA914B97D73CA82
+
+   #+end_src
+
+*** The Well Grounded Rubyist
+
+     #+begin_src markdown
+       ## Who should read this book
+
+       > The Well-Grounded Rubyist, Second Edition is optimized for a reader
+       > who’s done some programming and perhaps even some Ruby and wants to
+       > learn more about the Ruby language—not only the specific techniques
+       > (although the book includes plenty of those), but also the design
+       > principles that make Ruby what it is. I’m a great believer in knowing
+       > what you’re doing. I also believe that knowing what you’re doing
+       > doesn’t mean you have to compose a treatise in your head every time
+       > you write a line of code; it means you know how to make the most out
+       > of the language, and understand how to analyze problems when they
+       > arise.
+       >
+       >
+       > [I]f this is your first foray into programming, be prepared to do a
+       > little extra self-imposed “homework” to get ramped up into the
+       > programming process—but by all means, give The Well-Grounded Rubyist,
+       > Second Edition a go. The book isn’t specifically an introduction to
+       > programming, but it does take you through all the practicalities,
+       > including the creation and running of program files, as well as
+       > explaining Ruby from the ground up
+
+       Excerpt From: David A. Black. “The Well-Grounded Rubyist, Second
+       Edition.”
+
+     #+end_src
+
+
+** Ruby one-liners
+  #+name: one-liners
+  #+begin_src ruby
+    a=[1,2,3,4,4,5,6,6,6];Hash[a.group_by {|e| e}.map {|k,v| next if v.size ==1;[k,v.size]}.compact]
+  #+end_src
+
+** Ruby Testing
+*** Capybara
+**** DONE Scrolling the window in Capybara          :blog:ruby:spec:capybara:
+   :PROPERTIES:
+   :CAPTURE_DATE: [2019-03-06 Wed 16:45]
+   :LOCATION: added to swaac.dev
+   :END:
+
+
+   This is a problem when we have a modal that is long and we need to get the "Submit" button.
+
+   #+BEGIN_SRC ruby
+     page.execute_script "window.scrollBy(0,10000)"
+   #+END_SRC
+
+
+
+** Ruby Meetings, Meetups
+*** RubyMN 2014-02-24 7:00pm
+
+**** AI Twitter Bot
+***** Horse_Ebooks
+***** rkelly_ebooks
+      tweet rkelly lyrics
+****** scrape
+****** choose
+****** vote
+******* characterize
+******* tag
+******* bayes
+******** classifier
+******** guess funniness
+******** human in the loop
+******* post
+
+***** what did we learn
+
+****** try new things
+
+****** make stupid shit
+
+****** have some fun
+
+****** josh kaplan
+       @jkap
+       git.io/rkelly_ebooks
+       @rkelly_ebooks
+
+**** Daemons in Ruby
+     Ian Whitney @ianwhitney
+
+***** what's a daemon?
+****** Background jobs
+******* resque
+******* delayed jobs
+******* sidekiq
+****** Services
+****** Responsive to changes
+
+
+***** what else?
+****** write your own
+******* logging
+******* error capturing
+******* scheduling
+****** daemon_kit
+       https://github.com/kennethkalmer/daemon-kit
+
+
+*** RubyMN Meeting 7:00pm-9:00pm
+    <%%(diary-float t 1 -1)>
+    Last Monday of the month
+
+** RUBY REFILE TARGET

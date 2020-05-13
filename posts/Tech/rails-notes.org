@@ -1,0 +1,608 @@
+* Rails Notes
+** Rails TODOs
+
+*** DONE figure how to include Devise in a Rails Engine and have it work in the parent app :RAILS:
+    CLOCK: [2015-02-04 Wed 01:54]--[2015-02-04 Wed 02:00] =>  0:06
+    created_on: [2015-02-04 Wed 01:55]
+    link: [[irc:/irc.freenode.net:6667/#rubyonrails][irc session 'irc.freenode.net:6667/#rubyonrails']]
+
+    #+begin_src text
+      <jdeen> I have 3 projects to do which are very similar. I thought of making
+              them a plugin so that I can mount them. Since I need Authentication I
+              added Devise and generated a model as usual. When I include the engine
+              in another rails app and mount it and run `rake db:migrate` I get an
+              error similar to `uninitialized constant Devise (NameError)`.   [01:43]
+      <jdeen> My question is if we are going to add another engine like 'Devise',
+              can we use it inside our new engine the same way we would in an Rails
+              app?                                                            [01:44]
+      <jdeen> Or will I need to install devise seperately in the Rails app?
+      <jdeen> Any advice is highly appreciated
+      <tabish> I think you can                                                [01:45]
+      <tabish> because in Radar's book he used warden inside his engine for
+               multi-tenancy
+      <pontiki> jdeen: devise is in your .gemspec as a dependency?            [01:46]
+      <jdeen> I have added 'devise' to the gemspec
+      <jdeen> in the engine
+      <pontiki> yeah
+      <jdeen> some thing like: `s.add_dependency "devise", "~> 3.4.1"`
+      <pontiki> right                                                         [01:47]
+      <pontiki> and it does show up in the app's Gemfile.lock?
+      <jdeen> pontiki: yes in both the engine repo and the app both have devise
+              3.4.1 there                                                     [01:49]
+      <pontiki> kk
+      <pontiki> you've probably done everything i can think of, but i'll keep
+		talking, unless it's bothersome
+      <pontiki> jdeen: ran the devise:install in the app?                     [01:50]
+      <jdeen> pontiki: I ran it in the engine and it went fine. In the app it gives
+              the same error I mentioned.                                     [01:52]
+      <jdeen> `uninitialized constant Devise (NameError)`
+      <pontiki> crud                                                          [01:54]
+      <jdeen> pontiki: I added devise to the Gemfile of the app, and its not giving
+              errors                                                          [01:55]
+
+    #+end_src
+
+*** DONE download transcript from Ruby Rogues 243
+
+    https://media.devchat.tv/ruby-rogues/transcript-243-rr-books-that-aren-t-poodr-ruby-rogues.pdf
+
+    CLOCK: [2016-01-23 Sat 03:29]--[2016-01-23 Sat 03:30] =>  0:01
+
+   created_at: [2016-01-23 Sat 03:29]
+*** investigate Refile gem                                           :coding:
+    CLOCK: [2015-08-20 Thu 18:36]--[2015-08-20 Thu 18:38] =>  0:02
+    created_on: [2015-08-20 Thu 18:36]
+    link: https://github.com/refile/refile
+
+    Another image uploader/manager. Reason: can upload directly to S3 or
+    other cloud store. Written by jnicklas (capybara dude)
+*** investigate Rails domain models that can choose a different persistence strategy :swaac:
+    CLOCK: [2015-12-28 Mon 07:52]--[2015-12-28 Mon 07:56] =>  0:04
+
+    created_at: [2015-12-28 Mon 07:52]
+
+    Based on a question in irc:
+
+    How would you implement a scenario where you might get Venue
+    information from a local datastore, or via an API?
+
+    Two models? An absract model and two inheritors?
+    Do the client models need to know where the information came from?
+    Could you have a domain model that decides which strategy to use and
+    inject it? How would you implement such a thing?
+
+*** TODO write up swaac post on rails_template                  :swaac:rails:
+    CLOCK: [2016-01-05 Tue 22:16]--[2016-01-05 Tue 22:16] =>  0:00
+
+   created_at: [2016-01-05 Tue 22:16]
+
+
+** Rails Notes
+
+*** Internationalization/Localization service for Rails apps
+      [[https://www.localeapp.com/][LocaleApp]] Easy localization for Rails apps
+      captured on: [2015-02-06 Fri 09:39]
+
+
+
+*** A pretty good list of common Ruby/Rails mistakes
+    :PROPERTIES:
+    :LOCATION: added to swaac.dev
+    :END:
+
+      Blog post: [[http://adamniedzielski.github.io/blog/2015/01/31/11-easy-to-fix-ruby-slash-ruby-on-rails-mistakes/][Adam Niedzeilski: 10 easy-to-fix Ruby / Ruby on Rails mistakes]]
+
+      captured: [2015-02-02 Mon 01:45]
+
+      In a nutshell:
+
+      - complex conditionals, double negatives
+	Create good predicates for what your logic means.
+
+      - not checking true / false on operations that don't raise an
+	exception
+	e.g.: Rails .save vs. .save!
+
+      - using self when it isn't needed
+
+      - N+1 queries
+
+      - tri-state "booleans" -- when nil is a possible value besides
+	true and false
+
+      - orphaned records
+
+      - making database schema migrations dependent on a specific
+	version of the source code
+
+	Most folks thing that as migrations are stored with the code and
+	managed in the same way, that somehow state of the database and
+	code must remain locked together. This could not be further from
+	the truth.
+
+	If you need code changes with a migration, make a separate
+	one-time rake task instead, and delete it when done.
+
+      - not using map
+
+      - not using Hash#fetch
+
+
+
+*** [[http://stackoverflow.com/questions/549/the-definitive-guide-to-forms-based-website-authentication][Definitive Guide to Forms-based Authentication]] [[2015-01-24 Sat 13:55]]
+
+      #+begin_src markdown
+	## Form based authentication for websites
+
+	We believe that Stack Overflow should not just be a resource for very
+	specific technical questions, but also for general guidelines on how
+	to solve variations on common problems. "Form based authentication for
+	websites" should be a fine topic for such an experiment.
+
+	### It should include topics such as:
+
+	- How to log in
+	- How to remain logged in
+	- How to store passwords
+	- Using secret questions
+	- Forgotten username/password functionality
+	- OpenID
+	- "Remember me" checkbox
+	- Browser autocompletion of usernames and passwords
+	- Secret URLs (public URLs protected by digest)
+	- Checking password strength
+	- E-mail validation
+	- and much more about form based authentication
+
+      #+end_src
+
+
+      source: StackOverflow
+      http://stackoverflow.com/questions/549/the-definitive-guide-to-form-based-website-authentication
+
+
+*** [[https://medium.com/@KamilLelonek/why-is-your-rails-application-still-coupled-to-activerecord-efe34d657c91][Why is your Rails application still coupled to ActiveRecord?]] [2015-01-25 Sun 19:09]
+
+
+*** link: Stop Writing Rails Controllers
+
+**** [[http://spin.atomicobject.com/2015/01/26/data-driven-rails-controllers/][Data Driven Controllers]]
+
+       #+begin_quote
+         Data Driven Controllers
+
+         Data Driven Controllers (DDC) lets you declare via data how to
+         convert back and forth from HTTP to your application’s domain
+         without the need for code. By adhering to a couple of interfaces,
+         you can avoid writing most controller code and tests. DDC breaks
+         the process of handling a request into three parts.
+
+         1. Convert parameters.
+
+         This step is handled by some sort of context builder. It is mostly
+         in charge of gathering parameters, but may need to pluck out
+         additional information from the controller. The information is
+         collected into a form that the domain code can digest (usually a
+         data blob via a Hash or Struct).
+
+         2. Process the domain request / action.
+
+         The domain level service object takes the necessary information
+         and processes it (update the database, send emails, external
+         services). The service then returns a result that knows nothing
+         about HTTP-land. It includes things like status (application, not
+         HTTP), objects, errors, etc.
+
+         3. Glue.
+
+         DDC is the glue that holds it all together. It creates a
+         controller class that does all the default things for you, but
+         allows you to override and fill in the blanks where
+         necessary. When defining your glue, you simply tell the action how
+         to get the params from the context builder and what service object
+         to send them off to.
+       #+end_quote
+
+
+       captured_on: [2015-01-29 Thu 21:00]
+
+
+*** Rails Best Practices
+      Just a set of things I've come to learn
+
+**** Narrow Boolean field possibilities
+
+       When declaring a boolean field in a rails db schema migration, set
+       it to not null and a default of false:
+
+       #+begin_src ruby
+         add_column :table, :field, :boolean, null: false, default: false
+       #+end_src
+
+       This ensures that the field? predicates always end up being what
+       you expect them to be: true (TrueClass) or false (FalseClass) as
+       opposed to just truthy or falsy.
+
+**** Page-specific Javascript in Rails
+     :PROPERTIES:
+     :DESCRIPTION: OBSOLETE
+     :END:
+       Being able to safely mingle javascript that applies only to one
+       view or a single controller can be a difficult thing to get, when
+       you don't want to write something directly in the HTML view or
+       layout, or have to include a separate request to a page-specific
+       javascript file, but keep everything in the standard Rails assets
+       bundling.
+
+       This article discusses how to do this, pretty simply, by specifying
+       classes for the controller and action in the body tag, and using
+       jQuery selectors to specify what to do.
+
+       http://brandonhilkert.com/blog/page-specific-javascript-in-rails/
+
+
+
+*** [[https://speakerdeck.com/kfaustino/rails-testing-antipatterns][Rails Testing Antipatterns talk]] [[2015-01-24 Sat 13:55]]
+
+
+*** Allow anything through CORS in Rails apps (development/testing)
+
+
+      #+begin_src ruby
+	class ApplicationController < ActionController::Base
+          protect_from_forgery
+          before_filter :current_user, :cors_preflight_check
+          after_filter :cors_set_access_control_headers
+
+          # For all responses in this controller, return the CORS access control headers.
+          def cors_set_access_control_headers
+            headers['Access-Control-Allow-Origin'] = '*'
+            headers['Access-Control-Allow-Methods'] = 'POST, PUT, DELETE, GET, OPTIONS'
+            headers['Access-Control-Request-Method'] = '*'
+            headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+          end
+
+          # If this is a preflight OPTIONS request, then short-circuit the
+          # request, return only the necessary headers and return an empty
+          # text/plain.
+          def cors_preflight_check
+            if request.method == :options
+              headers['Access-Control-Allow-Origin'] = '*'
+              headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS'
+              headers['Access-Control-Allow-Headers'] = '*'
+              headers['Access-Control-Max-Age'] = '1728000'
+              render :text => '', :content_type => 'text/plain'
+            end
+          end
+
+          #
+          # PRIVATE METHODS
+          private
+
+          # get the user currently logged in
+          def current_user
+            @current_user ||= User.find(session[:user_id]) if session[:user_id]
+          end
+          helper_method :current_user
+
+	end
+
+      #+end_src
+
+
+*** Making records immutable
+
+    NOTE: this will not prevent someone from modifying a record by using methods that don't invoke callbacks, such as ~.update_column~
+
+    based upon http://stackoverflow.com/a/1198286/742446
+
+    use the Dirty module to find out if particular attributes have
+    changes before saving the record.
+
+    #+begin_src ruby
+      class Order < ActiveRecord::Base
+	IMMUTABLE = %w{po_number}
+
+	before_save do |record|
+          false if IMMUTABLE.any? { |attr| record.changed.has_key?(attr) }
+	end
+      end
+    #+end_src
+
+    Or, making the whole record immutable:
+
+    #+begin_src ruby
+      class Transaction < ActiveRecord::Base
+	before_save do |record|
+          false if record.changed? && record.persisted?
+	end
+      end
+    #+end_src
+
+**** Using a validation hook instead of a callback
+
+    #+begin_src ruby
+      class Order < ActiveRecord::Base
+	IMMUTABLE = %w{po_number}
+
+	validate :force_immutable
+
+	# ...
+
+	private
+
+	def force_immutable
+          if self.persisted?
+            IMMUTABLE.any? do |attr|
+              errors.add(attr, :immutable)
+              self.changed.include?(attr)
+              #
+              # Optional: restore pristine state for the attribute
+              #
+              self[attr] = self.changed_attributes[attr]
+            end
+          end
+	end
+      end
+    #+end_src
+
+
+
+
+     #+begin_src ruby
+       class Transaction < ActiveRecord::Base
+
+         validate :force_immutable
+
+         # ....
+
+         private
+
+         def force_immutable
+           if self.changed? && self.persisted?
+             self.reload # to keep the local copy of the record unchanged
+             errors.add(:base, 'Payment Transactions are immutable')
+           end
+         end
+       end
+     #+end_src
+
+
+
+
+*** Intercepting Emails on Staging
+
+    Someone thought this through already:
+
+    http://guides.rubyonrails.org/action_mailer_basics.html#intercepting-emails
+
+    The example works perfectly for what I need to be able to do full
+    systems testing on staging without worrying about sending bogus
+    emails to users!
+
+
+
+*** getting the end of month, end of the year, etc               :RAILS:DATE:
+    :PROPERTIES:
+    :LOCATION: added to swaac.dev
+    :END:
+
+     You can easily get the end of the month, or end of the year in
+     Rails's Date extensions via sending in a negative 1:
+
+     #+begin_src ruby
+       Date.new(2015,-1,-1) #=> 2015-12-31
+       DateTime.new(2015,-1,-1,10,-1) #=> 2015-12-31T10:59:00+00:00
+     #+end_src
+
+
+     captured_on: [2015-02-17 Tue 10:16]
+
+
+
+*** How to use faye-websocket but not have every end-point run through the new middleware
+
+    I wish I'd saved the source of this knowledge
+
+    A: Use `mount:`
+
+    #+BEGIN_SRC ruby
+      class Application < Rails::Application
+	config.middleware.insert_after(
+          ActionDispatch::Session::CookieStore,
+          FayeRails::Middleware,
+          extensions: [Faye::Extensions::AuthenticationExtension.new],
+          engine: { type: Faye::Redis, host: 'localhost' },
+          mount: '/rt',
+          timeout: 25) do
+          map '/runbook/**' => RealtimeController
+	end
+	# ...
+      end
+    #+END_SRC
+
+
+    capture date: [2015-09-16 Wed 11:04]
+
+
+*** Calling Controller actions from the console
+    :PROPERTIES:
+    :LOCATION: added to swaac.dev
+    :END:
+
+    Capture date: [2015-09-17 Thu 10:35]
+
+
+    Various answers here: http://stackoverflow.com/questions/151030/how-do-i-call-controller-view-methods-from-the-console-in-rails/1161163#1161163
+
+    Essentially:
+
+    #+begin_src ruby
+      app.get '/users' # index
+      app.post '/users' # create with post data
+
+      ## Possibly:
+
+      app.post app.users_path(...data...)
+    #+end_src
+
+
+    Note: http://stackoverflow.com/a/23899701/742446
+
+
+
+*** [Rails] Requiring js with engine gem                              :rails:
+
+    Colin Law <clanlaw@gmail.com>	Thu, Sep 24, 2015 at 9:30 AM
+    Reply-To: rubyonrails-talk@googlegroups.com
+    To: "Ruby on Rails: Talk" <rubyonrails-talk@googlegroups.com>
+    On 24 September 2015 at 15:18, Marco Antonio Almeida
+    <marcoafilho@gmail.com> wrote:
+    > Hi Colin,
+    >
+    > On Thu, Sep 24, 2015 at 1:30 PM Colin Law <clanlaw@gmail.com> wrote:
+    >>
+    >> I am having a go, for the first time, at making a gem which is an
+    >> engine.  I have some javascript files which I have put in the
+    >> gem/app/assets/javascript.  I can access those from the app but only
+    >> if I require them from the apps application.js.  So if I have two js
+    >> files in the gem, say f1.js and f2.js, then in the apps application.js
+    >> I have to put
+    >> //= require f1
+    >> //= require f2
+    >>
+    >> I have not been able to find a way to avoid having to require them all
+    >> individually.  Is this possible?
+    >>
+    >
+    > What I usually do is something like this:
+    >
+    > Let's say that I have an engine called "my_engine", then I would create a
+    > my_engine/app/assets/javascript/index.js which would have the content:
+    >
+    > //= require f1
+    > //= require f2
+    >
+    > Then in the host app's application.js you can call
+    >
+    > // require my_engine
+    >
+    > This is actually a very neat trick that Rails have to load files inside a
+    > folder. It will always look for an index.js file first.
+
+    Of course!  It's obvious when you know how.
+
+    Thanks
+
+    Colin
+
+    capture date: [2015-09-24 Thu 18:54]
+
+
+*** Standard startup items for a real rails project                   :swaac:
+
+    - pry-rails
+    - remove spring and turbolinks
+    - sandbox mail interceptor
+    - mailcatcher
+    - sidekiq backed activejob
+    - customisable Vagrantfile, other local configs for individual developer, tester.
+      Still need to maintain standardized functionality for CI, staging, prod
+    -
+*** http://blog.codeship.com/the-json-api-spec/         :reading:rails:swaac:
+
+    Title: How to Build Rails APIs Following the json:api Spec | via @codeship
+
+
+
+    captured at: [2016-01-19 Tue 13:22]
+*** http://engineering.wework.com/data/2015/11/05/add-columns-with-default-values-to-large-tables-in-rails-postgres/
+
+    Title: Adding columns with default values to really large tables in Postgres + Rails – WeWork Engineering
+
+
+
+    captured at: [2016-01-22 Fri 00:27]
+
+*** View Models (Cells)
+
+    Ref: https://github.com/apotonick/cells/tree/cells-3
+
+    How to encapsulate views with view models, presenters, and that
+    sort of thing.
+
+
+**** [[http://blog.jayfields.com/2007/03/rails-presenter-pattern.html][Rails: Presenter Pattern]]
+
+     > The Presenter pattern addresses bloated controllers and views
+       containing logic in concert by creating a class representation
+       of the state of the view. An architecture that uses the
+       Presenter pattern provides view specific data as attributes of
+       an instance of the Presenter. The Presenter's state is an
+       aggregation of model and user entered data.
+
+     Actually, this is describing a Form Model, which is certainly a
+     /sort/ of Presenter, but not actually what I was looking
+     for. Still, very nice way to implement it.
+
+*** Slack convo on setting up Rails with React
+    :PROPERTIES:
+    :CAPTURE_DATE: [2019-10-15 Tue]
+    :LOCATION: added to swaac.dev
+    :END:
+
+#+BEGIN_QUOTE
+Tamara Temple, aka tamouse__ (she/her) Today at 8:10 PM
+Bringing something back from earlier: https://wwcodetc.slack.com/archives/C0K6D5NTZ/p1566917868021600?thread_ts=1566895402.019400&cid=C0K6D5NTZ
+@Andrea I could probably share some links and stuff if this is still of interest.
+
+Andrea
+I am interested in learning how to setup a site using Ruby on Rails + React.
+From a thread in #learn-to-code | Aug 27th | View reply
+:dancercorgi:
+1
+
+13 replies
+
+Andrea  1 hour ago
+That would be wonderful :slightly_smiling_face:
+
+Tamara Temple, aka tamouse__ (she/her)  1 hour ago
+There are three general ways of doing this, too:
+1. Rails app is only an API, no front-end support for a standalone React Single Page App
+2. Rails app includes support for loading a single page react app using the standard Rails view (sprockets) convention
+3. Rails app allows React components to be sprinkled on a standard Rails view
+
+Tamara Temple, aka tamouse__ (she/her)  1 hour ago
+In #1, it's possible to either separate the rails api and the client into separate repos, or keep them in one, but in separate subdirectories.
+
+Tamara Temple, aka tamouse__ (she/her)  1 hour ago
+In #2, you'll essentially have the root route produce an index.html page that loads up the React App
+
+Tamara Temple, aka tamouse__ (she/her)  1 hour ago
+in #3, you'll generate the standard set of Rails views for controllers, and have as much or as little React components on each view as you'd like
+
+Tamara Temple, aka tamouse__ (she/her)  44 minutes ago
+This is my example of doing #1: https://github.com/tamouse/r5_graphql_react (toy app)
+
+Tamara Temple, aka tamouse__ (she/her)  41 minutes ago
+This one kinda shows both #2 and #3: https://github.com/tamouse/r5react-rails
+
+Tamara Temple, aka tamouse__ (she/her)  41 minutes ago
+With the first one, too, I added GraphQL, but you can just as easily do regular Rails resources, just responding with JSON only
+
+Tamara Temple, aka tamouse__ (she/her)  34 minutes ago
+I followed this tutorial initially, I think it's pretty good: https://scotch.io/tutorials/build-a-restful-json-api-with-rails-5-part-one (it's a couple years old, 2017, but a lot is still quite applicable to Rails 6, even) (edited)
+
+Tamara Temple, aka tamouse__ (she/her)  20 minutes ago
+i can't seem to find all the other links i used; i was sure i captured them someplace :disappointed:
+
+Tamara Temple, aka tamouse__ (she/her)  11 minutes ago
+jeepers, this is less than satisfying, isn't it
+
+Tamara Temple, aka tamouse__ (she/her)  8 minutes ago
+@Andrea if you want, we can spend some time at a CodeJam or Toast&Tech
+
+Tamara Temple, aka tamouse__ (she/her)  7 minutes ago
+i don't think this is in-and-of-itself a class thing provided it wouldn't be directed at teaching people Rails or React (or webpack, etc)
+#+END_QUOTE

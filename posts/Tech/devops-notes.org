@@ -1,0 +1,402 @@
+** Docker
+
+*** [[http://docs.docker.com/compose/][Docker Compose]]
+    [[http://docs.docker.com/compose/rails/][Getting Started with Compose and Rails]]
+
+*** [[http://tech.paulcz.net/2015/03/optimizing-your-dockerfiles/][Optimizing your Dockerfiles]] [2015-03-07 Sat]
+    Good article on some things you should do to optimize Dockerfiles
+    for less build time, regetting, rebuilding, etc.
+
+    Concept of "Layers" in Docker
+
+*** [[http://robots.thoughtbot.com/rails-on-docker][Rails on Docker (via Thoughtbot)]]
+    Jeff Miller <jmiller@ackmanndickenson.com> put this together:
+    https://github.com/jefferyf/docker-rails-demo
+
+**** Further documentation:
+
+     #+begin_src markdown
+
+       ###Further Documentation
+
+       The following are links to other resources I found helpful in setting up this project.
+
+       ####General
+
+       ,* Thoughtbot's excellent tutorial: [Rails on Docker](http://robots.thoughtbot.com/rails-on-docker)
+       ,* [Using Docker and Fig for a Rails Development Environment](https://www.invisiblelines.com/blog/2015/01/09/using-docker-and-fig-for-a-rails-development-environment/)
+       ,* [Use Fig and Docker to run a Rails app... without installing Rails](https://www.orchardup.com/blog/use-fig-to-run-a-rails-app)
+
+       ####Docker
+
+       ,* [Installing Docker on Mac OS X](https://docs.docker.com/installation/mac/)
+       ,* [boot2docker](http://boot2docker.io/)
+       ,* [Docker Cheat Sheet](https://github.com/wsargent/docker-cheat-sheet)
+       ,* [How to Use Docker on OS X: The Missing Guide](http://viget.com/extend/how-to-use-docker-on-os-x-the-missing-guide)
+       ,* [Dockerfile Best Practices](https://docs.docker.com/articles/dockerfile_best-practices/)
+
+       ####Fig/Docker Compose
+
+       ,* [Docker Compose](http://docs.docker.com/compose/)
+       ,* [Getting Started with Compose and Rails](http://docs.docker.com/compose/rails/)
+
+     #+end_src
+
+***** [[https://www.invisiblelines.com/blog/2015/01/09/using-docker-and-fig-for-a-rails-development-environment/][Using Docker and Fig for a Rails Development Environment]]
+
+***** [[https://www.orchardup.com/blog/use-fig-to-run-a-rails-app][Use Fig and Docker to run a Rails app... without installing Rails]]
+
+      Further investigation in this, running the tutorial, resulted
+      in failure. The container with the application would not
+      retain the bundle install state. See:
+      https://github.com/tamouse/fig-rails-example/tree/tutorial
+
+
+
+
+*** [[https://blog.abevoelker.com/rails-development-using-docker-and-vagrant/][Rails Development Using Docker and Vagrant (Abe Voelker)]]
+    Voelker evenutally becomes disatisfied with using Docker for
+    development, having run into issues with having running services
+    one would normally expect on a "real" full linux system: cron,
+    syslogd, an MTA, etc.
+
+*** [[http://www.atlashealth.com/blog/2014/09/persistent-ruby-gems-docker-container/#.VRq0d5NjOfg][How to Create a Persistent Ruby Gems Container with Docker By Phil Misiowiec]]
+    This seems to be the way to keep Gems from causing a "rebuild the
+    world" scenario, and to make them shareable, packageable, etc.
+
+    "data volume container":
+    https://docs.docker.com/userguide/dockervolumes/
+
+    Create a container that will create the gems:
+    #+begin_src bash
+      docker create -v /ruby_gems/2.1 --name gems-2.1 busybox
+    #+end_src
+
+    Containerize your application:
+    #+begin_src bash
+      docker build -t my_project_name .
+    #+end_src
+
+    Dockerfile for the application using the gems container created
+    above:
+
+    #+begin_src ruby
+      FROM atlashealth/ruby:2.1.2
+
+      ENV DEBIAN_FRONTEND noninteractive
+
+      # Install any dependencies needed by Rails
+      RUN apt-get update -q && \
+	  apt-get install -qy curl libpq-dev libqt4-dev xvfb imagemagick --no-install-recommends && \
+
+	  # install Node for asset minification
+	  curl -sL https://deb.nodesource.com/setup | bash - && \
+	  apt-get install -qy nodejs && \
+
+	  # cleanup
+	  apt-get clean && \
+	  cd /var/lib/apt/lists && rm -fr *Release* *Sources* *Packages* && \
+	  truncate -s 0 /var/log/*log
+
+      # https://github.com/docker/docker/issues/4032
+      ENV DEBIAN_FRONTEND newt
+
+      ####
+      # This is the key setting that will make the application use the gem
+      # container:
+      ENV GEM_HOME /ruby_gems/2.1
+      ENV PATH /ruby_gems/2.1/bin:$PATH
+
+      ADD . /app
+      WORKDIR /app
+
+      CMD ./script/start
+    #+end_src
+
+    The startup script mentioned in the last line of the Dockerfile:
+    #+name: ./script/startup.sh
+    #+begin_src shell
+      #!/usr/bin/env bash
+
+      echo "Bundling gems"
+      bundle install --jobs 4 --retry 3
+
+      echo "Generating Spring binstubs"
+      bundle exec spring binstub --all
+
+      echo "Clearing logs"
+      bin/rake log:clear
+
+      echo "Setting up new db if one doesn't exist"
+      bin/rake db:version || { bundle exec rake db:setup; }
+
+      echo "Removing contents of tmp dirs"
+      bin/rake tmp:clear
+
+      echo "Starting app server"
+      bundle exec rails s -p 3000 -b 0.0.0.0
+    #+end_src
+
+*** Docker and Microservices
+
+    http://blog.giantswarm.io/getting-started-with-microservices-using-ruby-on-rails-and-docker
+
+*** Postgres image (official)
+    https://registry.hub.docker.com/_/postgres/
+    This may actually be prolematic.
+
+*** [[http://blog.carbonfive.com/2015/03/17/docker-rails-docker-compose-together-in-your-development-workflow/][Docker, Rails, & Docker Compose together in your development workflow]]
+
+    Posted on 17th March 2015 by Andrew Hao in Docker, Ops, Rails,
+    Web
+
+
+
+
+*** Another article on using Docker with Rails:
+
+  http://blog.codeship.com/using-docker-for-rails-development/
+
+  capture date: [2015-12-15 Tue 17:21]
+
+
+
+*** [[http://levvel.io/blog-post/rails-docker-development-devops/][Rails  Docker  Vagrant  TravisCI in Development - Levvel]]
+
+
+*** [[http://docs.docker.com/compose/][Docker Compose]]
+    [[http://docs.docker.com/compose/rails/][Getting Started with Compose and Rails]]
+
+*** [[http://tech.paulcz.net/2015/03/optimizing-your-dockerfiles/][Optimizing your Dockerfiles]] [2015-03-07 Sat]
+    Good article on some things you should do to optimize Dockerfiles
+    for less build time, regetting, rebuilding, etc.
+
+    Concept of "Layers" in Docker
+
+*** [[http://robots.thoughtbot.com/rails-on-docker][Rails on Docker (via Thoughtbot)]]
+    Jeff Miller <jmiller@ackmanndickenson.com> put this together:
+    https://github.com/jefferyf/docker-rails-demo
+
+**** Further documentation:
+
+     #+begin_src markdown
+
+       ###Further Documentation
+
+       The following are links to other resources I found helpful in setting up this project.
+
+       ####General
+
+       ,* Thoughtbot's excellent tutorial: [Rails on Docker](http://robots.thoughtbot.com/rails-on-docker)
+       ,* [Using Docker and Fig for a Rails Development Environment](https://www.invisiblelines.com/blog/2015/01/09/using-docker-and-fig-for-a-rails-development-environment/)
+       ,* [Use Fig and Docker to run a Rails app... without installing Rails](https://www.orchardup.com/blog/use-fig-to-run-a-rails-app)
+
+       ####Docker
+
+       ,* [Installing Docker on Mac OS X](https://docs.docker.com/installation/mac/)
+       ,* [boot2docker](http://boot2docker.io/)
+       ,* [Docker Cheat Sheet](https://github.com/wsargent/docker-cheat-sheet)
+       ,* [How to Use Docker on OS X: The Missing Guide](http://viget.com/extend/how-to-use-docker-on-os-x-the-missing-guide)
+       ,* [Dockerfile Best Practices](https://docs.docker.com/articles/dockerfile_best-practices/)
+
+       ####Fig/Docker Compose
+
+       ,* [Docker Compose](http://docs.docker.com/compose/)
+       ,* [Getting Started with Compose and Rails](http://docs.docker.com/compose/rails/)
+
+     #+end_src
+
+***** [[https://www.invisiblelines.com/blog/2015/01/09/using-docker-and-fig-for-a-rails-development-environment/][Using Docker and Fig for a Rails Development Environment]]
+
+***** [[https://www.orchardup.com/blog/use-fig-to-run-a-rails-app][Use Fig and Docker to run a Rails app... without installing Rails]]
+
+      Further investigation in this, running the tutorial, resulted
+      in failure. The container with the application would not
+      retain the bundle install state. See:
+      https://github.com/tamouse/fig-rails-example/tree/tutorial
+
+
+
+
+*** [[https://blog.abevoelker.com/rails-development-using-docker-and-vagrant/][Rails Development Using Docker and Vagrant (Abe Voelker)]]
+    Voelker evenutally becomes disatisfied with using Docker for
+    development, having run into issues with having running services
+    one would normally expect on a "real" full linux system: cron,
+    syslogd, an MTA, etc.
+
+*** [[http://www.atlashealth.com/blog/2014/09/persistent-ruby-gems-docker-container/#.VRq0d5NjOfg][How to Create a Persistent Ruby Gems Container with Docker By Phil Misiowiec]]
+    This seems to be the way to keep Gems from causing a "rebuild the
+    world" scenario, and to make them shareable, packageable, etc.
+
+    "data volume container":
+    https://docs.docker.com/userguide/dockervolumes/
+
+    Create a container that will create the gems:
+    #+begin_src bash
+      docker create -v /ruby_gems/2.1 --name gems-2.1 busybox
+    #+end_src
+
+    Containerize your application:
+    #+begin_src bash
+      docker build -t my_project_name .
+    #+end_src
+
+    Dockerfile for the application using the gems container created
+    above:
+
+    #+begin_src ruby
+      FROM atlashealth/ruby:2.1.2
+
+      ENV DEBIAN_FRONTEND noninteractive
+
+      # Install any dependencies needed by Rails
+      RUN apt-get update -q && \
+	  apt-get install -qy curl libpq-dev libqt4-dev xvfb imagemagick --no-install-recommends && \
+
+	  # install Node for asset minification
+	  curl -sL https://deb.nodesource.com/setup | bash - && \
+	  apt-get install -qy nodejs && \
+
+	  # cleanup
+	  apt-get clean && \
+	  cd /var/lib/apt/lists && rm -fr *Release* *Sources* *Packages* && \
+	  truncate -s 0 /var/log/*log
+
+      # https://github.com/docker/docker/issues/4032
+      ENV DEBIAN_FRONTEND newt
+
+      ####
+      # This is the key setting that will make the application use the gem
+      # container:
+      ENV GEM_HOME /ruby_gems/2.1
+      ENV PATH /ruby_gems/2.1/bin:$PATH
+
+      ADD . /app
+      WORKDIR /app
+
+      CMD ./script/start
+    #+end_src
+
+    The startup script mentioned in the last line of the Dockerfile:
+    #+name: ./script/startup.sh
+    #+begin_src shell
+      #!/usr/bin/env bash
+
+      echo "Bundling gems"
+      bundle install --jobs 4 --retry 3
+
+      echo "Generating Spring binstubs"
+      bundle exec spring binstub --all
+
+      echo "Clearing logs"
+      bin/rake log:clear
+
+      echo "Setting up new db if one doesn't exist"
+      bin/rake db:version || { bundle exec rake db:setup; }
+
+      echo "Removing contents of tmp dirs"
+      bin/rake tmp:clear
+
+      echo "Starting app server"
+      bundle exec rails s -p 3000 -b 0.0.0.0
+    #+end_src
+
+*** Docker and Microservices
+
+    http://blog.giantswarm.io/getting-started-with-microservices-using-ruby-on-rails-and-docker
+
+*** Postgres image (official)
+    https://registry.hub.docker.com/_/postgres/
+    This may actually be prolematic.
+
+*** [[http://blog.carbonfive.com/2015/03/17/docker-rails-docker-compose-together-in-your-development-workflow/][Docker, Rails, & Docker Compose together in your development workflow]]
+
+    Posted on 17th March 2015 by Andrew Hao in Docker, Ops, Rails,
+    Web
+*** [[https://medium.com/@fbzga/how-to-cache-bundle-install-with-docker-7bed453a5800#.bypc6mkg1][How to cache bundle install with Docker — Medium]] :rails:docker:gems:persistent:
+    captured at: [2016-05-19 Thu 16:36]
+** Ansible
+*** [[https://serversforhackers.com/getting-started-with-ansible/][getting started with ansible]]
+    Tue Jan 27 20:48:53 2015
+    Ansible is a configuration management and provisioning tool, similar to Chef, Puppet or Salt.
+
+    I've found it to be one of the simplest and the easiest to get
+    started with. A lot of this is because it's "just SSH"; It uses
+    SSH to connect to servers and run the configured Tasks.
+
+    One nice thing about Ansible is that it's very easy to convert
+    bash scripts (still a popular way to accomplish configuration
+    management) into Ansible Tasks. Since it's primarily SSH based,
+    it's not hard to see why this might be the case - Ansible ends up
+    running the same commands.
+*** Anisible and Vagrant                                         :BLOG:SWAAC:
+    :PROPERTIES:
+    :VISIBILITY:folded:
+    :categories: devops
+    :tags:     ansible, vagrant, provisioning
+    :END:
+
+    Learning Ansible as a means to provision a Vagrant VM was pretty
+    fun. I started looking at creating Vagrant boxes that I could
+    start  up and run in parallel without have to worry about port
+    collisions. It turns out that was easier that I thought; the SSH
+    port has been a pain for some time now, but it turns out if you
+    just let Vagrant deal with it on it's own, it's not a problem.
+
+    Now, on to Ansible.
+
+    I've looked at a few different provisioning systems, the heart of
+    DevOps. Chef is one of the well known ones that I first learned
+    how to work with at Novu, under the tutalage of our DevOps
+    person, who admittedly wasn't a programmer, so I got a lot of
+    opportunity to learn how it works.
+
+    Then along came Puppet for me, working with ReachLocal through
+    A&D. I never quite got the same sense of how to stand up a full
+    puppet provisioned system, and I never really had the time to
+    delve into it in any meaningful way. Suffice it to say it's as
+    complex a system as Chef.
+
+    Enter Ansible.
+
+    I've heard several acquaintances talk about it, and it turns out
+    to be the easiest system I've yet encountered. Not that it's
+    without it's tricks, but the tricks do make sense eventually, and
+    *much* sooner than similar enlightenment came for me from either
+    Chef or Puppet.
+
+    I decided it was high time to follow my teaching and build a
+    disposable configuration to build up a development box with the
+    tools I like to use. The whole thing took less than 8 hours, all
+    told, basically from scratch. It isn't a very complicated setup,
+    and I'm sure an expert in Ansible would find it laughable, but
+    I'm quite happy with it. I'm sure it will bend and change along
+    the way, but knowing I can do that now fairly easily makes it all
+    worth the while.
+
+** Packer and Vagrant
+   [[https://twitter.com/codeship/status/560126128577589249][codeship tweet about packer and vagrant article]]
+   [[http://blog.codeship.com/packer-vagrant-tutorial/][using packer and vagrant to build virtual machines (codeship.com)]]
+
+** Old School
+*** Ubuntu 14.10 on Macbook Pro
+    captured: [2015-02-05 Thu 14:16]
+    [[https://medium.com/@PhilPlckthun/ubuntu-14-10-running-on-my-macbook-18991a697ae0][Ubuntu 14.10 running on my MacBook]] on Medium.com
+
+    Sort of tutorial / instructable.
+
+    Other things mentioned:
+
+    - [[http://unetbootin.sourceforge.net/][UNetbootin]] - to create an Ubuntu Install USB stick
+    -
+      [[http://heeris.id.au/2014/ubuntu-plus-mac-pure-efi-boot/][Ubunutu + Mac: Pure EFI boot]] - because no intermediate
+*** [[https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04?comment=53316][Initial Server Setup with Ubuntu 16.04  DigitalOcean]]
+    :PROPERTIES:
+    :CAPTURE_DATE: [2016-11-29 Tue 20:40]
+    :END:
+
+
+ Great tutorial for setting up any server securely.
+
+** DevOps TODOs
+*** investigate use of owncloud: [[http://owncloud.org]] [[2015-01-24 Sat 13:55]]

@@ -1,0 +1,76 @@
+** Database Design Notes
+
+** Database Links
+
+*** Stackoverflow: A beginner's guide to SQL database design [closed]
+
+    - Link: https://stackoverflow.com/questions/377375/a-beginners-guide-to-sql-database-design
+
+    - Book: Relational Database Design Clearly Explained
+      URL: https://www.amazon.com/Relational-Database-Explained-Kaufmann-Management/dp/1558608206/ref=sr_1_3?ie=UTF8&s=books&qid=1229597641&sr=8-3
+
+    - Book: Database Systems: A Practical Approach to Design,
+      Implementation and Management
+      URL: https://www.amazon.co.uk/Database-Systems-Implementation-Management-International/dp/0321210255/ref=cm_lmf_tit_5_rsrrsi0
+
+    - Advice
+
+      #+BEGIN_QUOTE
+      Experience counts for a lot, but in terms of table design you can learn a lot from how ORMs like Hibernate and Grails operate to see why they do things. In addition:
+
+      1. Keep different types of data separate - don't store addresses
+         in your order table, link to an address in a separate
+         addresses table, for example.
+
+      2. I personally like having an integer or long surrogate key on
+         each table (that holds data, not those that link different
+         tables together, e,g., m:n relationships) that is the primary
+         key.
+
+      3. I also like having a created and modified timestamp column.
+
+      4. Ensure that every column that you do "where column = val" in
+         any query has an index. Maybe not the most perfect index in
+         the world for the data type, but at least an index.
+
+      5. Set up your foreign keys. Also set up ON DELETE and ON MODIFY
+         rules where relevant, to either cascade or set null, depending
+         on your object structure (so you only need to delete once at
+         the 'head' of your object tree, and all that object's
+         sub-objects get removed automatically).
+
+      6. If you want to modularise your code, you might want to
+         modularise your DB schema - e.g., this is the "customers"
+         area, this is the "orders" area, and this is the "products"
+         area, and use join/link tables between them, even if they're
+         1:n relations, and maybe duplicate the important information
+         (i.e., duplicate the product name, code, price into your
+         order_details table). Read up on normalisation.
+
+      7. Someone else will recommend exactly the opposite for some or
+         all of the above :p - never one true way to do some things eh!
+
+      #+END_QUOTE
+
+    - Article: Database design tutorial
+      URL: http://en.tekstenuitleg.net/articles/software/database-design-tutorial/intro.html
+
+    - Article: 11 important database designing rules which I follow
+      URL: https://www.codeproject.com/Articles/359654/important-database-designing-rules-which-I-fo
+
+    - Book: Head First SQL
+      URL: http://shop.oreilly.com/product/9780596526849.do
+
+    - Course: Database Management Essentials
+      URL: https://www.coursera.org/learn/database-management
+
+    - Article: Step-by-Step Database Design
+      URL: https://www.linkedin.com/pulse/tutorial-step-database-design-sql-david-mccaldin
+
+    - Book: An Introduction to Database Systems
+      URL: https://www.amazon.com/Introduction-Database-Systems-8th/dp/0321197844
+      Author: C. J. Date
+
+      This is the 8th(?) edition of the text book I had in Uni back in
+      the late 70s. Date is considered the primary authority on
+      database systems theory.

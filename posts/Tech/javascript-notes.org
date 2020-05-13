@@ -1,0 +1,1317 @@
+* Javascript Notes
+** Langauge
+*** Using Block-Scoping to Manage Garbage Collection
+
+    Block-scoping can address this concern, making it clearer to the engine that it does not need to keep someReallyBigData around:
+
+    #+BEGIN_SRC javascript
+      function process(data) {
+          // do something interesting
+      }
+
+      // anything declared inside this block can go away after!
+      {
+          let someReallyBigData = { .. };
+
+          process( someReallyBigData );
+      }
+
+      var btn = document.getElementById( "my_button" );
+
+      btn.addEventListener( "click", function click(evt){
+          console.log("button clicked");
+      });
+
+    #+END_SRC
+
+    Declaring explicit blocks for variables to locally bind to is a powerful tool that you can add to your code toolbox.
+
+    Excerpt From: Kyle Simpson. “Scope and Closures.” iBooks.
+
+*** Abstract Equality vs. Strict Equality
+
+    - Abstract Equality Comparison Algorithm: http://www.ecma-international.org/ecma-262/5.1/#sec-11.9.3
+    - Strict Equality Comparison Algorithm: http://www.ecma-international.org/ecma-262/5.1/#sec-11.9.4
+
+** Testing
+*** toBeInTheDocument                         :testing:react:javascript:jest:
+    :PROPERTIES:
+    :CAPTURE_DATE: [2019-08-22 Thu 13:36]
+    :END:
+
+
+    Link: [[https://github.com/testing-library/jest-dom#tobeinthedocument]]
+
+    Using this rather than testing to see of the ~queryBy~  returns truthy.
+
+
+    Example:
+
+    #+BEGIN_SRC rjsx
+      const { getByTestId } = render(
+          <div data-testid={`html-element`}>
+            this is some stuff
+          </div>
+      );
+
+      expect(
+        queryByTestId('html-element'),
+      ).toBeInTheDocument();
+    #+END_SRC
+
+
+    .** Does Google Photos have an API?
+    :PROPERTIES:
+    :CAPTURE_DATE: [2019-08-17 Sat 14:03]
+    :END:
+
+
+    Yes: [[https://developers.google.com/photos/]]
+
+    See also: [[https://codelabs.developers.google.com/codelabs/google-photos-sharing/#0]]
+
+** GraphQL                                                        :kickserv:
+
+*** Learning GraphQL
+
+    - [[http://graphql.org/learn/][Introduction to GraphQL]]
+      - [[http://graphql.org/learn/introspection/][Introspection]]
+    - [[https://www.howtographql.com/][The Fullstack Tutorial for GraphQL]]
+    - [[https://www.learnapollo.com/][Learn Apollo: A hands-on-tutorial for Apollo GraphQL Client]]
+    - [[https://dev-blog.apollodata.com/full-stack-react-graphql-tutorial-582ac8d24e3b][Full-stack React + GraphQL Tutorial]] (Part 1)
+      - [[https://medium.com/p/react-graphql-tutorial-part-2-server-99d0528c7928][Part 2: Setting up a simple server]]
+      - [[https://dev-blog.apollodata.com/react-graphql-tutorial-mutations-764d7ec23c15][Part 3: Writing mutations and keeping the client in sync]]
+      - [[https://dev-blog.apollodata.com/tutorial-graphql-mutations-optimistic-ui-and-store-updates-f7b6b66bf0e2][Part 4: Optimistic UI and client side store updates]]
+      - [[https://medium.com/p/tutorial-graphql-input-types-and-client-caching-f11fa0421cfd][Part 5: Input types and custom cache resolvers]]
+      - [[https://dev-blog.apollodata.com/tutorial-graphql-subscriptions-server-side-e51c32dc2951][Part 6: Subscriptions on the server]]
+      - [[https://dev-blog.apollodata.com/tutorial-graphql-subscriptions-client-side-40e185e4be76][Part 7: GraphQL Subscriptions on the client]]
+      - [[https://dev-blog.apollodata.com/tutorial-pagination-d1c3b3ee2823][Part 8: Pagination]]
+
+
+**** Blogs and Stuff
+
+     - [[https://dev-blog.apollodata.com/full-stack-react-graphql-tutorial-582ac8d24e3b][Building Apollo Client and other tools for GraphQL developers]]
+     - [[https://youtu.be/wPPFhcqGcvk][Implementing and Using GraphQL at Github (youtube)]]
+     - [[https://www.codazen.com/choosing-graphql-client-apollo-vs-relay/][Choosing a GraphQL Client: Apollo v. Relay]]
+
+
+*** Implementations
+
+**** Server-side
+
+     - [[http://graphql-ruby.org/][GraphQL Ruby]]
+     - [[https://dev-blog.apollodata.com/tutorial-building-a-graphql-server-cddaa023c035][Tutorial: How to build a GraphQL server: (Updated for 2018!) Talk
+       to MongoDB, SQL and REST with these simple steps]]
+
+       This is probably going to be big for Kickserv
+
+     - [[http://graphqlme.com/2017/09/16/upload-images-to-s3-in-graphql-using-rails-and-paperclip/][Upload Images to S3 in GraphQL Using Rails and Paperclip]]
+
+
+
+**** Client-side
+
+     - [[https://dev-blog.apollodata.com/apollo-client-2-0-5c8d0affcec7][Apollo Client 2.0]]
+
+     - [[https://dev-blog.apollodata.com/the-future-of-state-management-dd410864cae2][The future of state management: Managing your local data in
+       Apollo Client with apollo-link-state]]
+
+       This is how the Flash messages component should be re-written.
+
+       - [[https://www.apollographql.com/docs/link/links/state.html][apollo-link-state]]
+
+
+     - [[https://dev-blog.apollodata.com/dynamic-graphql-polling-with-react-and-apollo-client-fb36e390d250][Dynamic GraphQL polling with React and Apollo Client]]
+
+     - [[https://github.com/apollographql/apollo-link-rest][Use existing REST endpoints with GraphQL]]
+
+
+**** React + Apollo
+
+     - [[https://tamouse.github.io/swaac/webdev/2017/09/19/apollo-graphql-container-with-queries/][Apollo graphql container with queries]]
+     - [[https://tamouse.github.io/swaac/webdev/2017/09/19/apollo-graphql-container-for-mutations/][Apollo graphql container for mutations]]
+     - [[https://tamouse.github.io/swaac/webdev/2017/09/19/using-current-user-viewer-as-root-of-graphql-queries/][Using Current User (Viewer) as root of GraphQL queries]]
+       This might be deprecated; I've heard a few people talking about
+       how this is no longer necessary?
+
+**** Misc
+
+     - [[https://jaketrent.com/post/return-array-graphql/][Return an Array in GraphQL]]
+*** implementing subscriptions with Graphql-ruby and ActionCable
+    :PROPERTIES:
+    :CAPTURE_DATE: [2019-10-03 Thu 17:05]
+    :END:
+
+**** graphql-ruby documentation
+ [[https://graphql-ruby.org/javascript_client/apollo_subscriptions#apollo-2--actioncable][Apollo 2 – ActionCable]]
+
+ graphql-ruby-client includes support for subscriptions with ActionCable and ApolloLink.
+
+ To use it, construct a split link that routes:
+
+ - subscription queries to an ActionCableLink; and
+ - other queries to an HttpLink
+
+**** mounting ActionCable
+
+Apparently this is a thing that's needed:
+
+#+name: config/routes.rb
+#+begin_src ruby
+  mount ActionCable.server, at: '/cable'
+#+end_src
+
+
+
+**** Some additional client software is required
+
+ Install the following packages and save them:
+
+ - apollo-link
+ - actioncable
+ - graphql-ruby-client
+
+**** the apollo client looks a bit different from "standard"
+
+ For example:
+
+ #+name: src/apolloClient.js
+ #+begin_src javascript
+   import { ApolloLink } from 'apollo-link';
+   import { ApolloClient } from 'apollo-client';
+   import { HttpLink } from 'apollo-link-http';
+   import { InMemoryCache } from 'apollo-cache-inmemory';
+   import ActionCable from 'actioncable';
+   import ActionCableLink from 'graphql-ruby-client/subscriptions/ActionCableLink';
+
+   const cable = ActionCable.createConsumer()
+
+   const httpLink = new HttpLink({
+       uri: '/graphql',
+       credentials: 'include'
+   });
+
+   const hasSubscriptionOperation = ({ query: { definitions } }) => {
+       return definitions.some(
+	   ({ kind, operation }) => kind === 'OperationDefinition' && operation === 'subscription'
+       )
+   }
+
+   const link = ApolloLink.split(
+       hasSubscriptionOperation,
+       new ActionCableLink({cable}),
+       httpLink
+   );
+
+   const client = new ApolloClient({
+       link: link,
+       cache: new InMemoryCache()
+   });
+ #+end_src
+
+**** Some other things to make this work, possibly
+
+ In another article, [[https://haughtcodeworks.com/blog/software-development/graphql-rails-react-standalone/][GraphQL Subscriptions with a Standalone Rails API and React]], the author outlines what is needed on the server side as well, with the gigantic, huge caveat that they're building something from scratch.
+
+***** configuring ActionCable for redis
+
+ #+name: config/cable.yml
+ #+begin_src yaml
+   development:
+     adapter: redis
+     url: redis://localhost:6379/1
+ #+end_src
+
+***** A sample base-level subscription
+
+ Like the base level query and mutation types, fields that are actual subsctiptions will be added here.
+
+ In this example `newLink` and `Types::LinkType` are the examples.
+
+ #+name: app/graphql/types/subscription_type.rb
+ #+begin_src ruby
+   module Types
+     class SubscriptionType < Types::BaseObject
+       field :newLink, Types::LinkType, null: false, description: 'A new link'
+
+       def new_link
+       end
+     end
+   end
+ #+end_src
+
+ To make this work with the schema, you need to edit the schema file
+
+ #+name: app/graphql/my_app_schema.rb
+ #+begin_src ruby
+   class MyAppSchema < GraphQL::Schema
+     use GraphQL::Subscriptions::ActionCableSubscriptions, redis: Redis.new
+     mutation(Types::MutationType)
+     query(Types::QueryType)
+     subscription(Types::SubscriptionType)
+   end
+ #+end_src
+
+***** Defining the ActionCable channel
+
+ In the app/channels directory (not the app/channels/application_cable directory) create a new file named graphql_channel.rb.
+
+ #+name: app/channels/graphql_channel.rb
+ #+begin_src ruby
+   class GraphqlChannel < ApplicationCable::Channel
+     def subscribed
+       @subscription_ids = []
+     end
+
+     def execute(data)
+       query = data["query"]
+       variables = ensure_hash(data["variables"])
+       operation_name = data["operationName"]
+       context = {
+	 # current_user: current_user,
+	 # Make sure the channel is in the context
+	 channel: self,
+       }
+
+       result = GraphqlRailsApiSchema.execute({
+						query: query,
+						context: context,
+						variables: variables,
+						operation_name: operation_name
+					      })
+
+       payload = {
+	 result: result.subscription? ? { data: nil } : result.to_h,
+	 more: result.subscription?,
+       }
+
+       # Track the subscription here so we can remove it
+       # on unsubscribe.
+       if result.context[:subscription_id]
+	 @subscription_ids << context[:subscription_id]
+       end
+
+       transmit(payload)
+     end
+
+     def unsubscribed
+       @subscription_ids.each { |sid|
+	 MyAppSchema.subscriptions.delete_subscription(sid)
+       }
+     end
+
+     private
+
+     def ensure_hash(ambiguous_param)
+       case ambiguous_param
+       when String
+	 if ambiguous_param.present?
+	   ensure_hash(JSON.parse(ambiguous_param))
+	 else
+	   {}
+	 end
+       when Hash, ActionController::Parameters
+	 ambiguous_param
+       when nil
+	 {}
+       else
+	 raise ArgumentError, "Unexpected parameter: #{ambiguous_param}"
+       end
+     end
+   end
+ #+end_src
+
+***** Add a callback to indicate a record has been created / updated
+
+ This just talks about creating, but it uses `after_save` hook so runs on both
+
+ #+name: app/models/links.rb
+ #+begin_src ruby
+   class Link < ApplicationRecord
+     after_save :notify_subscriber_of_addition # should probably be `after_create`
+
+     private
+
+     def notify_subscriber_of_addition
+       MyAppSchema.subscriptions.trigger("newLink", {}, self)
+     end
+   end
+ #+end_src
+
+**** Remaining Questions
+
+     - can this work with message bus?
+
+     - are we using ActionCable anywhere else in Kickserv?
+
+
+
+
+** node.js
+*** PhantomJS
+**** to install PhantomJS on Ubuntu:
+     https://gist.github.com/julionc/7476620
+
+     Install these to get PhantomJS to work on Ubuntu 14.04:
+
+     #+begin_src shell
+       sudo apt-get update
+       sudo apt-get install build-essential chrpath libssl-dev libxft-dev
+       sudo apt-get install libfreetype6 libfreetype6-dev
+       sudo apt-get install libfontconfig1 libfontconfig1-dev
+     #+end_src
+
+     I found this while testing the reachlocal provisioning-client
+     travis builds on [2015-03-10 Tue 15:05].
+
+** Bookmarklets
+
+*** org-link
+
+    #+begin_src javascript
+      javascript:var l=location.href,t = document.title.replace(/[^-\w., ]+/g,'');c='[['+l+']['+t+']]';alert(c);
+    #+end_src
+
+*** org-protocol store link
+
+    #+begin_src javascript
+      javascript:var l=encodeURIComponent(location.href),t=encodeURIComponent(document.title),s=encodeURIComponent(window.getSelection());c='org-protocol://store-link://'+l+'/'+t+'/'+s;alert(c);
+    #+end_src
+    chrome-extension://eemcgdkfndhakfknompkggombfjjjeno/main.html#1
+
+    http://orgmode.org/worg/org-contrib/org-protocol.html#orgheadline6
+
+
+    [[http:][www.sinatrarb.com]]
+** React
+*** Documentation Links
+   - React Docs Home:
+     https://facebook.github.io/react/docs/hello-world.html
+   - React Router 4: https://reacttraining.com/react-router/
+     - Docs/Guides https://reacttraining.com/react-router/web/guides/quick-start
+
+   - Flux Standard Actions: [[https://github.com/acdlite/flux-standard-action][acdliteflux-standard-action A human-friendly standard for Flux action objects.]]
+*** React Newline to Break
+    In React, you can't just do a string replacement, you have to return
+    React DOM objects. So here's a way to turn a body of text with
+    newlines in the html ~<br/>~ tags:
+
+    #+BEGIN_SRC javascript
+  {this.props.string.split(“\n”).map((item, index) => {
+    return (index === 0) ? item : [<br/>, item]
+  })}
+    #+END_SRC
+
+    Props to:
+    https://medium.com/@jens_nyman/a-more-correct-solution-e211cb1ad226
+**** TODO Figure out a better way to do this
+
+*** React Testing
+
+**** Testing using ~react-router-dom~ methods                    :swaac:blog:
+
+     Testing the ~<Link/>~ component, or components that use it,
+     requires the test case to be wrapped in some kind of router. The
+     easiest is to use the ~<MemoryRouter/>~:
+
+     #+BEGIN_SRC javascript
+       import React from 'react'
+       import { MemroyRouter } from 'react-router'
+       import { Link } from 'react-router-dom'
+       import { render, shallow } from 'enzyme'
+
+
+       const MyLink = props => {
+         return (
+           <Link to="#">Some Place</Link
+         )
+       }
+
+       test("Test MyLink", ()) => {
+         const actual = render(
+           <MemroyRouter>
+     	       <MyLink/>
+           </MemroyRouter>
+         )
+       })
+     #+END_SRC
+
+
+     It's important to use ~render~ for this, as ~<MemoryRouter/>~
+     produces a history object of it's own that have random keys, and
+     you can't do snapshot testing with them.
+
+**** TIL: using beforeAll and beforeEach in jest tests              :blogged:
+     :PROPERTIES:
+     :CAPTURE_DATE: [2018-01-19 Fri 12:44]
+     :END:
+
+     This has been bugging me for awhile. I have wanted to set up things
+     in ~beforeAll~ and ~beforeEach~ functions, like I do in RSpec, but
+     couldn't quite figure out how to get them in the ~it~ calls.
+
+     Turns out to be stupid simple. All you need to do is set the items
+     on the ~global~ context, like so:
+
+     #+BEGIN_SRC javascript
+       beforeAll(()=>{
+           global.TagsInstance = new Tags({
+               item: item,
+               item_type: "Job",
+               data: data,
+               mutate: noop
+           })
+       })
+
+     #+END_SRC
+
+     After the suite finishes, clear out the item:
+
+     #+BEGIN_SRC javascript
+       afterAll(()=>{
+           global.TagsInstance = undefined
+       })
+     #+END_SRC
+
+
+     I suppose that pollutes the global space, so one might want to do
+     it in a namespace, and then clear that every time, too:
+
+     #+BEGIN_SRC javascript
+       beforeEach(()=>{
+           global.beforeEach.actual = mount(
+      	     <Tag item={item}/>
+           )
+       })
+
+       afterEach(()=>{
+           global.beforeEach = undefined
+       })
+     #+END_SRC
+
+**** TIL: you can call instance variables and functions on an Enzyme wrapper :blogged:
+     :PROPERTIES:
+     :CAPTURE_DATE: [2018-01-19 Fri 13:19]
+     :END:
+
+     Okay, this is very cool. I didn't know this would work BUT IT DOES!
+
+     #+BEGIN_SRC javascript
+
+       it("can i call stuff directly?", ()=>{
+           actual.instance().setState({ boo: "boo"}, () => {
+               expect(actual.instance().state.boo).toEqual("boo")
+           })
+       })
+
+
+     #+END_SRC
+
+
+*** Maybe, Wrapping components
+    :PROPERTIES:
+    :CAPTURE_DATE: [2017-07-29 Sat 08:58]
+    :URL:      https://javascript-mn.slack.com/archives/C0KMEFZJ9/p1501312238890613
+    :END:
+
+    From the JS.MN Slack #general room:
+
+
+    scottsilvi [2:10 AM]
+    Been using this maybe / left-right / options pattern lately in React and really liking it
+
+    *src/components/Maybe/Maybe.js*
+
+    #+BEGIN_SRC javascript
+    import React from 'react'
+
+    const Maybe = (WrappedComponent, prop, Falsey = null) =>
+      props => {
+        if (!props[prop]) {
+  	return (<Falsey />)
+        }
+
+      return (<WrappedComponent {...props} />)
+    }
+    export default Maybe
+    #+END_SRC
+
+
+    (and then, because I found myself using a loading indicator 75% of the time)
+    *src/components/Maybe/MaybeLoading.js*
+
+    #+BEGIN_SRC javascript
+    import React from 'react'
+
+    import LoadingIndicator from 'components/LoadingIndicator'
+    import Maybe from './Maybe'
+
+    const MaybeLoading = (WrappedComponent, prop) =>
+      Maybe(WrappedComponent, prop, LoadingIndicator)
+
+    export default MaybeLoading
+    #+END_SRC
+*** READ: React/Props explained by Darth Vader's hunt for the rebels :toread:
+   created_at: [2016-10-05 Wed 20:51]
+   Link: https://medium.freecodecamp.com/react-props-state-explained-through-darth-vaders-hunt-for-the-rebels-8ee486576492#.av6vr4c01
+
+
+
+
+*** React.MPLS Monthly 18:00-20:00
+    <%%(diary-float t 4 3)>
+    3rd Thursday of the month
+
+
+*** Topics include:
+   - When to use derived state
+   - Common bugs when using derived state
+     - Anti-pattern: Unconditionally copying props to state
+     - Anti-pattern: Erasing state when props change
+   - Preferred solutions
+   - What about memoization?** Resources for Diversity & Inclusion
+   :PROPERTIES:
+   :CAPTURE_DATE: [2018-12-25 Tue 12:03]
+   :END:
+
+
+*** Link: Video: [[https://www.twitch.tv/videos/404530952?t=00h16m54s][fun, fun, function - Dan Abramov teaches me React Hooks]] :javascript:react:
+    :PROPERTIES:
+    :CAPTURE_DATE: [2019-04-03 Wed 11:58]
+    :END:
+*** toBeInTheDocument                 :testing:react:javascript:jest:
+    :PROPERTIES:
+    :CAPTURE_DATE: [2019-08-22 Thu 13:36]
+    :END:
+
+
+    Link: [[https://github.com/testing-library/jest-dom#tobeinthedocument]]
+
+    Using this rather than testing to see of the ~queryBy~  returns truthy.
+
+
+    Example:
+
+    #+BEGIN_SRC rjsx
+      const { getByTestId } = render(
+          <div data-testid={`html-element`}>
+            this is some stuff
+          </div>
+      );
+
+      expect(
+        queryByTestId('html-element'),
+      ).toBeInTheDocument();
+    #+END_SRC
+
+
+    .** Does Google Photos have an API?
+    :PROPERTIES:
+    :CAPTURE_DATE: [2019-08-17 Sat 14:03]
+    :END:
+
+
+    Yes: [[https://developers.google.com/photos/]]
+
+    See also: [[https://codelabs.developers.google.com/codelabs/google-photos-sharing/#0]]
+
+
+*** You Probably Don't Need Derived State
+    :PROPERTIES:
+    :CAPTURE_DATE: [2019-03-18 Mon 12:34]
+    :END:
+
+    On the [[https://reactjs.org/blog/][react blog]], the post [[https://reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html][You Probably Don't Need Derived State]] talks about an anitpattern of assigning incoming props to internal state, and what you should do instead.
+
+*** TIL: use onKeyUp instead of onKeyPress
+    :PROPERTIES:
+    :CAPTURE_DATE: [2018-10-02 Tue 11:34]
+    :KEYWORDS: react, onKeyUp, onKeyPress
+    :END:
+
+    In react components, there is a pseudo-event, ~onKeyPress~ that responds to some key presses, but not all. If you want to respond to *any* key event, use ~onKeyUp~ or ~onKeyDown~.
+
+    For example, in an input field, ~onKeUp/Down~ capture ~Backspace~, ~Delete~, ~Arrow~ keys and so on, which ~onKeyPress~ ignores.
+
+** React Native
+
+   [[https://facebook.github.io/react-native/][React Native  A framework for building native apps using React]]
+
+*** Frontend Masters React-Native Workshop
+
+    Workshop notes: [[https://github.com/FrontendMasters/workshops/blob/master/react-native.md][workshops/react-native.md at master  FrontendMastersworkshops]]
+    Scrollable Tab: [[https://github.com/skv-headless/react-native-scrollable-tab-view][skv-headless/react-native-scrollable-tab-view Tabbed navigation that you can swipe between, each tab can have its own ScrollView and maintain its own scroll position between swipes. Pleasantly animated. Customizable tab bar]]
+    SweatBook app: [[https://github.com/FrontendMasters/sweat-book/][FrontendMasters/sweat-book react native app]]
+
+*** Styles in React Native
+
+    [[https://facebook.github.io/react-native/docs/style.html][Style  React Native  A framework for building native apps using React]]
+
+    #+BEGIN_SRC javascript
+      import React from 'react';
+      import { StyleSheet } from 'react-native';
+
+      export const styles = StyleSheet.create({
+        base: {
+          width: 38,
+          height: 38,
+        },
+        background: {
+          backgroundColor: '#222222',
+        },
+        active: {
+          borderWidth: 2,
+          borderColor: '#00ff00',
+        },
+      });
+    #+END_SRC
+
+    Commonly created after the component they're used in.
+
+    #+BEGIN_SRC javascript
+      import React, { Component } from 'react';
+      import { View, Text, TextInput, StyleSheet } from 'react-native';
+
+      export class Todo extends Component {
+
+        render() {
+          return (
+            <View style={styles.container}>
+              <Text style={styles.welcome}>
+                Hello, World!
+              </Text>
+            </View>
+          )
+        }
+      }
+
+      const styles = StyleSheet.create({
+          container: {
+              flex: 1,
+              justifyContent: 'center',
+              alignItems: 'center',
+              backgroundColor: '#330033',
+          },
+          welcome: {
+              fontSize: 20,
+              margin: 10,
+              textAlign: 'center',
+              color: 'white',
+          },
+      })
+    #+END_SRC
+
+    [[https://facebook.github.io/react-native/docs/view.html#style][View  React Native  A framework for building native apps using React]]
+
+
+*** Testing
+
+    [[https://facebook.github.io/react-native/docs/testing.html][Testing  React Native  A framework for building native apps using React]]
+    [[http://facebook.github.io/jest/][Jest  Painless JavaScript Unit Testing]]
+
+**** Using webpack resolve.alias with Jest                   :blogthis:swaac:
+
+     You can do it!!
+
+     See: https://stackoverflow.com/questions/42629925/testing-with-jest-and-webpack-aliases#43223342
+
+     When you have the following in ~webpack.config.js~:
+
+     #+BEGIN_SRC javascript
+       {
+           resolve: {
+               clias: {
+                   COMPONENTS: path.resolve(paths.AppRoot, 'src', 'components')
+               }
+           }
+       }
+     #+END_SRC
+
+     Then match them in the Jest ~moduleNameMapper~ section in
+     ~package.json~:
+
+     #+BEGIN_SRC javascript
+       {
+           'jest': {
+               'moduleNameMapper': {
+                   '^COMPONENTS(.*)$': "<rootDir>/src/components$1"
+               }
+           }
+       }
+     #+END_SRC
+
+     Note the construction of the regexp used to map the component
+     path to the file name.
+
+
+*** Fix for error: "adb server version (40) doesn't match this client (39); killing"
+    :PROPERTIES:
+    :CAPTURE_DATE: [2018-08-06 Mon 15:00]
+    :END:
+
+    This error: "adb server version (40) doesn't match this client (39); killing" can show up when trying to do an android build on a ReactNative app when using Genymotion simulators. The fix is to use the installed android sdk instead of the Genymotion one. The installed android sdk should be under:
+
+    ~$HOME/Library/Android/sdk~
+
+    [[https://stackoverflow.com/questions/38214012/appium-adb-server-version-31-doesnt-match-this-client-36#38447003][stackoverflow solution]]
+
+** Libraries
+*** https://scrollrevealjs.org/                                  :javascript:
+
+    Title: ScrollReveal
+
+    JS Script that reveals more as you scroll down
+
+    captured at: [2016-01-11 Mon 11:20]
+** HTTP access control (CORS) - HTTP | MDN
+   :PROPERTIES:
+   :CAPTURE_DATE: [2016-12-10 Sat 15:02]
+   :LINK:     https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
+   :TITLE:    HTTP access control (CORS) - HTTP | MDN
+   :END:
+
+   #+BEGIN_SRC json
+  {
+      "selection":"",
+      "description":"A resource makes a cross-origin HTTP request when it requests a resource from a different domain than the one which the first resource itself serves. For example, an HTML page served from http://domain-a.com makes an img src request for http://domain-b.com/image.jpg. Many pages on the web today load resources like CSS stylesheets, images and scripts from separate domains.",
+      "keywords":""
+  }
+   #+END_SRC
+** Webpack
+*** Webpack's resolve.alias feature
+    :PROPERTIES:
+    :CAPTURE_DATE: [2017-05-01 Mon 01:16]
+    :URL:      https://webpack.js.org/configuration/resolve/#resolve-alias
+    :END:
+
+    Create alias for ~import~ or ~require~ so you don't have to use
+    ugly relative paths like
+
+    #+BEGIN_SRC javascript
+      import { Hoopla } from '../../../utils/hoopla'
+    #+END_SRC
+
+    Setting it up in the webpack configuration:
+
+    #+BEGIN_SRC javascript
+      alias: {
+          Utilities: path.resolve(__dirname, 'src/utils')
+      }
+    #+END_SRC
+
+    let's you then say:
+
+    #+BEGIN_SRC javascript
+      import { Hoopla } from 'Utilities/hoopla'
+    #+END_SRC
+** Vue.js
+
+*** Introduction to Vue.js
+
+    - Sarah Drasner
+    - Frontend Masters
+    - 2017-07-14
+
+
+**** Links
+
+     - Git Repo: https://github.com/sdras/intro-to-vue
+     - My fork:
+       https://github.com/tamouse/frontendmasters-sdras-intro-to-vue-class
+     - Slides:
+       http://slides.com/sdrasner/intro-to-vue-1?token=9-aFNhlX#/
+     - Live Event Videos: https://frontendmasters.com/live-event/vue/
+
+
+
+
+*** Vue.JS site
+
+   - http://vuejs.org/
+
+** prevent LastPass from filling a field
+   :PROPERTIES:
+   :CAPTURE_DATE: [2019-09-25 Wed 13:42]
+   :END:
+
+   Source: https://stackoverflow.com/a/44984917/742446
+
+   Add ~data-lpignore="true"~ to element** How to Practice Daily Life Awareness                            :buddhism:
+
+   :PROPERTIES:
+   :CAPTURE_DATE: [2019-08-31 Sat 22:33]
+   :END:
+
+How to Practice Daily Life Awareness
+
+https://buddhawithin.org.uk/2019/07/03/daily-life-awareness/
+
+Although we often talk about meditation as the heart of Buddhist practice, perhaps it is more accurate to say that awareness is the heart of Buddhist practice. As well as meditation, this encompasses daily life awareness practice, which is sometimes called mindfulness or remembering; to remember to turn our full attention onto our immediate experience.
+
+
+* Meetups
+** React.MN
+*** React.MN [2017-01-19 Thu]
+**** what's up in react
+     - next.js
+     - reactvr
+     - pigeon-maps
+     - react voice components
+     - react fix it - autogen tests based on failures
+     - react-redux 5.0
+     - rax: similar to preact, inferno, drop-in replacement
+     - prettier: code formatter, changes the layout and format of the file
+       to follow a standard
+**** Presentation: React Router and Optimizations
+     - Val G.
+       - github: valeryg
+       - [[https://github.com/ValeryG/reactmpls-reactrouter-talk][React Router and Optimizing Code Delivery talk]]
+
+
+***** why use a router?
+
+      The first cut in the demo:
+
+      - Components are too complicated, and handling more things than it
+        should.
+
+      - Cannot handle parametric routes.
+
+      - Cannot be implemented isomorphically.
+
+***** what is a router?
+
+      - yet another react component (keep the paradigm that everything is a
+        component)
+
+      - IndexRoute, IndexRedirect, wildcard routes
+
+***** optimizating code delivery - code splitting
+
+      - carve out large portions and load them only when needed
+      - supported in webpack 2
+      - ~'[name].bundle.js'~
+
+***** cache busting
+
+      - ~'[name].bundle.[chunkhash].js`~
+      - AssetsPlugin
+
+***** split out vendor code
+
+      - packing and bundling vendor code completely separate from application
+      - separate config file
+      - DllPlugin
+      - build for production since you'll never likely debug vendor code
+      - bundle and dist to team for development
+      - DllReferencePlugin - how to tell application about the vendor Dll
+
+***** react-helmet
+
+      - NFL development team
+      - allow any component to control the ~<head>~
+
+***** .
+** JS.MN
+
+*** JS.MN [2018-05-30 Wed]
+
+**** drew bret functional programming links
+
+     #+BEGIN_QUOTE
+     drewbert [9:09 AM]
+     Thanks @Aaron Kvarnlov-Leverty - here are the links corresponding to the resources list above:
+     1. https://medium.com/@cscalfani/so-you-want-to-be-a-functional-programmer-part-1-1f15e387e536
+     2. https://medium.com/javascript-scene/curry-or-partial-application-8150044c78b8
+     3. https://www.youtube.com/watch?v=m3svKOdZijA
+     4. https://drboolean.gitbooks.io/mostly-adequate-guide
+     5. https://egghead.io/courses/professor-frisby-introduces-composable-functional-javascript
+     6. https://frontendmasters.com/courses/functional-javascript
+     7. http://ramdajs.com/
+     8. http://randycoulman.com/blog/2016/05/24/thinking-in-ramda-getting-started
+     9. https://github.com/lodash/lodash/wiki/FP-Guide
+     10. http://elm-lang.org/
+     11. https://guide.elm-lang.org
+     12. http://www.elmbark.com/2016/03/16/mainstream-elm-user-focused-design
+     13. https://www.youtube.com/watch?v=zBHB9i8e3Kc
+     14. https://frontendmasters.com/courses/elm
+     15. https://www.youtube.com/watch?v=DoA4Txr4GUs
+     16. https://www.youtube.com/watch?v=XpDsk374LDE
+     17. http://elm-lang.org/community
+     #+END_QUOTE
+
+     someone posted a photo, but that was pretty useless
+
+*** JS.MN [2018-05-17 Thu]
+
+    Luke from Prime gave an intro to react.
+
+    #+BEGIN_QUOTE
+    Luke Schlangen [9:37 PM]
+    Huge thanks to @nogs for organizing an awesome event!
+
+    Here's the presentation from tonight: https://drive.google.com/file/d/1xoSV3QJkN9z0GfH0DJzFyGCossRch8n4/view?usp=sharing
+    Here's the code from tonight: https://github.com/LukeSchlangen/react-minneapolis-meetup-may-2018
+    Here's the deployed site (blog post included!) https://react-mpls.firebaseapp.com/
+    Where you can make your first Open Source Pull Request: https://github.com/approachable-io/getting-started
+    Where you can watch me struggle to write code (let me know if you're willing to record your own struggles!) https://www.youtube.com/channel/UCrG-GQBjBSoPRpXLU1bsx7w
+    #+END_QUOTE
+
+*** JS.MN [2016-11-30 Wed]
+
+*** Vue.js
+    - Kevin Wheeler (twilio)
+    - Vue.js
+    - [[https://github.com/kwhinnery/vue-basics][kwhinneryvue-basics A basic Vue.js 2.0 starter app for Node.js]]
+
+**** basic two-way data binding example
+
+     #+BEGIN_SRC html
+    <div id="app">
+      <input type="text" v-model="newTodo">
+      <p>{{ newTodo }}</p>
+    </div>
+     #+END_SRC
+
+     #+BEGIN_SRC javascript
+    new View({
+	el: "#app",
+	data: {
+	    newTodo: ''
+	},
+	methods: {}
+    })
+     #+END_SRC
+
+**** assigning JS methods to DOM events
+
+     #+BEGIN_SRC html
+    <input type="text" v-model="newTodo"
+	   v-on:keydown.enter="add"
+	   <!-- when the enter key is pressed, call
+		method `add` -->
+	   >
+     #+END_SRC
+
+     #+BEGIN_SRC javascript
+    methods: {
+	add: function() {
+	    // do the add stuff
+	}
+    }
+     #+END_SRC
+
+**** some ecosystem stuff
+
+     - grunt
+     - browserify
+     - babelify - browserify plugin
+     - vueify - browserify plugin
+     - node-sass to deal with the embedded styles
+
+
+**** 3 tags in a Vue module
+     - style - css styles
+     - template - html stuff
+     - script - common js module
+
+**** Script
+
+***** data
+      - data can be an object or a function that returns an object
+
+***** components
+      - custom components that are used in this module
+
+
+
+*** Test Problems
+
+    - Github Projects (!?)
+    - Dev Jana
+    -
+
+
+** JavaScript.MN Monthly 18:00-21:00
+   <%%(diary-float t 3 4)>
+   4th Wednesday of the month
+
+* Classes
+
+** Frontend Masters
+
+*** Course notes for You Don't Know Javascript
+**** Course: Basics to Building
+     [2015-04-02 Thu]
+
+**** Instructor: Kyle Simpson (@getify)
+**** grips - templating system
+
+     Real question is how to balance between logic and no-logic in a
+     templating system. Touched on in class on second day.
+
+**** Main drive
+
+     Try to make sure you code is **understandable**.
+
+**** JS CO-ercion vs CON-version:
+
+     JS does coercion. The real distinction to make is *explicit*
+     vs. *implicit*. Explicit coercion uses a function to do the coercion
+     -- you can see it in your code. Implicit is not necessarily visible.
+
+**** Protip: declare your variables before you use them.
+
+     #+begin_src javascript
+       var a;
+
+       a = 123;
+
+       // ES6 features
+
+       let b;
+       const PI = 3.1415926535; // makes it immutable, frozen
+     #+end_src
+
+**** Nested Functions -> Closures -> Module Pattern
+
+     On of the most important concepts in modern JS is the module
+     pattern.
+
+***** IIFE ("iffy")
+
+      Immediately Imvoked Function Expression:
+
+      #+begin_src javascript
+        (function() {
+
+        })();
+      #+end_src
+
+      Used to define modules and collections of executable objects with a
+      public API.
+
+***** The module pattern is for organizing code
+
+      - module: everything inside is *private*
+      - class: everything inside is *public*
+
+      (We don't really like the class concept in JS much.)
+
+**** Event Listening
+
+     "PubSub"
+
+     allows decoupling of modules.
+
+
+
+*** Course: Types, Coercion, and Sharing Code
+    [2015-04-03 Fri]
+
+**** Instructor: Kyle Simpson (@getify)
+
+**** Null as Type
+     =null= is defined as the empty object in the spec.
+     It is distinct from =undefined=., but the distinction might as well
+     be meaningless because of the way people use it. Kyle's
+     recommendation is to just treat them the same.
+
+     =null= and =undefined= are *coercably* the same.
+
+**** Types in JS are *Value Types*
+
+     Other languages' concept of type often refers to *Variable Type*,
+     i.e. C or Java.
+
+**** Weirdisms
+
+     * =-0= (signed zero)
+     * =NaN= (not a number, except.. )
+
+     =Object.is= handles testing for =-0= and =NaN=, and allows for
+     comparisons on these values.
+
+***** Sentinal Values
+
+      Something that has no intrinsic meaning, but is used to mean
+      something, or signal something to the program.
+
+      =NaN=, =-0= are sentinals. Also, something like =indexOf= returns
+      a -1 when it can't find the character in the string. The -1 serves
+      as a sentinal for "not found". This is also known as a "leaky
+      abstraction" because a -1 is not really useful to the calling code
+      except as a sentinal, so it makes for add programming readability.
+
+      #+begin_src javascript
+        foo = "foo";
+
+        if (foo.indexOf("f") !== -1) {
+          alert("Found it");
+        }
+      #+end_src
+
+      Instead, abstract away the leakyness:
+
+      #+begin_src javascript
+        foo = "foo";
+
+        if (~foo.indexOf("f")) {
+          alert("Found it");
+        }
+      #+end_src
+
+      The tilde -operator =~= which does a two's compliment bitwise
+      operation on the value.
+
+**** Natives
+
+     Not really types, not really objects, not primatives.
+
+***** Rules for Use:
+
+      Don't use =new Native(...)= as it sets up something that's not
+      really very useful, and doesn't really make a lot of sense in
+      many cases.
+
+      Use literals to initialize instead where ever possible.
+
+****** Caveat:
+
+       The only way to create a Date object is with =new Date();=
+
+**** The reason coercion is useful to us...
+
+     ... is that it can hide abstractions.
+
+**** Implicit Coercion
+
+     It happens as a *side effect* of another expression or operation.
+
+***** Booleans
+
+      There are *huge* traps with implicit boolean coercions. It seems
+      to operate exactly *backwards* from what one might expect.
+
+      Never do a =\=\== where either side can be true or false values
+      because it will convert them to numbers per the Abstract Equality
+      Algorithm.
+
+      #+begin_src javascrpt
+        if (foo == false) { .. }
+      #+end_src
+
+      - =foo= is coerced to a number
+      - =false= is coerced to a number
+
+      It's quite possible that getting a true out of that might be
+      entirely coincidental.
+
+      This is problematic as it requires people to more deeply
+      understand the Abstract Equality Algorithm than is likely to
+      occur. The obvious reading is just dead wrong about what is
+      happening.
+
+      The general advise is avoid the double equals with true or false
+      values.
+
+**** Sharing Code
+
+     Any time you want to use code in both the server and the browser
+     (or even between programs, etc) put it in a completely separate
+     module and ensure it is decoupled from the rest of the system.
+
+     The rest of the day was a long coding example to show a simple
+     means of sharing validity checks on both the server and the
+     browser.
+
+*** Hapi.js with Ryan Chenkie
+
+    @ryanchenkie on twitter
+    angularcasts.io
+    chenkei on github
+
+**** Repos/chenkie
+     - App: https://github.com/chenkie/fem-instructors-app
+     - API: https://github.com/chenkie/fem-instructors-api
+
+**** Repos/tamouse (forked, working)
+     - App: https://github.com/tamouse/fem-instructors-app
+     - API: https://github.com/tamouse/fem-instructors-api
+
+**** Project: /Users/tamara/Projects/FeM/FeM-Hapi.JS-with-Ryan-Chenkie
+
+**** Hapi.JS: https://hapijs.com/
+
+**** Slides: https://docs.google.com/presentation/d/1EaaM8fGJqp9eUP3-E9Dpec3P5EqbM36PsoFD6z4r8pg/edit#slide=id.g35f391192_00
+
+**** Teaching from the Cloud: https://www.instagram.com/p/BSBf5RZjjS2/
+
+**** lunch: http://www.brasagrillsteakhouse.com/menu/
+
+**** NOTES
+
+     Hapi is "Batteries Included".
+     Yet express is considered bloated, but you have to add so many things
+     to express to make it a full applicaiton.
+
+     - boom: error objects
+     - joi: validation
+     - wreck: http client
+     - hoek: utilities
+     - good: process monitoring
+
+**** Handlers
+
+     ~reply~ returns the respons to the client (Why no ~return~?)
+
+     Minimum needed for a route are ~method~, ~path~, and ~handler~.
+
+**** Routes
+
+***** COMMENT Prerequisites
+
+      A better way: specify some action to happen before the
+      route handler is reached
+
+      - Prerequisite functions are run before anything else
+      - Values can be picked up in the handler
+      - Async operations complete before the handler is reached
+
+      Can be both sync and async
+
+      Can use previously assigned values from previous reqreqs
+
+      Parallel running: put prereqs in an inner array -- these will run in
+      parallel with each other.
+
+      #+BEGIN_SRC javascript
+  config = {
+      pre: [
+	  { method: doThis },
+	  { method: doThat, assign: 'slug' },
+	  [
+	      { method: doThisInParallel },
+	      { method: doThatInParallel }
+	  ]
+      ]
+  }
+      #+END_SRC
+
+**** responses / replies
+
+     Can set header, i.e. "Location", etc., on the reply:
+     https://hapijs.com/api#reply-interface
+
+**** Errors with Boom https://github.com/hapijs/boom
+
+**** validation with Joi https://github.com/hapijs/joi
+
+     - data validity
+     - data consistency
+     - security
+     - [X] verify whether validations run before prereqs. The answer is "yes".
+       - apparently can also validate response objects (?!?)
+
+
+**** testing with Hapi: https://github.com/hapijs/lab

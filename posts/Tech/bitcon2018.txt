@@ -1,0 +1,68 @@
+#+TITLE: BITCon2018 - Blacks in Technology Conference
+
+* My Picks
+
+** BITCon2018 Kickoff
+   :PROPERTIES:
+   :DATE_TIME: <2018-10-11 Thu 12:00>
+   :VENUE:    Target Commons
+   :SPEAKERS: Greg Greenlee, Toquon MC, Sharon Vickers, Jessica Williams
+   :END:
+
+
+   Why: I want to get an introduction to the conference, the community, and the organization.
+
+   Goals:
+   - learn where BIT is coming from
+   - learn what the purpose and DOs are for the conference
+
+** Tech in Your Community
+   :PROPERTIES:
+   :DATE_TIME: <2018-10-12 Fri 10:00>
+   :VENUE:    Intercontinental Hotel
+   :SPEAKERS: Kanika Tolver, Jared Arms, Mondo Davison, Dario Otero, Andrea Wood
+   :END:
+
+   Why: I'm interested in community outreach and community building.
+
+   Goals:
+   - learn what community needs are
+   - learn what programs are out there
+   - learn where I can contribute
+
+** One Size Fits *Me* - Building Secure-by-default Node.js Apps
+   :PROPERTIES:
+   :DATE_TIME: <2018-10-12 Fri 13:15>
+   :VENUE:    Intercontinental Hotel
+   :SPEAKERS: Yolonda Smith
+   :END:
+
+   Why: I'm interested in this subject, it's directly applicable to my work.
+
+   Goals:
+   - learn how to build security into an app from the ground up
+   - acquire new skills and tools
+
+** #BlackGirlMagic: Excelling in the Tech World
+   :PROPERTIES:
+   :DATE_TIME: <2018-10-13 Sat 09:30>
+   :VENUE:    Best Buy HQ
+   :SPEAKERS: Kanika Tolver, Kim Crayton, Ayori Selassie, Danielle Smith, Saron Yitbarek
+   :END:
+
+   Why: The people on the panel interest me a lot, and the subject is one I need to learn about so as to help people achieve it.
+
+   Goals:
+   - Learn more about what success looks like from the panelists' perspective.
+
+** Building Predictions: Artificial Intelligence for Life & Work
+   :PROPERTIES:
+   :DATE_TIME: <2018-10-13 Sat 14:00>
+   :VENUE:    Best Buy HQ
+   :SPEAKERS: Ayori Selassie
+   :END:
+
+   Why: my personal interest in AI
+
+   Goals:
+   - learn how and when to apply modern AI

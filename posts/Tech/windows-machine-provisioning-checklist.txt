@@ -1,0 +1,37 @@
+* Windows Provisioning
+
+  - [ ] Chrome browser
+  - [ ] Emacs
+  - [ ] Google Drive
+  - [ ] Ruby
+  - [ ] Python3
+  - [ ] Slack
+  - [ ] Atom
+  - [ ] VS Code
+  - [ ] Git & Git-Bash
+  - [ ] SourceTree (requires .NET install?)
+  - [ ] RubyMine
+  - [ ] WebStorm
+  - [ ] PhpStorm
+  - [ ] Local by Flywheel
+  - [ ] Node.js
+  - [ ] VirtualBox
+  - [ ] Vagrant
+  - [ ] Ubuntu Desktop on Vagrant VM
+  - [ ]
+
+* Kirabook Reset
+
+  1. Swipe right
+  2. PC Settings
+  3. Update & Recovery
+  4. Recovery
+  5. Remove everything & reinstall Windows
+  6. Next
+  7. Remove everything
+  8. Wait ......
+
+
+ #+BEGIN_COMMENT
+ I wrote out these lists in pen and paper at some point, and the sheet was just banging about in the back of one of my notebooks.
+ #+END_COMMENT

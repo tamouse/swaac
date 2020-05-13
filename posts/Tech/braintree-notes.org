@@ -1,0 +1,23 @@
+* Braintree
+
+   Braintree is a payment processing gateway that is pretty useful. Some
+   things I've learned:
+
+** Braintree Dev Notes
+*** Getting rid of those log messages during dev/test
+
+     You can set the Braintree logger in the configuration:
+
+     #+begin_src ruby
+       require 'logger'
+
+       Braintree::Configuration.logger = Logger.new(Rails.root.join("log/braintree_#{Rails.env}.log"))
+     #+end_src
+
+     This will set the logging level to DEBUG, which prints out the
+     response body, which can be pretty useful. however, it's a bit
+     noisy, too. Easy enogh to set the log level:
+
+     #+begin_src ruby
+       Braintree::Configuration.logger.level = Logger::INFO
+     #+end_src

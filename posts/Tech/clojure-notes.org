@@ -1,0 +1,47 @@
+** Clojure Meeting, Meetups, Conferences
+
+*** ClojureBridge.MN InstallFest
+    [2015-11-13 Fri 19:39]
+
+
+**** Emacs
+
+     Set up in ~/.emacs.d/local/my-clojure.el
+
+***** CIDER: https://github.com/clojure-emacs/cider
+
+***** Tom Marble's (old crufty) setup:
+      https://github.com/tmarble/clj.emacs.d
+
+
+***** Starting a new project
+
+      #+begin_src bash
+	lein new <project-dir>
+      #+end_src
+
+      Open the dir, read the core.clj file, then run 'cider-jack-in C-c M-j
+
+      In the cider repl, run (in-ns 'project-dir)
+
+      You can eval clojure from in the repl, or run cider-eval-buffer in the code file.
+
+**** InstallFest https://github.com/clojurebridge-minneapolis/installfest
+
+
+**** Koans https://github.com/clojurebridge-minneapolis/installfest/blob/master/docs/koans.md
+
+
+*** ClosureBridge.mn
+
+    https://github.com/clojurebridge-minneapolis
+    http://clojurebridgemn.org/
+    https://github.com/tmarble/clj.emacs.d
+
+    capture date: [2015-11-14 Sat 20:03]
+
+
+** Clojure Notes
+*** 4clojure - http://www.4clojure.com/
+
+    Quasi interactive tutorials, p.much exactly like the koans.

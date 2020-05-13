@@ -1,0 +1,11 @@
+** Lisp Notes
+*** [[http://www.lispcast.com/data-functions-macros-why][lispcast: Data > Functions > Macros. But why?]]
+    :PROPERTIES:
+    :CAPTURE_DATE: [2015-02-08 Sun 18:36]
+    :END:
+
+    "But the pregression from macros to functions to data is, in my
+    opinion, increasing in one important aspect, and that's the
+    availability at runtime. Discussions should hinge on whether
+    availability at runtime is desirable, which of course needs to be
+    determined on a case-by-case basis."

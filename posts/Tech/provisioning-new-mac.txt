@@ -1,0 +1,213 @@
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline author:t broken-links:nil
+#+OPTIONS: c:nil creator:nil d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:nil
+#+OPTIONS: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t timestamp:t title:t toc:nil
+#+OPTIONS: todo:t |:t
+#+TITLE: Provisioning a New Macbook
+#+DATE: <2020-03-20 Fri>
+#+AUTHOR: Tamara Temple
+#+EMAIL: tamouse@gmail.com
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+CREATOR: Emacs 26.2 (Org mode 9.1.9)
+
+* Provisioning a new Mac
+
+** Admin Privs
+
+If this is you own mac, your account should be created with Administrator privs, and you should be able to install software, do things like run ~sudo~, and all sorts of wonderful things.
+
+For work, OTOH, you might have to struggle to get things working if you aren't given an account with admin privs. Make sure you do get some account with Administrator rights. When you have that, 
+
+1. login as the administrator.
+2. Open up a terminal window
+3. Enter the following command: ~sudo dscl . -append /groups/admin admin USERNAME~ using your /regular/ account username
+4. Log out
+5. Log in as the regular user
+6. Try out `sudo ls` -- it should ask for your password, but then run the command.
+
+** Installing Keybase
+
+This stores other credentials for the project, my org files, etc.
+
+1. Go to [[https://keybase.io]] and log in
+2. Download the app for the mac from that page
+3. Open up the ~dmg~ and follow the prompts to install it
+4. Launch the app /Applications/Keybase.app
+5. Log in to your keybase account
+6. Follow the prompts on the new machine and an old machine you selected to verify the new machine's identity
+7. Log out and log in as the WA admin in the case of the work machine :P
+8. Go to the file tab in keybase.app, and install the Finder extension
+9. Log out of the WA account and back into the user (use the username instead of real name, i guess...)
+10. Go the the file tab in Keybase.app again, open the Finder and see that you have access
+11. Go to a new Terminal window, and run ~keybase help~ to make sure the command line works, too
+
+** Other Privs
+
+*** typical areas to find other credentials
+
+- .aws/
+- .gnupg/
+- .netrc
+- .ssh/
+
+*** ONEDRIVE-BASED: getting the creds to the new machine
+
+This is somewhat of an art depending on what sort of sharing you have. Worse comes to worse, you can share it with a USB stick, provided you have appropriate dongles.
+
+In the latest example for me, it was work machines, which had OneDrive installed. I fired up OneDrive on both machines, logging in, etc., and made sure they were running.
+
+#+BEGIN_SRC shell
+  $ tar zcvf OneDrive/ssh.tar.gz .ssh/
+#+END_SRC
+
+I was then able to go over to the new machine and run the following:
+
+#+BEGIN_SRC shell
+  $ tar zxvf OneDrive/ssh.tar.gz 
+#+END_SRC
+
+Do something similar with the other directories above. The singular ~.netrc~ can be copied directly to the OneDrive folder.
+
+A good test to see if the .ssh stuff is working is to try cloning a git repo from GitHub, however, that won't work until after the next step.
+
+*** Keybase-based: getting your creds
+
+The beauty of Keybase is that you can keep credentials and other secrets in the file system for your private use.
+
+The pain is keeping them sync'd
+
+** Install X-Code
+
+This takes a brutally long time, since it's just such a ginormous download (8G?)
+
+** Install homebrew (brew.sh)
+
+Go out to the [[https://brew.sh][homebrew web page]], there's a command you can paste into a Terminal window.
+
+At some point, it should ask for your password; give it and then brew will be able to raise its privs when needed.
+
+The last time I did this, I ended up not being able to type at the Terminal. Swiftly just solved by quitting Terminal and restarting it.
+
+Run ~brew doctor~ to make sure everything is cromulent.
+
+** Download config repos
+
+Since the .ssh creds were copied over in a previous step, this step should be pretty easy
+
+*** Dot Files
+
+1. clone the dot files repo first: ~git clone git@github.com:tamouse/my-dot-files.git .my-dot-files~
+2. move into the new dir: ~pushd .my-dot-files~
+3. poke around in the ~profile.d~ folder and make sure all the ones you want are marked as executable
+4. in the ~.my-dot-files/~ folder, run ~./setup.sh~ which will set up the links to the various profile and rc files.
+5. close the Terminal.app and repen it, the setup stuff should be working. Try it out by typing ~ll~ at the Terminal.
+
+*** Emacs config
+
+1. make sure you're in the HOME directory again: ~cd~
+2. clone the emacs config: ~gcl git@github.com:tamouse/my-emacs-d.git .emacs.d~
+3. follow the directions in the README
+
+** Essential Software
+
+*** Installing Emacs
+
+For me, there is next to nothing that is more important that using my imprinted editor. It's easier than ever these days, too, being able to install as a cask from home brew.
+
+I ran the following to check on stuff: ~brew cask info emacs~ -- in particular, I want a fairly high level version, which might not be completely released. I'm running 26.2, the latest from the command shows 26.3, so it should be good to go.
+
+1. run ~brew cask install emacs~
+2. start up emacs with just ~emacs~ to make sure the init.el works as hoped.
+
+   1. on this latest install, i needed to modify init.el
+   2. it was making a reference to ~/usr/local/share/emacs/~ which did not exist in this particular install from the home brew cask.
+3. test out the ~emacsclient~ aliases:
+   
+        ecn .
+
+
+Hopefully everything goes smoothly.
+
+*** Installing Ruby(ies?)
+
+1. Grab ~ruby-install~: ~brew install ruby-install~
+2. Get the latest ruby versions: ~ruby-install~
+3. Install your sweet version: ~ruby-install ruby 2.5.7~ for the project I'm working for this work computer, others are good, too!
+4. Grab ~chruby~: ~brew install chruby~5. Close and reopen the Terminal
+6. Run ~chruby~ to verify the ruby you just installed is there
+7. For my work machine, I want to always be using the same version of ruby everywhere, so I create a ~.ruby-version~ file with ~ruby-2.5.7~ in it
+8. Close and reopen the Terminal again
+9. Verify the ruby:
+   - ~chruby~ - should show the ruby version you added to the ~.ruby-version~ file
+   - ~which ruby~ - should show the new ruby version under your ~.rubies/~ directory
+   - ~ruby -v~ - shows the right version of ruby, yay!
+10. Install some necessary global gems:
+    - bundler - match the version your project(s) need, 2.0.3
+    - rake - the version installed with ruby might be okay
+    - rails 5.1.6 (or whatever your project uses) (takes a long time, whee)
+
+
+*** Installing Node, NPM, and friends
+
+We'll be installing from the nodejs web site, instead of using brew or nvm. 
+
+1. Point the browser at [[https:///nodejs.org/en/]]
+2. Click on the LTS version to download the installer
+3. Launch the installer, click through confirming everythingss, and it should be good to go.
+4. Close and reopen the Terminal, just for good time sake
+5. Verify ~node~
+   - ~node -v~
+   - ~npm -v~
+   - ~npx -v~
+
+or do install with brew.  
+
+Install ~yarn~: ~brew install yarn~ (beware there is a new way to do this for yarn v2!)
+
+** Other Software
+
+1. Chrome
+2. Firefox
+3. LastPass
+4. Amphetimine
+5. Slack
+6. Trello
+7. Zoom
+8. Affinity Photo & Design
+9. Spotify
+10. Sonos
+11. Monosnap
+12. --Spectacle-- use Rectangle instead: https://github.com/rxhanson/Rectangle
+
+** org files
+
+I keep my org files on keybase, you might keep yours elsewhere, or you might not exist as I'm the only one reading this
+
+#+BEGIN_SRC shell
+  keybase git list
+  git clone keybase://private/tamouse_/org-files ~/org
+#+END_SRC
+
+
+** Postgresql
+
+#+BEGIN_SRC shell
+  brew install postgresql
+  brew services start postgresql
+  createdb tamara
+#+END_SRC
+
+For other versions run ~brew search postgresql~. you should be able to run different versions of it, but you'll also need different paths for the data and so on.
+
+** redis
+
+For work, we use redis on the app. It's generally useful, like PG, so I make sure it's always available.
+
+#+BEGIN_SRC shell
+  brew info redis
+  brew install redis
+  brew services start redis
+#+END_SRC
+
+

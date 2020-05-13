@@ -1,0 +1,14 @@
+** Shell Notes
+** Shell TODOs
+** Shell Oneliners
+    #+begin_src shell
+      for f in * ; do mv "$f" $(echo $f | tr " " "_") ; done # replace spaces in file names with underscores
+      perl -i.bak -pe '/^(#+ binding:)\s+"(.*)"/ && ($one = $1) && ($two = $2) && ($two =~ s/ //g) && ($_ = "$one $two\n")' $(find . -name '*.yasnippet') # remove quotes and spaces from bindings in yasnippets
+      for f in *.bak ; do diff "${f%%.bak}" "$f" ; done # find diff between backup and current files after a filtering operation
+      for f in *.bak ; do mv -v "$f" "${f%%.bak}" ; done # push back original files after filtering operation
+      for f in *.old ; do mv "$f" "${f%%.old}.new" ; done # rename old files with new extension
+      find . -print0 | xargs -0 file # dealing with spaces in file names
+      pcregrep 'me$' /usr/share/dict/words | sed 's/me$/.me/' |  bin/checkavailable.pl
+    #+end_src
+    link: [[file:~/Dropbox/oneliners]]
+    captured_on: [2015-01-26 Mon 06:47]

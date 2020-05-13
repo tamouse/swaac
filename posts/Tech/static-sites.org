@@ -1,0 +1,237 @@
+** Static Sites notes
+
+*** Hosting
+
+    - IP: 45.55.188.49
+    - memory: 512MB Ram
+    - disk: 20GB SSD Disk
+    - location: New York 3
+    - OS: Ubuntu 14.04.3 x64
+
+*** DNS
+
+    Pointed mouseha.us on gandi:
+    - A: *.mouseha.us -> IP
+    - A: @.mouseha.us -> IP
+    - CNAME: removed "blog.mouseha.us"
+
+*** Software
+
+    - build-essential
+    - git-core -- DELETED, see below
+    - curl
+    - mysql-server, mysql-client
+    - sqlite3
+    - ruby 2.2.3
+      - mkdir src
+      - cd src
+      - git clone https://github.com/postmodern/ruby-install.git
+      - cd ruby-install
+      - make install
+    - node 4.2.3
+      - cd src
+      - wget https://nodejs.org/dist/v4.2.3/node-v4.2.3.tar.gz
+      - tar zxvf node-v4.2.3.tar.gz
+      - cd node-v4.2.3
+      - ./configure
+      - make
+      - make install
+    - emacs24
+      - apt-get build-dep emacs24
+      - cd src
+      - wget http://ftp.gnu.org/gnu/emacs/emacs-24.5.tar.gz
+      - untar
+      - cd emacs-24.5
+      - ./configure
+      - make
+      - make install
+    - postfix
+      - installed with emacs24
+      - following https://easyengine.io/tutorials/linux/ubuntu-postfix-gmail-smtp/
+      - set up for using tamouse.lists@gmail.com to relay
+      - had to wait for *ages* to get gmail to give me the "is this
+	you?" query
+      - waiting to see if it works
+    - nginx
+      - simple virtual host configuration points to sites at
+	~git/Sites/<domain>. For example, domain "mouseha.us" points to
+	~git/Sites/mouseha.us/
+      - sites:
+	- static-sites
+	- mouseha.us
+	- ngblog.mouseha.us
+	- pontiki.io -- just purchased at Gandi.Net for 2 years at $35/yr
+    - git -- newest version from github
+      - cd src
+      - git clone https://github.com/git/git.git
+      - cd git
+      - make prefix=/usr all doc info
+      - make prefix=/usr install install-doc install-html install-info
+
+*** Accounts
+
+**** git
+
+     - set up my-dot-files in .dot-file
+     - set up my-emacs-d in .emacs.d
+
+**** directories
+
+    - Sites
+	- static-sites
+	- mouseha.us
+	- ngblog.mouseha.us
+    - Repos -- correspond to Sites/*
+
+	The repos will have post-recieve hooks to automatically update
+	the corresponding static site.
+*** [[http://stackoverflow.com/questions/10264249/cant-get-page-data-from-jekyll-plugin][Can't Get Page Data From Jekyll Plugin - Stack Overflow]]
+    Date: <2013-10-15 Tue 13:44>
+
+    Can’t get page data from Jekyll plugin
+
+    I’m trying to write a custom tag plugin for Jekyll that will output
+    a hierarchical navigation tree of all the pages (not posts) on the
+    site. I’m basically wanting a bunch nested <ul>’s with links (with
+    the page title as the link text) to the pages with the current page
+    noted by a certain CSS class.
+
+
+    I’m very inexperienced with ruby. I’m a PHP guy.
+
+    I figured I’d start just by trying to iterate through all the pages
+    and output a one-dimensional list just to make sure I could at least
+    do that. Here’s what I have so far:
+
+
+    module Jekyll
+
+    class NavTree < Liquid::Tag
+    def initialize(tag_name, text, tokens)
+    super
+    end
+
+    def render(context)
+    site = context.registers[:site]
+    output = '<ul>'
+    site.pages.each do |page|
+    output += '<li><a href="'+page.url+'">'+page.title+'</a></li>'
+    end
+    output += '<ul>'
+
+    output
+    end
+    end
+
+    end
+
+    Liquid::Template.register_tag('nav_tree', Jekyll::NavTree)
+
+    And I’m inserting it into my liquid template via {\% nav_tree %\}.
+
+    The problem is that the page variable in the code above doesn’t have
+    all the data that you’d expect. page.title is undefined and page.url
+    is just the basename with a forward slash in front of it (e.g. for
+    /a/b/c.html, it’s just giving me /c.html).
+
+
+    What am I doing wrong?
+
+    Side note: I already tried doing this with pure Liquid markup, and I
+    eventually gave up. I can easily iterate through site.pages just
+    fine with Liquid, but I couldn’t figure out a way to appropriately
+    nest the lists.
+
+    asked Apr 22 ‘12 at 0:34
+
+    I created an issue on GitHub to see if anybody there knows the
+    answer. –  jnrbsn Apr 30 ‘12 at 16:21
+
+    Did you ever manage to get the nesting working? I’d love to see the
+    final code if so –  Brand Aug 21 ‘12 at 19:35
+
+    @Brand Unfortunately, I never got around to finishing it. –  jnrbsn
+    Aug 23 ‘12 at 23:19
+
+    I managed to hack the hierachical page tree together. It’s not
+    pretty but I’ve posted it here: gist.github.com/3536551 in case
+    anyone else stumbles on this question –  Brand Aug 30 ‘12 at 18:24
+
+
+    2 Answers
+
+    Try:
+
+    module Jekyll
+
+    # Add accessor for directory
+    class Page
+    attr_reader :dir
+    end
+
+    class NavTree < Liquid::Tag
+    def initialize(tag_name, text, tokens)
+    super
+    end
+
+    def render(context)
+    site = context.registers[:site]
+    output = '<ul>'
+    site.pages.each do |page|
+    output += '<li><a href="'+page.dir+page.url+'">'+(page.data['title'] || page.url) +'</a></li>'
+    end
+    output += '<ul>'
+    output
+    end
+    end
+    end
+
+    Liquid::Template.register_tag('nav_tree', Jekyll::NavTree)
+
+
+    With this code, I get Liquid error: can't convert nil into String. –
+    jnrbsn May 30 ‘12 at 18:11
+
+
+    You probably had a page without a title, so that page.data[‘title’]
+    is nil. Replace w/ e.g. (page.data[‘title’] || page.url) . –  Mikael
+    Borg Jun 4 ‘12 at 9:37
+
+    Sorry for the delayed response. You were correct. I had a page
+    without a title. Your solution works. –  jnrbsn Jun 15 ‘12 at 4:32
+
+
+    page.title is not always defined (example: atom.xml). You have to
+    check if it is defined. Then you can take page.name or not process
+    the entry…
+
+    def render(context)
+    site = context.registers[:site]
+    output = '<ul>'
+    site.pages.each do |page|
+    unless page.data['title'].nil?
+    t = page.data['title']
+    else
+    t = page.name
+    end
+    output += "<li><a href="'+page.dir+page.url+'">'+t+'</a></li>"
+    end
+    output += '<ul>'
+    output
+    end
+
+
+    Shorten that unless..end a bit to: t = page.data['title'] ||
+    page.name –  tamouse 20 mins ago
+
+*** [[http://middlemanapp.com/][middleman]]
+    Date: <2013-10-15 Tue 02:15>
+    Middleman is a static site generator using all the shortcuts and
+    tools in modern web development.
+
+    Considering using this for my resume builder, and my recipe
+    file. Both seem ideal candidates for this thing. I might also
+    switch over my comic snagger to using this instead of jekyll.
+
+    Generally, I'm liking the looks and idea of middleman better than
+    jekyll, octopress and definitely frank.

@@ -1,0 +1,276 @@
+
+** CSS Notes
+*** CSS Variables
+    :PROPERTIES:
+    :CAPTURE_DATE: [2019-03-17 Sun 13:24]
+    :END:
+
+
+    [[https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties][CSS Variables at MDN]] defines how to use CSS variables (as opposed to SCSS variables) to hold a value that can be later applied to a property or used in a formula
+
+    #+BEGIN_SRC css
+
+      :root {
+	--phone-width: 452px; /* theoretical width of a phone, useful for hiding things on small screens behind a @media request */
+      }
+
+      .sidebar {
+	grid-area: sidebar;
+	display: none;
+      }
+      @media (min-width: var(--phone-width)) {
+	.sidebar {
+	  display: block;
+	}
+      }
+    #+END_SRC
+
+    Use inside a calculation for minimum width of a grid column in ~grid-template-columns~ to go along with the sidebar above:
+
+    #+BEGIN_SRC css
+      .grid {
+	display: grid;
+	height: 100vh;
+	width: 100vw;
+	grid-template-columns: repeat(auto-fill, minmax(calc(var(--phone-width) / 3), 1fr));
+	grid-template-rows: 80px 1fr 3fr;
+	grid-template-areas:
+	  "  ....... header       header"
+	    "sidebar announcement announcement"
+	    "sidebar content      content";
+      }
+
+    #+END_SRC
+
+    With the setting above, the minium width grid columns can be is 150px.
+
+
+
+
+*** Article: Drawing ideas that will make you a better artist
+    :PROPERTIES:
+    :CAPTURE_DATE: [2019-01-22 Tue 08:52]
+    :END:
+
+    Scraped repo: https://gitlab.com/scrapings/drawing-ideas-that-will-make-you-a-better-artist
+
+*** Emoji Toggles                                                       :CSS:
+    https://css-tricks.com/emoji-toggles/
+    capture date: [2015-09-05 Sat 13:25]
+
+    http://codepen.io/chriscoyier/pen/EVamGp/
+
+*** 30 CSS Selectors you must memorize
+
+   http://code.tutsplus.com/tutorials/the-30-css-selectors-you-must-memorize--net-16048
+
+   1. *
+   2. #
+   3. .
+   4. X Y
+   5. X
+   6. X:visited vs. X:link
+   7. X + Y
+   8. X > Y
+   9. X ~ Y
+   10. X[title]
+   11. X[href="foo"]
+   12. X[href*="foo"]
+   13. X[href^="https"]
+   14. X[href$=".pdf"]
+   15. X[data-*="foo"] (data-anything)
+   16. X[foo~="bar"] (space-separated list selection)
+   17. X:checked
+   18. X:after or X::after
+   19. X:hover
+   20. X:not(<selector>)
+   21. X::pseudo-element
+   22. X:nth-child(n)
+   23. X:nth-last-child(n)
+   24. X:nth-of-type(n)
+   25. X:nth-last-of-type(n)
+   26. X:first-child
+   27. X:last-child
+   28. X:only-child
+   29. X:only-of-type
+   30. X:first-of-type
+
+
+
+
+   capture date: [2015-09-26 Sat 11:30]
+
+*** An interesting way to delimit blockquote Quotes
+
+      Found this on Sacha's blog:
+
+      [[https://dl.dropboxusercontent.com/u/571329/Screenshots/blockquote%20rendering.png][Blockquote Rendering]] -- nicely gives a little quote tail to the
+      quote.
+
+      [[https://dl.dropboxusercontent.com/u/571329/Screenshots/blockquote%20css.png][the essential css]]
+
+      #+begin_src css
+	blockquote {
+            background: #EEE url(images/blockquote.png) no-repeat bottom left;
+            border-left: 0;
+            padding: 10px;
+            padding-bottom: 40px;
+            margin: 1em;
+	}
+      #+end_src
+
+      [[https://dl.dropboxusercontent.com/u/571329/Screenshots/blockquote.png][the actual quote tail]] -- for image/blockquote.png
+*** ITCSS
+
+    https://speakerdeck.com/dafed/managing-css-projects-with-itcss
+
+    Inverted Triangle (or Pyramid) Model for Structuring CSS
+
+
+    - Settings: global variables, config switches
+    - Tools: default mixins and functions
+    - Generic: ground-zero styles, resets, normalize
+    - Base: unclassed HTML elements
+    - Objects: cosmetic-free design patterns
+    - Components: designed components, chunks of UI
+    - Trumps: over-rides, hall of shame, !important
+
+
+    Why is this so hard to find anything about??
+
+*** React-Native Styles
+
+    [[https://facebook.github.io/react-native/docs/style.html][Style  React Native  A framework for building native apps using React]]
+*** Building Resizeable Components with Relative CSS Units | CSS-Tricks :css:relative:units:
+    :PROPERTIES:
+    :CAPTURE_DATE: [2016-09-14 Wed 21:24]
+    :LINK:     https://css-tricks.com/building-resizeable-components-relative-css-units/?utm_source=html5weekly&utm_medium=email
+    :TITLE:    Building Resizeable Components with Relative CSS Units | CSS-Tricks
+    :END:
+
+    description: The following is a guest post by Ahmad
+    Shadeed. Ahmad has put together a ton of examples to show off how
+    using relative units can benefit us. I think a lot
+
+    selection: The following is a guest post by Ahmad Shadeed. Ahmad
+    has put together a ton of examples to show off how using relative
+    units can benefit us. I think a lot of us think of units like em
+    as being for font-size, which it is, but can also be for lots of
+    other things, tying together typographic sizing and other visual
+    elements.
+
+
+    We are living in a dynamic world, everything we do could be
+    changed at anytime. We, as Front-End Developers should build our
+    layouts in a dynamic approach.
+
+    In this article, we will explore a concept that lets us resize
+    our components by using CSS relative units (%, em, or rem). Not
+    just the type size, but all the UI in that component. We'll look
+    at practical examples, pros and cons of the approach, and even a
+    complete web page built out in this manner
+*** http://snook.ca/archives/html_and_css/simplest-css-slideshow
+
+   Title: Simplest CSS Slideshow - Snook.ca
+
+   In continuing my exercise of tackling a simple slideshow in different ways, this challenge attempts to make a slideshow without using any JavaScript.
+
+ Thankfully, I didn’t research this first and just went with it. Yes, this has been done before by other people. Whatevs. Enjoy…
+
+ To do so, I’ll attempt to do this with CSS animations. This was trickier than expected because, well, math is hard. I knew I was dealing with certain multiples but kept screwing up the timing.
+
+ The basic premise is to have an image fade in and then fade out. I use an animation-delay to offset the animations for each subsequent image in the slideshow.
+
+   captured at: [2016-01-05 Tue 09:44]
+*** [[https://css-tricks.com/the-power-of-rgba/?utm_source=frontendfocus&utm_medium=email][The Power of the rgba Color Function in CSS  CSS-Tricks]]
+    :PROPERTIES:
+    :CAPTURE_DATE: [2016-11-19 Sat 17:11]
+    :END:
+
+  Great article on using rgba for playing with opacity effects.
+
+  Note also there's a small paragraph at the end about CSS variables!
+
+  Soon Sass will be obsolete :)
+
+*** Experiment: Using Picture Element and VW+VH units as a Lightbox
+    :PROPERTIES:
+    :CAPTURE_DATE: [2016-12-22 Thu 20:26]
+    :LINK:     http://codepen.io/davatron5000/pen/ENOVVV
+    :TITLE:    Experiment: Using Picture Element and VW+VH units as a Lightbox
+    :END:
+    {"selection":"http://fillmurray.com","description":"...","keywords":""}
+*** Flywheel | How to use Flexbox to create a modern card design layout
+    :PROPERTIES:
+    :CAPTURE_DATE: [2017-03-02 Thu 08:26]
+    :LINK:     https://getflywheel.com/layout/how-to-use-flexbox-to-create-a-modern-card-design-layout/?utm_source=frontendfocus&utm_medium=email
+    :TITLE:    Flywheel | How to use Flexbox to create a modern card design layout
+    :DESCRIPTION: Layout is a design and WordPress blog covering thought-provoking topics that show you the next step for your business, improve your process, and inspire your designs.
+    :AUTHOR:   Abbey Fitzgerald
+    :DATE_PUBLISHED: [2017-02-21 Tue]
+    :END:
+*** Learn CSS Grid | Jen Simmons
+    :PROPERTIES:
+    :CAPTURE_DATE: [2017-03-02 Thu 09:36]
+    :LINK:     http://jensimmons.com/post/feb-27-2017/learn-css-grid?utm_source=frontendfocus&utm_medium=email
+    :TITLE:    Learn CSS Grid | Jen Simmons
+    :DESCRIPTION: List of resources for learning about CSS Grid
+    :END:
+*** Learn CSS Layout - floats, positioning, flexbox, grids
+    :PROPERTIES:
+    :CAPTURE_DATE: [2017-03-02 Thu 09:38]
+    :LINK:     https://thecssworkshop.com/?utm_content=buffer32ef9&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer
+    :TITLE:    Learn CSS Layout - floats, positioning, flexbox, grids
+    :DESCRIPTION: A comprehensive self-study course to build practical CSS layout skills. Created by Rachel Andrew.
+    :AUTHOR:   Rachel Andrews
+    :END:
+*** Gradient Buttons with Background-Color Change (CSS-only)
+    :PROPERTIES:
+    :CAPTURE_DATE: [2017-03-06 Mon 11:28]
+    :LINK:     http://codepen.io/pirrera/pen/bqVeGx
+    :TITLE:    Gradient Buttons with Background-Color Change (CSS-only)
+    :END:
+
+      This is the magic, right here:
+      #+BEGIN_SRC css
+	.btn:hover {
+          background-position: right center; /* change the direction of the change here */
+	}
+      #+END_SRC
+
+      After specifying the gradients going from left to right, the
+      hover reverses that. Neat idea!
+*** Font style matcher                                 :css:fonts:fout:tools:
+
+    :PROPERTIES:
+    :CAPTURE_DATE: [2017-03-11 Sat 15:51]
+    :LINK:     https://meowni.ca/font-style-matcher/
+    :TITLE:    Font style matcher
+    :END:
+
+      To compare fonts to try to eliminate as much FOUT as possible.
+
+      #+BEGIN_QUOTE
+      If you're using a web font, you're bound to see a flash of
+      unstyled text (or FOUC), between the initial render of your
+      websafe font and the webfont that you've chosen. This usually
+      results in a jarring shift in layout, due to sizing discrepancies
+      between the two fonts. To minimize this discrepancy, you can try
+      to match the fallback font and the intended webfont’s x-heights
+      and widths [1]. This tool helps you do exactly that.
+
+      #+END_QUOTE
+*** [[https://medium.com/@devdevcharlie/things-nobody-ever-taught-me-about-css-5d16be8d5d0e][Medium: Things Nobody Taught Me About CSS]]                           :css:
+    :PROPERTIES:
+    :CAPTURE_DATE: [2019-03-24 Sun 15:11]
+    :END:
+** CSS TODOs
+*** DONE Research / Learn about CSS Grid positioning         :swaac:css:grid:
+    :PROPERTIES:
+    :CREATED_AT: [2016-10-05 Wed 20:42]
+    :END:
+
+ Wrote two codepens on this:
+
+ - [[http://codepen.io/tamouse/pen/zwwwwZ][Holy Grail using Grid and Flexbox]]
+ - [[http://codepen.io/tamouse/pen/EmmXdr][Flexbox Dashboard with Grid guage layout]]

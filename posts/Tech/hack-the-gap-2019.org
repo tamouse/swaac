@@ -1,0 +1,58 @@
+* Hack-the-Gap 2019
+** Preparation for Weekend
+
+   In answer to the question: "What should I know, expect, and have prepared for the weekend?"
+
+   - The biggest thing to remember is to bring an open mind — you’ll learn new skills, tricks and maybe even a new programming language.
+   - A laptop, charger, and you might bring an extension cord / power strip. Make sure it is a machine you can install and run software on (some work laptops are locked down).
+   - Hav your favorite text editor installed. Make sure you have a modern code editor installed, lots of ppl use VSCode, Atom, Sublime. Be familiar with it.
+   - Have Git installed, and be familiar with it. Additional tools that make using Git easier include Github Desktop and SourceTree. Additionally, many modern code editors such as VSCode integrate with Git. You are not required to use the command line, although many people do. If you're not familiar with using Git in a team, let your team members and a mentor know and we will help.
+   - Also, some people are designers or project organizer types — so having sketch, canva, trello and other tools ready to go is a big plus.
+   - Bring your *ideas* for something to build. If you have an idea to pitch, be able to quickly pitch it in 30 seconds. :slightly_smiling_face: If You don’t have ideas, that's okay, there will be others with ideas whose teams you can join.
+   - On the first morning (Hack Day), after some welcome stuff, ideas are presented really briefly (30 seconds), voted on, and then people join teams to work on the ideas as projects.
+   - A lot of people will be new at this, you’re not alone, and everyone starts from basically zero. The very, very cool thing about HtG is that everyone I’ve ever met there has been absolutely *super* about bringing teams together.
+   - There will definitely come times during the event when you’ll want to quit and walk away; it’s not always easy to do this, but it’s actually a part of nearly every event, and it’s part of real life. It’s okay to be upset with the project, with the team, with the event, the important thing is talk about it, grab a mentor, work it through.
+   - HtG is structured way differently than other hack-a-thons in that you’re expected to disengage on Saturday, go home, and *sleep*.
+   - You don’t have to be an ace coder/developer to do this; there are roles on the team that require non-developer skills, including design, research, task organization, facilitating communication, team health and checkins, and so on, beyond development :slightly_smiling_face:
+   - Your well-being is important. If you feel in any way compromised, let someone know. If you feel you might be in a position that you can’t talk to someone about an issue you may be having, arrange a signal with someone you trust.
+
+   Don’t be afraid to call on the mentors, really. We’re not going to do the work for you, but we can help you get there, give advice, answer questions, we’ll probably ask them, too.
+
+*** Other things you may want to have available
+
+    - post-its, pens, highlighters
+    - extension cord / power strip
+    - batteries for your mouse, etc
+
+** Things to keep in mind during the weekend
+
+*** Language Choices
+
+    - Many teams end up using React.JS; it's the most popular Javascript framework right now. Be sure you can install and run `create-react-app` and then actually start up the app after it's been created.
+
+    - If your team decides to implement parts of the app in different languages, figure out what you'll need to make them talk to each other before you go off and implement the individual pieces.
+
+*** Project Architecture
+
+    - If at all possible, avoid writing a back end for the project; the presentation will be almost entirely dependent on how the front end works and looks. Substitute dummy data, dummy servers, dummy APIs where ever you can.
+
+    - Similarly, avoid setting up APIs, authentication, authorization, and many other things you'd normally have to do for a real app. Unless you have people who are already deeply familiar with these things, you're going to spend a lot of time reading, learning, testng, and debugging things which aren't necessary for the demo. Instead fake these, just as you'd fake a back end server if at all possible.
+
+
+*** Git
+
+    - Set up your team's Git repository, on GitHub, Gitlab, BitBucket, etc., so that the ~master~ branch is protected, so team member cannot inadvertently push changes that overwrite other members' changes.
+
+
+    - Create a Git branch for every feature you work on. Establish up front a means for reviewing, testing, and merging branches on the remote git depot.
+    - Make sure to communicate with your team members when branches are pushed up, merge/pull requests created, and so on, also if you're dependent on unmerged branches when to pull them into your working repository.
+    - You can use GUI Git tools if those are easier for you. Everyone doesn't have to use the same means of working with git, either, for example, some people are more comfortable using the command line, others Sourcetree. This is perfectly fine.
+
+
+
+** Setting the team expections
+
+   - During the first hack session (Saturday Morning), teams will get to know each other and talk over the *big* picture goals for their project
+   - By *lunchtime* on Saturday, hackers should have settled on an idea, put together a task list, and started working towards their goal
+   - After dinner on Saturday, hackers should mark which goals have been met and which can still be accomplished, and which ones to drop for the weekend
+   - By approximately 8pm Saturday, teams should be finishing up the project and start focusing on their presentation

@@ -1,0 +1,250 @@
+#+STARTUP: content
+
+* Elixir
+
+** Elixir Meetup notes
+*** Making a new project
+
+    Creating a new elixir project:
+
+    #+BEGIN_SRC elixir
+      mix new PROJECT_NAME
+    #+END_SRC
+
+    Write your code in the ~lib/PROJECT_NAME.ex~ file.
+
+    Embed your unit tests into the code itself with ~@doc~ tests:
+
+    #+BEGIN_SRC elixir
+      defmodule MyModule do
+	@moduledoc """
+	Documentation for MyModule.
+	"""
+
+	@doc """
+	MyModule does stuff...
+
+	## Examples
+
+   	 iex> MyModule.do_something("hi", "there")
+   	 "hi there"
+	"""
+	def do_something(s1, s2) do
+          s1 <> " " <> s2
+	end
+      end
+    #+END_SRC
+
+*** Testing
+
+    *USE DOCTESTS OMGOMGOMGWTFBBQ!!!!*
+
+    In ~./test/~ directory create a file to match your code file(s) that contains:
+
+    #+BEGIN_SRC elixir
+      defModule MyModuleTest do
+	use ExUnit.Case
+	doctest MyModule
+      end
+    #+END_SRC
+
+    Also, create a file called ~./test/test_helper.exs~ that contains:
+
+    #+BEGIN_SRC elixir
+      ExUnit.start()
+    #+END_SRC
+
+    When you want to run the tests, from the root of the project:
+
+    #+BEGIN_SRC shell-script
+      $ mix test
+    #+END_SRC
+
+    should do it.
+
+*** Making a runner
+
+    Make a mix task to make running the program easier:
+
+    #+BEGIN_SRC shell-script
+      touch lib/mix/tasks/task_name.ex
+    #+END_SRC
+
+    A task looks something like this:
+
+    #+BEGIN_SRC elixir
+      defmodule Mix.Tasks.TaskName do
+
+	@moduledoc """
+	Run MyModule's do_something method
+	"""
+
+	use Mix.Task
+
+	def run(_) do
+          s1 = String.trim(IO.gets("enter the first string: "))
+          s2 = String.trim(IO.gets("enter the second string: "))
+          IO.puts(MyModule.do_something(s1, s2))
+	end
+      end
+    #+END_SRC
+
+    Then run with:
+
+    #+BEGIN_SRC shell-script
+      $ mix task_name
+    #+END_SRC
+
+    See ~ex03_printing_quotes/lib/mix/tasks/quoter.ex~ for a neat
+    example with IO to the console.
+
+
+
+
+** Build and test a blazing fast JSON API with Phoenix, an Elixir framework
+
+   https://robots.thoughtbot.com/testing-a-phoenix-elixir-json-api
+
+   capture date: [2015-09-16 Wed 23:50]
+** Books on Elixir
+*** Functional Web Development with Elixir, OTP, and Phoenix: Rethink the Modern Web App by Lance Halvorsen | The Pragmatic Bookshelf
+    :PROPERTIES:
+    :CAPTURE_DATE: [2017-04-17 Mon 18:45]
+    :LINK:     https://pragprog.com/book/lhelph/functional-web-development-with-elixir-otp-and-phoenix
+    :TITLE:    Functional Web Development with Elixir, OTP, and Phoenix: Rethink the Modern Web App by Lance Halvorsen | The Pragmatic Bookshelf
+    :END:
+
+*** BOOK: /Programming Elixir/ Notes
+**** .ex vs .exs
+     Files ending in `.ex` are meant to be byte compiled.
+     Files ending in `.exs` are more like scripts.
+
+**** Match Operator: =
+
+     In Elixir, the equals sign is not an assignment. Instead it’s like
+     an assertion. It succeeds if Elixir can find a way of making the
+     left-hand side equal the right-hand side. Elixir calls = a match
+     operator.
+
+**** Pattern Matching
+
+     Elixir calls this process pattern matching. A pattern (the left
+     side) is matched if the values (the right side) have the same
+     structure and if each term in the pattern can be matched to the
+     corresponding term in the values. A literal value in the pattern
+     matches that exact value, and a variable in the pattern matches by
+     taking on the corresponding value.
+
+**** Iex - Interactive Elixir (an Elixir REPL)
+
+     #+BEGIN_QUOTE
+     iex—Interactive Elixir
+     To test that your Elixir installation was successful, let’s start an interactive Elixir session. At your regular shell prompt, type iex.
+     #+END_QUOTE
+
+     #+BEGIN_SRC elixir
+       $ iex
+       Erlang/OTP 18 [erts-7.1] [source] [64-bit] [smp:4:4] [async-threads:10]
+       [hipe] [kernel-poll:false] [dtrace]
+       Interactive Elixir (x.y.z) - press Ctrl+C to exit (type h() ENTER for help) iex(1)>
+       (The various version numbers you see will likely be different—I won’t bother to show them on subsequent examples.)
+       Once you have an iex prompt, you can enter Elixir code and you’ll see the result. If you enter an expression that continues over more than one line, iex will prompt for the additional lines with an ellipsis (...).
+       iex(1)> 3 + 4
+       7
+       iex(2)> String.reverse "madamimadam" "madamimadam"
+       iex(3)> 5 *
+       ...(3)> 6
+       30
+       iex(4)>
+
+     #+END_SRC
+***** quitting iex
+
+      There are several ways of exiting from iex—none are tidy. The
+      easiest two are typing Ctrl-C twice or typing Ctrl-G followed by
+      q and Return.
+
+**** Chapter 13 - Organizing a Project
+***** "issues" project
+
+      - /Users/tamara/Projects/elixir/programming-elixir-examples/ch13/issues
+
+**** If you accidently blow away the `=mix.lock=' file, you can reproduce it with `=mix deps.update --all='
+
+** Notes on Elixir (refile target)
+*** Starting a new project
+
+    #+BEGIN_SRC bash
+    mix new PROJECT_NAME
+    #+END_SRC
+
+*** embedding quote chars in doctest strings
+    :PROPERTIES:
+    :CAPTURE_DATE: [2017-04-25 Tue 19:46]
+    :END:
+
+    You need to double escape embedded quotes in strings you use with
+    doctest. For example:
+
+    #+BEGIN_SRC elixir
+	@doc """
+	Formatting quotes
+
+	## Examples
+
+   	 iex> QUOTING.format("These aren't the droids you're looking for.", "Obi Wan Kenobi")
+   	 "Obi Wan Kenobi said: \\"These aren't the droids you're looking for.\\""
+
+	"""
+    #+END_SRC
+
+    "The old double escape problem (at least)."
+*** String Concatentation
+
+    String concatenation is done with ~<>~
+
+    #+BEGIN_SRC elixir
+      iex> "foo" <> "bar"
+      "foobar"
+    #+END_SRC
+*** Joining strings in Elixir
+    :PROPERTIES:
+    :CAPTURE_DATE: [2017-06-20 Tue 18:20]
+    :URL:      https://stackoverflow.com/questions/20829348/how-to-join-strings-in-elixir
+    :END:
+
+     I had some trouble to find it out(was searching for a solution in
+     the String module) so I wanted to share it with you guys.
+
+
+     #+BEGIN_SRC elixir
+       Enum.join(["StringA", "StringB"], " ")
+     #+END_SRC
+
+     will return
+
+     #+BEGIN_SRC elixir
+       "StringA StringB"
+     #+END_SRC
+*** String Interpolation in Elixir
+
+    You can interpolate just like in Ruby.
+
+    #+BEGIN_SRC elixir
+      iex> "Hello, #{:world}"
+      "Hello, world"
+    #+END_SRC
+*** Getting input
+
+    Elixir has an IO module for getting input from the console /
+    stdin.
+
+    #+BEGIN_SRC elixir
+      name = String.trim(IO.gets("What's your name? "))
+    #+END_SRC
+
+    Note the use of ~String.trim~ to remove the trailing white space
+    including the newline.
+*** Enum module
+
+    https://hexdocs.pm/elixir/Enum.html#content

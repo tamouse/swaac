@@ -1,0 +1,13 @@
+* Tech Inbox
+** IDEA: use google sheets API to feed web site data
+   :PROPERTIES:
+   :CAPTURE_DATE: [2018-12-11 Tue 08:01]
+   :END:
+
+   #+BEGIN_QUOTE
+
+   7. Google Sheets API Instead Of CMS
+
+      Some projects require you to think outside the box. When Adam Quinlan was working on a site for a restaurant where the owner needed a CMS to edit the specials menu on a daily basis, Adam decided to not use a bloated CMS but a Google sheet instead. This makes the site easy to edit while it remains flat from static side generators. Nice!
+
+   #+END_QUOTE

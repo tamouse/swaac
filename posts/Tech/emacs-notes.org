@@ -1,0 +1,285 @@
+** Emacs TODOs
+*** DONE use revision control annotation in your editor
+    Avdi's blog post on virtuous code
+    CLOCK: [2015-01-24 Sat 21:56]--[2015-01-24 Sat 21:57] =>  0:01
+    created_on: [2015-01-24 Sat 21:56]
+    link: [[http://devblog.avdi.org/2012/06/22/use-revision-control-annotation-in-your-editor/][using revision control annotation in your editor]]
+
+*** DONE [[http://sachachua.com/blog/2015/01/emacs-microhabit-switching-windows-windmove-ace-window-ace-jump/][Emacs microhabit: switching windows with windmove, ace-window, and ace-jump]]
+
+    I've been looking for a way to swap windows in Emacs -- I often like
+    to have my ruby code on the right and it's associated spec on the
+    left, which promotes TDD for me.
+
+    captured_on: [2015-02-02 Mon 00:16]
+
+*** DONE learn multiterm                                            :emacs:
+    CLOCK: [2015-01-24 Sat 21:33]--[2015-01-24 Sat 21:34] =>  0:01
+    created_on: [2015-01-24 Sat 21:33]
+*** DONE learn magit mode in more depth                             :magit:
+    CLOCK: [2015-01-24 Sat 21:47]--[2015-01-24 Sat 21:47] =>  0:00
+    created_on: [2015-01-24 Sat 21:47]
+
+*** investigate prodigy emacs package
+    :PROPERTIES:
+    :CAPTURE_DATE: [2017-07-05 Wed 00:39]
+    :END:
+
+
+    Seen on Mike Zamansky's blog Emacs 35 Blogging
+
+    http://cestlaz.github.io/posts/using-emacs-35-blogging/#.WlZl5pM-eRc
+
+    Prodigy repo: https://github.com/rejeep/prodigy.el
+*** emacs org-mode blogging tool that can use datetime style file to publish :emacs:project:blogging:
+    :PROPERTIES:
+    :CAPTURE_DATE: [2018-09-03 Mon 11:35]
+    :END:
+
+ A possible starting point, but not necessarily: [[https://www.sadiqpk.org/blog/2018/08/08/blogging-with-org-mode.html]]
+
+ Could it be possible to take the datetime capture format to create a set of individual org files, then use something like the above?
+
+
+** Learning Emacs
+
+*** Books
+
+    - [[https://www.amazon.com/Org-Mode-Reference-Manual-Organize/dp/988840685X/ref=pd_cp_14_1?_encoding=UTF8&pd_rd_i=988840685X&pd_rd_r=P5EJSEKK36RX51D67JXY&pd_rd_w=hljvo&pd_rd_wg=4qWHv&psc=1&refRID=P5EJSEKK36RX51D67JXY][Org Mode 9 Reference Manual]]
+      - see the 3 book bundle!
+
+
+** GNUS
+*** [[http://permalink.gmane.org/gmane.emacs.gnus.user/14038][Gnus with multiple Gmail accounts]]                          :EMACS:GNUS:
+
+  captured_on: [2015-02-07 Sat 11:36]
+
+Richard Riley <rileyrg <at> gmail.com> writes:
+
+> I would be interested in hearing how anyone has got gnus talking to
+> multiple gmail accounts. One sticking point is the non prefixed INBOX on
+> each account. How best to handle this or to uniquely name each INBOX for
+> each gmail account? (Come to that how to uniquely name All Mail, spam etc too).
+>
+> There is some advice here
+>
+> http://superuser.com/questions/86798/multiple-email-accounts-from-the-same-server-in-emacs-gnus
+>
+> But I'm not sure how he defined those servers with their aliases in elisp (the author has
+> since dropped gnus for wanderlust).
+>
+> One approach I have tried (but dont really like) is to apply a filter to ALL
+> incoming mail and to label each new post with something like
+> "inbox-rileyrg" and then subscribe to that "label/group" from gnus. That
+> doesnt solve the issue with the gmail system labels however.
+>
+> Any pointers appreciated.
+
+I have settled on this solution.
+
+Firstly create your nnimap servers :-
+
+--8<---------------cut here---------------start------------->8---
+  (setq gnus-secondary-select-methods '((nnimap "rileymail"
+                                                (nnimap-server-port 993)
+                                                (nnimap-stream ssl)
+                                                (nnir-search-engine imap)
+                                                (nnimap-address "imap.gmail.com")
+                                                (nnimap-list-pattern ("inbox-" "webs" "tax"))
+                                                (nnimap-authinfo-file "~/.authinfo.gpg")
+                                                )
+                                        (nnimap "shamrockmail"
+                                                (nnimap-server-port 993)
+                                                (nnimap-stream ssl)
+                                                (nnir-search-engine imap)
+                                                (nnimap-address "imap.gmail.com")
+                                                (nnimap-list-pattern ("inbox-"))
+                                                (nnimap-authinfo-file "~/.authinfo.gpg")
+                                                )
+                                        (nnimap "friendsmail"
+                                                (nnimap-server-port 993)
+                                                (nnimap-stream ssl)
+                                                (nnir-search-engine imap)
+                                                (nnimap-address "imap.gmail.com")
+                                                (nnimap-list-pattern ("inbox-"))
+                                                (nnimap-authinfo-file "~/.authinfo.gpg")
+                                                )
+                                        ))
+
+--8<---------------cut here---------------end--------------->8---
+
+Notice the nnimap-list-pattern - this limits the imap folders you can
+see. Gmail is messy. Tweak as appropriate.
+
+Then for each  account alias above add a line to your .authinfo (I use a gpg
+file) like this :-
+
+--8<---------------cut here---------------start------------->8---
+machine friendsmail login gmailuserid force yes password mypassword port 993
+--8<---------------cut here---------------end--------------->8---
+
+Now the important thing is to set up each gmail account so that you can
+uniquely recognise things and not have clashing INBOXs. This is done by
+creating a filter on my INBOX for each account where in "words to search
+for" you use "in:inbox" and specify that filter to then apply a label to
+all incoming email. So I have a filter on my rileyrg account which
+applies a label "inbox-personal" to all incoming mail. When I browse the
+"rileymail" nnimap server shown above I then see and subscribe to an
+IMAP group called .. inbox-personal. For the shamrockmail I apply the
+label "inbox-shamrock". etc etc - easy to differentiate the different
+INBOXs this way.
+
+Seems to work well but I would be interested to hear any alternative and
+potentially simpler methods.
+
+One thing now I miss not using offlineimap to store mail locally is the
+use mairix. Is there some way to search all mail via imap? I think alt-s
+only searches the mails in the summary buffer and not all the mails.
+
+
+
+** Org Mode
+
+"Big set of LEGO bricks" -- Karl Voit on Emacs Chat, 2014-12-05
+
+
+*** [[http://dept.stat.lsa.umich.edu/~jerrick/org_agenda_calendar.html][Org-Agenda as a Calendar]]                                      :ORGMODE:
+
+     Recurring appointments:
+
+     You can use diary sexp entries for more complex meeting
+     scheduling. The example below shows a scrum meeting every weakday
+     except Wednesday:
+
+     #+begin_src org
+       ,** 11:30am-11:45am Scrum!
+          <%% (org-class 2015 3 1 2016 3 1 1)>
+          <%% (org-class 2015 3 1 2016 3 1 2)>
+          <%% (org-class 2015 3 1 2016 3 1 4)>
+          <%% (org-class 2015 3 1 2016 3 1 5)>
+
+     #+end_src
+
+     See also: [[http://orgmode.org/worg/org-faq.html#Appointments/Diary][Org-faq Appointments/Diary]]
+
+     captured_on: [2015-03-05 Thu 13:32]
+
+*** [[http://blog.danielgempesaw.com/post/109767231148/using-emacs-for-daily-reminders-to-write-in-my][Using emacs for daily reminders to write in my diary]]
+
+    Interesting article combining emacs's calendar and diary apps.
+
+    captured_on: [2015-02-01 Sun 23:21]
+
+*** DONE investigate emacs's calendar app                           :emacs:
+
+*** DONE investigate emacs's diary app                              :emacs:
+
+*** Tracking time on todos with org mode
+     [[http://sachachua.com/blog/2007/12/clocking-time-with-emacs-org/][Clocking time with emacs]] [2015-01-27 Tue 20:26]
+
+     tl;dr:
+
+     C-c C-x C-i -- clock in
+     C-c C-x C-o -- clock out
+
+     to edit: change the time stamps, the C-c C-y to recalculate
+
+*** [[https://medium.com/on-being-a-code-monkey/organization-with-org-mode-getting-things-done-flow-583cef93476][Medium: Organization with org-mode: Getting Things Done Flow]] [2015-01-27 Tue 01:24]
+
+     #+begin_quote
+     Give me six hours to chop down a tree and I will spend the first
+     four sharpening the axe. -Abraham Lincoln
+     #+end_quote
+
+     Using org-mode to manage tasks in GTD
+
+*** [[https://github.com/novoid/Memacs][Memacs - a Memex implementation in Emacs]] 2015-01-24 Sat 14:16
+
+*** [[https://www.youtube.com/watch?x-yt-cl%3D84503534&x-yt-ts%3D1421914688&feature%3Dplayer_embedded&v%3DSaKPr4J0K2I][Karl Voit on Emacs Chat]] [2014-12-05 Fri]
+
+*** [[http://doc.norang.ca/org-mode.html][Sample Org mode setup]] [[2015-01-24 Sat 16:58]]
+
+*** [[http://www.howardism.org/Technical/Emacs/new-window-manager.html][Emacs is my New Window Manager]] [[2015-01-24 Sat 22:06]]
+*** [[http://planet.emacsen.org/][Planet Emacsen blog aggregator]] [[2015-01-24 Sat 22:18]]
+*** Org Mode - Organize Your Life In Plain Text!            :orgmode:emacs:
+   :PROPERTIES:
+   :CAPTURE_DATE: [2016-08-21 Sun 23:18]
+   :LINK:     http://doc.norang.ca/org-mode.html#Setup
+   :TITLE:    Org Mode - Organize Your Life In Plain Text!
+   :END:
+
+   description: A description of how I currently use org-mode
+*** org mode - Use prop and prompt together in org-capture-templates - Emacs Stack Exchange
+   :PROPERTIES:
+   :CAPTURE_DATE: [2016-10-07 Fri 14:31]
+   :LINK:     http://emacs.stackexchange.com/questions/21502/use-propp-prompt-together-in-org-capture-templates
+   :TITLE:    org mode - Use `` `` together in org-capture-templates - Emacs Stack Exchange
+   :prop:
+   :END:
+
+
+   This might be a possibility to solve my riddle about re-using
+   entered information. It could be possible to call a method in the
+   template that will store it temporarily.
+*** Using Emacs - 11 - Reveal.js presentations | C'est la Z
+  :PROPERTIES:
+  :CAPTURE_DATE: [2016-11-13 Sun 11:47]
+  :LINK:     http://cestlaz.github.io/posts/using-emacs-11-reveal/#.WCikReHx6iC
+  :TITLE:    Using Emacs - 11 - Reveal.js presentations | C'est la Z
+  :END:
+
+description: null
+
+selection:
+*** http://pages.sachachua.com/.emacs.d/Sacha.html#org-dired :emacs:orgmode:dired:sachac:
+
+
+   Title: Sacha Chua's Emacs configuration
+
+
+
+   captured at: [2016-01-01 Fri 17:49]
+*** DONE learn how to use org-agenda
+     CLOCK: [2015-01-31 Sat 23:46]--[2015-02-01 Sun 01:05] =>  1:19
+     CLOCK: [2015-01-31 Sat 23:41]--[2015-01-31 Sat 23:41] =>  0:00
+     CLOCK: [2015-01-30 Fri 10:28]--[2015-01-30 Fri 10:31] =>  0:03
+     CLOCK: [2015-01-30 Fri 10:20]--[2015-01-30 Fri 10:21] =>  0:01
+     CLOCK: [2015-01-24 Sat 21:26]--[2015-01-24 Sat 21:26] =>  0:00
+
+
+*** use file-name-as-directory to concat file names
+    :PROPERTIES:
+    :CAPTURE_DATE: [2019-03-18 Mon 02:37]
+    :END:
+
+
+    #+BEGIN_QUOTE
+       If you want to use a directory file name in making such a
+ combination, you must first convert it to a directory name using
+ ‘file-name-as-directory’:
+
+      (concat (file-name-as-directory DIRFILE) RELFILE)
+
+ Don’t try concatenating a slash by hand, as in
+
+      ;;; Wrong!
+      (concat DIRFILE "/" RELFILE)
+
+ because this is not portable.  Always use ‘file-name-as-directory’.
+
+    #+END_QUOTE
+
+    Trying add subdirectories to org-agenda-files list** Emacs ChangeLog commands
+    :PROPERTIES:
+    :CAPTURE_DATE: [2019-03-18 Mon 02:20]
+    :END:
+
+    ~C-x 4 a~ in working file opens entry in the ~ChangeLog~ file.** Article: Why these animals (and one baby) are incredibly jacked (popsci)
+    :PROPERTIES:
+    :CAPTURE_DATE: [2019-01-13 Sun 12:07]
+    :END:
+
+    [[file://Users/tamara/GoogleDrive/Documents/downloaded/muscular-animals-babies-myostatin/piedmontese_cattle.jpg][saved article]]
+    [[https://gitlab.com/scrapings/muscular-animals-babies-myostatin][GitLab repo]]
+
+    Article in popular science about animals missing or having inactive myostatin proteins. This results in enlarged muscles.

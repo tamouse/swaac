@@ -1,0 +1,172 @@
+** WordPress NOTES
+
+*** Install Themes and Plugins with out FTP
+    :PROPERTIES:
+    :URL:      https://tamouse.github.io/swaac/wordpress/2016/11/14/installing-wordpress-things-without-ftp/
+    :END:
+
+    Direct installation: add the following line to ~wp-config.php~:
+
+    #+BEGIN_SRC php
+      define('FS_METHOD', 'direct');
+    #+END_SRC
+
+** WordPress Meetings, Meetups, Conferences
+
+*** WordCamp MPLS 2017
+
+**** Friday, August 4, 2017
+
+***** Lightning Talks
+      - Nick - WP Functions
+      - Jenna Totts - Is your data dirty?
+	ecograder, green web foundation
+      - Nathan Ingram - surviving a crisis of confidence
+	The questions can sometimes be used as weapons against others,
+	tho
+      - Andrew Robbins - Making and Selling WordPress Software
+	wpshopify.io
+      - Amy Zeller - From Blog to Book
+	@amyzeller
+      - Raquel Landefeld - Becoming a Community Builder
+	community equals people7ujhkn
+
+***** WP-CLI
+      - Shawn Hooper (shawnhooper.ca)
+
+      - [[wp-cli.org][wp-cli.org]]
+
+      - BLOWING MY MIND
+
+***** Extending the WP REST API
+      - Pete Nelson
+      - @GunGeekATX
+      - too bloody damn fast, can't see anything he's typing, demo is
+	useless
+
+
+***** Confessions of a Freelance
+      - Josh Broton
+      - @joshbroton
+
+**** Saturday, August 5, 2017
+
+***** Lightning Talks
+      - Zach Stepek - So, You Want To Sell Online
+      - Tyler Golberg - Page Builders
+      - AJ Morris - Starting your first online business
+      - Lindsey Miller - What I learned raising 2 Million Dollars for
+	Politicians–and How it Applies to the WordPress Community
+      - Katie Elenberger - Pursing your creative passion: Turn your side
+	hustle into a full-time gig
+      -
+
+
+
+***** Tessa - Configuration Management
+      - wp-cfm
+
+***** Aaron Holbrook: Best Practices for Developing Websites
+
+***** John Havlik: A Decade: Lessons Learned Nurturing a WordPress Plugin
+
+** WordPress Links
+*** WordPress Tavern – WordPress News — Free as in Beer.
+    :PROPERTIES:
+    :CAPTURE_DATE: [2016-11-12 Sat 15:39]
+    :LINK:     https://wptavern.com/
+    :TITLE:    WordPress Tavern – WordPress News — Free as in Beer.
+    :END:
+
+*** Blog - ChrisLema.com -
+    :PROPERTIES:
+    :CAPTURE_DATE: [2016-11-12 Sat 15:40]
+    :LINK:     http://chrislema.com/blog/
+    :TITLE:    Blog - ChrisLema.com -
+    :END:
+
+*** Book Area | Digging Into WordPress
+    :PROPERTIES:
+    :CAPTURE_DATE: [2016-11-12 Sat 15:45]
+    :LINK:     https://digwp.com/book/
+    :TITLE:    Book Area | Digging Into WordPress
+    :END:
+
+*** Free WordPress Tutorials
+    :PROPERTIES:
+    :CAPTURE_DATE: [2016-11-12 Sat 15:45]
+    :LINK:     https://www.wp-bff.com/
+    :TITLE:    Free WordPress Tutorials
+    :DESCRIPTION: Learn to build a WordPress site that's authentically you, grows your email list and finds the perfect clients.
+    :END:
+
+
+*** WordPress Teacher Zac Gordon | Professional Educator, WordPress Expert
+    :PROPERTIES:
+    :CAPTURE_DATE: [2016-11-12 Sat 15:45]
+    :LINK:     https://wp.zacgordon.com/
+    :TITLE:    WordPress Teacher Zac Gordon | Professional Educator, WordPress Expert
+    :DESCRIPTION: Zac Gordon is a professional educator with years of experience teaching in the classroom, leading workshops, giving talks and recording online courses. He has taught a range of web related topics from design and development to traditional programming and even robotics. His technological teaching passion is WordPress. He loves being able to empower people to learn how to…
+    :END:
+
+*** WordPress and eCommerce Blog and Podcast
+    :PROPERTIES:
+    :CAPTURE_DATE: [2016-11-12 Sat 15:45]
+    :LINK:     https://bobwp.com/
+    :TITLE:    WordPress and eCommerce Blog and Podcast
+    :DESCRIPTION: Tutorials, tips and posts on WordPress , eCommerce how to, themes and plugins, and creating effective digital content.
+    :END:
+
+*** Torque - WordPress News, WP Community Experts | @thetorquemag
+    :PROPERTIES:
+    :CAPTURE_DATE: [2016-11-12 Sat 15:45]
+    :LINK:     http://torquemag.io/
+    :TITLE:    Torque - WordPress News, WP Community Experts | @thetorquemag
+    :DESCRIPTION: Current WordPress News. The Torque News Core is a group of WordPress experts that are part of the WordPress community.
+    :END:
+
+*** Blog - ChrisLema.com -
+    :PROPERTIES:
+    :CAPTURE_DATE: [2016-11-12 Sat 15:45]
+    :LINK:     http://chrislema.com/blog/
+    :TITLE:    Blog - ChrisLema.com -
+    :END:
+
+*** Get DesktopServer and save time! • ServerPress, LLC.
+    :PROPERTIES:
+    :CAPTURE_DATE: [2016-11-12 Sat 15:46]
+    :LINK:     https://serverpress.com/get-desktopserver/
+    :TITLE:    Get DesktopServer and save time! • ServerPress, LLC.
+    :DESCRIPTION: DesktopServer is a tool that is proven to save you time testing, developing, managing, and creating fully functional website servers on your own computer.
+    :END:
+
+*** Flywheel | Managed WordPress Hosting Pricing
+    :PROPERTIES:
+    :CAPTURE_DATE: [2016-11-12 Sat 15:46]
+    :LINK:     https://getflywheel.com/pricing/
+    :TITLE:    Flywheel | Managed WordPress Hosting Pricing
+    :END:
+
+*** Free WordPress Tutorials
+    :PROPERTIES:
+    :CAPTURE_DATE: [2016-11-12 Sat 15:46]
+    :LINK:     https://www.wp-bff.com/
+    :TITLE:    Free WordPress Tutorials
+    :DESCRIPTION: Learn to build a WordPress site that's authentically you, grows your email list and finds the perfect clients.
+    :END:
+
+
+*** [[https://www.wordfence.com/blog/2016/11/hacking-27-web-via-wordpress-auto-update/][Hacking 27 of the Web via WordPress Auto-Update - Wordfence]]
+    :PROPERTIES:
+    :CAPTURE_DATE: [2016-11-26 Sat 12:39]
+    :END:
+
+** Wordpress Todos
+*** check out wordpress API                    :wcmpls:react:wordpress:swaac:
+    created_at: [2016-05-22 Sun 23:26]
+
+    Heard of this at the WordCamp Mpls 2016 in the WordPress + React
+    talk. Wordpress as the API backend to a React-based SPA. Wow.
+
+    #wcmpls
+*** check out wp-cli8un                                              :wcmpls:

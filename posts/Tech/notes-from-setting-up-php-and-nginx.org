@@ -1,0 +1,261 @@
+#+STARTUP: content
+
+* Notes on setting up nginx with php
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2015-03-17 Tue 07:25
+  :ARCHIVE_FILE: ~/Dropbox/org/notes.org
+  :ARCHIVE_OLPATH: Software as a Craft/nginx
+  :ARCHIVE_CATEGORY: notes
+  :END:
+  2012-07-07
+
+** Unzip turnkey linux core into new directory in "/Volumes/Music/virtual machines.localized"
+** Rename directory to nginx-testbed.
+** Open the .vmz file to start VMWare Fusion.
+** After machine boots, take first snapshot.
+** Reconfigure maching to static IP: 192.168.1.118. Take a snapshot.
+** Modify miishka:/etc/hosts to include paths to new VM:
+   192.168.1.118	nginx-testbed nginx
+** Log into webmin on nginx.
+** Change host name to nginx-testbed.
+** Add miishka to hosts.
+** Install TKLBAM API key and take first backup.
+** Log into webshell on nginx.
+** Install emacs23-nox.
+** Create .ssh directory and generate keys.
+   #+begin_src shell
+     mkdir .ssh
+     pushd .ssh
+     ssh-keygen # files stored in .ssh: id_rsa, id_rsa.pub
+   #+end_src
+** push public key to various machines:
+** Install curl.
+** Change timzone:
+   root@nginx-vm ~# rm /etc/timezone
+   root@nginx-vm ~# ln -s /usr/share/zoneinfo/America/Chicago /etc/timezone
+** Reboot and snapshot VM. Run tklbam-backup.
+** Download nginx.
+** Install aptitude.
+** Install PCRE dev and dbg libraries.
+** Download PCRE source.
+** Install build-essential.
+** PCRE Build:
+*** configure
+   Parameters used:
+     --prefix=/usr # replace existing
+     --enable-utf # multibyte processing
+     --enable-newline-is-any # most flexible
+     --enable-pcregrep-libz # handles .gz files
+     --enable-pcregrep-libbz2 # handles .bz2 files
+
+   #+begin_src shell
+     ./configure \
+       --prefix=/usr \
+       --enable-utf \
+       --enable-newline-is-any \
+       --enable-pcregrep-libz \
+       --enable-pcregrep-libbz2
+   #+end_src
+*** Results:
+    no bzlib.h found
+*** Install bzip2 library - libbz2-dev
+    success
+    make: success
+    make test: successful
+    make install: succesful
+    root@nginx-vm /usr/src# pcregrep -V
+    pcregrep version 8.31 2012-07-06
+** Back to nginx
+*** configure:
+    --prefix=/usr
+    --sbin-path=/sbin
+    --conf-path=/etc/nginx
+    --pid-path=/var/run
+    --error-log-path=/var/log/nginx
+    --http-log-path=/var/log/nginx
+    --user=www-data
+    --group=www-data
+    --with-http_ssl_module
+    --with-pcre=../pcre-8.31
+    --with-pcre-jit
+    --with-zlib=../zlib-1.2.7
+
+    #+begin_src shell
+      ./configure --prefix=/usr \
+        --sbin-path=/sbin \
+        --conf-path=/etc/nginx \
+        --pid-path=/var/run \
+         --error-log-path=/var/log/nginx \
+         --http-log-path=/var/log/nginx \
+         --user=www-data --group=www-data \
+         --with-http_ssl_module \
+         --with-pcre=../pcre-8.31 \
+         --with-pcre-jit \
+         --with-zlib=../zlib-1.2.7
+    #+end_src
+** START OVER FROM TIMEZONE SNAPSHOT
+  Timestamp: Sat Jul  7 11:42:43 CDT 2012
+** Install aptitude: apt-get install aptitude
+** Snapshot.
+** Install libbz2-dev: apt-get install libbz2-dev : success
+** Snapshot.
+** Download PCRE: curl -O ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.31.zip
+** Configure PCRE:
+   ./configure  --prefix=/usr  --enable-utf  --enable-newline-is-any  --enable-pcregrep-libz  --enable-pcregrep-libbz2
+** oh carp, forgot build-essential: apt-get install build-essential. Snapshot.
+** Download zlib and unpack. http://zlib.net/zlib-1.2.7.tar.gz
+** Redo nginx:
+
+   ./configure --user=www-data --group=www-data --with-http_ssl_module --with-pcre=../pcre-8.31 --with-pcre-jit --with-zlib=../zlib-1.2.7
+** SNAPSHOT!!
+** Run tklbam-backup
+** Configuring nginx
+** git init .
+** Install user-setup from git repo
+** missing markdown-mode
+** install emacs-goodies-el dict perl-doc emacs-goodies-extra-el
+** install dictd dict-server groff m4 gawk
+** install dict-gcide dictd-dictionary dict-wn dict-jargon dict-foldoc
+** dictd-dictionary has no installation candidate
+** install dict-devil dict-freedict-eng-fra
+** configure /etc/defaults/dictd to include a locale
+** install netcat
+** SNAPSHOT + TKLBAM
+** install ghostscript imagemagick libpaper1 netpbm psutils:
+   The following extra packages will be installed:
+   defoma fontconfig-config gsfonts libavahi-client3 libavahi-common-data libavahi-common3 libcups2
+   libcupsimage2 libfontconfig1 libgs8 libjasper1 libjpeg62 liblcms1 libltdl7 libmagickcore2
+   libmagickwand2 libnetpbm10 libtiff4 ttf-dejavu-core
+   Suggested packages:
+   defoma-doc psfontmgr x-ttcidfont-conf dfontmgr libfont-freetype-perl ghostscript-cups
+   ghostscript-x hpijs imagemagick-doc transfig cups-common libjasper-runtime liblcms-utils
+   Recommended packages:
+   libmagickcore2-extra libpaper-utils
+   The following NEW packages will be installed:
+   defoma fontconfig-config ghostscript gsfonts imagemagick libavahi-client3 libavahi-common-data
+   libavahi-common3 libcups2 libcupsimage2 libfontconfig1 libgs8 libjasper1 libjpeg62 liblcms1
+   libltdl7 libmagickcore2 libmagickwand2 libnetpbm10 libpaper1 libtiff4 netpbm psutils
+   ttf-dejavu-core
+   install libmagickcore2-extra:
+   The following NEW packages will be installed:
+   fontconfig{a} libcairo2{a} libdatrie1{a} libdirectfb-1.2-0{a} libdjvulibre-text{a}
+   libdjvulibre21{a} libgd2-noxpm{a} libgraphviz4{a} libilmbase6{a} libmagickcore2-extra
+   libopenexr6{a} libpango1.0-0{a} libpango1.0-common{a} libpixman-1-0{a} libsysfs2{a}
+   libthai-data{a} libthai0{a} libts-0.0-0{a} libwmf0.2-7{a} libxcb-render-util0{a}
+   libxcb-render0{a} libxft2{a} libxrender1{a} tsconf{a}
+   The following packages are RECOMMENDED but will NOT be installed:
+   x-ttcidfont-conf
+** install markdown
+** SNAPSHOT and TKLBAM
+** install mlocate
+** Configure nginx
+   Initial config just puts the webserver listening at port 80 to /usr/local/nginx/html/
+   It works!
+** Create a location for vhosts: /var/www/vhosts
+** Create a vhost: /var/www/vhosts/myapp.com
+** Install fastcgi
+   download from http://www.fastcgi.com/dist/fcgi-current.tar.gz
+   unpack into /usr/src
+   configure
+   no paramters
+   make: FAILS
+** using apt-get instead
+** install libfcgi, libfcgi-dev, libfcgi-perl, libfcgi-procmanager-perl
+** DONE Install rvm, ruby, rails, gem, etc
+** Return to nginx
+*** Set up a vhost:
+*** add server config in conf/nginx.conf:
+
+     #+begin_src
+ # myapp.com virtual host
+ #
+ server {
+   listen       80;
+   server_name  myapp.com;
+
+   location /var/www/vhosts/myapp.com {
+     root   html;
+     index  index.html index.htm;
+   }
+ }
+     #+end_src
+*** didn't work. Hmm...
+**** '''location''' is what matches the path info on the URL
+**** '''root''' is where the document root is
+**** WOOT!! it works:
+
+     #+begin_src
+ # myapp.com virtual host
+ #
+ server {
+   listen       80;
+   server_name  myapp.com;
+
+   location / {
+     root   /var/www/vhosts/myapp.com;
+     index  index.html index.htm;
+   }
+ }
+
+     #+end_src
+*** now for the master class of server routing:
+*** set up a regex that will point at any virtual server that is thrown at the web server:
+    #+begin_src
+ # Generic vhost config using named pattersn
+ server {
+   listen       80;
+   server_name  ~^(www\.)?(?<domain>.+)$;
+   location / {
+     root        /var/www/vhosts/$domain;
+     index       index.php index.html index.htm;
+   }
+ }
+
+    #+end_src
+
+    This matches anything in the HTTP_HOST, mappint www.$domain to $domain.
+    example.com and www.example.com will resove to /var/www/vhosts/example.com
+    wiki.example.com and www.wiki.example.com will resolve to /var/www/vhosts/wiki.example.com
+    anapp.example.com and www.anapp.example.com will resolve to /var/www/vhosts/anapp.example.com
+    as well, set up the default server to catch things which are bogus names:
+
+    #+begin_src
+     server_name  localhost
+     nginx-testbed
+     nginx-vm
+     ""
+     "_"
+     192.168.1.118
+     127.0.0.1;
+    #+end_src
+
+
+    server naming is described here:
+    http://www.nginx.org/en/docs/http/server_names.html
+
+** SNAPSHOT and TKLBAM  Sat Jul  7 18:54:23 CDT 2012
+
+** Installing data bases
+
+*** SQLite3
+
+    installed sqlite documentation in /usr/share/sqlite. Added alias to nginx to map:
+    http://nginx-vm/sqlite-doc/ to /usr/share/sqllite/
+
+    oh crud. there's a version of sqlite3 on the system already -- I
+    SHOULD HAVE KNOWN! Rollback to last snapshot and start again.
+
+    ./configure --prefix=/usr to overwrite existing install (hope this works!) YAY ***\o/***
+    hmm -- no readline support: apt-get install libreadline6-dev
+    ./configure --prefix=/usr --enable-readline --enable-threadsafe --enable-dynamic-extensions
+
+**** install sudo package: success
+**** adduser tamara: success
+**** add user tamara to sudo group: success!
+
+** MySQL
+** PostGRESS
+** Installing PHP
+     Okay, this is the hard part, I think, figuring out everything to configure for php.
+
+g** Vagrant

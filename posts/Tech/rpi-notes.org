@@ -1,0 +1,55 @@
+** Raspberry Pi Howtos
+
+*** Configure the pi
+**** ssh into the RPi:
+     ssh pi@10.0.0.13 (substituting the right address)
+     Password: raspberry
+**** run the configurator:
+     sudo raspi-config
+
+***** expand the file system to the entire card
+***** change the pi user password
+***** set up locales
+***** change public hostname
+***** reboot
+
+*** Provisioning
+**** ssh into the RPi
+**** create an ssh key pair
+**** install emacs
+     sudo apt-get install emacs23-nox
+**** install system-wide ruby
+***** follow checklist at http://wiki.tamaratemple.com/Technology/BuildRubySystemFromSource
+
+*** Set up Samba for File Sharing
+**** install and configure samba server following http://elinux.org/R-Pi_NAS
+     apt-get install samba samba-common-bin
+**** add USB drives to /etc/fstab
+**** connect to mac the normal way CMD-K
+
+*** Install tmux
+
+*** [[http://blog.alexellis.io/getting-started-with-docker-on-raspberry-pi/][Get Started with Docker on Raspberry Pi]]              :raspberrypi:docker:
+       captured at: [2016-08-19 Fri 02:13]
+
+       description: Get Docker up and running on your Raspberry Pi in minutes. Learn some cool hacks and optimizations for the best experience.
+
+     selection: I have put this guide together to help you get started with Docker on your Raspberry Pi. For simplicity we will use the default operating system for the Pi - called Raspbian. This guide currently works with the Model 2B and Model 3 Pi. Support for the Raspberry Pi Zero, and B+ is planned for Docker 1.12-1-rc2 onwards.
+** Raspberry Pi Notes
+
+*** Raspberry Pi boot up notes
+**** Use RPi-sd card builder app
+***** start app and follow the prompts with an SD card at the ready.
+      When it is done, it will tell you to eject the card.
+**** Insert the SD card in the RPi, connect ethernet, keyboard, video cable
+     Optionally connect USB disk.
+**** Connect power to start it up.
+**** Locate the IP address assigned by the DHCP host
+
+*** Install nginx to serve static files
+**** apt-get install nginx
+**** modify defaults
+     root /var/www
+
+*** Set static IP per http://elinux.org/RPi_Setting_up_a_static_IP_in_Debian
+**** make pi IP static on router (ideally use a DHCP reservation, but this one doesn't do that. Thanks, Comcast!)

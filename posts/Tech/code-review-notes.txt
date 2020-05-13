@@ -1,0 +1,41 @@
+#+TITLE: Notes on conduction guided code reviews
+
+* Introduction
+
+During the course of Kickserv react web client development, it's become clear that using our standard method of a team mate reading through a github PR would not work, since the amount of code and files is enormous, contradicting any best practice about doing code reviews. Instead, we're going to conduct guided code reviews, a practice where we meet as a team to walk through the significant aspects of the code change, to help the other team members understand what is happening and be able to make better contributions to the review.
+
+** Research
+
+*** [[https://www.ibm.com/developerworks/rational/library/11-proven-practices-for-peer-review/index.html][11 Proven Practices for more effective, efficient peer code reviews (IBM Developer)]]
+
+Summary:
+
+1. Review fewer than 200–400 lines of code at a time
+2. Aim for an inspection rate of fewer than 300–500 LOC per hour
+3. Take enough time for a proper, slow review, but not more than 60–90 minutes
+4. Be sure that authors annotate source code before the review begins
+5. Establish quantifiable goals for code review, and capture metrics so you can improve your processes
+6. Use checklists, because they substantially improve results for both authors and reviewers
+7. Verify that the defects are actually fixed
+8. Foster a good code review culture in which finding defects is viewed positively
+9. Beware of the Big Brother effect
+10. Review at least part of the code, even if you can't do all of it, to benefit from The Ego Effect
+11. Adopt lightweight, tool-assisted code reviews
+
+
+*** [[https://en.wikipedia.org/wiki/Software_walkthrough][Software Walkthroughs (Wikipedia)]]
+
+- [[https://ieeexplore.ieee.org/document/4601584][1028-2008 - IEEE Standard for Software Reviews and Audits]]
+- [[http://pesona.mmu.edu.my/~wruslan/SE2/Readings/detail/Reading-6.pdf][IEEE Std 1028-1999 Standard for Software Reviews]] (PDF)
+
+
+** Meetings
+
+*** KICK-2182
+    <2018-10-02 Tue 13:00>
+
+**** attendees
+     - Tamara Temple, author
+     - Nick Meuller
+     - Tyler Godfrey
+     - Robert Rouse

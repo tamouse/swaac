@@ -1,0 +1,154 @@
+** Thor Notes
+
+*** Start here for next thor project
+
+    Seriously, this has so much "stock" stuff:
+
+    https://github.com/tamouse/rearrange_books/tree/start-here-for-next-thor-project
+
+**** turn this thing into a thor thor generator!
+     Dude, as if you're the first person to do this?
+
+
+*** Giving a task multiple arguments
+
+    Q: How can I have a task get multiple arguments, like many regular
+    POSIX commands?
+
+    Example:
+
+    #+BEGIN_SRC shell-script
+      cp source_file source_file source_file source_file ... dest_dir
+    #+END_SRC
+
+    Pretty simple:
+
+    #+BEGIN_SRC ruby
+      desc "taskname ARGLIST"
+      def taskname(*args)
+      end
+    #+END_SRC
+
+    would let you do:
+
+    #+BEGIN_SRC shell-script
+      thor taskname arg1 arg2 arg3 arg4
+    #+END_SRC
+
+    and ~args~ in the task would be ~["arg1", "arg2", "arg3", "arg4"]~
+
+
+
+*** Invoke a thor task by giving only a class option
+    :PROPERTIES:
+    :CAPTURE_DATE: [2016-11-06 Sun 01:11]
+    :END:
+
+    From stackoverflow: http://stackoverflow.com/a/7311357/742446
+
+    [...use] Thor.map to invoke a command by only giving an
+    option flag:
+
+    #+BEGIN_SRC ruby
+      map '-F' => 'foo'
+    #+END_SRC
+
+    Now you can also pass parameters
+
+    #+BEGIN_SRC ruby
+      mythorcommand -F bar # => invokes foo("bar")
+    #+END_SRC
+
+    answered Sep 5 '11 at 17:57 by tfischbach
+
+*** Give thor a default task
+    :PROPERTIES:
+    :CAPTURE_DATE: [2016-11-06 Sun 01:13]
+    :END:
+
+    From stackoverflow: http://stackoverflow.com/a/23955971/742446
+
+    I found a rather 'strange' solution for this problem that is working quite well with me.
+
+    You add a default task to Thor. Than you add the method_missing so
+    that you can trick Thor into passing the default method as an
+    argument if there are parameters to your application.
+
+    Taking from your example, the solution would look like this:
+
+    #+BEGIN_SRC ruby
+      class MyThorCommand < Thor
+	default_task :my_default
+
+	desc "my_default", "A simple default"
+	def my_default(*args)
+          puts args.inspect
+	end
+
+	def method_missing(method, *args)
+          args = ["my_default", method.to_s] + args
+          MyThorCommand.start(args)
+	end
+
+      end
+
+      MyThorCommand.start(ARGV)
+    #+END_SRC
+
+    If this is in the file "my_thor.rb" an execution "ruby my_thor.rb
+    foo bar" would show '["foo", "bar"]' as a result.
+
+    answered May 30 '14 at 13:38 by Edu
+
+*** Making Thor scripts colourful
+
+   capture date: [2015-10-11 Sun 02:06]
+
+   In Thor::Actions, the various output commands can be made nicely
+   colourful. You can append symbols representing various colours after
+   the output string. For example:
+
+   #+begin_src ruby
+     say "This will make you green with envy", :green
+     say "Don't be sad", :blue
+     say "ACK! AN ERROR!", :red
+   #+end_src
+
+   Colour symbols are defined in
+   https://github.com/erikhuda/thor/blob/master/lib/thor/shell/color.rb
+
+
+   #+begin_src ruby
+     # Set color by using a string or one of the defined constants. If a third
+     # option is set to true, it also adds bold to the string. This is based
+     # on Highline implementation and it automatically appends CLEAR to the end
+     # of the returned String.
+     #
+     # Pass foreground, background and bold options to this method as
+     # symbols.
+     #
+     # Example:
+     #
+     #   set_color "Hi!", :red, :on_white, :bold
+     #
+     # The available colors are:
+     #
+     #   :bold
+     #   :black
+     #   :red
+     #   :green
+     #   :yellow
+     #   :blue
+     #   :magenta
+     #   :cyan
+     #   :white
+     #   :on_black
+     #   :on_red
+     #   :on_green
+     #   :on_yellow
+     #   :on_blue
+     #   :on_magenta
+     #   :on_cyan
+     #   :on_white
+
+   #+end_src
