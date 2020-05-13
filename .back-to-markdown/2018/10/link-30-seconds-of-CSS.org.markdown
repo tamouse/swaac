@@ -1,0 +1,12 @@
+**WARNING: This is old and likely obsolete.**
+
+LINK: [30 seconds of CSS](https://30-seconds.github.io/30-seconds-of-css/):
+===========================================================================
+
+-   Time-stamp: \<2020-03-23 05:07:10 tamara\>
+-   published date: \[2018-11-04 Sun\]
+-   keywords: link, css, collection, exercises, learning
+
+[30 seconds of CSS](https://30-seconds.github.io/30-seconds-of-css/):
+
+\> A curated collection of useful CSS snippets you can understand in 30 seconds or less.

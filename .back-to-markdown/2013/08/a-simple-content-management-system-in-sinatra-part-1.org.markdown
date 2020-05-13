@@ -1,0 +1,16 @@
+A Simple Content Management System in Sinatra Part 1
+====================================================
+
+**WARNING: This is old and likely obsolete.**
+
+-   published date: 2013-08-29
+-   keywords: \[\"cms\", \"content-management-systems\", \"simple\", \"sinatra\", \"software-development\", \"swaac\", \"tutorials\", \"web-app\"\]
+-   source: <http://www.sitepoint.com/a-simple-content-management-system-in-sinatra/>
+
+[Sinatra](http://sinatrarb.com) is a cute little web application mini-framework, that primarily sets up controllers and views, processing routes and generating responses.
+
+It can be quite fun to work with something light-weight like this rather than doing everything with Rails.
+
+-   [Part 1](http://tt.imageshare.s3.amazonaws.com/clippings/saved_pages/A%2520Simple%2520Content%2520Management%2520System%2520in%2520Sinatra.html)
+-   [Part 2](http://tt.imageshare.s3.amazonaws.com/clippings/saved_pages/A%20Simple%20CMS%20in%20Sinatra,%20Part%20II.html)
+-   [Part 3](http://tt.imageshare.s3.amazonaws.com/clippings/saved_pages/A%20Simple%20CMS%20in%20Sinatra,%20Part%20III.html)

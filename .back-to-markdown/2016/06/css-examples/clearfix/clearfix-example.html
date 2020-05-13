@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>CSS Clearfix</title>
+    <link rel="stylesheet" href="./all-styles.css" media="screen" />
+    <link rel="stylesheet" href="./clearfix.css" media="screen" />
+  </head>
+  <body>
+    <section class="hero clearfix">
+      <div class="container right">
+	<img src="http://placekitten.com/200/800" class="" alt="" />
+	<br />
+	you Can see me
+      </div>
+      <div class="container">
+	<p>
+	  When you add the
+	  <code>.clearfix</code> class to the containing element
+	  wrapping both parts, you're now able to get to the bottom of
+	  things.
+	</p>
+	<p>
+	  Scroll to the bottom of the frame.
+	</p>
+      </div>
+    </section>
+    <section>
+      <div class="container">This section should appear after image and it does.</div>
+    </section>
+    <footer class="fixed">
+      <div class="container">
+	<p class="text-center text-muted">
+	  Just putting some stuff here to show what happens with a
+	  footer overlaying the body content.
+	</p>
+      </div>
+    </footer>
+  </body>
+</html>

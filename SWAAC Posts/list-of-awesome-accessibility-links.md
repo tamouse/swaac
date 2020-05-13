@@ -1,0 +1,13 @@
+**WARNING: This is old and likely obsolete.**
+
+List of awesome accessibility resources
+=======================================
+
+-   published date: 2017-05-14 23:25
+-   keywords: ally, links, accessibility, lists, github
+
+-   source: <http://brunopulis.com/awesome-a11y/>
+
+Great collection of resources available for implementing accessibility (a11y) over on github:
+
+[Github repo](https://github.com/brunopulis/aweasome-a11y)

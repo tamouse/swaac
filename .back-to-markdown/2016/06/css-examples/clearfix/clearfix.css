@@ -1,0 +1,8 @@
+.clearfix:before,
+.clearfix:after {
+  content: " "; /* fixes a problem in Opera */
+  display: table; /* fixes a problem with collapsing margins */
+}
+.clearfix:after {
+  clear: both; /* this is what clears the floats */
+}

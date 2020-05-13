@@ -1,0 +1,19 @@
+**WARNING: This is old and likely obsolete.**
+
+TIL: Removing all Docker Containers and Images
+==============================================
+
+-   Time-stamp: \<2020-03-23 05:06:24 tamara\>
+-   date: 2018-06-04 11:51
+-   keywords: \[docker, containers, images, removing\]
+
+I needed to do a reset on my work machine of the Docker stuff I was using, so needed to know how to do this.
+
+``` {.bash org-language="sh"}
+$ docker rm $(docker ps -aq)
+$ docker rmi $(docker images -q)
+```
+
+`docker ps -aq` gives a list of all the container hashes, which is given the `docker rm` command.
+
+Similarly, `docker images -q` lists all the docker image hashes, which is given to docker\'s \"remove images\" `rmi` command.

@@ -1,0 +1,14 @@
+Love Letter?
+============
+
+-   category: philosophy
+-   published date: 2015-05-02 09:12
+-   keywords: \[\"thoughts\"\]
+
+\"Remember this: Code is a letter you write your future self. Do you want it to be a love letter or a poison pen letter?\" - me
+
+I posted this recently in the \#ruby chatroom on <http://irc.freenode.net>. It\'s most definitely **not** an original thought. Lots of others have expressed similar words and concepts.
+
+I want to underline it here because I think it is rather essential to the whole concept of Software as a Craft that this blog is about.
+
+SWAAC for me started with this notion of future communication in a [chat I had with someone else on IRC](%7B%%20post_url%202012-12-05-code-as-literature-software-dev-as-communication%20%%7D). The notion of whom we are writing our code for is something a lot of programmers don\'t quite get. We don\'t write ruby, perl, java, C, etc, for the computer. We write it to communicate our intent to ourselves and other people reading our code. The computer doesn\'t actually care a lick what our code means; it\'s not a cognitive processor that can apply meaning, intent, implication, etc., onto our writing. Only humans can do that. The compiler/interpretter merely translates into things the computer can do things with. There is no DWIM (Do What I Mean) for a computer.
