@@ -260,7 +260,7 @@
        <script>
          // Initialize Firebase
          var config = {
-           apiKey: "AIzaSyD7XBBjYmVFQ8KJu0zz0F-b7D2QRAx7E08",
+           apiKey: "...",
            authDomain: "microblog-flask-app.firebaseapp.com",
            databaseURL: "https://microblog-flask-app.firebaseio.com",
            storageBucket: "microblog-flask-app.appspot.com",
@@ -273,7 +273,7 @@
 
      #+BEGIN_SRC python
        FIREBASE_CONFIG = {
-           "apiKey": "AIzaSyD7XBBjYmVFQ8KJu0zz0F-b7D2QRAx7E08",
+           "apiKey": "....",
            "authDomain": "microblog-flask-app.firebaseapp.com",
            "databaseURL": "https://microblog-flask-app.firebaseio.com",
            "storageBucket": "microblog-flask-app.appspot.com",
