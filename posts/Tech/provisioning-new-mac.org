@@ -73,6 +73,15 @@ The last time I did this, I ended up not being able to type at the Terminal. Swi
 
 Run ~brew doctor~ to make sure everything is cromulent.
 
+*** get ~hub~ program
+
+[[https://hub.github.com/][hub.github.com]] just makes life easier dealing with github:
+
+#+BEGIN_SRC shell-script
+  brew install hub
+  git config --global hub.protocol https
+#+END_SRC
+
 ** Download config repos
 
 Since the .ssh creds were copied over in a previous step, this step should be pretty easy.
