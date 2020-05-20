@@ -1,30 +1,10 @@
-#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline author:t broken-links:nil
-#+OPTIONS: c:nil creator:nil d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:nil
-#+OPTIONS: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t timestamp:t title:t toc:nil
-#+OPTIONS: todo:t |:t
-#+TITLE: Provisioning a New Macbook
-#+DATE: <2020-03-20 Fri>
-#+AUTHOR: Tamara Temple
-#+EMAIL: tamouse@gmail.com
-#+LANGUAGE: en
-#+SELECT_TAGS: export
-#+EXCLUDE_TAGS: noexport
-#+CREATOR: Emacs 26.2 (Org mode 9.1.9)
-
 * Provisioning a new Mac
+
+*KEY POINT:* the "you" in this writeup is me, the author. If you, the reader, are not me, the author, then you /have to modify to fit your own needs/.
 
 ** Admin Privs
 
-If this is you own mac, your account should be created with Administrator privs, and you should be able to install software, do things like run ~sudo~, and all sorts of wonderful things.
-
-For work, OTOH, you might have to struggle to get things working if you aren't given an account with admin privs. Make sure you do get some account with Administrator rights. When you have that, 
-
-1. login as the administrator.
-2. Open up a terminal window
-3. Enter the following command: ~sudo dscl . -append /groups/admin admin USERNAME~ using your /regular/ account username
-4. Log out
-5. Log in as the regular user
-6. Try out `sudo ls` -- it should ask for your password, but then run the command.
+If this is your own mac, your account should be created with Administrator privs, and you should be able to install software, do things like run ~sudo~, and all sorts of wonderful things, usually all you need to do is provide your account password when asked.
 
 ** Installing Keybase
 
@@ -51,31 +31,33 @@ This stores other credentials for the project, my org files, etc.
 - .netrc
 - .ssh/
 
-*** ONEDRIVE-BASED: getting the creds to the new machine
-
-This is somewhat of an art depending on what sort of sharing you have. Worse comes to worse, you can share it with a USB stick, provided you have appropriate dongles.
-
-In the latest example for me, it was work machines, which had OneDrive installed. I fired up OneDrive on both machines, logging in, etc., and made sure they were running.
-
-#+BEGIN_SRC shell
-  $ tar zcvf OneDrive/ssh.tar.gz .ssh/
-#+END_SRC
-
-I was then able to go over to the new machine and run the following:
-
-#+BEGIN_SRC shell
-  $ tar zxvf OneDrive/ssh.tar.gz 
-#+END_SRC
-
-Do something similar with the other directories above. The singular ~.netrc~ can be copied directly to the OneDrive folder.
-
-A good test to see if the .ssh stuff is working is to try cloning a git repo from GitHub, however, that won't work until after the next step.
-
 *** Keybase-based: getting your creds
 
 The beauty of Keybase is that you can keep credentials and other secrets in the file system for your private use.
 
-The pain is keeping them sync'd
+The pain is keeping them sync'd.
+
+I have the above directories sync'd to my private keybase folder.
+
+**** saving updating creds to keybase
+
+*NOTE: make sure the directroeis you are copying do NOT have the / at the end!*
+
+#+BEGIN_SRC shell-script
+  rsync -av ~/.aws \
+	~/.gnupg \
+	~/.ssh \
+	~/.netrc \
+	/Volumes/Keybase/private/tamouse_/creds/
+#+END_SRC
+
+**** getting the cred to the new machine
+
+(or just updating them)
+
+#+BEGIN_SRC shell-script
+  rsync -av /Volumes/Keybase/private/tamouse_/creds/ $HOME
+#+END_SRC
 
 ** Install X-Code
 
@@ -93,7 +75,9 @@ Run ~brew doctor~ to make sure everything is cromulent.
 
 ** Download config repos
 
-Since the .ssh creds were copied over in a previous step, this step should be pretty easy
+Since the .ssh creds were copied over in a previous step, this step should be pretty easy.
+
+Remember these are /my configs/; if you are not me, use your own, please.
 
 *** Dot Files
 
@@ -110,7 +94,6 @@ Since the .ssh creds were copied over in a previous step, this step should be pr
 3. follow the directions in the README
 
 ** Essential Software
-
 *** Installing Emacs
 
 For me, there is next to nothing that is more important that using my imprinted editor. It's easier than ever these days, too, being able to install as a cask from home brew.
@@ -147,7 +130,6 @@ Hopefully everything goes smoothly.
     - rake - the version installed with ruby might be okay
     - rails 5.1.6 (or whatever your project uses) (takes a long time, whee)
 
-
 *** Installing Node, NPM, and friends
 
 We'll be installing from the nodejs web site, instead of using brew or nvm. 
@@ -171,24 +153,30 @@ Install ~yarn~: ~brew install yarn~ (beware there is a new way to do this for ya
 2. Firefox
 3. LastPass
 4. Amphetimine
-5. Slack
-6. Trello
-7. Zoom
-8. Affinity Photo & Design
-9. Spotify
-10. Sonos
-11. Monosnap
-12. --Spectacle-- use Rectangle instead: https://github.com/rxhanson/Rectangle
+5. Spark
+6. Notion
+7. Slack
+8. Trello
+9. Zoom
+10. Affinity Photo & Design
+11. Spotify
+12. Sonos
+13. Monosnap
+14. --Spectacle-- use Rectangle instead: https://github.com/rxhanson/Rectangle
+15. Alfred
+16. Discord
+17. Display Menu
+18. JetBrains Toolbox (from which you can install the others)
+19. Kindle for Mac
+20. ... this list will grow :D
 
 ** org files
 
-I keep my org files on keybase, you might keep yours elsewhere, or you might not exist as I'm the only one reading this
+I keep my org files on keybase in git
 
 #+BEGIN_SRC shell
-  keybase git list
   git clone keybase://private/tamouse_/org-files ~/org
 #+END_SRC
-
 
 ** Postgresql
 
@@ -202,7 +190,7 @@ For other versions run ~brew search postgresql~. you should be able to run diffe
 
 ** redis
 
-For work, we use redis on the app. It's generally useful, like PG, so I make sure it's always available.
+For a lot of work projects, I use redis on the app. It's generally useful, like PG, so I make sure it's always available.
 
 #+BEGIN_SRC shell
   brew info redis
