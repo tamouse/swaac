@@ -2,7 +2,7 @@
 
 * Introduction
 
-During the course of Kickserv react web client development, it's become clear that using our standard method of a team mate reading through a github PR would not work, since the amount of code and files is enormous, contradicting any best practice about doing code reviews. Instead, we're going to conduct guided code reviews, a practice where we meet as a team to walk through the significant aspects of the code change, to help the other team members understand what is happening and be able to make better contributions to the review.
+During the course of react web client development, it's become clear that using our standard method of a team mate reading through a github PR would not work, since the amount of code and files is enormous, contradicting any best practice about doing code reviews. Instead, we're going to conduct guided code reviews, a practice where we meet as a team to walk through the significant aspects of the code change, to help the other team members understand what is happening and be able to make better contributions to the review.
 
 ** Research
 
@@ -29,13 +29,3 @@ Summary:
 - [[http://pesona.mmu.edu.my/~wruslan/SE2/Readings/detail/Reading-6.pdf][IEEE Std 1028-1999 Standard for Software Reviews]] (PDF)
 
 
-** Meetings
-
-*** KICK-2182
-    <2018-10-02 Tue 13:00>
-
-**** attendees
-     - Tamara Temple, author
-     - Nick Meuller
-     - Tyler Godfrey
-     - Robert Rouse
