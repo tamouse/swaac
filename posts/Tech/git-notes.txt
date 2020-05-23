@@ -7,22 +7,36 @@
 
     From [[https://stackoverflow.com/a/501461/742446][stackoverflow]]:
 
-    #+BEGIN_QUOTE
+    Pass in the --no-commit flag, but to avoid a fast-forward commit, also pass in --no-ff, like so:
 
+    #+BEGIN_SRC shell-script
+      $ git merge --no-commit --no-ff $BRANCH
+    #+END_SRC
 
-    As noted previously, pass in the --no-commit flag, but to avoid a fast-forward commit, also pass in --no-ff, like so:
-
-    $ git merge --no-commit --no-ff $BRANCH
     To examine the staged changes:
 
-    $ git diff --cached
+    #+BEGIN_SRC shell-script
+      $ git diff --cached
+    #+END_SRC
+
     And you can undo the merge, even if it is a fast-forward merge:
 
-    $ git merge --abort
+    #+BEGIN_SRC shell-script
+      $ git merge --abort
+    #+END_SRC
 
-    #+END_QUOTE
+    Set up a git aliases for it:
 
-    Pretty straight-forward.
+    #+BEGIN_SRC shell-script
+      git config --global alias.dryrun=merge --no-commit --no-ff --no-edit
+      git config --global alias.cine=commit --no-edit
+    #+END_SRC
 
+    Then run:
 
-** Git Notes
+    #+BEGIN_SRC shell-script
+      git dryrun $BRANCH
+      # assuming that looks ok
+      get cine
+    #+END_SRC
+
