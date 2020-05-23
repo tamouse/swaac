@@ -276,7 +276,7 @@
        <script>
          // Initialize Firebase
          var config = {
-           apiKey: "AIzaSyD7XBBjYmVFQ8KJu0zz0F-b7D2QRAx7E08",
+           apiKey: "",
            authDomain: "microblog-flask-app.firebaseapp.com",
            databaseURL: "https://microblog-flask-app.firebaseio.com",
            storageBucket: "microblog-flask-app.appspot.com",
@@ -289,7 +289,7 @@
 
      #+BEGIN_SRC python
        FIREBASE_CONFIG = {
-           "apiKey": "AIzaSyD7XBBjYmVFQ8KJu0zz0F-b7D2QRAx7E08",
+           "apiKey": "",
            "authDomain": "microblog-flask-app.firebaseapp.com",
            "databaseURL": "https://microblog-flask-app.firebaseio.com",
            "storageBucket": "microblog-flask-app.appspot.com",
@@ -305,14 +305,14 @@
        {
          "type": "service_account",
          "project_id": "microblog-flask-app",
-         "private_key_id": "b353df6573a26a674084877795e7d5044a7aa73a",
-         "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDGV4uU7ob7gebi\nvBDnA6sBi7Gh9FHeYx8hET/hRxfU/e3SD9EHNtmm721dM3IOAui9yb6M5qtYD8Bl\n2AxgUvzPBLuHeZOF7QpaGwcvY7qJayeFAQ9U0Hm51dqtTBfJ8qAlhU3/ndMfS5cX\nVMxC/n4hMva88tjNSU2JoeOZvfILezdYuWCUYLPeSeHnxj7XzVQd2+OT+6ziMNca\nZ2uuMF7Dagod/MQ7jCME77IDuV1RUZmYHaTQuYSeJbhEhikcRFnhy6kiZZ76QRtZ\n3rSdLqO7Wsfd7UwBDmuozTBI+X5GRr27xKqP+/BScVbK+rPbc1UPNnH23Tacd/43\niCRS0EbtAgMBAAECggEANUMHIaxYJSwCE3sLUu4COv0Ha4VPgte9YUTfkaBkvvad\nqZ5DtJs/IXwEM1YAV9DiLS0C9ZVwB8rbEL5OvIMsjm8n6L52Ji28bOv7Jvex/PsA\ndtANDOqa9ZN/ELBxZvK3nLvKcU0xh6Ll5QcJfygWONYVujHAlIgNwVru4rdGS1yH\nJKlcQfNzE2wyfXws7K8nESOCJA6zyt20a9FzchPCTmFUpiIjGr94yz5eXX6GT9c6\nEScXqRspm5k0lnzFr8e57iHjrhivOjOn3K20MI1ivUEsiSoxnoO/QPuo6ah7tLXf\nBI7NJunYblMlD3q5PmAFlU4sKv+LFhhX7HOIfrNGYQKBgQDq7xy106MxER/0AxCR\nA504VCcCtIQyNc/LGckk7y/sxhboEhLmaf+HowSawsIq4SnCH+ctXep1ANcyT9mQ\nujeboqNZN/SLn8S4f+PF1nQlDNYHUkz31TcSfaQQX/O8WjuknGSCUrWvy+kMR0V0\nTsr3f+OBhiWgbalOxhy+BTfeJQKBgQDYIHdIw7221dgMrY4XtpmDt4PtFWReGKAS\nXbdhIBheSrdbQBRhvY3kyYO7DAETpyH7GjoXYccYAttmurdxubqPlZRdW1SAgqoW\n8bJr4pc+tl/z/Z1oe2soDLsoAgWT4VfrxotKh3IpijgBKb4NgkDTXYzXUP7zEOxN\nILIQ9Oj3KQKBgDVP/ZvlYusHj9C3wVKnF05pClE61aTvQTA9sb+H58A7U4dmUpOn\nCi2leK4F9Dn2zpsW0kchQMs8XZk1NZH6MBRJW/grEnt8zg9wNif2+nRN7WPL8Vts\nLwsrJ8fvfkgH0fEQ7F4GluRFyaTXp5M1LinsA5yo7HDzcbBGlM8qL/thAoGBANNX\nfA2li2C84BYVqPs7Tgblb5Zo8sqo3e7XwbiyP+IEwiPzF3s0dwqgm7ZO2Ma1Cp+X\nV/MBZETwlkdwkm4dJne912UrKAi6vUTOeKDS5P8oK9BV0pUXCwQQ3vsSbw3ar7UZ\nY6Avrs08IePRQ83F70pBEraCt6xMgiYxsK6wLxdxAoGBAIHpXPlz/VMbzj8ank4N\n+xkn6iNunsbDsgTlCLNg0W6Gt0o7KjqCYNF1UhRpSYHbg0tw/YDLzou4AQr0lbO8\nNqg22GtSyaq+cvEnj46lqki/0+Zn4SEe23/JLTlKiCLvTi9ASkhkEyzURqBIzR9B\nJgZmUie04kpOG8bmO78JRtaw\n-----END PRIVATE KEY-----\n",
-         "client_email": "firebase-adminsdk-ji6au@microblog-flask-app.iam.gserviceaccount.com",
-         "client_id": "113122037478338965377",
+         "private_key_id": "",
+         "private_key": "",
+         "client_email": "",
+         "client_id": "",
          "auth_uri": "https://accounts.google.com/o/oauth2/auth",
          "token_uri": "https://accounts.google.com/o/oauth2/token",
          "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-         "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-ji6au%40microblog-flask-app.iam.gserviceaccount.com"
+         "client_x509_cert_url": ""
        }
      #+END_SRC
 
