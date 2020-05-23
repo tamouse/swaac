@@ -1,28 +1,4 @@
 * GDI
-** Credentials for GDI Ship It
-
-   #+BEGIN_QUOTE
-   KnownHost “VPS-1” package
-   username:Minneapolis@girldevelopit.com
-   password:Girlpower7%
-
-   Account information:
-   Hostname: host.gdiminneapolis.com
-   Main IP Address: 199.167.200.163
-   Additional IP(s): 199.167.200.189
-
-   SSH access information:
-   Main VPS IP Address: 199.167.200.163
-   SSH username: root
-   SSH port: 2200
-   Root password: L1SdKjEMOpnO
-
-   To access cPanel WHM go to:
-   http://199.167.200.163:2086/
-   Username: root
-   Password: L1SdKjEMOpnO
-   #+END_QUOTE
-
 
 ** Slack convos
 
