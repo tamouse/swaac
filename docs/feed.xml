@@ -2,894 +2,1790 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://github.com/tamouse/swaac</id>
   <title>Tamouse&#39;s Software as a Craft blog</title>
-  <updated>2020-04-08T16:27:36-05:00</updated>
+  <updated>2020-10-21T11:30:09-05:00</updated>
     <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2020/04/2020-04-08-using-keybase-for-secure-git-repos.md</id>
-      <updated>2020-04-08T16:27:36-05:00</updated>
-      <title>2020-04-08-using-keybase-for-secure-git-repos</title>
-      <content>---
-title: &quot;Using Keybase.io for secure git repos&quot;
-date: 2020-04-08T16:06
-category: git 
-tags: [git, keybase, secure, repos]
----
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2020/10/TIL-scoped-uniqueness-validation-syntax.md</id>
+      <updated>2020-10-21T11:30:09-05:00</updated>
+      <title>TIL-scoped-uniqueness-validation-syntax</title>
+      <content>## Keywords:
 
-The [Keybase.io](https://keybase.io) provides a Git server to provide an end-to-end encrypted way to access and store a git remote repo. This is helpful for repos you don&#39;t want visible to the public, at any point. Some private repos are still visible in some ways, but the ones on Keybase enjoy strong encryption all the way through.
+- Ruby
+- Rails
+- Validators
+- ActiveRecord
+- Uniqueness
 
-## Keybase command line ##
+## Introduction
 
-To see the git capabilities, try this from the command line:
-
-``` shell
-
-$ keybase git help
-NAME:
-   keybase git - Manage git repos
-
-USAGE:
-   keybase git &lt;command&gt; [arguments...]
-
-COMMANDS:
-   create	Create a personal or team git repository.
-   delete	Delete a personal or team git repository.
-   gc		Run garbage collection on a personal or team git repository.
-   lfs-config	Configures a keybase git checkout to use LFS
-   list		List the personal and team git repositories you have access to.
-   settings	View and change team repo settings
-   help, h	Shows a list of commands or help for one command
-
-```
-
-## How I use it ##
-
-I have a repo of emacs `org-mode` files kept in a local .git repo. To make a keybase git remote, I do the following things:
-
-``` shell
-
-$ pushd ~/org
-$ keybase git list
-$ keybase git create org-files
-$ git remote rename origin oldorigin
-$ git remote add origin keybase://private/tamouse_/org-files
-$ git push -u origin master
-
-```
-
-## Keybase GUI ##
-
-You can also create a new repository from the Git tab in the Keybase app.
-
-For existing repos, you can get the remote url to set the local git remote to.
-
-### Example ###
-
-![Keybase App Git Tab](../../../images/keybase-git-gui.jpg)
-
-
-
-
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2020/04/2020-04-07-yil-rails-validators-dont-change-type.md</id>
-      <updated>2020-04-07T09:14:55-05:00</updated>
-      <title>2020-04-07-yil-rails-validators-dont-change-type</title>
-      <content>---
-title: &quot;YIL: Rails validators don&#39;t change parameter type&quot;
-date: 2020-04-07T09:04
-category: rails 
-tags: [validation, type, params]
----
-
-So I figured this out a while ago, but seems that I forgot to write it down, hence &quot;YIL&quot; - Yesterday I Learned.
-
-I was working with a numeric parameter in Rails, that needed to be a non-negative interger, less than a maximum level. A pretty simple validator :
+In Rails versions prior to 5.1, the standard accepted way to do a scoped uniqueness validation was by using the `validate_uniqueness_of` method:
 
 ``` ruby
-validates_numericality_of :age,
-                          :only_integer,
-                          greater_than_or_equal_to: 0,
-                          less_than_or_equal_to: MAX_AGE
-```
+class Subcategory &lt; ApplicationRecord
 
-The validators work with `age` regardless of whether it&#39;s a number or string; coming in via a parameter from the controller, it will be a string. In a Rails model, this isn&#39;t much of an issue since the variable gets converted to whatever is the right type when the record is persisted.
-
-The case I was working with wasn&#39;t an ActiveRecord however, but just an ActiveModel service object.
-
-In order to fix this for the object model, I used an `after_validation` callback to transform the variable:
-
-``` ruby
-def recast_attributes
-
-  age = age.to_i
-
-end
-```
-
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2020/04/2020-04-01-building-rails-compatible-query-strings-in-javascript.md</id>
-      <updated>2020-04-01T14:19:22-05:00</updated>
-      <title>2020-04-01-building-rails-compatible-query-strings-in-javascript</title>
-      <content>---
-layout: post
-title: &quot;Building Rails-compatible Query Strings in JavaScript&quot;
-date: 2020-04-01T13:57
-categories: [javascript]
-tags: [query-string, javascript, functions, missing-libraries, rails]
----
-
-The [MDN](https://developer.mozilla.org/en-US/ &quot;Mozilla Development Network&quot;) defines the [URLSearchParams](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams &quot;The URLSearchParams interface defines utility methods to work with the query string of a URL&quot;) to help build query strings based on objects.
-
-What it *doesn&#39;t* do, however, is build a Rails-compatible query string from a nested object, i.e., an object with properties that other objects, i.e. Object, Array, etc. This won&#39;t do anything if the parent object has a function property, but it&#39;s a pretty good implementation.
-
-I don&#39;t even remember where this comes from, I&#39;ve written it for so many different projects I just copy it from the last one.
-
-The problem is that when given a params object like:
-
-``` javascript
-let params = {
-    a: 27,
-    b: &quot;forty-two&quot;,
-    c: [1, 2, 3, 5],
-    d: { id: 2887, name: &quot;Gillian&quot; }
-}
-```
-
-Passing this into URLSearchParams doesn&#39;t give a query string that Rails finds useful in parsing parameters up in the controller:
-
-``` javascript
-let qa = new URLSearchParams(params).toString()
-```
-
-yields: `a=27&amp;b=forty-two&amp;c=1,2,3,5&amp;d=d=%5Bobject+Object%5D` which is *really* no good to Rails (doubt it would be good for express either, but that&#39;s not what this one&#39;s about).
-
-So we need something a bit more on point:
-
-``` javascript
-function serializeObjectToRailsQueryString(params, prefix) {
-  const query = Object.keys(params).map(key =&gt; {
-     const value = params[key]
-
-     if (params.constructor === Array) key = `${prefix}[]`
-     else if (params.constructor === Object)
-       key = prefix ? `${prefix}[${key}]` : key
-
-     if (typeof value === &quot;object&quot;)
-       return serializeObjectToQueryString(value, key)
-     else return `${key}=${encodeURIComponent(value)}`
-   })
-
-   return [].concat.apply([], query).join(&quot;&amp;&quot;)
-}
-```
-
-Passing that same params object above, yields the following:
-
-``` javascript
-&quot;a=27&amp;b=forty-two&amp;c[]=1&amp;c[]=2&amp;c[]=3&amp;c[]=5&amp;d[id]=2887&amp;d[name]=Gillian&quot;
-```
-
-When the controller `params` method is called, it yields a AC::Parameters object of:
-
-``` ruby
-
-{
-  a: 27,
-  b: &quot;forty-two&quot;,
-  c: [1, 2, 3, 5],
-  d: { id: 2887, name: &quot;Gillian&quot;}
-}
-
-```
-
-just as we&#39;d expect.
-
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2020/03/2020-03-21-setting-git-default-editor.md</id>
-      <updated>2020-03-23T12:16:32-05:00</updated>
-      <title>2020-03-21-setting-git-default-editor</title>
-      <content>---
-title: &quot;Setting git&#39;s default editor&quot;
-date: 2020-03-21
-category: tools
-keywords: git, editor, emacs
----
-
-
-# Setting git&#39;s default editor #
-
-By default, when git needs to fire up an editor to do something such as write a commmit message, it uses whatever is configured as the default editor for the user. (Configuring the user&#39;s default editor is an entirely differnt topic.)
-
-There are a couple of ways to change this for `git`:
-
-1. setting one or two environment variables
-2. modifying the global git configuration
-
-Of these, I long used the first way, since the environment variables are also recognized by other command line tools (although not all).
-
-Recently I was made aware of method two, modifying the global git configuration.
-
-
-
-## Settingh environment variables ##
-
-
-Git will use two common environment variables, `EDITOR` and `VISUAL`, to determine what editor it should run. Some tools make a distinction between when these are used:
-
-- `EDITOR` is used generally in an environments where there may or may not be a terminal available.
-- `VISUAL` is used specifically when there is a terminal available.
-
-Git doesn&#39;t really care, you can set one or the other. In the course of my career, I settled on the expediency of setting them both to the same thing and calling it a day.
-
-## Modifying git global config ##
-
-Head over to &lt;https://www.git-scm.com/book/en/v2/Customizing-Git-Git-Configuration&gt; to see the official documentation on modifying the config.
-
-The specific part to set the editor is described here:
-
-&gt; **core.editor**
-&gt;
-&gt; By default, Git uses whatever you’ve set as your default text editor via one of the shell environment variables VISUAL or EDITOR, or else falls back to the vi editor to create and edit your commit and tag messages. To change that default to something else, you can use the core.editor setting:
-&gt;
-&gt;     $ git config --global core.editor emacs
-&gt;
-&gt; Now, no matter what is set as your default shell editor, Git will fire up Emacs to edit messages.
-
-They are already speaking my kind of language. But I want to go just a bit further and use `emacsclient` so as to not call up another instance of the full emacs editor if I can help it. Instead, I set the core.editor value to:
-
-    emacsclient -a emacs
-
-which will run emacsclient to use the currently running instance of emacs, *and*, if there is no currently running instance, start one up.
-
-### A caveat ###
-
-I initially used the command line arguments I normally run emacsclient with: `-c -n`, which say to open a new frame and not to wait for the editing session to finish. Bad move. If the git command is not forced to wait while I modify the commit message, it assumes it wasn&#39;t changed and aborts the commit. I also didn&#39;t want to have it be spawning new frames since that just gets messy if I forget to close them, which I most often do.
-
-### I hear you, you don&#39;t use emacs ###
-
-You aren&#39;t a dinosaur like I am, I got you.
-
-You can run VSCode from the command line, or Atom, etc., etc., etc..  I&#39;m not going to teach you how to set that up, *but you should learn how if you don&#39;t because it will speed up your work.*
-
-Here are some of the alternative:
-
-- VSCode: `git config -global core.editor &quot;code -w&quot;`
-- Atom: `git config --global core.editor &quot;atom -w&quot;`
-- Vim: `git config --global core.editor vim`
-
-## Git-mode in Editors ##
-
-Most modern-day editors have a means of running git commands from inside the editor. This is often a far richer environment, closer to a GUI tool, really, than the command line offers. I use `magit` in emacs all the time, but I also use the command line all the time; some operations are better for one than the other. (By the way, `magit` has seriously the very best implementation for doing an interactive rebase, i.e., squashing your commits.)
-
-
-
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2020/03/2020-03-23-books-on-software-estimating.md</id>
-      <updated>2020-03-23T10:23:17-05:00</updated>
-      <title>2020-03-23-books-on-software-estimating</title>
-      <content>---
-title: &quot;Books and Resources on Software Estimating&quot;
-date: 2020-03-23T10:15
-category: books
-tags: [estimating, management]
----
-
-Someone was asking for some youtube / vimeos on software engineering. I don&#39;t have any. I learned this back in that dark ages.
-
-My first thought was to head to [The Pragmatic Programmer](https://pragprog.com/book/tpp20/the-pragmatic-programmer-20th-anniversary-edition), and sure enough there is a section on estimating.
-
-Next thought was look at [Code Complete](https://en.wikipedia.org/wiki/Code_Complete), which also has an even more detailed look at estimating. The is also a section on **Additional Resources on Software Estimation**:
-
-&gt; Here are some additional references about software estimation:
-&gt; Boehm, Barry, et al. Software Cost Estimation with Cocomo II. Boston, MA: Addison-Wesley, 2000. This book describes the ins and outs of the Cocomo II estimating model, which is undoubtedly the most popular model in use today.
-&gt; Boehm, Barry W. Software Engineering Economics. Englewood Cliffs, NJ: Prentice Hall, 1981. This older book contains an exhaustive treatment of software-project estimation considered more generally than in Boehm&#39;s newer book.
-&gt; Humphrey, Watts S. A Discipline for Software Engineering. Reading, MA: Addison-Wesley, 1995. Chapter 5 of this book describes Humphrey&#39;s Probe method, which is a technique for estimating work at the individual developer level.
-&gt; Conte, S. D., H. E. Dunsmore, and V. Y. Shen. Software Engineering Metrics and Models. Menlo Park, CA: Benjamin/Cummings, 1986. Chapter 6 contains a good survey of estimation techniques, including a history of estimation, statistical models, theoretically based models, and composite models. The book also demonstrates the use of each estimation technique on a database of projects and compares the estimates to the projects&#39; actual lengths.
-&gt; Gilb, Tom. Principles of Software Engineering Management. Wokingham, England: Addison-Wesley, 1988. The title[…]”
-
-*(Excerpt From: Steve McConnell. “Code Complete, Second Edition.” Apple Books. )*
-
-These are old as the hills, being contemporary with my learning the craft. I met most of them, and spent time with Boehm, Humphrey, and Gilb while I was working with Hewlett-Packard.
-
-For modern software estimating, especially in the world of web applications, Gilb is probably still the most germain.
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2020/01/gatsby-categories-and-tags.md</id>
-      <updated>2020-03-23T05:19:55-05:00</updated>
-      <title>gatsby-categories-and-tags</title>
-      <content>---
-title: &quot;Gatsby Categories and Tags&quot;
-date: 2020-02-01
----
-
-## Categories and Tags in Gatsby ##
-
-I&#39;ve been re-writing my on-line recipe collection using Gatsby as an exercise. In the original Jekyll site, I had recipes organized into categories like chapters in a printed cookbook, and tags that allowed more fine-detailed structure, listing such things as ingredients, cuising type, and other things like being gluten-free. Both categories and tags were stored as entries in the frontmatter of each recipe in the collection.
-
-To make that work, I needed to write a Jekyll plug-in to generate the category and tag pages. And to make it work in Gatsby, I needed to write something in `gatsby-node.js`
-
-### Categories as Subdirectories
-
-Instead of putting the category in the frontmatter, I decided to organize the recipe markdown into subdirectories under the `recipes/` content directory.
-
-#### A hook for categories
-
-To pull out the categories, I created a custom hook `useCategories` to run a static query and return the collection of category names:
-
-```javascript
-import { graphql, useStaticQuery } from &quot;gatsby&quot;
-export const useRecipeCategories = () =&gt; {
-  const { allDirectory } = useStaticQuery(
-    graphql`
-      query RECIPE_CATEGORIES {
-        allDirectory(filter: { absolutePath: { glob: &quot;**/recipes/*&quot; } }) {
-          nodes {
-            relativePath
-          }
-        }
-      }
-    `
-  )
-  return allDirectory.nodes.map(category =&gt; category.relativePath)
-}
-```
-
-Putting that query into the GraphiQL IDE, the response is:
-
-```text
-{
-  &quot;data&quot;: {
-    &quot;allDirectory&quot;: {
-      &quot;nodes&quot;: [
-        {
-          &quot;relativePath&quot;: &quot;baked-goods&quot;
-        },
-        {
-          &quot;relativePath&quot;: &quot;desserts&quot;
-        },
-        {
-          &quot;relativePath&quot;: &quot;breakfast&quot;
-        },
-        {
-          &quot;relativePath&quot;: &quot;drinks&quot;
-        },
-        {
-          &quot;relativePath&quot;: &quot;main-dishes&quot;
-        },
-        {
-          &quot;relativePath&quot;: &quot;kitchen-tips&quot;
-        },
-        {
-          &quot;relativePath&quot;: &quot;appetizers&quot;
-        },
-        {
-          &quot;relativePath&quot;: &quot;pizza&quot;
-        },
-        {
-          &quot;relativePath&quot;: &quot;salads&quot;
-        },
-        {
-          &quot;relativePath&quot;: &quot;sandwiches&quot;
-        },
-        {
-          &quot;relativePath&quot;: &quot;sauces&quot;
-        },
-        {
-          &quot;relativePath&quot;: &quot;side-dishes&quot;
-        },
-        {
-          &quot;relativePath&quot;: &quot;soups&quot;
-        }
-      ]
-    }
-  }
-}
-```
-
-That gives me a nice, reusable list of categories anywhere in the site.
-
-#### Generating the Table of Contents
-
-The `CategoriesMenu` component creates a list of the categories with links to each category page:
-
-```javascript
-import React from &quot;react&quot;
-import { Link } from &quot;gatsby&quot;
-import { useRecipeCategories } from &quot;../hooks/useCategories.js&quot;
-
-export default () =&gt; {
-  const categories = useRecipeCategories()
-
-  return (
-    &lt;ul&gt;
-      {categories.map((category, index) =&gt; (
-        &lt;li key={`category-menu-item-${index}`}&gt;
-          &lt;Link to={`/${category}/`}&gt;{category}&lt;/Link&gt;
-        &lt;/li&gt;
-      ))}
-    &lt;/ul&gt;
-  )
-}
-
-```
-
-\(I&#39;m still in the midst of generating a style for the site, so eventually the `ul` and `li` will get replaced with some styled components. That&#39;s not important for this discussion.\)
-
-The `Link` to each category page expects them to be a page at the root of the route. These pages are not in the repo itself, and must be generated. The code to generate the category page is in `gatsby-node.js` :
-
-```javascript
-const { createFilePath } = require(`gatsby-source-filesystem`)
-const path = require(`path`)
-
-exports.createPages = ({ actions, graphql }) =&gt; {
-  // ...
-  const categoryTemplate = path.resolve(&quot;./src/templates/categoryTemplate.js&quot;)
-
-  return graphql(`
-    {
-      # .. other queries
-      allDirectory(filter: { absolutePath: { glob: &quot;**/recipes/*&quot; } }) {
-        nodes {
-          relativePath
-        }
-      }
-    }
-  `).then(result =&gt; {
-
-    // ... stuff for mdx pages
-
-    const categories = result.data.allDirectory.nodes
-    categories.forEach(category =&gt; {
-      createPage({
-        path: &quot;/&quot; + category.relativePath + &quot;/&quot;,
-        component: categoryTemplate,
-        context: {
-          category: category.relativePath,
-        },
-      })
-    })
-    
-    // ... more stuff
-  })
-}
-
-```
-
-The partial graphql query returns the relative paths from the recipes area, which is the same as we do in the `useCategories` hook; there ought to be a way to reuse that, but here it&#39;s part of a larger query \(redacted from the example\). Looping through the categories, I&#39;m running `createPage` on each node \(i.e. category\) and building a page using a template, quite like one does for making Markdown/MDX pages. The context contains the category &quot;slug&quot;, which is created below.
-
-The categories need to be made into nodes:
-
-```javascript
-exports.onCreateNode = ({ node, actions, getNode }) =&gt; {
-  const { createNodeField } = actions
-  if (node.internal.type === `Mdx`) {
-    const value = createFilePath({ node, getNode })
-    // .. other nodes
-    createNodeField({
-      name: `recipeCategory`,
-      node,
-      value: value.split(&quot;/&quot;)[1],
-    })
-  }
-}
-```
-
-This is pretty similar again to how you make slugs for Markdown/MDX psges. The `value` comes from file path created in line 4, and it looks like `/:relativePath/:recipeFilename/`. Since what we&#39;re looking for is the recipe category, that is the `:relativePath` in the string above. Splitting on the divider gives a `null` first value in the array, and `:relativePath` in the second slot, so the index is 1 to pull it out. There&#39;s probably better ways to do this, but this works.
-
-### Tag pages
-
-Tag pages are also created in `gatsby-node.js` but the way tags are collected to start with is very different from categories. Categories are determined by placement in a subdirectory, but tags are declared in the frontmatter of the recipe MDX file.
-
-\(One _could_ do the same thing with categories, using a field in the frontmatter, but after working with that form in the Jekyll version for years, I&#39;ve decided doing them as subdirectories made more sense to me.\)
-
-Going back to the `gatsby-node.js` file, the full query looks like this:
-
-```graphql
-    {
-      allMdx {
-        nodes {
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-            tags
-          }
-          fileAbsolutePath
-        }
-      }
-      allDirectory(filter: { absolutePath: { glob: &quot;**/recipes/*&quot; } }) {
-        nodes {
-          relativePath
-        }
-      }
-    }
-
-```
-
-In this case, we need to collect the _unique_ tags from every recipe file, so while we are shooting the list building the recipe pages, we&#39;ll also collect the tags into a Set:
-
-```graphql
-    const recipes = result.data.allMdx.nodes
-    let tags = new Set()
-
-    // create page for each mdx file
-    recipes.forEach(recipe =&gt; {
-      createPage(/* .. for each recipe page .. */)
-
-      if (recipe &amp;&amp; recipe.frontmatter &amp;&amp; recipe.frontmatter.tags) {
-        recipe.frontmatter.tags.map(tag =&gt; {
-          tags.add(tag)
-        })
-      }
-    })
-```
-
-If there are a collection of tags in the recipe file, this adds them to the `tags` Set, which ensures only unique tags are collected.
-
-Further down, we need to create the tag _pages_ :
-
-```javascript
-    tags.forEach(tag =&gt; {
-      createPage({
-        path: `/tags/${tag}/`,
-        component: tagTemplate,
-        context: {
-          tag,
-        },
-      })
-    })
-```
-
-### Putting Categories and Tags to use
-
-#### The Category Menu in the Sidebar
-
-I decided for this design iteration to put the categories into a sidebar arrangement \(I still haven&#39;t done any styling on this\). Recall the code up at **Generating the table of contents**: 
-
-```jsx
-return (
-    &lt;ul&gt;
-      {categories.map((category, index) =&gt; (
-        &lt;li key={`category-menu-item-${index}`}&gt;
-          &lt;Link to={`/${category}/`}&gt;{category}&lt;/Link&gt;
-        &lt;/li&gt;
-      ))}
-    &lt;/ul&gt;
-  )
-```
-
-which generates a link to each category page. This is mounted in the Sidebar.
-
-#### Tag links in each recipe display
-
-Tags are a little different at this point: they are only listed in each individual recipe page, using the `TagList` component:
-
-```jsx
-import React from &quot;react&quot;
-import { Link } from &quot;gatsby&quot;
-import styled from &quot;styled-components&quot;
-
-export default ({ tags }) =&gt; {
-  if (!tags || tags.length &lt; 1) {
-    return null
-  }
-  return (
-    &lt;TagListWrapper&gt;
-      {tags.map((tag, index) =&gt; {
-        return (
-          &lt;TagListItem key={`tag-item-${index}`}&gt;
-            &lt;Link to={`/tags/${tag}/`}&gt;{tag}&lt;/Link&gt;
-          &lt;/TagListItem&gt;
-        )
-      })}
-    &lt;/TagListWrapper&gt;
-  )
-}
-
-const TagListWrapper = styled.ul`
-  display: inline;
-  list-style: none;
-`
-const TagListItem = styled.li`
-  display: inline-block;
-  &amp;:after {
-    content: &quot;, &quot;;
-    padding-right: 0.5em;
-  }
-  &amp;:last-child:after {
-    content: &quot;&quot;;
-  }
-`
-```
-
-\(Yay, some styling\)
-
-Eventually, I&#39;m going to want a tag cloud of some sort, too.
-
-That&#39;s basically it. It took a minute for me to go from looking at how the Markdown / MDX in every gatsby tutorial worked, and had to work out how to generate the pages from other data queries. This seems pretty simple, but seems to be lacking from the tutorials.
-
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2020/03/2020-03-10-using-rails-url-helpers-outside-a-controller.md</id>
-      <updated>2020-03-23T05:16:14-05:00</updated>
-      <title>2020-03-10-using-rails-url-helpers-outside-a-controller</title>
-      <content>---
-title: &quot;Using Rails url_helpers outside a controller context&quot;
-date: 2020-03-10T20:38
-categories: [rails]
-tags: [rails, helpers, url_helpers]
----
-
-Sometimes I want to use a Rails url helper method outside the controller context.
-
-Link: [Explanation on StackOverflow](https://stackoverflow.com/a/5456103 &quot;good examples for doing this&quot;)
-
-In essence:
-
-``` ruby
-Rails.application.routes.url_helpers.new_post_path
-```
-
-
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2020/03/2020-03-23-honouring-colour-scheme-in-css.md</id>
-      <updated>2020-03-23T05:16:14-05:00</updated>
-      <title>2020-03-23-honouring-colour-scheme-in-css</title>
-      <content>---
-title: &quot;Honouring the user&#39;s preferred colour scheme in CSS&quot;
-date: 2020-03-23T03:32
-category: css
-tags: [colour-scheme, dark-mode, light-mode]
----
-
-How do I honour the user&#39;s chosen preferred colour scheme in the CSS I&#39;m writing? Recently MacOS introduced dark mode in Mojave, and further added a shifting light and dark mode to match the time of day in Catalina. I&#39;d like my sites, but more importantly, my React apps to follow this.
-
-
-## Background ##
-
-The W3C has defined a media query, `prefers-color-scheme` ([Defined in Media Queries Level 5 Draft, March 2020](https://drafts.csswg.org/mediaqueries-5/#descdef-media-prefers-color-scheme &quot;Still a draft&quot;)). It has [some implementations](https://caniuse.com/#search=prefers-color-scheme) already. At least it&#39;s on the majors, so it&#39;s probably okay to use.
-
-## Media query ##
-
-The check to see what colour scheme the user has set is done with a media query:
-
-``` css
-@media screen and (prefers-color-scheme: light) {
-  /* settings for light scheme */
-}
-@media screen and (prefers-color-scheme: dark) {
-  /* settings for dark scheme */
-}
-```
-
-So this is clearly possible in regular CSS.
-
-## Using in styled-components ##
-
-Since I most often code in React, and most often use `styled-components` library to implement CSS-in-JS, I need a way that this will work. Turns out it&#39;s not so bad, using SC&#39;s `ThemeProvider`.
-
-In your theme file, set up the various colours, with a group for light mode and another group for dark mode:
-
-``` rjsx
-const colors = {
-    light: {
-        primaryText: &quot;#333&quot;,
-        primaryBg: &quot;#FFF&quot;,
-        // and so on
-    },
-    dark: {
-        primaryText: &quot;#F2F2F2&quot;,
-        primaryBg: &quot;#000&quot;,
-        // and so on
-    },
-    common: {
-        // colors that work for both
-    }
-};
-
-export default {
-    colors
-};
-
-```
-
-Where I wrap react components with the SC ThemeProvider, I can import and provide the theme as usual:
-
-``` rjsx
-import React from &quot;react&quot;;
-import { ThemeProvider} from &#39;styled-components&#39;;
-import theme from &quot;../../theme&quot;;
-
-function App({ children }) {
-    return (
-        &lt;ThemeProvider theme={theme} &gt;
-          {children}
-        &lt;/ThemeProvider&gt;
-    );
-}
-
-export default App;
-```
-
-Then later, in the styled compeonent, this happens:
-
-``` rjsx
-
-import styled from &#39;styled-components&#39;;
-
-export const SomeSection = styled.section`
-  color: ${props =&gt; props.theme.colors.light.primaryText};
-  backgound-color: ${props =&gt; props.theme.colors.light.primaryBg};
-
-  @media screen and (prefers-color-scheme: light) {
-    color: ${props =&gt; props.theme.colors.light.primaryText};
-    backgound-color: ${props =&gt; props.theme.colors.light.primaryBg};
-  }
-  @media screen and (prefers-color-scheme: dark) {
-    color: ${props =&gt; props.theme.colors.dark.primaryText};
-    backgound-color: ${props =&gt; props.theme.colors.dark.primaryBg};
-  }
-`
-```
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2020/02/2020-02-10-git-follies-prefacing-commit-msg-with-ticket-number.md</id>
-      <updated>2020-03-23T05:16:14-05:00</updated>
-      <title>2020-02-10-git-follies-prefacing-commit-msg-with-ticket-number</title>
-      <content>---
-title: &quot;How To: Preface your git commit messages with the Jira ticket number&quot;
-date: 2020-02-10T08:57:37-0600
-categories: [&quot;git&quot;]
-tags: [git-follies, commit-message, jira, how-to]
-published: true
----
-
-This is something you can build into your project&#39;s git hooks, that will preface your commit messages with the Jira ticket number based on the branch name.
-
-[WIP]
-
-We want something that will pull the tracking ticket number from the branch, like so:
-
-| branch name                     | message prefix |
-|:-------------------------------:|:--------------:|
-| `kick-1234-this-cool-feature`   | `[KICK-1234]`  |
-| `bug/KICK-789-woops`            | `[KICK-789]`   |
-| `feature/kick_2100_the_precept` | `[KICK-2100]`  |
-| `777_sunset_life`               | `[777]`        |
-|                                 |                |
-
-Create a hook for `.git/hooks/prepare-commit-msg` with the following script:
-
-``` shell
-# Current branch name: &quot;KICK-3586_revert_nullable_custom_field_creation&quot;
-$ git rev-parse --abbrev-ref HEAD | ruby -ne &#39;ticket = %r{^(?&lt;proj&gt;\w+)[-_ ](?&lt;num&gt;\d+)}.match($_).named_captures; puts &quot;[#{ticket[&quot;proj&quot;].upcase}-#{ticket[&quot;num&quot;]}]&quot; &#39;
-# =&gt; [KICK-3586]
-
-```
-
-Make sure the hook is executable.
-
-
-When you make a commit, git will execute `.git/hooks/prepare-commit-msg .git/COMMIT_MESSAGE`
-
-Adding the hook to a code repo.
-
-
-
-
-Inspiration: https://medium.com/better-programming/how-to-automatically-add-the-ticket-number-in-git-commit-message-bda5426ded05
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2020/01/in-rails-prefer-use_zone-to-zone.md</id>
-      <updated>2020-03-23T05:16:14-05:00</updated>
-      <title>in-rails-prefer-use_zone-to-zone</title>
-      <content>---
-title: &quot;Prefer Time.use_zone to Time.zone in Rails&quot;
-date: 2020-01-19
-categories: [rails]
-tags: [timezones]
----
-
-&gt; Rails better practice for dealing with altering the current process&#39;s timezone
-
-# In Rails, Prefer \`.use\_zone\` to \`.zone=\`
-
-I had thought to write a post on this, but never got around to it.
-
-[Prathamesh Sonpatki](https://prathamesh.tech/) [beat me to it :\)](https://prathamesh.tech/2019/07/11/use-time-use_zone-to-navigate-timezone/)
-
-Essentially, this is the practice I use:
-
-```text
-Time.use_zone(current_user.timezone) do 
-  # Do Time and DateTime operations under the auspices of the
-  # current user&#39;s timezone setting.
+  belongs_to :category
   
-  Time.current # The current time in the current user&#39;s timezone
-  Time.zone.now # Equivalent to the above
+  validate_presence of :slug
+  validate_uniqueness_of :slug, scope: :category_id
 end
 ```
 
-It&#39;s better than just supposing that `Time.zone` has been set somewhere in the current process, **or** that `Time.zone` has been set to what the code in the block _expects it to be!_
+With Rails 5.2, the longer forms are being deprecated, in favour of using the `validates` method instead.
 
-## In Testing ##
+In the api docs, however, the uniqueness validator isn&#39;t discussed, not even an example.
 
-The biggest source of error that I&#39;ve encountered for this isn&#39;t in requests, but actually in the spec test cases for the product. Some test cases blythely set `Time.zone` in a before action, but never reset it in an after action.
+Luckily, I had rubocop set up to complain about the use of the older methods, and told it to fix the failures it found.
 
-If possible, wrap the time zone use inside an `around` action:
+The new syntax would be:
 
-```text
-around(:each) do |example|
-  Time.use_zone(some_timezone) do
-    yield example
-  end
+``` ruby
+class Subcategory &lt; ApplicationRecord
+
+  belongs_to :category
+  
+  validates :slug, presence: true
+  validates :slug, uniqueness: { scope: :category_id }
 end
 ```
 
-### With [Timecop](https://github.com/travisjeffery/timecop) ###
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/gdi-classes.org</id>
+      <updated>2020-05-23T16:52:21-05:00</updated>
+      <title>GDI</title>
+      <content>* GDI
+** Slack convos
+*** Discussion in #random about job salaries
+    CAPTURE_DATE: [2017-06-05 Mon 15:45]
 
-Since Timecop is essentially mocking the system clock, you can use it with `.use_zone` with impunity.
+    #+BEGIN_QUOTE
 
-```text
-around do |example|
-  Timecop.freeze do
-    @account = Fabricate(:account)
-    Time.use_zone(account.timezone) do
-      yield example
+ OP [1 hour ago]
+ Hey all, I have a question that I have been struggling with for a bit. I am currently working through a bootcamp for full stack development and would like to start getting organized for the job search. I am starting to watch job postings and some ask what my preferred salary would be. I spent many years as a national park ranger, which means low pay and no chance at negotiating starting pay either. I have tried to look around at what the starting pay would be for staying in the twin cities but find reports on average salaries of experienced developers. Does anyone have resources on this or advice on what to ask for and how much to negotiate? I just don&#39;t know what to even ask for as a salary aside from making sure it pays the bills. Feel free to DM too if you would prefer. THANKS!
+
+ R1 [1 hour ago]
+ @OP: 1st things 1st, never mention your previous salary. Especially since it doesn’t apply to your next role as a dev.
+
+ R1 [1 hour ago]
+ 2nd things 2nd, take a look at glassdoor, linkedin, and indeed. heck even the gov websites with salary averages to start getting a range.
+
+ R1 [1 hour ago]
+ then think about your life, lifestyle, I came up with a minimum I am comfortable with and then I keep that to myself.
+
+ R1 [1 hour ago]
+ I ask for 10-20k higher, depending on the company
+
+ R1 [1 hour ago]
+ My one phrase of advice when it comes to this is “The worst thing they can say is no, and even if they say no, it’s probably a maybe” (edited)
+
+ R1 [1 hour ago]
+ Know what you’re bringing to the table, some people will try to use your bootcamp only experience as a negative against you, it’s not. It’s a positive. It speaks to your thirst to learn, ability to learn and adapt quickly, passion and so much more.
+
+ R1 [1 hour ago]
+ People often underestimate what it means to basically change your whole life overnight when it comes to deciding to go to a bootcamp
+
+ R1 [1 hour ago]
+ anyways rant over… That’s my advice!
+
+ R1 [1 hour ago]
+ I bet @R5 has great advice on this as well
+
+ OP [1 hour ago]
+ thanks! that helps get me started
+
+ R1 [1 hour ago]
+ anytime. Congrats on getting ready to get out there!!
+
+ R2 [1 hour ago]
+ Yes yes yes. I second everything @R1 just mentioned. @R5 brought up the “never mention your previous salary” comment the other day. This is so key. Keep in mind that when a company posts a job, they already have a budget in mind. Let them share that first!
+
+ R2 [1 hour ago]
+ Not everyone will do that, and some might be cranky if you stay firm (this just happened to me) but it’s definitely worth a try.
+
+ R2 [1 hour ago]
+ We had a negotiating GDI workshop about a year ago that I found so valuable. Go in to the discussion with three numbers in your mind: the number that would just blow your socks off and make you crazy happy, a number that seems fair, reasonable and makes you excited, and a minimum number that you are willing to walk away from if they don’t meet. Keep these to yourself, but start with your high in the sky number and go from there :slightly_smiling_face:
+
+ R3 [1 hour ago]
+ Sometimes a company will ask you also what you used to make. When they ask me what I was making at my last job, I always lie and tell them a number that I&#39;m actually targeting to make at this new position. A lot of jobs will make an offer so close to your last salary that saying a number you&#39;re wanting will put you in a negotiating range where you can say, &quot;Well, I was actually looking to make more than at my last position.&quot;
+
+ R4 [1 hour ago]
+ Negotiating tactics apply to salary negotiation as much as they do to other negotiable situations (car buying, flea markets, etc), so if you want to psych yourself up with some general negotiation strategies from across the Internet as well, that can&#39;t hurt. (edited)
+
+ R3 [44 minutes ago]
+ Also, keep yourself open to possible company perks, maybe you&#39;d take less $$ if you have more vacation, or work from home days, or really amazing health insurance. It&#39;s not just about salary negotiation. The biggest thing people don&#39;t negotiate for more is vacation, and sometimes can be the easiest to get.
+
+
+ R4 [39 minutes ago]
+ Agreed that the salary number isn&#39;t everything - we hear a lot about &quot;company culture&quot; these days, and a lot of what companies tout as their &quot;culture&quot; is meaningless, so diving into that can also net you a bomb place to work that helps your mental health and personal fulfilment even if it doesn&#39;t pay Google money. Awesome on-site skill-building opportunities? Plenty of experienced people who enjoy mentoring and have helpful attitudes? Tangible, clear, supported diversity initiatives? Strong community/charitable ties? What kinds of &quot;culture&quot; things matter to you?
+
+ R1 [28 minutes ago]
+ Agreed. I would work at a place that covers my insurances, and offers more PTO, conference stipends, etc, if the salary is lower because I find those kinds of things very valuable.
+
+ R1 [28 minutes ago]
+ Definitely make sure culturally it is a fit for you too. Ask to meet the team before you make any final decisions
+
+ R5
+ [15 minutes ago]
+ @R1 I really have nothing to add. Dang, write a book!!
+
+
+ R1 [14 minutes ago]
+ hahaha. I’ve heard that before
+
+ R1 [14 minutes ago]
+ Maybe i should :thinking_face:
+
+
+ R2 [14 minutes ago]
+ Yes, please!
+
+ R5
+ [13 minutes ago]
+ Oh, i guess i do have an additional piece of advice: do *not* refer to yourself as a “Junior Developer” (or “junior” anything). Certainly, you don’t the time/experience/etc BUT you do have skills they can use today, and you should have the ability to learn things, but most of all, solve problems
+
+
+ R5
+ [12 minutes ago]
+ no one actually knows what the difference between a jr dev and sr dev actually is; it it most certainly not number of years, although that’s often the only thing people think of.
+
+ R2 [12 minutes ago]
+ @__ might have something to add, too. I know HackReactor has a lot of opinions on this.
+
+ R5
+ [11 minutes ago]
+ I might be getting a bit subversive here, but the skills ppl look for in sr people is the ability to be self-directed, take initiative, and most of be able to solve problems
+
+ R2 [10 minutes ago]
+ Ha. What makes you “senior” is a whole other giant discussion that I woudl love to have.
+
+ R5
+ [10 minutes ago]
+ you can most definitely have those; it’s not number of years. sure, someone like me, i’ve just made a huge huge pile of mistakes to learn from, but there’s a lot of sr people who do not bother to learn
+
+ R5
+ [10 minutes ago]
+ it’s a false label  /  dichotomy
+
+ R5
+ [9 minutes ago]
+ but it’s one that is so entrenched it’s hard to deal with. so again, do not put that label on yourself
+
+ R5
+ [9 minutes ago]
+ we need to have another meetup this week so we can have all these great conversations LOL
+
+
+ R2 [9 minutes ago]
+ yep yep yep - hard when that’s often tied to salary, recognition, opportunities, responsibility, etc.
+
+ R1 [9 minutes ago]
+ do it!
+
+ R2 [8 minutes ago]
+ RIGHT?!
+
+ R1 [8 minutes ago]
+ that’s a conversation i would love to be a part of
+
+    #+END_QUOTE
+
+
+
+*** Discussion on GDIMPLS Slack
+    CAPTURE_DATE: [2017-03-06 Mon 16:17]
+    TOPIC:    Y U No Hire Jr Devs?
+
+    OP started off a discussion in the #general chat in
+    GDIMpls.slack.com team.
+
+    #+BEGIN_QUOTE
+    OP [Today at 1:51 PM]
+    question for everybody: have you ever worked at a place that “doesn’t hire jr devs”, spoken to a place/person that “doesn’t hire jr devs”, or do you personally not like jr devs (i won’t be hurt/offended)?
+
+    R1 [1 hour ago]
+    so, personally, you gotta know i love jr. devs, otherwise i wouldn&#39;t be trying to help make some :slightly_smiling_face:
+
+    OP [1 hour ago]
+    true true
+
+    R1 [1 hour ago]
+    but the &quot;we don&#39;t hire jr. devs&quot; is so fucking real
+
+    R1 [1 hour ago]
+    i have long convos with recruiters and companies about this alla time. The problem, and I think know it, is that when everyone is hiring sr. devs, that means no one is creating new sr. devs, and you have to hire jr. devs to make sr. devs
+
+    R1 [1 hour ago]
+    sorry, I think *everyone* knows it
+
+    R1 [1 hour ago]
+    (thinking too fast to type)
+
+    R2 [1 hour ago]
+    Yep not many people are willing to put the time in to make the senior devs they truly want by training jr devs.
+
+    R1 [1 hour ago]
+    and yet the complaint is that they can&#39;t afford to train jr. devs
+
+    R1 [1 hour ago]
+    the typical mindset for tech companies is that they don&#39;t have the time, can&#39;t take the risk, and so on, because they don&#39;t fundamentally understand what they&#39;re trying to make
+
+    R2 [1 hour ago]
+    Yep
+
+    R1 [1 hour ago]
+    there&#39;s a tremendous lack of mindfulness about developing software, in pretty much any form
+
+    R1 [1 hour ago]
+    a lot of this is historical, of course, but that really doesn&#39;t excuse the lack of introspection about what the software industry is
+
+    OP [1 hour ago]
+    this is great! I hadn’t thought about that.
+
+    R1 [1 hour ago]
+    this also ties into the latest very visible reports of misogyny, we&#39;ve seen, but cuts across all the -isms; where you do not see diversity happening, just talked about and much handwringing
+
+    R1 [1 hour ago]
+    you notice women, poc, pwd, etc., when they get someplace primarily because it is so fucking rare
+
+    OP [1 hour ago]
+    Diversity &amp; Inclusion -Buzzwords of 2016/17
+
+    R1 [1 hour ago]
+    sadly, just buzzwords
+
+    OP [1 hour ago]
+    EXACTLY
+
+    R1 [1 hour ago]
+    fill out your bingo card!
+
+
+    R1 [1 hour ago]
+    this is not new; i don&#39;t see it changing, i see it getting more lip service, and no real change
+
+    R1 [1 hour ago]
+    i don&#39;t think it&#39;s any better
+
+    R1 [1 hour ago]
+    and this pisses me off to no end
+
+    R2 [1 hour ago]
+    This really has my mind running now. Why arent more companies open to jr devs? Seriously, they have the skills to learn, they have the want, and they require less compensation, why not let them work on your smaller projects until they are your senior dev you want. (edited)
+
+    R1 [1 hour ago]
+    and even more, how i have been unable to make and change, and how i&#39;ve been totally complicite
+
+    R1 [1 hour ago]
+    i had a phone intreview this morning, and we talked about exactly that, R2
+
+    R2 [45 minutes ago]
+    Train the senior devs you want. Why is that so hard?!
+
+    R1 [45 minutes ago]
+    how this company *had* hired a bunch of jr. devs, but they had no direction, and no idea of what they should be doing
+
+    R2 [44 minutes ago]
+    Yeah thats the opposite problem
+
+    R2 [44 minutes ago]
+    they need a leader that wants to and is a good mentor too
+
+
+    R1 [44 minutes ago]
+    and so now they&#39;re looking at getting more sr. people to help with that
+
+    R2 [44 minutes ago]
+    Thats good
+
+    R1 [44 minutes ago]
+    it&#39;s just another huge example of mindlessness
+
+    R2 [44 minutes ago]
+    Yep
+
+    R2 [44 minutes ago]
+    Lack of proper planning
+
+    R1 [43 minutes ago]
+    what i would love to do, most of all, is help jr. devs become sr. devs
+
+
+    R1 [43 minutes ago]
+    the companies that do hire jr. devs, then proceed to never give them any guidance.
+
+    OP [43 minutes ago]
+    I’m interested in why you feel you’ve been complicit @R1
+
+    R2 [42 minutes ago]
+    Me too Tamara.
+
+    R2 [42 minutes ago]
+    I wish there was a sustainable way to do that. My only idea was winning the lottery so money wasnt a concern, hahaha.
+
+    R1 [41 minutes ago]
+    because i fall prey to the same thinking that everyone else does; we had this long convo this weekend at lunch about diversity as it relates to women in tech, and NOT ONCE did anyone, including myself, ever mention the intersectionalities
+
+    R1 [41 minutes ago]
+    not. once.
+
+    R3 [41 minutes ago]
+    &quot;the companies that do hire jr. devs, then proceed to never give them any guidance.&quot; &lt;-- this is super interesting. (i mean all of this is)
+
+    R1 [40 minutes ago]
+    my blue sky pipe dream is that we can open a coop / collective, that isn&#39;t a for profit, and people who participate also have to give back in time and resources
+
+    R3 [40 minutes ago]
+    I think that might be part of the hesitation for many. They may want to do it _right_ and convince themselves they don&#39;t have the bandwidth to take on an individual that will need guidance/mentoring/support.
+
+    R1 [40 minutes ago]
+    Do understand I am way overgeneralising that
+
+    R2 [40 minutes ago]
+    Agreed. I think that is a lot of it. It seems to overwhelming so they just avoid it.
+
+    R3 [40 minutes ago]
+    We did this at W______, _very_ intentionally this past year.
+
+    R3 [40 minutes ago]
+    Our goal was to hire a &quot;junior&quot; dev
+
+    R1 [40 minutes ago]
+    some place have done that, some places do do that
+
+    R2 [39 minutes ago]
+    Your pipe dream sounds great R1.
+
+    R3 [38 minutes ago]
+    Companies want to make money, and as we discussed at lunch this weekend, assembling and creating a safe place for a diverse team will always create a higher quality product.
+
+    R1 [38 minutes ago]
+    what i heard talking with LP last week and this, is an interesting model of organization. A team is 5 people, a lead dev, two jr or other devs, a product mgr, and a UI/UX &quot;specialist&quot; (their term, could be a dev, dunno for sure yet)
+
+    R3 [38 minutes ago]
+    I wonder if people don&#39;t actualy believe that, or if they just don&#39;t know how to get there
+
+    R1 [38 minutes ago]
+    it&#39;s an interesting model
+
+    R1 [38 minutes ago]
+    i think the latter, R3
+
+    R1 [37 minutes ago]
+    don&#39;t know, don&#39;t know how to find out, and that&#39;s a huge risk to take
+
+    R3 [37 minutes ago]
+    Mhm
+
+    R2 [37 minutes ago]
+    That is the perfect team mix, R1, in my mind.
+
+    R1 [37 minutes ago]
+    mine to; i hope it&#39;s not just words
+
+    R1 [37 minutes ago]
+    i&#39;ve pretty much decided i&#39;ll take their offer if they make one
+
+    R1 [37 minutes ago]
+    pls don&#39;t tell
+
+    R2 [36 minutes ago]
+    Oh thats super great. So would you be one of those senior devs helping mentor the jr&#39;s?
+
+    R1 [36 minutes ago]
+    yeah
+
+    R2 [36 minutes ago]
+    My boss mentioned getting a junior &quot;me&quot; (my role, not me specifically) and I was so excited. Mentoring is one of my fave things to do.
+
+    R1 [36 minutes ago]
+    i mean, we were all speaking the same language, right? so now all my red flags are flying....
+
+    OP [36 minutes ago]
+    this is all really good stuff. And I know that the 3 of you (and more) do want to create that space for those like myself. It’s just really disheartening to be told because I’m a jr dev, I can’t add value
+
+    R1 [35 minutes ago]
+    AND THAT IS SO WRONG
+
+    R1 [35 minutes ago]
+    IT IS A LIE
+
+    OP [35 minutes ago]
+    I KNOW!
+
+    R1 [35 minutes ago]
+    spoken by people who are not adding value
+
+    R2 [35 minutes ago]
+    That is so horrible. You are amazing and I know you will not let it get you down, but make sure that you do not take that to heart or find it discouraging. (edited)
+
+    OP [35 minutes ago]
+    I want to learn the way a company codes, their standards, structure, i want to fix all the little things nobody else does, I want to build shit.
+
+
+    R2 [34 minutes ago]
+    You can add TONS of value.
+
+    OP [34 minutes ago]
+    Thank you.
+
+    OP [34 minutes ago]
+    It just adds more fuel to an already huge fire
+
+    R2 [34 minutes ago]
+    :fire:
+
+    R1 [34 minutes ago]
+    i&#39;m not really joking when i say &quot;burn it all down&quot;
+
+    R2 [33 minutes ago]
+    You are a strong person, it makes me sad for the people that are less like you. (edited)
+
+    R2 [33 minutes ago]
+    The ones that wont have that fight in them and will give up and move on.
+
+
+    R1 [33 minutes ago]
+    but this is also back to relying superheroism to make things better
+
+
+    OP [32 minutes ago]
+    right. That’s another reason why I want to do this at Minnebar
+
+    OP [32 minutes ago]
+    because I know that there are so many people that just won’t say anything
+
+    R1 [31 minutes ago]
+    you mean have this conversation at Minnebar?
+
+    OP [30 minutes ago]
+    yeah, i’m writing up a session called “So you don’t hire Jr Devs? Tell me more.&quot;
+
+
+    R1 [29 minutes ago]
+    oh fuck yeah
+
+    OP [29 minutes ago]
+    to speak as a jr dev, how jr devs feel in the market, what can other devs do to support and advocate and our importance
+
+    OP [29 minutes ago]
+    and then Lanice and I are also writing up one on Diversity &amp; Inclusion
+
+    R1 [28 minutes ago]
+    without jr devs there is no future software business
+
+
+    R2 [28 minutes ago]
+    OMG I am sad, I will miss that.
+
+    R2 [28 minutes ago]
+    I will be speaking at WordCamp in San Diego.
+
+    R2 [28 minutes ago]
+    Please definitely do that - the world needs to hear it.
+
+    OP [27 minutes ago]
+    I am sad you’re missing it too!!
+
+    R1 [26 minutes ago]
+    tickets are all gone
+
+    R1 [25 minutes ago]
+    also, i hate super large people events
+
+    R1 [24 minutes ago]
+    so that&#39;s an example of me being complicit
+
+    R1 [23 minutes ago]
+    so, like, what i should say instead, is there anything i can help with?
+
+    R3 [23 minutes ago]
+    ^^^^^^^^^^^
+
+    R3 [23 minutes ago]
+    that
+
+    R3 [23 minutes ago]
+    haha
+
+    R3 [22 minutes ago]
+    ditto
+
+    R1 [21 minutes ago]
+    &quot;The master&#39;s tools will never dismantle the master&#39;s house&quot; so we make our own tools
+
+    R4 [18 minutes ago]
+    This thread just got me really emotional. Thanks to everyone who&#39;s been sharing thoughts and perspectives. As a current junior dev who struggled to find a job and heard from companies that they don&#39;t hire jr, it got really challenging.
+
+
+    R1 [17 minutes ago]
+    This topic is hugely emotional for me as well, cari.tan, it goes into a lot of other things for me as well.
+
+    R1 [16 minutes ago]
+    primarily, i think our failing as sr. devs, mgrs, and so on, i.e., the people that *could* change things, is we just do not become or stay mindful
+
+    R4 [16 minutes ago]
+    One of the things that I kept thinking about was how if you hire junior devs, then they are coming in and learning your systems, your procedures and it might in someways be easier to integrate into the company processes because they are not bringing in past habits, which might be good and bad.
+
+
+    R1 [15 minutes ago]
+    EXACTLY!! and you&#39;ll have more effective devs than if you wait for the perfect sr. dev to show up
+
+    R1 [14 minutes ago]
+    AND! those jr. devs need guidance, attention, (care &amp; feeding?)
+
+
+    R4 [14 minutes ago]
+    I&#39;m currently on a team that doesn&#39;t have any real support for me because I&#39;m the only one working in the area that I work in and I have to go outside of my team when I&#39;m stuck, which can be challenging because of the schedules and workloads of their teams. It gets really hard sometimes.
+
+    R1 [13 minutes ago]
+    does you management listen to such issues well?
+
+    R1 [12 minutes ago]
+    (i was trying to figure out a way to ask in such a way as to not make any assumptions, but i don&#39;t think i can)
+
+    R4 [12 minutes ago]
+    Not really. I&#39;m on contract, which adds some complications. It
+
+    R1 [11 minutes ago]
+    certainly
+
+    R1 [10 minutes ago]
+    this is another place i have a huge advantage as a sr. dev, even, or especially, on contract, i don&#39;t usually have any hesitations in telling management their organization / communication / processes are not working well
+
+    R4 [10 minutes ago]
+    It&#39;s largely due to a restructuring that happened right after I started. I was hired onto a team of six people who all worked on the same parts of the website and then about 3 weeks later we were split across three new teams. I was the only one from the original team that ended up on mine. They are aware, but there&#39;s no real motivation for them to do much about it (add or shift resources, etc).
+
+    R1 [9 minutes ago]
+    but it&#39;s not something that a jr. can do with credibility :disappointed:
+
+    R4 [8 minutes ago]
+    Yeah, exactly.
+
+    R1 [8 minutes ago]
+    start looking for your next contract, maybe
+
+
+    OP [8 minutes ago]
+    i agree.
+
+    R1 [7 minutes ago]
+    because, holy cow, fixing their shit is not on you
+
+    R1 [6 minutes ago]
+    of course, the other side is get the learning you can out of the current situation
+
+    R1 [5 minutes ago]
+    idk, folks, this whole system is not going to solved by waiting for companies to wake up
+
+    R4 [4 minutes ago]
+    I have started looking for the next thing. I&#39;ve learned quite a bit, but am definitely ready for something different with more support.
+
+    R1 [4 minutes ago]
+    and as much fun as it would be for me to train jr. devs into sr. devs, i also don&#39;t want to just create a chain of cannon fodder
+
+    R1 [3 minutes ago]
+    cari.tan : awesome!!
+
+    R4 [3 minutes ago]
+    Thanks @OP for starting this conversation. It needs to be talked about and revisited often.
+
+    R1 [3 minutes ago]
+    :+1:
+
+    R1 [2 minutes ago]
+    i sure want to hear from you all on this
+
+    R1 [2 minutes ago]
+    and i am quite serious about the offers of help
+
+
+    OP [1 minute ago]
+    Thank you ALL for contributing. I am glad to know that sr/mid/lead devs care about this
+
+    R4 [1 minute ago]
+    Thanks @R1, @R3 and @R2 for being in leadership and senior roles and sharing your perspective and helping to work on this issue!
+    #+END_QUOTE
+
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/python-notes.org</id>
+      <updated>2020-05-23T16:31:19-05:00</updated>
+      <title>Python</title>
+      <content>* Python
+** Python Notes (refile Target)
+
+*** Joining a list of strings with a separator
+    :PROPERTIES:
+    :CAPTURE_DATE: [2016-12-19 Mon]
+    :END:
+
+    This is rather the exact opposite of the way Ruby does it.
+
+    #+BEGIN_SRC python
+      sepstr.join(list_of_strings)
+
+      # Example:
+
+      &#39;, &#39;.join([&#39;Apple&#39;,&#39;Pear&#39;,&#39;Banana&#39;,&#39;Orange&#39;])
+      # =&gt; &quot;Apple, Pear, Banana, Orange&quot;
+    #+END_SRC
+
+    I have not yet understood why this is done this way, but perhaps
+    it&#39;s entirely arbitrary.
+
+*** Using boto3 to grab a file from S3
+    :PROPERTIES:
+    :CAPTURE_DATE: [2016-12-19 Mon 17:18]
+    :END:
+
+    Upload a local file to S3:
+
+    #+BEGIN_SRC python
+      import boto3
+
+      boto_session = boto3.Session(profile_name=&#39;myaws&#39;)
+
+      boto_session.resource(&#39;s3&#39;).Bucket(&#39;my_bucket&#39;).upload_file(&#39;/tmp/file.txt&#39;, &#39;some/file.txt&#39;)
+    #+END_SRC
+
+    This will download a file to the local machine:
+
+    #+BEGIN_SRC python
+      import boto3
+
+      boto_session = boto3.Session(profile_name=&#39;myaws&#39;)
+      content = boto_session.resource(&#39;s3&#39;).Bucket(&#39;my_bucket&#39;).download_file(&#39;some/file.txt&#39;, &#39;/tmp/somfile.txt&#39;)
+
+    #+END_SRC
+
+    This will pull the file (object) into process memory (careful!)
+
+    #+BEGIN_SRC python
+      import boto3
+
+      boto_session = boto3.Session(profile_name=&#39;myaws&#39;)
+      content = boto_session.resource(&#39;s3&#39;).Object(&#39;my_bucket&#39;, &#39;some/file.txt&#39;)[&#39;Body&#39;].read()
+    #+END_SRC
+
+
+**** More links on this:
+
+     [[https://gist.github.com/iMilnb/0ff71b44026cfd7894f8][Programmatically manipulate AWS resources with boto3 - a quick
+     hands on]]
+
+*** Building a MANIFEST.in template for sdist
+
+    [[https://docs.python.org/2/distutils/sourcedist.html#manifest-template][python docs for MANIFEST.in template]]
+
+
+
+*** Magic to make a python script run
+    :PROPERTIES:
+    :CAPTURE_DATE: [2016-12-20 Tue 11:47]
+    :END:
+
+
+    When writing a python script that defines a bunch of methods,
+    classes, and so on, it can be imported into another script to do
+    stuff with, or run as an independent script.
+
+    The magic that makes that work is:
+
+    #+BEGIN_SRC python
+      if __name__ == &#39;__main__&#39;:
+          app.run()
+    #+END_SRC
+
+    at the bottom of the file. (~app~ would be defined by the file
+    somewhere.)
+
+    Including a shebang at the top will make it interpretable from the
+    shell, too.
+*** Python ~with~ statement
+    :PROPERTIES:
+    :CAPTURE_DATE: [2016-12-20 Tue 15:34]
+    :LINK:     https://docs.python.org/3/whatsnew/2.6.html#pep-343-the-with-statement
+    :TITLE:    What’s New in Python 2.6 — Python 3.5.2 documentation
+    :END:
+
+    :CAPTURE_DATE: [2016-12-20 Tue 15:34]
+    :LINK:     https://docs.python.org/3/whatsnew/2.6.html#pep-343-the-with-statement
+    :TITLE:    What’s New in Python 2.6 — Python 3.5.2 documentation
+
+    The ‘with‘ statement clarifies code that previously would use
+    try...finally blocks to ensure that clean-up code is executed. In
+    this section, I’ll discuss the statement as it will commonly be
+    used. In the next section, I’ll examine the implementation
+    details and show how to write objects for use with this
+    statement.
+
+    The ‘with‘ statement is a control-flow structure
+    whose basic structure is:
+
+    #+BEGIN_SRC python
+      with expression [as variable]:
+          with-block
+
+    #+END_SRC
+*** Ned Batchelder: Lists vs. Tuples
+    :PROPERTIES:
+    :CAPTURE_DATE: [2017-04-15 Sat 12:13]
+    :LINK:     https://nedbatchelder.com/blog/201608/lists_vs_tuples.html
+    :TITLE:    Ned Batchelder: Lists vs. Tuples
+    :END:
+
+    :CAPTURE_DATE: [2017-04-15 Sat 12:13]
+    :LINK:     https://nedbatchelder.com/blog/201608/lists_vs_tuples.html
+    :TITLE:    Ned Batchelder: Lists vs. Tuples
+
+    Response to my question in PyLadies#help_me channel.
+
+    To put the Cultural Difference in terms of the C language, lists
+    are like arrays, tuples are like structs.
+*** Ned Batchelder: Tag: Python
+    :PROPERTIES:
+    :CAPTURE_DATE: [2017-04-15 Sat 12:16]
+    :LINK:     https://nedbatchelder.com/blog/tag/python.html
+    :TITLE:    Ned Batchelder: Tag: Python
+    :END:
+
+    :CAPTURE_DATE: [2017-04-15 Sat 12:16]
+    :LINK:     https://nedbatchelder.com/blog/tag/python.html
+    :TITLE:    Ned Batchelder: Tag: Python
+
+    Python Posts by Ned Batchelder; useful info, blogging since 2002.
+
+*** Doctest
+    OMG DOCTEST IS DA BOMB!!!
+
+    https://docs.python.org/3/library/doctest.html
+
+    Enter tests in doc strings (Elixir has this too):
+
+    #+BEGIN_SRC python
+
+      SQFT_TO_SQM = 0.09290304
+
+      class CalcArgumentError(Exception):
+          def __init__(self, arg, msg):
+              self.argument = arg
+              self.message = msg
+
+
+      def calc(length, width):
+          &quot;&quot;&quot;
+
+          Calculate the area of a room given length and width
+
+          :returns: (area in sq ft, area in sq meters)
+
+          &gt;&gt;&gt; calc(10.0,5.0)
+          (50.0, 4.645152)
+
+          &gt;&gt;&gt; calc(2,2)
+          (4.0, 0.37161216)
+
+          &gt;&gt;&gt; calc(&quot;a&quot;, 2)
+          Traceback (most recent call last):
+              ...
+          CalcArgumentError: (&#39;a&#39;, &#39;invalid input: Length must be a number greater than zero&#39;)
+
+          &gt;&gt;&gt; calc(2, &quot;a&quot;)
+          Traceback (most recent call last):
+              ...
+          CalcArgumentError: (&#39;a&#39;, &#39;invalid input: Width must be a number greater than zero&#39;)
+
+          &gt;&gt;&gt; calc(0, 1)
+          Traceback (most recent call last):
+              ...
+          CalcArgumentError: (0.0, &#39;invalid input: Length must be a number greater than zero&#39;)
+
+          &gt;&gt;&gt; calc(1, 0)
+          Traceback (most recent call last):
+              ...
+          CalcArgumentError: (0.0, &#39;invalid input: Width must be a number greater than zero&#39;)
+
+
+
+          &quot;&quot;&quot;
+
+          try:
+              length = float(length)
+              if not length &gt; 0.0:
+                  raise ValueError
+          except ValueError as err:
+              raise CalcArgumentError(length, &quot;invalid input: Length must be a number greater than zero&quot;)
+
+          try:
+              width = float(width)
+              if not width &gt; 0.0:
+                  raise ValueError
+          except ValueError as err:
+              raise CalcArgumentError(width, &quot;invalid input: Width must be a number greater than zero&quot;)
+
+          area_sqft = length * width
+          area_sqm = area_sqft * SQFT_TO_SQM
+          return area_sqft, area_sqm
+
+      if __name__ == &#39;__main__&#39;:
+          import doctest
+          print(&quot;Running Doctests&quot;)
+          if (doctest.testmod()[0]) == 0:
+              print(&quot;PASSED!&quot;)
+
+    #+END_SRC
+
+    This is so cool. Ruby has one, but it looks *way* out of date, and
+    not really much supported. This is first class testing in Python!
+
+*** learn how to deep merge dictionaries in Python               :polyconfig:
+    :PROPERTIES:
+    :CAPTURE_DATE: [2017-01-27 Fri 08:08]
+    :END:
+** PySFTP notes
+*** Opening a connection using a private key file
+    :PROPERTIES:
+    :CAPTURE_DATE: [2016-12-19 Mon]
+    :END:
+
+    This is pretty straightforward, you can use the ~private_key~
+    parameter to give the PEM file:
+
+    #+BEGIN_SRC python
+      import pysftp
+
+      with pysftp.Connection(&#39;ftphost&#39;, username=&#39;ftpuser&#39;, private_key=&#39;path/to/pem/file&#39;) as sftp:
+          do this
+          do that
+    #+END_SRC
+
+    *BUT* there&#39;s a huge caveat that I haven&#39;t figured out yet: If the
+    host is not yet in the known hosts file, the above fails. The only
+    way I could get this to work is to open a connection to the host
+    from the command line:
+
+    #+BEGIN_SRC shell-script
+      sftp -i path/to/pem/file ftpuser@ftphost
+    #+END_SRC
+
+    This opens an interactive connection, which is good enough since it
+    stuffs the ftphost into the ~\~/.ssh/known_hosts~ file.
+
+** Flask
+
+*** microblog flask sample application
+
+**** Firebase Config
+
+     Obtained from
+     https://console.firebase.google.com/project/microblog-flask-app/overview
+     by clicking on &quot;Add Firebase to your web app&quot;.
+
+     ~pyfirebase~ uses only the database URL.
+
+
+     #+BEGIN_SRC html
+       &lt;script src=&quot;https://www.gstatic.com/firebasejs/3.7.3/firebase.js&quot;&gt;&lt;/script&gt;
+       &lt;script&gt;
+         // Initialize Firebase
+         var config = {
+           apiKey: &quot;&quot;,
+           authDomain: &quot;microblog-flask-app.firebaseapp.com&quot;,
+           databaseURL: &quot;https://microblog-flask-app.firebaseio.com&quot;,
+           storageBucket: &quot;microblog-flask-app.appspot.com&quot;,
+           messagingSenderId: &quot;500140812042&quot;,
+           serviceAccount: &quot;microblog-flask-app-firebase-adminsdk-ji6au-b353df6573.json&quot;,
+         };
+         firebase.initializeApp(config);
+       &lt;/script&gt;
+     #+END_SRC
+
+     #+BEGIN_SRC python
+       FIREBASE_CONFIG = {
+           &quot;apiKey&quot;: &quot;&quot;,
+           &quot;authDomain&quot;: &quot;microblog-flask-app.firebaseapp.com&quot;,
+           &quot;databaseURL&quot;: &quot;https://microblog-flask-app.firebaseio.com&quot;,
+           &quot;storageBucket&quot;: &quot;microblog-flask-app.appspot.com&quot;,
+           &quot;messagingSenderId&quot;: &quot;500140812042&quot;,
+           &quot;serviceAccount&quot;: &quot;microblog-flask-app-firebase-adminsdk-ji6au-b353df6573.json&quot;,
+       }
+
+     #+END_SRC
+
+**** Firebase Service Account info
+
+     #+BEGIN_SRC javascript
+       {
+         &quot;type&quot;: &quot;service_account&quot;,
+         &quot;project_id&quot;: &quot;microblog-flask-app&quot;,
+         &quot;private_key_id&quot;: &quot;&quot;,
+         &quot;private_key&quot;: &quot;&quot;,
+         &quot;client_email&quot;: &quot;&quot;,
+         &quot;client_id&quot;: &quot;&quot;,
+         &quot;auth_uri&quot;: &quot;https://accounts.google.com/o/oauth2/auth&quot;,
+         &quot;token_uri&quot;: &quot;https://accounts.google.com/o/oauth2/token&quot;,
+         &quot;auth_provider_x509_cert_url&quot;: &quot;https://www.googleapis.com/oauth2/v1/certs&quot;,
+         &quot;client_x509_cert_url&quot;: &quot;&quot;
+       }
+     #+END_SRC
+
+**** thisbejim/Pyrebase: A simple python wrapper for the Firebase API.
+     :PROPERTIES:
+     :CAPTURE_DATE: [2017-03-21 Tue 20:43]
+     :LINK:     https://github.com/thisbejim/Pyrebase
+     :TITLE:    thisbejim/Pyrebase: A simple python wrapper for the Firebase API.
+     :DESCRIPTION: Pyrebase - A simple python wrapper for the Firebase API.
+     :END:
+
+     :CAPTURE_DATE: [2017-03-21 Tue 20:43]
+     :LINK:     https://github.com/thisbejim/Pyrebase
+     :TITLE:    thisbejim/Pyrebase: A simple python wrapper for the Firebase API.
+     :DESCRIPTION: Pyrebase - A simple python wrapper for the Firebase API.
+
+     this is current one people suggest using. The ones with the
+     highest relevance in PyPi are deprecated!!
+
+** PyLadies
+*** Joining Slack
+
+    The PyLadies Slack team has women from all over the world that are
+    willing and able to help folks learn.
+
+    Go to http://slackin.pyladies.com/  to sign in (will get approval
+    there.)
+
+    On the slack, PyLadiesTC has a channel: ~#twin-cities~
+
+**** Join PyLadies on Slack!
+     :PROPERTIES:
+     :CAPTURE_DATE: [2017-04-12 Wed 21:35]
+     :LINK:     http://slackin.pyladies.com/
+     :TITLE:    Join PyLadies on Slack!
+     :END:
+
+     :CAPTURE_DATE: [2017-04-12 Wed 21:35]
+     :LINK:     http://slackin.pyladies.com/
+     :TITLE:    Join PyLadies on Slack!
+
+     How to sign up for the PyLadies Slack team.
+** Books
+*** NOT recommended
+**** Python for the Raspberry Pi
+     :PROPERTIES:
+     :AUTHORS:  Blum, Bresnahan
+     :Copyright: 2016
+     :Publisher: Pearson (SAMS imprint)
+     :END:
+
+     :AUTHORS:  Blum, Bresnahan
+     :Copyright: 2016
+     :Publisher: Pearson (SAMS imprint)
+
+     Out of date, covers old versions of the RPi.
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/provisioning-new-mac.org</id>
+      <updated>2020-05-23T16:31:19-05:00</updated>
+      <title>Provisioning a new Mac</title>
+      <content>* Provisioning a new Mac
+
+*KEY POINT:* the &quot;you&quot; in this writeup is me, the author. If you, the reader, are not me, the author, then you /have to modify to fit your own needs/.
+
+** Admin Privs
+
+If this is your own mac, your account should be created with Administrator privs, and you should be able to install software, do things like run ~sudo~, and all sorts of wonderful things, usually all you need to do is provide your account password when asked.
+
+** Installing Keybase
+
+This stores other credentials for the project, my org files, etc.
+
+1. Go to [[https://keybase.io]] and log in
+2. Download the app for the mac from that page
+3. Open up the ~dmg~ and follow the prompts to install it
+4. Launch the app /Applications/Keybase.app
+5. Log in to your keybase account
+6. Follow the prompts on the new machine and an old machine you selected to verify the new machine&#39;s identity
+7. Log out and log in as the WA admin in the case of the work machine :P
+8. Go to the file tab in keybase.app, and install the Finder extension
+9. Log out of the WA account and back into the user (use the username instead of real name, i guess...)
+10. Go the the file tab in Keybase.app again, open the Finder and see that you have access
+11. Go to a new Terminal window, and run ~keybase help~ to make sure the command line works, too
+
+** Other Privs
+
+*** typical areas to find other credentials
+
+- .aws/
+- .gnupg/
+- .netrc
+- .ssh/
+
+*** Keybase-based: getting your creds
+
+The beauty of Keybase is that you can keep credentials and other secrets in the file system for your private use.
+
+The pain is keeping them sync&#39;d.
+
+I have the above directories sync&#39;d to my private keybase folder.
+
+**** saving updating creds to keybase
+
+*NOTE: make sure the directroeis you are copying do NOT have the / at the end!*
+
+#+BEGIN_SRC shell-script
+  rsync -av ~/.aws \
+	~/.gnupg \
+	~/.ssh \
+	~/.netrc \
+	/Volumes/Keybase/private/tamouse_/creds/
+#+END_SRC
+
+**** getting the cred to the new machine
+
+(or just updating them)
+
+#+BEGIN_SRC shell-script
+  rsync -av /Volumes/Keybase/private/tamouse_/creds/ $HOME
+#+END_SRC
+
+** Install X-Code
+
+This takes a brutally long time, since it&#39;s just such a ginormous download (8G?)
+
+** Install homebrew (brew.sh)
+
+Go out to the [[https://brew.sh][homebrew web page]], there&#39;s a command you can paste into a Terminal window.
+
+At some point, it should ask for your password; give it and then brew will be able to raise its privs when needed.
+
+The last time I did this, I ended up not being able to type at the Terminal. Swiftly just solved by quitting Terminal and restarting it.
+
+Run ~brew doctor~ to make sure everything is cromulent.
+
+*** get ~hub~ program
+
+[[https://hub.github.com/][hub.github.com]] just makes life easier dealing with github:
+
+#+BEGIN_SRC shell-script
+  brew install hub
+  git config --global hub.protocol https
+#+END_SRC
+
+** Download config repos
+
+Since the .ssh creds were copied over in a previous step, this step should be pretty easy.
+
+Remember these are /my configs/; if you are not me, use your own, please.
+
+*** Dot Files
+
+1. clone the dot files repo first: ~git clone git@github.com:tamouse/my-dot-files.git .my-dot-files~
+2. move into the new dir: ~pushd .my-dot-files~
+3. poke around in the ~profile.d~ folder and make sure all the ones you want are marked as executable
+4. in the ~.my-dot-files/~ folder, run ~./setup.sh~ which will set up the links to the various profile and rc files.
+5. close the Terminal.app and repen it, the setup stuff should be working. Try it out by typing ~ll~ at the Terminal.
+
+*** Emacs config
+
+1. make sure you&#39;re in the HOME directory again: ~cd~
+2. clone the emacs config: ~gcl git@github.com:tamouse/my-emacs-d.git .emacs.d~
+3. follow the directions in the README
+
+** Essential Software
+*** Installing Emacs
+
+For me, there is next to nothing that is more important that using my imprinted editor. It&#39;s easier than ever these days, too, being able to install as a cask from home brew.
+
+I ran the following to check on stuff: ~brew cask info emacs~ -- in particular, I want a fairly high level version, which might not be completely released. I&#39;m running 26.2, the latest from the command shows 26.3, so it should be good to go.
+
+1. run ~brew cask install emacs~
+2. start up emacs with just ~emacs~ to make sure the init.el works as hoped.
+
+   1. on this latest install, i needed to modify init.el
+   2. it was making a reference to ~/usr/local/share/emacs/~ which did not exist in this particular install from the home brew cask.
+3. test out the ~emacsclient~ aliases:
+   
+        ecn .
+
+
+Hopefully everything goes smoothly.
+
+*** Installing Ruby(ies?)
+
+1. Grab ~ruby-install~: ~brew install ruby-install~
+2. Get the latest ruby versions: ~ruby-install~
+3. Install your sweet version: ~ruby-install ruby 2.5.7~ for the project I&#39;m working for this work computer, others are good, too!
+4. Grab ~chruby~: ~brew install chruby~5. Close and reopen the Terminal
+6. Run ~chruby~ to verify the ruby you just installed is there
+7. For my work machine, I want to always be using the same version of ruby everywhere, so I create a ~.ruby-version~ file with ~ruby-2.5.7~ in it
+8. Close and reopen the Terminal again
+9. Verify the ruby:
+   - ~chruby~ - should show the ruby version you added to the ~.ruby-version~ file
+   - ~which ruby~ - should show the new ruby version under your ~.rubies/~ directory
+   - ~ruby -v~ - shows the right version of ruby, yay!
+10. Install some necessary global gems:
+    - bundler - match the version your project(s) need, 2.0.3
+    - rake - the version installed with ruby might be okay
+    - rails 5.1.6 (or whatever your project uses) (takes a long time, whee)
+
+*** Installing Node, NPM, and friends
+
+We&#39;ll be installing from the nodejs web site, instead of using brew or nvm. 
+
+1. Point the browser at [[https:///nodejs.org/en/]]
+2. Click on the LTS version to download the installer
+3. Launch the installer, click through confirming everythingss, and it should be good to go.
+4. Close and reopen the Terminal, just for good time sake
+5. Verify ~node~
+   - ~node -v~
+   - ~npm -v~
+   - ~npx -v~
+
+or do install with brew.  
+
+Install ~yarn~: ~brew install yarn~ (beware there is a new way to do this for yarn v2!)
+
+** Other Software
+
+1. Chrome
+2. Firefox
+3. LastPass
+4. Amphetimine
+5. Spark
+6. Notion
+7. Slack
+8. Trello
+9. Zoom
+10. Affinity Photo &amp; Design
+11. Spotify
+12. Sonos
+13. Monosnap
+14. --Spectacle-- use Rectangle instead: https://github.com/rxhanson/Rectangle
+15. Alfred
+16. Discord
+17. Display Menu
+18. JetBrains Toolbox (from which you can install the others)
+19. Kindle for Mac
+20. ... this list will grow :D
+
+** org files
+
+I keep my org files on keybase in git
+
+#+BEGIN_SRC shell
+  git clone keybase://private/tamouse_/org-files ~/org
+#+END_SRC
+
+** Postgresql
+
+#+BEGIN_SRC shell
+  brew install postgresql
+  brew services start postgresql
+  createdb tamara
+#+END_SRC
+
+For other versions run ~brew search postgresql~. you should be able to run different versions of it, but you&#39;ll also need different paths for the data and so on.
+
+** redis
+
+For a lot of work projects, I use redis on the app. It&#39;s generally useful, like PG, so I make sure it&#39;s always available.
+
+#+BEGIN_SRC shell
+  brew info redis
+  brew install redis
+  brew services start redis
+#+END_SRC
+
+
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/code-review-notes.org</id>
+      <updated>2020-05-23T16:31:19-05:00</updated>
+      <title>Introduction</title>
+      <content>#+TITLE: Notes on conduction guided code reviews
+
+* Introduction
+
+During the course of react web client development, it&#39;s become clear that using our standard method of a team mate reading through a github PR would not work, since the amount of code and files is enormous, contradicting any best practice about doing code reviews. Instead, we&#39;re going to conduct guided code reviews, a practice where we meet as a team to walk through the significant aspects of the code change, to help the other team members understand what is happening and be able to make better contributions to the review.
+
+** Research
+
+*** [[https://www.ibm.com/developerworks/rational/library/11-proven-practices-for-peer-review/index.html][11 Proven Practices for more effective, efficient peer code reviews (IBM Developer)]]
+
+Summary:
+
+1. Review fewer than 200–400 lines of code at a time
+2. Aim for an inspection rate of fewer than 300–500 LOC per hour
+3. Take enough time for a proper, slow review, but not more than 60–90 minutes
+4. Be sure that authors annotate source code before the review begins
+5. Establish quantifiable goals for code review, and capture metrics so you can improve your processes
+6. Use checklists, because they substantially improve results for both authors and reviewers
+7. Verify that the defects are actually fixed
+8. Foster a good code review culture in which finding defects is viewed positively
+9. Beware of the Big Brother effect
+10. Review at least part of the code, even if you can&#39;t do all of it, to benefit from The Ego Effect
+11. Adopt lightweight, tool-assisted code reviews
+
+
+*** [[https://en.wikipedia.org/wiki/Software_walkthrough][Software Walkthroughs (Wikipedia)]]
+
+- [[https://ieeexplore.ieee.org/document/4601584][1028-2008 - IEEE Standard for Software Reviews and Audits]]
+- [[http://pesona.mmu.edu.my/~wruslan/SE2/Readings/detail/Reading-6.pdf][IEEE Std 1028-1999 Standard for Software Reviews]] (PDF)
+
+
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/vagrant-notes.org</id>
+      <updated>2020-05-14T06:44:09-05:00</updated>
+      <title>Vagrant Notes</title>
+      <content>* Vagrant Notes
+** Making Vagrant boxes go faster
+
+  The typical defaults in the Vagrantfile create a wimpy box.
+
+  My mac has a boatload of RAM and CPU cores to spare, thus making this a better config for working:
+
+
+#+begin_src diff
+   config.vm.provider :virtualbox do |vb|
+-    vb.customize [&quot;modifyvm&quot;, :id, &quot;--memory&quot;, 1024]
++    vb.customize [&quot;modifyvm&quot;, :id, &quot;--memory&quot;, 4096, &quot;--vram&quot;, 12, &quot;--cpus&quot;, 4, &quot;--natdnshostresolver1&quot;, &quot;on&quot;]
+   end
+#+end_src
+
+** Using a resolver to set the box&#39;s IP address
+    Instead of hard wiring in an IP address for the vagrant box, you
+    can have it look up a name in your host machine&#39;s /etc/hosts file,
+    thusly:
+
+    At the top of the Vagrant file:
+    #+begin_src ruby
+      require &#39;resolve&#39;
+    #+end_src
+
+    Then, inside the box configuration:
+    #+begin_src ruby
+      config.vm.provider :virtualbox do |vb|
+        vb.customize [&quot;modifyvm&quot;, &quot;--natdnsresolver1&quot;, &quot;on&quot;]
+        #...
+      end
+
+      config.vm.network :private_network, ip: Resolv.getaddress(&#39;&lt;vagrant box name from hosts&gt;&#39;)
+    #+end_src
+
+    And in your /etc/hosts file:
+
+    #+begin_src
+      192.168.80.80	&lt;vagrant box name&gt;
+    #+end_src
+
+    Set the IP address to an appropriate setting for your local
+    network, and give the vagrant box a suitable name for your project
+    and the local network. Using &quot;.dev&quot; as the tld should be good.
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/ux-notes.org</id>
+      <updated>2020-05-14T06:44:09-05:00</updated>
+      <title>UX Notes</title>
+      <content>* UX Notes
+** [[http://www.givegoodux.com/4-tips-adding-lean-ux-agile-development-process/][4 Tips for Adding Lean UX to an Agile Development Process]]
+
+    As organizations of all shapes and sizes come to grips with the fact that UX is critical to project and product success, a common question resurfaces time and again:
+
+    “How do we add Lean UX practices to our current process?”
+
+    1) Hire experienced UX analysts and designers; you need at least one
+       experienced, senior UX member capable of sharing the driving.
+
+    2) There must be an “Iteration 0” in your process where “just
+       enough” research, modeling and design happens.
+
+    3) Follow a process where UX, design and development work is “chunked”
+       and starts with the core, most broad-reaching areas of features and
+       functionality.
+
+    4) Use a collaborative, parallel work process to keep UX efforts
+       both ahead and behind development efforts.
+
+    capture date: [2015-03-19 Thu 16:30]
+** [[http://semantic-ui.com/][Semantic UI Toolkit]]
+   Date: &lt;2013-10-15 Tue 02:19&gt;
+
+   UI is the vocabulary of the web.
+
+   Semantic empowers designers and developers by creating a language
+   for sharing UI.
+
+   Semantic is an alternative to Twitter Bootstrap and other UI
+   kits. It seems like it&#39;s a more readable and usable thing to me. It
+   also is something that seems more easily customizable. It will be
+   interesting to see how it plays out.
+
+   Currently looking at using it on a few new sites, along with
+   [[middleman]].
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/thor-notes.org</id>
+      <updated>2020-05-14T06:44:09-05:00</updated>
+      <title>thor-notes</title>
+      <content>** Thor Notes
+
+*** Start here for next thor project
+
+    Seriously, this has so much &quot;stock&quot; stuff:
+
+    https://github.com/tamouse/rearrange_books/tree/start-here-for-next-thor-project
+
+**** turn this thing into a thor thor generator!
+     Dude, as if you&#39;re the first person to do this?
+
+
+*** Giving a task multiple arguments
+
+    Q: How can I have a task get multiple arguments, like many regular
+    POSIX commands?
+
+    Example:
+
+    #+BEGIN_SRC shell-script
+      cp source_file source_file source_file source_file ... dest_dir
+    #+END_SRC
+
+    Pretty simple:
+
+    #+BEGIN_SRC ruby
+      desc &quot;taskname ARGLIST&quot;
+      def taskname(*args)
+      end
+    #+END_SRC
+
+    would let you do:
+
+    #+BEGIN_SRC shell-script
+      thor taskname arg1 arg2 arg3 arg4
+    #+END_SRC
+
+    and ~args~ in the task would be ~[&quot;arg1&quot;, &quot;arg2&quot;, &quot;arg3&quot;, &quot;arg4&quot;]~
+
+
+
+*** Invoke a thor task by giving only a class option
+    :PROPERTIES:
+    :CAPTURE_DATE: [2016-11-06 Sun 01:11]
+    :END:
+
+    From stackoverflow: http://stackoverflow.com/a/7311357/742446
+
+    [...use] Thor.map to invoke a command by only giving an
+    option flag:
+
+    #+BEGIN_SRC ruby
+      map &#39;-F&#39; =&gt; &#39;foo&#39;
+    #+END_SRC
+
+    Now you can also pass parameters
+
+    #+BEGIN_SRC ruby
+      mythorcommand -F bar # =&gt; invokes foo(&quot;bar&quot;)
+    #+END_SRC
+
+    answered Sep 5 &#39;11 at 17:57 by tfischbach
+
+*** Give thor a default task
+    :PROPERTIES:
+    :CAPTURE_DATE: [2016-11-06 Sun 01:13]
+    :END:
+
+    From stackoverflow: http://stackoverflow.com/a/23955971/742446
+
+    I found a rather &#39;strange&#39; solution for this problem that is working quite well with me.
+
+    You add a default task to Thor. Than you add the method_missing so
+    that you can trick Thor into passing the default method as an
+    argument if there are parameters to your application.
+
+    Taking from your example, the solution would look like this:
+
+    #+BEGIN_SRC ruby
+      class MyThorCommand &lt; Thor
+	default_task :my_default
+
+	desc &quot;my_default&quot;, &quot;A simple default&quot;
+	def my_default(*args)
+          puts args.inspect
+	end
+
+	def method_missing(method, *args)
+          args = [&quot;my_default&quot;, method.to_s] + args
+          MyThorCommand.start(args)
+	end
+
+      end
+
+      MyThorCommand.start(ARGV)
+    #+END_SRC
+
+    If this is in the file &quot;my_thor.rb&quot; an execution &quot;ruby my_thor.rb
+    foo bar&quot; would show &#39;[&quot;foo&quot;, &quot;bar&quot;]&#39; as a result.
+
+    answered May 30 &#39;14 at 13:38 by Edu
+
+*** Making Thor scripts colourful
+
+   capture date: [2015-10-11 Sun 02:06]
+
+   In Thor::Actions, the various output commands can be made nicely
+   colourful. You can append symbols representing various colours after
+   the output string. For example:
+
+   #+begin_src ruby
+     say &quot;This will make you green with envy&quot;, :green
+     say &quot;Don&#39;t be sad&quot;, :blue
+     say &quot;ACK! AN ERROR!&quot;, :red
+   #+end_src
+
+   Colour symbols are defined in
+   https://github.com/erikhuda/thor/blob/master/lib/thor/shell/color.rb
+
+
+   #+begin_src ruby
+     # Set color by using a string or one of the defined constants. If a third
+     # option is set to true, it also adds bold to the string. This is based
+     # on Highline implementation and it automatically appends CLEAR to the end
+     # of the returned String.
+     #
+     # Pass foreground, background and bold options to this method as
+     # symbols.
+     #
+     # Example:
+     #
+     #   set_color &quot;Hi!&quot;, :red, :on_white, :bold
+     #
+     # The available colors are:
+     #
+     #   :bold
+     #   :black
+     #   :red
+     #   :green
+     #   :yellow
+     #   :blue
+     #   :magenta
+     #   :cyan
+     #   :white
+     #   :on_black
+     #   :on_red
+     #   :on_green
+     #   :on_yellow
+     #   :on_blue
+     #   :on_magenta
+     #   :on_cyan
+     #   :on_white
+
+   #+end_src
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/tech-inbox.org</id>
+      <updated>2020-05-14T06:44:09-05:00</updated>
+      <title>Tech Inbox</title>
+      <content>* Tech Inbox
+** IDEA: use google sheets API to feed web site data
+   :PROPERTIES:
+   :CAPTURE_DATE: [2018-12-11 Tue 08:01]
+   :END:
+
+   #+BEGIN_QUOTE
+
+   7. Google Sheets API Instead Of CMS
+
+      Some projects require you to think outside the box. When Adam Quinlan was working on a site for a restaurant where the owner needed a CMS to edit the specials menu on a daily basis, Adam decided to not use a bloated CMS but a Google sheet instead. This makes the site easy to edit while it remains flat from static side generators. Nice!
+
+   #+END_QUOTE
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/static-sites.org</id>
+      <updated>2020-05-14T06:44:09-05:00</updated>
+      <title>static-sites</title>
+      <content>** Static Sites notes
+
+*** Hosting
+
+    - IP: 45.55.188.49
+    - memory: 512MB Ram
+    - disk: 20GB SSD Disk
+    - location: New York 3
+    - OS: Ubuntu 14.04.3 x64
+
+*** DNS
+
+    Pointed mouseha.us on gandi:
+    - A: *.mouseha.us -&gt; IP
+    - A: @.mouseha.us -&gt; IP
+    - CNAME: removed &quot;blog.mouseha.us&quot;
+
+*** Software
+
+    - build-essential
+    - git-core -- DELETED, see below
+    - curl
+    - mysql-server, mysql-client
+    - sqlite3
+    - ruby 2.2.3
+      - mkdir src
+      - cd src
+      - git clone https://github.com/postmodern/ruby-install.git
+      - cd ruby-install
+      - make install
+    - node 4.2.3
+      - cd src
+      - wget https://nodejs.org/dist/v4.2.3/node-v4.2.3.tar.gz
+      - tar zxvf node-v4.2.3.tar.gz
+      - cd node-v4.2.3
+      - ./configure
+      - make
+      - make install
+    - emacs24
+      - apt-get build-dep emacs24
+      - cd src
+      - wget http://ftp.gnu.org/gnu/emacs/emacs-24.5.tar.gz
+      - untar
+      - cd emacs-24.5
+      - ./configure
+      - make
+      - make install
+    - postfix
+      - installed with emacs24
+      - following https://easyengine.io/tutorials/linux/ubuntu-postfix-gmail-smtp/
+      - set up for using tamouse.lists@gmail.com to relay
+      - had to wait for *ages* to get gmail to give me the &quot;is this
+	you?&quot; query
+      - waiting to see if it works
+    - nginx
+      - simple virtual host configuration points to sites at
+	~git/Sites/&lt;domain&gt;. For example, domain &quot;mouseha.us&quot; points to
+	~git/Sites/mouseha.us/
+      - sites:
+	- static-sites
+	- mouseha.us
+	- ngblog.mouseha.us
+	- pontiki.io -- just purchased at Gandi.Net for 2 years at $35/yr
+    - git -- newest version from github
+      - cd src
+      - git clone https://github.com/git/git.git
+      - cd git
+      - make prefix=/usr all doc info
+      - make prefix=/usr install install-doc install-html install-info
+
+*** Accounts
+
+**** git
+
+     - set up my-dot-files in .dot-file
+     - set up my-emacs-d in .emacs.d
+
+**** directories
+
+    - Sites
+	- static-sites
+	- mouseha.us
+	- ngblog.mouseha.us
+    - Repos -- correspond to Sites/*
+
+	The repos will have post-recieve hooks to automatically update
+	the corresponding static site.
+*** [[http://stackoverflow.com/questions/10264249/cant-get-page-data-from-jekyll-plugin][Can&#39;t Get Page Data From Jekyll Plugin - Stack Overflow]]
+    Date: &lt;2013-10-15 Tue 13:44&gt;
+
+    Can’t get page data from Jekyll plugin
+
+    I’m trying to write a custom tag plugin for Jekyll that will output
+    a hierarchical navigation tree of all the pages (not posts) on the
+    site. I’m basically wanting a bunch nested &lt;ul&gt;’s with links (with
+    the page title as the link text) to the pages with the current page
+    noted by a certain CSS class.
+
+
+    I’m very inexperienced with ruby. I’m a PHP guy.
+
+    I figured I’d start just by trying to iterate through all the pages
+    and output a one-dimensional list just to make sure I could at least
+    do that. Here’s what I have so far:
+
+
+    module Jekyll
+
+    class NavTree &lt; Liquid::Tag
+    def initialize(tag_name, text, tokens)
+    super
     end
-  end
-end
-```
 
+    def render(context)
+    site = context.registers[:site]
+    output = &#39;&lt;ul&gt;&#39;
+    site.pages.each do |page|
+    output += &#39;&lt;li&gt;&lt;a href=&quot;&#39;+page.url+&#39;&quot;&gt;&#39;+page.title+&#39;&lt;/a&gt;&lt;/li&gt;&#39;
+    end
+    output += &#39;&lt;ul&gt;&#39;
+
+    output
+    end
+    end
+
+    end
+
+    Liquid::Template.register_tag(&#39;nav_tree&#39;, Jekyll::NavTree)
+
+    And I’m inserting it into my liquid template via {\% nav_tree %\}.
+
+    The problem is that the page variable in the code above doesn’t have
+    all the data that you’d expect. page.title is undefined and page.url
+    is just the basename with a forward slash in front of it (e.g. for
+    /a/b/c.html, it’s just giving me /c.html).
+
+
+    What am I doing wrong?
+
+    Side note: I already tried doing this with pure Liquid markup, and I
+    eventually gave up. I can easily iterate through site.pages just
+    fine with Liquid, but I couldn’t figure out a way to appropriately
+    nest the lists.
+
+    asked Apr 22 ‘12 at 0:34
+
+    I created an issue on GitHub to see if anybody there knows the
+    answer. –  jnrbsn Apr 30 ‘12 at 16:21
+
+    Did you ever manage to get the nesting working? I’d love to see the
+    final code if so –  Brand Aug 21 ‘12 at 19:35
+
+    @Brand Unfortunately, I never got around to finishing it. –  jnrbsn
+    Aug 23 ‘12 at 23:19
+
+    I managed to hack the hierachical page tree together. It’s not
+    pretty but I’ve posted it here: gist.github.com/3536551 in case
+    anyone else stumbles on this question –  Brand Aug 30 ‘12 at 18:24
+
+
+    2 Answers
+
+    Try:
+
+    module Jekyll
+
+    # Add accessor for directory
+    class Page
+    attr_reader :dir
+    end
+
+    class NavTree &lt; Liquid::Tag
+    def initialize(tag_name, text, tokens)
+    super
+    end
+
+    def render(context)
+    site = context.registers[:site]
+    output = &#39;&lt;ul&gt;&#39;
+    site.pages.each do |page|
+    output += &#39;&lt;li&gt;&lt;a href=&quot;&#39;+page.dir+page.url+&#39;&quot;&gt;&#39;+(page.data[&#39;title&#39;] || page.url) +&#39;&lt;/a&gt;&lt;/li&gt;&#39;
+    end
+    output += &#39;&lt;ul&gt;&#39;
+    output
+    end
+    end
+    end
+
+    Liquid::Template.register_tag(&#39;nav_tree&#39;, Jekyll::NavTree)
+
+
+    With this code, I get Liquid error: can&#39;t convert nil into String. –
+    jnrbsn May 30 ‘12 at 18:11
+
+
+    You probably had a page without a title, so that page.data[‘title’]
+    is nil. Replace w/ e.g. (page.data[‘title’] || page.url) . –  Mikael
+    Borg Jun 4 ‘12 at 9:37
+
+    Sorry for the delayed response. You were correct. I had a page
+    without a title. Your solution works. –  jnrbsn Jun 15 ‘12 at 4:32
+
+
+    page.title is not always defined (example: atom.xml). You have to
+    check if it is defined. Then you can take page.name or not process
+    the entry…
+
+    def render(context)
+    site = context.registers[:site]
+    output = &#39;&lt;ul&gt;&#39;
+    site.pages.each do |page|
+    unless page.data[&#39;title&#39;].nil?
+    t = page.data[&#39;title&#39;]
+    else
+    t = page.name
+    end
+    output += &quot;&lt;li&gt;&lt;a href=&quot;&#39;+page.dir+page.url+&#39;&quot;&gt;&#39;+t+&#39;&lt;/a&gt;&lt;/li&gt;&quot;
+    end
+    output += &#39;&lt;ul&gt;&#39;
+    output
+    end
+
+
+    Shorten that unless..end a bit to: t = page.data[&#39;title&#39;] ||
+    page.name –  tamouse 20 mins ago
+
+*** [[http://middlemanapp.com/][middleman]]
+    Date: &lt;2013-10-15 Tue 02:15&gt;
+    Middleman is a static site generator using all the shortcuts and
+    tools in modern web development.
+
+    Considering using this for my resume builder, and my recipe
+    file. Both seem ideal candidates for this thing. I might also
+    switch over my comic snagger to using this instead of jekyll.
+
+    Generally, I&#39;m liking the looks and idea of middleman better than
+    jekyll, octopress and definitely frank.
 </content>
       <author>
         <name>Tamara Temple</name>

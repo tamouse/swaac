@@ -1,3 +1,4 @@
+- [[./10/TIL-scoped-uniqueness-validation-syntax.md]]
 - [[./04/2020-04-08-using-keybase-for-secure-git-repos.md]]
 - [[./04/2020-04-07-yil-rails-validators-dont-change-type.md]]
 - [[./04/2020-04-01-building-rails-compatible-query-strings-in-javascript.md]]
