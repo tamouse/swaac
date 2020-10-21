@@ -2,7 +2,7 @@
 title: "Honouring the user's preferred colour scheme in CSS"
 date: 2020-03-23T03:32
 category: css
-tags: [colour-scheme, dark-mode, light-mode]
+tags: [colour-scheme, dark-mode, light-mode, react, styled-components]
 ---
 
 How do I honour the user's chosen preferred colour scheme in the CSS I'm writing? Recently MacOS introduced dark mode in Mojave, and further added a shifting light and dark mode to match the time of day in Catalina. I'd like my sites, but more importantly, my React apps to follow this.
