@@ -1,3 +1,4 @@
+- [[./12/2020-12-09-til-deleting-nested-objects-in-accepts-nested-attributes-for.md]]
 - [[./10/TIL-scoped-uniqueness-validation-syntax.md]]
 - [[./04/2020-04-08-using-keybase-for-secure-git-repos.md]]
 - [[./04/2020-04-07-yil-rails-validators-dont-change-type.md]]
