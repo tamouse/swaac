@@ -72,6 +72,10 @@ Also, [[https://www.codefellows.org/blog/this-is-why-learning-rails-is-hard][lea
 
 *** Ruby-specific
 
+ - [[https://pragprog.com/titles/ruby/programming-ruby-2nd-edition/][*Programming Ruby, 2nd ed.*]] by Dave Thomas, with Chad Fowler and Andy Hunt
+ 
+   The seminal Ruby language guide.
+
  - [[https://www.goodreads.com/book/show/9364729-eloquent-ruby][*Eloquent Ruby*]] by Russ Olsen.
 
    Olsen's approach in this book is to go far beyond just learning a programming language, but a way to learning the idioms and the "Ruby Way". Even if your chosen language is something other than Ruby, reading this book will give you an appreciation for how to delve into a language and get the most out of it.
@@ -95,6 +99,10 @@ Also, [[https://www.codefellows.org/blog/this-is-why-learning-rails-is-hard][lea
    A follow-on the highly successful Rails 3 in Action, R4iA has been completely rewritten, with new examples, case study, and all the great new features in Rails 4.
 
    A great book for beginning Rails developers to start with, and for intermediate developers to step up their game.
+   
+ - [[https://pragprog.com/titles/rails6/agile-web-development-with-rails-6/][Agile Web Development with Rails 6]] by Sam Ruby and David Bryant Copeland
+ 
+   The officially sanctioned book on Rails development.
 
  - [[https://www.justinweiss.com/practicing-rails/][*Practicing Rails*]] by [[http://www.justinweiss.com][Justin Weiss]].
 
