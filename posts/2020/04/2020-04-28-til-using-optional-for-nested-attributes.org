@@ -3,6 +3,7 @@
   :CUSTOM_ID: til-using-optional-for-nested-attributes
   :END:
 
+#+begin_verse
 Area: SWaaC 
 Created: Apr 25, 2020 10:18 AM 
 Done: No 
@@ -12,6 +13,7 @@ Series: TIL
 Status: In Review 
 Tags: Rails, nesting 
 Topic: Ruby and Rails
+#+end_verse
 
 ** TL;DR
   :PROPERTIES:
