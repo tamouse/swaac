@@ -8,7 +8,7 @@ Hide: No
 Series: TIL  
 Status: In Review  
 Tags: Rails, nesting  
-Topic: Ruby and Rails  
+Topic: Ruby and Rails  a
 
 ## TL;DR
 
@@ -17,19 +17,16 @@ Eventually I found the issue: When you (meaning "I") do this, you (I) need to se
 ## The Problem
 
 I've been banging my head on the keyboard trying to figure this out.
-
 I had two models where once accepts the nested attributes for the other. It was just not working the way I thought it should. 
-
-I kept getting back an validation error on the relationship `purchase_id`, and everything I tried was not working as I expected.
-
-Even removing the `anaf` line made it work, and it really should have behaved the same damn way.
+I kept getting back a validation error on the relationship `purchase_id`, and everything I tried was not working as I expected.
+Removing the `accepts_nested_attributes_for` line made it work, and it really should have behaved the same way.
 
 ## Discussion
 
 ### Two models
 
-1. Purchase
-2. PurchaseDetail, which belongs to people
+1. `Purchase`, has many `PurchaseDetail`
+2. `PurchaseDetail`, which belongs to `Purchase`
 
 ### purchase.rb:
 
@@ -40,7 +37,7 @@ class Purchase < ApplicationRecord
 end
 ```
 
-purchase_detail.rb
+### purchase_detail.rb ###
 
 ```ruby
 class PurchaseDetail < ApplicationRecord
