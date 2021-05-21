@@ -26,6 +26,8 @@
 - [[./Tech/WordPress-notes.org]]
 - [[./2020/12/2020-12-09-til-deleting-nested-objects-in-accepts-nested-attributes-for.md]]
 - [[./2020/10/TIL-scoped-uniqueness-validation-syntax.md]]
+- [[./2020/04/2020-04-28-til-using-optional-for-nested-attributes.org]]
+- [[./2020/04/2020-04-28-til-using-optional-for-nested-attributes.md]]
 - [[./2020/04/2020-04-08-using-keybase-for-secure-git-repos.md]]
 - [[./2020/04/2020-04-07-yil-rails-validators-dont-change-type.md]]
 - [[./2020/04/2020-04-01-building-rails-compatible-query-strings-in-javascript.md]]
