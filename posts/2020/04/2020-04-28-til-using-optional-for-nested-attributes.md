@@ -1,14 +1,14 @@
 # TIL: Using optional for nested attributes
 
-Area: SWaaC
-Created: Apr 25, 2020 10:18 AM
-Done: No
-Draft Date: Apr 28, 2020
-Hide: No
-Series: TIL
-Status: In Review
-Tags: Rails, nesting
-Topic: Ruby and Rails
+Area: SWaaC  
+Created: Apr 25, 2020 10:18 AM  
+Done: No  
+Draft Date: Apr 28, 2020  
+Hide: No  
+Series: TIL  
+Status: In Review  
+Tags: Rails, nesting  
+Topic: Ruby and Rails  
 
 ## TL;DR
 
