@@ -12,12 +12,10 @@
 #+EXCLUDE_TAGS: noexport
 #+CREATOR: Emacs 26.2 (Org mode 9.1.9)
 
-* TIL: transform_keys in Rails` Hash with indifferent access
+** TIL: transform_keys in Rails` Hash with indifferent access
 
   I think I knew this already, but it was reintroduced to me the other day.
 
   ~transform_keys~ is useful if you need to modify the keys of a Hash in a uniform way.
 
-  When you call it on a HWIA and pass it a block, the block gets each key as it's argument. The block can perform any sort of manipulation on the key and the final line of the block is the new key. This can be used to force a set of keys to be unique before merging with another hash, for example.
-
-  The 
+  When you call it on a HWIA (Hash-With-Indifferent-Access) and pass it a block, the block gets each key as it's argument. The block can perform any sort of manipulation on the key and the final line of the block is the new key. This can be used to force a set of keys to be unique before merging with another hash, for example.
