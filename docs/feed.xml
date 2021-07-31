@@ -2,7 +2,103 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://github.com/tamouse/swaac</id>
   <title>Tamouse&#39;s Software as a Craft blog</title>
-  <updated>2021-06-03T10:23:25-05:00</updated>
+  <updated>2021-07-30T21:18:08-05:00</updated>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2021/2021-07-09-murmurations-at-drip.md</id>
+      <updated>2021-07-30T21:18:08-05:00</updated>
+      <title>2021-07-09-murmurations-at-drip</title>
+      <content>---
+layout: post
+title: &quot;Murmurations at Drip&quot;
+date: 2021-07-09
+description: &quot;What&#39;s in a name? How we work together at Drip&quot;
+author: tamouse
+---
+
+## Murmurations ##
+
+The following video shows what is known as a murmuration of starlings, where the birds flock and swoop in some kind of formation:
+
+&lt;div style=&quot;padding:75% 0 0 0;position:relative;&quot;&gt;&lt;iframe src=&quot;https://player.vimeo.com/video/31158841&quot; style=&quot;position:absolute;top:0;left:0;width:100%;height:100%;&quot; frameborder=&quot;0&quot; allow=&quot;autoplay; fullscreen; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;script src=&quot;https://player.vimeo.com/api/player.js&quot;&gt;&lt;/script&gt;
+&lt;p&gt;&lt;a href=&quot;https://vimeo.com/31158841&quot;&gt;Murmuration&lt;/a&gt; from &lt;a href=&quot;https://vimeo.com/islandsandrivers&quot;&gt;Islands &amp;amp; Rivers&lt;/a&gt; on &lt;a href=&quot;https://vimeo.com&quot;&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;
+
+&lt;!-- [https://vimeo.com/31158841](https://vimeo.com/31158841) --&gt;
+
+From the dictionary, a murmuration is a flock of starlings. Wikipedia has a little more info:
+
+&gt; During the winter months, starlings are known for aggregating into huge flocks of hundreds to thousands of individuals, murmurations, which when they take flight altogether, render large displays of intriguing swirling patterns in the skies above observers. — [https://en.wikipedia.org/wiki/Flocking_(behavior)#In_nature](https://en.wikipedia.org/wiki/Flocking_(behavior)#In_nature)
+
+Most dev folks have heard about [pair programming](https://en.wikipedia.org/wiki/Pair_programming), a part of Agile Programming, and some have heard of [mob programming](https://en.wikipedia.org/wiki/Mob_programming), which expands the pair to more than two people. An apt description by Marcus Hammerberg:
+
+&gt; The basic concept of mob programming is simple: the entire team works as a team together on one task at the time. That is: one team – one (active) keyboard – one screen (projector of course). — from *&quot;[Mob Programming — Full Team, Full Throttle](http://www.marcusoft.net/2013/08/repost-mob-programming-full-team-full-throttle.html)&quot;*
+
+## Where we started
+
+Here at Drip, we do some pairing, and some teams do mob programming when it makes sense.
+
+The team I&#39;m currently part of, Marketing Insights (MI for short, or just &quot;Insights&quot;), is responsible for providing recommendations, insights, and suggested actions to our customers, generically known as Guidance. We&#39;ve been given the opportunity to experiment and discover what works best for our customers.
+
+At the time I joined the team, I was a contractor. About the same time, a new college hire was also joining the team. This felt like an ideal opportunity to use the multi-person approach in order to help both of us come up to speed quickly on the code base, and for our new engineer to learn the Ruby language, and Rails framework.
+
+We worked really well in this mode, and started using it as other features that came our way. It was great to have someone with a lot of experience navigating and observing, someone with less experience driving, and other people to join in to provide answers in different areas.
+
+## What changed? ##
+
+However, on Jan 6th, 2021, the mob attack on the US Capital gave us a different feeling for the word &quot;mob&quot;.
+
+Along with notions of &quot;mob rule&quot;, &quot;mob violence&quot;, and the general negative connotation for &quot;mob&quot; at least in the US and Canada, we found it quite distasteful to keep using that term for how we worked. We wanted to keep working in the helpful and productive way we had been, but lose the word.
+
+We spent a few minutes sort of talking about the word, and no one was really coming up something, and I recalled the term &quot;murmuration&quot; from several years ago when I saw a video of one, captured by a couple women on film.
+
+## Where we&#39;re at
+
+From that point in January, our team has been murmurating for a big chunk of our work. The reasons why we started at the beginning don&#39;t apply so much anymore, but the multiple heads on one problem is really a solid practice, especially when we&#39;re tackling things that are brand new for us. By no means is all, or even most, of our work done in a murmuration, though.
+
+Murmurations tend to happen:
+ * when someone needs help on a ticket
+ * when a ticket is particularly gnarly, possibly going into an area that has not been anticipated
+ * when we want to learn and spread knowledge to the team (e.g. a key player in a specific tech was going to be out for a month -- *yay sabatticals at Drip!* -- so they ran a few murmurations with others driving so we could get a feel for the language and code base
+ * if the action might be particularly dangerous if done incorrectly (e.g. we like to have a couple people doing a database migration in production)
+
+When there&#39;s a bug in production that&#39;s causing a major issue for customers and we can&#39;t figure it out quickly, we still use a team, but it&#39;s more a swarm than a murmuration.
+
+When someone picks up a ticket to work on and they&#39;d like help on it, they post a zoom link in our Slack channel and invite team members to join them. Most often someone does. Also, team members will regularly ask if there are any murmurations going on when they start the day, come back from lunch or a meeting, or have some momentary down time as they decide what to work on next.
+
+Even our weekly planning time seems like a murmuration as the whole team is involved in defining epics and stories, with one person driving by writing it all down in Jira.
+
+During programming murmurations, the driver is rotated so we all get time in the driver&#39;s seat as well as doing the observing or navigating role. This is quite helpful in alleviating fatigue and keeping everyone interested. Navigators can spend time providing context, history, and direction; some help by looking up documentation on syntax, libraries, method signatures, etc., to explain things to everyone. Everyone has a role, no one sits back and coasts. I believe this has a lot to do with how much we respect each other and also want to help each other.
+
+## Why is this important?
+
+Some could say &quot;it&#39;s just a word, just a name. Why bother changing it?&quot; That is a good question. The answers are partly practical, partly philosophical, and partly visceral.
+
+As mentioned above, the word &quot;mob&quot; took on tremendously distasteful connotation for our team, yet we were highly committed to the activity entailed.
+
+The beauty of a starling flock&#39;s murmuration strikes a chord with people; they are more than just enjoyable to watch, they are stunning displays of nature&#39;s beauty.
+
+Using the term to refer to our work together provides a sense of that same synchronicity, swarming in formation together, without it needing to be defined, frame-worked, or even necessarily taught. It is *experienced*.
+
+It is such a positive word, there&#39;s a little spark of joy every time someone uses the term, even creating new forms, such as &quot;murmurating&quot;, and several folks just get a smile on their faces when we talk about it in zoom meetings.
+
+The positive sense of the word murmuration forms the feelings people have about working together in this fashion.</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/README.md</id>
+      <updated>2021-06-17T12:11:15-05:00</updated>
+      <title>README</title>
+      <content># Tech notes
+
+This is an older collection of notes on tech stuff that I used to keep in my original .org folder. I moved it over here as more appropriate than keeping them private, with the understanding that these are old, might be out of date, and inaccurate, as well as incomplete.
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2021/2021-04-29-til-transform-keys.org</id>
       <updated>2021-06-03T10:23:25-05:00</updated>
@@ -1253,607 +1349,6 @@ Summary:
 
 - [[https://ieeexplore.ieee.org/document/4601584][1028-2008 - IEEE Standard for Software Reviews and Audits]]
 - [[http://pesona.mmu.edu.my/~wruslan/SE2/Readings/detail/Reading-6.pdf][IEEE Std 1028-1999 Standard for Software Reviews]] (PDF)
-
-
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/python-notes.org</id>
-      <updated>2020-05-23T16:31:19-05:00</updated>
-      <title>Python</title>
-      <content>* Python
-** Python Notes (refile Target)
-
-*** Joining a list of strings with a separator
-    :PROPERTIES:
-    :CAPTURE_DATE: [2016-12-19 Mon]
-    :END:
-
-    This is rather the exact opposite of the way Ruby does it.
-
-    #+BEGIN_SRC python
-      sepstr.join(list_of_strings)
-
-      # Example:
-
-      &#39;, &#39;.join([&#39;Apple&#39;,&#39;Pear&#39;,&#39;Banana&#39;,&#39;Orange&#39;])
-      # =&gt; &quot;Apple, Pear, Banana, Orange&quot;
-    #+END_SRC
-
-    I have not yet understood why this is done this way, but perhaps
-    it&#39;s entirely arbitrary.
-
-*** Using boto3 to grab a file from S3
-    :PROPERTIES:
-    :CAPTURE_DATE: [2016-12-19 Mon 17:18]
-    :END:
-
-    Upload a local file to S3:
-
-    #+BEGIN_SRC python
-      import boto3
-
-      boto_session = boto3.Session(profile_name=&#39;myaws&#39;)
-
-      boto_session.resource(&#39;s3&#39;).Bucket(&#39;my_bucket&#39;).upload_file(&#39;/tmp/file.txt&#39;, &#39;some/file.txt&#39;)
-    #+END_SRC
-
-    This will download a file to the local machine:
-
-    #+BEGIN_SRC python
-      import boto3
-
-      boto_session = boto3.Session(profile_name=&#39;myaws&#39;)
-      content = boto_session.resource(&#39;s3&#39;).Bucket(&#39;my_bucket&#39;).download_file(&#39;some/file.txt&#39;, &#39;/tmp/somfile.txt&#39;)
-
-    #+END_SRC
-
-    This will pull the file (object) into process memory (careful!)
-
-    #+BEGIN_SRC python
-      import boto3
-
-      boto_session = boto3.Session(profile_name=&#39;myaws&#39;)
-      content = boto_session.resource(&#39;s3&#39;).Object(&#39;my_bucket&#39;, &#39;some/file.txt&#39;)[&#39;Body&#39;].read()
-    #+END_SRC
-
-
-**** More links on this:
-
-     [[https://gist.github.com/iMilnb/0ff71b44026cfd7894f8][Programmatically manipulate AWS resources with boto3 - a quick
-     hands on]]
-
-*** Building a MANIFEST.in template for sdist
-
-    [[https://docs.python.org/2/distutils/sourcedist.html#manifest-template][python docs for MANIFEST.in template]]
-
-
-
-*** Magic to make a python script run
-    :PROPERTIES:
-    :CAPTURE_DATE: [2016-12-20 Tue 11:47]
-    :END:
-
-
-    When writing a python script that defines a bunch of methods,
-    classes, and so on, it can be imported into another script to do
-    stuff with, or run as an independent script.
-
-    The magic that makes that work is:
-
-    #+BEGIN_SRC python
-      if __name__ == &#39;__main__&#39;:
-          app.run()
-    #+END_SRC
-
-    at the bottom of the file. (~app~ would be defined by the file
-    somewhere.)
-
-    Including a shebang at the top will make it interpretable from the
-    shell, too.
-*** Python ~with~ statement
-    :PROPERTIES:
-    :CAPTURE_DATE: [2016-12-20 Tue 15:34]
-    :LINK:     https://docs.python.org/3/whatsnew/2.6.html#pep-343-the-with-statement
-    :TITLE:    What’s New in Python 2.6 — Python 3.5.2 documentation
-    :END:
-
-    :CAPTURE_DATE: [2016-12-20 Tue 15:34]
-    :LINK:     https://docs.python.org/3/whatsnew/2.6.html#pep-343-the-with-statement
-    :TITLE:    What’s New in Python 2.6 — Python 3.5.2 documentation
-
-    The ‘with‘ statement clarifies code that previously would use
-    try...finally blocks to ensure that clean-up code is executed. In
-    this section, I’ll discuss the statement as it will commonly be
-    used. In the next section, I’ll examine the implementation
-    details and show how to write objects for use with this
-    statement.
-
-    The ‘with‘ statement is a control-flow structure
-    whose basic structure is:
-
-    #+BEGIN_SRC python
-      with expression [as variable]:
-          with-block
-
-    #+END_SRC
-*** Ned Batchelder: Lists vs. Tuples
-    :PROPERTIES:
-    :CAPTURE_DATE: [2017-04-15 Sat 12:13]
-    :LINK:     https://nedbatchelder.com/blog/201608/lists_vs_tuples.html
-    :TITLE:    Ned Batchelder: Lists vs. Tuples
-    :END:
-
-    :CAPTURE_DATE: [2017-04-15 Sat 12:13]
-    :LINK:     https://nedbatchelder.com/blog/201608/lists_vs_tuples.html
-    :TITLE:    Ned Batchelder: Lists vs. Tuples
-
-    Response to my question in PyLadies#help_me channel.
-
-    To put the Cultural Difference in terms of the C language, lists
-    are like arrays, tuples are like structs.
-*** Ned Batchelder: Tag: Python
-    :PROPERTIES:
-    :CAPTURE_DATE: [2017-04-15 Sat 12:16]
-    :LINK:     https://nedbatchelder.com/blog/tag/python.html
-    :TITLE:    Ned Batchelder: Tag: Python
-    :END:
-
-    :CAPTURE_DATE: [2017-04-15 Sat 12:16]
-    :LINK:     https://nedbatchelder.com/blog/tag/python.html
-    :TITLE:    Ned Batchelder: Tag: Python
-
-    Python Posts by Ned Batchelder; useful info, blogging since 2002.
-
-*** Doctest
-    OMG DOCTEST IS DA BOMB!!!
-
-    https://docs.python.org/3/library/doctest.html
-
-    Enter tests in doc strings (Elixir has this too):
-
-    #+BEGIN_SRC python
-
-      SQFT_TO_SQM = 0.09290304
-
-      class CalcArgumentError(Exception):
-          def __init__(self, arg, msg):
-              self.argument = arg
-              self.message = msg
-
-
-      def calc(length, width):
-          &quot;&quot;&quot;
-
-          Calculate the area of a room given length and width
-
-          :returns: (area in sq ft, area in sq meters)
-
-          &gt;&gt;&gt; calc(10.0,5.0)
-          (50.0, 4.645152)
-
-          &gt;&gt;&gt; calc(2,2)
-          (4.0, 0.37161216)
-
-          &gt;&gt;&gt; calc(&quot;a&quot;, 2)
-          Traceback (most recent call last):
-              ...
-          CalcArgumentError: (&#39;a&#39;, &#39;invalid input: Length must be a number greater than zero&#39;)
-
-          &gt;&gt;&gt; calc(2, &quot;a&quot;)
-          Traceback (most recent call last):
-              ...
-          CalcArgumentError: (&#39;a&#39;, &#39;invalid input: Width must be a number greater than zero&#39;)
-
-          &gt;&gt;&gt; calc(0, 1)
-          Traceback (most recent call last):
-              ...
-          CalcArgumentError: (0.0, &#39;invalid input: Length must be a number greater than zero&#39;)
-
-          &gt;&gt;&gt; calc(1, 0)
-          Traceback (most recent call last):
-              ...
-          CalcArgumentError: (0.0, &#39;invalid input: Width must be a number greater than zero&#39;)
-
-
-
-          &quot;&quot;&quot;
-
-          try:
-              length = float(length)
-              if not length &gt; 0.0:
-                  raise ValueError
-          except ValueError as err:
-              raise CalcArgumentError(length, &quot;invalid input: Length must be a number greater than zero&quot;)
-
-          try:
-              width = float(width)
-              if not width &gt; 0.0:
-                  raise ValueError
-          except ValueError as err:
-              raise CalcArgumentError(width, &quot;invalid input: Width must be a number greater than zero&quot;)
-
-          area_sqft = length * width
-          area_sqm = area_sqft * SQFT_TO_SQM
-          return area_sqft, area_sqm
-
-      if __name__ == &#39;__main__&#39;:
-          import doctest
-          print(&quot;Running Doctests&quot;)
-          if (doctest.testmod()[0]) == 0:
-              print(&quot;PASSED!&quot;)
-
-    #+END_SRC
-
-    This is so cool. Ruby has one, but it looks *way* out of date, and
-    not really much supported. This is first class testing in Python!
-
-*** learn how to deep merge dictionaries in Python               :polyconfig:
-    :PROPERTIES:
-    :CAPTURE_DATE: [2017-01-27 Fri 08:08]
-    :END:
-** PySFTP notes
-*** Opening a connection using a private key file
-    :PROPERTIES:
-    :CAPTURE_DATE: [2016-12-19 Mon]
-    :END:
-
-    This is pretty straightforward, you can use the ~private_key~
-    parameter to give the PEM file:
-
-    #+BEGIN_SRC python
-      import pysftp
-
-      with pysftp.Connection(&#39;ftphost&#39;, username=&#39;ftpuser&#39;, private_key=&#39;path/to/pem/file&#39;) as sftp:
-          do this
-          do that
-    #+END_SRC
-
-    *BUT* there&#39;s a huge caveat that I haven&#39;t figured out yet: If the
-    host is not yet in the known hosts file, the above fails. The only
-    way I could get this to work is to open a connection to the host
-    from the command line:
-
-    #+BEGIN_SRC shell-script
-      sftp -i path/to/pem/file ftpuser@ftphost
-    #+END_SRC
-
-    This opens an interactive connection, which is good enough since it
-    stuffs the ftphost into the ~\~/.ssh/known_hosts~ file.
-
-** Flask
-
-*** microblog flask sample application
-
-**** Firebase Config
-
-     Obtained from
-     https://console.firebase.google.com/project/microblog-flask-app/overview
-     by clicking on &quot;Add Firebase to your web app&quot;.
-
-     ~pyfirebase~ uses only the database URL.
-
-
-     #+BEGIN_SRC html
-       &lt;script src=&quot;https://www.gstatic.com/firebasejs/3.7.3/firebase.js&quot;&gt;&lt;/script&gt;
-       &lt;script&gt;
-         // Initialize Firebase
-         var config = {
-           apiKey: &quot;&quot;,
-           authDomain: &quot;microblog-flask-app.firebaseapp.com&quot;,
-           databaseURL: &quot;https://microblog-flask-app.firebaseio.com&quot;,
-           storageBucket: &quot;microblog-flask-app.appspot.com&quot;,
-           messagingSenderId: &quot;500140812042&quot;,
-           serviceAccount: &quot;microblog-flask-app-firebase-adminsdk-ji6au-b353df6573.json&quot;,
-         };
-         firebase.initializeApp(config);
-       &lt;/script&gt;
-     #+END_SRC
-
-     #+BEGIN_SRC python
-       FIREBASE_CONFIG = {
-           &quot;apiKey&quot;: &quot;&quot;,
-           &quot;authDomain&quot;: &quot;microblog-flask-app.firebaseapp.com&quot;,
-           &quot;databaseURL&quot;: &quot;https://microblog-flask-app.firebaseio.com&quot;,
-           &quot;storageBucket&quot;: &quot;microblog-flask-app.appspot.com&quot;,
-           &quot;messagingSenderId&quot;: &quot;500140812042&quot;,
-           &quot;serviceAccount&quot;: &quot;microblog-flask-app-firebase-adminsdk-ji6au-b353df6573.json&quot;,
-       }
-
-     #+END_SRC
-
-**** Firebase Service Account info
-
-     #+BEGIN_SRC javascript
-       {
-         &quot;type&quot;: &quot;service_account&quot;,
-         &quot;project_id&quot;: &quot;microblog-flask-app&quot;,
-         &quot;private_key_id&quot;: &quot;&quot;,
-         &quot;private_key&quot;: &quot;&quot;,
-         &quot;client_email&quot;: &quot;&quot;,
-         &quot;client_id&quot;: &quot;&quot;,
-         &quot;auth_uri&quot;: &quot;https://accounts.google.com/o/oauth2/auth&quot;,
-         &quot;token_uri&quot;: &quot;https://accounts.google.com/o/oauth2/token&quot;,
-         &quot;auth_provider_x509_cert_url&quot;: &quot;https://www.googleapis.com/oauth2/v1/certs&quot;,
-         &quot;client_x509_cert_url&quot;: &quot;&quot;
-       }
-     #+END_SRC
-
-**** thisbejim/Pyrebase: A simple python wrapper for the Firebase API.
-     :PROPERTIES:
-     :CAPTURE_DATE: [2017-03-21 Tue 20:43]
-     :LINK:     https://github.com/thisbejim/Pyrebase
-     :TITLE:    thisbejim/Pyrebase: A simple python wrapper for the Firebase API.
-     :DESCRIPTION: Pyrebase - A simple python wrapper for the Firebase API.
-     :END:
-
-     :CAPTURE_DATE: [2017-03-21 Tue 20:43]
-     :LINK:     https://github.com/thisbejim/Pyrebase
-     :TITLE:    thisbejim/Pyrebase: A simple python wrapper for the Firebase API.
-     :DESCRIPTION: Pyrebase - A simple python wrapper for the Firebase API.
-
-     this is current one people suggest using. The ones with the
-     highest relevance in PyPi are deprecated!!
-
-** PyLadies
-*** Joining Slack
-
-    The PyLadies Slack team has women from all over the world that are
-    willing and able to help folks learn.
-
-    Go to http://slackin.pyladies.com/  to sign in (will get approval
-    there.)
-
-    On the slack, PyLadiesTC has a channel: ~#twin-cities~
-
-**** Join PyLadies on Slack!
-     :PROPERTIES:
-     :CAPTURE_DATE: [2017-04-12 Wed 21:35]
-     :LINK:     http://slackin.pyladies.com/
-     :TITLE:    Join PyLadies on Slack!
-     :END:
-
-     :CAPTURE_DATE: [2017-04-12 Wed 21:35]
-     :LINK:     http://slackin.pyladies.com/
-     :TITLE:    Join PyLadies on Slack!
-
-     How to sign up for the PyLadies Slack team.
-** Books
-*** NOT recommended
-**** Python for the Raspberry Pi
-     :PROPERTIES:
-     :AUTHORS:  Blum, Bresnahan
-     :Copyright: 2016
-     :Publisher: Pearson (SAMS imprint)
-     :END:
-
-     :AUTHORS:  Blum, Bresnahan
-     :Copyright: 2016
-     :Publisher: Pearson (SAMS imprint)
-
-     Out of date, covers old versions of the RPi.
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/provisioning-new-mac.org</id>
-      <updated>2020-05-23T16:31:19-05:00</updated>
-      <title>Provisioning a new Mac</title>
-      <content>* Provisioning a new Mac
-
-*KEY POINT:* the &quot;you&quot; in this writeup is me, the author. If you, the reader, are not me, the author, then you /have to modify to fit your own needs/.
-
-** Admin Privs
-
-If this is your own mac, your account should be created with Administrator privs, and you should be able to install software, do things like run ~sudo~, and all sorts of wonderful things, usually all you need to do is provide your account password when asked.
-
-** Installing Keybase
-
-This stores other credentials for the project, my org files, etc.
-
-1. Go to [[https://keybase.io]] and log in
-2. Download the app for the mac from that page
-3. Open up the ~dmg~ and follow the prompts to install it
-4. Launch the app /Applications/Keybase.app
-5. Log in to your keybase account
-6. Follow the prompts on the new machine and an old machine you selected to verify the new machine&#39;s identity
-7. Log out and log in as the WA admin in the case of the work machine :P
-8. Go to the file tab in keybase.app, and install the Finder extension
-9. Log out of the WA account and back into the user (use the username instead of real name, i guess...)
-10. Go the the file tab in Keybase.app again, open the Finder and see that you have access
-11. Go to a new Terminal window, and run ~keybase help~ to make sure the command line works, too
-
-** Other Privs
-
-*** typical areas to find other credentials
-
-- .aws/
-- .gnupg/
-- .netrc
-- .ssh/
-
-*** Keybase-based: getting your creds
-
-The beauty of Keybase is that you can keep credentials and other secrets in the file system for your private use.
-
-The pain is keeping them sync&#39;d.
-
-I have the above directories sync&#39;d to my private keybase folder.
-
-**** saving updating creds to keybase
-
-*NOTE: make sure the directroeis you are copying do NOT have the / at the end!*
-
-#+BEGIN_SRC shell-script
-  rsync -av ~/.aws \
-	~/.gnupg \
-	~/.ssh \
-	~/.netrc \
-	/Volumes/Keybase/private/tamouse_/creds/
-#+END_SRC
-
-**** getting the cred to the new machine
-
-(or just updating them)
-
-#+BEGIN_SRC shell-script
-  rsync -av /Volumes/Keybase/private/tamouse_/creds/ $HOME
-#+END_SRC
-
-** Install X-Code
-
-This takes a brutally long time, since it&#39;s just such a ginormous download (8G?)
-
-** Install homebrew (brew.sh)
-
-Go out to the [[https://brew.sh][homebrew web page]], there&#39;s a command you can paste into a Terminal window.
-
-At some point, it should ask for your password; give it and then brew will be able to raise its privs when needed.
-
-The last time I did this, I ended up not being able to type at the Terminal. Swiftly just solved by quitting Terminal and restarting it.
-
-Run ~brew doctor~ to make sure everything is cromulent.
-
-*** get ~hub~ program
-
-[[https://hub.github.com/][hub.github.com]] just makes life easier dealing with github:
-
-#+BEGIN_SRC shell-script
-  brew install hub
-  git config --global hub.protocol https
-#+END_SRC
-
-** Download config repos
-
-Since the .ssh creds were copied over in a previous step, this step should be pretty easy.
-
-Remember these are /my configs/; if you are not me, use your own, please.
-
-*** Dot Files
-
-1. clone the dot files repo first: ~git clone git@github.com:tamouse/my-dot-files.git .my-dot-files~
-2. move into the new dir: ~pushd .my-dot-files~
-3. poke around in the ~profile.d~ folder and make sure all the ones you want are marked as executable
-4. in the ~.my-dot-files/~ folder, run ~./setup.sh~ which will set up the links to the various profile and rc files.
-5. close the Terminal.app and repen it, the setup stuff should be working. Try it out by typing ~ll~ at the Terminal.
-
-*** Emacs config
-
-1. make sure you&#39;re in the HOME directory again: ~cd~
-2. clone the emacs config: ~gcl git@github.com:tamouse/my-emacs-d.git .emacs.d~
-3. follow the directions in the README
-
-** Essential Software
-*** Installing Emacs
-
-For me, there is next to nothing that is more important that using my imprinted editor. It&#39;s easier than ever these days, too, being able to install as a cask from home brew.
-
-I ran the following to check on stuff: ~brew cask info emacs~ -- in particular, I want a fairly high level version, which might not be completely released. I&#39;m running 26.2, the latest from the command shows 26.3, so it should be good to go.
-
-1. run ~brew cask install emacs~
-2. start up emacs with just ~emacs~ to make sure the init.el works as hoped.
-
-   1. on this latest install, i needed to modify init.el
-   2. it was making a reference to ~/usr/local/share/emacs/~ which did not exist in this particular install from the home brew cask.
-3. test out the ~emacsclient~ aliases:
-   
-        ecn .
-
-
-Hopefully everything goes smoothly.
-
-*** Installing Ruby(ies?)
-
-1. Grab ~ruby-install~: ~brew install ruby-install~
-2. Get the latest ruby versions: ~ruby-install~
-3. Install your sweet version: ~ruby-install ruby 2.5.7~ for the project I&#39;m working for this work computer, others are good, too!
-4. Grab ~chruby~: ~brew install chruby~5. Close and reopen the Terminal
-6. Run ~chruby~ to verify the ruby you just installed is there
-7. For my work machine, I want to always be using the same version of ruby everywhere, so I create a ~.ruby-version~ file with ~ruby-2.5.7~ in it
-8. Close and reopen the Terminal again
-9. Verify the ruby:
-   - ~chruby~ - should show the ruby version you added to the ~.ruby-version~ file
-   - ~which ruby~ - should show the new ruby version under your ~.rubies/~ directory
-   - ~ruby -v~ - shows the right version of ruby, yay!
-10. Install some necessary global gems:
-    - bundler - match the version your project(s) need, 2.0.3
-    - rake - the version installed with ruby might be okay
-    - rails 5.1.6 (or whatever your project uses) (takes a long time, whee)
-
-*** Installing Node, NPM, and friends
-
-We&#39;ll be installing from the nodejs web site, instead of using brew or nvm. 
-
-1. Point the browser at [[https:///nodejs.org/en/]]
-2. Click on the LTS version to download the installer
-3. Launch the installer, click through confirming everythingss, and it should be good to go.
-4. Close and reopen the Terminal, just for good time sake
-5. Verify ~node~
-   - ~node -v~
-   - ~npm -v~
-   - ~npx -v~
-
-or do install with brew.  
-
-Install ~yarn~: ~brew install yarn~ (beware there is a new way to do this for yarn v2!)
-
-** Other Software
-
-1. Chrome
-2. Firefox
-3. LastPass
-4. Amphetimine
-5. Spark
-6. Notion
-7. Slack
-8. Trello
-9. Zoom
-10. Affinity Photo &amp; Design
-11. Spotify
-12. Sonos
-13. Monosnap
-14. --Spectacle-- use Rectangle instead: https://github.com/rxhanson/Rectangle
-15. Alfred
-16. Discord
-17. Display Menu
-18. JetBrains Toolbox (from which you can install the others)
-19. Kindle for Mac
-20. ... this list will grow :D
-
-** org files
-
-I keep my org files on keybase in git
-
-#+BEGIN_SRC shell
-  git clone keybase://private/tamouse_/org-files ~/org
-#+END_SRC
-
-** Postgresql
-
-#+BEGIN_SRC shell
-  brew install postgresql
-  brew services start postgresql
-  createdb tamara
-#+END_SRC
-
-For other versions run ~brew search postgresql~. you should be able to run different versions of it, but you&#39;ll also need different paths for the data and so on.
-
-** redis
-
-For a lot of work projects, I use redis on the app. It&#39;s generally useful, like PG, so I make sure it&#39;s always available.
-
-#+BEGIN_SRC shell
-  brew info redis
-  brew install redis
-  brew services start redis
-#+END_SRC
 
 
 </content>

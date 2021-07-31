@@ -24,6 +24,8 @@
 - [[./Tech/clojure-notes.org]]
 - [[./Tech/braintree-notes.org]]
 - [[./Tech/WordPress-notes.org]]
+- [[./Tech/README.md]]
+- [[./2021/2021-07-09-murmurations-at-drip.md]]
 - [[./2021/2021-04-29-til-transform-keys.org]]
 - [[./2020/12/2020-12-09-til-deleting-nested-objects-in-accepts-nested-attributes-for.md]]
 - [[./2020/10/TIL-scoped-uniqueness-validation-syntax.md]]

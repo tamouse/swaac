@@ -1,1 +1,2 @@
+- [[./2021-07-09-murmurations-at-drip.md]]
 - [[./2021-04-29-til-transform-keys.org]]
