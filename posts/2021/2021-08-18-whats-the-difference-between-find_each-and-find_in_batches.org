@@ -1,1 +1,27 @@
+#+TITLE: What's the difference between find_each and find_in_batches in Rails
+#+DATE: 2021-08-18
 
+Published: 2021-08-18
+
+Last edited: 2021-08-18T16:28:20+05:00
+
+* Finding records
+
+In Rails, you probably don't want to get all the records from a model when your database becomes large.
+E.g. fetching a million rows will make a very large object space in your application, since Rails (ActiveRecord)
+is converting each row to an object.
+
+Instead, ActiveRecord provides a couple of methods to handle this.
+
+1. ~find_in_batches~
+2. ~find_each~
+
+** Which one should you use?
+
+Almost all the time, you can safely choose ~find_each~, since it calls ~find_in_batches~ under the hood and loops through each record in the batch and yields the record to you.
+
+** References
+
+- ~find_each~ <https://api.rubyonrails.org/classes/ActiveRecord/Batches.html#method-i-find_each>
+- ~find_in_batches~ <https://api.rubyonrails.org/classes/ActiveRecord/Batches.html#method-i-find_in_batches>
+- [[https://rubyinrails.com/2019/09/17/rails-find-in-batches-vs-find-each/][Rails find_in_batches vs find_each]]
