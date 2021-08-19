@@ -1,0 +1,15 @@
+#+TITLE TIL: How to track the focus in chrome devtools
+
+Last updated: 2021-08-19T17:22:44-05:00
+
+When you're tabbing, about, sometimes you lose the little focus ring because that hasn't been implemented for the item.
+
+[[This post][https://developer.chrome.com/docs/devtools/accessibility/focus/]] describes how you can see the current tab focus in Chrome devtools.
+
+In a nutshell:
+
+1. Open devtools Console
+2. Click on *Create a Live Expression*
+3. Enter ~document.activeElement~ in the input box
+4. Click outside the Live Expression UI to save
+
