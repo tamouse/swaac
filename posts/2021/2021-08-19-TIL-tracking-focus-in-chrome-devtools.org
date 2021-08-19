@@ -1,4 +1,4 @@
-#+TITLE TIL: How to track the focus in chrome devtools
+#+TITLE: TIL: How to track the focus in chrome devtools
 
 Last updated: 2021-08-19T17:22:44-05:00
 
