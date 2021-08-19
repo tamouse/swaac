@@ -4,7 +4,7 @@ Last updated: 2021-08-19T17:22:44-05:00
 
 When you're tabbing, about, sometimes you lose the little focus ring because that hasn't been implemented for the item.
 
-[[This post][https://developer.chrome.com/docs/devtools/accessibility/focus/]] describes how you can see the current tab focus in Chrome devtools.
+[[https://developer.chrome.com/docs/devtools/accessibility/focus/][This post]] describes how you can see the current tab focus in Chrome devtools.
 
 In a nutshell:
 
