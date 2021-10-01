@@ -1,4 +1,4 @@
-* Using open-ended ranges in rails
+# Using open-ended ranges in rails
 
 I just found out about this today.
 
