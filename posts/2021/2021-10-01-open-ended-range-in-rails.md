@@ -11,5 +11,5 @@ You can use an open-ended range when checking dates in ActiveRecord:
 This replaces the old way of doing this:
 
 ```ruby
-    account.orders.where("occurred_at > ?", 6.months.agodsl                   dlsll).count
+    account.orders.where("occurred_at > ?", 6.months.ago).count
 ```
