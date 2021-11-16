@@ -2,266 +2,30 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://github.com/tamouse/swaac</id>
   <title>Tamouse&#39;s Software as a Craft blog</title>
-  <updated>2021-07-30T21:18:08-05:00</updated>
+  <updated>2021-11-16T11:29:53-06:00</updated>
     <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2021/2021-07-09-murmurations-at-drip.md</id>
-      <updated>2021-07-30T21:18:08-05:00</updated>
-      <title>2021-07-09-murmurations-at-drip</title>
-      <content>---
-layout: post
-title: &quot;Murmurations at Drip&quot;
-date: 2021-07-09
-description: &quot;What&#39;s in a name? How we work together at Drip&quot;
-author: tamouse
----
-
-## Murmurations ##
-
-The following video shows what is known as a murmuration of starlings, where the birds flock and swoop in some kind of formation:
-
-&lt;div style=&quot;padding:75% 0 0 0;position:relative;&quot;&gt;&lt;iframe src=&quot;https://player.vimeo.com/video/31158841&quot; style=&quot;position:absolute;top:0;left:0;width:100%;height:100%;&quot; frameborder=&quot;0&quot; allow=&quot;autoplay; fullscreen; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;script src=&quot;https://player.vimeo.com/api/player.js&quot;&gt;&lt;/script&gt;
-&lt;p&gt;&lt;a href=&quot;https://vimeo.com/31158841&quot;&gt;Murmuration&lt;/a&gt; from &lt;a href=&quot;https://vimeo.com/islandsandrivers&quot;&gt;Islands &amp;amp; Rivers&lt;/a&gt; on &lt;a href=&quot;https://vimeo.com&quot;&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;
-
-&lt;!-- [https://vimeo.com/31158841](https://vimeo.com/31158841) --&gt;
-
-From the dictionary, a murmuration is a flock of starlings. Wikipedia has a little more info:
-
-&gt; During the winter months, starlings are known for aggregating into huge flocks of hundreds to thousands of individuals, murmurations, which when they take flight altogether, render large displays of intriguing swirling patterns in the skies above observers. — [https://en.wikipedia.org/wiki/Flocking_(behavior)#In_nature](https://en.wikipedia.org/wiki/Flocking_(behavior)#In_nature)
-
-Most dev folks have heard about [pair programming](https://en.wikipedia.org/wiki/Pair_programming), a part of Agile Programming, and some have heard of [mob programming](https://en.wikipedia.org/wiki/Mob_programming), which expands the pair to more than two people. An apt description by Marcus Hammerberg:
-
-&gt; The basic concept of mob programming is simple: the entire team works as a team together on one task at the time. That is: one team – one (active) keyboard – one screen (projector of course). — from *&quot;[Mob Programming — Full Team, Full Throttle](http://www.marcusoft.net/2013/08/repost-mob-programming-full-team-full-throttle.html)&quot;*
-
-## Where we started
-
-Here at Drip, we do some pairing, and some teams do mob programming when it makes sense.
-
-The team I&#39;m currently part of, Marketing Insights (MI for short, or just &quot;Insights&quot;), is responsible for providing recommendations, insights, and suggested actions to our customers, generically known as Guidance. We&#39;ve been given the opportunity to experiment and discover what works best for our customers.
-
-At the time I joined the team, I was a contractor. About the same time, a new college hire was also joining the team. This felt like an ideal opportunity to use the multi-person approach in order to help both of us come up to speed quickly on the code base, and for our new engineer to learn the Ruby language, and Rails framework.
-
-We worked really well in this mode, and started using it as other features that came our way. It was great to have someone with a lot of experience navigating and observing, someone with less experience driving, and other people to join in to provide answers in different areas.
-
-## What changed? ##
-
-However, on Jan 6th, 2021, the mob attack on the US Capital gave us a different feeling for the word &quot;mob&quot;.
-
-Along with notions of &quot;mob rule&quot;, &quot;mob violence&quot;, and the general negative connotation for &quot;mob&quot; at least in the US and Canada, we found it quite distasteful to keep using that term for how we worked. We wanted to keep working in the helpful and productive way we had been, but lose the word.
-
-We spent a few minutes sort of talking about the word, and no one was really coming up something, and I recalled the term &quot;murmuration&quot; from several years ago when I saw a video of one, captured by a couple women on film.
-
-## Where we&#39;re at
-
-From that point in January, our team has been murmurating for a big chunk of our work. The reasons why we started at the beginning don&#39;t apply so much anymore, but the multiple heads on one problem is really a solid practice, especially when we&#39;re tackling things that are brand new for us. By no means is all, or even most, of our work done in a murmuration, though.
-
-Murmurations tend to happen:
- * when someone needs help on a ticket
- * when a ticket is particularly gnarly, possibly going into an area that has not been anticipated
- * when we want to learn and spread knowledge to the team (e.g. a key player in a specific tech was going to be out for a month -- *yay sabatticals at Drip!* -- so they ran a few murmurations with others driving so we could get a feel for the language and code base
- * if the action might be particularly dangerous if done incorrectly (e.g. we like to have a couple people doing a database migration in production)
-
-When there&#39;s a bug in production that&#39;s causing a major issue for customers and we can&#39;t figure it out quickly, we still use a team, but it&#39;s more a swarm than a murmuration.
-
-When someone picks up a ticket to work on and they&#39;d like help on it, they post a zoom link in our Slack channel and invite team members to join them. Most often someone does. Also, team members will regularly ask if there are any murmurations going on when they start the day, come back from lunch or a meeting, or have some momentary down time as they decide what to work on next.
-
-Even our weekly planning time seems like a murmuration as the whole team is involved in defining epics and stories, with one person driving by writing it all down in Jira.
-
-During programming murmurations, the driver is rotated so we all get time in the driver&#39;s seat as well as doing the observing or navigating role. This is quite helpful in alleviating fatigue and keeping everyone interested. Navigators can spend time providing context, history, and direction; some help by looking up documentation on syntax, libraries, method signatures, etc., to explain things to everyone. Everyone has a role, no one sits back and coasts. I believe this has a lot to do with how much we respect each other and also want to help each other.
-
-## Why is this important?
-
-Some could say &quot;it&#39;s just a word, just a name. Why bother changing it?&quot; That is a good question. The answers are partly practical, partly philosophical, and partly visceral.
-
-As mentioned above, the word &quot;mob&quot; took on tremendously distasteful connotation for our team, yet we were highly committed to the activity entailed.
-
-The beauty of a starling flock&#39;s murmuration strikes a chord with people; they are more than just enjoyable to watch, they are stunning displays of nature&#39;s beauty.
-
-Using the term to refer to our work together provides a sense of that same synchronicity, swarming in formation together, without it needing to be defined, frame-worked, or even necessarily taught. It is *experienced*.
-
-It is such a positive word, there&#39;s a little spark of joy every time someone uses the term, even creating new forms, such as &quot;murmurating&quot;, and several folks just get a smile on their faces when we talk about it in zoom meetings.
-
-The positive sense of the word murmuration forms the feelings people have about working together in this fashion.</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/README.md</id>
-      <updated>2021-06-17T12:11:15-05:00</updated>
-      <title>README</title>
-      <content># Tech notes
-
-This is an older collection of notes on tech stuff that I used to keep in my original .org folder. I moved it over here as more appropriate than keeping them private, with the understanding that these are old, might be out of date, and inaccurate, as well as incomplete.
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2021/2021-04-29-til-transform-keys.org</id>
-      <updated>2021-06-03T10:23:25-05:00</updated>
-      <title>2021-04-29-til-transform-keys</title>
-      <content>#+OPTIONS: &#39;:nil *:t -:t ::t &lt;:t H:3 \n:nil ^:t arch:headline author:t broken-links:nil
-#+OPTIONS: c:nil creator:nil d:(not &quot;LOGBOOK&quot;) date:t e:t email:nil f:t inline:t num:nil
-#+OPTIONS: p:nil pri:nil prop:t stat:t tags:t tasks:t tex:t timestamp:t title:t toc:nil
-#+OPTIONS: todo:t |:t
-#+TITLE: TIL: HWIA tranform-keys
-#+DATE: &lt;2021-05-21 Fri&gt;
-#+AUTHOR: Tamara Temple
-#+EMAIL: tamouse@gmail.com
-#+KEYWORDS: rails, hash-with-indifferent-access, hwia, keys, transform_keys
-#+LANGUAGE: en
-#+SELECT_TAGS: export
-#+EXCLUDE_TAGS: noexport
-#+CREATOR: Emacs 26.2 (Org mode 9.1.9)
-
-** TIL: transform_keys in Rails` Hash with indifferent access
-
-  I think I knew this already, but it was reintroduced to me the other day.
-
-  ~transform_keys~ is useful if you need to modify the keys of a Hash in a uniform way.
-
-  When you call it on a HWIA (Hash-With-Indifferent-Access) and pass it a block, the block gets each key as it&#39;s argument. The block can perform any sort of manipulation on the key and the final line of the block is the new key. This can be used to force a set of keys to be unique before merging with another hash, for example.
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2020/04/2020-04-28-til-using-optional-for-nested-attributes.md</id>
-      <updated>2021-06-03T10:18:11-05:00</updated>
-      <title>2020-04-28-til-using-optional-for-nested-attributes</title>
-      <content># TIL: Using optional for nested attributes
-
-Area: SWaaC  
-Created: Apr 25, 2020 10:18 AM  
-Done: No  
-Draft Date: Apr 28, 2020  
-Hide: No  
-Series: TIL  
-Status: In Review  
-Tags: Rails, nesting  
-Topic: Ruby and Rails  a
-
-## TL;DR
-
-Eventually I found the issue: When you (meaning &quot;I&quot;) do this, you (I) need to set `optional: true` on the `belongs_to` side.
-
-## The Problem
-
-I&#39;ve been banging my head on the keyboard trying to figure this out.
-I had two models where once accepts the nested attributes for the other. It was just not working the way I thought it should. 
-I kept getting back a validation error on the relationship `purchase_id`, and everything I tried was not working as I expected.
-Removing the `accepts_nested_attributes_for` line made it work, and it really should have behaved the same way.
-
-## Discussion
-
-### Two models
-
-1. `Purchase`, has many `PurchaseDetail`
-2. `PurchaseDetail`, which belongs to `Purchase`
-
-### purchase.rb:
-
-```ruby
-class Purchase &lt; ApplicationRecord
-  has_many :purchase_details
-  accepts_nested_attributes_for :purchase_details
-end
-```
-
-### purchase_detail.rb ###
-
-```ruby
-class PurchaseDetail &lt; ApplicationRecord
-  belongs_to :purchase, optional: true       ## NOTE: optional!!!
-end
-```
-
-The `belongs_to` line as an `optional: true`, which tells Rails that the dependent records are required to have the foreign key field filled in when they are part of the whole conglomeration. This switched meanings from Rails 4 to Rails 5 sometime.
-
-### The following form view:
-
-```html
-&lt;%= form_for(purchase) do |f| %&gt;
-  &lt;div class=&quot;field&quot;&gt;
-    &lt;%= f.label :name %&gt;
-    &lt;%= f.text_field :name %&gt;
-  &lt;/div&gt;
-
-  &lt;%= f.fields_for :purchase_details, purchase.purchase_details.each do |ff| %&gt;
-    &lt;div class=&quot;field&quot;&gt;
-      &lt;%= ff.label :kind %&gt;
-      &lt;%= ff.text_field :kind %&gt;
-    &lt;/div&gt; 
-  &lt;% end %&gt;
-
-  &lt;div class=&quot;actions&quot;&gt;
-    &lt;%= f.submit %&gt;
-  &lt;/div&gt;
-&lt;% end %&gt;
-```
-
-### Produces the following form:
-
-```html
-&lt;form class=&quot;new_purchase&quot; id=&quot;new_purchase&quot; action=&quot;/purchases&quot; accept-charset=&quot;UTF-8&quot; method=&quot;post&quot;&gt;&lt;input name=&quot;utf8&quot; type=&quot;hidden&quot; value=&quot;&amp;#x2713;&quot; /&gt;&lt;input type=&quot;hidden&quot; name=&quot;authenticity_token&quot; value=&quot;68IcN2OakPU+T2Y0SdbckzQPIrAN7XKoeaHxHD8JLB0KnCblSMaC78tHziLSm6orY8htBDDpwjSgNi5G+pt6hQ==&quot; /&gt;
-  &lt;div class=&quot;field&quot;&gt;
-    &lt;label for=&quot;purchase_name&quot;&gt;Name&lt;/label&gt;
-    &lt;input type=&quot;text&quot; name=&quot;purchase[name]&quot; id=&quot;purchase_name&quot; /&gt;
-  &lt;/div&gt;
-  &lt;div class=&quot;field&quot;&gt;
-    &lt;label for=&quot;purchase_purchase_details_attributes_0_kind&quot;&gt;Kind&lt;/label&gt;
-    &lt;input type=&quot;text&quot; name=&quot;purchase[purchase_details_attributes][0][kind]&quot; id=&quot;purchase_purchase_details_attributes_0_kind&quot; /&gt;
-  &lt;/div&gt; 
-  &lt;div class=&quot;field&quot;&gt;
-    &lt;label for=&quot;purchase_purchase_details_attributes_1_kind&quot;&gt;Kind&lt;/label&gt;
-    &lt;input type=&quot;text&quot; name=&quot;purchase[purchase_details_attributes][1][kind]&quot; id=&quot;purchase_purchase_details_attributes_1_kind&quot; /&gt;
-  &lt;/div&gt; 
-  &lt;div class=&quot;actions&quot;&gt;
-    &lt;input type=&quot;submit&quot; name=&quot;commit&quot; value=&quot;Create Purchase&quot; data-disable-with=&quot;Create Purchase&quot; /&gt;
-  &lt;/div&gt;
-&lt;/form&gt;
-```
-
-### This comes up to the PurchasesController#purchase_params private method:
-
-```ruby
-  def purchase_params
-    params.require(:purchase).permit(:name, purchase_details_attributes: [:id, :kind])
-  end
-```
-
-### Which is called in PurchasesController#create:
-
-```ruby
-def create
-    @purchase = Purchase.new(purchase_params)
-    
-    respond_to do |format|
-      if @purchase.save
-        format.html { redirect_to @purchase, notice: &#39;Purchase was successfully created.&#39; }
-        format.json { render :show, status: :created, location: @purchase }
-      else
-        format.html { render :new }
-        format.json { render json: @purchase.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-```
-
-This was **failing** on me for the longest time, until it was pointed out that the `belongs_to` relationship has `:optional` turned *off by default in Rails 5!* Setting it to true suddenly made everything work as expected. This was a long long frustrating day.
-
-The most difficult thing is looking at the app I&#39;m working on, running this same version of Rails and Ruby, is that it works *without* having to specify the `optional: true` flag on the `belongs_to`. 
-
-## The aftermath
-
-The failure when the `optional` field was left off was that the independent record would not save because of a validation error. Inspecting the validation errors on the dependent records didn&#39;t lead me to a solution straight away, though. I still had to fumble around, read lots of blog posts and stack overflows until I finally found mention of the `optional: true` flag.
-
-This confused me for a long time, as well, as the project I&#39;m currently working on also does not have the `optional: true` set and yet it works. The project did migrate from 4 to 5, but perhaps there&#39;s some gem that takes care of that. I will have to ask about it.
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2021/2021-11-16-til=miro-quickly-build-out-a-network.org</id>
+      <updated>2021-11-16T11:29:53-06:00</updated>
+      <title>TIL: Quickly build out a network in miro</title>
+      <content>* TIL: Quickly build out a network in miro
+  :PROPERTIES:
+  :DATE_UPDATED: Time-stamp: &lt;2021-11-16 11:29:53 tamaratemple&gt;
+  :END:
+
+** To quickly add new shapes on a diagram:
+   1. Drag out a shape, type some text.
+   2. Click on one of the attachment spots, a new shape is created with the same attributes.
+   3. Click on one of the attachment spots in the original shape and it puts another new shape on board cleanly.
+  
+** Image of network on miro baard
+
+   #+CAPTION: A network diagram in miro
+   #+NAME: fig:MIRO_NETWORK_DIAGRAM
+   [[../../images/miro_skill_building_out_a_network.jpg]]
+
+** On my miro board
+
+   [[https://miro.com/app/board/o9J_lt3X-vo=/?moveToWidget=3074457367689591761&amp;cot=14][Link to my miro board with the network diagram example]]
 </content>
       <author>
         <name>Tamara Temple</name>
@@ -270,7 +34,7 @@ This confused me for a long time, as well, as the project I&#39;m currently work
     </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/learning.org</id>
-      <updated>2021-05-21T09:59:03-05:00</updated>
+      <updated>2021-11-16T11:10:15-06:00</updated>
       <title>Resources for learning how to program, especially how to program in Ruby and Rails</title>
       <content>* Resources for learning how to program, especially how to program in Ruby and Rails
 
@@ -519,78 +283,53 @@ Other fav instructors:
       </author>
     </entry>
     <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2020/12/2020-12-09-til-deleting-nested-objects-in-accepts-nested-attributes-for.md</id>
-      <updated>2020-12-09T22:47:55-06:00</updated>
-      <title>2020-12-09-til-deleting-nested-objects-in-accepts-nested-attributes-for</title>
-      <content>---
-title: &quot;TIL: Deleting nested objects in accepts_nested_attributes_for&quot;
-Area: SWaaC
-Created: 2020-05-04T12:46:00
-Link: https://api.rubyonrails.org/v5.1.7/classes/ActiveRecord/NestedAttributes/ClassMethods.html#method-i-accepts_nested_attributes_for
-Published: 2020-12-09T22:46
-tags: Rails, attributes, nesting
-topic: Ruby and Rails
----
+      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/vagrant-notes.org</id>
+      <updated>2021-11-16T11:10:15-06:00</updated>
+      <title>Vagrant Notes</title>
+      <content>* Vagrant Notes
+** Making Vagrant boxes go faster
 
-&gt; By default the associated records are protected from being destroyed. If you want to destroy any of the associated records through the attributes hash, you have to enable it first using the `:allow_destroy` option. This will allow you to also use the `_destroy` key to destroy existing records:
+  The typical defaults in the Vagrantfile create a wimpy box.
 
-```ruby
-class Member &lt; ActiveRecord::Base
-  has_many :posts
-  accepts_nested_attributes_for :posts, allow_destroy: true
-end
+  My mac has a boatload of RAM and CPU cores to spare, thus making this a better config for working:
 
-params = { member: {
-  posts_attributes: [{ id: &#39;2&#39;, _destroy: &#39;1&#39; }]
-}}
 
-member.attributes = params[:member]
-member.posts.detect { |p| p.id == 2 }.marked_for_destruction? # =&gt; true
-member.posts.length # =&gt; 2
-member.save
-member.reload.posts.length # =&gt; 1
-```
+#+begin_src diff
+   config.vm.provider :virtualbox do |vb|
+-    vb.customize [&quot;modifyvm&quot;, :id, &quot;--memory&quot;, 1024]
++    vb.customize [&quot;modifyvm&quot;, :id, &quot;--memory&quot;, 4096, &quot;--vram&quot;, 12, &quot;--cpus&quot;, 4, &quot;--natdnshostresolver1&quot;, &quot;on&quot;]
+   end
+#+end_src
 
-Up earlier in the page, the `_destroy` is mentioned:
+** Using a resolver to set the box&#39;s IP address
+    Instead of hard wiring in an IP address for the vagrant box, you
+    can have it look up a name in your host machine&#39;s /etc/hosts file,
+    thusly:
 
-&gt; For each hash that does not have an id key a new record will be instantiated, unless the hash also contains a `_destroy` key that evaluates to true.
+    At the top of the Vagrant file:
+    #+begin_src ruby
+      require &#39;resolve&#39;
+    #+end_src
 
-So apparently it doesn&#39;t matter what the actual value of the key is, as long as it&#39;s *truthy*
+    Then, inside the box configuration:
+    #+begin_src ruby
+      config.vm.provider :virtualbox do |vb|
+        vb.customize [&quot;modifyvm&quot;, &quot;--natdnsresolver1&quot;, &quot;on&quot;]
+        #...
+      end
 
-In the controller, make sure to permit the `_destroy` attribute as well.
+      config.vm.network :private_network, ip: Resolv.getaddress(&#39;&lt;vagrant box name from hosts&gt;&#39;)
+    #+end_src
 
-## an example
+    And in your /etc/hosts file:
 
-If this is the row in your form that contains a subitem to go along with the update of the item:
+    #+begin_src
+      192.168.80.80	&lt;vagrant box name&gt;
+    #+end_src
 
-```html
-&lt;div class=&quot;row&quot; id=&quot;item_subitem_2_row&quot;&gt;
-  &lt;input type=&quot;hidden&quot; name=&quot;item[subitem][2][id]&quot; value=&quot;12&quot; id=&quot;item_subitem_2_id&quot; /&gt;
-  &lt;!-- rest of row fields --&gt;
-  &lt;button type=&quot;button&quot; id=&quot;item_subitem_2_delete_button&quot;&gt;
-    &lt;span class=&quot;trash-can-icon&quot;&gt;&lt;/span&gt;
-  &lt;/button&gt;
-&lt;/div&gt;
-```
-
-you would need to extract that row and replace it with:
-
-```html
-&lt;div class=&quot;row&quot;&gt;
-  &lt;input type=&quot;hidden&quot; name=&quot;item[subitem][2][id]&quot; value=&quot;12&quot; /&gt;
-  &lt;input type=&quot;hidden&quot; name=&quot;item[subitem][2][_destroy]&quot; value=&quot;1&quot; /&gt;
-&lt;/div&gt;
-```
-
-The `id` on the `input` field in the first code snippet is typically auto-generated by Rails form helpers. The &quot;destroy&quot; hidden input doesn&#39;t really need an `id` field as it won&#39;t be referred to by the DOM. Unless you need to for some reason, then add one.
-
-Then some JavaScript is necessary to detect the delete subitem button click, and perform the replacement.
-
-Theoretically, which means I haven&#39;t been able to try this yet, the `_destroy` field could be already defined for the form row, and you set the value of it to something truthy on button click, and hide the row.
-
------
-
-Source: &lt;https://api.rubyonrails.org/v5.1.7/classes/ActiveRecord/NestedAttributes/ClassMethods.html#method-i-accepts_nested_attributes_for&gt;
+    Set the IP address to an appropriate setting for your local
+    network, and give the vagrant box a suitable name for your project
+    and the local network. Using &quot;.dev&quot; as the tld should be good.
 </content>
       <author>
         <name>Tamara Temple</name>
@@ -598,105 +337,45 @@ Source: &lt;https://api.rubyonrails.org/v5.1.7/classes/ActiveRecord/NestedAttrib
       </author>
     </entry>
     <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2020/03/2020-03-23-honouring-colour-scheme-in-css.md</id>
-      <updated>2020-10-21T11:31:51-05:00</updated>
-      <title>2020-03-23-honouring-colour-scheme-in-css</title>
-      <content>---
-title: &quot;Honouring the user&#39;s preferred colour scheme in CSS&quot;
-date: 2020-03-23T03:32
-category: css
-tags: [colour-scheme, dark-mode, light-mode, react, styled-components]
----
+      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/ux-notes.org</id>
+      <updated>2021-11-16T11:10:15-06:00</updated>
+      <title>UX Notes</title>
+      <content>* UX Notes
+** [[http://www.givegoodux.com/4-tips-adding-lean-ux-agile-development-process/][4 Tips for Adding Lean UX to an Agile Development Process]]
 
-How do I honour the user&#39;s chosen preferred colour scheme in the CSS I&#39;m writing? Recently MacOS introduced dark mode in Mojave, and further added a shifting light and dark mode to match the time of day in Catalina. I&#39;d like my sites, but more importantly, my React apps to follow this.
+    As organizations of all shapes and sizes come to grips with the fact that UX is critical to project and product success, a common question resurfaces time and again:
 
+    “How do we add Lean UX practices to our current process?”
 
-## Background ##
+    1) Hire experienced UX analysts and designers; you need at least one
+       experienced, senior UX member capable of sharing the driving.
 
-The W3C has defined a media query, `prefers-color-scheme` ([Defined in Media Queries Level 5 Draft, March 2020](https://drafts.csswg.org/mediaqueries-5/#descdef-media-prefers-color-scheme &quot;Still a draft&quot;)). It has [some implementations](https://caniuse.com/#search=prefers-color-scheme) already. At least it&#39;s on the majors, so it&#39;s probably okay to use.
+    2) There must be an “Iteration 0” in your process where “just
+       enough” research, modeling and design happens.
 
-## Media query ##
+    3) Follow a process where UX, design and development work is “chunked”
+       and starts with the core, most broad-reaching areas of features and
+       functionality.
 
-The check to see what colour scheme the user has set is done with a media query:
+    4) Use a collaborative, parallel work process to keep UX efforts
+       both ahead and behind development efforts.
 
-``` css
-@media screen and (prefers-color-scheme: light) {
-  /* settings for light scheme */
-}
-@media screen and (prefers-color-scheme: dark) {
-  /* settings for dark scheme */
-}
-```
+    capture date: [2015-03-19 Thu 16:30]
+** [[http://semantic-ui.com/][Semantic UI Toolkit]]
+   Date: &lt;2013-10-15 Tue 02:19&gt;
 
-So this is clearly possible in regular CSS.
+   UI is the vocabulary of the web.
 
-## Using in styled-components ##
+   Semantic empowers designers and developers by creating a language
+   for sharing UI.
 
-Since I most often code in React, and most often use `styled-components` library to implement CSS-in-JS, I need a way that this will work. Turns out it&#39;s not so bad, using SC&#39;s `ThemeProvider`.
+   Semantic is an alternative to Twitter Bootstrap and other UI
+   kits. It seems like it&#39;s a more readable and usable thing to me. It
+   also is something that seems more easily customizable. It will be
+   interesting to see how it plays out.
 
-In your theme file, set up the various colours, with a group for light mode and another group for dark mode:
-
-``` rjsx
-const colors = {
-    light: {
-        primaryText: &quot;#333&quot;,
-        primaryBg: &quot;#FFF&quot;,
-        // and so on
-    },
-    dark: {
-        primaryText: &quot;#F2F2F2&quot;,
-        primaryBg: &quot;#000&quot;,
-        // and so on
-    },
-    common: {
-        // colors that work for both
-    }
-};
-
-export default {
-    colors
-};
-
-```
-
-Where I wrap react components with the SC ThemeProvider, I can import and provide the theme as usual:
-
-``` rjsx
-import React from &quot;react&quot;;
-import { ThemeProvider} from &#39;styled-components&#39;;
-import theme from &quot;../../theme&quot;;
-
-function App({ children }) {
-    return (
-        &lt;ThemeProvider theme={theme} &gt;
-          {children}
-        &lt;/ThemeProvider&gt;
-    );
-}
-
-export default App;
-```
-
-Then later, in the styled compeonent, this happens:
-
-``` rjsx
-
-import styled from &#39;styled-components&#39;;
-
-export const SomeSection = styled.section`
-  color: ${props =&gt; props.theme.colors.light.primaryText};
-  backgound-color: ${props =&gt; props.theme.colors.light.primaryBg};
-
-  @media screen and (prefers-color-scheme: light) {
-    color: ${props =&gt; props.theme.colors.light.primaryText};
-    backgound-color: ${props =&gt; props.theme.colors.light.primaryBg};
-  }
-  @media screen and (prefers-color-scheme: dark) {
-    color: ${props =&gt; props.theme.colors.dark.primaryText};
-    backgound-color: ${props =&gt; props.theme.colors.dark.primaryBg};
-  }
-`
-```
+   Currently looking at using it on a few new sites, along with
+   [[middleman]].
 </content>
       <author>
         <name>Tamara Temple</name>
@@ -704,49 +383,163 @@ export const SomeSection = styled.section`
       </author>
     </entry>
     <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2020/10/TIL-scoped-uniqueness-validation-syntax.md</id>
-      <updated>2020-10-21T11:30:09-05:00</updated>
-      <title>TIL-scoped-uniqueness-validation-syntax</title>
-      <content>## Keywords:
+      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/thor-notes.org</id>
+      <updated>2021-11-16T11:10:15-06:00</updated>
+      <title>thor-notes</title>
+      <content>** Thor Notes
 
-- Ruby
-- Rails
-- Validators
-- ActiveRecord
-- Uniqueness
+*** Start here for next thor project
 
-## Introduction
+    Seriously, this has so much &quot;stock&quot; stuff:
 
-In Rails versions prior to 5.1, the standard accepted way to do a scoped uniqueness validation was by using the `validate_uniqueness_of` method:
+    https://github.com/tamouse/rearrange_books/tree/start-here-for-next-thor-project
 
-``` ruby
-class Subcategory &lt; ApplicationRecord
+**** turn this thing into a thor thor generator!
+     Dude, as if you&#39;re the first person to do this?
 
-  belongs_to :category
-  
-  validate_presence of :slug
-  validate_uniqueness_of :slug, scope: :category_id
-end
-```
 
-With Rails 5.2, the longer forms are being deprecated, in favour of using the `validates` method instead.
+*** Giving a task multiple arguments
 
-In the api docs, however, the uniqueness validator isn&#39;t discussed, not even an example.
+    Q: How can I have a task get multiple arguments, like many regular
+    POSIX commands?
 
-Luckily, I had rubocop set up to complain about the use of the older methods, and told it to fix the failures it found.
+    Example:
 
-The new syntax would be:
+    #+BEGIN_SRC shell-script
+      cp source_file source_file source_file source_file ... dest_dir
+    #+END_SRC
 
-``` ruby
-class Subcategory &lt; ApplicationRecord
+    Pretty simple:
 
-  belongs_to :category
-  
-  validates :slug, presence: true
-  validates :slug, uniqueness: { scope: :category_id }
-end
-```
+    #+BEGIN_SRC ruby
+      desc &quot;taskname ARGLIST&quot;
+      def taskname(*args)
+      end
+    #+END_SRC
 
+    would let you do:
+
+    #+BEGIN_SRC shell-script
+      thor taskname arg1 arg2 arg3 arg4
+    #+END_SRC
+
+    and ~args~ in the task would be ~[&quot;arg1&quot;, &quot;arg2&quot;, &quot;arg3&quot;, &quot;arg4&quot;]~
+
+
+
+*** Invoke a thor task by giving only a class option
+    :PROPERTIES:
+    :CAPTURE_DATE: [2016-11-06 Sun 01:11]
+    :END:
+
+    From stackoverflow: http://stackoverflow.com/a/7311357/742446
+
+    [...use] Thor.map to invoke a command by only giving an
+    option flag:
+
+    #+BEGIN_SRC ruby
+      map &#39;-F&#39; =&gt; &#39;foo&#39;
+    #+END_SRC
+
+    Now you can also pass parameters
+
+    #+BEGIN_SRC ruby
+      mythorcommand -F bar # =&gt; invokes foo(&quot;bar&quot;)
+    #+END_SRC
+
+    answered Sep 5 &#39;11 at 17:57 by tfischbach
+
+*** Give thor a default task
+    :PROPERTIES:
+    :CAPTURE_DATE: [2016-11-06 Sun 01:13]
+    :END:
+
+    From stackoverflow: http://stackoverflow.com/a/23955971/742446
+
+    I found a rather &#39;strange&#39; solution for this problem that is working quite well with me.
+
+    You add a default task to Thor. Than you add the method_missing so
+    that you can trick Thor into passing the default method as an
+    argument if there are parameters to your application.
+
+    Taking from your example, the solution would look like this:
+
+    #+BEGIN_SRC ruby
+      class MyThorCommand &lt; Thor
+	default_task :my_default
+
+	desc &quot;my_default&quot;, &quot;A simple default&quot;
+	def my_default(*args)
+          puts args.inspect
+	end
+
+	def method_missing(method, *args)
+          args = [&quot;my_default&quot;, method.to_s] + args
+          MyThorCommand.start(args)
+	end
+
+      end
+
+      MyThorCommand.start(ARGV)
+    #+END_SRC
+
+    If this is in the file &quot;my_thor.rb&quot; an execution &quot;ruby my_thor.rb
+    foo bar&quot; would show &#39;[&quot;foo&quot;, &quot;bar&quot;]&#39; as a result.
+
+    answered May 30 &#39;14 at 13:38 by Edu
+
+*** Making Thor scripts colourful
+
+   capture date: [2015-10-11 Sun 02:06]
+
+   In Thor::Actions, the various output commands can be made nicely
+   colourful. You can append symbols representing various colours after
+   the output string. For example:
+
+   #+begin_src ruby
+     say &quot;This will make you green with envy&quot;, :green
+     say &quot;Don&#39;t be sad&quot;, :blue
+     say &quot;ACK! AN ERROR!&quot;, :red
+   #+end_src
+
+   Colour symbols are defined in
+   https://github.com/erikhuda/thor/blob/master/lib/thor/shell/color.rb
+
+
+   #+begin_src ruby
+     # Set color by using a string or one of the defined constants. If a third
+     # option is set to true, it also adds bold to the string. This is based
+     # on Highline implementation and it automatically appends CLEAR to the end
+     # of the returned String.
+     #
+     # Pass foreground, background and bold options to this method as
+     # symbols.
+     #
+     # Example:
+     #
+     #   set_color &quot;Hi!&quot;, :red, :on_white, :bold
+     #
+     # The available colors are:
+     #
+     #   :bold
+     #   :black
+     #   :red
+     #   :green
+     #   :yellow
+     #   :blue
+     #   :magenta
+     #   :cyan
+     #   :white
+     #   :on_black
+     #   :on_red
+     #   :on_green
+     #   :on_yellow
+     #   :on_blue
+     #   :on_magenta
+     #   :on_cyan
+     #   :on_white
+
+   #+end_src
 </content>
       <author>
         <name>Tamara Temple</name>
@@ -754,561 +547,412 @@ end
       </author>
     </entry>
     <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/gdi-classes.org</id>
-      <updated>2020-05-23T16:52:21-05:00</updated>
-      <title>GDI</title>
-      <content>* GDI
-** Slack convos
-*** Discussion in #random about job salaries
-    CAPTURE_DATE: [2017-06-05 Mon 15:45]
+      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/tech-inbox.org</id>
+      <updated>2021-11-16T11:10:15-06:00</updated>
+      <title>Tech Inbox</title>
+      <content>* Tech Inbox
+** IDEA: use google sheets API to feed web site data
+   :PROPERTIES:
+   :CAPTURE_DATE: [2018-12-11 Tue 08:01]
+   :END:
+
+   #+BEGIN_QUOTE
+
+   7. Google Sheets API Instead Of CMS
+
+      Some projects require you to think outside the box. When Adam Quinlan was working on a site for a restaurant where the owner needed a CMS to edit the specials menu on a daily basis, Adam decided to not use a bloated CMS but a Google sheet instead. This makes the site easy to edit while it remains flat from static side generators. Nice!
+
+   #+END_QUOTE
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/static-sites.org</id>
+      <updated>2021-11-16T11:10:15-06:00</updated>
+      <title>static-sites</title>
+      <content>** Static Sites notes
+
+*** Hosting
+
+    - IP: 45.55.188.49
+    - memory: 512MB Ram
+    - disk: 20GB SSD Disk
+    - location: New York 3
+    - OS: Ubuntu 14.04.3 x64
+
+*** DNS
+
+    Pointed mouseha.us on gandi:
+    - A: *.mouseha.us -&gt; IP
+    - A: @.mouseha.us -&gt; IP
+    - CNAME: removed &quot;blog.mouseha.us&quot;
+
+*** Software
+
+    - build-essential
+    - git-core -- DELETED, see below
+    - curl
+    - mysql-server, mysql-client
+    - sqlite3
+    - ruby 2.2.3
+      - mkdir src
+      - cd src
+      - git clone https://github.com/postmodern/ruby-install.git
+      - cd ruby-install
+      - make install
+    - node 4.2.3
+      - cd src
+      - wget https://nodejs.org/dist/v4.2.3/node-v4.2.3.tar.gz
+      - tar zxvf node-v4.2.3.tar.gz
+      - cd node-v4.2.3
+      - ./configure
+      - make
+      - make install
+    - emacs24
+      - apt-get build-dep emacs24
+      - cd src
+      - wget http://ftp.gnu.org/gnu/emacs/emacs-24.5.tar.gz
+      - untar
+      - cd emacs-24.5
+      - ./configure
+      - make
+      - make install
+    - postfix
+      - installed with emacs24
+      - following https://easyengine.io/tutorials/linux/ubuntu-postfix-gmail-smtp/
+      - set up for using tamouse.lists@gmail.com to relay
+      - had to wait for *ages* to get gmail to give me the &quot;is this
+	you?&quot; query
+      - waiting to see if it works
+    - nginx
+      - simple virtual host configuration points to sites at
+	~git/Sites/&lt;domain&gt;. For example, domain &quot;mouseha.us&quot; points to
+	~git/Sites/mouseha.us/
+      - sites:
+	- static-sites
+	- mouseha.us
+	- ngblog.mouseha.us
+	- pontiki.io -- just purchased at Gandi.Net for 2 years at $35/yr
+    - git -- newest version from github
+      - cd src
+      - git clone https://github.com/git/git.git
+      - cd git
+      - make prefix=/usr all doc info
+      - make prefix=/usr install install-doc install-html install-info
+
+*** Accounts
+
+**** git
+
+     - set up my-dot-files in .dot-file
+     - set up my-emacs-d in .emacs.d
 
-    #+BEGIN_QUOTE
+**** directories
 
- OP [1 hour ago]
- Hey all, I have a question that I have been struggling with for a bit. I am currently working through a bootcamp for full stack development and would like to start getting organized for the job search. I am starting to watch job postings and some ask what my preferred salary would be. I spent many years as a national park ranger, which means low pay and no chance at negotiating starting pay either. I have tried to look around at what the starting pay would be for staying in the twin cities but find reports on average salaries of experienced developers. Does anyone have resources on this or advice on what to ask for and how much to negotiate? I just don&#39;t know what to even ask for as a salary aside from making sure it pays the bills. Feel free to DM too if you would prefer. THANKS!
+    - Sites
+	- static-sites
+	- mouseha.us
+	- ngblog.mouseha.us
+    - Repos -- correspond to Sites/*
 
- R1 [1 hour ago]
- @OP: 1st things 1st, never mention your previous salary. Especially since it doesn’t apply to your next role as a dev.
+	The repos will have post-recieve hooks to automatically update
+	the corresponding static site.
+*** [[http://stackoverflow.com/questions/10264249/cant-get-page-data-from-jekyll-plugin][Can&#39;t Get Page Data From Jekyll Plugin - Stack Overflow]]
+    Date: &lt;2013-10-15 Tue 13:44&gt;
 
- R1 [1 hour ago]
- 2nd things 2nd, take a look at glassdoor, linkedin, and indeed. heck even the gov websites with salary averages to start getting a range.
+    Can’t get page data from Jekyll plugin
 
- R1 [1 hour ago]
- then think about your life, lifestyle, I came up with a minimum I am comfortable with and then I keep that to myself.
+    I’m trying to write a custom tag plugin for Jekyll that will output
+    a hierarchical navigation tree of all the pages (not posts) on the
+    site. I’m basically wanting a bunch nested &lt;ul&gt;’s with links (with
+    the page title as the link text) to the pages with the current page
+    noted by a certain CSS class.
 
- R1 [1 hour ago]
- I ask for 10-20k higher, depending on the company
 
- R1 [1 hour ago]
- My one phrase of advice when it comes to this is “The worst thing they can say is no, and even if they say no, it’s probably a maybe” (edited)
+    I’m very inexperienced with ruby. I’m a PHP guy.
 
- R1 [1 hour ago]
- Know what you’re bringing to the table, some people will try to use your bootcamp only experience as a negative against you, it’s not. It’s a positive. It speaks to your thirst to learn, ability to learn and adapt quickly, passion and so much more.
+    I figured I’d start just by trying to iterate through all the pages
+    and output a one-dimensional list just to make sure I could at least
+    do that. Here’s what I have so far:
 
- R1 [1 hour ago]
- People often underestimate what it means to basically change your whole life overnight when it comes to deciding to go to a bootcamp
 
- R1 [1 hour ago]
- anyways rant over… That’s my advice!
+    module Jekyll
 
- R1 [1 hour ago]
- I bet @R5 has great advice on this as well
+    class NavTree &lt; Liquid::Tag
+    def initialize(tag_name, text, tokens)
+    super
+    end
 
- OP [1 hour ago]
- thanks! that helps get me started
+    def render(context)
+    site = context.registers[:site]
+    output = &#39;&lt;ul&gt;&#39;
+    site.pages.each do |page|
+    output += &#39;&lt;li&gt;&lt;a href=&quot;&#39;+page.url+&#39;&quot;&gt;&#39;+page.title+&#39;&lt;/a&gt;&lt;/li&gt;&#39;
+    end
+    output += &#39;&lt;ul&gt;&#39;
 
- R1 [1 hour ago]
- anytime. Congrats on getting ready to get out there!!
+    output
+    end
+    end
 
- R2 [1 hour ago]
- Yes yes yes. I second everything @R1 just mentioned. @R5 brought up the “never mention your previous salary” comment the other day. This is so key. Keep in mind that when a company posts a job, they already have a budget in mind. Let them share that first!
+    end
 
- R2 [1 hour ago]
- Not everyone will do that, and some might be cranky if you stay firm (this just happened to me) but it’s definitely worth a try.
+    Liquid::Template.register_tag(&#39;nav_tree&#39;, Jekyll::NavTree)
 
- R2 [1 hour ago]
- We had a negotiating GDI workshop about a year ago that I found so valuable. Go in to the discussion with three numbers in your mind: the number that would just blow your socks off and make you crazy happy, a number that seems fair, reasonable and makes you excited, and a minimum number that you are willing to walk away from if they don’t meet. Keep these to yourself, but start with your high in the sky number and go from there :slightly_smiling_face:
+    And I’m inserting it into my liquid template via {\% nav_tree %\}.
 
- R3 [1 hour ago]
- Sometimes a company will ask you also what you used to make. When they ask me what I was making at my last job, I always lie and tell them a number that I&#39;m actually targeting to make at this new position. A lot of jobs will make an offer so close to your last salary that saying a number you&#39;re wanting will put you in a negotiating range where you can say, &quot;Well, I was actually looking to make more than at my last position.&quot;
+    The problem is that the page variable in the code above doesn’t have
+    all the data that you’d expect. page.title is undefined and page.url
+    is just the basename with a forward slash in front of it (e.g. for
+    /a/b/c.html, it’s just giving me /c.html).
 
- R4 [1 hour ago]
- Negotiating tactics apply to salary negotiation as much as they do to other negotiable situations (car buying, flea markets, etc), so if you want to psych yourself up with some general negotiation strategies from across the Internet as well, that can&#39;t hurt. (edited)
 
- R3 [44 minutes ago]
- Also, keep yourself open to possible company perks, maybe you&#39;d take less $$ if you have more vacation, or work from home days, or really amazing health insurance. It&#39;s not just about salary negotiation. The biggest thing people don&#39;t negotiate for more is vacation, and sometimes can be the easiest to get.
+    What am I doing wrong?
 
+    Side note: I already tried doing this with pure Liquid markup, and I
+    eventually gave up. I can easily iterate through site.pages just
+    fine with Liquid, but I couldn’t figure out a way to appropriately
+    nest the lists.
 
- R4 [39 minutes ago]
- Agreed that the salary number isn&#39;t everything - we hear a lot about &quot;company culture&quot; these days, and a lot of what companies tout as their &quot;culture&quot; is meaningless, so diving into that can also net you a bomb place to work that helps your mental health and personal fulfilment even if it doesn&#39;t pay Google money. Awesome on-site skill-building opportunities? Plenty of experienced people who enjoy mentoring and have helpful attitudes? Tangible, clear, supported diversity initiatives? Strong community/charitable ties? What kinds of &quot;culture&quot; things matter to you?
+    asked Apr 22 ‘12 at 0:34
 
- R1 [28 minutes ago]
- Agreed. I would work at a place that covers my insurances, and offers more PTO, conference stipends, etc, if the salary is lower because I find those kinds of things very valuable.
+    I created an issue on GitHub to see if anybody there knows the
+    answer. –  jnrbsn Apr 30 ‘12 at 16:21
 
- R1 [28 minutes ago]
- Definitely make sure culturally it is a fit for you too. Ask to meet the team before you make any final decisions
+    Did you ever manage to get the nesting working? I’d love to see the
+    final code if so –  Brand Aug 21 ‘12 at 19:35
 
- R5
- [15 minutes ago]
- @R1 I really have nothing to add. Dang, write a book!!
+    @Brand Unfortunately, I never got around to finishing it. –  jnrbsn
+    Aug 23 ‘12 at 23:19
 
+    I managed to hack the hierachical page tree together. It’s not
+    pretty but I’ve posted it here: gist.github.com/3536551 in case
+    anyone else stumbles on this question –  Brand Aug 30 ‘12 at 18:24
 
- R1 [14 minutes ago]
- hahaha. I’ve heard that before
 
- R1 [14 minutes ago]
- Maybe i should :thinking_face:
+    2 Answers
 
+    Try:
 
- R2 [14 minutes ago]
- Yes, please!
+    module Jekyll
 
- R5
- [13 minutes ago]
- Oh, i guess i do have an additional piece of advice: do *not* refer to yourself as a “Junior Developer” (or “junior” anything). Certainly, you don’t the time/experience/etc BUT you do have skills they can use today, and you should have the ability to learn things, but most of all, solve problems
+    # Add accessor for directory
+    class Page
+    attr_reader :dir
+    end
 
+    class NavTree &lt; Liquid::Tag
+    def initialize(tag_name, text, tokens)
+    super
+    end
 
- R5
- [12 minutes ago]
- no one actually knows what the difference between a jr dev and sr dev actually is; it it most certainly not number of years, although that’s often the only thing people think of.
+    def render(context)
+    site = context.registers[:site]
+    output = &#39;&lt;ul&gt;&#39;
+    site.pages.each do |page|
+    output += &#39;&lt;li&gt;&lt;a href=&quot;&#39;+page.dir+page.url+&#39;&quot;&gt;&#39;+(page.data[&#39;title&#39;] || page.url) +&#39;&lt;/a&gt;&lt;/li&gt;&#39;
+    end
+    output += &#39;&lt;ul&gt;&#39;
+    output
+    end
+    end
+    end
 
- R2 [12 minutes ago]
- @__ might have something to add, too. I know HackReactor has a lot of opinions on this.
+    Liquid::Template.register_tag(&#39;nav_tree&#39;, Jekyll::NavTree)
 
- R5
- [11 minutes ago]
- I might be getting a bit subversive here, but the skills ppl look for in sr people is the ability to be self-directed, take initiative, and most of be able to solve problems
 
- R2 [10 minutes ago]
- Ha. What makes you “senior” is a whole other giant discussion that I woudl love to have.
+    With this code, I get Liquid error: can&#39;t convert nil into String. –
+    jnrbsn May 30 ‘12 at 18:11
 
- R5
- [10 minutes ago]
- you can most definitely have those; it’s not number of years. sure, someone like me, i’ve just made a huge huge pile of mistakes to learn from, but there’s a lot of sr people who do not bother to learn
 
- R5
- [10 minutes ago]
- it’s a false label  /  dichotomy
+    You probably had a page without a title, so that page.data[‘title’]
+    is nil. Replace w/ e.g. (page.data[‘title’] || page.url) . –  Mikael
+    Borg Jun 4 ‘12 at 9:37
 
- R5
- [9 minutes ago]
- but it’s one that is so entrenched it’s hard to deal with. so again, do not put that label on yourself
+    Sorry for the delayed response. You were correct. I had a page
+    without a title. Your solution works. –  jnrbsn Jun 15 ‘12 at 4:32
 
- R5
- [9 minutes ago]
- we need to have another meetup this week so we can have all these great conversations LOL
 
+    page.title is not always defined (example: atom.xml). You have to
+    check if it is defined. Then you can take page.name or not process
+    the entry…
 
- R2 [9 minutes ago]
- yep yep yep - hard when that’s often tied to salary, recognition, opportunities, responsibility, etc.
+    def render(context)
+    site = context.registers[:site]
+    output = &#39;&lt;ul&gt;&#39;
+    site.pages.each do |page|
+    unless page.data[&#39;title&#39;].nil?
+    t = page.data[&#39;title&#39;]
+    else
+    t = page.name
+    end
+    output += &quot;&lt;li&gt;&lt;a href=&quot;&#39;+page.dir+page.url+&#39;&quot;&gt;&#39;+t+&#39;&lt;/a&gt;&lt;/li&gt;&quot;
+    end
+    output += &#39;&lt;ul&gt;&#39;
+    output
+    end
 
- R1 [9 minutes ago]
- do it!
 
- R2 [8 minutes ago]
- RIGHT?!
+    Shorten that unless..end a bit to: t = page.data[&#39;title&#39;] ||
+    page.name –  tamouse 20 mins ago
 
- R1 [8 minutes ago]
- that’s a conversation i would love to be a part of
+*** [[http://middlemanapp.com/][middleman]]
+    Date: &lt;2013-10-15 Tue 02:15&gt;
+    Middleman is a static site generator using all the shortcuts and
+    tools in modern web development.
 
-    #+END_QUOTE
+    Considering using this for my resume builder, and my recipe
+    file. Both seem ideal candidates for this thing. I might also
+    switch over my comic snagger to using this instead of jekyll.
 
+    Generally, I&#39;m liking the looks and idea of middleman better than
+    jekyll, octopress and definitely frank.
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/shell-notes.org</id>
+      <updated>2021-11-16T11:10:15-06:00</updated>
+      <title>command line shells</title>
+      <content>* command line shells
+** Shell Notes
+*** zsh
+    :PROPERTIES:
+    :LOCATION: This has been added to swaac.dev
+    :END:
 
+    - [[https://support.apple.com/en-us/HT208050][zsh is default on MacOS Catalina]]
 
-*** Discussion on GDIMPLS Slack
-    CAPTURE_DATE: [2017-03-06 Mon 16:17]
-    TOPIC:    Y U No Hire Jr Devs?
+**** online documentation
 
-    OP started off a discussion in the #general chat in
-    GDIMpls.slack.com team.
+     - [[http://zsh.sourceforge.net/Doc/Release/zsh_toc.html#SEC_Contents][Table of Contents]]
+     - [[http://zsh.sourceforge.net/FAQ/][FAQ]]
 
-    #+BEGIN_QUOTE
-    OP [Today at 1:51 PM]
-    question for everybody: have you ever worked at a place that “doesn’t hire jr devs”, spoken to a place/person that “doesn’t hire jr devs”, or do you personally not like jr devs (i won’t be hurt/offended)?
+**** oh-my-zsh
 
-    R1 [1 hour ago]
-    so, personally, you gotta know i love jr. devs, otherwise i wouldn&#39;t be trying to help make some :slightly_smiling_face:
+     The sine qua non for zsh users: [[https://github.com/robbyrussell/oh-my-zsh/][https://github.com/robbyrussell/oh-my-zsh/]] ([[https://ohmyz.sh/][pretty web site]])
 
-    OP [1 hour ago]
-    true true
 
-    R1 [1 hour ago]
-    but the &quot;we don&#39;t hire jr. devs&quot; is so fucking real
+**** ZSH NOTES COLLECTOR
 
-    R1 [1 hour ago]
-    i have long convos with recruiters and companies about this alla time. The problem, and I think know it, is that when everyone is hiring sr. devs, that means no one is creating new sr. devs, and you have to hire jr. devs to make sr. devs
+***** some zsh options to try
 
-    R1 [1 hour ago]
-    sorry, I think *everyone* knows it
+****** case-insensitive globbing
 
-    R1 [1 hour ago]
-    (thinking too fast to type)
+  The zsh option which controls this is CASE_GLOB. Since we want globbing to be case-insensitive, we want to turn the option off, so:
 
-    R2 [1 hour ago]
-    Yep not many people are willing to put the time in to make the senior devs they truly want by training jr devs.
+  #+BEGIN_SRC shell
+    setopt NO_CASE_GLOB
+  #+END_SRC
 
-    R1 [1 hour ago]
-    and yet the complaint is that they can&#39;t afford to train jr. devs
+****** tab completion
 
-    R1 [1 hour ago]
-    the typical mindset for tech companies is that they don&#39;t have the time, can&#39;t take the risk, and so on, because they don&#39;t fundamentally understand what they&#39;re trying to make
+  In zsh tab completion will replace the wildcard with the actual result.
 
-    R2 [1 hour ago]
-    Yep
+  #+BEGIN_SRC shell
+    % ls ~/d*&lt;tab&gt;
+  #+END_SRC
 
-    R1 [1 hour ago]
-    there&#39;s a tremendous lack of mindfulness about developing software, in pretty much any form
+  So after the tab you will see:
 
-    R1 [1 hour ago]
-    a lot of this is historical, of course, but that really doesn&#39;t excuse the lack of introspection about what the software industry is
+  #+BEGIN_SRC shell
+    % ls /Users/armin/Desktop /Users/armin/Documents /Users/armin/Downloads
+  #+END_SRC
 
-    OP [1 hour ago]
-    this is great! I hadn’t thought about that.
+  Using tab completion this way to see and possibly edit the actual replacement for wildcards is a useful safety net.
 
-    R1 [1 hour ago]
-    this also ties into the latest very visible reports of misogyny, we&#39;ve seen, but cuts across all the -isms; where you do not see diversity happening, just talked about and much handwringing
+  In bash, pressing the tab key *twice* will list possible completions, but not substitute them in the command prompt.
 
-    R1 [1 hour ago]
-    you notice women, poc, pwd, etc., when they get someplace primarily because it is so fucking rare
+  If you do not like this behavior in zsh then you can change to behavior similar to bash with:
 
-    OP [1 hour ago]
-    Diversity &amp; Inclusion -Buzzwords of 2016/17
+  #+BEGIN_SRC shell
+    setopt GLOB_COMPLETE
+  #+END_SRC
 
-    R1 [1 hour ago]
-    sadly, just buzzwords
+****** saving history when shell exits
 
-    OP [1 hour ago]
-    EXACTLY
+  By default, zsh does not save its history when the shell exits. The history is ‘forgotten’ when you close a Terminal window or tab. To make zsh save its history to a file when it exits, you need to set a variable in the shell:
 
-    R1 [1 hour ago]
-    fill out your bingo card!
+  #+BEGIN_SRC shell
+    HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
+  #+END_SRC
 
+****** using a single history file for all shells
 
-    R1 [1 hour ago]
-    this is not new; i don&#39;t see it changing, i see it getting more lip service, and no real change
+  You can tell zsh to use a single, shared history file across the sessions and append to it rather than overwrite:
 
-    R1 [1 hour ago]
-    i don&#39;t think it&#39;s any better
+  share history across multiple zsh sessions
+  #+BEGIN_SRC shell
+    setopt SHARE_HISTORY
+  #+END_SRC
 
-    R1 [1 hour ago]
-    and this pisses me off to no end
+  append to history
+  #+BEGIN_SRC shell
+    setopt APPEND_HISTORY
+  #+END_SRC
 
-    R2 [1 hour ago]
-    This really has my mind running now. Why arent more companies open to jr devs? Seriously, they have the skills to learn, they have the want, and they require less compensation, why not let them work on your smaller projects until they are your senior dev you want. (edited)
+****** write to history file after avery command
 
-    R1 [1 hour ago]
-    and even more, how i have been unable to make and change, and how i&#39;ve been totally complicite
+  Furthermore, you can tell zsh to update the history file after every command, rather than waiting for the shell to exit:
 
-    R1 [1 hour ago]
-    i had a phone intreview this morning, and we talked about exactly that, R2
+  add commands as they are typed, not at shell exit
+  #+BEGIN_SRC shell
+    setopt INC_APPEND_HISTORY
+  #+END_SRC
 
-    R2 [45 minutes ago]
-    Train the senior devs you want. Why is that so hard?!
+****** removing some things from history file
 
-    R1 [45 minutes ago]
-    how this company *had* hired a bunch of jr. devs, but they had no direction, and no idea of what they should be doing
+  When you use a shared history file, it will grow very quickly, and you may want to use some options to clean out duplicates and blanks:
 
-    R2 [44 minutes ago]
-    Yeah thats the opposite problem
+  expire duplicates first:
+  #+BEGIN_SRC shell
+    setopt HIST_EXPIRE_DUPS_FIRST
+  #+END_SRC
 
-    R2 [44 minutes ago]
-    they need a leader that wants to and is a good mentor too
+  do not store duplications
+  #+BEGIN_SRC shell
+    setopt HIST_IGNORE_DUPS
+  #+END_SRC
 
+  ignore duplicates when searching
+  #+BEGIN_SRC shell
+    setopt HIST_FIND_NO_DUPS
+  #+END_SRC
 
-    R1 [44 minutes ago]
-    and so now they&#39;re looking at getting more sr. people to help with that
+  remove blank lines from history
+  #+BEGIN_SRC shell
+    setopt HIST_REDUCE_BLANKS
+  #+END_SRC
 
-    R2 [44 minutes ago]
-    Thats good
+***** zsh completion
 
-    R1 [44 minutes ago]
-    it&#39;s just another huge example of mindlessness
+****** links
 
-    R2 [44 minutes ago]
-    Yep
+       - [[http://zsh.sourceforge.net/Doc/Release/Completion-System.html][Official zsh doc completion section]]
+       - [[https://github.com/zsh-users/zsh-completions/blob/master/zsh-completions-howto.org][zsh-users zsh-completions-howto]]
+       - [[https://github.com/zsh-users/zsh/blob/master/Etc/completion-style-guide][zsh-users zsh Completion Guide]]
+       - [[https://github.com/scriptingosx/mac-zsh-completions][Repo of MacOS zsh completions]]
 
-    R2 [44 minutes ago]
-    Lack of proper planning
+** Shell TODOs
+** Shell Oneliners
+    #+begin_src shell
+      for f in * ; do mv &quot;$f&quot; $(echo $f | tr &quot; &quot; &quot;_&quot;) ; done # replace spaces in file names with underscores
+      perl -i.bak -pe &#39;/^(#+ binding:)\s+&quot;(.*)&quot;/ &amp;&amp; ($one = $1) &amp;&amp; ($two = $2) &amp;&amp; ($two =~ s/ //g) &amp;&amp; ($_ = &quot;$one $two\n&quot;)&#39; $(find . -name &#39;*.yasnippet&#39;) # remove quotes and spaces from bindings in yasnippets
+      for f in *.bak ; do diff &quot;${f%%.bak}&quot; &quot;$f&quot; ; done # find diff between backup and current files after a filtering operation
+      for f in *.bak ; do mv -v &quot;$f&quot; &quot;${f%%.bak}&quot; ; done # push back original files after filtering operation
+      for f in *.old ; do mv &quot;$f&quot; &quot;${f%%.old}.new&quot; ; done # rename old files with new extension
+      find . -print0 | xargs -0 file # dealing with spaces in file names
+      pcregrep &#39;me$&#39; /usr/share/dict/words | sed &#39;s/me$/.me/&#39; |  bin/checkavailable.pl
+    #+end_src
+    link: [[file:~/Dropbox/oneliners]]
+    captured_on: [2015-01-26 Mon 06:47]
 
-    R1 [43 minutes ago]
-    what i would love to do, most of all, is help jr. devs become sr. devs
-
-
-    R1 [43 minutes ago]
-    the companies that do hire jr. devs, then proceed to never give them any guidance.
-
-    OP [43 minutes ago]
-    I’m interested in why you feel you’ve been complicit @R1
-
-    R2 [42 minutes ago]
-    Me too Tamara.
-
-    R2 [42 minutes ago]
-    I wish there was a sustainable way to do that. My only idea was winning the lottery so money wasnt a concern, hahaha.
-
-    R1 [41 minutes ago]
-    because i fall prey to the same thinking that everyone else does; we had this long convo this weekend at lunch about diversity as it relates to women in tech, and NOT ONCE did anyone, including myself, ever mention the intersectionalities
-
-    R1 [41 minutes ago]
-    not. once.
-
-    R3 [41 minutes ago]
-    &quot;the companies that do hire jr. devs, then proceed to never give them any guidance.&quot; &lt;-- this is super interesting. (i mean all of this is)
-
-    R1 [40 minutes ago]
-    my blue sky pipe dream is that we can open a coop / collective, that isn&#39;t a for profit, and people who participate also have to give back in time and resources
-
-    R3 [40 minutes ago]
-    I think that might be part of the hesitation for many. They may want to do it _right_ and convince themselves they don&#39;t have the bandwidth to take on an individual that will need guidance/mentoring/support.
-
-    R1 [40 minutes ago]
-    Do understand I am way overgeneralising that
-
-    R2 [40 minutes ago]
-    Agreed. I think that is a lot of it. It seems to overwhelming so they just avoid it.
-
-    R3 [40 minutes ago]
-    We did this at W______, _very_ intentionally this past year.
-
-    R3 [40 minutes ago]
-    Our goal was to hire a &quot;junior&quot; dev
-
-    R1 [40 minutes ago]
-    some place have done that, some places do do that
-
-    R2 [39 minutes ago]
-    Your pipe dream sounds great R1.
-
-    R3 [38 minutes ago]
-    Companies want to make money, and as we discussed at lunch this weekend, assembling and creating a safe place for a diverse team will always create a higher quality product.
-
-    R1 [38 minutes ago]
-    what i heard talking with LP last week and this, is an interesting model of organization. A team is 5 people, a lead dev, two jr or other devs, a product mgr, and a UI/UX &quot;specialist&quot; (their term, could be a dev, dunno for sure yet)
-
-    R3 [38 minutes ago]
-    I wonder if people don&#39;t actualy believe that, or if they just don&#39;t know how to get there
-
-    R1 [38 minutes ago]
-    it&#39;s an interesting model
-
-    R1 [38 minutes ago]
-    i think the latter, R3
-
-    R1 [37 minutes ago]
-    don&#39;t know, don&#39;t know how to find out, and that&#39;s a huge risk to take
-
-    R3 [37 minutes ago]
-    Mhm
-
-    R2 [37 minutes ago]
-    That is the perfect team mix, R1, in my mind.
-
-    R1 [37 minutes ago]
-    mine to; i hope it&#39;s not just words
-
-    R1 [37 minutes ago]
-    i&#39;ve pretty much decided i&#39;ll take their offer if they make one
-
-    R1 [37 minutes ago]
-    pls don&#39;t tell
-
-    R2 [36 minutes ago]
-    Oh thats super great. So would you be one of those senior devs helping mentor the jr&#39;s?
-
-    R1 [36 minutes ago]
-    yeah
-
-    R2 [36 minutes ago]
-    My boss mentioned getting a junior &quot;me&quot; (my role, not me specifically) and I was so excited. Mentoring is one of my fave things to do.
-
-    R1 [36 minutes ago]
-    i mean, we were all speaking the same language, right? so now all my red flags are flying....
-
-    OP [36 minutes ago]
-    this is all really good stuff. And I know that the 3 of you (and more) do want to create that space for those like myself. It’s just really disheartening to be told because I’m a jr dev, I can’t add value
-
-    R1 [35 minutes ago]
-    AND THAT IS SO WRONG
-
-    R1 [35 minutes ago]
-    IT IS A LIE
-
-    OP [35 minutes ago]
-    I KNOW!
-
-    R1 [35 minutes ago]
-    spoken by people who are not adding value
-
-    R2 [35 minutes ago]
-    That is so horrible. You are amazing and I know you will not let it get you down, but make sure that you do not take that to heart or find it discouraging. (edited)
-
-    OP [35 minutes ago]
-    I want to learn the way a company codes, their standards, structure, i want to fix all the little things nobody else does, I want to build shit.
-
-
-    R2 [34 minutes ago]
-    You can add TONS of value.
-
-    OP [34 minutes ago]
-    Thank you.
-
-    OP [34 minutes ago]
-    It just adds more fuel to an already huge fire
-
-    R2 [34 minutes ago]
-    :fire:
-
-    R1 [34 minutes ago]
-    i&#39;m not really joking when i say &quot;burn it all down&quot;
-
-    R2 [33 minutes ago]
-    You are a strong person, it makes me sad for the people that are less like you. (edited)
-
-    R2 [33 minutes ago]
-    The ones that wont have that fight in them and will give up and move on.
-
-
-    R1 [33 minutes ago]
-    but this is also back to relying superheroism to make things better
-
-
-    OP [32 minutes ago]
-    right. That’s another reason why I want to do this at Minnebar
-
-    OP [32 minutes ago]
-    because I know that there are so many people that just won’t say anything
-
-    R1 [31 minutes ago]
-    you mean have this conversation at Minnebar?
-
-    OP [30 minutes ago]
-    yeah, i’m writing up a session called “So you don’t hire Jr Devs? Tell me more.&quot;
-
-
-    R1 [29 minutes ago]
-    oh fuck yeah
-
-    OP [29 minutes ago]
-    to speak as a jr dev, how jr devs feel in the market, what can other devs do to support and advocate and our importance
-
-    OP [29 minutes ago]
-    and then Lanice and I are also writing up one on Diversity &amp; Inclusion
-
-    R1 [28 minutes ago]
-    without jr devs there is no future software business
-
-
-    R2 [28 minutes ago]
-    OMG I am sad, I will miss that.
-
-    R2 [28 minutes ago]
-    I will be speaking at WordCamp in San Diego.
-
-    R2 [28 minutes ago]
-    Please definitely do that - the world needs to hear it.
-
-    OP [27 minutes ago]
-    I am sad you’re missing it too!!
-
-    R1 [26 minutes ago]
-    tickets are all gone
-
-    R1 [25 minutes ago]
-    also, i hate super large people events
-
-    R1 [24 minutes ago]
-    so that&#39;s an example of me being complicit
-
-    R1 [23 minutes ago]
-    so, like, what i should say instead, is there anything i can help with?
-
-    R3 [23 minutes ago]
-    ^^^^^^^^^^^
-
-    R3 [23 minutes ago]
-    that
-
-    R3 [23 minutes ago]
-    haha
-
-    R3 [22 minutes ago]
-    ditto
-
-    R1 [21 minutes ago]
-    &quot;The master&#39;s tools will never dismantle the master&#39;s house&quot; so we make our own tools
-
-    R4 [18 minutes ago]
-    This thread just got me really emotional. Thanks to everyone who&#39;s been sharing thoughts and perspectives. As a current junior dev who struggled to find a job and heard from companies that they don&#39;t hire jr, it got really challenging.
-
-
-    R1 [17 minutes ago]
-    This topic is hugely emotional for me as well, cari.tan, it goes into a lot of other things for me as well.
-
-    R1 [16 minutes ago]
-    primarily, i think our failing as sr. devs, mgrs, and so on, i.e., the people that *could* change things, is we just do not become or stay mindful
-
-    R4 [16 minutes ago]
-    One of the things that I kept thinking about was how if you hire junior devs, then they are coming in and learning your systems, your procedures and it might in someways be easier to integrate into the company processes because they are not bringing in past habits, which might be good and bad.
-
-
-    R1 [15 minutes ago]
-    EXACTLY!! and you&#39;ll have more effective devs than if you wait for the perfect sr. dev to show up
-
-    R1 [14 minutes ago]
-    AND! those jr. devs need guidance, attention, (care &amp; feeding?)
-
-
-    R4 [14 minutes ago]
-    I&#39;m currently on a team that doesn&#39;t have any real support for me because I&#39;m the only one working in the area that I work in and I have to go outside of my team when I&#39;m stuck, which can be challenging because of the schedules and workloads of their teams. It gets really hard sometimes.
-
-    R1 [13 minutes ago]
-    does you management listen to such issues well?
-
-    R1 [12 minutes ago]
-    (i was trying to figure out a way to ask in such a way as to not make any assumptions, but i don&#39;t think i can)
-
-    R4 [12 minutes ago]
-    Not really. I&#39;m on contract, which adds some complications. It
-
-    R1 [11 minutes ago]
-    certainly
-
-    R1 [10 minutes ago]
-    this is another place i have a huge advantage as a sr. dev, even, or especially, on contract, i don&#39;t usually have any hesitations in telling management their organization / communication / processes are not working well
-
-    R4 [10 minutes ago]
-    It&#39;s largely due to a restructuring that happened right after I started. I was hired onto a team of six people who all worked on the same parts of the website and then about 3 weeks later we were split across three new teams. I was the only one from the original team that ended up on mine. They are aware, but there&#39;s no real motivation for them to do much about it (add or shift resources, etc).
-
-    R1 [9 minutes ago]
-    but it&#39;s not something that a jr. can do with credibility :disappointed:
-
-    R4 [8 minutes ago]
-    Yeah, exactly.
-
-    R1 [8 minutes ago]
-    start looking for your next contract, maybe
-
-
-    OP [8 minutes ago]
-    i agree.
-
-    R1 [7 minutes ago]
-    because, holy cow, fixing their shit is not on you
-
-    R1 [6 minutes ago]
-    of course, the other side is get the learning you can out of the current situation
-
-    R1 [5 minutes ago]
-    idk, folks, this whole system is not going to solved by waiting for companies to wake up
-
-    R4 [4 minutes ago]
-    I have started looking for the next thing. I&#39;ve learned quite a bit, but am definitely ready for something different with more support.
-
-    R1 [4 minutes ago]
-    and as much fun as it would be for me to train jr. devs into sr. devs, i also don&#39;t want to just create a chain of cannon fodder
-
-    R1 [3 minutes ago]
-    cari.tan : awesome!!
-
-    R4 [3 minutes ago]
-    Thanks @OP for starting this conversation. It needs to be talked about and revisited often.
-
-    R1 [3 minutes ago]
-    :+1:
-
-    R1 [2 minutes ago]
-    i sure want to hear from you all on this
-
-    R1 [2 minutes ago]
-    and i am quite serious about the offers of help
-
-
-    OP [1 minute ago]
-    Thank you ALL for contributing. I am glad to know that sr/mid/lead devs care about this
-
-    R4 [1 minute ago]
-    Thanks @R1, @R3 and @R2 for being in leadership and senior roles and sharing your perspective and helping to work on this issue!
-    #+END_QUOTE
 
 </content>
       <author>
@@ -1317,40 +961,239 @@ end
       </author>
     </entry>
     <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/code-review-notes.org</id>
-      <updated>2020-05-23T16:31:19-05:00</updated>
-      <title>Introduction</title>
-      <content>#+TITLE: Notes on conduction guided code reviews
+      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/ruby-notes.org</id>
+      <updated>2021-11-16T11:10:15-06:00</updated>
+      <title>Ruby</title>
+      <content>* Ruby
 
-* Introduction
-
-During the course of react web client development, it&#39;s become clear that using our standard method of a team mate reading through a github PR would not work, since the amount of code and files is enormous, contradicting any best practice about doing code reviews. Instead, we&#39;re going to conduct guided code reviews, a practice where we meet as a team to walk through the significant aspects of the code change, to help the other team members understand what is happening and be able to make better contributions to the review.
-
-** Research
-
-*** [[https://www.ibm.com/developerworks/rational/library/11-proven-practices-for-peer-review/index.html][11 Proven Practices for more effective, efficient peer code reviews (IBM Developer)]]
-
-Summary:
-
-1. Review fewer than 200–400 lines of code at a time
-2. Aim for an inspection rate of fewer than 300–500 LOC per hour
-3. Take enough time for a proper, slow review, but not more than 60–90 minutes
-4. Be sure that authors annotate source code before the review begins
-5. Establish quantifiable goals for code review, and capture metrics so you can improve your processes
-6. Use checklists, because they substantially improve results for both authors and reviewers
-7. Verify that the defects are actually fixed
-8. Foster a good code review culture in which finding defects is viewed positively
-9. Beware of the Big Brother effect
-10. Review at least part of the code, even if you can&#39;t do all of it, to benefit from The Ego Effect
-11. Adopt lightweight, tool-assisted code reviews
+** Notes
+*** [[http://www.saturnflyer.com/blog/jim/2015/01/20/ruby-forwardable-deep-dive/?utm_source%3Drubyweekly&amp;utm_medium%3Demail][Forwardable Deep Dive]] [2015-01-25 Sun]
+    :PROPERTIES:
+    :LOCATION: added to swaac.dev
+    :END:
+    #+AUTHOR: Jim Gay
 
 
-*** [[https://en.wikipedia.org/wiki/Software_walkthrough][Software Walkthroughs (Wikipedia)]]
 
-- [[https://ieeexplore.ieee.org/document/4601584][1028-2008 - IEEE Standard for Software Reviews and Audits]]
-- [[http://pesona.mmu.edu.my/~wruslan/SE2/Readings/detail/Reading-6.pdf][IEEE Std 1028-1999 Standard for Software Reviews]] (PDF)
+*** TODO try out moneta in an application
+
+** Books
+
+*** Practical Object Oriented Design in Rails - Sandi Metz
+
+***** On composition vs inheritance, Sandi Metz in POODR
+   #+begin_src markdown
+     &gt; Composition allows you to combine small parts to create more complex
+     &gt; objects such that the whole becomes more than the sum of its
+     &gt; parts. Composed objects tend to consist of simple, discrete entities
+     &gt; that can easily be rearranged into new combinations. These simple
+     &gt; objects are easy to understand, reuse, and test, but because they
+     &gt; combine into a more complicated whole, the operation of the bigger
+     &gt; application may not be as easy to understand as that of the
+     &gt; individual parts.
 
 
+     &gt; Composition, classical inheritance, and behavior sharing via modules
+     &gt; are competing techniques for arranging code. Each has different
+     &gt; costs and benefits; these differences predispose them to be better
+     &gt; at solving slightly different problems.
+
+
+     &gt; These techniques are tools, nothing more, and you’ll become a better
+     &gt; designer if you practice each of them. Learning to use them properly
+     &gt; is a matter of experience and judgment, and one of the best ways to
+     &gt; gain experience is to learn from your own mistakes. The key to
+     &gt; improving your design skills is to attempt these techniques, accept
+     &gt; your errors cheerfully, remain detached from past design decisions,
+     &gt; and refactor mercilessly.
+
+     &gt; As you gain experience, you’ll get better at choosing the correct
+     &gt; technique the first time, your applications will improve.”
+
+
+     Excerpt From: Metz, Sandi. “Practical Object-Oriented Design in Ruby:
+     An Agile Primer (Addison-Wesley Professional Ruby Series).”
+     iBooks. https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewBook?id=038BE4A901A3E1659EA914B97D73CA82
+
+   #+end_src
+
+*** The Well Grounded Rubyist
+
+     #+begin_src markdown
+       ## Who should read this book
+
+       &gt; The Well-Grounded Rubyist, Second Edition is optimized for a reader
+       &gt; who’s done some programming and perhaps even some Ruby and wants to
+       &gt; learn more about the Ruby language—not only the specific techniques
+       &gt; (although the book includes plenty of those), but also the design
+       &gt; principles that make Ruby what it is. I’m a great believer in knowing
+       &gt; what you’re doing. I also believe that knowing what you’re doing
+       &gt; doesn’t mean you have to compose a treatise in your head every time
+       &gt; you write a line of code; it means you know how to make the most out
+       &gt; of the language, and understand how to analyze problems when they
+       &gt; arise.
+       &gt;
+       &gt;
+       &gt; [I]f this is your first foray into programming, be prepared to do a
+       &gt; little extra self-imposed “homework” to get ramped up into the
+       &gt; programming process—but by all means, give The Well-Grounded Rubyist,
+       &gt; Second Edition a go. The book isn’t specifically an introduction to
+       &gt; programming, but it does take you through all the practicalities,
+       &gt; including the creation and running of program files, as well as
+       &gt; explaining Ruby from the ground up
+
+       Excerpt From: David A. Black. “The Well-Grounded Rubyist, Second
+       Edition.”
+
+     #+end_src
+
+
+** Ruby one-liners
+  #+name: one-liners
+  #+begin_src ruby
+    a=[1,2,3,4,4,5,6,6,6];Hash[a.group_by {|e| e}.map {|k,v| next if v.size ==1;[k,v.size]}.compact]
+  #+end_src
+
+** Ruby Testing
+*** Capybara
+**** DONE Scrolling the window in Capybara          :blog:ruby:spec:capybara:
+   :PROPERTIES:
+   :CAPTURE_DATE: [2019-03-06 Wed 16:45]
+   :LOCATION: added to swaac.dev
+   :END:
+
+
+   This is a problem when we have a modal that is long and we need to get the &quot;Submit&quot; button.
+
+   #+BEGIN_SRC ruby
+     page.execute_script &quot;window.scrollBy(0,10000)&quot;
+   #+END_SRC
+
+
+
+** Ruby Meetings, Meetups
+*** RubyMN 2014-02-24 7:00pm
+
+**** AI Twitter Bot
+***** Horse_Ebooks
+***** rkelly_ebooks
+      tweet rkelly lyrics
+****** scrape
+****** choose
+****** vote
+******* characterize
+******* tag
+******* bayes
+******** classifier
+******** guess funniness
+******** human in the loop
+******* post
+
+***** what did we learn
+
+****** try new things
+
+****** make stupid shit
+
+****** have some fun
+
+****** josh kaplan
+       @jkap
+       git.io/rkelly_ebooks
+       @rkelly_ebooks
+
+**** Daemons in Ruby
+     Ian Whitney @ianwhitney
+
+***** what&#39;s a daemon?
+****** Background jobs
+******* resque
+******* delayed jobs
+******* sidekiq
+****** Services
+****** Responsive to changes
+
+
+***** what else?
+****** write your own
+******* logging
+******* error capturing
+******* scheduling
+****** daemon_kit
+       https://github.com/kennethkalmer/daemon-kit
+
+
+*** RubyMN Meeting 7:00pm-9:00pm
+    &lt;%%(diary-float t 1 -1)&gt;
+    Last Monday of the month
+
+** RUBY REFILE TARGET
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/rpi-notes.org</id>
+      <updated>2021-11-16T11:10:15-06:00</updated>
+      <title>Raspberry Pi</title>
+      <content>* Raspberry Pi
+** Raspberry Pi Howtos
+
+*** Configure the pi
+**** ssh into the RPi:
+     ssh pi@10.0.0.13 (substituting the right address)
+     Password: raspberry
+**** run the configurator:
+     sudo raspi-config
+
+***** expand the file system to the entire card
+***** change the pi user password
+***** set up locales
+***** change public hostname
+***** reboot
+
+*** Provisioning
+**** ssh into the RPi
+**** create an ssh key pair
+**** install emacs
+     sudo apt-get install emacs23-nox
+**** install system-wide ruby
+***** follow checklist at http://wiki.tamaratemple.com/Technology/BuildRubySystemFromSource
+
+*** Set up Samba for File Sharing
+**** install and configure samba server following http://elinux.org/R-Pi_NAS
+     apt-get install samba samba-common-bin
+**** add USB drives to /etc/fstab
+**** connect to mac the normal way CMD-K
+
+*** Install tmux
+
+*** [[http://blog.alexellis.io/getting-started-with-docker-on-raspberry-pi/][Get Started with Docker on Raspberry Pi]]              :raspberrypi:docker:
+       captured at: [2016-08-19 Fri 02:13]
+
+       description: Get Docker up and running on your Raspberry Pi in minutes. Learn some cool hacks and optimizations for the best experience.
+
+     selection: I have put this guide together to help you get started with Docker on your Raspberry Pi. For simplicity we will use the default operating system for the Pi - called Raspbian. This guide currently works with the Model 2B and Model 3 Pi. Support for the Raspberry Pi Zero, and B+ is planned for Docker 1.12-1-rc2 onwards.
+** Raspberry Pi Notes
+
+*** Raspberry Pi boot up notes
+**** Use RPi-sd card builder app
+***** start app and follow the prompts with an SD card at the ready.
+      When it is done, it will tell you to eject the card.
+**** Insert the SD card in the RPi, connect ethernet, keyboard, video cable
+     Optionally connect USB disk.
+**** Connect power to start it up.
+**** Locate the IP address assigned by the DHCP host
+
+*** Install nginx to serve static files
+**** apt-get install nginx
+**** modify defaults
+     root /var/www
+
+*** Set static IP per http://elinux.org/RPi_Setting_up_a_static_IP_in_Debian
+**** make pi IP static on router (ideally use a DHCP reservation, but this one doesn&#39;t do that. Thanks, Comcast!)
 </content>
       <author>
         <name>Tamara Temple</name>

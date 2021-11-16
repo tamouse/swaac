@@ -1,0 +1,19 @@
+* TIL: Quickly build out a network in miro
+  :PROPERTIES:
+  :DATE_UPDATED: Time-stamp: <2021-11-16 11:29:53 tamaratemple>
+  :END:
+
+** To quickly add new shapes on a diagram:
+   1. Drag out a shape, type some text.
+   2. Click on one of the attachment spots, a new shape is created with the same attributes.
+   3. Click on one of the attachment spots in the original shape and it puts another new shape on board cleanly.
+  
+** Image of network on miro baard
+
+   #+CAPTION: A network diagram in miro
+   #+NAME: fig:MIRO_NETWORK_DIAGRAM
+   [[../../images/miro_skill_building_out_a_network.jpg]]
+
+** On my miro board
+
+   [[https://miro.com/app/board/o9J_lt3X-vo=/?moveToWidget=3074457367689591761&cot=14][Link to my miro board with the network diagram example]]
