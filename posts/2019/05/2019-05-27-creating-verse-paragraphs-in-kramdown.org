@@ -30,7 +30,7 @@ In the past, when I've wanted to create a verse, perhaps in a blockquote I've re
 
 #+END_SRC
 
-In ~kramdown~, the default markdown processor in [[Jekyll]] these days, there's an easier way:
+In ~kramdown~, the default markdown processor in [[https://jekyllrb.com][Jekyll]] these days, there's an easier way:
 
 #+BEGIN_SRC markdown
   > Listen, little children, all,

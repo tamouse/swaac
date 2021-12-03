@@ -1,8 +1,8 @@
 #+TITLE: Sitemap for project orgfiles
 
-- [[file:index.org][index]]
 - [[file:misc-notes.org][misc-notes]]
 - [[file:README.org][README]]
+- [[file:index.org][Software as a Craft]]
 - posts
   - [[file:posts/index.org][index]]
   - [[file:posts/learning.org][learning]]
@@ -59,8 +59,8 @@
       - [[file:posts/2013/09/the-predicate-module-pattern.org][the-predicate-module-pattern]]
       - [[file:posts/2013/09/why-you-should-stop-pirating-googles-geo-apis-pete-wardens-blog.org][why-you-should-stop-pirating-googles-geo-apis-pete-wardens-blog]]
     - 10
-      - [[file:posts/2013/10/6-ways-to-remove-pain-from-feature-testing-in-ruby-on-rails.org][6-ways-to-remove-pain-from-feature-testing-in-ruby-on-rails]]
-      - [[file:posts/2013/10/adding-a-file-display-list-to-a-multi-file-upload-html-control.org][adding-a-file-display-list-to-a-multi-file-upload-html-control]]
+      - [[file:posts/2013/10/6-ways-to-remove-pain-from-feature-testing-in-ruby-on-rails.org][6 Ways to Remove Pain From Feature Testing in Ruby on Rails]]
+      - [[file:posts/2013/10/adding-a-file-display-list-to-a-multi-file-upload-html-control.org][Adding a file display list to a multi-file upload HTML control]]
       - [[file:posts/2013/10/apache-slash-php-5-dot-x-remote-code-execution-exploit.org][apache-slash-php-5-dot-x-remote-code-execution-exploit]]
       - [[file:posts/2013/10/bootstrap-follies-solving-a-repsonsive-positioning-problem.org][bootstrap-follies-solving-a-repsonsive-positioning-problem]]
       - [[file:posts/2013/10/delete-a-remote-git-branch.org][delete-a-remote-git-branch]]
@@ -119,6 +119,7 @@
     - [[file:posts/2015/index.org][index]]
     - 01
       - [[file:posts/2015/01/emacs-org-mode.org][emacs-org-mode]]
+      - [[file:posts/2015/01/just-use-double-quotes.org][just-use-double-quotes]]
       - [[file:posts/2015/01/link-stop-writing-rails-controllers.org][link-stop-writing-rails-controllers]]
       - [[file:posts/2015/01/rails-4-dot-2-config-for.org][rails-4-dot-2-config-for]]
       - [[file:posts/2015/01/using-packer-and-vagrant-to-build-virtual-machines.org][using-packer-and-vagrant-to-build-virtual-machines]]
@@ -129,6 +130,7 @@
       - [[file:posts/2015/02/tenderlove-weird-stuff-with-hashes.org][tenderlove-weird-stuff-with-hashes]]
     - 03
       - [[file:posts/2015/03/a-new-release-of-jekyllpress.org][a-new-release-of-jekyllpress]]
+      - [[file:posts/2015/03/how-to-use-alt-text-attribute-properly.org][how-to-use-alt-text-attribute-properly]]
       - [[file:posts/2015/03/link-how-to-use-the-html5-sectioning-elements.org][link-how-to-use-the-html5-sectioning-elements]]
       - [[file:posts/2015/03/link-sharing-rails-views-with-jekyll.org][link-sharing-rails-views-with-jekyll]]
       - [[file:posts/2015/03/rails-question-getting-x-where-there-are-no-y.org][rails-question-getting-x-where-there-are-no-y]]
@@ -136,7 +138,6 @@
       - [[file:posts/2015/04/installing-phantomjs-on-ubuntu-linux.org][installing-phantomjs-on-ubuntu-linux]]
       - [[file:posts/2015/04/the-x-y-problem.org][the-x-y-problem]]
       - [[file:posts/2015/04/til-kernel-number-gets-is-different-from-io-number-gets.org][til-kernel-number-gets-is-different-from-io-number-gets]]
-      - [[file:posts/2015/04/you-dont-know-javascript-class.org][you-dont-know-javascript-class]]
     - 05
       - [[file:posts/2015/05/links.org][links]]
       - [[file:posts/2015/05/love-letter.org][love-letter]]
@@ -233,7 +234,6 @@
       - [[file:posts/2016/10/signing-a-pdf-with-preview.org][signing-a-pdf-with-preview]]
       - [[file:posts/2016/10/testing-blur-events-in-cucumber-slash-capybara.org][testing-blur-events-in-cucumber-slash-capybara]]
     - 11
-      - [[file:posts/2016/11/ask-me-anything.org][ask-me-anything]]
       - [[file:posts/2016/11/frontendmasters-course-devops-for-frontend-devs.org][frontendmasters-course-devops-for-frontend-devs]]
       - [[file:posts/2016/11/installing-emacs-on-mac-with-homebrew.org][installing-emacs-on-mac-with-homebrew]]
       - [[file:posts/2016/11/installing-wordpress-things-without-ftp.org][installing-wordpress-things-without-ftp]]
@@ -243,11 +243,13 @@
     - 12
       - [[file:posts/2016/12/changing-the-return-to-shop-link-and-text-in-an-empty-woocommerce-cart.org][changing-the-return-to-shop-link-and-text-in-an-empty-woocommerce-cart]]
       - [[file:posts/2016/12/flexbox-website-with-fixed-headers-and-footer.org][flexbox-website-with-fixed-headers-and-footer]]
+      - [[file:posts/2016/12/html-color-codes.org][html-color-codes]]
       - [[file:posts/2016/12/js-app-config-pattern.org][js-app-config-pattern]]
       - [[file:posts/2016/12/todo-app-using-just-react-with-pojs-no-jsx-or-es6.org][todo-app-using-just-react-with-pojs-no-jsx-or-es6]]
   - 2017
     - [[file:posts/2017/index.org][index]]
     - 01
+      - [[file:posts/2017/01/module-extends-self.org][module-extends-self]]
       - [[file:posts/2017/01/my-first-proxy-slash-adapter-for-an-express-dot-js-app.org][my-first-proxy-slash-adapter-for-an-express-dot-js-app]]
       - [[file:posts/2017/01/til-call-done-to-fire-async-mocha-tests.org][til-call-done-to-fire-async-mocha-tests]]
       - [[file:posts/2017/01/til-providing-defaults-for-envvars.org][til-providing-defaults-for-envvars]]
@@ -256,6 +258,8 @@
       - [[file:posts/2017/02/gitlab-database-outage-post-mortem.org][gitlab-database-outage-post-mortem]]
       - [[file:posts/2017/02/how-i-set-up-my-local-wordpress-development-environment-using-vagrant-and-ansible.org][how-i-set-up-my-local-wordpress-development-environment-using-vagrant-and-ansible]]
       - [[file:posts/2017/02/links-flexbox-tutorials-and-posts.org][links-flexbox-tutorials-and-posts]]
+    - 03
+      - [[file:posts/2017/03/more-html5-semantics.org][more-html5-semantics]]
     - 04
       - [[file:posts/2017/04/link-decorating-activerecord.org][link-decorating-activerecord]]
       - [[file:posts/2017/04/resetting-emacs-colours-after-working-with-guard.org][resetting-emacs-colours-after-working-with-guard]]
@@ -364,3 +368,49 @@
       - [[file:posts/2019/04/2019-04-05-til-mounting-standalone-react-client-as-a-rails-react_component_works.org][2019-04-05-til-mounting-standalone-react-client-as-a-rails-react_component_works]]
       - [[file:posts/2019/04/2019-04-14-use-key-instead-of-compoenent-did-update.org][2019-04-14-use-key-instead-of-compoenent-did-update]]
       - [[file:posts/2019/04/2019-04-27-flash-toastr-using-react-hooks.org][2019-04-27-flash-toastr-using-react-hooks]]
+    - 05
+      - [[file:posts/2019/05/2019-05-27-creating-verse-paragraphs-in-kramdown.org][2019-05-27-creating-verse-paragraphs-in-kramdown]]
+      - [[file:posts/2019/05/2019-05-31-prefer-pluck-to-map.org][2019-05-31-prefer-pluck-to-map]]
+      - [[file:posts/2019/05/2019-05-02-til-jquery-attr-vs-prop.org][TIL: jQuery .attr() vs .prop()]]
+    - 06
+      - [[file:posts/2019/06/2019-06-03-some-flexbox-links.org][2019-06-03-some-flexbox-links]]
+    - 07
+      - [[file:posts/2019/07/2019-07-17-til-firefox-disables-meta-refresh-by-default.org][2019-07-17-til-firefox-disables-meta-refresh-by-default]]
+    - 08
+      - [[file:posts/2019/08/2019-08-01-programmer-s-primary-language.org][2019-08-01-programmer-s-primary-language]]
+      - [[file:posts/2019/08/2019-08-29-testing-react-checkbox-component.org][2019-08-29-testing-react-checkbox-component]]
+      - [[file:posts/2019/08/2019-08-17-generating-consisten-faker-values-in-javascript.org][Generating Consistent Faker Values in JavaScript]]
+      - [[file:posts/2019/08/2019-08-08-til-rails-active-job-argument-types.org][TIL: Rails ActiveJob Supported Argument Types]]
+  - 2020
+    - [[file:posts/2020/index.org][index]]
+  - 2021
+    - [[file:posts/2021/index.org][index]]
+    - [[file:posts/2021/2021-07-09-murmurations-at-drip.org][Murmurations at Drip]]
+    - [[file:posts/2021/2021-04-29-til-transform-keys.org][TIL: HWIA tranform-keys]]
+  - Tech
+    - [[file:posts/Tech/braintree-notes.org][braintree-notes]]
+    - [[file:posts/Tech/clojure-notes.org][clojure-notes]]
+    - [[file:posts/Tech/css-notes.org][css-notes]]
+    - [[file:posts/Tech/database-design-notes.org][database-design-notes]]
+    - [[file:posts/Tech/devops-notes.org][devops-notes]]
+    - [[file:posts/Tech/elixir-notes.org][elixir-notes]]
+    - [[file:posts/Tech/emacs-notes.org][emacs-notes]]
+    - [[file:posts/Tech/gdi-classes.org][gdi-classes]]
+    - [[file:posts/Tech/index.org][index]]
+    - [[file:posts/Tech/javascript-notes.org][javascript-notes]]
+    - [[file:posts/Tech/lisp-notes.org][lisp-notes]]
+    - [[file:posts/Tech/code-review-notes.org][Notes on conduction guided code reviews]]
+    - [[file:posts/Tech/notes-from-setting-up-php-and-nginx.org][notes-from-setting-up-php-and-nginx]]
+    - [[file:posts/Tech/postgres-notes.org][postgres-notes]]
+    - [[file:posts/Tech/provisioning-new-mac.org][provisioning-new-mac]]
+    - [[file:posts/Tech/python-notes.org][python-notes]]
+    - [[file:posts/Tech/rails-notes.org][rails-notes]]
+    - [[file:posts/Tech/rpi-notes.org][rpi-notes]]
+    - [[file:posts/Tech/ruby-notes.org][ruby-notes]]
+    - [[file:posts/Tech/shell-notes.org][shell-notes]]
+    - [[file:posts/Tech/static-sites.org][static-sites]]
+    - [[file:posts/Tech/tech-inbox.org][tech-inbox]]
+    - [[file:posts/Tech/thor-notes.org][thor-notes]]
+    - [[file:posts/Tech/ux-notes.org][ux-notes]]
+    - [[file:posts/Tech/vagrant-notes.org][vagrant-notes]]
+    - [[file:posts/Tech/WordPress-notes.org][WordPress-notes]]

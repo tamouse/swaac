@@ -36,10 +36,8 @@
 
 ***** WP-CLI
       - Shawn Hooper (shawnhooper.ca)
-
-      - [[wp-cli.org][wp-cli.org]]
-
       - BLOWING MY MIND
+      - command-line wordpress control
 
 ***** Extending the WP REST API
       - Pete Nelson

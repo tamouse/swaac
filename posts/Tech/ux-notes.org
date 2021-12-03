@@ -33,4 +33,4 @@
    interesting to see how it plays out.
 
    Currently looking at using it on a few new sites, along with
-   [[middleman]].
+   [[https://middlemanapp.com][Middleman Static Site Generator]].
