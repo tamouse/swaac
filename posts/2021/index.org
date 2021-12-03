@@ -1,3 +1,4 @@
+- [[./2021-12-03-TIL-how-to-get-a-self-invite-link-to-a-google-calendar-event.org]]
 - [[./2021-11-16-til=miro-quickly-build-out-a-network.org]]
 - [[./2021-10-01-open-ended-range-in-rails.md]]
 - [[./2021-08-19-TIL-tracking-focus-in-chrome-devtools.org]]

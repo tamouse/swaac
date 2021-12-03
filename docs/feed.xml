@@ -2,10 +2,32 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://github.com/tamouse/swaac</id>
   <title>Tamouse&#39;s Software as a Craft blog</title>
-  <updated>2021-11-16T11:29:53-06:00</updated>
+  <updated>2021-12-03T15:15:50-06:00</updated>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2021/2021-12-03-TIL-how-to-get-a-self-invite-link-to-a-google-calendar-event.org</id>
+      <updated>2021-12-03T15:15:50-06:00</updated>
+      <title>TIL: How to get a self-invite link to a Google Calendar Event</title>
+      <content>* TIL: How to get a self-invite link to a Google Calendar Event
+
+  Sometimes you want to make an event known, and open, but don&#39;t want to list a whole bunch of people in the invite list.
+
+  The recent example I had is that we have some sub-teams working on DEI (Diversity, Equity, &amp; Inclusion) activities, and we got feedback from folks in the larger organization didn&#39;t know they could join in if they wanted. We decided to make our meetings open, but of course we didn&#39;t want to invite everyone@company.com.
+
+  The secret sauce is that you need to publish the event. In Google Calendar, if you edit the event, there is a drop down at the top-right called &quot;More actions&quot;, and you want to pick the one for &quot;Publish this instance of event&quot; (assuming it&#39;s a recurring meeting).
+
+  This opens a modal where you copy the link to the event. This will let people join if they want.
+
+  Example dummy event link: [[https://calendar.google.com/event?action=TEMPLATE&amp;tmeid=MjA0a2pmcjljZW1vMWplZTluZGE3cjh1dWhfMjAyMTEyMDNUMjEzMDAwWiB0YW1vdXNlQG0&amp;tmsrc=tamouse%2540gmail.com]]
+
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2021/2021-11-16-til=miro-quickly-build-out-a-network.org</id>
-      <updated>2021-11-16T11:29:53-06:00</updated>
+      <updated>2021-12-03T15:03:48-06:00</updated>
       <title>TIL: Quickly build out a network in miro</title>
       <content>* TIL: Quickly build out a network in miro
   :PROPERTIES:
@@ -33,8 +55,399 @@
       </author>
     </entry>
     <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2021/2021-10-01-open-ended-range-in-rails.md</id>
+      <updated>2021-12-03T15:03:48-06:00</updated>
+      <title>2021-10-01-open-ended-range-in-rails</title>
+      <content># Using open-ended ranges in rails
+
+I just found out about this today.
+
+You can use an open-ended range when checking dates in ActiveRecord:
+
+```ruby
+    account.orders.where(occurred_at: 6.months.ago..).count
+```
+
+This replaces the old way of doing this:
+
+```ruby
+    account.orders.where(&quot;occurred_at &gt; ?&quot;, 6.months.ago).count
+```
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2021/2021-08-19-TIL-tracking-focus-in-chrome-devtools.org</id>
+      <updated>2021-12-03T15:03:48-06:00</updated>
+      <title>2021-08-19-TIL-tracking-focus-in-chrome-devtools</title>
+      <content>#+TITLE: TIL: How to track the focus in chrome devtools
+
+Last updated: 2021-08-19T17:22:44-05:00
+
+When you&#39;re tabbing, about, sometimes you lose the little focus ring because that hasn&#39;t been implemented for the item.
+
+[[https://developer.chrome.com/docs/devtools/accessibility/focus/][This post]] describes how you can see the current tab focus in Chrome devtools.
+
+In a nutshell:
+
+1. Open devtools Console
+2. Click on *Create a Live Expression*
+3. Enter ~document.activeElement~ in the input box
+4. Click outside the Live Expression UI to save
+
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2021/2021-08-18-whats-the-difference-between-find_each-and-find_in_batches.org</id>
+      <updated>2021-12-03T15:03:48-06:00</updated>
+      <title>Finding records</title>
+      <content>#+TITLE: What&#39;s the difference between find_each and find_in_batches in Rails
+#+DATE: 2021-08-18
+
+Published: 2021-08-18
+
+Last edited: 2021-08-18T16:28:20+05:00
+
+* Finding records
+
+In Rails, you probably don&#39;t want to get all the records from a model when your database becomes large.
+E.g. fetching a million rows will make a very large object space in your application, since Rails (ActiveRecord)
+is converting each row to an object.
+
+Instead, ActiveRecord provides a couple of methods to handle this.
+
+1. ~find_in_batches~
+2. ~find_each~
+
+** Which one should you use?
+
+Almost all the time, you can safely choose ~find_each~, since it calls ~find_in_batches~ under the hood and loops through each record in the batch and yields the record to you.
+
+** References
+
+- ~find_each~ &lt;https://api.rubyonrails.org/classes/ActiveRecord/Batches.html#method-i-find_each&gt;
+- ~find_in_batches~ &lt;https://api.rubyonrails.org/classes/ActiveRecord/Batches.html#method-i-find_in_batches&gt;
+- [[https://rubyinrails.com/2019/09/17/rails-find-in-batches-vs-find-each/][Rails find_in_batches vs find_each]]
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/ux-notes.org</id>
+      <updated>2021-12-03T15:03:43-06:00</updated>
+      <title>UX Notes</title>
+      <content>* UX Notes
+** [[http://www.givegoodux.com/4-tips-adding-lean-ux-agile-development-process/][4 Tips for Adding Lean UX to an Agile Development Process]]
+
+    As organizations of all shapes and sizes come to grips with the fact that UX is critical to project and product success, a common question resurfaces time and again:
+
+    “How do we add Lean UX practices to our current process?”
+
+    1) Hire experienced UX analysts and designers; you need at least one
+       experienced, senior UX member capable of sharing the driving.
+
+    2) There must be an “Iteration 0” in your process where “just
+       enough” research, modeling and design happens.
+
+    3) Follow a process where UX, design and development work is “chunked”
+       and starts with the core, most broad-reaching areas of features and
+       functionality.
+
+    4) Use a collaborative, parallel work process to keep UX efforts
+       both ahead and behind development efforts.
+
+    capture date: [2015-03-19 Thu 16:30]
+** [[http://semantic-ui.com/][Semantic UI Toolkit]]
+   Date: &lt;2013-10-15 Tue 02:19&gt;
+
+   UI is the vocabulary of the web.
+
+   Semantic empowers designers and developers by creating a language
+   for sharing UI.
+
+   Semantic is an alternative to Twitter Bootstrap and other UI
+   kits. It seems like it&#39;s a more readable and usable thing to me. It
+   also is something that seems more easily customizable. It will be
+   interesting to see how it plays out.
+
+   Currently looking at using it on a few new sites, along with
+   [[middleman]].
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/WordPress-notes.org</id>
+      <updated>2021-12-03T15:03:43-06:00</updated>
+      <title>WordPress</title>
+      <content>* WordPress
+** WordPress NOTES
+
+*** Install Themes and Plugins with out FTP
+    :PROPERTIES:
+    :URL:      https://tamouse.github.io/swaac/wordpress/2016/11/14/installing-wordpress-things-without-ftp/
+    :END:
+
+    Link: https://tamouse.github.io/swaac/wordpress/2016/11/14/installing-wordpress-things-without-ftp/
+
+    Direct installation: add the following line to ~wp-config.php~:
+
+    #+BEGIN_SRC php
+      define(&#39;FS_METHOD&#39;, &#39;direct&#39;);
+    #+END_SRC
+
+** WordPress Meetings, Meetups, Conferences
+
+*** WordCamp MPLS 2017
+
+**** Friday, August 4, 2017
+
+***** Lightning Talks
+      - Nick - WP Functions
+      - Jenna Totts - Is your data dirty?
+	ecograder, green web foundation
+      - Nathan Ingram - surviving a crisis of confidence
+	The questions can sometimes be used as weapons against others,
+	tho
+      - Andrew Robbins - Making and Selling WordPress Software
+	wpshopify.io
+      - Amy Zeller - From Blog to Book
+	@amyzeller
+      - Raquel Landefeld - Becoming a Community Builder
+	community equals people7ujhkn
+
+***** WP-CLI
+      - Shawn Hooper (shawnhooper.ca)
+
+      - [[wp-cli.org][wp-cli.org]]
+
+      - BLOWING MY MIND
+
+***** Extending the WP REST API
+      - Pete Nelson
+      - @GunGeekATX
+      - too bloody damn fast, can&#39;t see anything he&#39;s typing, demo is
+	useless
+
+
+***** Confessions of a Freelance
+      - Josh Broton
+      - @joshbroton
+
+**** Saturday, August 5, 2017
+
+***** Lightning Talks
+      - Zach Stepek - So, You Want To Sell Online
+      - Tyler Golberg - Page Builders
+      - AJ Morris - Starting your first online business
+      - Lindsey Miller - What I learned raising 2 Million Dollars for
+	Politicians–and How it Applies to the WordPress Community
+      - Katie Elenberger - Pursing your creative passion: Turn your side
+	hustle into a full-time gig
+      -
+
+
+
+***** Tessa - Configuration Management
+      - wp-cfm
+
+***** Aaron Holbrook: Best Practices for Developing Websites
+
+***** John Havlik: A Decade: Lessons Learned Nurturing a WordPress Plugin
+
+** WordPress Links
+*** WordPress Tavern – WordPress News — Free as in Beer.
+    - capture_date: [2016-11-12 Sat 15:39]
+    - link:     https://wptavern.com/
+    - title:    WordPress Tavern – WordPress News — Free as in Beer.
+
+
+
+*** Blog - ChrisLema.com -
+    - capture_date: [2016-11-12 Sat 15:40]
+    - link:     http://chrislema.com/blog/
+    - title:    Blog - ChrisLema.com -
+
+
+*** Book Area | Digging Into WordPress
+    - capture_date: [2016-11-12 Sat 15:45]
+    - link:     https://digwp.com/book/
+    - title:    Book Area | Digging Into WordPress
+
+*** Free WordPress Tutorials
+    - capture_date: [2016-11-12 Sat 15:45]
+    - link:     https://www.wp-bff.com/
+    - TITLE:    Free WordPress Tutorials
+    - DESCRIPTION: Learn to build a WordPress site that&#39;s authentically you, grows your email list and finds the perfect clients.
+
+*** WordPress Teacher Zac Gordon | Professional Educator, WordPress Expert
+    - CAPTURE_DATE: [2016-11-12 Sat 15:45]
+    - LINK:     https://wp.zacgordon.com/
+    - TITLE:    WordPress Teacher Zac Gordon | Professional Educator, WordPress Expert
+    - DESCRIPTION: Zac Gordon is a professional educator with years of experience teaching in the classroom, leading workshops, giving talks and recording online courses. He has taught a range of web related topics from design and development to traditional programming and even robotics. His technological teaching passion is WordPress. He loves being able to empower people to learn how to…
+
+
+*** WordPress and eCommerce Blog and Podcast
+    - CAPTURE_DATE: [2016-11-12 Sat 15:45]
+    - LINK:     https://bobwp.com/
+    - TITLE:    WordPress and eCommerce Blog and Podcast
+    - DESCRIPTION: Tutorials, tips and posts on WordPress , eCommerce how to, themes and plugins, and creating effective digital content.
+
+*** Torque - WordPress News, WP Community Experts | @thetorquemag
+    - CAPTURE_DATE: [2016-11-12 Sat 15:45]
+    - LINK:     http://torquemag.io/
+    - TITLE:    Torque - WordPress News, WP Community Experts | @thetorquemag
+    - DESCRIPTION: Current WordPress News. The Torque News Core is a group of WordPress experts that are part of the WordPress community.
+
+*** Blog - ChrisLema.com -
+    - CAPTURE_DATE: [2016-11-12 Sat 15:45]
+    - LINK:     http://chrislema.com/blog/
+    - TITLE:    Blog - ChrisLema.com -
+
+*** Get DesktopServer and save time! • ServerPress, LLC.
+    - CAPTURE_DATE: [2016-11-12 Sat 15:46]
+    - LINK:     https://serverpress.com/get-desktopserver/
+    - TITLE:    Get DesktopServer and save time! • ServerPress, LLC.
+    - DESCRIPTION: DesktopServer is a tool that is proven to save you time testing, developing, managing, and creating fully functional website servers on your own computer.
+
+
+*** Flywheel | Managed WordPress Hosting Pricing
+    - CAPTURE_DATE: [2016-11-12 Sat 15:46]
+    - LINK:     https://getflywheel.com/pricing/
+    - TITLE:    Flywheel | Managed WordPress Hosting Pricing
+
+
+*** Free WordPress Tutorials
+    - CAPTURE_DATE: [2016-11-12 Sat 15:46]
+    - LINK:     https://www.wp-bff.com/
+    - TITLE:    Free WordPress Tutorials
+    - DESCRIPTION: Learn to build a WordPress site that&#39;s authentically you, grows your email list and finds the perfect clients.
+
+
+*** [[https://www.wordfence.com/blog/2016/11/hacking-27-web-via-wordpress-auto-update/][Hacking 27 of the Web via WordPress Auto-Update - Wordfence]]
+    - CAPTURE_DATE: [2016-11-26 Sat 12:39]
+
+** Wordpress Todos
+*** check out wordpress API                    :wcmpls:react:wordpress:swaac:
+    created_at: [2016-05-22 Sun 23:26]
+
+    Heard of this at the WordCamp Mpls 2016 in the WordPress + React
+    talk. Wordpress as the API backend to a React-based SPA. Wow.
+
+    #wcmpls
+*** check out wp-cli8un                                              :wcmpls:
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2019/08/2019-08-01-programmer-s-primary-language.org</id>
+      <updated>2021-12-03T15:03:43-06:00</updated>
+      <title>2019-08-01-programmer-s-primary-language</title>
+      <content>#+OPTIONS: &#39;:nil *:t -:t ::t &lt;:t H:3 \n:nil ^:t arch:headline
+#+OPTIONS: author:t broken-links:nil c:nil creator:nil
+#+OPTIONS: d:(not &quot;LOGBOOK&quot;) date:t e:t email:nil f:t inline:t num:t
+#+OPTIONS: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+OPTIONS: timestamp:t title:t toc:t todo:t |:t
+#+TITLE: 2019-08-01-programmer-s-primary-language
+#+DATE: &lt;2019-08-01 Thu&gt;
+#+AUTHOR: Tamara Temple
+#+EMAIL: tamouse@gmail.com
+#+KEYWORDS: joke, primary language, wtfsm
+#+DESCRIPTION: an old programmer&#39;s joke
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+CREATOR: Emacs 26.2 (Org mode 9.1.9)
+
+** What&#39;s a Programmer&#39;s Primary Language?
+
+*Profanity*
+
+So that&#39;s a really old joke, and I&#39;d thought I&#39;d written something about it long ago.
+
+There&#39;s a funny comic that goes around from time to time (I&#39;d thought it was one of Randall Monroe&#39;s, but it&#39;s not): https://www.osnews.com/story/19266/wtfsm/
+
+[[wtfsm.jpg]]
+
+It&#39;s often sourced from [[http://commadot.com/wtf-per-minute/][this blog entry]] with a computer-drawn version, but I rather like the original.
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2019/05/2019-05-27-creating-verse-paragraphs-in-kramdown.org</id>
+      <updated>2021-12-03T15:03:43-06:00</updated>
+      <title>2019-05-27-creating-verse-paragraphs-in-kramdown</title>
+      <content>#+OPTIONS: &#39;:nil *:t -:t ::t &lt;:t H:3 \n:nil ^:t arch:headline
+#+OPTIONS: author:t broken-links:nil c:nil creator:nil
+#+OPTIONS: d:(not &quot;LOGBOOK&quot;) date:t e:t email:nil f:t inline:t num:t
+#+OPTIONS: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+OPTIONS: timestamp:t title:t toc:t todo:t |:t
+#+TITLE: 2019-05-27-creating-verse-paragraphs-in-kramdown
+#+DATE: &lt;2019-05-27 Mon&gt;
+#+AUTHOR: Tamara Temple
+#+EMAIL: tamouse@gmail.com
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+CREATOR: Emacs 26.2 (Org mode 9.1.14)
+#+KEYWORDS: markdown, kramdown, verse
+
+
+*WARNING: This is old and likely obsolete.*
+
+In the past, when I&#39;ve wanted to create a verse, perhaps in a blockquote I&#39;ve resorted to using ~&lt;br&gt;~ on every line, which is tedious:
+
+#+BEGIN_SRC markdown
+  &gt; Listen, little children, all,&lt;br&gt;
+  &gt; Listen to our earnest call:&lt;br&gt;
+  &gt; You are very young, &#39;tis true,&lt;br&gt;
+  &gt; But there&#39;s much that you can do.&lt;br&gt;
+  &gt; Even you can plead with men&lt;br&gt;
+  &gt; That they buy not slaves again,&lt;br&gt;
+  &gt; And that those they have may be&lt;br&gt;
+  &gt; Quickly set at liberty.&lt;br&gt;
+
+#+END_SRC
+
+In ~kramdown~, the default markdown processor in [[Jekyll]] these days, there&#39;s an easier way:
+
+#+BEGIN_SRC markdown
+  &gt; Listen, little children, all,
+  &gt; Listen to our earnest call:
+  &gt; You are very young, &#39;tis true,
+  &gt; But there&#39;s much that you can do.
+  &gt; Even you can plead with men
+  &gt; That they buy not slaves again,
+  &gt; And that those they have may be
+  &gt; Quickly set at liberty.
+  {: style=&quot;white-space: pre-line&quot;}
+#+END_SRC
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/learning.org</id>
-      <updated>2021-11-16T11:10:15-06:00</updated>
+      <updated>2021-07-30T21:34:39-05:00</updated>
       <title>Resources for learning how to program, especially how to program in Ruby and Rails</title>
       <content>* Resources for learning how to program, especially how to program in Ruby and Rails
 
@@ -276,924 +689,6 @@ Other fav instructors:
 - [[https://frontendmasters.com/teachers/jem-young/][Jem Young]]
 - [[https://frontendmasters.com/teachers/lukas-ruebbelke/][Lukas Reubbelke]]
 - [[https://frontendmasters.com/teachers/sarah-drasner/][Sarah Drasner]]
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/vagrant-notes.org</id>
-      <updated>2021-11-16T11:10:15-06:00</updated>
-      <title>Vagrant Notes</title>
-      <content>* Vagrant Notes
-** Making Vagrant boxes go faster
-
-  The typical defaults in the Vagrantfile create a wimpy box.
-
-  My mac has a boatload of RAM and CPU cores to spare, thus making this a better config for working:
-
-
-#+begin_src diff
-   config.vm.provider :virtualbox do |vb|
--    vb.customize [&quot;modifyvm&quot;, :id, &quot;--memory&quot;, 1024]
-+    vb.customize [&quot;modifyvm&quot;, :id, &quot;--memory&quot;, 4096, &quot;--vram&quot;, 12, &quot;--cpus&quot;, 4, &quot;--natdnshostresolver1&quot;, &quot;on&quot;]
-   end
-#+end_src
-
-** Using a resolver to set the box&#39;s IP address
-    Instead of hard wiring in an IP address for the vagrant box, you
-    can have it look up a name in your host machine&#39;s /etc/hosts file,
-    thusly:
-
-    At the top of the Vagrant file:
-    #+begin_src ruby
-      require &#39;resolve&#39;
-    #+end_src
-
-    Then, inside the box configuration:
-    #+begin_src ruby
-      config.vm.provider :virtualbox do |vb|
-        vb.customize [&quot;modifyvm&quot;, &quot;--natdnsresolver1&quot;, &quot;on&quot;]
-        #...
-      end
-
-      config.vm.network :private_network, ip: Resolv.getaddress(&#39;&lt;vagrant box name from hosts&gt;&#39;)
-    #+end_src
-
-    And in your /etc/hosts file:
-
-    #+begin_src
-      192.168.80.80	&lt;vagrant box name&gt;
-    #+end_src
-
-    Set the IP address to an appropriate setting for your local
-    network, and give the vagrant box a suitable name for your project
-    and the local network. Using &quot;.dev&quot; as the tld should be good.
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/ux-notes.org</id>
-      <updated>2021-11-16T11:10:15-06:00</updated>
-      <title>UX Notes</title>
-      <content>* UX Notes
-** [[http://www.givegoodux.com/4-tips-adding-lean-ux-agile-development-process/][4 Tips for Adding Lean UX to an Agile Development Process]]
-
-    As organizations of all shapes and sizes come to grips with the fact that UX is critical to project and product success, a common question resurfaces time and again:
-
-    “How do we add Lean UX practices to our current process?”
-
-    1) Hire experienced UX analysts and designers; you need at least one
-       experienced, senior UX member capable of sharing the driving.
-
-    2) There must be an “Iteration 0” in your process where “just
-       enough” research, modeling and design happens.
-
-    3) Follow a process where UX, design and development work is “chunked”
-       and starts with the core, most broad-reaching areas of features and
-       functionality.
-
-    4) Use a collaborative, parallel work process to keep UX efforts
-       both ahead and behind development efforts.
-
-    capture date: [2015-03-19 Thu 16:30]
-** [[http://semantic-ui.com/][Semantic UI Toolkit]]
-   Date: &lt;2013-10-15 Tue 02:19&gt;
-
-   UI is the vocabulary of the web.
-
-   Semantic empowers designers and developers by creating a language
-   for sharing UI.
-
-   Semantic is an alternative to Twitter Bootstrap and other UI
-   kits. It seems like it&#39;s a more readable and usable thing to me. It
-   also is something that seems more easily customizable. It will be
-   interesting to see how it plays out.
-
-   Currently looking at using it on a few new sites, along with
-   [[middleman]].
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/thor-notes.org</id>
-      <updated>2021-11-16T11:10:15-06:00</updated>
-      <title>thor-notes</title>
-      <content>** Thor Notes
-
-*** Start here for next thor project
-
-    Seriously, this has so much &quot;stock&quot; stuff:
-
-    https://github.com/tamouse/rearrange_books/tree/start-here-for-next-thor-project
-
-**** turn this thing into a thor thor generator!
-     Dude, as if you&#39;re the first person to do this?
-
-
-*** Giving a task multiple arguments
-
-    Q: How can I have a task get multiple arguments, like many regular
-    POSIX commands?
-
-    Example:
-
-    #+BEGIN_SRC shell-script
-      cp source_file source_file source_file source_file ... dest_dir
-    #+END_SRC
-
-    Pretty simple:
-
-    #+BEGIN_SRC ruby
-      desc &quot;taskname ARGLIST&quot;
-      def taskname(*args)
-      end
-    #+END_SRC
-
-    would let you do:
-
-    #+BEGIN_SRC shell-script
-      thor taskname arg1 arg2 arg3 arg4
-    #+END_SRC
-
-    and ~args~ in the task would be ~[&quot;arg1&quot;, &quot;arg2&quot;, &quot;arg3&quot;, &quot;arg4&quot;]~
-
-
-
-*** Invoke a thor task by giving only a class option
-    :PROPERTIES:
-    :CAPTURE_DATE: [2016-11-06 Sun 01:11]
-    :END:
-
-    From stackoverflow: http://stackoverflow.com/a/7311357/742446
-
-    [...use] Thor.map to invoke a command by only giving an
-    option flag:
-
-    #+BEGIN_SRC ruby
-      map &#39;-F&#39; =&gt; &#39;foo&#39;
-    #+END_SRC
-
-    Now you can also pass parameters
-
-    #+BEGIN_SRC ruby
-      mythorcommand -F bar # =&gt; invokes foo(&quot;bar&quot;)
-    #+END_SRC
-
-    answered Sep 5 &#39;11 at 17:57 by tfischbach
-
-*** Give thor a default task
-    :PROPERTIES:
-    :CAPTURE_DATE: [2016-11-06 Sun 01:13]
-    :END:
-
-    From stackoverflow: http://stackoverflow.com/a/23955971/742446
-
-    I found a rather &#39;strange&#39; solution for this problem that is working quite well with me.
-
-    You add a default task to Thor. Than you add the method_missing so
-    that you can trick Thor into passing the default method as an
-    argument if there are parameters to your application.
-
-    Taking from your example, the solution would look like this:
-
-    #+BEGIN_SRC ruby
-      class MyThorCommand &lt; Thor
-	default_task :my_default
-
-	desc &quot;my_default&quot;, &quot;A simple default&quot;
-	def my_default(*args)
-          puts args.inspect
-	end
-
-	def method_missing(method, *args)
-          args = [&quot;my_default&quot;, method.to_s] + args
-          MyThorCommand.start(args)
-	end
-
-      end
-
-      MyThorCommand.start(ARGV)
-    #+END_SRC
-
-    If this is in the file &quot;my_thor.rb&quot; an execution &quot;ruby my_thor.rb
-    foo bar&quot; would show &#39;[&quot;foo&quot;, &quot;bar&quot;]&#39; as a result.
-
-    answered May 30 &#39;14 at 13:38 by Edu
-
-*** Making Thor scripts colourful
-
-   capture date: [2015-10-11 Sun 02:06]
-
-   In Thor::Actions, the various output commands can be made nicely
-   colourful. You can append symbols representing various colours after
-   the output string. For example:
-
-   #+begin_src ruby
-     say &quot;This will make you green with envy&quot;, :green
-     say &quot;Don&#39;t be sad&quot;, :blue
-     say &quot;ACK! AN ERROR!&quot;, :red
-   #+end_src
-
-   Colour symbols are defined in
-   https://github.com/erikhuda/thor/blob/master/lib/thor/shell/color.rb
-
-
-   #+begin_src ruby
-     # Set color by using a string or one of the defined constants. If a third
-     # option is set to true, it also adds bold to the string. This is based
-     # on Highline implementation and it automatically appends CLEAR to the end
-     # of the returned String.
-     #
-     # Pass foreground, background and bold options to this method as
-     # symbols.
-     #
-     # Example:
-     #
-     #   set_color &quot;Hi!&quot;, :red, :on_white, :bold
-     #
-     # The available colors are:
-     #
-     #   :bold
-     #   :black
-     #   :red
-     #   :green
-     #   :yellow
-     #   :blue
-     #   :magenta
-     #   :cyan
-     #   :white
-     #   :on_black
-     #   :on_red
-     #   :on_green
-     #   :on_yellow
-     #   :on_blue
-     #   :on_magenta
-     #   :on_cyan
-     #   :on_white
-
-   #+end_src
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/tech-inbox.org</id>
-      <updated>2021-11-16T11:10:15-06:00</updated>
-      <title>Tech Inbox</title>
-      <content>* Tech Inbox
-** IDEA: use google sheets API to feed web site data
-   :PROPERTIES:
-   :CAPTURE_DATE: [2018-12-11 Tue 08:01]
-   :END:
-
-   #+BEGIN_QUOTE
-
-   7. Google Sheets API Instead Of CMS
-
-      Some projects require you to think outside the box. When Adam Quinlan was working on a site for a restaurant where the owner needed a CMS to edit the specials menu on a daily basis, Adam decided to not use a bloated CMS but a Google sheet instead. This makes the site easy to edit while it remains flat from static side generators. Nice!
-
-   #+END_QUOTE
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/static-sites.org</id>
-      <updated>2021-11-16T11:10:15-06:00</updated>
-      <title>static-sites</title>
-      <content>** Static Sites notes
-
-*** Hosting
-
-    - IP: 45.55.188.49
-    - memory: 512MB Ram
-    - disk: 20GB SSD Disk
-    - location: New York 3
-    - OS: Ubuntu 14.04.3 x64
-
-*** DNS
-
-    Pointed mouseha.us on gandi:
-    - A: *.mouseha.us -&gt; IP
-    - A: @.mouseha.us -&gt; IP
-    - CNAME: removed &quot;blog.mouseha.us&quot;
-
-*** Software
-
-    - build-essential
-    - git-core -- DELETED, see below
-    - curl
-    - mysql-server, mysql-client
-    - sqlite3
-    - ruby 2.2.3
-      - mkdir src
-      - cd src
-      - git clone https://github.com/postmodern/ruby-install.git
-      - cd ruby-install
-      - make install
-    - node 4.2.3
-      - cd src
-      - wget https://nodejs.org/dist/v4.2.3/node-v4.2.3.tar.gz
-      - tar zxvf node-v4.2.3.tar.gz
-      - cd node-v4.2.3
-      - ./configure
-      - make
-      - make install
-    - emacs24
-      - apt-get build-dep emacs24
-      - cd src
-      - wget http://ftp.gnu.org/gnu/emacs/emacs-24.5.tar.gz
-      - untar
-      - cd emacs-24.5
-      - ./configure
-      - make
-      - make install
-    - postfix
-      - installed with emacs24
-      - following https://easyengine.io/tutorials/linux/ubuntu-postfix-gmail-smtp/
-      - set up for using tamouse.lists@gmail.com to relay
-      - had to wait for *ages* to get gmail to give me the &quot;is this
-	you?&quot; query
-      - waiting to see if it works
-    - nginx
-      - simple virtual host configuration points to sites at
-	~git/Sites/&lt;domain&gt;. For example, domain &quot;mouseha.us&quot; points to
-	~git/Sites/mouseha.us/
-      - sites:
-	- static-sites
-	- mouseha.us
-	- ngblog.mouseha.us
-	- pontiki.io -- just purchased at Gandi.Net for 2 years at $35/yr
-    - git -- newest version from github
-      - cd src
-      - git clone https://github.com/git/git.git
-      - cd git
-      - make prefix=/usr all doc info
-      - make prefix=/usr install install-doc install-html install-info
-
-*** Accounts
-
-**** git
-
-     - set up my-dot-files in .dot-file
-     - set up my-emacs-d in .emacs.d
-
-**** directories
-
-    - Sites
-	- static-sites
-	- mouseha.us
-	- ngblog.mouseha.us
-    - Repos -- correspond to Sites/*
-
-	The repos will have post-recieve hooks to automatically update
-	the corresponding static site.
-*** [[http://stackoverflow.com/questions/10264249/cant-get-page-data-from-jekyll-plugin][Can&#39;t Get Page Data From Jekyll Plugin - Stack Overflow]]
-    Date: &lt;2013-10-15 Tue 13:44&gt;
-
-    Can’t get page data from Jekyll plugin
-
-    I’m trying to write a custom tag plugin for Jekyll that will output
-    a hierarchical navigation tree of all the pages (not posts) on the
-    site. I’m basically wanting a bunch nested &lt;ul&gt;’s with links (with
-    the page title as the link text) to the pages with the current page
-    noted by a certain CSS class.
-
-
-    I’m very inexperienced with ruby. I’m a PHP guy.
-
-    I figured I’d start just by trying to iterate through all the pages
-    and output a one-dimensional list just to make sure I could at least
-    do that. Here’s what I have so far:
-
-
-    module Jekyll
-
-    class NavTree &lt; Liquid::Tag
-    def initialize(tag_name, text, tokens)
-    super
-    end
-
-    def render(context)
-    site = context.registers[:site]
-    output = &#39;&lt;ul&gt;&#39;
-    site.pages.each do |page|
-    output += &#39;&lt;li&gt;&lt;a href=&quot;&#39;+page.url+&#39;&quot;&gt;&#39;+page.title+&#39;&lt;/a&gt;&lt;/li&gt;&#39;
-    end
-    output += &#39;&lt;ul&gt;&#39;
-
-    output
-    end
-    end
-
-    end
-
-    Liquid::Template.register_tag(&#39;nav_tree&#39;, Jekyll::NavTree)
-
-    And I’m inserting it into my liquid template via {\% nav_tree %\}.
-
-    The problem is that the page variable in the code above doesn’t have
-    all the data that you’d expect. page.title is undefined and page.url
-    is just the basename with a forward slash in front of it (e.g. for
-    /a/b/c.html, it’s just giving me /c.html).
-
-
-    What am I doing wrong?
-
-    Side note: I already tried doing this with pure Liquid markup, and I
-    eventually gave up. I can easily iterate through site.pages just
-    fine with Liquid, but I couldn’t figure out a way to appropriately
-    nest the lists.
-
-    asked Apr 22 ‘12 at 0:34
-
-    I created an issue on GitHub to see if anybody there knows the
-    answer. –  jnrbsn Apr 30 ‘12 at 16:21
-
-    Did you ever manage to get the nesting working? I’d love to see the
-    final code if so –  Brand Aug 21 ‘12 at 19:35
-
-    @Brand Unfortunately, I never got around to finishing it. –  jnrbsn
-    Aug 23 ‘12 at 23:19
-
-    I managed to hack the hierachical page tree together. It’s not
-    pretty but I’ve posted it here: gist.github.com/3536551 in case
-    anyone else stumbles on this question –  Brand Aug 30 ‘12 at 18:24
-
-
-    2 Answers
-
-    Try:
-
-    module Jekyll
-
-    # Add accessor for directory
-    class Page
-    attr_reader :dir
-    end
-
-    class NavTree &lt; Liquid::Tag
-    def initialize(tag_name, text, tokens)
-    super
-    end
-
-    def render(context)
-    site = context.registers[:site]
-    output = &#39;&lt;ul&gt;&#39;
-    site.pages.each do |page|
-    output += &#39;&lt;li&gt;&lt;a href=&quot;&#39;+page.dir+page.url+&#39;&quot;&gt;&#39;+(page.data[&#39;title&#39;] || page.url) +&#39;&lt;/a&gt;&lt;/li&gt;&#39;
-    end
-    output += &#39;&lt;ul&gt;&#39;
-    output
-    end
-    end
-    end
-
-    Liquid::Template.register_tag(&#39;nav_tree&#39;, Jekyll::NavTree)
-
-
-    With this code, I get Liquid error: can&#39;t convert nil into String. –
-    jnrbsn May 30 ‘12 at 18:11
-
-
-    You probably had a page without a title, so that page.data[‘title’]
-    is nil. Replace w/ e.g. (page.data[‘title’] || page.url) . –  Mikael
-    Borg Jun 4 ‘12 at 9:37
-
-    Sorry for the delayed response. You were correct. I had a page
-    without a title. Your solution works. –  jnrbsn Jun 15 ‘12 at 4:32
-
-
-    page.title is not always defined (example: atom.xml). You have to
-    check if it is defined. Then you can take page.name or not process
-    the entry…
-
-    def render(context)
-    site = context.registers[:site]
-    output = &#39;&lt;ul&gt;&#39;
-    site.pages.each do |page|
-    unless page.data[&#39;title&#39;].nil?
-    t = page.data[&#39;title&#39;]
-    else
-    t = page.name
-    end
-    output += &quot;&lt;li&gt;&lt;a href=&quot;&#39;+page.dir+page.url+&#39;&quot;&gt;&#39;+t+&#39;&lt;/a&gt;&lt;/li&gt;&quot;
-    end
-    output += &#39;&lt;ul&gt;&#39;
-    output
-    end
-
-
-    Shorten that unless..end a bit to: t = page.data[&#39;title&#39;] ||
-    page.name –  tamouse 20 mins ago
-
-*** [[http://middlemanapp.com/][middleman]]
-    Date: &lt;2013-10-15 Tue 02:15&gt;
-    Middleman is a static site generator using all the shortcuts and
-    tools in modern web development.
-
-    Considering using this for my resume builder, and my recipe
-    file. Both seem ideal candidates for this thing. I might also
-    switch over my comic snagger to using this instead of jekyll.
-
-    Generally, I&#39;m liking the looks and idea of middleman better than
-    jekyll, octopress and definitely frank.
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/shell-notes.org</id>
-      <updated>2021-11-16T11:10:15-06:00</updated>
-      <title>command line shells</title>
-      <content>* command line shells
-** Shell Notes
-*** zsh
-    :PROPERTIES:
-    :LOCATION: This has been added to swaac.dev
-    :END:
-
-    - [[https://support.apple.com/en-us/HT208050][zsh is default on MacOS Catalina]]
-
-**** online documentation
-
-     - [[http://zsh.sourceforge.net/Doc/Release/zsh_toc.html#SEC_Contents][Table of Contents]]
-     - [[http://zsh.sourceforge.net/FAQ/][FAQ]]
-
-**** oh-my-zsh
-
-     The sine qua non for zsh users: [[https://github.com/robbyrussell/oh-my-zsh/][https://github.com/robbyrussell/oh-my-zsh/]] ([[https://ohmyz.sh/][pretty web site]])
-
-
-**** ZSH NOTES COLLECTOR
-
-***** some zsh options to try
-
-****** case-insensitive globbing
-
-  The zsh option which controls this is CASE_GLOB. Since we want globbing to be case-insensitive, we want to turn the option off, so:
-
-  #+BEGIN_SRC shell
-    setopt NO_CASE_GLOB
-  #+END_SRC
-
-****** tab completion
-
-  In zsh tab completion will replace the wildcard with the actual result.
-
-  #+BEGIN_SRC shell
-    % ls ~/d*&lt;tab&gt;
-  #+END_SRC
-
-  So after the tab you will see:
-
-  #+BEGIN_SRC shell
-    % ls /Users/armin/Desktop /Users/armin/Documents /Users/armin/Downloads
-  #+END_SRC
-
-  Using tab completion this way to see and possibly edit the actual replacement for wildcards is a useful safety net.
-
-  In bash, pressing the tab key *twice* will list possible completions, but not substitute them in the command prompt.
-
-  If you do not like this behavior in zsh then you can change to behavior similar to bash with:
-
-  #+BEGIN_SRC shell
-    setopt GLOB_COMPLETE
-  #+END_SRC
-
-****** saving history when shell exits
-
-  By default, zsh does not save its history when the shell exits. The history is ‘forgotten’ when you close a Terminal window or tab. To make zsh save its history to a file when it exits, you need to set a variable in the shell:
-
-  #+BEGIN_SRC shell
-    HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
-  #+END_SRC
-
-****** using a single history file for all shells
-
-  You can tell zsh to use a single, shared history file across the sessions and append to it rather than overwrite:
-
-  share history across multiple zsh sessions
-  #+BEGIN_SRC shell
-    setopt SHARE_HISTORY
-  #+END_SRC
-
-  append to history
-  #+BEGIN_SRC shell
-    setopt APPEND_HISTORY
-  #+END_SRC
-
-****** write to history file after avery command
-
-  Furthermore, you can tell zsh to update the history file after every command, rather than waiting for the shell to exit:
-
-  add commands as they are typed, not at shell exit
-  #+BEGIN_SRC shell
-    setopt INC_APPEND_HISTORY
-  #+END_SRC
-
-****** removing some things from history file
-
-  When you use a shared history file, it will grow very quickly, and you may want to use some options to clean out duplicates and blanks:
-
-  expire duplicates first:
-  #+BEGIN_SRC shell
-    setopt HIST_EXPIRE_DUPS_FIRST
-  #+END_SRC
-
-  do not store duplications
-  #+BEGIN_SRC shell
-    setopt HIST_IGNORE_DUPS
-  #+END_SRC
-
-  ignore duplicates when searching
-  #+BEGIN_SRC shell
-    setopt HIST_FIND_NO_DUPS
-  #+END_SRC
-
-  remove blank lines from history
-  #+BEGIN_SRC shell
-    setopt HIST_REDUCE_BLANKS
-  #+END_SRC
-
-***** zsh completion
-
-****** links
-
-       - [[http://zsh.sourceforge.net/Doc/Release/Completion-System.html][Official zsh doc completion section]]
-       - [[https://github.com/zsh-users/zsh-completions/blob/master/zsh-completions-howto.org][zsh-users zsh-completions-howto]]
-       - [[https://github.com/zsh-users/zsh/blob/master/Etc/completion-style-guide][zsh-users zsh Completion Guide]]
-       - [[https://github.com/scriptingosx/mac-zsh-completions][Repo of MacOS zsh completions]]
-
-** Shell TODOs
-** Shell Oneliners
-    #+begin_src shell
-      for f in * ; do mv &quot;$f&quot; $(echo $f | tr &quot; &quot; &quot;_&quot;) ; done # replace spaces in file names with underscores
-      perl -i.bak -pe &#39;/^(#+ binding:)\s+&quot;(.*)&quot;/ &amp;&amp; ($one = $1) &amp;&amp; ($two = $2) &amp;&amp; ($two =~ s/ //g) &amp;&amp; ($_ = &quot;$one $two\n&quot;)&#39; $(find . -name &#39;*.yasnippet&#39;) # remove quotes and spaces from bindings in yasnippets
-      for f in *.bak ; do diff &quot;${f%%.bak}&quot; &quot;$f&quot; ; done # find diff between backup and current files after a filtering operation
-      for f in *.bak ; do mv -v &quot;$f&quot; &quot;${f%%.bak}&quot; ; done # push back original files after filtering operation
-      for f in *.old ; do mv &quot;$f&quot; &quot;${f%%.old}.new&quot; ; done # rename old files with new extension
-      find . -print0 | xargs -0 file # dealing with spaces in file names
-      pcregrep &#39;me$&#39; /usr/share/dict/words | sed &#39;s/me$/.me/&#39; |  bin/checkavailable.pl
-    #+end_src
-    link: [[file:~/Dropbox/oneliners]]
-    captured_on: [2015-01-26 Mon 06:47]
-
-
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/ruby-notes.org</id>
-      <updated>2021-11-16T11:10:15-06:00</updated>
-      <title>Ruby</title>
-      <content>* Ruby
-
-** Notes
-*** [[http://www.saturnflyer.com/blog/jim/2015/01/20/ruby-forwardable-deep-dive/?utm_source%3Drubyweekly&amp;utm_medium%3Demail][Forwardable Deep Dive]] [2015-01-25 Sun]
-    :PROPERTIES:
-    :LOCATION: added to swaac.dev
-    :END:
-    #+AUTHOR: Jim Gay
-
-
-
-*** TODO try out moneta in an application
-
-** Books
-
-*** Practical Object Oriented Design in Rails - Sandi Metz
-
-***** On composition vs inheritance, Sandi Metz in POODR
-   #+begin_src markdown
-     &gt; Composition allows you to combine small parts to create more complex
-     &gt; objects such that the whole becomes more than the sum of its
-     &gt; parts. Composed objects tend to consist of simple, discrete entities
-     &gt; that can easily be rearranged into new combinations. These simple
-     &gt; objects are easy to understand, reuse, and test, but because they
-     &gt; combine into a more complicated whole, the operation of the bigger
-     &gt; application may not be as easy to understand as that of the
-     &gt; individual parts.
-
-
-     &gt; Composition, classical inheritance, and behavior sharing via modules
-     &gt; are competing techniques for arranging code. Each has different
-     &gt; costs and benefits; these differences predispose them to be better
-     &gt; at solving slightly different problems.
-
-
-     &gt; These techniques are tools, nothing more, and you’ll become a better
-     &gt; designer if you practice each of them. Learning to use them properly
-     &gt; is a matter of experience and judgment, and one of the best ways to
-     &gt; gain experience is to learn from your own mistakes. The key to
-     &gt; improving your design skills is to attempt these techniques, accept
-     &gt; your errors cheerfully, remain detached from past design decisions,
-     &gt; and refactor mercilessly.
-
-     &gt; As you gain experience, you’ll get better at choosing the correct
-     &gt; technique the first time, your applications will improve.”
-
-
-     Excerpt From: Metz, Sandi. “Practical Object-Oriented Design in Ruby:
-     An Agile Primer (Addison-Wesley Professional Ruby Series).”
-     iBooks. https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewBook?id=038BE4A901A3E1659EA914B97D73CA82
-
-   #+end_src
-
-*** The Well Grounded Rubyist
-
-     #+begin_src markdown
-       ## Who should read this book
-
-       &gt; The Well-Grounded Rubyist, Second Edition is optimized for a reader
-       &gt; who’s done some programming and perhaps even some Ruby and wants to
-       &gt; learn more about the Ruby language—not only the specific techniques
-       &gt; (although the book includes plenty of those), but also the design
-       &gt; principles that make Ruby what it is. I’m a great believer in knowing
-       &gt; what you’re doing. I also believe that knowing what you’re doing
-       &gt; doesn’t mean you have to compose a treatise in your head every time
-       &gt; you write a line of code; it means you know how to make the most out
-       &gt; of the language, and understand how to analyze problems when they
-       &gt; arise.
-       &gt;
-       &gt;
-       &gt; [I]f this is your first foray into programming, be prepared to do a
-       &gt; little extra self-imposed “homework” to get ramped up into the
-       &gt; programming process—but by all means, give The Well-Grounded Rubyist,
-       &gt; Second Edition a go. The book isn’t specifically an introduction to
-       &gt; programming, but it does take you through all the practicalities,
-       &gt; including the creation and running of program files, as well as
-       &gt; explaining Ruby from the ground up
-
-       Excerpt From: David A. Black. “The Well-Grounded Rubyist, Second
-       Edition.”
-
-     #+end_src
-
-
-** Ruby one-liners
-  #+name: one-liners
-  #+begin_src ruby
-    a=[1,2,3,4,4,5,6,6,6];Hash[a.group_by {|e| e}.map {|k,v| next if v.size ==1;[k,v.size]}.compact]
-  #+end_src
-
-** Ruby Testing
-*** Capybara
-**** DONE Scrolling the window in Capybara          :blog:ruby:spec:capybara:
-   :PROPERTIES:
-   :CAPTURE_DATE: [2019-03-06 Wed 16:45]
-   :LOCATION: added to swaac.dev
-   :END:
-
-
-   This is a problem when we have a modal that is long and we need to get the &quot;Submit&quot; button.
-
-   #+BEGIN_SRC ruby
-     page.execute_script &quot;window.scrollBy(0,10000)&quot;
-   #+END_SRC
-
-
-
-** Ruby Meetings, Meetups
-*** RubyMN 2014-02-24 7:00pm
-
-**** AI Twitter Bot
-***** Horse_Ebooks
-***** rkelly_ebooks
-      tweet rkelly lyrics
-****** scrape
-****** choose
-****** vote
-******* characterize
-******* tag
-******* bayes
-******** classifier
-******** guess funniness
-******** human in the loop
-******* post
-
-***** what did we learn
-
-****** try new things
-
-****** make stupid shit
-
-****** have some fun
-
-****** josh kaplan
-       @jkap
-       git.io/rkelly_ebooks
-       @rkelly_ebooks
-
-**** Daemons in Ruby
-     Ian Whitney @ianwhitney
-
-***** what&#39;s a daemon?
-****** Background jobs
-******* resque
-******* delayed jobs
-******* sidekiq
-****** Services
-****** Responsive to changes
-
-
-***** what else?
-****** write your own
-******* logging
-******* error capturing
-******* scheduling
-****** daemon_kit
-       https://github.com/kennethkalmer/daemon-kit
-
-
-*** RubyMN Meeting 7:00pm-9:00pm
-    &lt;%%(diary-float t 1 -1)&gt;
-    Last Monday of the month
-
-** RUBY REFILE TARGET
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/rpi-notes.org</id>
-      <updated>2021-11-16T11:10:15-06:00</updated>
-      <title>Raspberry Pi</title>
-      <content>* Raspberry Pi
-** Raspberry Pi Howtos
-
-*** Configure the pi
-**** ssh into the RPi:
-     ssh pi@10.0.0.13 (substituting the right address)
-     Password: raspberry
-**** run the configurator:
-     sudo raspi-config
-
-***** expand the file system to the entire card
-***** change the pi user password
-***** set up locales
-***** change public hostname
-***** reboot
-
-*** Provisioning
-**** ssh into the RPi
-**** create an ssh key pair
-**** install emacs
-     sudo apt-get install emacs23-nox
-**** install system-wide ruby
-***** follow checklist at http://wiki.tamaratemple.com/Technology/BuildRubySystemFromSource
-
-*** Set up Samba for File Sharing
-**** install and configure samba server following http://elinux.org/R-Pi_NAS
-     apt-get install samba samba-common-bin
-**** add USB drives to /etc/fstab
-**** connect to mac the normal way CMD-K
-
-*** Install tmux
-
-*** [[http://blog.alexellis.io/getting-started-with-docker-on-raspberry-pi/][Get Started with Docker on Raspberry Pi]]              :raspberrypi:docker:
-       captured at: [2016-08-19 Fri 02:13]
-
-       description: Get Docker up and running on your Raspberry Pi in minutes. Learn some cool hacks and optimizations for the best experience.
-
-     selection: I have put this guide together to help you get started with Docker on your Raspberry Pi. For simplicity we will use the default operating system for the Pi - called Raspbian. This guide currently works with the Model 2B and Model 3 Pi. Support for the Raspberry Pi Zero, and B+ is planned for Docker 1.12-1-rc2 onwards.
-** Raspberry Pi Notes
-
-*** Raspberry Pi boot up notes
-**** Use RPi-sd card builder app
-***** start app and follow the prompts with an SD card at the ready.
-      When it is done, it will tell you to eject the card.
-**** Insert the SD card in the RPi, connect ethernet, keyboard, video cable
-     Optionally connect USB disk.
-**** Connect power to start it up.
-**** Locate the IP address assigned by the DHCP host
-
-*** Install nginx to serve static files
-**** apt-get install nginx
-**** modify defaults
-     root /var/www
-
-*** Set static IP per http://elinux.org/RPi_Setting_up_a_static_IP_in_Debian
-**** make pi IP static on router (ideally use a DHCP reservation, but this one doesn&#39;t do that. Thanks, Comcast!)
 </content>
       <author>
         <name>Tamara Temple</name>

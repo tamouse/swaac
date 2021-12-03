@@ -1,0 +1,12 @@
+* TIL: How to get a self-invite link to a Google Calendar Event
+
+  Sometimes you want to make an event known, and open, but don't want to list a whole bunch of people in the invite list.
+
+  The recent example I had is that we have some sub-teams working on DEI (Diversity, Equity, & Inclusion) activities, and we got feedback from folks in the larger organization didn't know they could join in if they wanted. We decided to make our meetings open, but of course we didn't want to invite everyone@company.com.
+
+  The secret sauce is that you need to publish the event. In Google Calendar, if you edit the event, there is a drop down at the top-right called "More actions", and you want to pick the one for "Publish this instance of event" (assuming it's a recurring meeting).
+
+  This opens a modal where you copy the link to the event. This will let people join if they want.
+
+  Example dummy event link: [[https://calendar.google.com/event?action=TEMPLATE&tmeid=MjA0a2pmcjljZW1vMWplZTluZGE3cjh1dWhfMjAyMTEyMDNUMjEzMDAwWiB0YW1vdXNlQG0&tmsrc=tamouse%2540gmail.com]]
+
