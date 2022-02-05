@@ -126,7 +126,8 @@ Hopefully everything goes smoothly.
 1. Grab ~ruby-install~: ~brew install ruby-install~
 2. Get the latest ruby versions: ~ruby-install~
 3. Install your sweet version: ~ruby-install ruby 2.5.7~ for the project I'm working for this work computer, others are good, too!
-4. Grab ~chruby~: ~brew install chruby~5. Close and reopen the Terminal
+4. Grab ~chruby~: ~brew install chruby~
+5. Close and reopen the Terminal
 6. Run ~chruby~ to verify the ruby you just installed is there
 7. For my work machine, I want to always be using the same version of ruby everywhere, so I create a ~.ruby-version~ file with ~ruby-2.5.7~ in it
 8. Close and reopen the Terminal again
