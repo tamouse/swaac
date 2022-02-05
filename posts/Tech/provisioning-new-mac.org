@@ -63,6 +63,12 @@ I have the above directories sync'd to my private keybase folder.
 
 This takes a brutally long time, since it's just such a ginormous download (8G?)
 
+*** Install the dev toola
+
+#+BEGIN_SRC shell-script
+$ xcode-select --install
+#+END_SRC
+
 ** Install homebrew (brew.sh)
 
 Go out to the [[https://brew.sh][homebrew web page]], there's a command you can paste into a Terminal window.
