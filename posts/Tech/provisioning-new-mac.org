@@ -6,6 +6,35 @@
 
 If this is your own mac, your account should be created with Administrator privs, and you should be able to install software, do things like run ~sudo~, and all sorts of wonderful things, usually all you need to do is provide your account password when asked.
 
+** Set default shell
+
+#+BEGIN_SRC shell
+chsh -s /bin/bash
+#+END_SRC
+
+At least until I bite the bullet on ~zsh~.
+
+** Modify Terminal to close window on exit
+
+You should do this for all the terminal profiles you use. Also, this is a good time to modify colours so you can read them (e.g. red text on red sands sucks).
+
+** Set alternate destination for screenshots
+
+#+BEGIN_SRC shell
+mkdir $HOME/Downloads/Screenshots
+defaults write com.apple.screencapture location $HOME/Downloads/Screenshots
+killall SystemUIServer
+#+END_SRC
+
+Using `$HOME/tmp/` might be good, too.
+
+** Display Useful Info in Finder
+
+#+BEGIN_SRC shell
+defaults write com.apple.finder ShowPathbar -bool true
+defaults write com.apple.finder ShowStatusBar -bool true
+#+END_SRC
+
 ** Installing Keybase
 
 This stores other credentials for the project, my org files, etc.
@@ -71,21 +100,18 @@ $ xcode-select --install
 
 ** Install homebrew (brew.sh)
 
-Go out to the [[https://brew.sh][homebrew web page]], there's a command you can paste into a Terminal window.
+Go out to the [[https://brew.sh][homebrew web page]], there's a command you can paste into a Terminal window. At some point, it should ask for your password; give it and then brew will be able to raise its privs when needed. The last time I did this, I ended up not being able to type at the Terminal. Swiftly just solved by quitting Terminal and restarting it. Run ~brew doctor~ to make sure everything is cromulent.
 
-At some point, it should ask for your password; give it and then brew will be able to raise its privs when needed.
+Install the newest version of git; the one on mac install is likely too old for development purposes:
 
-The last time I did this, I ended up not being able to type at the Terminal. Swiftly just solved by quitting Terminal and restarting it.
+~brew install git~
 
-Run ~brew doctor~ to make sure everything is cromulent.
+** Set up git defaults
 
-*** get ~hub~ program
-
-[[https://hub.github.com/][hub.github.com]] just makes life easier dealing with github:
-
-#+BEGIN_SRC shell-script
-  brew install hub
-  git config --global hub.protocol https
+#+BEGIN_SRC shell
+git config --global user.email "tamouse@gmail.com"
+git config --global user.name "your_Git_user_name"
+git config --global core.editor "emacs"
 #+END_SRC
 
 ** Download config repos
