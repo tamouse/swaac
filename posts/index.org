@@ -25,6 +25,7 @@
 - [[./Tech/braintree-notes.org]]
 - [[./Tech/WordPress-notes.org]]
 - [[./Tech/README.md]]
+- [[./2022/2022-02-19-how-to-access-icloud-files-from-the-command-line.md]]
 - [[./2021/2021-12-23-til-how-to-use-low-data-mode-in-ios.md]]
 - [[./2021/2021-12-03-TIL-how-to-get-a-self-invite-link-to-a-google-calendar-event.org]]
 - [[./2021/2021-11-16-til=miro-quickly-build-out-a-network.org]]
