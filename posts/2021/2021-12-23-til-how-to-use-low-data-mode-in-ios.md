@@ -1,5 +1,6 @@
 # Use Low Data Mode on your iPhone and iPad - Apple Support
 
+<pre>
 Archived?: No
 Area: Maintenance
 Blogged?: No
@@ -13,6 +14,7 @@ Topic: Hardware
 URL: https://support.apple.com/en-us/HT210596
 What is important about this?: Remove annoying pop-up confirmation dialogs
 Why did I save this?: I had it turned on and couldn’t figure out how to turn it back off
+</pre>
 
 With iOS 13 and later, you can turn on Low Data Mode to restrict background network use and save cellular and Wi-Fi usage.
 
