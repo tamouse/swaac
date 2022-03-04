@@ -106,14 +106,6 @@ Install the newest version of git; the one on mac install is likely too old for 
 
 ~brew install git~
 
-** Set up git defaults
-
-#+BEGIN_SRC shell
-git config --global user.email "tamouse@gmail.com"
-git config --global user.name "your_Git_user_name"
-git config --global core.editor "emacs"
-#+END_SRC
-
 ** Download config repos
 
 Since the .ssh creds were copied over in a previous step, this step should be pretty easy.
@@ -141,7 +133,7 @@ For me, there is next to nothing that is more important that using my imprinted 
 
 I ran the following to check on stuff: ~brew cask info emacs~ -- in particular, I want a fairly high level version, which might not be completely released. I'm running 26.2, the latest from the command shows 26.3, so it should be good to go.
 
-1. run ~brew cask install emacs~
+1. run ~brew install --cask emacs~
 2. start up emacs with just ~emacs~ to make sure the init.el works as hoped.
 
    1. on this latest install, i needed to modify init.el
