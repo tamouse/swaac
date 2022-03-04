@@ -183,26 +183,26 @@ Install ~yarn~: ~brew install yarn~ (beware there is a new way to do this for ya
 
 ** Other Software
 
-1. Chrome
+1. Chrome 
 2. Firefox
-3. LastPass
-4. Amphetimine
-5. Spark
-6. Notion
-7. Slack
-8. Trello
-9. Zoom
-10. Affinity Photo & Design
-11. Spotify
-12. Sonos
-13. Monosnap
+3. 1Password <https://1password.com/> web, desktop, browser, etc...
+4. Amphetimine [AS]
+5. Spark [AS]
+6. Notion <https://www.notion.so/desktop>
+7. Slack [AS]
+8. ~Trello~
+9. Zoom <https://us04web.zoom.us/download#client_4meeting>
+10. Affinity Photo & Design [AS]
+11. Spotify <https://www.spotify.com/us/download/mac/>
+12. Sonos, <https://support.sonos.com/s/downloads?language=en_US>
+13. Monosnap [AS]
 14. --Spectacle-- use Rectangle instead: https://github.com/rxhanson/Rectangle
-15. Alfred
-16. Discord
-17. Display Menu
-18. JetBrains Toolbox (from which you can install the others)
+15. Alfred <https://www.alfredapp.com/>
+16. Discord <https://discord.com/download>
+17. Display Menu [AS]
+18. JetBrains Toolbox (from which you can install the others) <https://www.jetbrains.com/toolbox-app/>
 19. Kindle for Mac
-20. ... this list will grow :D
+20. ... this list will grow and shrink :D
 
 ** org files
 
