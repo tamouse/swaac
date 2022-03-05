@@ -190,7 +190,6 @@ Install ~yarn~: ~brew install yarn~ (beware there is a new way to do this for ya
 5. Spark [AS]
 6. Notion <https://www.notion.so/desktop>
 7. Slack [AS]
-8. ~Trello~
 9. Zoom <https://us04web.zoom.us/download#client_4meeting>
 10. Affinity Photo & Design [AS]
 11. Spotify <https://www.spotify.com/us/download/mac/>
