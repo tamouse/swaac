@@ -8,11 +8,11 @@ If this is your own mac, your account should be created with Administrator privs
 
 ** Set default shell
 
+This is optional, and it's probably high time to move to zsh, which is the default on new macs since 10.15. If you do want to set the default shell, this will do that.
+
 #+BEGIN_SRC shell
 chsh -s /bin/bash
 #+END_SRC
-
-At least until I bite the bullet on ~zsh~.
 
 ** Modify Terminal to close window on exit
 
@@ -165,6 +165,22 @@ Hopefully everything goes smoothly.
     - rails 5.1.6 (or whatever your project uses) (takes a long time, whee)
 
 *** Installing Node, NPM, and friends
+
+**** Using nvm
+
+Head over here, and do as it says <https://github.com/nvm-sh/nvm#install--update-script> to install `nvm`.
+
+Installing the latest Long Term Support node, use
+
+```
+nvm install --lts
+command -v node
+node -v
+npm -v
+npx -v
+```
+
+**** If not using nvm.
 
 We'll be installing from the nodejs web site, instead of using brew or nvm. 
 
