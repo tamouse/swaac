@@ -1,5 +1,11 @@
 ** Thor Notes
 
+*** What is Thor?
+
+    - http://whatisthor.com/
+    - https://github.com/rails/thor
+    - https://rdoc.info/gems/thor/Thor
+
 *** Start here for next thor project
 
     Seriously, this has so much "stock" stuff:
