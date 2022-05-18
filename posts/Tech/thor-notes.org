@@ -15,6 +15,13 @@
 **** turn this thing into a thor thor generator!
      Dude, as if you're the first person to do this?
 
+*** Some given barewords with useful values:
+
+    - "name": "SuperModule::AnalyticsClass",
+    - "file_name": "analytics_class",
+    - "file_path": "super_module/analytics_class",
+    - "class_name": "SuperModule::AnalyticsClass"
+
 
 *** Giving a task multiple arguments
 
