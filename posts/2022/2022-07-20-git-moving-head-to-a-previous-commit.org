@@ -1,0 +1,59 @@
+#+options: html-link-use-abs-url:nil html-postamble:auto html-preamble:t html-scripts:nil
+#+options: html-style:t html5-fancy:t tex:t
+#+html_doctype: html5
+#+html_container: div
+#+html_content_class: content
+#+description: How do you get rid of commits you do not want?
+#+keywords: git, head, reset, revert
+#+html_link_home: https://swaac.dev
+#+html_head:
+#+html_head_extra:
+#+subtitle: When you just don’t want that last commit
+#+infojs_opt:
+#+creator: <a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.1 (<a href="https://orgmode.org">Org</a> mode 9.5.2)
+#+latex_header:
+#+TITLE: Git: Moving HEAD to a previous commit
+
+** Oops, didn‘t want that!
+
+Sometimes in the course of development work, we decide that we didn’t actually want a commit.
+
+In a situation I recently ran into, I had done a merge from ~main~, and then the tech lead said to rebase it instead. Luckily, I hadn’t yet pushed to ~origin~ so I could back out of the commit I had made.
+
+But how?
+
+** I hadn’t pushed my branch yet
+
+Following the advice given in this [[https://stackoverflow.com/questions/14243089/git-move-head-back-to-a-previous-commit][StackOverflow]] question, the form of the operation looks like this:
+
+#+BEGIN_SRC shell
+  git reset COMMIT_SHA
+  git reset --soft HEAD@{1}
+  git commit -m "Reverted to COMMIT_SHA"
+  git status
+  # Check on the uncommitted files, see if you want to salvage any of this work
+  git reset --hard
+#+END_SRC
+
+~COMMIT_SHA~ is the short or long SHA of the commit I want to roll back to, e.g. "56c637bd8" or "56c637bd8a369373dcfdc62cbdca810658a7fd4e"
+
+In the scenario I was in, I omitted the last ~git reset --hard~ command, so the changes that I was working on prior to the commit were left in their modified state. If I had wanted to just get rid of any changes and start fresh, then I would definitely run the last reset command.
+
+** But what if I had pushed my branch?
+
+In this case, I would have had to use ~git revert~ to revert the commits. Let’s say I want to go back 4 commits from the tip of the branch, aka ~HEAD~.
+
+#+BEGIN_SRC shell
+  # Revert the changes specified by the fourth last commit in HEAD and create a new commit with the reverted changes.
+  git revert HEAD~3
+  git push -u origin BRANCH_NAME
+#+END_SRC
+
+Then when my teammates pull my branch for review and testing, it will have a commit with all the changes removed, and the history of the repo will remain intact.
+
+** References
+
+1. [[https://stackoverflow.com/questions/14243089/git-move-head-back-to-a-previous-commit][SO: GIT: move HEAD back to a previous commit]]
+2. [[https://git-scm.com/docs/git-reset][Git reset]]
+3. [[https://git-scm.com/docs/git-revert][Git revert]]
+

@@ -2,139 +2,70 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://github.com/tamouse/swaac</id>
   <title>Tamouse&#39;s Software as a Craft blog</title>
-  <updated>2021-12-03T15:15:50-06:00</updated>
+  <updated>2022-07-20T13:54:15-05:00</updated>
     <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2021/2021-12-03-TIL-how-to-get-a-self-invite-link-to-a-google-calendar-event.org</id>
-      <updated>2021-12-03T15:15:50-06:00</updated>
-      <title>TIL: How to get a self-invite link to a Google Calendar Event</title>
-      <content>* TIL: How to get a self-invite link to a Google Calendar Event
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2022/2022-07-20-git-moving-head-to-a-previous-commit.org</id>
+      <updated>2022-07-20T13:54:15-05:00</updated>
+      <title>2022-07-20-git-moving-head-to-a-previous-commit</title>
+      <content>#+options: html-link-use-abs-url:nil html-postamble:auto html-preamble:t html-scripts:nil
+#+options: html-style:t html5-fancy:t tex:t
+#+html_doctype: html5
+#+html_container: div
+#+html_content_class: content
+#+description: How do you get rid of commits you do not want?
+#+keywords: git, head, reset, revert
+#+html_link_home: https://swaac.dev
+#+html_head:
+#+html_head_extra:
+#+subtitle: When you just don’t want that last commit
+#+infojs_opt:
+#+creator: &lt;a href=&quot;https://www.gnu.org/software/emacs/&quot;&gt;Emacs&lt;/a&gt; 28.1 (&lt;a href=&quot;https://orgmode.org&quot;&gt;Org&lt;/a&gt; mode 9.5.2)
+#+latex_header:
+#+TITLE: Git: Moving HEAD to a previous commit
 
-  Sometimes you want to make an event known, and open, but don&#39;t want to list a whole bunch of people in the invite list.
+** Oops, didn‘t want that!
 
-  The recent example I had is that we have some sub-teams working on DEI (Diversity, Equity, &amp; Inclusion) activities, and we got feedback from folks in the larger organization didn&#39;t know they could join in if they wanted. We decided to make our meetings open, but of course we didn&#39;t want to invite everyone@company.com.
+Sometimes in the course of development work, we decide that we didn’t actually want a commit.
 
-  The secret sauce is that you need to publish the event. In Google Calendar, if you edit the event, there is a drop down at the top-right called &quot;More actions&quot;, and you want to pick the one for &quot;Publish this instance of event&quot; (assuming it&#39;s a recurring meeting).
+In a situation I recently ran into, I had done a merge from ~main~, and then the tech lead said to rebase it instead. Luckily, I hadn’t yet pushed to ~origin~ so I could back out of the commit I had made.
 
-  This opens a modal where you copy the link to the event. This will let people join if they want.
+But how?
 
-  Example dummy event link: [[https://calendar.google.com/event?action=TEMPLATE&amp;tmeid=MjA0a2pmcjljZW1vMWplZTluZGE3cjh1dWhfMjAyMTEyMDNUMjEzMDAwWiB0YW1vdXNlQG0&amp;tmsrc=tamouse%2540gmail.com]]
+** I hadn’t pushed my branch yet
 
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2021/2021-11-16-til=miro-quickly-build-out-a-network.org</id>
-      <updated>2021-12-03T15:03:48-06:00</updated>
-      <title>TIL: Quickly build out a network in miro</title>
-      <content>* TIL: Quickly build out a network in miro
-  :PROPERTIES:
-  :DATE_UPDATED: Time-stamp: &lt;2021-11-16 11:29:53 tamaratemple&gt;
-  :END:
+Following the advice given in this [[https://stackoverflow.com/questions/14243089/git-move-head-back-to-a-previous-commit][StackOverflow]] question, the form of the operation looks like this:
 
-** To quickly add new shapes on a diagram:
-   1. Drag out a shape, type some text.
-   2. Click on one of the attachment spots, a new shape is created with the same attributes.
-   3. Click on one of the attachment spots in the original shape and it puts another new shape on board cleanly.
-  
-** Image of network on miro baard
+#+BEGIN_SRC shell
+  git reset COMMIT_SHA
+  git reset --soft HEAD@{1}
+  git commit -m &quot;Reverted to COMMIT_SHA&quot;
+  git status
+  # Check on the uncommitted files, see if you want to salvage any of this work
+  git reset --hard
+#+END_SRC
 
-   #+CAPTION: A network diagram in miro
-   #+NAME: fig:MIRO_NETWORK_DIAGRAM
-   [[../../images/miro_skill_building_out_a_network.jpg]]
+~COMMIT_SHA~ is the short or long SHA of the commit I want to roll back to, e.g. &quot;56c637bd8&quot; or &quot;56c637bd8a369373dcfdc62cbdca810658a7fd4e&quot;
 
-** On my miro board
+In the scenario I was in, I omitted the last ~git reset --hard~ command, so the changes that I was working on prior to the commit were left in their modified state. If I had wanted to just get rid of any changes and start fresh, then I would definitely run the last reset command.
 
-   [[https://miro.com/app/board/o9J_lt3X-vo=/?moveToWidget=3074457367689591761&amp;cot=14][Link to my miro board with the network diagram example]]
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2021/2021-10-01-open-ended-range-in-rails.md</id>
-      <updated>2021-12-03T15:03:48-06:00</updated>
-      <title>2021-10-01-open-ended-range-in-rails</title>
-      <content># Using open-ended ranges in rails
+** But what if I had pushed my branch?
 
-I just found out about this today.
+In this case, I would have had to use ~git revert~ to revert the commits. Let’s say I want to go back 4 commits from the tip of the branch, aka ~HEAD~.
 
-You can use an open-ended range when checking dates in ActiveRecord:
+#+BEGIN_SRC shell
+  # Revert the changes specified by the fourth last commit in HEAD and create a new commit with the reverted changes.
+  git revert HEAD~3
+  git push -u origin BRANCH_NAME
+#+END_SRC
 
-```ruby
-    account.orders.where(occurred_at: 6.months.ago..).count
-```
-
-This replaces the old way of doing this:
-
-```ruby
-    account.orders.where(&quot;occurred_at &gt; ?&quot;, 6.months.ago).count
-```
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2021/2021-08-19-TIL-tracking-focus-in-chrome-devtools.org</id>
-      <updated>2021-12-03T15:03:48-06:00</updated>
-      <title>2021-08-19-TIL-tracking-focus-in-chrome-devtools</title>
-      <content>#+TITLE: TIL: How to track the focus in chrome devtools
-
-Last updated: 2021-08-19T17:22:44-05:00
-
-When you&#39;re tabbing, about, sometimes you lose the little focus ring because that hasn&#39;t been implemented for the item.
-
-[[https://developer.chrome.com/docs/devtools/accessibility/focus/][This post]] describes how you can see the current tab focus in Chrome devtools.
-
-In a nutshell:
-
-1. Open devtools Console
-2. Click on *Create a Live Expression*
-3. Enter ~document.activeElement~ in the input box
-4. Click outside the Live Expression UI to save
-
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2021/2021-08-18-whats-the-difference-between-find_each-and-find_in_batches.org</id>
-      <updated>2021-12-03T15:03:48-06:00</updated>
-      <title>Finding records</title>
-      <content>#+TITLE: What&#39;s the difference between find_each and find_in_batches in Rails
-#+DATE: 2021-08-18
-
-Published: 2021-08-18
-
-Last edited: 2021-08-18T16:28:20+05:00
-
-* Finding records
-
-In Rails, you probably don&#39;t want to get all the records from a model when your database becomes large.
-E.g. fetching a million rows will make a very large object space in your application, since Rails (ActiveRecord)
-is converting each row to an object.
-
-Instead, ActiveRecord provides a couple of methods to handle this.
-
-1. ~find_in_batches~
-2. ~find_each~
-
-** Which one should you use?
-
-Almost all the time, you can safely choose ~find_each~, since it calls ~find_in_batches~ under the hood and loops through each record in the batch and yields the record to you.
+Then when my teammates pull my branch for review and testing, it will have a commit with all the changes removed, and the history of the repo will remain intact.
 
 ** References
 
-- ~find_each~ &lt;https://api.rubyonrails.org/classes/ActiveRecord/Batches.html#method-i-find_each&gt;
-- ~find_in_batches~ &lt;https://api.rubyonrails.org/classes/ActiveRecord/Batches.html#method-i-find_in_batches&gt;
-- [[https://rubyinrails.com/2019/09/17/rails-find-in-batches-vs-find-each/][Rails find_in_batches vs find_each]]
+1. [[https://stackoverflow.com/questions/14243089/git-move-head-back-to-a-previous-commit][SO: GIT: move HEAD back to a previous commit]]
+2. [[https://git-scm.com/docs/git-reset][Git reset]]
+3. [[https://git-scm.com/docs/git-revert][Git revert]]
+
 </content>
       <author>
         <name>Tamara Temple</name>
@@ -142,211 +73,176 @@ Almost all the time, you can safely choose ~find_each~, since it calls ~find_in_
       </author>
     </entry>
     <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/ux-notes.org</id>
-      <updated>2021-12-03T15:03:43-06:00</updated>
-      <title>UX Notes</title>
-      <content>* UX Notes
-** [[http://www.givegoodux.com/4-tips-adding-lean-ux-agile-development-process/][4 Tips for Adding Lean UX to an Agile Development Process]]
+      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/thor-notes.org</id>
+      <updated>2022-07-20T13:00:47-05:00</updated>
+      <title>thor-notes</title>
+      <content>** Thor Notes
 
-    As organizations of all shapes and sizes come to grips with the fact that UX is critical to project and product success, a common question resurfaces time and again:
+*** What is Thor?
 
-    “How do we add Lean UX practices to our current process?”
+    - http://whatisthor.com/
+    - https://github.com/rails/thor
+    - https://rdoc.info/gems/thor/Thor
 
-    1) Hire experienced UX analysts and designers; you need at least one
-       experienced, senior UX member capable of sharing the driving.
+*** Start here for next thor project
 
-    2) There must be an “Iteration 0” in your process where “just
-       enough” research, modeling and design happens.
+    Seriously, this has so much &quot;stock&quot; stuff:
 
-    3) Follow a process where UX, design and development work is “chunked”
-       and starts with the core, most broad-reaching areas of features and
-       functionality.
+    https://github.com/tamouse/rearrange_books/tree/start-here-for-next-thor-project
 
-    4) Use a collaborative, parallel work process to keep UX efforts
-       both ahead and behind development efforts.
+**** turn this thing into a thor thor generator!
+     Dude, as if you&#39;re the first person to do this?
 
-    capture date: [2015-03-19 Thu 16:30]
-** [[http://semantic-ui.com/][Semantic UI Toolkit]]
-   Date: &lt;2013-10-15 Tue 02:19&gt;
+*** Some given barewords with useful values:
 
-   UI is the vocabulary of the web.
+    - &quot;name&quot;: &quot;SuperModule::AnalyticsClass&quot;,
+    - &quot;file_name&quot;: &quot;analytics_class&quot;,
+    - &quot;file_path&quot;: &quot;super_module/analytics_class&quot;,
+    - &quot;class_name&quot;: &quot;SuperModule::AnalyticsClass&quot;
 
-   Semantic empowers designers and developers by creating a language
-   for sharing UI.
 
-   Semantic is an alternative to Twitter Bootstrap and other UI
-   kits. It seems like it&#39;s a more readable and usable thing to me. It
-   also is something that seems more easily customizable. It will be
-   interesting to see how it plays out.
+*** Giving a task multiple arguments
 
-   Currently looking at using it on a few new sites, along with
-   [[middleman]].
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/WordPress-notes.org</id>
-      <updated>2021-12-03T15:03:43-06:00</updated>
-      <title>WordPress</title>
-      <content>* WordPress
-** WordPress NOTES
+    Q: How can I have a task get multiple arguments, like many regular
+    POSIX commands?
 
-*** Install Themes and Plugins with out FTP
-    :PROPERTIES:
-    :URL:      https://tamouse.github.io/swaac/wordpress/2016/11/14/installing-wordpress-things-without-ftp/
-    :END:
+    Example:
 
-    Link: https://tamouse.github.io/swaac/wordpress/2016/11/14/installing-wordpress-things-without-ftp/
-
-    Direct installation: add the following line to ~wp-config.php~:
-
-    #+BEGIN_SRC php
-      define(&#39;FS_METHOD&#39;, &#39;direct&#39;);
+    #+BEGIN_SRC shell-script
+      cp source_file source_file source_file source_file ... dest_dir
     #+END_SRC
 
-** WordPress Meetings, Meetups, Conferences
+    Pretty simple:
 
-*** WordCamp MPLS 2017
+    #+BEGIN_SRC ruby
+      desc &quot;taskname ARGLIST&quot;
+      def taskname(*args)
+      end
+    #+END_SRC
 
-**** Friday, August 4, 2017
+    would let you do:
 
-***** Lightning Talks
-      - Nick - WP Functions
-      - Jenna Totts - Is your data dirty?
-	ecograder, green web foundation
-      - Nathan Ingram - surviving a crisis of confidence
-	The questions can sometimes be used as weapons against others,
-	tho
-      - Andrew Robbins - Making and Selling WordPress Software
-	wpshopify.io
-      - Amy Zeller - From Blog to Book
-	@amyzeller
-      - Raquel Landefeld - Becoming a Community Builder
-	community equals people7ujhkn
+    #+BEGIN_SRC shell-script
+      thor taskname arg1 arg2 arg3 arg4
+    #+END_SRC
 
-***** WP-CLI
-      - Shawn Hooper (shawnhooper.ca)
-
-      - [[wp-cli.org][wp-cli.org]]
-
-      - BLOWING MY MIND
-
-***** Extending the WP REST API
-      - Pete Nelson
-      - @GunGeekATX
-      - too bloody damn fast, can&#39;t see anything he&#39;s typing, demo is
-	useless
-
-
-***** Confessions of a Freelance
-      - Josh Broton
-      - @joshbroton
-
-**** Saturday, August 5, 2017
-
-***** Lightning Talks
-      - Zach Stepek - So, You Want To Sell Online
-      - Tyler Golberg - Page Builders
-      - AJ Morris - Starting your first online business
-      - Lindsey Miller - What I learned raising 2 Million Dollars for
-	Politicians–and How it Applies to the WordPress Community
-      - Katie Elenberger - Pursing your creative passion: Turn your side
-	hustle into a full-time gig
-      -
+    and ~args~ in the task would be ~[&quot;arg1&quot;, &quot;arg2&quot;, &quot;arg3&quot;, &quot;arg4&quot;]~
 
 
 
-***** Tessa - Configuration Management
-      - wp-cfm
+*** Invoke a thor task by giving only a class option
+    :PROPERTIES:
+    :CAPTURE_DATE: [2016-11-06 Sun 01:11]
+    :END:
 
-***** Aaron Holbrook: Best Practices for Developing Websites
+    From stackoverflow: http://stackoverflow.com/a/7311357/742446
 
-***** John Havlik: A Decade: Lessons Learned Nurturing a WordPress Plugin
+    [...use] Thor.map to invoke a command by only giving an
+    option flag:
 
-** WordPress Links
-*** WordPress Tavern – WordPress News — Free as in Beer.
-    - capture_date: [2016-11-12 Sat 15:39]
-    - link:     https://wptavern.com/
-    - title:    WordPress Tavern – WordPress News — Free as in Beer.
+    #+BEGIN_SRC ruby
+      map &#39;-F&#39; =&gt; &#39;foo&#39;
+    #+END_SRC
+
+    Now you can also pass parameters
+
+    #+BEGIN_SRC ruby
+      mythorcommand -F bar # =&gt; invokes foo(&quot;bar&quot;)
+    #+END_SRC
+
+    answered Sep 5 &#39;11 at 17:57 by tfischbach
+
+*** Give thor a default task
+    :PROPERTIES:
+    :CAPTURE_DATE: [2016-11-06 Sun 01:13]
+    :END:
+
+    From stackoverflow: http://stackoverflow.com/a/23955971/742446
+
+    I found a rather &#39;strange&#39; solution for this problem that is working quite well with me.
+
+    You add a default task to Thor. Than you add the method_missing so
+    that you can trick Thor into passing the default method as an
+    argument if there are parameters to your application.
+
+    Taking from your example, the solution would look like this:
+
+    #+BEGIN_SRC ruby
+      class MyThorCommand &lt; Thor
+	default_task :my_default
+
+	desc &quot;my_default&quot;, &quot;A simple default&quot;
+	def my_default(*args)
+          puts args.inspect
+	end
+
+	def method_missing(method, *args)
+          args = [&quot;my_default&quot;, method.to_s] + args
+          MyThorCommand.start(args)
+	end
+
+      end
+
+      MyThorCommand.start(ARGV)
+    #+END_SRC
+
+    If this is in the file &quot;my_thor.rb&quot; an execution &quot;ruby my_thor.rb
+    foo bar&quot; would show &#39;[&quot;foo&quot;, &quot;bar&quot;]&#39; as a result.
+
+    answered May 30 &#39;14 at 13:38 by Edu
+
+*** Making Thor scripts colourful
+
+   capture date: [2015-10-11 Sun 02:06]
+
+   In Thor::Actions, the various output commands can be made nicely
+   colourful. You can append symbols representing various colours after
+   the output string. For example:
+
+   #+begin_src ruby
+     say &quot;This will make you green with envy&quot;, :green
+     say &quot;Don&#39;t be sad&quot;, :blue
+     say &quot;ACK! AN ERROR!&quot;, :red
+   #+end_src
+
+   Colour symbols are defined in
+   https://github.com/erikhuda/thor/blob/master/lib/thor/shell/color.rb
 
 
+   #+begin_src ruby
+     # Set color by using a string or one of the defined constants. If a third
+     # option is set to true, it also adds bold to the string. This is based
+     # on Highline implementation and it automatically appends CLEAR to the end
+     # of the returned String.
+     #
+     # Pass foreground, background and bold options to this method as
+     # symbols.
+     #
+     # Example:
+     #
+     #   set_color &quot;Hi!&quot;, :red, :on_white, :bold
+     #
+     # The available colors are:
+     #
+     #   :bold
+     #   :black
+     #   :red
+     #   :green
+     #   :yellow
+     #   :blue
+     #   :magenta
+     #   :cyan
+     #   :white
+     #   :on_black
+     #   :on_red
+     #   :on_green
+     #   :on_yellow
+     #   :on_blue
+     #   :on_magenta
+     #   :on_cyan
+     #   :on_white
 
-*** Blog - ChrisLema.com -
-    - capture_date: [2016-11-12 Sat 15:40]
-    - link:     http://chrislema.com/blog/
-    - title:    Blog - ChrisLema.com -
-
-
-*** Book Area | Digging Into WordPress
-    - capture_date: [2016-11-12 Sat 15:45]
-    - link:     https://digwp.com/book/
-    - title:    Book Area | Digging Into WordPress
-
-*** Free WordPress Tutorials
-    - capture_date: [2016-11-12 Sat 15:45]
-    - link:     https://www.wp-bff.com/
-    - TITLE:    Free WordPress Tutorials
-    - DESCRIPTION: Learn to build a WordPress site that&#39;s authentically you, grows your email list and finds the perfect clients.
-
-*** WordPress Teacher Zac Gordon | Professional Educator, WordPress Expert
-    - CAPTURE_DATE: [2016-11-12 Sat 15:45]
-    - LINK:     https://wp.zacgordon.com/
-    - TITLE:    WordPress Teacher Zac Gordon | Professional Educator, WordPress Expert
-    - DESCRIPTION: Zac Gordon is a professional educator with years of experience teaching in the classroom, leading workshops, giving talks and recording online courses. He has taught a range of web related topics from design and development to traditional programming and even robotics. His technological teaching passion is WordPress. He loves being able to empower people to learn how to…
-
-
-*** WordPress and eCommerce Blog and Podcast
-    - CAPTURE_DATE: [2016-11-12 Sat 15:45]
-    - LINK:     https://bobwp.com/
-    - TITLE:    WordPress and eCommerce Blog and Podcast
-    - DESCRIPTION: Tutorials, tips and posts on WordPress , eCommerce how to, themes and plugins, and creating effective digital content.
-
-*** Torque - WordPress News, WP Community Experts | @thetorquemag
-    - CAPTURE_DATE: [2016-11-12 Sat 15:45]
-    - LINK:     http://torquemag.io/
-    - TITLE:    Torque - WordPress News, WP Community Experts | @thetorquemag
-    - DESCRIPTION: Current WordPress News. The Torque News Core is a group of WordPress experts that are part of the WordPress community.
-
-*** Blog - ChrisLema.com -
-    - CAPTURE_DATE: [2016-11-12 Sat 15:45]
-    - LINK:     http://chrislema.com/blog/
-    - TITLE:    Blog - ChrisLema.com -
-
-*** Get DesktopServer and save time! • ServerPress, LLC.
-    - CAPTURE_DATE: [2016-11-12 Sat 15:46]
-    - LINK:     https://serverpress.com/get-desktopserver/
-    - TITLE:    Get DesktopServer and save time! • ServerPress, LLC.
-    - DESCRIPTION: DesktopServer is a tool that is proven to save you time testing, developing, managing, and creating fully functional website servers on your own computer.
-
-
-*** Flywheel | Managed WordPress Hosting Pricing
-    - CAPTURE_DATE: [2016-11-12 Sat 15:46]
-    - LINK:     https://getflywheel.com/pricing/
-    - TITLE:    Flywheel | Managed WordPress Hosting Pricing
-
-
-*** Free WordPress Tutorials
-    - CAPTURE_DATE: [2016-11-12 Sat 15:46]
-    - LINK:     https://www.wp-bff.com/
-    - TITLE:    Free WordPress Tutorials
-    - DESCRIPTION: Learn to build a WordPress site that&#39;s authentically you, grows your email list and finds the perfect clients.
-
-
-*** [[https://www.wordfence.com/blog/2016/11/hacking-27-web-via-wordpress-auto-update/][Hacking 27 of the Web via WordPress Auto-Update - Wordfence]]
-    - CAPTURE_DATE: [2016-11-26 Sat 12:39]
-
-** Wordpress Todos
-*** check out wordpress API                    :wcmpls:react:wordpress:swaac:
-    created_at: [2016-05-22 Sun 23:26]
-
-    Heard of this at the WordCamp Mpls 2016 in the WordPress + React
-    talk. Wordpress as the API backend to a React-based SPA. Wow.
-
-    #wcmpls
-*** check out wp-cli8un                                              :wcmpls:
+   #+end_src
 </content>
       <author>
         <name>Tamara Temple</name>
@@ -354,91 +250,259 @@ Almost all the time, you can safely choose ~find_each~, since it calls ~find_in_
       </author>
     </entry>
     <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2019/08/2019-08-01-programmer-s-primary-language.org</id>
-      <updated>2021-12-03T15:03:43-06:00</updated>
-      <title>2019-08-01-programmer-s-primary-language</title>
-      <content>#+OPTIONS: &#39;:nil *:t -:t ::t &lt;:t H:3 \n:nil ^:t arch:headline
-#+OPTIONS: author:t broken-links:nil c:nil creator:nil
-#+OPTIONS: d:(not &quot;LOGBOOK&quot;) date:t e:t email:nil f:t inline:t num:t
-#+OPTIONS: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
-#+OPTIONS: timestamp:t title:t toc:t todo:t |:t
-#+TITLE: 2019-08-01-programmer-s-primary-language
-#+DATE: &lt;2019-08-01 Thu&gt;
-#+AUTHOR: Tamara Temple
-#+EMAIL: tamouse@gmail.com
-#+KEYWORDS: joke, primary language, wtfsm
-#+DESCRIPTION: an old programmer&#39;s joke
-#+LANGUAGE: en
-#+SELECT_TAGS: export
-#+EXCLUDE_TAGS: noexport
-#+CREATOR: Emacs 26.2 (Org mode 9.1.9)
+      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/provisioning-new-mac.org</id>
+      <updated>2022-03-18T12:32:18-05:00</updated>
+      <title>Provisioning a new Mac</title>
+      <content>* Provisioning a new Mac
 
-** What&#39;s a Programmer&#39;s Primary Language?
+*KEY POINT:* the &quot;you&quot; in this writeup is me, the author. If you, the reader, are not me, the author, then you /have to modify to fit your own needs/.
 
-*Profanity*
+** Admin Privs
 
-So that&#39;s a really old joke, and I&#39;d thought I&#39;d written something about it long ago.
+If this is your own mac, your account should be created with Administrator privs, and you should be able to install software, do things like run ~sudo~, and all sorts of wonderful things, usually all you need to do is provide your account password when asked.
 
-There&#39;s a funny comic that goes around from time to time (I&#39;d thought it was one of Randall Monroe&#39;s, but it&#39;s not): https://www.osnews.com/story/19266/wtfsm/
+** Set default shell
 
-[[wtfsm.jpg]]
+This is optional, and it&#39;s probably high time to move to zsh, which is the default on new macs since 10.15. If you do want to set the default shell, this will do that.
 
-It&#39;s often sourced from [[http://commadot.com/wtf-per-minute/][this blog entry]] with a computer-drawn version, but I rather like the original.
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/2019/05/2019-05-27-creating-verse-paragraphs-in-kramdown.org</id>
-      <updated>2021-12-03T15:03:43-06:00</updated>
-      <title>2019-05-27-creating-verse-paragraphs-in-kramdown</title>
-      <content>#+OPTIONS: &#39;:nil *:t -:t ::t &lt;:t H:3 \n:nil ^:t arch:headline
-#+OPTIONS: author:t broken-links:nil c:nil creator:nil
-#+OPTIONS: d:(not &quot;LOGBOOK&quot;) date:t e:t email:nil f:t inline:t num:t
-#+OPTIONS: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
-#+OPTIONS: timestamp:t title:t toc:t todo:t |:t
-#+TITLE: 2019-05-27-creating-verse-paragraphs-in-kramdown
-#+DATE: &lt;2019-05-27 Mon&gt;
-#+AUTHOR: Tamara Temple
-#+EMAIL: tamouse@gmail.com
-#+LANGUAGE: en
-#+SELECT_TAGS: export
-#+EXCLUDE_TAGS: noexport
-#+CREATOR: Emacs 26.2 (Org mode 9.1.14)
-#+KEYWORDS: markdown, kramdown, verse
-
-
-*WARNING: This is old and likely obsolete.*
-
-In the past, when I&#39;ve wanted to create a verse, perhaps in a blockquote I&#39;ve resorted to using ~&lt;br&gt;~ on every line, which is tedious:
-
-#+BEGIN_SRC markdown
-  &gt; Listen, little children, all,&lt;br&gt;
-  &gt; Listen to our earnest call:&lt;br&gt;
-  &gt; You are very young, &#39;tis true,&lt;br&gt;
-  &gt; But there&#39;s much that you can do.&lt;br&gt;
-  &gt; Even you can plead with men&lt;br&gt;
-  &gt; That they buy not slaves again,&lt;br&gt;
-  &gt; And that those they have may be&lt;br&gt;
-  &gt; Quickly set at liberty.&lt;br&gt;
-
+#+BEGIN_SRC shell
+chsh -s /bin/bash
 #+END_SRC
 
-In ~kramdown~, the default markdown processor in [[Jekyll]] these days, there&#39;s an easier way:
+** Modify Terminal to close window on exit
 
-#+BEGIN_SRC markdown
-  &gt; Listen, little children, all,
-  &gt; Listen to our earnest call:
-  &gt; You are very young, &#39;tis true,
-  &gt; But there&#39;s much that you can do.
-  &gt; Even you can plead with men
-  &gt; That they buy not slaves again,
-  &gt; And that those they have may be
-  &gt; Quickly set at liberty.
-  {: style=&quot;white-space: pre-line&quot;}
+You should do this for all the terminal profiles you use. Also, this is a good time to modify colours so you can read them (e.g. red text on red sands sucks).
+
+** Set alternate destination for screenshots
+
+#+BEGIN_SRC shell
+mkdir $HOME/Downloads/Screenshots
+defaults write com.apple.screencapture location $HOME/Downloads/Screenshots
+killall SystemUIServer
 #+END_SRC
+
+Using `$HOME/tmp/` might be good, too.
+
+** Display Useful Info in Finder
+
+#+BEGIN_SRC shell
+defaults write com.apple.finder ShowPathbar -bool true
+defaults write com.apple.finder ShowStatusBar -bool true
+#+END_SRC
+
+** Installing Keybase
+
+This stores other credentials for the project, my org files, etc.
+
+1. Go to [[https://keybase.io]] and log in
+2. Download the app for the mac from that page
+3. Open up the ~dmg~ and follow the prompts to install it
+4. Launch the app /Applications/Keybase.app
+5. Log in to your keybase account
+6. Follow the prompts on the new machine and an old machine you selected to verify the new machine&#39;s identity
+7. Log out and log in as the WA admin in the case of the work machine :P
+8. Go to the file tab in keybase.app, and install the Finder extension
+9. Log out of the WA account and back into the user (use the username instead of real name, i guess...)
+10. Go the the file tab in Keybase.app again, open the Finder and see that you have access
+11. Go to a new Terminal window, and run ~keybase help~ to make sure the command line works, too
+
+** Other Privs
+
+*** typical areas to find other credentials
+
+- .aws/
+- .gnupg/
+- .netrc
+- .ssh/
+
+*** Keybase-based: getting your creds
+
+The beauty of Keybase is that you can keep credentials and other secrets in the file system for your private use.
+
+The pain is keeping them sync&#39;d.
+
+I have the above directories sync&#39;d to my private keybase folder.
+
+**** saving updating creds to keybase
+
+*NOTE: make sure the directroeis you are copying do NOT have the / at the end!*
+
+#+BEGIN_SRC shell-script
+  rsync -av ~/.aws \
+	~/.gnupg \
+	~/.ssh \
+	~/.netrc \
+	/Volumes/Keybase/private/tamouse_/creds/
+#+END_SRC
+
+**** getting the cred to the new machine
+
+(or just updating them)
+
+#+BEGIN_SRC shell-script
+  rsync -av /Volumes/Keybase/private/tamouse_/creds/ $HOME
+#+END_SRC
+
+** Install X-Code
+
+This takes a brutally long time, since it&#39;s just such a ginormous download (8G?)
+
+*** Install the dev toola
+
+#+BEGIN_SRC shell-script
+$ xcode-select --install
+#+END_SRC
+
+** Install homebrew (brew.sh)
+
+Go out to the [[https://brew.sh][homebrew web page]], there&#39;s a command you can paste into a Terminal window. At some point, it should ask for your password; give it and then brew will be able to raise its privs when needed. The last time I did this, I ended up not being able to type at the Terminal. Swiftly just solved by quitting Terminal and restarting it. Run ~brew doctor~ to make sure everything is cromulent.
+
+Install the newest version of git; the one on mac install is likely too old for development purposes:
+
+~brew install git~
+
+** Download config repos
+
+Since the .ssh creds were copied over in a previous step, this step should be pretty easy.
+
+Remember these are /my configs/; if you are not me, use your own, please.
+
+*** Dot Files
+
+1. clone the dot files repo first: ~git clone git@github.com:tamouse/my-dot-files.git .my-dot-files~
+2. move into the new dir: ~pushd .my-dot-files~
+3. poke around in the ~profile.d~ folder and make sure all the ones you want are marked as executable
+4. in the ~.my-dot-files/~ folder, run ~./setup.sh~ which will set up the links to the various profile and rc files.
+5. close the Terminal.app and repen it, the setup stuff should be working. Try it out by typing ~ll~ at the Terminal.
+
+*** Emacs config
+
+1. make sure you&#39;re in the HOME directory again: ~cd~
+2. clone the emacs config: ~gcl git@github.com:tamouse/my-emacs-d.git .emacs.d~
+3. follow the directions in the README
+
+** Essential Software
+*** Installing Emacs
+
+For me, there is next to nothing that is more important that using my imprinted editor. It&#39;s easier than ever these days, too, being able to install as a cask from home brew.
+
+I ran the following to check on stuff: ~brew cask info emacs~ -- in particular, I want a fairly high level version, which might not be completely released. I&#39;m running 26.2, the latest from the command shows 26.3, so it should be good to go.
+
+1. run ~brew install --cask emacs~
+2. start up emacs with just ~emacs~ to make sure the init.el works as hoped.
+
+   1. on this latest install, i needed to modify init.el
+   2. it was making a reference to ~/usr/local/share/emacs/~ which did not exist in this particular install from the home brew cask.
+3. test out the ~emacsclient~ aliases:
+   
+        ecn .
+
+
+Hopefully everything goes smoothly.
+
+*** Installing Ruby(ies?)
+
+1. Grab ~ruby-install~: ~brew install ruby-install~
+2. Get the latest ruby versions: ~ruby-install~
+3. Install your sweet version: ~ruby-install ruby 2.5.7~ for the project I&#39;m working for this work computer, others are good, too!
+4. Grab ~chruby~: ~brew install chruby~
+5. Close and reopen the Terminal
+6. Run ~chruby~ to verify the ruby you just installed is there
+7. For my work machine, I want to always be using the same version of ruby everywhere, so I create a ~.ruby-version~ file with ~ruby-2.5.7~ in it
+8. Close and reopen the Terminal again
+9. Verify the ruby:
+   - ~chruby~ - should show the ruby version you added to the ~.ruby-version~ file
+   - ~which ruby~ - should show the new ruby version under your ~.rubies/~ directory
+   - ~ruby -v~ - shows the right version of ruby, yay!
+10. Install some necessary global gems:
+    - bundler - match the version your project(s) need, 2.0.3
+    - rake - the version installed with ruby might be okay
+    - rails 5.1.6 (or whatever your project uses) (takes a long time, whee)
+
+*** Installing Node, NPM, and friends
+
+**** Using nvm
+
+Head over here, and do as it says &lt;https://github.com/nvm-sh/nvm#install--update-script&gt; to install `nvm`.
+
+Installing the latest Long Term Support node, use
+
+```
+nvm install --lts
+command -v node
+node -v
+npm -v
+npx -v
+```
+
+**** If not using nvm.
+
+We&#39;ll be installing from the nodejs web site, instead of using brew or nvm. 
+
+1. Point the browser at [[https:///nodejs.org/en/]]
+2. Click on the LTS version to download the installer
+3. Launch the installer, click through confirming everythingss, and it should be good to go.
+4. Close and reopen the Terminal, just for good time sake
+5. Verify ~node~
+   - ~node -v~
+   - ~npm -v~
+   - ~npx -v~
+
+or do install with brew.  
+
+Install ~yarn~: ~brew install yarn~ (beware there is a new way to do this for yarn v2!)
+
+** Other Software
+
+1. Chrome 
+2. Firefox
+3. 1Password &lt;https://1password.com/&gt; web, desktop, browser, etc...
+4. Amphetimine [AS]
+5. Spark [AS]
+6. Notion &lt;https://www.notion.so/desktop&gt;
+7. Slack [AS]
+9. Zoom &lt;https://us04web.zoom.us/download#client_4meeting&gt;
+10. Affinity Photo &amp; Design [AS]
+11. Spotify &lt;https://www.spotify.com/us/download/mac/&gt;
+12. Sonos, &lt;https://support.sonos.com/s/downloads?language=en_US&gt;
+13. Monosnap [AS]
+14. --Spectacle-- use Rectangle instead: https://github.com/rxhanson/Rectangle
+15. Alfred &lt;https://www.alfredapp.com/&gt;
+16. Discord &lt;https://discord.com/download&gt;
+17. Display Menu [AS]
+18. JetBrains Toolbox (from which you can install the others) &lt;https://www.jetbrains.com/toolbox-app/&gt;
+19. Kindle for Mac
+20. ... this list will grow and shrink :D
+
+** org files
+
+I keep my org files on keybase in git
+
+#+BEGIN_SRC shell
+  git clone keybase://private/tamouse_/org-files ~/org
+#+END_SRC
+
+** Postgresql
+
+#+BEGIN_SRC shell
+  brew install postgresql
+  brew services start postgresql
+  createdb tamara
+#+END_SRC
+
+For other versions run ~brew search postgresql~. you should be able to run different versions of it, but you&#39;ll also need different paths for the data and so on.
+
+** redis
+
+For a lot of work projects, I use redis on the app. It&#39;s generally useful, like PG, so I make sure it&#39;s always available.
+
+#+BEGIN_SRC shell
+  brew info redis
+  brew install redis
+  brew services start redis
+#+END_SRC
+
+
 </content>
       <author>
         <name>Tamara Temple</name>
@@ -446,249 +510,1853 @@ In ~kramdown~, the default markdown processor in [[Jekyll]] these days, there&#3
       </author>
     </entry>
     <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/learning.org</id>
-      <updated>2021-07-30T21:34:39-05:00</updated>
-      <title>Resources for learning how to program, especially how to program in Ruby and Rails</title>
-      <content>* Resources for learning how to program, especially how to program in Ruby and Rails
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2022/2022-02-19-how-to-access-icloud-files-from-the-command-line.md</id>
+      <updated>2022-03-18T12:32:18-05:00</updated>
+      <title>2022-02-19-how-to-access-icloud-files-from-the-command-line</title>
+      <content>The file system holding iCloud files is sort of tucked out of the way. It would be nice if it were mounted under `/Volumes/` like others, but no.
 
-- last updated Time-stamp: &lt;2018-12-30 12:42:51 tamara&gt;
+According to this answer at &lt;https://discussions.apple.com/thread/7388762&gt;, you can find it under `$HOME/Library/Mobile\ Documents/com~apple~CloudDocs`.
+In case that&#39;s not very readable, those are *tildes* at the end (shift-backtick, close to the number 1 key). I&#39;ll embiggen it:
 
-** Introduction
+# `$HOME/Library/Mobile\ Documents/com~apple~CloudDocs`
 
-Many people ask me &quot;How do I learn to program?&quot; and &quot;What book(!) should I read to learn Rails?&quot;.
+What I did, now that I know that&#39;s where they live, is create a soft link to that directory in my `$HOME` directory:
 
-These are legitimate questions, but they aren&#39;t necessarily the right questions to ask in order to begin the journey of becoming a software craftsperson.
+     $ link -s $HOME/Library/Mobile\ Documents/com~apple~CloudDocs iCloud
 
-Better questions, I feel, are:
+and that let me have easy access without having to remember that long path.
 
-- What resources do you recommend for beginners?
-- Where can I go for help?
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2021/2021-12-23-til-how-to-use-low-data-mode-in-ios.md</id>
+      <updated>2022-03-18T12:32:18-05:00</updated>
+      <title>2021-12-23-til-how-to-use-low-data-mode-in-ios</title>
+      <content># Use Low Data Mode on your iPhone and iPad - Apple Support
 
-I&#39;ve been finding things around the &#39;net that can greatly help people new to programming, new to web development, new to Rails, and so on.
+&lt;pre&gt;
+Archived?: No
+Area: Maintenance
+Blogged?: No
+Created: December 23, 2021 2:00 PM
+Processed?: No
+Stale?: No
+Status: Completed
+Summary: Turn Low Data Mode on or off on IOS devices
+Tags: iOS
+Topic: Hardware
+URL: https://support.apple.com/en-us/HT210596
+What is important about this?: Remove annoying pop-up confirmation dialogs
+Why did I save this?: I had it turned on and couldn’t figure out how to turn it back off
+&lt;/pre&gt;
 
---------------
+With iOS 13 and later, you can turn on Low Data Mode to restrict background network use and save cellular and Wi-Fi usage.
 
-*UPDATE:* I&#39;ve created a section for the [[./beginners-section.org][Absolute Beginner]] as well, you might find it useful.
+You might want to use Low Data Mode if your cellular or internet plan limits your data usage, or if you&#39;re in an area with slow data speeds.
 
-This is a quick, short list of things. I urge you to seek them out, and seek out others as well, and create your /own/ list of learning resources. People will begin to ask you, and it&#39;s nice to have something handy.
+## How to turn on Low Data Mode
 
-Also, [[https://www.codefellows.org/blog/this-is-why-learning-rails-is-hard][learning Rails is hard]]. But don&#39;t despair! The key to learning is break things down, focusing and practicing small things, and build up a lot of skills slowly. (&quot;Wax on, wax off.&quot; &quot;Ok, Mr. Myagi.&quot;) I&#39;m going to jump ahead and tell you to download the first chapter (free) of Justin Weiss&#39;s book [[https://www.justinweiss.com/practicing-rails/][Practicing Rails]]. Search for &quot;first chapter&quot; and fill out the form to get it. You&#39;re also signing up to get e-mail from Justin, but it&#39;s always good stuff.
+You can turn on Low Data mode separately for cellular and Wi-Fi. Your Low Data Mode settings might vary depending on your carrier. Select the type of plan you have below and follow the steps.
 
---------------
+### LTE/4G Cellular
 
-/Update Sun Jun 8 11:39:13 2014:/ Recently came across web post [[http://astonj.com/tech/best-way-to-learn-ruby-rails/][Best Way To Learn Ruby and Rails]] and must say it is a great compilation of resources. In addition, Ashton puts the focus right at the heart of the matter: you have learn /both/ Ruby /and/ Rails.
+1. Go to Settings and tap Cellular
+2. Tap Cellular Data Options, then turn on Low Data Mode.
 
---------------
+### 5G Cellular
+
+1. Go to Settings and tap Cellular.
+2. Tap Cellular Data Options, select Data Mode, then turn on Low Data Mode.
+
+### Dual SIM
+
+1. Go to Settings and tap Cellular or Mobile Data.
+2. Tap one of your numbers.
+3. Turn on Low Data Mode.
+
+### Wi-Fi
+
+1. Go to Settings and tap Wi-Fi.
+2. Tap the Info button next to the Wi-Fi network that you&#39;re connected to.
+3. Turn on Low Data Mode.
+
+Your Low Data Mode preferences for each Wi-Fi network are kept up to date across all your devices through iCloud.
+
+## What to expect in Low Data Mode
+
+Different apps use different ways of reducing data usage in Low Data Mode. In general, here&#39;s what you can expect:
+
+- Apps might stop using network data when you&#39;re not actively using them.
+- Background App Refresh is turned off.
+- The quality of streaming content might be reduced.
+- Automatic downloads and backups are turned off.
+- Services such as iCloud Photos pause updates.
+
+Built-in iOS apps and services adapt to Low Data Mode in the following ways:
+
+- App Store: Video autoplay, automatic updates, and automatic downloads are turned off.
+- Music: Automatic downloads and high quality streaming are turned off.
+- Podcasts: The frequency of feed updates is limited, and episodes are downloaded only on Wi-Fi.
+- News: Article prefetching is turned off.
+- iCloud: Updates are paused, and automatic backups and iCloud Photos updates are turned off.
+- FaceTime: Video bitrate is optimized for lower bandwidth.
+
+## Learn more
+
+- [Find out how much cellular data that you&#39;re using](https://support.apple.com/kb/HT201299), and learn how to turn cellular data on or off for all apps or individual apps.
+- [Use Wi-Fi Assist](https://support.apple.com/kb/HT205296) to automatically switch to cellular when you have a poor Wi-Fi connection.
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/gdi-classes.org</id>
+      <updated>2022-03-06T22:16:36-06:00</updated>
+      <title>GDI</title>
+      <content>* GDI
+** Slack convos
+*** Discussion in #random about job salaries
+    CAPTURE_DATE: [2017-06-05 Mon 15:45]
+
+    #+BEGIN_QUOTE
+
+ OP [1 hour ago]
+ Hey all, I have a question that I have been struggling with for a bit. I am currently working through a bootcamp for full stack development and would like to start getting organized for the job search. I am starting to watch job postings and some ask what my preferred salary would be. I spent many years as a national park ranger, which means low pay and no chance at negotiating starting pay either. I have tried to look around at what the starting pay would be for staying in the twin cities but find reports on average salaries of experienced developers. Does anyone have resources on this or advice on what to ask for and how much to negotiate? I just don&#39;t know what to even ask for as a salary aside from making sure it pays the bills. Feel free to DM too if you would prefer. THANKS!
+
+ R1 [1 hour ago]
+ @OP: 1st things 1st, never mention your previous salary. Especially since it doesn’t apply to your next role as a dev.
+
+ R1 [1 hour ago]
+ 2nd things 2nd, take a look at glassdoor, linkedin, and indeed. heck even the gov websites with salary averages to start getting a range.
+
+ R1 [1 hour ago]
+ then think about your life, lifestyle, I came up with a minimum I am comfortable with and then I keep that to myself.
+
+ R1 [1 hour ago]
+ I ask for 10-20k higher, depending on the company
+
+ R1 [1 hour ago]
+ My one phrase of advice when it comes to this is “The worst thing they can say is no, and even if they say no, it’s probably a maybe” (edited)
+
+ R1 [1 hour ago]
+ Know what you’re bringing to the table, some people will try to use your bootcamp only experience as a negative against you, it’s not. It’s a positive. It speaks to your thirst to learn, ability to learn and adapt quickly, passion and so much more.
+
+ R1 [1 hour ago]
+ People often underestimate what it means to basically change your whole life overnight when it comes to deciding to go to a bootcamp
+
+ R1 [1 hour ago]
+ anyways rant over… That’s my advice!
+
+ R1 [1 hour ago]
+ I bet @R5 has great advice on this as well
+
+ OP [1 hour ago]
+ thanks! that helps get me started
+
+ R1 [1 hour ago]
+ anytime. Congrats on getting ready to get out there!!
+
+ R2 [1 hour ago]
+ Yes yes yes. I second everything @R1 just mentioned. @R5 brought up the “never mention your previous salary” comment the other day. This is so key. Keep in mind that when a company posts a job, they already have a budget in mind. Let them share that first!
+
+ R2 [1 hour ago]
+ Not everyone will do that, and some might be cranky if you stay firm (this just happened to me) but it’s definitely worth a try.
+
+ R2 [1 hour ago]
+ We had a negotiating GDI workshop about a year ago that I found so valuable. Go in to the discussion with three numbers in your mind: the number that would just blow your socks off and make you crazy happy, a number that seems fair, reasonable and makes you excited, and a minimum number that you are willing to walk away from if they don’t meet. Keep these to yourself, but start with your high in the sky number and go from there :slightly_smiling_face:
+
+ R3 [1 hour ago]
+ Sometimes a company will ask you also what you used to make. When they ask me what I was making at my last job, I always lie and tell them a number that I&#39;m actually targeting to make at this new position. A lot of jobs will make an offer so close to your last salary that saying a number you&#39;re wanting will put you in a negotiating range where you can say, &quot;Well, I was actually looking to make more than at my last position.&quot;
+
+ R4 [1 hour ago]
+ Negotiating tactics apply to salary negotiation as much as they do to other negotiable situations (car buying, flea markets, etc), so if you want to psych yourself up with some general negotiation strategies from across the Internet as well, that can&#39;t hurt. (edited)
+
+ R3 [44 minutes ago]
+ Also, keep yourself open to possible company perks, maybe you&#39;d take less $$ if you have more vacation, or work from home days, or really amazing health insurance. It&#39;s not just about salary negotiation. The biggest thing people don&#39;t negotiate for more is vacation, and sometimes can be the easiest to get.
+
+
+ R4 [39 minutes ago]
+ Agreed that the salary number isn&#39;t everything - we hear a lot about &quot;company culture&quot; these days, and a lot of what companies tout as their &quot;culture&quot; is meaningless, so diving into that can also net you a bomb place to work that helps your mental health and personal fulfilment even if it doesn&#39;t pay Google money. Awesome on-site skill-building opportunities? Plenty of experienced people who enjoy mentoring and have helpful attitudes? Tangible, clear, supported diversity initiatives? Strong community/charitable ties? What kinds of &quot;culture&quot; things matter to you?
+
+ R1 [28 minutes ago]
+ Agreed. I would work at a place that covers my insurances, and offers more PTO, conference stipends, etc, if the salary is lower because I find those kinds of things very valuable.
+
+ R1 [28 minutes ago]
+ Definitely make sure culturally it is a fit for you too. Ask to meet the team before you make any final decisions
+
+ R5
+ [15 minutes ago]
+ @R1 I really have nothing to add. Dang, write a book!!
+
+
+ R1 [14 minutes ago]
+ hahaha. I’ve heard that before
+
+ R1 [14 minutes ago]
+ Maybe i should :thinking_face:
+
+
+ R2 [14 minutes ago]
+ Yes, please!
+
+ R5
+ [13 minutes ago]
+ Oh, i guess i do have an additional piece of advice: do *not* refer to yourself as a “Junior Developer” (or “junior” anything). Certainly, you don’t the time/experience/etc BUT you do have skills they can use today, and you should have the ability to learn things, but most of all, solve problems
+
+
+ R5
+ [12 minutes ago]
+ no one actually knows what the difference between a jr dev and sr dev actually is; it it most certainly not number of years, although that’s often the only thing people think of.
+
+ R2 [12 minutes ago]
+ @__ might have something to add, too. I know HackReactor has a lot of opinions on this.
+
+ R5
+ [11 minutes ago]
+ I might be getting a bit subversive here, but the skills ppl look for in sr people is the ability to be self-directed, take initiative, and most of be able to solve problems
+
+ R2 [10 minutes ago]
+ Ha. What makes you “senior” is a whole other giant discussion that I woudl love to have.
+
+ R5
+ [10 minutes ago]
+ you can most definitely have those; it’s not number of years. sure, someone like me, i’ve just made a huge huge pile of mistakes to learn from, but there’s a lot of sr people who do not bother to learn
+
+ R5
+ [10 minutes ago]
+ it’s a false label  /  dichotomy
+
+ R5
+ [9 minutes ago]
+ but it’s one that is so entrenched it’s hard to deal with. so again, do not put that label on yourself
+
+ R5
+ [9 minutes ago]
+ we need to have another meetup this week so we can have all these great conversations LOL
+
+
+ R2 [9 minutes ago]
+ yep yep yep - hard when that’s often tied to salary, recognition, opportunities, responsibility, etc.
+
+ R1 [9 minutes ago]
+ do it!
+
+ R2 [8 minutes ago]
+ RIGHT?!
+
+ R1 [8 minutes ago]
+ that’s a conversation i would love to be a part of
+
+    #+END_QUOTE
+
+
+
+*** Discussion on GDIMPLS Slack
+    CAPTURE_DATE: [2017-03-06 Mon 16:17]
+    TOPIC:    Y U No Hire Jr Devs?
+
+    OP started off a discussion in the #general chat in
+    GDIMpls.slack.com team.
+
+    #+BEGIN_QUOTE
+    OP [Today at 1:51 PM]
+    question for everybody: have you ever worked at a place that “doesn’t hire jr devs”, spoken to a place/person that “doesn’t hire jr devs”, or do you personally not like jr devs (i won’t be hurt/offended)?
+
+    R1 [1 hour ago]
+    so, personally, you gotta know i love jr. devs, otherwise i wouldn&#39;t be trying to help make some :slightly_smiling_face:
+
+    OP [1 hour ago]
+    true true
+
+    R1 [1 hour ago]
+    but the &quot;we don&#39;t hire jr. devs&quot; is so fucking real
+
+    R1 [1 hour ago]
+    i have long convos with recruiters and companies about this alla time. The problem, and I think know it, is that when everyone is hiring sr. devs, that means no one is creating new sr. devs, and you have to hire jr. devs to make sr. devs
+
+    R1 [1 hour ago]
+    sorry, I think *everyone* knows it
+
+    R1 [1 hour ago]
+    (thinking too fast to type)
+
+    R2 [1 hour ago]
+    Yep not many people are willing to put the time in to make the senior devs they truly want by training jr devs.
+
+    R1 [1 hour ago]
+    and yet the complaint is that they can&#39;t afford to train jr. devs
+
+    R1 [1 hour ago]
+    the typical mindset for tech companies is that they don&#39;t have the time, can&#39;t take the risk, and so on, because they don&#39;t fundamentally understand what they&#39;re trying to make
+
+    R2 [1 hour ago]
+    Yep
+
+    R1 [1 hour ago]
+    there&#39;s a tremendous lack of mindfulness about developing software, in pretty much any form
+
+    R1 [1 hour ago]
+    a lot of this is historical, of course, but that really doesn&#39;t excuse the lack of introspection about what the software industry is
+
+    OP [1 hour ago]
+    this is great! I hadn’t thought about that.
+
+    R1 [1 hour ago]
+    this also ties into the latest very visible reports of misogyny, we&#39;ve seen, but cuts across all the -isms; where you do not see diversity happening, just talked about and much handwringing
+
+    R1 [1 hour ago]
+    you notice women, poc, pwd, etc., when they get someplace primarily because it is so fucking rare
+
+    OP [1 hour ago]
+    Diversity &amp; Inclusion -Buzzwords of 2016/17
+
+    R1 [1 hour ago]
+    sadly, just buzzwords
+
+    OP [1 hour ago]
+    EXACTLY
+
+    R1 [1 hour ago]
+    fill out your bingo card!
+
+
+    R1 [1 hour ago]
+    this is not new; i don&#39;t see it changing, i see it getting more lip service, and no real change
+
+    R1 [1 hour ago]
+    i don&#39;t think it&#39;s any better
+
+    R1 [1 hour ago]
+    and this pisses me off to no end
+
+    R2 [1 hour ago]
+    This really has my mind running now. Why arent more companies open to jr devs? Seriously, they have the skills to learn, they have the want, and they require less compensation, why not let them work on your smaller projects until they are your senior dev you want. (edited)
+
+    R1 [1 hour ago]
+    and even more, how i have been unable to make and change, and how i&#39;ve been totally complicite
+
+    R1 [1 hour ago]
+    i had a phone intreview this morning, and we talked about exactly that, R2
+
+    R2 [45 minutes ago]
+    Train the senior devs you want. Why is that so hard?!
+
+    R1 [45 minutes ago]
+    how this company *had* hired a bunch of jr. devs, but they had no direction, and no idea of what they should be doing
+
+    R2 [44 minutes ago]
+    Yeah thats the opposite problem
+
+    R2 [44 minutes ago]
+    they need a leader that wants to and is a good mentor too
+
+
+    R1 [44 minutes ago]
+    and so now they&#39;re looking at getting more sr. people to help with that
+
+    R2 [44 minutes ago]
+    Thats good
+
+    R1 [44 minutes ago]
+    it&#39;s just another huge example of mindlessness
+
+    R2 [44 minutes ago]
+    Yep
+
+    R2 [44 minutes ago]
+    Lack of proper planning
+
+    R1 [43 minutes ago]
+    what i would love to do, most of all, is help jr. devs become sr. devs
+
+
+    R1 [43 minutes ago]
+    the companies that do hire jr. devs, then proceed to never give them any guidance.
+
+    OP [43 minutes ago]
+    I’m interested in why you feel you’ve been complicit @R1
+
+    R2 [42 minutes ago]
+    Me too Tamara.
+
+    R2 [42 minutes ago]
+    I wish there was a sustainable way to do that. My only idea was winning the lottery so money wasnt a concern, hahaha.
+
+    R1 [41 minutes ago]
+    because i fall prey to the same thinking that everyone else does; we had this long convo this weekend at lunch about diversity as it relates to women in tech, and NOT ONCE did anyone, including myself, ever mention the intersectionalities
+
+    R1 [41 minutes ago]
+    not. once.
+
+    R3 [41 minutes ago]
+    &quot;the companies that do hire jr. devs, then proceed to never give them any guidance.&quot; &lt;-- this is super interesting. (i mean all of this is)
+
+    R1 [40 minutes ago]
+    my blue sky pipe dream is that we can open a coop / collective, that isn&#39;t a for profit, and people who participate also have to give back in time and resources
+
+    R3 [40 minutes ago]
+    I think that might be part of the hesitation for many. They may want to do it _right_ and convince themselves they don&#39;t have the bandwidth to take on an individual that will need guidance/mentoring/support.
+
+    R1 [40 minutes ago]
+    Do understand I am way overgeneralising that
+
+    R2 [40 minutes ago]
+    Agreed. I think that is a lot of it. It seems to overwhelming so they just avoid it.
+
+    R3 [40 minutes ago]
+    We did this at W______, _very_ intentionally this past year.
+
+    R3 [40 minutes ago]
+    Our goal was to hire a &quot;junior&quot; dev
+
+    R1 [40 minutes ago]
+    some place have done that, some places do do that
+
+    R2 [39 minutes ago]
+    Your pipe dream sounds great R1.
+
+    R3 [38 minutes ago]
+    Companies want to make money, and as we discussed at lunch this weekend, assembling and creating a safe place for a diverse team will always create a higher quality product.
+
+    R1 [38 minutes ago]
+    what i heard talking with LP last week and this, is an interesting model of organization. A team is 5 people, a lead dev, two jr or other devs, a product mgr, and a UI/UX &quot;specialist&quot; (their term, could be a dev, dunno for sure yet)
+
+    R3 [38 minutes ago]
+    I wonder if people don&#39;t actualy believe that, or if they just don&#39;t know how to get there
+
+    R1 [38 minutes ago]
+    it&#39;s an interesting model
+
+    R1 [38 minutes ago]
+    i think the latter, R3
+
+    R1 [37 minutes ago]
+    don&#39;t know, don&#39;t know how to find out, and that&#39;s a huge risk to take
+
+    R3 [37 minutes ago]
+    Mhm
+
+    R2 [37 minutes ago]
+    That is the perfect team mix, R1, in my mind.
+
+    R1 [37 minutes ago]
+    mine to; i hope it&#39;s not just words
+
+    R1 [37 minutes ago]
+    i&#39;ve pretty much decided i&#39;ll take their offer if they make one
+
+    R1 [37 minutes ago]
+    pls don&#39;t tell
+
+    R2 [36 minutes ago]
+    Oh thats super great. So would you be one of those senior devs helping mentor the jr&#39;s?
+
+    R1 [36 minutes ago]
+    yeah
+
+    R2 [36 minutes ago]
+    My boss mentioned getting a junior &quot;me&quot; (my role, not me specifically) and I was so excited. Mentoring is one of my fave things to do.
+
+    R1 [36 minutes ago]
+    i mean, we were all speaking the same language, right? so now all my red flags are flying....
+
+    OP [36 minutes ago]
+    this is all really good stuff. And I know that the 3 of you (and more) do want to create that space for those like myself. It’s just really disheartening to be told because I’m a jr dev, I can’t add value
+
+    R1 [35 minutes ago]
+    AND THAT IS SO WRONG
+
+    R1 [35 minutes ago]
+    IT IS A LIE
+
+    OP [35 minutes ago]
+    I KNOW!
+
+    R1 [35 minutes ago]
+    spoken by people who are not adding value
+
+    R2 [35 minutes ago]
+    That is so horrible. You are amazing and I know you will not let it get you down, but make sure that you do not take that to heart or find it discouraging. (edited)
+
+    OP [35 minutes ago]
+    I want to learn the way a company codes, their standards, structure, i want to fix all the little things nobody else does, I want to build shit.
+
+
+    R2 [34 minutes ago]
+    You can add TONS of value.
+
+    OP [34 minutes ago]
+    Thank you.
+
+    OP [34 minutes ago]
+    It just adds more fuel to an already huge fire
+
+    R2 [34 minutes ago]
+    :fire:
+
+    R1 [34 minutes ago]
+    i&#39;m not really joking when i say &quot;burn it all down&quot;
+
+    R2 [33 minutes ago]
+    You are a strong person, it makes me sad for the people that are less like you. (edited)
+
+    R2 [33 minutes ago]
+    The ones that wont have that fight in them and will give up and move on.
+
+
+    R1 [33 minutes ago]
+    but this is also back to relying superheroism to make things better
+
+
+    OP [32 minutes ago]
+    right. That’s another reason why I want to do this at Minnebar
+
+    OP [32 minutes ago]
+    because I know that there are so many people that just won’t say anything
+
+    R1 [31 minutes ago]
+    you mean have this conversation at Minnebar?
+
+    OP [30 minutes ago]
+    yeah, i’m writing up a session called “So you don’t hire Jr Devs? Tell me more.&quot;
+
+
+    R1 [29 minutes ago]
+    oh fuck yeah
+
+    OP [29 minutes ago]
+    to speak as a jr dev, how jr devs feel in the market, what can other devs do to support and advocate and our importance
+
+    OP [29 minutes ago]
+    and then Lanice and I are also writing up one on Diversity &amp; Inclusion
+
+    R1 [28 minutes ago]
+    without jr devs there is no future software business
+
+
+    R2 [28 minutes ago]
+    OMG I am sad, I will miss that.
+
+    R2 [28 minutes ago]
+    I will be speaking at WordCamp in San Diego.
+
+    R2 [28 minutes ago]
+    Please definitely do that - the world needs to hear it.
+
+    OP [27 minutes ago]
+    I am sad you’re missing it too!!
+
+    R1 [26 minutes ago]
+    tickets are all gone
+
+    R1 [25 minutes ago]
+    also, i hate super large people events
+
+    R1 [24 minutes ago]
+    so that&#39;s an example of me being complicit
+
+    R1 [23 minutes ago]
+    so, like, what i should say instead, is there anything i can help with?
+
+    R3 [23 minutes ago]
+    ^^^^^^^^^^^
+
+    R3 [23 minutes ago]
+    that
+
+    R3 [23 minutes ago]
+    haha
+
+    R3 [22 minutes ago]
+    ditto
+
+    R1 [21 minutes ago]
+    &quot;The master&#39;s tools will never dismantle the master&#39;s house&quot; so we make our own tools
+
+    R4 [18 minutes ago]
+    This thread just got me really emotional. Thanks to everyone who&#39;s been sharing thoughts and perspectives. As a current junior dev who struggled to find a job and heard from companies that they don&#39;t hire jr, it got really challenging.
+
+
+    R1 [17 minutes ago]
+    This topic is hugely emotional for me as well, cari.tan, it goes into a lot of other things for me as well.
+
+    R1 [16 minutes ago]
+    primarily, i think our failing as sr. devs, mgrs, and so on, i.e., the people that *could* change things, is we just do not become or stay mindful
+
+    R4 [16 minutes ago]
+    One of the things that I kept thinking about was how if you hire junior devs, then they are coming in and learning your systems, your procedures and it might in someways be easier to integrate into the company processes because they are not bringing in past habits, which might be good and bad.
+
+
+    R1 [15 minutes ago]
+    EXACTLY!! and you&#39;ll have more effective devs than if you wait for the perfect sr. dev to show up
+
+    R1 [14 minutes ago]
+    AND! those jr. devs need guidance, attention, (care &amp; feeding?)
+
+
+    R4 [14 minutes ago]
+    I&#39;m currently on a team that doesn&#39;t have any real support for me because I&#39;m the only one working in the area that I work in and I have to go outside of my team when I&#39;m stuck, which can be challenging because of the schedules and workloads of their teams. It gets really hard sometimes.
+
+    R1 [13 minutes ago]
+    does you management listen to such issues well?
+
+    R1 [12 minutes ago]
+    (i was trying to figure out a way to ask in such a way as to not make any assumptions, but i don&#39;t think i can)
+
+    R4 [12 minutes ago]
+    Not really. I&#39;m on contract, which adds some complications. It
+
+    R1 [11 minutes ago]
+    certainly
+
+    R1 [10 minutes ago]
+    this is another place i have a huge advantage as a sr. dev, even, or especially, on contract, i don&#39;t usually have any hesitations in telling management their organization / communication / processes are not working well
+
+    R4 [10 minutes ago]
+    It&#39;s largely due to a restructuring that happened right after I started. I was hired onto a team of six people who all worked on the same parts of the website and then about 3 weeks later we were split across three new teams. I was the only one from the original team that ended up on mine. They are aware, but there&#39;s no real motivation for them to do much about it (add or shift resources, etc).
+
+    R1 [9 minutes ago]
+    but it&#39;s not something that a jr. can do with credibility :disappointed:
+
+    R4 [8 minutes ago]
+    Yeah, exactly.
+
+    R1 [8 minutes ago]
+    start looking for your next contract, maybe
+
+
+    OP [8 minutes ago]
+    i agree.
+
+    R1 [7 minutes ago]
+    because, holy cow, fixing their shit is not on you
+
+    R1 [6 minutes ago]
+    of course, the other side is get the learning you can out of the current situation
+
+    R1 [5 minutes ago]
+    idk, folks, this whole system is not going to solved by waiting for companies to wake up
+
+    R4 [4 minutes ago]
+    I have started looking for the next thing. I&#39;ve learned quite a bit, but am definitely ready for something different with more support.
+
+    R1 [4 minutes ago]
+    and as much fun as it would be for me to train jr. devs into sr. devs, i also don&#39;t want to just create a chain of cannon fodder
+
+    R1 [3 minutes ago]
+    cari.tan : awesome!!
+
+    R4 [3 minutes ago]
+    Thanks @OP for starting this conversation. It needs to be talked about and revisited often.
+
+    R1 [3 minutes ago]
+    :+1:
+
+    R1 [2 minutes ago]
+    i sure want to hear from you all on this
+
+    R1 [2 minutes ago]
+    and i am quite serious about the offers of help
+
+
+    OP [1 minute ago]
+    Thank you ALL for contributing. I am glad to know that sr/mid/lead devs care about this
+
+    R4 [1 minute ago]
+    Thanks @R1, @R3 and @R2 for being in leadership and senior roles and sharing your perspective and helping to work on this issue!
+    #+END_QUOTE
+
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/ruby-notes.org</id>
+      <updated>2022-03-06T22:16:36-06:00</updated>
+      <title>Ruby</title>
+      <content>* Ruby
+
+** Notes
+*** [[http://www.saturnflyer.com/blog/jim/2015/01/20/ruby-forwardable-deep-dive/?utm_source%3Drubyweekly&amp;utm_medium%3Demail][Forwardable Deep Dive]] [2015-01-25 Sun]
+    :PROPERTIES:
+    :LOCATION: added to swaac.dev
+    :END:
+    #+AUTHOR: Jim Gay
+
+
+
+*** TODO try out moneta in an application
 
 ** Books
 
- - [[https://www.goodreads.com/book/show/13590009-think-like-a-programmer][*Think Like a Programmer: An Introduction to Creative Problem Solving*]] by V. Anton Spraul.
+*** Practical Object Oriented Design in Rails - Sandi Metz
+
+***** On composition vs inheritance, Sandi Metz in POODR
+   #+begin_src markdown
+     &gt; Composition allows you to combine small parts to create more complex
+     &gt; objects such that the whole becomes more than the sum of its
+     &gt; parts. Composed objects tend to consist of simple, discrete entities
+     &gt; that can easily be rearranged into new combinations. These simple
+     &gt; objects are easy to understand, reuse, and test, but because they
+     &gt; combine into a more complicated whole, the operation of the bigger
+     &gt; application may not be as easy to understand as that of the
+     &gt; individual parts.
+
+
+     &gt; Composition, classical inheritance, and behavior sharing via modules
+     &gt; are competing techniques for arranging code. Each has different
+     &gt; costs and benefits; these differences predispose them to be better
+     &gt; at solving slightly different problems.
+
+
+     &gt; These techniques are tools, nothing more, and you’ll become a better
+     &gt; designer if you practice each of them. Learning to use them properly
+     &gt; is a matter of experience and judgment, and one of the best ways to
+     &gt; gain experience is to learn from your own mistakes. The key to
+     &gt; improving your design skills is to attempt these techniques, accept
+     &gt; your errors cheerfully, remain detached from past design decisions,
+     &gt; and refactor mercilessly.
+
+     &gt; As you gain experience, you’ll get better at choosing the correct
+     &gt; technique the first time, your applications will improve.”
+
+
+     Excerpt From: Metz, Sandi. “Practical Object-Oriented Design in Ruby:
+     An Agile Primer (Addison-Wesley Professional Ruby Series).”
+     iBooks. https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewBook?id=038BE4A901A3E1659EA914B97D73CA82
+
+   #+end_src
+
+*** The Well Grounded Rubyist
+
+     #+begin_src markdown
+       ## Who should read this book
+
+       &gt; The Well-Grounded Rubyist, Second Edition is optimized for a reader
+       &gt; who’s done some programming and perhaps even some Ruby and wants to
+       &gt; learn more about the Ruby language—not only the specific techniques
+       &gt; (although the book includes plenty of those), but also the design
+       &gt; principles that make Ruby what it is. I’m a great believer in knowing
+       &gt; what you’re doing. I also believe that knowing what you’re doing
+       &gt; doesn’t mean you have to compose a treatise in your head every time
+       &gt; you write a line of code; it means you know how to make the most out
+       &gt; of the language, and understand how to analyze problems when they
+       &gt; arise.
+       &gt;
+       &gt;
+       &gt; [I]f this is your first foray into programming, be prepared to do a
+       &gt; little extra self-imposed “homework” to get ramped up into the
+       &gt; programming process—but by all means, give The Well-Grounded Rubyist,
+       &gt; Second Edition a go. The book isn’t specifically an introduction to
+       &gt; programming, but it does take you through all the practicalities,
+       &gt; including the creation and running of program files, as well as
+       &gt; explaining Ruby from the ground up
+
+       Excerpt From: David A. Black. “The Well-Grounded Rubyist, Second
+       Edition.”
+
+     #+end_src
+
+
+** Ruby one-liners
+  #+name: one-liners
+  #+begin_src ruby
+    a=[1,2,3,4,4,5,6,6,6];Hash[a.group_by {|e| e}.map {|k,v| next if v.size ==1;[k,v.size]}.compact]
+  #+end_src
+
+** Ruby Testing
+*** Capybara
+**** DONE Scrolling the window in Capybara          :blog:ruby:spec:capybara:
+   :PROPERTIES:
+   :CAPTURE_DATE: [2019-03-06 Wed 16:45]
+   :LOCATION: added to swaac.dev
+   :END:
+
+
+   This is a problem when we have a modal that is long and we need to get the &quot;Submit&quot; button.
+
+   #+BEGIN_SRC ruby
+     page.execute_script &quot;window.scrollBy(0,10000)&quot;
+   #+END_SRC
+
 
-   Spraul&#39;s purpose in this book is not to teach you how to write a program, but to begin to understand the problem-solving approach that is inherent in good programmers. Like so many skills, programming is driven by the desire and vision of the practitioner. A painter uses brushes, canvas, paints, other media to create a work of art, but it isn&#39;t the tools, it isn&#39;t the specific techniques, and it isn&#39;t even the particular skill the painter has that makes a good work of art; it is their composition, the melding of media and surface, the use of different techniques, and practice in developing the skills that come together to form the work of art. Spraul is going to take you deeper than just the syntax, semantics, and data structures of software to the heart of what makes a good programmer: the ability to creatively find and generate solutions to problems.
 
- - [[https://www.goodreads.com/book/show/520.Learn_to_Program][*Learn to Program*]] by Chris Pine.
+** Ruby Meetings, Meetups
+*** RubyMN 2014-02-24 7:00pm
 
-   To be honest, I have not looked through this book. It is, however, nearly universally recommended to people new to programming. The original tutorial is available online for free as well: [[https://pine.fm/LearnToProgram/]]. LtP was featured on the great webcomic [[http://www.unshelved.com/2014-7-25][Unshelved]].
+**** AI Twitter Bot
+***** Horse_Ebooks
+***** rkelly_ebooks
+      tweet rkelly lyrics
+****** scrape
+****** choose
+****** vote
+******* characterize
+******* tag
+******* bayes
+******** classifier
+******** guess funniness
+******** human in the loop
+******* post
 
- - [[https://pragprog.com/book/tpp/the-pragmatic-programmer][**The Pragmatic Programmer]] by Andrew Hunt and David Thomas
+***** what did we learn
 
-   This is the best modern treatise on the craft of programming. It represents the best of experiences programmers have come to appreciate during years of development. I read this book after years of practice, and found everything in it to ring true. (The thought &quot;I could have written this!&quot; came up frequently.) This book is not about any specific language or technology, but spans the gamut of software development. This is a must-have for practitioners.
+****** try new things
 
- - [[https://www.goodreads.com/book/show/79766.A_Pattern_Language][*A Pattern Language: Towns, Buildings, Construction*]] by Christopher Alexander.
+****** make stupid shit
 
-   You may be wondering why I&#39;ve included a book on building construction. The answer is quite simple: the concepts in building towns and houses is nearly directly translatable to building software applications and systems. One part of being an excellent craftsperson is being able to apply abstract learning in different problem domains. If you are an expert in writing software, you are almost /never/ going to be solving problems only for other software developers. (You can and should do so, but the client and users are generally non-programmers.) Thus you&#39;re most likely going to be working in someone else&#39;s domain of expertise. Alexander&#39;s views on architecture apply to software architecture as well.
+****** have some fun
 
- - [[http://shop.oreilly.com/product/9780596510046.do][*Beautiful Code*]] by Andy Oram and Greg Wilson.
+****** josh kaplan
+       @jkap
+       git.io/rkelly_ebooks
+       @rkelly_ebooks
 
-   A book with a purpose, that isn&#39;t a how to, so much as a how to think. It&#39;s a collection of essays by various software developers on what they think makes code beautiful. In all, the following holds true:
+**** Daemons in Ruby
+     Ian Whitney @ianwhitney
 
-   1. First, make it correct.
-   2. Second, make it pretty.
-   3. Third, make it fast.
+***** what&#39;s a daemon?
+****** Background jobs
+******* resque
+******* delayed jobs
+******* sidekiq
+****** Services
+****** Responsive to changes
 
- - *Programming Proverbs* by Henry F. Ledgard
 
-   This book, published in 1975, and a subsequent volume dedicated to the Pascal language published in 1979, were essential to me back when I was in university learning computer science. They&#39;re out of print now, so I&#39;m starting a blog series covering them. [[file:%7B%7Bsite.baseurl%7D%7D%7B%%20link%20_posts/2017-07-23-pp-introduction.markdown%20%%7D][Programming Proverbs: Introduction]]
+***** what else?
+****** write your own
+******* logging
+******* error capturing
+******* scheduling
+****** daemon_kit
+       https://github.com/kennethkalmer/daemon-kit
 
- - [[https://leanpub.com/systemdesignheuristics][*Systems Design Heuristics*]] - by the late, great Jerry Wienberg.
 
-   Jerry was a friend as well as a teacher. I miss him enourmously. This book is full of his thoughts and writings on how one should do systems design. As the title implies, there are no rules, but there are some heuristics one can apply to the overall design and architecture of systems.
+*** RubyMN Meeting 7:00pm-9:00pm
+    &lt;%%(diary-float t 1 -1)&gt;
+    Last Monday of the month
 
+** RUBY REFILE TARGET
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/shell-notes.org</id>
+      <updated>2022-03-06T22:16:36-06:00</updated>
+      <title>command line shells</title>
+      <content>* command line shells
+** Shell Notes
+*** zsh
+    :PROPERTIES:
+    :LOCATION: This has been added to swaac.dev
+    :END:
 
-*** Object-Oriented Programming
+    - [[https://support.apple.com/en-us/HT208050][zsh is default on MacOS Catalina]]
 
- - [[https://www.sandimetz.com/99bottles][*99 Bottles of OOP*]] by Sandi Metz and Katrina Owen.
+**** online documentation
 
-   A recent book, representing the absolute best by two teachers of software engineering. Sandi has been teaching Object-oriented programming for decades, and Katrina brings in her expertise with refactoring, resulting in a deep book that stretches beyond the basics and deep into the structures and understanding of object systems and idioms. It brings up to date the actual concepts of refactoring, test-driven development, naming things, reducing code &quot;smells&quot; and making code more easily and economically maintainable and sustainable. They take all the buzzwords and unbuzzify them into practical, useful methodologies and techniques.
+     - [[http://zsh.sourceforge.net/Doc/Release/zsh_toc.html#SEC_Contents][Table of Contents]]
+     - [[http://zsh.sourceforge.net/FAQ/][FAQ]]
 
-*** Ruby-specific
+**** oh-my-zsh
 
- - [[https://pragprog.com/titles/ruby/programming-ruby-2nd-edition/][*Programming Ruby, 2nd ed.*]] by Dave Thomas, with Chad Fowler and Andy Hunt
- 
-   The seminal Ruby language guide.
+     The sine qua non for zsh users: [[https://github.com/robbyrussell/oh-my-zsh/][https://github.com/robbyrussell/oh-my-zsh/]] ([[https://ohmyz.sh/][pretty web site]])
 
- - [[https://www.goodreads.com/book/show/9364729-eloquent-ruby][*Eloquent Ruby*]] by Russ Olsen.
 
-   Olsen&#39;s approach in this book is to go far beyond just learning a programming language, but a way to learning the idioms and the &quot;Ruby Way&quot;. Even if your chosen language is something other than Ruby, reading this book will give you an appreciation for how to delve into a language and get the most out of it.
+**** ZSH NOTES COLLECTOR
 
- - [[http://www.confidentruby.com/][*Confident Ruby*]] by Avdi Grimm.
+***** some zsh options to try
 
-   More than any other book I&#39;ve read on Ruby, &quot;Confident Ruby&quot; has affected my coding habits more than any other. If Ruby is about making programmers happy, /Confident Ruby/ is about making programming joyful, and not just in the immediate, but being able to look at code you&#39;ve written in the future and recall the joy. /Confident Ruby/ seeks to combat software rot from the get-go.
+****** case-insensitive globbing
 
- - [[http://www.amazon.com/The-Well-Grounded-Rubyist-David-Black/dp/1617291692][*Well-Grounded Rubyist*]] by David A. Black
+  The zsh option which controls this is CASE_GLOB. Since we want globbing to be case-insensitive, we want to turn the option off, so:
 
-   Also known as the &quot;Black Book&quot; (because of the author&#39;s name), WGR is the successor to /Ruby for Rails/ by Black that provided me with the much-needed introduction to how to write Ruby code, with the idea of using it in Ruby for Rails. This book is a fabulous primer on the Ruby idioms and expressions that help make one a good Ruby programmer.
+  #+BEGIN_SRC shell
+    setopt NO_CASE_GLOB
+  #+END_SRC
 
- - [[http://www.poodr.com/][*Practical Object-Oriented Design in Ruby*]] by Sandi Metz
+****** tab completion
 
-   This book provides a deeply-needed introduction to object-oriented design, specifically targeted to the Ruby language. Ruby is one of the richest languages in which to express object-oriented patterns, but it is easy to fall of the OO wagon and start to get things messed up. Sandi provides the thinking tools necessary to decide how to structure your code for better maintainability, extensibility and testability. Comprehension and forward communication of the choices made during software design are crucial to programming, and Sandi is one of the very best at explaining things.
+  In zsh tab completion will replace the wildcard with the actual result.
 
-*** Rails-specific
+  #+BEGIN_SRC shell
+    % ls ~/d*&lt;tab&gt;
+  #+END_SRC
 
- - [[http://www.manning.com/bigg2/][*Rails 4 in Action*]] by Ryan Bigg, Yehuda Katz, Steve Klabnik, and Rebecca Skinner.
+  So after the tab you will see:
 
-   A follow-on the highly successful Rails 3 in Action, R4iA has been completely rewritten, with new examples, case study, and all the great new features in Rails 4.
+  #+BEGIN_SRC shell
+    % ls /Users/armin/Desktop /Users/armin/Documents /Users/armin/Downloads
+  #+END_SRC
 
-   A great book for beginning Rails developers to start with, and for intermediate developers to step up their game.
-   
- - [[https://pragprog.com/titles/rails6/agile-web-development-with-rails-6/][Agile Web Development with Rails 6]] by Sam Ruby and David Bryant Copeland
- 
-   The officially sanctioned book on Rails development.
+  Using tab completion this way to see and possibly edit the actual replacement for wildcards is a useful safety net.
 
- - [[https://www.justinweiss.com/practicing-rails/][*Practicing Rails*]] by [[http://www.justinweiss.com][Justin Weiss]].
+  In bash, pressing the tab key *twice* will list possible completions, but not substitute them in the command prompt.
 
-   The first chapter alone (free!) is worth a download and very thorough read. Justin has provided one of the most effective strategies for learning just about /anything/ skill based, and it&#39;s especially effective for learning software skills. The focus of the book and the examples and such are obviously Rails, but the first chapter is applicable to anything.
+  If you do not like this behavior in zsh then you can change to behavior similar to bash with:
 
-*** JavaScript-specific
+  #+BEGIN_SRC shell
+    setopt GLOB_COMPLETE
+  #+END_SRC
 
- - [[https://www.goodreads.com/book/show/2998152-javascript][*JavaScript: The Good Parts*]] by David Crockford.
+****** saving history when shell exits
 
-   JavaScript is a vast, sprawling language and ecosystem, and has been maligned for much poor code on the web. Crockford extracts out the parts that are really useful, giving the reader a better grounding. This book is the progenitor of many of the JavaScript frameworks that have come up the past few years, as well as CoffeeScript and other *Script derivatives.
+  By default, zsh does not save its history when the shell exits. The history is ‘forgotten’ when you close a Terminal window or tab. To make zsh save its history to a file when it exits, you need to set a variable in the shell:
 
- - [[https://github.com/getify/You-Dont-Know-JS][*You Don&#39;t Know JS series*]] by [[https://github.com/getify][Kyle Simpson]].
+  #+BEGIN_SRC shell
+    HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
+  #+END_SRC
 
-   A /tour de force/ by one of the great teachers and evangelists of JavaScript, Kyle&#39;s &quot;You Don&#39;t Know JS&quot; series is a must-read collection of books. You can get the books in raw form on-line at the above address, and you can get the published e-books at your favourite vendor.
+****** using a single history file for all shells
 
- - [[http://eloquentjavascript.net/][*Eloquent Javascript*]] by Marijn Haverbeke.
+  You can tell zsh to use a single, shared history file across the sessions and append to it rather than overwrite:
+
+  share history across multiple zsh sessions
+  #+BEGIN_SRC shell
+    setopt SHARE_HISTORY
+  #+END_SRC
+
+  append to history
+  #+BEGIN_SRC shell
+    setopt APPEND_HISTORY
+  #+END_SRC
+
+****** write to history file after avery command
+
+  Furthermore, you can tell zsh to update the history file after every command, rather than waiting for the shell to exit:
+
+  add commands as they are typed, not at shell exit
+  #+BEGIN_SRC shell
+    setopt INC_APPEND_HISTORY
+  #+END_SRC
+
+****** removing some things from history file
+
+  When you use a shared history file, it will grow very quickly, and you may want to use some options to clean out duplicates and blanks:
+
+  expire duplicates first:
+  #+BEGIN_SRC shell
+    setopt HIST_EXPIRE_DUPS_FIRST
+  #+END_SRC
+
+  do not store duplications
+  #+BEGIN_SRC shell
+    setopt HIST_IGNORE_DUPS
+  #+END_SRC
+
+  ignore duplicates when searching
+  #+BEGIN_SRC shell
+    setopt HIST_FIND_NO_DUPS
+  #+END_SRC
+
+  remove blank lines from history
+  #+BEGIN_SRC shell
+    setopt HIST_REDUCE_BLANKS
+  #+END_SRC
+
+***** zsh completion
+
+****** links
+
+       - [[http://zsh.sourceforge.net/Doc/Release/Completion-System.html][Official zsh doc completion section]]
+       - [[https://github.com/zsh-users/zsh-completions/blob/master/zsh-completions-howto.org][zsh-users zsh-completions-howto]]
+       - [[https://github.com/zsh-users/zsh/blob/master/Etc/completion-style-guide][zsh-users zsh Completion Guide]]
+       - [[https://github.com/scriptingosx/mac-zsh-completions][Repo of MacOS zsh completions]]
+
+** Shell TODOs
+** Shell Oneliners
+    #+begin_src shell
+      for f in * ; do mv &quot;$f&quot; $(echo $f | tr &quot; &quot; &quot;_&quot;) ; done # replace spaces in file names with underscores
+      perl -i.bak -pe &#39;/^(#+ binding:)\s+&quot;(.*)&quot;/ &amp;&amp; ($one = $1) &amp;&amp; ($two = $2) &amp;&amp; ($two =~ s/ //g) &amp;&amp; ($_ = &quot;$one $two\n&quot;)&#39; $(find . -name &#39;*.yasnippet&#39;) # remove quotes and spaces from bindings in yasnippets
+      for f in *.bak ; do diff &quot;${f%%.bak}&quot; &quot;$f&quot; ; done # find diff between backup and current files after a filtering operation
+      for f in *.bak ; do mv -v &quot;$f&quot; &quot;${f%%.bak}&quot; ; done # push back original files after filtering operation
+      for f in *.old ; do mv &quot;$f&quot; &quot;${f%%.old}.new&quot; ; done # rename old files with new extension
+      find . -print0 | xargs -0 file # dealing with spaces in file names
+      pcregrep &#39;me$&#39; /usr/share/dict/words | sed &#39;s/me$/.me/&#39; |  bin/checkavailable.pl
+    #+end_src
+    link: [[file:~/Dropbox/oneliners]]
+    captured_on: [2015-01-26 Mon 06:47]
 
-   When I was more naive about JS, I wrote a bit of a negative review of this book. Subsequently, I&#39;ve learned of it&#39;s true eloquence and meaning in giving a model of how to organize and implement modern JS. The subtitle &quot;A modern introduction to programming&quot; is still a bit misleading, perhaps, because you have to understand a fair bit of JavaScript /and/ programming to get the message, I feel. But that&#39;s just a quibble at this point. Read this before you strike out on creating a client-based JS application; you won&#39;t regret it.
 
- - *Test-Driven JavaScript Development* by Christian Johansen (Addison-Wesley Professional, September 2010, ISBN 9780321683915)
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/rails-notes.org</id>
+      <updated>2022-03-06T22:16:36-06:00</updated>
+      <title>Rails Notes</title>
+      <content>* Rails Notes
+** Rails TODOs
 
-   (The [[http://www.informit.com/store/test-driven-javascript-development-9780321684042][ebook]] for this title is ridiculously expensive. I read it via [[https://learning.oreilly.com/library/view/test-driven-javascript-development/9780321684097/][safarionline]].)
+*** DONE figure how to include Devise in a Rails Engine and have it work in the parent app :RAILS:
+    CLOCK: [2015-02-04 Wed 01:54]--[2015-02-04 Wed 02:00] =&gt;  0:06
+    created_on: [2015-02-04 Wed 01:55]
+    link: [[irc:/irc.freenode.net:6667/#rubyonrails][irc session &#39;irc.freenode.net:6667/#rubyonrails&#39;]]
 
-   This book provides some great insights into testing JavaScript applications. Released in 2010, the things that are out of date are the specific tools used for testing, /however/, the concepts for writing tests and performing test-driven Javascript development are still very appropriate.
+    #+begin_src text
+      &lt;jdeen&gt; I have 3 projects to do which are very similar. I thought of making
+              them a plugin so that I can mount them. Since I need Authentication I
+              added Devise and generated a model as usual. When I include the engine
+              in another rails app and mount it and run `rake db:migrate` I get an
+              error similar to `uninitialized constant Devise (NameError)`.   [01:43]
+      &lt;jdeen&gt; My question is if we are going to add another engine like &#39;Devise&#39;,
+              can we use it inside our new engine the same way we would in an Rails
+              app?                                                            [01:44]
+      &lt;jdeen&gt; Or will I need to install devise seperately in the Rails app?
+      &lt;jdeen&gt; Any advice is highly appreciated
+      &lt;tabish&gt; I think you can                                                [01:45]
+      &lt;tabish&gt; because in Radar&#39;s book he used warden inside his engine for
+               multi-tenancy
+      &lt;pontiki&gt; jdeen: devise is in your .gemspec as a dependency?            [01:46]
+      &lt;jdeen&gt; I have added &#39;devise&#39; to the gemspec
+      &lt;jdeen&gt; in the engine
+      &lt;pontiki&gt; yeah
+      &lt;jdeen&gt; some thing like: `s.add_dependency &quot;devise&quot;, &quot;~&gt; 3.4.1&quot;`
+      &lt;pontiki&gt; right                                                         [01:47]
+      &lt;pontiki&gt; and it does show up in the app&#39;s Gemfile.lock?
+      &lt;jdeen&gt; pontiki: yes in both the engine repo and the app both have devise
+              3.4.1 there                                                     [01:49]
+      &lt;pontiki&gt; kk
+      &lt;pontiki&gt; you&#39;ve probably done everything i can think of, but i&#39;ll keep
+		talking, unless it&#39;s bothersome
+      &lt;pontiki&gt; jdeen: ran the devise:install in the app?                     [01:50]
+      &lt;jdeen&gt; pontiki: I ran it in the engine and it went fine. In the app it gives
+              the same error I mentioned.                                     [01:52]
+      &lt;jdeen&gt; `uninitialized constant Devise (NameError)`
+      &lt;pontiki&gt; crud                                                          [01:54]
+      &lt;jdeen&gt; pontiki: I added devise to the Gemfile of the app, and its not giving
+              errors                                                          [01:55]
 
- - [[https://leanpub.com/javascriptallongesix][*JavaScript Allongé*]] by Reginald &quot;raganwald&quot; Braithwait
+    #+end_src
 
-   Using the metaphor of a coffee barista, Reg goes in depth on thinking about how JavaScript works; this is not a practical book from the standpoint of &quot;tell me what code to write&quot;, but rather from the standpoint of knowing how JavaScript works inside so you can write better code yourself.
+*** DONE download transcript from Ruby Rogues 243
 
+    https://media.devchat.tv/ruby-rogues/transcript-243-rr-books-that-aren-t-poodr-ruby-rogues.pdf
 
-*** HTML and CSS Specific
+    CLOCK: [2016-01-23 Sat 03:29]--[2016-01-23 Sat 03:30] =&gt;  0:01
 
- - [[https://www.amazon.com/HTML-CSS-Design-Build-Websites/dp/1118008189?ie=UTF8&amp;*Version*=1&amp;*entries*=0][*HTML and CSS Design and Build Websites*]] by Jon Duckett.
+   created_at: [2016-01-23 Sat 03:29]
+*** investigate Refile gem                                           :coding:
+    CLOCK: [2015-08-20 Thu 18:36]--[2015-08-20 Thu 18:38] =&gt;  0:02
+    created_on: [2015-08-20 Thu 18:36]
+    link: https://github.com/refile/refile
 
-   This book has been recommended by several people in the [GDI] courses I&#39;ve been helping in. A very visual approach, using full-colour photographs to explain the two declarative languages.
+    Another image uploader/manager. Reason: can upload directly to S3 or
+    other cloud store. Written by jnicklas (capybara dude)
+*** investigate Rails domain models that can choose a different persistence strategy :swaac:
+    CLOCK: [2015-12-28 Mon 07:52]--[2015-12-28 Mon 07:56] =&gt;  0:04
 
-** Web sites
+    created_at: [2015-12-28 Mon 07:52]
 
- This is just going to be a list of sites I&#39;ve found or been pointed at for helping people learn to program. These are most definitely biased towards Ruby and Rails, as that is my current area of concentration, and generate the most requests that come to me.
+    Based on a question in irc:
 
- - [[http://www.theodinproject.com/home][*The Odin Project*]] -- pulling together a curriculum from around the web, this is a curation site that gives order and structure to learning how to develop web applications.
+    How would you implement a scenario where you might get Venue
+    information from a local datastore, or via an API?
 
- - [[http://codekata.com/][*Code Kata*]] -- Dave Thomas&#39;s site that lists a great set of coding exercises. You can work these more than once, in fact that is what you do with kata.
+    Two models? An absract model and two inheritors?
+    Do the client models need to know where the information came from?
+    Could you have a domain model that decides which strategy to use and
+    inject it? How would you implement such a thing?
 
- - [[http://exercism.io/][*Exercism.IO*]] -- a site devoted to helping people learn and think deeply about writing excellent code. It has projects you implement and then get feedback on from others, and allows you to give feedback as well.
+*** TODO write up swaac post on rails_template                  :swaac:rails:
+    CLOCK: [2016-01-05 Tue 22:16]--[2016-01-05 Tue 22:16] =&gt;  0:00
 
- - [[http://docs.railsbridge.org/docs/][*RailsBridge*]] -- a site devoted to helping people get up and running on learning Ruby on Rails, with emphasis on reaching out to women and LGBTQ folks. RailsBridge workshops are run around the world and the documents here can be used individually to help turn your computer into a development machine. What so often isn&#39;t addressed directly by very many of these sites and books is the ecosystem that one has to learn as well: a coding editor, the command line, rake, irb/pry, git, heroku if that is your choice for deployment (which I do recommend for small beginner projects so you can show it off to your friends); RailsBridge tutorials include these very important tools.
+   created_at: [2016-01-05 Tue 22:16]
 
- - [[http://guides.railsgirls.com/][*RailsGirls Guides*]] -- I haven&#39;t explored these in depth yet, I just got the site yesterday. However, I can see just from the list of guides these would be pretty great, just like the RailsBridge site above.
 
- - [[http://www.railstutorial.org/][*Hartl&#39;s Rails Tutorial*]] -- the most often recommended site to learn how to create web applications in Rails, it goes beyond the Rails stack itself, teaching Ruby, HTML5, CSS3, JavaScript, user authentication and authorization, data modeling, and so on. While Michael sells the book, tutorials, and screen casts, the text of the tutorial online is free at http://www.railstutorial.org/book. Considerable work has gone into this effort, however, so if you can afford to, please purchase at least the book.
+** Rails Notes
 
- - [[https://www.codeschool.com/][*CodeSchool*]] -- learn from the &quot;Comfort of your own browser&quot;. Codeschool has web casts, coding practices, challenges, and so on.
+*** Internationalization/Localization service for Rails apps
+      [[https://www.localeapp.com/][LocaleApp]] Easy localization for Rails apps
+      captured on: [2015-02-06 Fri 09:39]
 
- - [[http://codeacademy.com][*CodeAcademy*]] -- although I do not personally like the way one interacts with the web site, it does offer an gentle introduction to ruby, javascript, python and other subjects in an immediate feedback environment.
 
- - [[https://www.khanacademy.org/computing/cs][*Kahn Academy*]] -- learning to program with JavaScript (if you are just starting out, JS is a fine language to learn. It&#39;s fairly ubiquitous in the online world.). Their approach is teaching young folks, which might or might not appeal.
 
- - [[http://railscasts.com/][*RailsCasts*]] -- another super awesome effort has been put together by Ryan Bates. Current production is on hiatus, so the $9/month fee for the full screen casts is being pro-rated, so you can buy in for $9 and there won&#39;t be further monthly charges until production starts up again.
+*** A pretty good list of common Ruby/Rails mistakes
+    :PROPERTIES:
+    :LOCATION: added to swaac.dev
+    :END:
 
- - [[https://www.rubytapas.com/frequently-asked-questions/][*RubyTapas*]] -- Avdi Grimm is a fabulous Ruby and Rails mentor and guide, who puts out two very short screen casts a week (tapas -- small plates). These are really impeccably done, and I personally love listening to Avdi talk.
+    :LOCATION: added to swaac.dev
 
- - [[http://learncodethehardway.org/][*LearnCodeTheHardWay*]] -- provides online versions of books and tutorials for [[http://learnpythonthehardway.org/book/][*Python*]], [[http://ruby.learncodethehardway.org/book/][*Ruby*]], [[http://c.learncodethehardway.org/book/][*C*]], [[http://sql.learncodethehardway.org/book/][*SQL*]], [[http://regex.learncodethehardway.org/book/][*Regular Expressions*]] and more.
+      Blog post: [[http://adamniedzielski.github.io/blog/2015/01/31/11-easy-to-fix-ruby-slash-ruby-on-rails-mistakes/][Adam Niedzeilski: 10 easy-to-fix Ruby / Ruby on Rails mistakes]]
 
- - [[http://www.rubykoans.com/][*Ruby Koans*]] -- &quot;koans&quot; are an Eastern discipline tradition: small, repeated exercises to learn skills and build them into your muscles and memory, so you can use them without thinking consciously about them. In this sense, the ruby koans are small exercises intended to lead you on the way to learning ruby. I can&#39;t say if they&#39;re that successful, but some people definitely enjoy this progressive way of learning. The ruby koans definitely guide you in the way of test-first development, which is a beneficial practice for all to know.
+      captured: [2015-02-02 Mon 01:45]
 
- - [[https://thoughtbot.com/upcase][*Upcase, by Thoughtbot*]] -- not a bootcamp, a finishing school. Where to go to level-up.
+      In a nutshell:
 
-** Podcasts
+      - complex conditionals, double negatives
+	Create good predicates for what your logic means.
 
- I am not such a big fan of podcasts, but that has more to do with my personal learning style. Nevertheless, there are some great pocasts out there.
+      - not checking true / false on operations that don&#39;t raise an
+	exception
+	e.g.: Rails .save vs. .save!
 
- - [[http://www.greaterthancode.com/][*Greater Than Code*]] Also known as =&gt;Code=, this is a podcast that&#39;s more about people that practice software development and allied things, about management of such people, and making all our lives better.
+      - using self when it isn&#39;t needed
 
- - [[http://frontendhappyhour.com/][**Frontend Happy Hour]] A handful of front end developers, including Brian Holt, Jem Young, Ryan Burgess, Augustus Yuan, and Stacy London, joined by various guests. It&#39;s a fun podcast, each week with a special word or phrase that when uttered, everyone takes a drink.
+      - N+1 queries
 
- - [[http://www.codenewbie.org/][*CodeNewbies*]] -- started off as a twitter chat, and grew into a thing, CodeNewbies offers podcasts on topics that range far and wide. Recent topics have included Scrum/Agile methods, maintaining your mental health while programming, interviews with folks who have created significant web sites (Gina Trapani of LifeHacker!!), mobile, databases, single-page apps, you name it. One of the best aspects I can see directly is that this is a /very/ open, diverse collaboration.
+      - tri-state &quot;booleans&quot; -- when nil is a possible value besides
+	true and false
 
-** Teaching Organizations
+      - orphaned records
 
- These are the ones I&#39;m familiar with at this point in time (late 2015) in the Twin Cities area:
+      - making database schema migrations dependent on a specific
+	version of the source code
 
- - [[https://frontendmasters.com/][*Frontend Masters*]] -- Based out of Savage, MN, they offer both live in-person and online courses, and they have recorded all the training sessions for on-demand viewing if you&#39;re a member. The quality of these sessions and the videos are extremely good (these are not your twitch.tv live sessions of someone rambling about their code as they hack away) All the courses I&#39;ve taken and viewed are fantastic.
+	Most folks thing that as migrations are stored with the code and
+	managed in the same way, that somehow state of the database and
+	code must remain locked together. This could not be further from
+	the truth.
 
-   FrontendMasters tackles intermediate and advanced topics in developing on the front end of web applications. Heavy into JavaScript, libraries, frameworks, techniques, and so on.
+	If you need code changes with a migration, make a separate
+	one-time rake task instead, and delete it when done.
 
-** Bootcamps
+      - not using map
 
- These are becoming quite popular, if expensive, but they seem to provide what&#39;s being offered: intensive training in the skills necessary to become a web application developer, with experience and skills in the entire lifecycle of modern software development. I can&#39;t really provide much information on them, as I&#39;ve never experienced them. [[http://www.bootcamps.in/][Bootcamps.in]] provides at least a first-glance at several bootcamps.
+      - not using Hash#fetch
 
-** Conferences and Meetups
 
- Going to conferences, hanging out, meeting like-minded people, and generally instilling one&#39;s self into the millieau of the Ruby and Rails communities can be extremely rewarding. Even if you&#39;re not the conference type, make an effort to find people in your area to talk to.
 
- There&#39;s lots of other meetups in the Twin Cities I&#39;m regularly trying to attend:
+*** [[http://stackoverflow.com/questions/549/the-definitive-guide-to-forms-based-website-authentication][Definitive Guide to Forms-based Authentication]] [[2015-01-24 Sat 13:55]]
 
- - [[https://www.meetup.com/Women-Who-Code-Twin-Cities/][Women Who Code Twin Cities]]
- - [[https://www.meetup.com/ruby-mn/][Ruby.MN]]
- - [[https://www.meetup.com/JavaScriptMN/][JavaScript.MN]]
- - [[https://www.meetup.com/React-Minneapolis-Meetup/][React Minneapolis Meeetup]]
- - [[https://www.meetup.com/Elixir-MN/][Elixir MN]]
- - [[https://www.meetup.com/Minneapolis-St-Paul-WordPress-User-Group/][MSP WP]]
+      #+begin_src markdown
+	## Form based authentication for websites
 
-** More Advanced
+	We believe that Stack Overflow should not just be a resource for very
+	specific technical questions, but also for general guidelines on how
+	to solve variations on common problems. &quot;Form based authentication for
+	websites&quot; should be a fine topic for such an experiment.
 
-If you want to go deep and learn more about computer science, the book [[https://mitpress.mit.edu/sicp/][/Structure and Interpretation of Computer Programs/]] is probably your best bet in terms of a real CS text book that&#39;s available online for free. It&#39;s not a tutorial, but there are exercises in the text. The book uses Scheme, a lisp-like programming language. Everyone should learn a little lisp at some point. :) However it&#39;s not mandatory one use Scheme (or Clojure as the local Clojure user group has been doing). The analytical concepts apply across all languages. If you&#39;re focused on JavaScript or Ruby, you can work the examples in those languages, too.
+	### It should include topics such as:
 
-The afore-mentioned Frontend Masters has been producing some much more advanced courses lately:
+	- How to log in
+	- How to remain logged in
+	- How to store passwords
+	- Using secret questions
+	- Forgotten username/password functionality
+	- OpenID
+	- &quot;Remember me&quot; checkbox
+	- Browser autocompletion of usernames and passwords
+	- Secret URLs (public URLs protected by digest)
+	- Checking password strength
+	- E-mail validation
+	- and much more about form based authentication
 
-- [[https://frontendmasters.com/courses/computer-science/][Four Semesters of Computer Science in 5 Hours]] with [[https://frontendmasters.com/teachers/brian-holt/][Brian Holt]]
+      #+end_src
 
-- [[https://frontendmasters.com/courses/computer-science-2/][Four Semesters of Computer Science in 5 Hours, Part 2]] with Brian Holt
 
-- [[https://frontendmasters.com/courses/practical-algorithms/][A Practical Guide to Algorithms with JavaScript]] with [[https://frontendmasters.com/teachers/bianca-gandolfo/][Bianca Gandolfo]]
+      source: StackOverflow
+      http://stackoverflow.com/questions/549/the-definitive-guide-to-form-based-website-authentication
 
-- [[https://frontendmasters.com/courses/data-structures-interviews/][Introduction to Data Structures for Interviews]] with Bianca Gandolfo
 
-- With Will Sentance:
+*** [[https://medium.com/@KamilLelonek/why-is-your-rails-application-still-coupled-to-activerecord-efe34d657c91][Why is your Rails application still coupled to ActiveRecord?]] [2015-01-25 Sun 19:09]
 
-  - [[https://frontendmasters.com/courses/javascript-hard-parts/][JavaScript: The Hard Parts]]
 
-  - [[https://frontendmasters.com/courses/javascript-new-hard-parts/][JavaScript: The New Hard Parts]]
+*** link: Stop Writing Rails Controllers
 
-  - [[https://frontendmasters.com/courses/object-oriented-js/][JavaScript: The Hard Parts of Object Oriented JavaScript]]
+**** [[http://spin.atomicobject.com/2015/01/26/data-driven-rails-controllers/][Data Driven Controllers]]
 
-I&#39;m just going to list [[https://frontendmasters.com/teachers/kyle-simpson/][Kyle Simpson&#39;s entire collection]] because they are *all* great
+       #+begin_quote
+         Data Driven Controllers
 
-Other fav instructors:
+         Data Driven Controllers (DDC) lets you declare via data how to
+         convert back and forth from HTTP to your application’s domain
+         without the need for code. By adhering to a couple of interfaces,
+         you can avoid writing most controller code and tests. DDC breaks
+         the process of handling a request into three parts.
 
-- [[https://frontendmasters.com/teachers/scott-moss/][Scott Moss]]
-- [[https://frontendmasters.com/teachers/shirley-wu/][Shirley Wu]]
-- [[https://frontendmasters.com/teachers/kentcdodds/][Kent C. Dodds]]
-- [[https://frontendmasters.com/teachers/jem-young/][Jem Young]]
-- [[https://frontendmasters.com/teachers/lukas-ruebbelke/][Lukas Reubbelke]]
-- [[https://frontendmasters.com/teachers/sarah-drasner/][Sarah Drasner]]
+         1. Convert parameters.
+
+         This step is handled by some sort of context builder. It is mostly
+         in charge of gathering parameters, but may need to pluck out
+         additional information from the controller. The information is
+         collected into a form that the domain code can digest (usually a
+         data blob via a Hash or Struct).
+
+         2. Process the domain request / action.
+
+         The domain level service object takes the necessary information
+         and processes it (update the database, send emails, external
+         services). The service then returns a result that knows nothing
+         about HTTP-land. It includes things like status (application, not
+         HTTP), objects, errors, etc.
+
+         3. Glue.
+
+         DDC is the glue that holds it all together. It creates a
+         controller class that does all the default things for you, but
+         allows you to override and fill in the blanks where
+         necessary. When defining your glue, you simply tell the action how
+         to get the params from the context builder and what service object
+         to send them off to.
+       #+end_quote
+
+
+       captured_on: [2015-01-29 Thu 21:00]
+
+
+*** Rails Best Practices
+      Just a set of things I&#39;ve come to learn
+
+**** Narrow Boolean field possibilities
+
+       When declaring a boolean field in a rails db schema migration, set
+       it to not null and a default of false:
+
+       #+begin_src ruby
+         add_column :table, :field, :boolean, null: false, default: false
+       #+end_src
+
+       This ensures that the field? predicates always end up being what
+       you expect them to be: true (TrueClass) or false (FalseClass) as
+       opposed to just truthy or falsy.
+
+**** Page-specific Javascript in Rails
+     :PROPERTIES:
+     :DESCRIPTION: OBSOLETE
+     :END:
+       Being able to safely mingle javascript that applies only to one
+       view or a single controller can be a difficult thing to get, when
+       you don&#39;t want to write something directly in the HTML view or
+       layout, or have to include a separate request to a page-specific
+       javascript file, but keep everything in the standard Rails assets
+       bundling.
+
+       This article discusses how to do this, pretty simply, by specifying
+       classes for the controller and action in the body tag, and using
+       jQuery selectors to specify what to do.
+
+       http://brandonhilkert.com/blog/page-specific-javascript-in-rails/
+
+
+
+*** [[https://speakerdeck.com/kfaustino/rails-testing-antipatterns][Rails Testing Antipatterns talk]] [[2015-01-24 Sat 13:55]]
+
+
+*** Allow anything through CORS in Rails apps (development/testing)
+
+
+      #+begin_src ruby
+	class ApplicationController &lt; ActionController::Base
+          protect_from_forgery
+          before_filter :current_user, :cors_preflight_check
+          after_filter :cors_set_access_control_headers
+
+          # For all responses in this controller, return the CORS access control headers.
+          def cors_set_access_control_headers
+            headers[&#39;Access-Control-Allow-Origin&#39;] = &#39;*&#39;
+            headers[&#39;Access-Control-Allow-Methods&#39;] = &#39;POST, PUT, DELETE, GET, OPTIONS&#39;
+            headers[&#39;Access-Control-Request-Method&#39;] = &#39;*&#39;
+            headers[&#39;Access-Control-Allow-Headers&#39;] = &#39;Origin, X-Requested-With, Content-Type, Accept, Authorization&#39;
+          end
+
+          # If this is a preflight OPTIONS request, then short-circuit the
+          # request, return only the necessary headers and return an empty
+          # text/plain.
+          def cors_preflight_check
+            if request.method == :options
+              headers[&#39;Access-Control-Allow-Origin&#39;] = &#39;*&#39;
+              headers[&#39;Access-Control-Allow-Methods&#39;] = &#39;POST, GET, OPTIONS&#39;
+              headers[&#39;Access-Control-Allow-Headers&#39;] = &#39;*&#39;
+              headers[&#39;Access-Control-Max-Age&#39;] = &#39;1728000&#39;
+              render :text =&gt; &#39;&#39;, :content_type =&gt; &#39;text/plain&#39;
+            end
+          end
+
+          #
+          # PRIVATE METHODS
+          private
+
+          # get the user currently logged in
+          def current_user
+            @current_user ||= User.find(session[:user_id]) if session[:user_id]
+          end
+          helper_method :current_user
+
+	end
+
+      #+end_src
+
+
+*** Making records immutable
+
+    NOTE: this will not prevent someone from modifying a record by using methods that don&#39;t invoke callbacks, such as ~.update_column~
+
+    based upon http://stackoverflow.com/a/1198286/742446
+
+    use the Dirty module to find out if particular attributes have
+    changes before saving the record.
+
+    #+begin_src ruby
+      class Order &lt; ActiveRecord::Base
+	IMMUTABLE = %w{po_number}
+
+	before_save do |record|
+          false if IMMUTABLE.any? { |attr| record.changed.has_key?(attr) }
+	end
+      end
+    #+end_src
+
+    Or, making the whole record immutable:
+
+    #+begin_src ruby
+      class Transaction &lt; ActiveRecord::Base
+	before_save do |record|
+          false if record.changed? &amp;&amp; record.persisted?
+	end
+      end
+    #+end_src
+
+**** Using a validation hook instead of a callback
+
+    #+begin_src ruby
+      class Order &lt; ActiveRecord::Base
+	IMMUTABLE = %w{po_number}
+
+	validate :force_immutable
+
+	# ...
+
+	private
+
+	def force_immutable
+          if self.persisted?
+            IMMUTABLE.any? do |attr|
+              errors.add(attr, :immutable)
+              self.changed.include?(attr)
+              #
+              # Optional: restore pristine state for the attribute
+              #
+              self[attr] = self.changed_attributes[attr]
+            end
+          end
+	end
+      end
+    #+end_src
+
+
+
+
+     #+begin_src ruby
+       class Transaction &lt; ActiveRecord::Base
+
+         validate :force_immutable
+
+         # ....
+
+         private
+
+         def force_immutable
+           if self.changed? &amp;&amp; self.persisted?
+             self.reload # to keep the local copy of the record unchanged
+             errors.add(:base, &#39;Payment Transactions are immutable&#39;)
+           end
+         end
+       end
+     #+end_src
+
+
+
+
+*** Intercepting Emails on Staging
+
+    Someone thought this through already:
+
+    http://guides.rubyonrails.org/action_mailer_basics.html#intercepting-emails
+
+    The example works perfectly for what I need to be able to do full
+    systems testing on staging without worrying about sending bogus
+    emails to users!
+
+
+
+*** getting the end of month, end of the year, etc               :RAILS:DATE:
+    :PROPERTIES:
+    :LOCATION: added to swaac.dev
+    :END:
+
+     You can easily get the end of the month, or end of the year in
+     Rails&#39;s Date extensions via sending in a negative 1:
+
+     #+begin_src ruby
+       Date.new(2015,-1,-1) #=&gt; 2015-12-31
+       DateTime.new(2015,-1,-1,10,-1) #=&gt; 2015-12-31T10:59:00+00:00
+     #+end_src
+
+
+     captured_on: [2015-02-17 Tue 10:16]
+
+
+
+*** How to use faye-websocket but not have every end-point run through the new middleware
+
+    I wish I&#39;d saved the source of this knowledge
+
+    A: Use `mount:`
+
+    #+BEGIN_SRC ruby
+      class Application &lt; Rails::Application
+	config.middleware.insert_after(
+          ActionDispatch::Session::CookieStore,
+          FayeRails::Middleware,
+          extensions: [Faye::Extensions::AuthenticationExtension.new],
+          engine: { type: Faye::Redis, host: &#39;localhost&#39; },
+          mount: &#39;/rt&#39;,
+          timeout: 25) do
+          map &#39;/runbook/**&#39; =&gt; RealtimeController
+	end
+	# ...
+      end
+    #+END_SRC
+
+
+    capture date: [2015-09-16 Wed 11:04]
+
+
+*** Calling Controller actions from the console
+    :PROPERTIES:
+    :LOCATION: added to swaac.dev
+    :END:
+
+    Capture date: [2015-09-17 Thu 10:35]
+
+
+    Various answers here: http://stackoverflow.com/questions/151030/how-do-i-call-controller-view-methods-from-the-console-in-rails/1161163#1161163
+
+    Essentially:
+
+    #+begin_src ruby
+      app.get &#39;/users&#39; # index
+      app.post &#39;/users&#39; # create with post data
+
+      ## Possibly:
+
+      app.post app.users_path(...data...)
+    #+end_src
+
+
+    Note: http://stackoverflow.com/a/23899701/742446
+
+
+
+*** [Rails] Requiring js with engine gem                              :rails:
+
+    Colin Law &lt;clanlaw@gmail.com&gt;	Thu, Sep 24, 2015 at 9:30 AM
+    Reply-To: rubyonrails-talk@googlegroups.com
+    To: &quot;Ruby on Rails: Talk&quot; &lt;rubyonrails-talk@googlegroups.com&gt;
+    On 24 September 2015 at 15:18, Marco Antonio Almeida
+    &lt;marcoafilho@gmail.com&gt; wrote:
+    &gt; Hi Colin,
+    &gt;
+    &gt; On Thu, Sep 24, 2015 at 1:30 PM Colin Law &lt;clanlaw@gmail.com&gt; wrote:
+    &gt;&gt;
+    &gt;&gt; I am having a go, for the first time, at making a gem which is an
+    &gt;&gt; engine.  I have some javascript files which I have put in the
+    &gt;&gt; gem/app/assets/javascript.  I can access those from the app but only
+    &gt;&gt; if I require them from the apps application.js.  So if I have two js
+    &gt;&gt; files in the gem, say f1.js and f2.js, then in the apps application.js
+    &gt;&gt; I have to put
+    &gt;&gt; //= require f1
+    &gt;&gt; //= require f2
+    &gt;&gt;
+    &gt;&gt; I have not been able to find a way to avoid having to require them all
+    &gt;&gt; individually.  Is this possible?
+    &gt;&gt;
+    &gt;
+    &gt; What I usually do is something like this:
+    &gt;
+    &gt; Let&#39;s say that I have an engine called &quot;my_engine&quot;, then I would create a
+    &gt; my_engine/app/assets/javascript/index.js which would have the content:
+    &gt;
+    &gt; //= require f1
+    &gt; //= require f2
+    &gt;
+    &gt; Then in the host app&#39;s application.js you can call
+    &gt;
+    &gt; // require my_engine
+    &gt;
+    &gt; This is actually a very neat trick that Rails have to load files inside a
+    &gt; folder. It will always look for an index.js file first.
+
+    Of course!  It&#39;s obvious when you know how.
+
+    Thanks
+
+    Colin
+
+    capture date: [2015-09-24 Thu 18:54]
+
+
+*** Standard startup items for a real rails project                   :swaac:
+
+    - pry-rails
+    - remove spring and turbolinks
+    - sandbox mail interceptor
+    - mailcatcher
+    - sidekiq backed activejob
+    - customisable Vagrantfile, other local configs for individual developer, tester.
+      Still need to maintain standardized functionality for CI, staging, prod
+    -
+*** http://blog.codeship.com/the-json-api-spec/         :reading:rails:swaac:
+
+    Title: How to Build Rails APIs Following the json:api Spec | via @codeship
+
+
+
+    captured at: [2016-01-19 Tue 13:22]
+*** http://engineering.wework.com/data/2015/11/05/add-columns-with-default-values-to-large-tables-in-rails-postgres/
+
+    Title: Adding columns with default values to really large tables in Postgres + Rails – WeWork Engineering
+
+
+
+    captured at: [2016-01-22 Fri 00:27]
+
+*** View Models (Cells)
+
+    Ref: https://github.com/apotonick/cells/tree/cells-3
+
+    How to encapsulate views with view models, presenters, and that
+    sort of thing.
+
+
+**** [[http://blog.jayfields.com/2007/03/rails-presenter-pattern.html][Rails: Presenter Pattern]]
+
+     &gt; The Presenter pattern addresses bloated controllers and views
+       containing logic in concert by creating a class representation
+       of the state of the view. An architecture that uses the
+       Presenter pattern provides view specific data as attributes of
+       an instance of the Presenter. The Presenter&#39;s state is an
+       aggregation of model and user entered data.
+
+     Actually, this is describing a Form Model, which is certainly a
+     /sort/ of Presenter, but not actually what I was looking
+     for. Still, very nice way to implement it.
+
+*** Slack convo on setting up Rails with React
+    :PROPERTIES:
+    :CAPTURE_DATE: [2019-10-15 Tue]
+    :LOCATION: added to swaac.dev
+    :END:
+
+#+BEGIN_QUOTE
+Tamara Temple, aka tamouse__ (she/her) Today at 8:10 PM
+Bringing something back from earlier: https://wwcodetc.slack.com/archives/C0K6D5NTZ/p1566917868021600?thread_ts=1566895402.019400&amp;cid=C0K6D5NTZ
+@Andrea I could probably share some links and stuff if this is still of interest.
+
+Andrea
+I am interested in learning how to setup a site using Ruby on Rails + React.
+From a thread in #learn-to-code | Aug 27th | View reply
+:dancercorgi:
+1
+
+13 replies
+
+Andrea  1 hour ago
+That would be wonderful :slightly_smiling_face:
+
+Tamara Temple, aka tamouse__ (she/her)  1 hour ago
+There are three general ways of doing this, too:
+1. Rails app is only an API, no front-end support for a standalone React Single Page App
+2. Rails app includes support for loading a single page react app using the standard Rails view (sprockets) convention
+3. Rails app allows React components to be sprinkled on a standard Rails view
+
+Tamara Temple, aka tamouse__ (she/her)  1 hour ago
+In #1, it&#39;s possible to either separate the rails api and the client into separate repos, or keep them in one, but in separate subdirectories.
+
+Tamara Temple, aka tamouse__ (she/her)  1 hour ago
+In #2, you&#39;ll essentially have the root route produce an index.html page that loads up the React App
+
+Tamara Temple, aka tamouse__ (she/her)  1 hour ago
+in #3, you&#39;ll generate the standard set of Rails views for controllers, and have as much or as little React components on each view as you&#39;d like
+
+Tamara Temple, aka tamouse__ (she/her)  44 minutes ago
+This is my example of doing #1: https://github.com/tamouse/r5_graphql_react (toy app)
+
+Tamara Temple, aka tamouse__ (she/her)  41 minutes ago
+This one kinda shows both #2 and #3: https://github.com/tamouse/r5react-rails
+
+Tamara Temple, aka tamouse__ (she/her)  41 minutes ago
+With the first one, too, I added GraphQL, but you can just as easily do regular Rails resources, just responding with JSON only
+
+Tamara Temple, aka tamouse__ (she/her)  34 minutes ago
+I followed this tutorial initially, I think it&#39;s pretty good: https://scotch.io/tutorials/build-a-restful-json-api-with-rails-5-part-one (it&#39;s a couple years old, 2017, but a lot is still quite applicable to Rails 6, even) (edited)
+
+Tamara Temple, aka tamouse__ (she/her)  20 minutes ago
+i can&#39;t seem to find all the other links i used; i was sure i captured them someplace :disappointed:
+
+Tamara Temple, aka tamouse__ (she/her)  11 minutes ago
+jeepers, this is less than satisfying, isn&#39;t it
+
+Tamara Temple, aka tamouse__ (she/her)  8 minutes ago
+@Andrea if you want, we can spend some time at a CodeJam or Toast&amp;Tech
+
+Tamara Temple, aka tamouse__ (she/her)  7 minutes ago
+i don&#39;t think this is in-and-of-itself a class thing provided it wouldn&#39;t be directed at teaching people Rails or React (or webpack, etc)
+#+END_QUOTE
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/static-sites.org</id>
+      <updated>2022-03-06T22:16:36-06:00</updated>
+      <title>static-sites</title>
+      <content>** Static Sites notes
+
+*** Hosting
+
+    - IP: 45.55.188.49
+    - memory: 512MB Ram
+    - disk: 20GB SSD Disk
+    - location: New York 3
+    - OS: Ubuntu 14.04.3 x64
+
+*** DNS
+
+    Pointed mouseha.us on gandi:
+    - A: *.mouseha.us -&gt; IP
+    - A: @.mouseha.us -&gt; IP
+    - CNAME: removed &quot;blog.mouseha.us&quot;
+
+*** Software
+
+    - build-essential
+    - git-core -- DELETED, see below
+    - curl
+    - mysql-server, mysql-client
+    - sqlite3
+    - ruby 2.2.3
+      - mkdir src
+      - cd src
+      - git clone https://github.com/postmodern/ruby-install.git
+      - cd ruby-install
+      - make install
+    - node 4.2.3
+      - cd src
+      - wget https://nodejs.org/dist/v4.2.3/node-v4.2.3.tar.gz
+      - tar zxvf node-v4.2.3.tar.gz
+      - cd node-v4.2.3
+      - ./configure
+      - make
+      - make install
+    - emacs24
+      - apt-get build-dep emacs24
+      - cd src
+      - wget http://ftp.gnu.org/gnu/emacs/emacs-24.5.tar.gz
+      - untar
+      - cd emacs-24.5
+      - ./configure
+      - make
+      - make install
+    - postfix
+      - installed with emacs24
+      - following https://easyengine.io/tutorials/linux/ubuntu-postfix-gmail-smtp/
+      - set up for using tamouse.lists@gmail.com to relay
+      - had to wait for *ages* to get gmail to give me the &quot;is this
+	you?&quot; query
+      - waiting to see if it works
+    - nginx
+      - simple virtual host configuration points to sites at
+	~git/Sites/&lt;domain&gt;. For example, domain &quot;mouseha.us&quot; points to
+	~git/Sites/mouseha.us/
+      - sites:
+	- static-sites
+	- mouseha.us
+	- ngblog.mouseha.us
+	- pontiki.io -- just purchased at Gandi.Net for 2 years at $35/yr
+    - git -- newest version from github
+      - cd src
+      - git clone https://github.com/git/git.git
+      - cd git
+      - make prefix=/usr all doc info
+      - make prefix=/usr install install-doc install-html install-info
+
+*** Accounts
+
+**** git
+
+     - set up my-dot-files in .dot-file
+     - set up my-emacs-d in .emacs.d
+
+**** directories
+
+    - Sites
+	- static-sites
+	- mouseha.us
+	- ngblog.mouseha.us
+    - Repos -- correspond to Sites/*
+
+	The repos will have post-recieve hooks to automatically update
+	the corresponding static site.
+*** [[http://stackoverflow.com/questions/10264249/cant-get-page-data-from-jekyll-plugin][Can&#39;t Get Page Data From Jekyll Plugin - Stack Overflow]]
+    Date: &lt;2013-10-15 Tue 13:44&gt;
+
+    Can’t get page data from Jekyll plugin
+
+    I’m trying to write a custom tag plugin for Jekyll that will output
+    a hierarchical navigation tree of all the pages (not posts) on the
+    site. I’m basically wanting a bunch nested &lt;ul&gt;’s with links (with
+    the page title as the link text) to the pages with the current page
+    noted by a certain CSS class.
+
+
+    I’m very inexperienced with ruby. I’m a PHP guy.
+
+    I figured I’d start just by trying to iterate through all the pages
+    and output a one-dimensional list just to make sure I could at least
+    do that. Here’s what I have so far:
+
+
+    module Jekyll
+
+    class NavTree &lt; Liquid::Tag
+    def initialize(tag_name, text, tokens)
+    super
+    end
+
+    def render(context)
+    site = context.registers[:site]
+    output = &#39;&lt;ul&gt;&#39;
+    site.pages.each do |page|
+    output += &#39;&lt;li&gt;&lt;a href=&quot;&#39;+page.url+&#39;&quot;&gt;&#39;+page.title+&#39;&lt;/a&gt;&lt;/li&gt;&#39;
+    end
+    output += &#39;&lt;ul&gt;&#39;
+
+    output
+    end
+    end
+
+    end
+
+    Liquid::Template.register_tag(&#39;nav_tree&#39;, Jekyll::NavTree)
+
+    And I’m inserting it into my liquid template via {\% nav_tree %\}.
+
+    The problem is that the page variable in the code above doesn’t have
+    all the data that you’d expect. page.title is undefined and page.url
+    is just the basename with a forward slash in front of it (e.g. for
+    /a/b/c.html, it’s just giving me /c.html).
+
+
+    What am I doing wrong?
+
+    Side note: I already tried doing this with pure Liquid markup, and I
+    eventually gave up. I can easily iterate through site.pages just
+    fine with Liquid, but I couldn’t figure out a way to appropriately
+    nest the lists.
+
+    asked Apr 22 ‘12 at 0:34
+
+    I created an issue on GitHub to see if anybody there knows the
+    answer. –  jnrbsn Apr 30 ‘12 at 16:21
+
+    Did you ever manage to get the nesting working? I’d love to see the
+    final code if so –  Brand Aug 21 ‘12 at 19:35
+
+    @Brand Unfortunately, I never got around to finishing it. –  jnrbsn
+    Aug 23 ‘12 at 23:19
+
+    I managed to hack the hierachical page tree together. It’s not
+    pretty but I’ve posted it here: gist.github.com/3536551 in case
+    anyone else stumbles on this question –  Brand Aug 30 ‘12 at 18:24
+
+
+    2 Answers
+
+    Try:
+
+    module Jekyll
+
+    # Add accessor for directory
+    class Page
+    attr_reader :dir
+    end
+
+    class NavTree &lt; Liquid::Tag
+    def initialize(tag_name, text, tokens)
+    super
+    end
+
+    def render(context)
+    site = context.registers[:site]
+    output = &#39;&lt;ul&gt;&#39;
+    site.pages.each do |page|
+    output += &#39;&lt;li&gt;&lt;a href=&quot;&#39;+page.dir+page.url+&#39;&quot;&gt;&#39;+(page.data[&#39;title&#39;] || page.url) +&#39;&lt;/a&gt;&lt;/li&gt;&#39;
+    end
+    output += &#39;&lt;ul&gt;&#39;
+    output
+    end
+    end
+    end
+
+    Liquid::Template.register_tag(&#39;nav_tree&#39;, Jekyll::NavTree)
+
+
+    With this code, I get Liquid error: can&#39;t convert nil into String. –
+    jnrbsn May 30 ‘12 at 18:11
+
+
+    You probably had a page without a title, so that page.data[‘title’]
+    is nil. Replace w/ e.g. (page.data[‘title’] || page.url) . –  Mikael
+    Borg Jun 4 ‘12 at 9:37
+
+    Sorry for the delayed response. You were correct. I had a page
+    without a title. Your solution works. –  jnrbsn Jun 15 ‘12 at 4:32
+
+
+    page.title is not always defined (example: atom.xml). You have to
+    check if it is defined. Then you can take page.name or not process
+    the entry…
+
+    def render(context)
+    site = context.registers[:site]
+    output = &#39;&lt;ul&gt;&#39;
+    site.pages.each do |page|
+    unless page.data[&#39;title&#39;].nil?
+    t = page.data[&#39;title&#39;]
+    else
+    t = page.name
+    end
+    output += &quot;&lt;li&gt;&lt;a href=&quot;&#39;+page.dir+page.url+&#39;&quot;&gt;&#39;+t+&#39;&lt;/a&gt;&lt;/li&gt;&quot;
+    end
+    output += &#39;&lt;ul&gt;&#39;
+    output
+    end
+
+
+    Shorten that unless..end a bit to: t = page.data[&#39;title&#39;] ||
+    page.name –  tamouse 20 mins ago
+
+*** [[http://middlemanapp.com/][middleman]]
+    Date: &lt;2013-10-15 Tue 02:15&gt;
+    Middleman is a static site generator using all the shortcuts and
+    tools in modern web development.
+
+    Considering using this for my resume builder, and my recipe
+    file. Both seem ideal candidates for this thing. I might also
+    switch over my comic snagger to using this instead of jekyll.
+
+    Generally, I&#39;m liking the looks and idea of middleman better than
+    jekyll, octopress and definitely frank.
 </content>
       <author>
         <name>Tamara Temple</name>

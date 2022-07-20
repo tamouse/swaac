@@ -1,0 +1,2 @@
+- [[./2022-07-20-git-moving-head-to-a-previous-commit.org]]
+- [[./2022-02-19-how-to-access-icloud-files-from-the-command-line.md]]
