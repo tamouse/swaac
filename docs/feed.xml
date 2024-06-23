@@ -2,7 +2,144 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://github.com/tamouse/swaac</id>
   <title>Tamouse&#39;s Software as a Craft blog</title>
-  <updated>2022-07-20T13:54:15-05:00</updated>
+  <updated>2024-06-23T16:05:31-05:00</updated>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2024/2024-05-31-how-to-force-restart-an-iphone.md</id>
+      <updated>2024-06-23T16:05:31-05:00</updated>
+      <title>2024-05-31-how-to-force-restart-an-iphone</title>
+      <content># How to force restart an iPhone 11 Pro
+
+Source: &lt;https://support.apple.com/guide/iphone/force-restart-iphone-iph8903c3ee6/ios&gt;
+
+Turns out, it&#39;s sort of easy, if you can push the buttons in the exact right way.
+
+I managed to set off the emergency call sequence that dialed 911, and everyone on my ICE list :facepalm: 
+
+&gt; If iPhone isn’t responding, and you can’t turn it off then on, try forcing it to restart.
+
+1. Press and quickly release the volume up button.
+2. Press and quickly release the volume down button.
+3. Press and hold the side button.
+4. When the Apple logo appears, release the side button.
+
+![link text](../../images/iphone-reset-sequence.jpg)
+
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2023/2023-04-10-quick-start-for-take-home-tests.md</id>
+      <updated>2023-04-11T14:36:45-05:00</updated>
+      <title>2023-04-10-quick-start-for-take-home-tests</title>
+      <content>---
+title: &quot;Quick start for doing take home tests in Ruby and Rails&quot;
+date: 2023-04-10T15:20
+tags: [ruby,rails,interviews,take-home-tests,tips]
+---
+
+Having gone through a number of interviews this year and last, I have had to more than my share of take home tests for propective employers.
+
+The take home test is typically couched as few requirements intended to show how you approach and solve a given problem. While it&#39;s not a truly valid representation of how you&#39;ll perform on the job, it&#39;s certainly a lot more accurate that timed over-the-shoulder programming, which seems to have replaced the dreaded white boarding coding exercises of the past. At least you get to use your own tools to build the response.
+
+Ruby comes with the `bundler` gem, giving us the `bundle` command, with it set of subcommands which is a pretty common pattern in Ruby for command line tools. You&#39;re likely familiar with `bundle install` already,
+
+Rails comes with an application generator, set off by the `rails new ...args`, showing the subcommand pattern already. The `rails new` command has a lot of options and it&#39;s not helpful to spend a lot of time reading up on them if you&#39;re only going to be building some backend features.
+
+## A basic ruby setup ##
+
+Running the command `bundle help gem` shows the options for building a skeleton gem, just like the ones we all bundle and use in our work. Here&#39;s a great start:
+
+``` shell
+bundle gem take_home_test -b -t minitest --ci=github --linter=rubocop 
+```
+
+The above creates a new directory called &quot;take_home_test&quot; and populates it with files and directories appropriate for building out an CLI app, Going through the options:
+
+- `-b` - created and `exe/` directory and a stub file `exe/take_home_test`. This is the executable for the command line app.
+- `t minitest` - sets up the gem to use minitest. You could also use `rspec` instead of minitest if you want.
+- `--ci=github` - this is not required, but if you are using github to keep your take home test gem, might as well have it run the tests for you on push, too.
+- `--linter=rubocop` - [Rubocop](https://rubocop.org/ &quot;The Ruby Linter/Formatter that Serves and Protects&quot;) is the more popular and agreed upon linter for Ruby. I prefer having it around, but it is optional
+
+The output from the command looks like so (there may be some changes are time goes on):
+
+``` text
+Creating gem &#39;take_home_test&#39;...
+Changelog enabled in config
+rubocop is already configured, ignoring --linter flag.
+RuboCop enabled in config
+Initializing git repo in /Users/tamouse/tmp/take_home_test
+      create  take_home_test/Gemfile
+      create  take_home_test/lib/take_home_test.rb
+      create  take_home_test/lib/take_home_test/version.rb
+      create  take_home_test/sig/take_home_test.rbs
+      create  take_home_test/take_home_test.gemspec
+      create  take_home_test/Rakefile
+      create  take_home_test/README.md
+      create  take_home_test/bin/console
+      create  take_home_test/bin/setup
+      create  take_home_test/.gitignore
+      create  take_home_test/test/test_helper.rb
+      create  take_home_test/test/test_take_home_test.rb
+      create  take_home_test/.github/workflows/main.yml
+      create  take_home_test/CHANGELOG.md
+      create  take_home_test/.rubocop.yml
+      create  take_home_test/exe/take_home_test
+```
+
+If this is your first time running `bundle gem`, take some time to peruse the files to get familiar with them.
+
+Before you can run `bundle install` to install the gems, you&#39;ll need to edit the `take_home_test.gemspec` file. You&#39;ll notice a number of &quot;TODO&quot;s. These need to be fixed before the `bundle install` command will work.
+
+``` ruby
+# frozen_string_literal: true
+
+require_relative &quot;lib/take_home_test/version&quot;
+
+Gem::Specification.new do |spec|
+  spec.name = &quot;take_home_test&quot;
+  spec.version = TakeHomeTest::VERSION
+  spec.authors = [&quot;Tamara Temple&quot;]
+  spec.email = [&quot;tamouse@gmail.com&quot;]
+
+  spec.summary = &quot;take home test example&quot;
+  # spec.description = &quot;TODO: Write a longer description or delete this line.&quot;
+  spec.homepage = &quot;https://github.com/tamouse/take_home_test&quot;
+  spec.required_ruby_version = &quot;&gt;= 2.6.0&quot;
+
+  # spec.metadata[&quot;allowed_push_host&quot;] = &quot;TODO: Set to your gem server &#39;https://example.com&#39;&quot;
+
+  # spec.metadata[&quot;homepage_uri&quot;] = spec.homepage
+  # spec.metadata[&quot;source_code_uri&quot;] = &quot;TODO: Put your gem&#39;s public repo URL here.&quot;
+  # spec.metadata[&quot;changelog_uri&quot;] = &quot;TODO: Put your gem&#39;s CHANGELOG.md URL here.&quot;
+
+  # Specify which files should be added to the gem when it is released.
+  # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
+  spec.files = Dir.chdir(File.expand_path(__dir__)) do
+    `git ls-files -z`.split(&quot;\x0&quot;).reject do |f|
+      (f == __FILE__) || f.match(%r{\A(?:(?:bin|test|spec|features)/|\.(?:git|travis|circleci)|appveyor)})
+    end
+  end
+  spec.bindir = &quot;exe&quot;
+  spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
+  spec.require_paths = [&quot;lib&quot;]
+
+  # Uncomment to register a new dependency of your gem
+  # spec.add_dependency &quot;example-gem&quot;, &quot;~&gt; 1.0&quot;
+
+  # For more information and examples about making a new gem, check out our
+  # guide at: https://bundler.io/guides/creating_gem.html
+end
+
+```
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2022/2022-07-20-git-moving-head-to-a-previous-commit.org</id>
       <updated>2022-07-20T13:54:15-05:00</updated>
@@ -1490,873 +1627,6 @@ Built-in iOS apps and services adapt to Low Data Mode in the following ways:
     captured_on: [2015-01-26 Mon 06:47]
 
 
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/rails-notes.org</id>
-      <updated>2022-03-06T22:16:36-06:00</updated>
-      <title>Rails Notes</title>
-      <content>* Rails Notes
-** Rails TODOs
-
-*** DONE figure how to include Devise in a Rails Engine and have it work in the parent app :RAILS:
-    CLOCK: [2015-02-04 Wed 01:54]--[2015-02-04 Wed 02:00] =&gt;  0:06
-    created_on: [2015-02-04 Wed 01:55]
-    link: [[irc:/irc.freenode.net:6667/#rubyonrails][irc session &#39;irc.freenode.net:6667/#rubyonrails&#39;]]
-
-    #+begin_src text
-      &lt;jdeen&gt; I have 3 projects to do which are very similar. I thought of making
-              them a plugin so that I can mount them. Since I need Authentication I
-              added Devise and generated a model as usual. When I include the engine
-              in another rails app and mount it and run `rake db:migrate` I get an
-              error similar to `uninitialized constant Devise (NameError)`.   [01:43]
-      &lt;jdeen&gt; My question is if we are going to add another engine like &#39;Devise&#39;,
-              can we use it inside our new engine the same way we would in an Rails
-              app?                                                            [01:44]
-      &lt;jdeen&gt; Or will I need to install devise seperately in the Rails app?
-      &lt;jdeen&gt; Any advice is highly appreciated
-      &lt;tabish&gt; I think you can                                                [01:45]
-      &lt;tabish&gt; because in Radar&#39;s book he used warden inside his engine for
-               multi-tenancy
-      &lt;pontiki&gt; jdeen: devise is in your .gemspec as a dependency?            [01:46]
-      &lt;jdeen&gt; I have added &#39;devise&#39; to the gemspec
-      &lt;jdeen&gt; in the engine
-      &lt;pontiki&gt; yeah
-      &lt;jdeen&gt; some thing like: `s.add_dependency &quot;devise&quot;, &quot;~&gt; 3.4.1&quot;`
-      &lt;pontiki&gt; right                                                         [01:47]
-      &lt;pontiki&gt; and it does show up in the app&#39;s Gemfile.lock?
-      &lt;jdeen&gt; pontiki: yes in both the engine repo and the app both have devise
-              3.4.1 there                                                     [01:49]
-      &lt;pontiki&gt; kk
-      &lt;pontiki&gt; you&#39;ve probably done everything i can think of, but i&#39;ll keep
-		talking, unless it&#39;s bothersome
-      &lt;pontiki&gt; jdeen: ran the devise:install in the app?                     [01:50]
-      &lt;jdeen&gt; pontiki: I ran it in the engine and it went fine. In the app it gives
-              the same error I mentioned.                                     [01:52]
-      &lt;jdeen&gt; `uninitialized constant Devise (NameError)`
-      &lt;pontiki&gt; crud                                                          [01:54]
-      &lt;jdeen&gt; pontiki: I added devise to the Gemfile of the app, and its not giving
-              errors                                                          [01:55]
-
-    #+end_src
-
-*** DONE download transcript from Ruby Rogues 243
-
-    https://media.devchat.tv/ruby-rogues/transcript-243-rr-books-that-aren-t-poodr-ruby-rogues.pdf
-
-    CLOCK: [2016-01-23 Sat 03:29]--[2016-01-23 Sat 03:30] =&gt;  0:01
-
-   created_at: [2016-01-23 Sat 03:29]
-*** investigate Refile gem                                           :coding:
-    CLOCK: [2015-08-20 Thu 18:36]--[2015-08-20 Thu 18:38] =&gt;  0:02
-    created_on: [2015-08-20 Thu 18:36]
-    link: https://github.com/refile/refile
-
-    Another image uploader/manager. Reason: can upload directly to S3 or
-    other cloud store. Written by jnicklas (capybara dude)
-*** investigate Rails domain models that can choose a different persistence strategy :swaac:
-    CLOCK: [2015-12-28 Mon 07:52]--[2015-12-28 Mon 07:56] =&gt;  0:04
-
-    created_at: [2015-12-28 Mon 07:52]
-
-    Based on a question in irc:
-
-    How would you implement a scenario where you might get Venue
-    information from a local datastore, or via an API?
-
-    Two models? An absract model and two inheritors?
-    Do the client models need to know where the information came from?
-    Could you have a domain model that decides which strategy to use and
-    inject it? How would you implement such a thing?
-
-*** TODO write up swaac post on rails_template                  :swaac:rails:
-    CLOCK: [2016-01-05 Tue 22:16]--[2016-01-05 Tue 22:16] =&gt;  0:00
-
-   created_at: [2016-01-05 Tue 22:16]
-
-
-** Rails Notes
-
-*** Internationalization/Localization service for Rails apps
-      [[https://www.localeapp.com/][LocaleApp]] Easy localization for Rails apps
-      captured on: [2015-02-06 Fri 09:39]
-
-
-
-*** A pretty good list of common Ruby/Rails mistakes
-    :PROPERTIES:
-    :LOCATION: added to swaac.dev
-    :END:
-
-    :LOCATION: added to swaac.dev
-
-      Blog post: [[http://adamniedzielski.github.io/blog/2015/01/31/11-easy-to-fix-ruby-slash-ruby-on-rails-mistakes/][Adam Niedzeilski: 10 easy-to-fix Ruby / Ruby on Rails mistakes]]
-
-      captured: [2015-02-02 Mon 01:45]
-
-      In a nutshell:
-
-      - complex conditionals, double negatives
-	Create good predicates for what your logic means.
-
-      - not checking true / false on operations that don&#39;t raise an
-	exception
-	e.g.: Rails .save vs. .save!
-
-      - using self when it isn&#39;t needed
-
-      - N+1 queries
-
-      - tri-state &quot;booleans&quot; -- when nil is a possible value besides
-	true and false
-
-      - orphaned records
-
-      - making database schema migrations dependent on a specific
-	version of the source code
-
-	Most folks thing that as migrations are stored with the code and
-	managed in the same way, that somehow state of the database and
-	code must remain locked together. This could not be further from
-	the truth.
-
-	If you need code changes with a migration, make a separate
-	one-time rake task instead, and delete it when done.
-
-      - not using map
-
-      - not using Hash#fetch
-
-
-
-*** [[http://stackoverflow.com/questions/549/the-definitive-guide-to-forms-based-website-authentication][Definitive Guide to Forms-based Authentication]] [[2015-01-24 Sat 13:55]]
-
-      #+begin_src markdown
-	## Form based authentication for websites
-
-	We believe that Stack Overflow should not just be a resource for very
-	specific technical questions, but also for general guidelines on how
-	to solve variations on common problems. &quot;Form based authentication for
-	websites&quot; should be a fine topic for such an experiment.
-
-	### It should include topics such as:
-
-	- How to log in
-	- How to remain logged in
-	- How to store passwords
-	- Using secret questions
-	- Forgotten username/password functionality
-	- OpenID
-	- &quot;Remember me&quot; checkbox
-	- Browser autocompletion of usernames and passwords
-	- Secret URLs (public URLs protected by digest)
-	- Checking password strength
-	- E-mail validation
-	- and much more about form based authentication
-
-      #+end_src
-
-
-      source: StackOverflow
-      http://stackoverflow.com/questions/549/the-definitive-guide-to-form-based-website-authentication
-
-
-*** [[https://medium.com/@KamilLelonek/why-is-your-rails-application-still-coupled-to-activerecord-efe34d657c91][Why is your Rails application still coupled to ActiveRecord?]] [2015-01-25 Sun 19:09]
-
-
-*** link: Stop Writing Rails Controllers
-
-**** [[http://spin.atomicobject.com/2015/01/26/data-driven-rails-controllers/][Data Driven Controllers]]
-
-       #+begin_quote
-         Data Driven Controllers
-
-         Data Driven Controllers (DDC) lets you declare via data how to
-         convert back and forth from HTTP to your application’s domain
-         without the need for code. By adhering to a couple of interfaces,
-         you can avoid writing most controller code and tests. DDC breaks
-         the process of handling a request into three parts.
-
-         1. Convert parameters.
-
-         This step is handled by some sort of context builder. It is mostly
-         in charge of gathering parameters, but may need to pluck out
-         additional information from the controller. The information is
-         collected into a form that the domain code can digest (usually a
-         data blob via a Hash or Struct).
-
-         2. Process the domain request / action.
-
-         The domain level service object takes the necessary information
-         and processes it (update the database, send emails, external
-         services). The service then returns a result that knows nothing
-         about HTTP-land. It includes things like status (application, not
-         HTTP), objects, errors, etc.
-
-         3. Glue.
-
-         DDC is the glue that holds it all together. It creates a
-         controller class that does all the default things for you, but
-         allows you to override and fill in the blanks where
-         necessary. When defining your glue, you simply tell the action how
-         to get the params from the context builder and what service object
-         to send them off to.
-       #+end_quote
-
-
-       captured_on: [2015-01-29 Thu 21:00]
-
-
-*** Rails Best Practices
-      Just a set of things I&#39;ve come to learn
-
-**** Narrow Boolean field possibilities
-
-       When declaring a boolean field in a rails db schema migration, set
-       it to not null and a default of false:
-
-       #+begin_src ruby
-         add_column :table, :field, :boolean, null: false, default: false
-       #+end_src
-
-       This ensures that the field? predicates always end up being what
-       you expect them to be: true (TrueClass) or false (FalseClass) as
-       opposed to just truthy or falsy.
-
-**** Page-specific Javascript in Rails
-     :PROPERTIES:
-     :DESCRIPTION: OBSOLETE
-     :END:
-       Being able to safely mingle javascript that applies only to one
-       view or a single controller can be a difficult thing to get, when
-       you don&#39;t want to write something directly in the HTML view or
-       layout, or have to include a separate request to a page-specific
-       javascript file, but keep everything in the standard Rails assets
-       bundling.
-
-       This article discusses how to do this, pretty simply, by specifying
-       classes for the controller and action in the body tag, and using
-       jQuery selectors to specify what to do.
-
-       http://brandonhilkert.com/blog/page-specific-javascript-in-rails/
-
-
-
-*** [[https://speakerdeck.com/kfaustino/rails-testing-antipatterns][Rails Testing Antipatterns talk]] [[2015-01-24 Sat 13:55]]
-
-
-*** Allow anything through CORS in Rails apps (development/testing)
-
-
-      #+begin_src ruby
-	class ApplicationController &lt; ActionController::Base
-          protect_from_forgery
-          before_filter :current_user, :cors_preflight_check
-          after_filter :cors_set_access_control_headers
-
-          # For all responses in this controller, return the CORS access control headers.
-          def cors_set_access_control_headers
-            headers[&#39;Access-Control-Allow-Origin&#39;] = &#39;*&#39;
-            headers[&#39;Access-Control-Allow-Methods&#39;] = &#39;POST, PUT, DELETE, GET, OPTIONS&#39;
-            headers[&#39;Access-Control-Request-Method&#39;] = &#39;*&#39;
-            headers[&#39;Access-Control-Allow-Headers&#39;] = &#39;Origin, X-Requested-With, Content-Type, Accept, Authorization&#39;
-          end
-
-          # If this is a preflight OPTIONS request, then short-circuit the
-          # request, return only the necessary headers and return an empty
-          # text/plain.
-          def cors_preflight_check
-            if request.method == :options
-              headers[&#39;Access-Control-Allow-Origin&#39;] = &#39;*&#39;
-              headers[&#39;Access-Control-Allow-Methods&#39;] = &#39;POST, GET, OPTIONS&#39;
-              headers[&#39;Access-Control-Allow-Headers&#39;] = &#39;*&#39;
-              headers[&#39;Access-Control-Max-Age&#39;] = &#39;1728000&#39;
-              render :text =&gt; &#39;&#39;, :content_type =&gt; &#39;text/plain&#39;
-            end
-          end
-
-          #
-          # PRIVATE METHODS
-          private
-
-          # get the user currently logged in
-          def current_user
-            @current_user ||= User.find(session[:user_id]) if session[:user_id]
-          end
-          helper_method :current_user
-
-	end
-
-      #+end_src
-
-
-*** Making records immutable
-
-    NOTE: this will not prevent someone from modifying a record by using methods that don&#39;t invoke callbacks, such as ~.update_column~
-
-    based upon http://stackoverflow.com/a/1198286/742446
-
-    use the Dirty module to find out if particular attributes have
-    changes before saving the record.
-
-    #+begin_src ruby
-      class Order &lt; ActiveRecord::Base
-	IMMUTABLE = %w{po_number}
-
-	before_save do |record|
-          false if IMMUTABLE.any? { |attr| record.changed.has_key?(attr) }
-	end
-      end
-    #+end_src
-
-    Or, making the whole record immutable:
-
-    #+begin_src ruby
-      class Transaction &lt; ActiveRecord::Base
-	before_save do |record|
-          false if record.changed? &amp;&amp; record.persisted?
-	end
-      end
-    #+end_src
-
-**** Using a validation hook instead of a callback
-
-    #+begin_src ruby
-      class Order &lt; ActiveRecord::Base
-	IMMUTABLE = %w{po_number}
-
-	validate :force_immutable
-
-	# ...
-
-	private
-
-	def force_immutable
-          if self.persisted?
-            IMMUTABLE.any? do |attr|
-              errors.add(attr, :immutable)
-              self.changed.include?(attr)
-              #
-              # Optional: restore pristine state for the attribute
-              #
-              self[attr] = self.changed_attributes[attr]
-            end
-          end
-	end
-      end
-    #+end_src
-
-
-
-
-     #+begin_src ruby
-       class Transaction &lt; ActiveRecord::Base
-
-         validate :force_immutable
-
-         # ....
-
-         private
-
-         def force_immutable
-           if self.changed? &amp;&amp; self.persisted?
-             self.reload # to keep the local copy of the record unchanged
-             errors.add(:base, &#39;Payment Transactions are immutable&#39;)
-           end
-         end
-       end
-     #+end_src
-
-
-
-
-*** Intercepting Emails on Staging
-
-    Someone thought this through already:
-
-    http://guides.rubyonrails.org/action_mailer_basics.html#intercepting-emails
-
-    The example works perfectly for what I need to be able to do full
-    systems testing on staging without worrying about sending bogus
-    emails to users!
-
-
-
-*** getting the end of month, end of the year, etc               :RAILS:DATE:
-    :PROPERTIES:
-    :LOCATION: added to swaac.dev
-    :END:
-
-     You can easily get the end of the month, or end of the year in
-     Rails&#39;s Date extensions via sending in a negative 1:
-
-     #+begin_src ruby
-       Date.new(2015,-1,-1) #=&gt; 2015-12-31
-       DateTime.new(2015,-1,-1,10,-1) #=&gt; 2015-12-31T10:59:00+00:00
-     #+end_src
-
-
-     captured_on: [2015-02-17 Tue 10:16]
-
-
-
-*** How to use faye-websocket but not have every end-point run through the new middleware
-
-    I wish I&#39;d saved the source of this knowledge
-
-    A: Use `mount:`
-
-    #+BEGIN_SRC ruby
-      class Application &lt; Rails::Application
-	config.middleware.insert_after(
-          ActionDispatch::Session::CookieStore,
-          FayeRails::Middleware,
-          extensions: [Faye::Extensions::AuthenticationExtension.new],
-          engine: { type: Faye::Redis, host: &#39;localhost&#39; },
-          mount: &#39;/rt&#39;,
-          timeout: 25) do
-          map &#39;/runbook/**&#39; =&gt; RealtimeController
-	end
-	# ...
-      end
-    #+END_SRC
-
-
-    capture date: [2015-09-16 Wed 11:04]
-
-
-*** Calling Controller actions from the console
-    :PROPERTIES:
-    :LOCATION: added to swaac.dev
-    :END:
-
-    Capture date: [2015-09-17 Thu 10:35]
-
-
-    Various answers here: http://stackoverflow.com/questions/151030/how-do-i-call-controller-view-methods-from-the-console-in-rails/1161163#1161163
-
-    Essentially:
-
-    #+begin_src ruby
-      app.get &#39;/users&#39; # index
-      app.post &#39;/users&#39; # create with post data
-
-      ## Possibly:
-
-      app.post app.users_path(...data...)
-    #+end_src
-
-
-    Note: http://stackoverflow.com/a/23899701/742446
-
-
-
-*** [Rails] Requiring js with engine gem                              :rails:
-
-    Colin Law &lt;clanlaw@gmail.com&gt;	Thu, Sep 24, 2015 at 9:30 AM
-    Reply-To: rubyonrails-talk@googlegroups.com
-    To: &quot;Ruby on Rails: Talk&quot; &lt;rubyonrails-talk@googlegroups.com&gt;
-    On 24 September 2015 at 15:18, Marco Antonio Almeida
-    &lt;marcoafilho@gmail.com&gt; wrote:
-    &gt; Hi Colin,
-    &gt;
-    &gt; On Thu, Sep 24, 2015 at 1:30 PM Colin Law &lt;clanlaw@gmail.com&gt; wrote:
-    &gt;&gt;
-    &gt;&gt; I am having a go, for the first time, at making a gem which is an
-    &gt;&gt; engine.  I have some javascript files which I have put in the
-    &gt;&gt; gem/app/assets/javascript.  I can access those from the app but only
-    &gt;&gt; if I require them from the apps application.js.  So if I have two js
-    &gt;&gt; files in the gem, say f1.js and f2.js, then in the apps application.js
-    &gt;&gt; I have to put
-    &gt;&gt; //= require f1
-    &gt;&gt; //= require f2
-    &gt;&gt;
-    &gt;&gt; I have not been able to find a way to avoid having to require them all
-    &gt;&gt; individually.  Is this possible?
-    &gt;&gt;
-    &gt;
-    &gt; What I usually do is something like this:
-    &gt;
-    &gt; Let&#39;s say that I have an engine called &quot;my_engine&quot;, then I would create a
-    &gt; my_engine/app/assets/javascript/index.js which would have the content:
-    &gt;
-    &gt; //= require f1
-    &gt; //= require f2
-    &gt;
-    &gt; Then in the host app&#39;s application.js you can call
-    &gt;
-    &gt; // require my_engine
-    &gt;
-    &gt; This is actually a very neat trick that Rails have to load files inside a
-    &gt; folder. It will always look for an index.js file first.
-
-    Of course!  It&#39;s obvious when you know how.
-
-    Thanks
-
-    Colin
-
-    capture date: [2015-09-24 Thu 18:54]
-
-
-*** Standard startup items for a real rails project                   :swaac:
-
-    - pry-rails
-    - remove spring and turbolinks
-    - sandbox mail interceptor
-    - mailcatcher
-    - sidekiq backed activejob
-    - customisable Vagrantfile, other local configs for individual developer, tester.
-      Still need to maintain standardized functionality for CI, staging, prod
-    -
-*** http://blog.codeship.com/the-json-api-spec/         :reading:rails:swaac:
-
-    Title: How to Build Rails APIs Following the json:api Spec | via @codeship
-
-
-
-    captured at: [2016-01-19 Tue 13:22]
-*** http://engineering.wework.com/data/2015/11/05/add-columns-with-default-values-to-large-tables-in-rails-postgres/
-
-    Title: Adding columns with default values to really large tables in Postgres + Rails – WeWork Engineering
-
-
-
-    captured at: [2016-01-22 Fri 00:27]
-
-*** View Models (Cells)
-
-    Ref: https://github.com/apotonick/cells/tree/cells-3
-
-    How to encapsulate views with view models, presenters, and that
-    sort of thing.
-
-
-**** [[http://blog.jayfields.com/2007/03/rails-presenter-pattern.html][Rails: Presenter Pattern]]
-
-     &gt; The Presenter pattern addresses bloated controllers and views
-       containing logic in concert by creating a class representation
-       of the state of the view. An architecture that uses the
-       Presenter pattern provides view specific data as attributes of
-       an instance of the Presenter. The Presenter&#39;s state is an
-       aggregation of model and user entered data.
-
-     Actually, this is describing a Form Model, which is certainly a
-     /sort/ of Presenter, but not actually what I was looking
-     for. Still, very nice way to implement it.
-
-*** Slack convo on setting up Rails with React
-    :PROPERTIES:
-    :CAPTURE_DATE: [2019-10-15 Tue]
-    :LOCATION: added to swaac.dev
-    :END:
-
-#+BEGIN_QUOTE
-Tamara Temple, aka tamouse__ (she/her) Today at 8:10 PM
-Bringing something back from earlier: https://wwcodetc.slack.com/archives/C0K6D5NTZ/p1566917868021600?thread_ts=1566895402.019400&amp;cid=C0K6D5NTZ
-@Andrea I could probably share some links and stuff if this is still of interest.
-
-Andrea
-I am interested in learning how to setup a site using Ruby on Rails + React.
-From a thread in #learn-to-code | Aug 27th | View reply
-:dancercorgi:
-1
-
-13 replies
-
-Andrea  1 hour ago
-That would be wonderful :slightly_smiling_face:
-
-Tamara Temple, aka tamouse__ (she/her)  1 hour ago
-There are three general ways of doing this, too:
-1. Rails app is only an API, no front-end support for a standalone React Single Page App
-2. Rails app includes support for loading a single page react app using the standard Rails view (sprockets) convention
-3. Rails app allows React components to be sprinkled on a standard Rails view
-
-Tamara Temple, aka tamouse__ (she/her)  1 hour ago
-In #1, it&#39;s possible to either separate the rails api and the client into separate repos, or keep them in one, but in separate subdirectories.
-
-Tamara Temple, aka tamouse__ (she/her)  1 hour ago
-In #2, you&#39;ll essentially have the root route produce an index.html page that loads up the React App
-
-Tamara Temple, aka tamouse__ (she/her)  1 hour ago
-in #3, you&#39;ll generate the standard set of Rails views for controllers, and have as much or as little React components on each view as you&#39;d like
-
-Tamara Temple, aka tamouse__ (she/her)  44 minutes ago
-This is my example of doing #1: https://github.com/tamouse/r5_graphql_react (toy app)
-
-Tamara Temple, aka tamouse__ (she/her)  41 minutes ago
-This one kinda shows both #2 and #3: https://github.com/tamouse/r5react-rails
-
-Tamara Temple, aka tamouse__ (she/her)  41 minutes ago
-With the first one, too, I added GraphQL, but you can just as easily do regular Rails resources, just responding with JSON only
-
-Tamara Temple, aka tamouse__ (she/her)  34 minutes ago
-I followed this tutorial initially, I think it&#39;s pretty good: https://scotch.io/tutorials/build-a-restful-json-api-with-rails-5-part-one (it&#39;s a couple years old, 2017, but a lot is still quite applicable to Rails 6, even) (edited)
-
-Tamara Temple, aka tamouse__ (she/her)  20 minutes ago
-i can&#39;t seem to find all the other links i used; i was sure i captured them someplace :disappointed:
-
-Tamara Temple, aka tamouse__ (she/her)  11 minutes ago
-jeepers, this is less than satisfying, isn&#39;t it
-
-Tamara Temple, aka tamouse__ (she/her)  8 minutes ago
-@Andrea if you want, we can spend some time at a CodeJam or Toast&amp;Tech
-
-Tamara Temple, aka tamouse__ (she/her)  7 minutes ago
-i don&#39;t think this is in-and-of-itself a class thing provided it wouldn&#39;t be directed at teaching people Rails or React (or webpack, etc)
-#+END_QUOTE
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/static-sites.org</id>
-      <updated>2022-03-06T22:16:36-06:00</updated>
-      <title>static-sites</title>
-      <content>** Static Sites notes
-
-*** Hosting
-
-    - IP: 45.55.188.49
-    - memory: 512MB Ram
-    - disk: 20GB SSD Disk
-    - location: New York 3
-    - OS: Ubuntu 14.04.3 x64
-
-*** DNS
-
-    Pointed mouseha.us on gandi:
-    - A: *.mouseha.us -&gt; IP
-    - A: @.mouseha.us -&gt; IP
-    - CNAME: removed &quot;blog.mouseha.us&quot;
-
-*** Software
-
-    - build-essential
-    - git-core -- DELETED, see below
-    - curl
-    - mysql-server, mysql-client
-    - sqlite3
-    - ruby 2.2.3
-      - mkdir src
-      - cd src
-      - git clone https://github.com/postmodern/ruby-install.git
-      - cd ruby-install
-      - make install
-    - node 4.2.3
-      - cd src
-      - wget https://nodejs.org/dist/v4.2.3/node-v4.2.3.tar.gz
-      - tar zxvf node-v4.2.3.tar.gz
-      - cd node-v4.2.3
-      - ./configure
-      - make
-      - make install
-    - emacs24
-      - apt-get build-dep emacs24
-      - cd src
-      - wget http://ftp.gnu.org/gnu/emacs/emacs-24.5.tar.gz
-      - untar
-      - cd emacs-24.5
-      - ./configure
-      - make
-      - make install
-    - postfix
-      - installed with emacs24
-      - following https://easyengine.io/tutorials/linux/ubuntu-postfix-gmail-smtp/
-      - set up for using tamouse.lists@gmail.com to relay
-      - had to wait for *ages* to get gmail to give me the &quot;is this
-	you?&quot; query
-      - waiting to see if it works
-    - nginx
-      - simple virtual host configuration points to sites at
-	~git/Sites/&lt;domain&gt;. For example, domain &quot;mouseha.us&quot; points to
-	~git/Sites/mouseha.us/
-      - sites:
-	- static-sites
-	- mouseha.us
-	- ngblog.mouseha.us
-	- pontiki.io -- just purchased at Gandi.Net for 2 years at $35/yr
-    - git -- newest version from github
-      - cd src
-      - git clone https://github.com/git/git.git
-      - cd git
-      - make prefix=/usr all doc info
-      - make prefix=/usr install install-doc install-html install-info
-
-*** Accounts
-
-**** git
-
-     - set up my-dot-files in .dot-file
-     - set up my-emacs-d in .emacs.d
-
-**** directories
-
-    - Sites
-	- static-sites
-	- mouseha.us
-	- ngblog.mouseha.us
-    - Repos -- correspond to Sites/*
-
-	The repos will have post-recieve hooks to automatically update
-	the corresponding static site.
-*** [[http://stackoverflow.com/questions/10264249/cant-get-page-data-from-jekyll-plugin][Can&#39;t Get Page Data From Jekyll Plugin - Stack Overflow]]
-    Date: &lt;2013-10-15 Tue 13:44&gt;
-
-    Can’t get page data from Jekyll plugin
-
-    I’m trying to write a custom tag plugin for Jekyll that will output
-    a hierarchical navigation tree of all the pages (not posts) on the
-    site. I’m basically wanting a bunch nested &lt;ul&gt;’s with links (with
-    the page title as the link text) to the pages with the current page
-    noted by a certain CSS class.
-
-
-    I’m very inexperienced with ruby. I’m a PHP guy.
-
-    I figured I’d start just by trying to iterate through all the pages
-    and output a one-dimensional list just to make sure I could at least
-    do that. Here’s what I have so far:
-
-
-    module Jekyll
-
-    class NavTree &lt; Liquid::Tag
-    def initialize(tag_name, text, tokens)
-    super
-    end
-
-    def render(context)
-    site = context.registers[:site]
-    output = &#39;&lt;ul&gt;&#39;
-    site.pages.each do |page|
-    output += &#39;&lt;li&gt;&lt;a href=&quot;&#39;+page.url+&#39;&quot;&gt;&#39;+page.title+&#39;&lt;/a&gt;&lt;/li&gt;&#39;
-    end
-    output += &#39;&lt;ul&gt;&#39;
-
-    output
-    end
-    end
-
-    end
-
-    Liquid::Template.register_tag(&#39;nav_tree&#39;, Jekyll::NavTree)
-
-    And I’m inserting it into my liquid template via {\% nav_tree %\}.
-
-    The problem is that the page variable in the code above doesn’t have
-    all the data that you’d expect. page.title is undefined and page.url
-    is just the basename with a forward slash in front of it (e.g. for
-    /a/b/c.html, it’s just giving me /c.html).
-
-
-    What am I doing wrong?
-
-    Side note: I already tried doing this with pure Liquid markup, and I
-    eventually gave up. I can easily iterate through site.pages just
-    fine with Liquid, but I couldn’t figure out a way to appropriately
-    nest the lists.
-
-    asked Apr 22 ‘12 at 0:34
-
-    I created an issue on GitHub to see if anybody there knows the
-    answer. –  jnrbsn Apr 30 ‘12 at 16:21
-
-    Did you ever manage to get the nesting working? I’d love to see the
-    final code if so –  Brand Aug 21 ‘12 at 19:35
-
-    @Brand Unfortunately, I never got around to finishing it. –  jnrbsn
-    Aug 23 ‘12 at 23:19
-
-    I managed to hack the hierachical page tree together. It’s not
-    pretty but I’ve posted it here: gist.github.com/3536551 in case
-    anyone else stumbles on this question –  Brand Aug 30 ‘12 at 18:24
-
-
-    2 Answers
-
-    Try:
-
-    module Jekyll
-
-    # Add accessor for directory
-    class Page
-    attr_reader :dir
-    end
-
-    class NavTree &lt; Liquid::Tag
-    def initialize(tag_name, text, tokens)
-    super
-    end
-
-    def render(context)
-    site = context.registers[:site]
-    output = &#39;&lt;ul&gt;&#39;
-    site.pages.each do |page|
-    output += &#39;&lt;li&gt;&lt;a href=&quot;&#39;+page.dir+page.url+&#39;&quot;&gt;&#39;+(page.data[&#39;title&#39;] || page.url) +&#39;&lt;/a&gt;&lt;/li&gt;&#39;
-    end
-    output += &#39;&lt;ul&gt;&#39;
-    output
-    end
-    end
-    end
-
-    Liquid::Template.register_tag(&#39;nav_tree&#39;, Jekyll::NavTree)
-
-
-    With this code, I get Liquid error: can&#39;t convert nil into String. –
-    jnrbsn May 30 ‘12 at 18:11
-
-
-    You probably had a page without a title, so that page.data[‘title’]
-    is nil. Replace w/ e.g. (page.data[‘title’] || page.url) . –  Mikael
-    Borg Jun 4 ‘12 at 9:37
-
-    Sorry for the delayed response. You were correct. I had a page
-    without a title. Your solution works. –  jnrbsn Jun 15 ‘12 at 4:32
-
-
-    page.title is not always defined (example: atom.xml). You have to
-    check if it is defined. Then you can take page.name or not process
-    the entry…
-
-    def render(context)
-    site = context.registers[:site]
-    output = &#39;&lt;ul&gt;&#39;
-    site.pages.each do |page|
-    unless page.data[&#39;title&#39;].nil?
-    t = page.data[&#39;title&#39;]
-    else
-    t = page.name
-    end
-    output += &quot;&lt;li&gt;&lt;a href=&quot;&#39;+page.dir+page.url+&#39;&quot;&gt;&#39;+t+&#39;&lt;/a&gt;&lt;/li&gt;&quot;
-    end
-    output += &#39;&lt;ul&gt;&#39;
-    output
-    end
-
-
-    Shorten that unless..end a bit to: t = page.data[&#39;title&#39;] ||
-    page.name –  tamouse 20 mins ago
-
-*** [[http://middlemanapp.com/][middleman]]
-    Date: &lt;2013-10-15 Tue 02:15&gt;
-    Middleman is a static site generator using all the shortcuts and
-    tools in modern web development.
-
-    Considering using this for my resume builder, and my recipe
-    file. Both seem ideal candidates for this thing. I might also
-    switch over my comic snagger to using this instead of jekyll.
-
-    Generally, I&#39;m liking the looks and idea of middleman better than
-    jekyll, octopress and definitely frank.
 </content>
       <author>
         <name>Tamara Temple</name>

@@ -12,6 +12,7 @@ logger.level = Logger::DEBUG
 
 desc "prepare for publishing"
 task prep: [:build_indexes, :mkfeed]
+task default: :prep
 
 desc 'build indexes at each level in the tree'
 task :build_indexes do
