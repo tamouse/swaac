@@ -1,0 +1,110 @@
+#+title: 2024 06 29 Removing .DS_Store From AWS S3
+
+** Intro
+
+Maybe this never happens to anyone else, but it seems like it's always happening to me.
+
+I'll use the =aws s3 sync= command without thinking, and there will be a bunch of =.DS_Store= files littered down the folders on my mac. Aggravating!
+
+I have a script that lists them in the =--exclude= option, but that option gets ignored if there is already a file that matches the pattern.
+
+So what the juice?
+
+** A long-ish command:
+
+#+begin_src bash
+aws s3 ls --recursive s3://bucket_name/path |\
+    fgrep '.DS_Store' | \
+    sed -e 's/^.*Doc/s3:\/\/tt-archive\/Doc/' -e 's/ /\\ /g' | \
+    xargs -n1 aws s3 rm
+#+end_src
+
+... and Bob's yer uncle.
+
+No warrantees, your mileage will vary. If you end up deleting your bucket, I'm sorry, but ...
+
+** Okay, more explainenening
+
+Let's start here:
+
+#+begin_src bash
+aws s3 ls --recursive s3://bucket_name/path
+#+end_src
+
+Substitute your bucket name, 'the-grippers-bucket' for example, in place of 'bucket':
+
+#+begin_src bash
+aws s3 ls --recursive s3://the-grippers-bucket/path
+#+end_src
+
+Then, substitute the path where you want to start the search, 'last-ten/2024-05-01/11:00:00/' for example, for 'path':
+
+#+begin_src bash
+aws s3 ls --recursive s3://the-grippers-bucket/last-ten/2024-05-01/11:00:00/
+#+end_src
+
+*** what do it do?
+
+This gives you a list of all objects in that bucket and path.
+
+Then we pipe that into:
+
+** Only get the lines we're interested in
+
+=fgrep= is a version of the =grep= command that doesn't use regular expressions in the pattern search. It's the same as saying =grep -F=, which you could also use.
+
+So,
+
+#+begin_src bash
+fgrep '.DS_Store'
+#+end_src
+
+is going to pass through to =stdout= every line matching that string, which is the file name we're looking for.
+
+If you have for some strange reason a match appearing on a line that doesn't have the exact match, maybe try this instead:\
+
+#+begin_src bash
+grep '/.DS_Store$'
+#+end_src
+
+which will, *for sure* only match lines /ending/ with =.DS_Store= which are the files we want to get rid of on S3.
+
+** Then we need to munge things a bit
+
+The third line we see our old friend =sed= which is our editing in line pal.
+
+#+begin_src bash
+sed -e 's/^.*path/s3:\/\/bucket_name/path' -e 's/ /\\ /g'
+#+end_src
+
+You'll notice the lines coming through from the aws command have a bunch of info in front of the actual object name. We need just the object name. (There's likely an option to be brief, but I didn't look it up.) Anyway, the first =-e-= expression removes everything up to your path, and puts back the full bucket name and path so it's a valid S3 reference.
+
+The second =-e= expression will /escape/ any spaces in the object name, should you be as poor as I am at making decent directory and file names.
+
+The command becomes, based on your example,
+
+#+begin_src bash
+sed -e 's/^.*last/s3:\/\/the-grippers-bucket/last' -e 's/ /\\ /g' # Note: you only have to specify enough path to match
+#+end_src
+
+** Our favourite worker, xargs
+
+The last command in this pipe is =xargs= which is an amazing workhorse in \*nix. I didn't learn how to use it until I was a ways along in my career, so don't feel bad if you've never heard of it either. But do look it up, it's awesome. (It's vaguely like using reduce in array filtering. Vaguely.)
+
+#+begin_src bash
+xargs -n1 aws s3 rm
+#+end_src
+
+So this is going to take the lines coming in the pipe from the =sed= command, taking each one individually (the =-n1= option), prepend =aws s3 rm= to the line, and then */execute/* that line in a subshell. How nifty is that?!
+
+This is what I used to do before I learned =xargs=:
+
+#+begin_src bash
+sed -e 's/^/aws s3 rm /' | sh -xv
+#+end_src
+
+IDK, I like =xargs= better. :smile:
+
+** The big pipe
+
+So this is a deconstruction of that long pipe command above. I hope this is helpful. If you don't understand the commands, or what \*nix pipes are, or even the basics of command line usage, there's lots of documentation on that. You can learn it! Be like my friend [[https://jvns.ca][b0rk (Julia Evans)]]; dig in, ask questions online, then write it up.

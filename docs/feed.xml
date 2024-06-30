@@ -2,7 +2,127 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://github.com/tamouse/swaac</id>
   <title>Tamouse&#39;s Software as a Craft blog</title>
-  <updated>2024-06-23T16:05:31-05:00</updated>
+  <updated>2024-06-29T19:18:07-05:00</updated>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2024/2024-06-29-removing-dsstore-from-aws-s3.org</id>
+      <updated>2024-06-29T19:18:07-05:00</updated>
+      <title>2024-06-29-removing-dsstore-from-aws-s3</title>
+      <content>#+title: 2024 06 29 Removing .DS_Store From AWS S3
+
+** Intro
+
+Maybe this never happens to anyone else, but it seems like it&#39;s always happening to me.
+
+I&#39;ll use the =aws s3 sync= command without thinking, and there will be a bunch of =.DS_Store= files littered down the folders on my mac. Aggravating!
+
+I have a script that lists them in the =--exclude= option, but that option gets ignored if there is already a file that matches the pattern.
+
+So what the juice?
+
+** A long-ish command:
+
+#+begin_src bash
+aws s3 ls --recursive s3://bucket_name/path |\
+    fgrep &#39;.DS_Store&#39; | \
+    sed -e &#39;s/^.*Doc/s3:\/\/tt-archive\/Doc/&#39; -e &#39;s/ /\\ /g&#39; | \
+    xargs -n1 aws s3 rm
+#+end_src
+
+... and Bob&#39;s yer uncle.
+
+No warrantees, your mileage will vary. If you end up deleting your bucket, I&#39;m sorry, but ...
+
+** Okay, more explainenening
+
+Let&#39;s start here:
+
+#+begin_src bash
+aws s3 ls --recursive s3://bucket_name/path
+#+end_src
+
+Substitute your bucket name, &#39;the-grippers-bucket&#39; for example, in place of &#39;bucket&#39;:
+
+#+begin_src bash
+aws s3 ls --recursive s3://the-grippers-bucket/path
+#+end_src
+
+Then, substitute the path where you want to start the search, &#39;last-ten/2024-05-01/11:00:00/&#39; for example, for &#39;path&#39;:
+
+#+begin_src bash
+aws s3 ls --recursive s3://the-grippers-bucket/last-ten/2024-05-01/11:00:00/
+#+end_src
+
+*** what do it do?
+
+This gives you a list of all objects in that bucket and path.
+
+Then we pipe that into:
+
+** Only get the lines we&#39;re interested in
+
+=fgrep= is a version of the =grep= command that doesn&#39;t use regular expressions in the pattern search. It&#39;s the same as saying =grep -F=, which you could also use.
+
+So,
+
+#+begin_src bash
+fgrep &#39;.DS_Store&#39;
+#+end_src
+
+is going to pass through to =stdout= every line matching that string, which is the file name we&#39;re looking for.
+
+If you have for some strange reason a match appearing on a line that doesn&#39;t have the exact match, maybe try this instead:\
+
+#+begin_src bash
+grep &#39;/.DS_Store$&#39;
+#+end_src
+
+which will, *for sure* only match lines /ending/ with =.DS_Store= which are the files we want to get rid of on S3.
+
+** Then we need to munge things a bit
+
+The third line we see our old friend =sed= which is our editing in line pal.
+
+#+begin_src bash
+sed -e &#39;s/^.*path/s3:\/\/bucket_name/path&#39; -e &#39;s/ /\\ /g&#39;
+#+end_src
+
+You&#39;ll notice the lines coming through from the aws command have a bunch of info in front of the actual object name. We need just the object name. (There&#39;s likely an option to be brief, but I didn&#39;t look it up.) Anyway, the first =-e-= expression removes everything up to your path, and puts back the full bucket name and path so it&#39;s a valid S3 reference.
+
+The second =-e= expression will /escape/ any spaces in the object name, should you be as poor as I am at making decent directory and file names.
+
+The command becomes, based on your example,
+
+#+begin_src bash
+sed -e &#39;s/^.*last/s3:\/\/the-grippers-bucket/last&#39; -e &#39;s/ /\\ /g&#39; # Note: you only have to specify enough path to match
+#+end_src
+
+** Our favourite worker, xargs
+
+The last command in this pipe is =xargs= which is an amazing workhorse in \*nix. I didn&#39;t learn how to use it until I was a ways along in my career, so don&#39;t feel bad if you&#39;ve never heard of it either. But do look it up, it&#39;s awesome. (It&#39;s vaguely like using reduce in array filtering. Vaguely.)
+
+#+begin_src bash
+xargs -n1 aws s3 rm
+#+end_src
+
+So this is going to take the lines coming in the pipe from the =sed= command, taking each one individually (the =-n1= option), prepend =aws s3 rm= to the line, and then */execute/* that line in a subshell. How nifty is that?!
+
+This is what I used to do before I learned =xargs=:
+
+#+begin_src bash
+sed -e &#39;s/^/aws s3 rm /&#39; | sh -xv
+#+end_src
+
+IDK, I like =xargs= better. :smile:
+
+** The big pipe
+
+So this is a deconstruction of that long pipe command above. I hope this is helpful. If you don&#39;t understand the commands, or what \*nix pipes are, or even the basics of command line usage, there&#39;s lots of documentation on that. You can learn it! Be like my friend [[https://jvns.ca][b0rk (Julia Evans)]]; dig in, ask questions online, then write it up.
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2024/2024-05-31-how-to-force-restart-an-iphone.md</id>
       <updated>2024-06-23T16:05:31-05:00</updated>
@@ -1483,150 +1603,6 @@ Built-in iOS apps and services adapt to Low Data Mode in the following ways:
     Last Monday of the month
 
 ** RUBY REFILE TARGET
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/shell-notes.org</id>
-      <updated>2022-03-06T22:16:36-06:00</updated>
-      <title>command line shells</title>
-      <content>* command line shells
-** Shell Notes
-*** zsh
-    :PROPERTIES:
-    :LOCATION: This has been added to swaac.dev
-    :END:
-
-    - [[https://support.apple.com/en-us/HT208050][zsh is default on MacOS Catalina]]
-
-**** online documentation
-
-     - [[http://zsh.sourceforge.net/Doc/Release/zsh_toc.html#SEC_Contents][Table of Contents]]
-     - [[http://zsh.sourceforge.net/FAQ/][FAQ]]
-
-**** oh-my-zsh
-
-     The sine qua non for zsh users: [[https://github.com/robbyrussell/oh-my-zsh/][https://github.com/robbyrussell/oh-my-zsh/]] ([[https://ohmyz.sh/][pretty web site]])
-
-
-**** ZSH NOTES COLLECTOR
-
-***** some zsh options to try
-
-****** case-insensitive globbing
-
-  The zsh option which controls this is CASE_GLOB. Since we want globbing to be case-insensitive, we want to turn the option off, so:
-
-  #+BEGIN_SRC shell
-    setopt NO_CASE_GLOB
-  #+END_SRC
-
-****** tab completion
-
-  In zsh tab completion will replace the wildcard with the actual result.
-
-  #+BEGIN_SRC shell
-    % ls ~/d*&lt;tab&gt;
-  #+END_SRC
-
-  So after the tab you will see:
-
-  #+BEGIN_SRC shell
-    % ls /Users/armin/Desktop /Users/armin/Documents /Users/armin/Downloads
-  #+END_SRC
-
-  Using tab completion this way to see and possibly edit the actual replacement for wildcards is a useful safety net.
-
-  In bash, pressing the tab key *twice* will list possible completions, but not substitute them in the command prompt.
-
-  If you do not like this behavior in zsh then you can change to behavior similar to bash with:
-
-  #+BEGIN_SRC shell
-    setopt GLOB_COMPLETE
-  #+END_SRC
-
-****** saving history when shell exits
-
-  By default, zsh does not save its history when the shell exits. The history is ‘forgotten’ when you close a Terminal window or tab. To make zsh save its history to a file when it exits, you need to set a variable in the shell:
-
-  #+BEGIN_SRC shell
-    HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
-  #+END_SRC
-
-****** using a single history file for all shells
-
-  You can tell zsh to use a single, shared history file across the sessions and append to it rather than overwrite:
-
-  share history across multiple zsh sessions
-  #+BEGIN_SRC shell
-    setopt SHARE_HISTORY
-  #+END_SRC
-
-  append to history
-  #+BEGIN_SRC shell
-    setopt APPEND_HISTORY
-  #+END_SRC
-
-****** write to history file after avery command
-
-  Furthermore, you can tell zsh to update the history file after every command, rather than waiting for the shell to exit:
-
-  add commands as they are typed, not at shell exit
-  #+BEGIN_SRC shell
-    setopt INC_APPEND_HISTORY
-  #+END_SRC
-
-****** removing some things from history file
-
-  When you use a shared history file, it will grow very quickly, and you may want to use some options to clean out duplicates and blanks:
-
-  expire duplicates first:
-  #+BEGIN_SRC shell
-    setopt HIST_EXPIRE_DUPS_FIRST
-  #+END_SRC
-
-  do not store duplications
-  #+BEGIN_SRC shell
-    setopt HIST_IGNORE_DUPS
-  #+END_SRC
-
-  ignore duplicates when searching
-  #+BEGIN_SRC shell
-    setopt HIST_FIND_NO_DUPS
-  #+END_SRC
-
-  remove blank lines from history
-  #+BEGIN_SRC shell
-    setopt HIST_REDUCE_BLANKS
-  #+END_SRC
-
-***** zsh completion
-
-****** links
-
-       - [[http://zsh.sourceforge.net/Doc/Release/Completion-System.html][Official zsh doc completion section]]
-       - [[https://github.com/zsh-users/zsh-completions/blob/master/zsh-completions-howto.org][zsh-users zsh-completions-howto]]
-       - [[https://github.com/zsh-users/zsh/blob/master/Etc/completion-style-guide][zsh-users zsh Completion Guide]]
-       - [[https://github.com/scriptingosx/mac-zsh-completions][Repo of MacOS zsh completions]]
-
-** Shell TODOs
-** Shell Oneliners
-    #+begin_src shell
-      for f in * ; do mv &quot;$f&quot; $(echo $f | tr &quot; &quot; &quot;_&quot;) ; done # replace spaces in file names with underscores
-      perl -i.bak -pe &#39;/^(#+ binding:)\s+&quot;(.*)&quot;/ &amp;&amp; ($one = $1) &amp;&amp; ($two = $2) &amp;&amp; ($two =~ s/ //g) &amp;&amp; ($_ = &quot;$one $two\n&quot;)&#39; $(find . -name &#39;*.yasnippet&#39;) # remove quotes and spaces from bindings in yasnippets
-      for f in *.bak ; do diff &quot;${f%%.bak}&quot; &quot;$f&quot; ; done # find diff between backup and current files after a filtering operation
-      for f in *.bak ; do mv -v &quot;$f&quot; &quot;${f%%.bak}&quot; ; done # push back original files after filtering operation
-      for f in *.old ; do mv &quot;$f&quot; &quot;${f%%.old}.new&quot; ; done # rename old files with new extension
-      find . -print0 | xargs -0 file # dealing with spaces in file names
-      pcregrep &#39;me$&#39; /usr/share/dict/words | sed &#39;s/me$/.me/&#39; |  bin/checkavailable.pl
-    #+end_src
-    link: [[file:~/Dropbox/oneliners]]
-    captured_on: [2015-01-26 Mon 06:47]
-
-
 </content>
       <author>
         <name>Tamara Temple</name>

@@ -1,1 +1,2 @@
+- [[./2024-06-29-removing-dsstore-from-aws-s3.org]]
 - [[./2024-05-31-how-to-force-restart-an-iphone.md]]
