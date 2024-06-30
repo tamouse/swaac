@@ -61,7 +61,7 @@ fgrep '.DS_Store'
 
 is going to pass through to =stdout= every line matching that string, which is the file name we're looking for.
 
-If you have for some strange reason a match appearing on a line that doesn't have the exact match, maybe try this instead:\
+If you have for some strange reason a match appearing on a line that doesn't have the exact match, maybe try this instead:
 
 #+begin_src bash
 grep '/.DS_Store$'
@@ -89,7 +89,7 @@ sed -e 's/^.*last/s3:\/\/the-grippers-bucket/last' -e 's/ /\\ /g' # Note: you on
 
 ** Our favourite worker, xargs
 
-The last command in this pipe is =xargs= which is an amazing workhorse in \*nix. I didn't learn how to use it until I was a ways along in my career, so don't feel bad if you've never heard of it either. But do look it up, it's awesome. (It's vaguely like using reduce in array filtering. Vaguely.)
+The last command in this pipe is =xargs= which is an amazing workhorse in *-nix. I didn't learn how to use it until I was a ways along in my career, so don't feel bad if you've never heard of it either. But do look it up, it's awesome. (It's vaguely like using reduce in array filtering. Vaguely.)
 
 #+begin_src bash
 xargs -n1 aws s3 rm
@@ -107,4 +107,4 @@ IDK, I like =xargs= better. :smile:
 
 ** The big pipe
 
-So this is a deconstruction of that long pipe command above. I hope this is helpful. If you don't understand the commands, or what \*nix pipes are, or even the basics of command line usage, there's lots of documentation on that. You can learn it! Be like my friend [[https://jvns.ca][b0rk (Julia Evans)]]; dig in, ask questions online, then write it up.
+So this is a deconstruction of that long pipe command above. I hope this is helpful. If you don't understand the commands, or what *-nix pipes are, or even the basics of command line usage, there's lots of documentation on that. You can learn it! Be like my friend [[https://jvns.ca][b0rk (Julia Evans)]]; dig in, ask questions online, then write it up.
