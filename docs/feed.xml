@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://github.com/tamouse/swaac</id>
   <title>Tamouse&#39;s Software as a Craft blog</title>
-  <updated>2024-06-29T19:18:07-05:00</updated>
+  <updated>2024-06-29T19:22:41-05:00</updated>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2024/2024-06-29-removing-dsstore-from-aws-s3.org</id>
-      <updated>2024-06-29T19:18:07-05:00</updated>
+      <updated>2024-06-29T19:22:41-05:00</updated>
       <title>2024-06-29-removing-dsstore-from-aws-s3</title>
       <content>#+title: 2024 06 29 Removing .DS_Store From AWS S3
 
@@ -24,7 +24,7 @@ So what the juice?
 #+begin_src bash
 aws s3 ls --recursive s3://bucket_name/path |\
     fgrep &#39;.DS_Store&#39; | \
-    sed -e &#39;s/^.*Doc/s3:\/\/tt-archive\/Doc/&#39; -e &#39;s/ /\\ /g&#39; | \
+    sed -e &#39;s/^.*Doc/s3:\/\/bucket_name/path/&#39; -e &#39;s/ /\\ /g&#39; | \
     xargs -n1 aws s3 rm
 #+end_src
 
@@ -32,6 +32,7 @@ aws s3 ls --recursive s3://bucket_name/path |\
 
 No warrantees, your mileage will vary. If you end up deleting your bucket, I&#39;m sorry, but ...
 
+**
 ** Okay, more explainenening
 
 Let&#39;s start here:

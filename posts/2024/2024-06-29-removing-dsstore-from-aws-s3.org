@@ -15,7 +15,7 @@ So what the juice?
 #+begin_src bash
 aws s3 ls --recursive s3://bucket_name/path |\
     fgrep '.DS_Store' | \
-    sed -e 's/^.*Doc/s3:\/\/tt-archive\/Doc/' -e 's/ /\\ /g' | \
+    sed -e 's/^.*Doc/s3:\/\/bucket_name/path/' -e 's/ /\\ /g' | \
     xargs -n1 aws s3 rm
 #+end_src
 
@@ -23,6 +23,7 @@ aws s3 ls --recursive s3://bucket_name/path |\
 
 No warrantees, your mileage will vary. If you end up deleting your bucket, I'm sorry, but ...
 
+**
 ** Okay, more explainenening
 
 Let's start here:
