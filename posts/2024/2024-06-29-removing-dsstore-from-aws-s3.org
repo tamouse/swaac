@@ -74,7 +74,7 @@ which will, *for sure* only match lines /ending/ with =.DS_Store= which are the 
 The third line we see our old friend =sed= which is our editing in line pal.
 
 #+begin_src bash
-sed -e 's/^.*path/s3:\/\/bucket_name/path' -e 's/ /\\ /g'
+sed -e 's/^.*path/s3:\/\/bucket_name\/path' -e 's/ /\\ /g'
 #+end_src
 
 You'll notice the lines coming through from the aws command have a bunch of info in front of the actual object name. We need just the object name. (There's likely an option to be brief, but I didn't look it up.) Anyway, the first =-e-= expression removes everything up to your path, and puts back the full bucket name and path so it's a valid S3 reference.
@@ -84,8 +84,10 @@ The second =-e= expression will /escape/ any spaces in the object name, should y
 The command becomes, based on your example,
 
 #+begin_src bash
-sed -e 's/^.*last/s3:\/\/the-grippers-bucket/last' -e 's/ /\\ /g' # Note: you only have to specify enough path to match
+sed -e 's/^.*last/s3:\/\/the-grippers-bucket\/last' -e 's/ /\\ /g' # Note: you only have to specify enough path to match
 #+end_src
+
+
 
 ** Our favourite worker, xargs
 
@@ -107,4 +109,4 @@ IDK, I like =xargs= better. :smile:
 
 ** The big pipe
 
-So this is a deconstruction of that long pipe command above. I hope this is helpful. If you don't understand the commands, or what *-nix pipes are, or even the basics of command line usage, there's lots of documentation on that. You can learn it! Be like my friend [[https://jvns.ca][b0rk (Julia Evans)]]; dig in, ask questions online, then write it up.
+So this is a deconstruction of that long pipe command above. I hope this is helpful. If you don't understand the commands, or what *-nix pipes are, or even the basics of command line usage, there's lots of documentation on that. You can learn it! Then write it up!
