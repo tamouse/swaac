@@ -23,7 +23,6 @@ aws s3 ls --recursive s3://bucket_name/path |\
 
 No warrantees, your mileage will vary. If you end up deleting your bucket, I'm sorry, but ...
 
-**
 ** Okay, more explainenening
 
 Let's start here:
