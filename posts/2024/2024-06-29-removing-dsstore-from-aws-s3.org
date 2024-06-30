@@ -64,7 +64,7 @@ is going to pass through to =stdout= every line matching that string, which is t
 If you have for some strange reason a match appearing on a line that doesn't have the exact match, maybe try this instead:
 
 #+begin_src bash
-grep '/.DS_Store$'
+grep '/\.DS_Store$'
 #+end_src
 
 which will, *for sure* only match lines /ending/ with =.DS_Store= which are the files we want to get rid of on S3.
