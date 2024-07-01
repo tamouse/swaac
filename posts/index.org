@@ -27,6 +27,7 @@
 - [[./Tech/README.md]]
 - [[./2024/2024-06-29-removing-dsstore-from-aws-s3.org]]
 - [[./2024/2024-05-31-how-to-force-restart-an-iphone.md]]
+- [[./2023/2023-06-09-make-git-ignore-local-changes-to-tracked-files.md]]
 - [[./2023/2023-04-10-quick-start-for-take-home-tests.md]]
 - [[./2022/2022-07-20-git-moving-head-to-a-previous-commit.org]]
 - [[./2022/2022-02-19-how-to-access-icloud-files-from-the-command-line.md]]

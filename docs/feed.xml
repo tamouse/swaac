@@ -2,10 +2,55 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://github.com/tamouse/swaac</id>
   <title>Tamouse&#39;s Software as a Craft blog</title>
-  <updated>2024-06-29T19:22:41-05:00</updated>
+  <updated>2024-07-01T01:19:11-05:00</updated>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2023/2023-06-09-make-git-ignore-local-changes-to-tracked-files.md</id>
+      <updated>2024-07-01T01:19:11-05:00</updated>
+      <title>2023-06-09-make-git-ignore-local-changes-to-tracked-files</title>
+      <content># Make Git Ignore Local Changes to Tracked files
+
+Source: https://practicalgit.com/blog/make-git-ignore-local-changes-to-tracked-files.html
+
+Sometimes you want to change a tracked file so that you can run your project locally on your machine. This is typical of configuration files and templates. But you don’t want to commit these files. One way is to discard these changes every time you are about to commit and redo them every time you pull from master. Another way is to stash them before you commit and reapply them after you pull.
+
+But there is a better way! You can tell Git to ignore changes to this file:
+
+```sh
+git update-index --assume-unchanged &lt;file-to-ignore&gt;
+```
+
+Now you can go ahead and do whatever you want in that file and it will not show up as a changed file in git.
+
+This will work unless that file is changed on the remote branch. In that case if you do a pull, you will get an error.
+
+When that happens you need to tell Git to start caring about the file again, stash it, pull, apply your stashed changes, and tell Git to start ignoring the file again:
+
+``` sh
+# tell Git to stop ignoring this file
+$ git update-index --no-assume-unchanged &lt;file-to-ignore&gt;
+
+# stash your local changes to the file
+$ git stash &lt;file-to-ignore&gt;
+
+# Pull from remote
+$ git pull
+
+# Apply your stashed changes and resolve the possible conflict
+$ git stash apply
+
+# Now tell Git to ignore this file again
+$ git update-index --assume-unchanged &lt;file-to-ignore&gt;
+```
+
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2024/2024-06-29-removing-dsstore-from-aws-s3.org</id>
-      <updated>2024-06-29T19:22:41-05:00</updated>
+      <updated>2024-06-29T19:36:35-05:00</updated>
       <title>2024-06-29-removing-dsstore-from-aws-s3</title>
       <content>#+title: 2024 06 29 Removing .DS_Store From AWS S3
 
@@ -24,7 +69,7 @@ So what the juice?
 #+begin_src bash
 aws s3 ls --recursive s3://bucket_name/path |\
     fgrep &#39;.DS_Store&#39; | \
-    sed -e &#39;s/^.*Doc/s3:\/\/bucket_name/path/&#39; -e &#39;s/ /\\ /g&#39; | \
+    sed -e &#39;s/^.*path/s3:\/\/bucket_name/path/&#39; -e &#39;s/ /\\ /g&#39; | \
     xargs -n1 aws s3 rm
 #+end_src
 
@@ -32,7 +77,6 @@ aws s3 ls --recursive s3://bucket_name/path |\
 
 No warrantees, your mileage will vary. If you end up deleting your bucket, I&#39;m sorry, but ...
 
-**
 ** Okay, more explainenening
 
 Let&#39;s start here:
@@ -71,10 +115,10 @@ fgrep &#39;.DS_Store&#39;
 
 is going to pass through to =stdout= every line matching that string, which is the file name we&#39;re looking for.
 
-If you have for some strange reason a match appearing on a line that doesn&#39;t have the exact match, maybe try this instead:\
+If you have for some strange reason a match appearing on a line that doesn&#39;t have the exact match, maybe try this instead:
 
 #+begin_src bash
-grep &#39;/.DS_Store$&#39;
+grep &#39;/\.DS_Store$&#39;
 #+end_src
 
 which will, *for sure* only match lines /ending/ with =.DS_Store= which are the files we want to get rid of on S3.
@@ -84,7 +128,7 @@ which will, *for sure* only match lines /ending/ with =.DS_Store= which are the 
 The third line we see our old friend =sed= which is our editing in line pal.
 
 #+begin_src bash
-sed -e &#39;s/^.*path/s3:\/\/bucket_name/path&#39; -e &#39;s/ /\\ /g&#39;
+sed -e &#39;s/^.*path/s3:\/\/bucket_name\/path&#39; -e &#39;s/ /\\ /g&#39;
 #+end_src
 
 You&#39;ll notice the lines coming through from the aws command have a bunch of info in front of the actual object name. We need just the object name. (There&#39;s likely an option to be brief, but I didn&#39;t look it up.) Anyway, the first =-e-= expression removes everything up to your path, and puts back the full bucket name and path so it&#39;s a valid S3 reference.
@@ -94,12 +138,14 @@ The second =-e= expression will /escape/ any spaces in the object name, should y
 The command becomes, based on your example,
 
 #+begin_src bash
-sed -e &#39;s/^.*last/s3:\/\/the-grippers-bucket/last&#39; -e &#39;s/ /\\ /g&#39; # Note: you only have to specify enough path to match
+sed -e &#39;s/^.*last/s3:\/\/the-grippers-bucket\/last&#39; -e &#39;s/ /\\ /g&#39; # Note: you only have to specify enough path to match
 #+end_src
+
+
 
 ** Our favourite worker, xargs
 
-The last command in this pipe is =xargs= which is an amazing workhorse in \*nix. I didn&#39;t learn how to use it until I was a ways along in my career, so don&#39;t feel bad if you&#39;ve never heard of it either. But do look it up, it&#39;s awesome. (It&#39;s vaguely like using reduce in array filtering. Vaguely.)
+The last command in this pipe is =xargs= which is an amazing workhorse in *-nix. I didn&#39;t learn how to use it until I was a ways along in my career, so don&#39;t feel bad if you&#39;ve never heard of it either. But do look it up, it&#39;s awesome. (It&#39;s vaguely like using reduce in array filtering. Vaguely.)
 
 #+begin_src bash
 xargs -n1 aws s3 rm
@@ -117,7 +163,7 @@ IDK, I like =xargs= better. :smile:
 
 ** The big pipe
 
-So this is a deconstruction of that long pipe command above. I hope this is helpful. If you don&#39;t understand the commands, or what \*nix pipes are, or even the basics of command line usage, there&#39;s lots of documentation on that. You can learn it! Be like my friend [[https://jvns.ca][b0rk (Julia Evans)]]; dig in, ask questions online, then write it up.
+So this is a deconstruction of that long pipe command above. I hope this is helpful. If you don&#39;t understand the commands, or what *-nix pipes are, or even the basics of command line usage, there&#39;s lots of documentation on that. You can learn it! Then write it up!
 </content>
       <author>
         <name>Tamara Temple</name>
@@ -1430,180 +1476,6 @@ Built-in iOS apps and services adapt to Low Data Mode in the following ways:
     Thanks @R1, @R3 and @R2 for being in leadership and senior roles and sharing your perspective and helping to work on this issue!
     #+END_QUOTE
 
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/ruby-notes.org</id>
-      <updated>2022-03-06T22:16:36-06:00</updated>
-      <title>Ruby</title>
-      <content>* Ruby
-
-** Notes
-*** [[http://www.saturnflyer.com/blog/jim/2015/01/20/ruby-forwardable-deep-dive/?utm_source%3Drubyweekly&amp;utm_medium%3Demail][Forwardable Deep Dive]] [2015-01-25 Sun]
-    :PROPERTIES:
-    :LOCATION: added to swaac.dev
-    :END:
-    #+AUTHOR: Jim Gay
-
-
-
-*** TODO try out moneta in an application
-
-** Books
-
-*** Practical Object Oriented Design in Rails - Sandi Metz
-
-***** On composition vs inheritance, Sandi Metz in POODR
-   #+begin_src markdown
-     &gt; Composition allows you to combine small parts to create more complex
-     &gt; objects such that the whole becomes more than the sum of its
-     &gt; parts. Composed objects tend to consist of simple, discrete entities
-     &gt; that can easily be rearranged into new combinations. These simple
-     &gt; objects are easy to understand, reuse, and test, but because they
-     &gt; combine into a more complicated whole, the operation of the bigger
-     &gt; application may not be as easy to understand as that of the
-     &gt; individual parts.
-
-
-     &gt; Composition, classical inheritance, and behavior sharing via modules
-     &gt; are competing techniques for arranging code. Each has different
-     &gt; costs and benefits; these differences predispose them to be better
-     &gt; at solving slightly different problems.
-
-
-     &gt; These techniques are tools, nothing more, and you’ll become a better
-     &gt; designer if you practice each of them. Learning to use them properly
-     &gt; is a matter of experience and judgment, and one of the best ways to
-     &gt; gain experience is to learn from your own mistakes. The key to
-     &gt; improving your design skills is to attempt these techniques, accept
-     &gt; your errors cheerfully, remain detached from past design decisions,
-     &gt; and refactor mercilessly.
-
-     &gt; As you gain experience, you’ll get better at choosing the correct
-     &gt; technique the first time, your applications will improve.”
-
-
-     Excerpt From: Metz, Sandi. “Practical Object-Oriented Design in Ruby:
-     An Agile Primer (Addison-Wesley Professional Ruby Series).”
-     iBooks. https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewBook?id=038BE4A901A3E1659EA914B97D73CA82
-
-   #+end_src
-
-*** The Well Grounded Rubyist
-
-     #+begin_src markdown
-       ## Who should read this book
-
-       &gt; The Well-Grounded Rubyist, Second Edition is optimized for a reader
-       &gt; who’s done some programming and perhaps even some Ruby and wants to
-       &gt; learn more about the Ruby language—not only the specific techniques
-       &gt; (although the book includes plenty of those), but also the design
-       &gt; principles that make Ruby what it is. I’m a great believer in knowing
-       &gt; what you’re doing. I also believe that knowing what you’re doing
-       &gt; doesn’t mean you have to compose a treatise in your head every time
-       &gt; you write a line of code; it means you know how to make the most out
-       &gt; of the language, and understand how to analyze problems when they
-       &gt; arise.
-       &gt;
-       &gt;
-       &gt; [I]f this is your first foray into programming, be prepared to do a
-       &gt; little extra self-imposed “homework” to get ramped up into the
-       &gt; programming process—but by all means, give The Well-Grounded Rubyist,
-       &gt; Second Edition a go. The book isn’t specifically an introduction to
-       &gt; programming, but it does take you through all the practicalities,
-       &gt; including the creation and running of program files, as well as
-       &gt; explaining Ruby from the ground up
-
-       Excerpt From: David A. Black. “The Well-Grounded Rubyist, Second
-       Edition.”
-
-     #+end_src
-
-
-** Ruby one-liners
-  #+name: one-liners
-  #+begin_src ruby
-    a=[1,2,3,4,4,5,6,6,6];Hash[a.group_by {|e| e}.map {|k,v| next if v.size ==1;[k,v.size]}.compact]
-  #+end_src
-
-** Ruby Testing
-*** Capybara
-**** DONE Scrolling the window in Capybara          :blog:ruby:spec:capybara:
-   :PROPERTIES:
-   :CAPTURE_DATE: [2019-03-06 Wed 16:45]
-   :LOCATION: added to swaac.dev
-   :END:
-
-
-   This is a problem when we have a modal that is long and we need to get the &quot;Submit&quot; button.
-
-   #+BEGIN_SRC ruby
-     page.execute_script &quot;window.scrollBy(0,10000)&quot;
-   #+END_SRC
-
-
-
-** Ruby Meetings, Meetups
-*** RubyMN 2014-02-24 7:00pm
-
-**** AI Twitter Bot
-***** Horse_Ebooks
-***** rkelly_ebooks
-      tweet rkelly lyrics
-****** scrape
-****** choose
-****** vote
-******* characterize
-******* tag
-******* bayes
-******** classifier
-******** guess funniness
-******** human in the loop
-******* post
-
-***** what did we learn
-
-****** try new things
-
-****** make stupid shit
-
-****** have some fun
-
-****** josh kaplan
-       @jkap
-       git.io/rkelly_ebooks
-       @rkelly_ebooks
-
-**** Daemons in Ruby
-     Ian Whitney @ianwhitney
-
-***** what&#39;s a daemon?
-****** Background jobs
-******* resque
-******* delayed jobs
-******* sidekiq
-****** Services
-****** Responsive to changes
-
-
-***** what else?
-****** write your own
-******* logging
-******* error capturing
-******* scheduling
-****** daemon_kit
-       https://github.com/kennethkalmer/daemon-kit
-
-
-*** RubyMN Meeting 7:00pm-9:00pm
-    &lt;%%(diary-float t 1 -1)&gt;
-    Last Monday of the month
-
-** RUBY REFILE TARGET
 </content>
       <author>
         <name>Tamara Temple</name>

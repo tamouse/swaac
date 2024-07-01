@@ -1,1 +1,2 @@
+- [[./2023-06-09-make-git-ignore-local-changes-to-tracked-files.md]]
 - [[./2023-04-10-quick-start-for-take-home-tests.md]]
