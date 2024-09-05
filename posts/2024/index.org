@@ -1,2 +1,3 @@
+- [[./2024-09-05-writing-exclusion-files-for-rsync.md]]
 - [[./2024-06-29-removing-dsstore-from-aws-s3.org]]
 - [[./2024-05-31-how-to-force-restart-an-iphone.md]]

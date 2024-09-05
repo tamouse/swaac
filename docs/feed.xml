@@ -2,7 +2,105 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://github.com/tamouse/swaac</id>
   <title>Tamouse&#39;s Software as a Craft blog</title>
-  <updated>2024-07-01T01:19:11-05:00</updated>
+  <updated>2024-09-05T10:02:05-05:00</updated>
+    <entry>
+      <id>https://github.com/tamouse/swaac/blob/master/posts/2024/2024-09-05-writing-exclusion-files-for-rsync.md</id>
+      <updated>2024-09-05T10:02:05-05:00</updated>
+      <title>2024-09-05-writing-exclusion-files-for-rsync</title>
+      <content>---
+layout: post
+title: &quot;Writing an exclusions file for rsync&quot;
+date: 2024-09-05 10:00
+categories: [&quot;CLI&quot;]
+tags: [&quot;rsync&quot;, &quot;exclusions&quot;]
+
+To create an exclusions file for `rsync` that excludes several directories across multiple levels of your directory tree, you&#39;ll need to list each pattern you want to exclude in the file. The patterns should match the directories or files you want to exclude, and you can use relative paths or wildcards to specify patterns effectively.
+
+### Steps to Create an Exclusions File
+
+1. **Create the Exclusions File**:
+
+   You can create an exclusions file (e.g., `rsync-exclude.txt`) using a text editor. Each line in this file should represent a pattern or directory to exclude.
+
+   **Example of `rsync-exclude.txt`:**
+   ```
+   # Exclude directories at any level
+   directory1/
+   directory2/
+
+   # Exclude specific subdirectories
+   subdir1/
+   subdir2/
+
+   # Exclude all .log files in any directory
+   *.log
+
+   # Exclude all &#39;temp&#39; directories
+   temp/
+
+   # Exclude a directory pattern in any subdirectory
+   */cache/
+   ```
+
+   - **`directory1/` and `directory2/`**: Exclude directories named `directory1` and `directory2` at any level.
+   - **`subdir1/` and `subdir2/`**: Exclude `subdir1` and `subdir2` at any level.
+   - **`*.log`**: Exclude all `.log` files in any directory.
+   - **`temp/`**: Exclude all directories named `temp`.
+   - **`*/cache/`**: Exclude all directories named `cache` in any subdirectory.
+
+2. **Use the Exclusions File with `rsync`**:
+
+   When running the `rsync` command, use the `--exclude-from` option to specify your exclusions file:
+
+   ```bash
+   rsync -av --delete --exclude-from=&#39;/path/to/rsync-exclude.txt&#39; /source/directory/ /destination/directory/
+   ```
+
+   - **`-a`**: Archive mode (preserves symbolic links, permissions, timestamps, etc.).
+   - **`-v`**: Verbose mode (provides detailed output of what `rsync` is doing).
+   - **`--delete`**: Deletes files in the destination that are not present in the source.
+   - **`--exclude-from=&#39;/path/to/rsync-exclude.txt&#39;`**: Specifies the file containing patterns to exclude.
+
+### Writing Effective Patterns for `rsync`
+
+- **Trailing Slash**: To exclude directories, include a trailing slash (e.g., `temp/`).
+- **Wildcards**: Use `*` as a wildcard for any number of characters, `?` for a single character, and `**` for matching any directory level.
+- **Relative Paths**: Patterns are relative to the source directory specified in the `rsync` command. Ensure your patterns match the layout and structure of your source directory.
+
+### Example Exclusions for Specific Directories
+
+If you have a source directory structure like:
+
+```
+/source/directory/
+|-- dir1/
+|   |-- subdirA/
+|   `-- subdirB/
+|-- dir2/
+|   |-- subdirC/
+|   `-- subdirD/
+`-- logs/
+    |-- error.log
+    `-- access.log
+```
+
+And you want to exclude `subdirB` in any directory, `logs` directory, and all `.log` files, your `rsync-exclude.txt` would look like:
+
+```plaintext
+subdirB/
+logs/
+*.log
+```
+
+Using this file with `rsync` will exclude these directories and files from being synced to the destination.
+
+By defining patterns clearly in your exclusions file, you can manage complex directory structures and exclusions efficiently with `rsync`.
+</content>
+      <author>
+        <name>Tamara Temple</name>
+        <email>tamara@tamouse.org</email>
+      </author>
+    </entry>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2023/2023-06-09-make-git-ignore-local-changes-to-tracked-files.md</id>
       <updated>2024-07-01T01:19:11-05:00</updated>
@@ -913,569 +1011,6 @@ Built-in iOS apps and services adapt to Low Data Mode in the following ways:
 
 - [Find out how much cellular data that you&#39;re using](https://support.apple.com/kb/HT201299), and learn how to turn cellular data on or off for all apps or individual apps.
 - [Use Wi-Fi Assist](https://support.apple.com/kb/HT205296) to automatically switch to cellular when you have a poor Wi-Fi connection.
-</content>
-      <author>
-        <name>Tamara Temple</name>
-        <email>tamara@tamouse.org</email>
-      </author>
-    </entry>
-    <entry>
-      <id>https://github.com/tamouse/swaac/blob/master/posts/Tech/gdi-classes.org</id>
-      <updated>2022-03-06T22:16:36-06:00</updated>
-      <title>GDI</title>
-      <content>* GDI
-** Slack convos
-*** Discussion in #random about job salaries
-    CAPTURE_DATE: [2017-06-05 Mon 15:45]
-
-    #+BEGIN_QUOTE
-
- OP [1 hour ago]
- Hey all, I have a question that I have been struggling with for a bit. I am currently working through a bootcamp for full stack development and would like to start getting organized for the job search. I am starting to watch job postings and some ask what my preferred salary would be. I spent many years as a national park ranger, which means low pay and no chance at negotiating starting pay either. I have tried to look around at what the starting pay would be for staying in the twin cities but find reports on average salaries of experienced developers. Does anyone have resources on this or advice on what to ask for and how much to negotiate? I just don&#39;t know what to even ask for as a salary aside from making sure it pays the bills. Feel free to DM too if you would prefer. THANKS!
-
- R1 [1 hour ago]
- @OP: 1st things 1st, never mention your previous salary. Especially since it doesn’t apply to your next role as a dev.
-
- R1 [1 hour ago]
- 2nd things 2nd, take a look at glassdoor, linkedin, and indeed. heck even the gov websites with salary averages to start getting a range.
-
- R1 [1 hour ago]
- then think about your life, lifestyle, I came up with a minimum I am comfortable with and then I keep that to myself.
-
- R1 [1 hour ago]
- I ask for 10-20k higher, depending on the company
-
- R1 [1 hour ago]
- My one phrase of advice when it comes to this is “The worst thing they can say is no, and even if they say no, it’s probably a maybe” (edited)
-
- R1 [1 hour ago]
- Know what you’re bringing to the table, some people will try to use your bootcamp only experience as a negative against you, it’s not. It’s a positive. It speaks to your thirst to learn, ability to learn and adapt quickly, passion and so much more.
-
- R1 [1 hour ago]
- People often underestimate what it means to basically change your whole life overnight when it comes to deciding to go to a bootcamp
-
- R1 [1 hour ago]
- anyways rant over… That’s my advice!
-
- R1 [1 hour ago]
- I bet @R5 has great advice on this as well
-
- OP [1 hour ago]
- thanks! that helps get me started
-
- R1 [1 hour ago]
- anytime. Congrats on getting ready to get out there!!
-
- R2 [1 hour ago]
- Yes yes yes. I second everything @R1 just mentioned. @R5 brought up the “never mention your previous salary” comment the other day. This is so key. Keep in mind that when a company posts a job, they already have a budget in mind. Let them share that first!
-
- R2 [1 hour ago]
- Not everyone will do that, and some might be cranky if you stay firm (this just happened to me) but it’s definitely worth a try.
-
- R2 [1 hour ago]
- We had a negotiating GDI workshop about a year ago that I found so valuable. Go in to the discussion with three numbers in your mind: the number that would just blow your socks off and make you crazy happy, a number that seems fair, reasonable and makes you excited, and a minimum number that you are willing to walk away from if they don’t meet. Keep these to yourself, but start with your high in the sky number and go from there :slightly_smiling_face:
-
- R3 [1 hour ago]
- Sometimes a company will ask you also what you used to make. When they ask me what I was making at my last job, I always lie and tell them a number that I&#39;m actually targeting to make at this new position. A lot of jobs will make an offer so close to your last salary that saying a number you&#39;re wanting will put you in a negotiating range where you can say, &quot;Well, I was actually looking to make more than at my last position.&quot;
-
- R4 [1 hour ago]
- Negotiating tactics apply to salary negotiation as much as they do to other negotiable situations (car buying, flea markets, etc), so if you want to psych yourself up with some general negotiation strategies from across the Internet as well, that can&#39;t hurt. (edited)
-
- R3 [44 minutes ago]
- Also, keep yourself open to possible company perks, maybe you&#39;d take less $$ if you have more vacation, or work from home days, or really amazing health insurance. It&#39;s not just about salary negotiation. The biggest thing people don&#39;t negotiate for more is vacation, and sometimes can be the easiest to get.
-
-
- R4 [39 minutes ago]
- Agreed that the salary number isn&#39;t everything - we hear a lot about &quot;company culture&quot; these days, and a lot of what companies tout as their &quot;culture&quot; is meaningless, so diving into that can also net you a bomb place to work that helps your mental health and personal fulfilment even if it doesn&#39;t pay Google money. Awesome on-site skill-building opportunities? Plenty of experienced people who enjoy mentoring and have helpful attitudes? Tangible, clear, supported diversity initiatives? Strong community/charitable ties? What kinds of &quot;culture&quot; things matter to you?
-
- R1 [28 minutes ago]
- Agreed. I would work at a place that covers my insurances, and offers more PTO, conference stipends, etc, if the salary is lower because I find those kinds of things very valuable.
-
- R1 [28 minutes ago]
- Definitely make sure culturally it is a fit for you too. Ask to meet the team before you make any final decisions
-
- R5
- [15 minutes ago]
- @R1 I really have nothing to add. Dang, write a book!!
-
-
- R1 [14 minutes ago]
- hahaha. I’ve heard that before
-
- R1 [14 minutes ago]
- Maybe i should :thinking_face:
-
-
- R2 [14 minutes ago]
- Yes, please!
-
- R5
- [13 minutes ago]
- Oh, i guess i do have an additional piece of advice: do *not* refer to yourself as a “Junior Developer” (or “junior” anything). Certainly, you don’t the time/experience/etc BUT you do have skills they can use today, and you should have the ability to learn things, but most of all, solve problems
-
-
- R5
- [12 minutes ago]
- no one actually knows what the difference between a jr dev and sr dev actually is; it it most certainly not number of years, although that’s often the only thing people think of.
-
- R2 [12 minutes ago]
- @__ might have something to add, too. I know HackReactor has a lot of opinions on this.
-
- R5
- [11 minutes ago]
- I might be getting a bit subversive here, but the skills ppl look for in sr people is the ability to be self-directed, take initiative, and most of be able to solve problems
-
- R2 [10 minutes ago]
- Ha. What makes you “senior” is a whole other giant discussion that I woudl love to have.
-
- R5
- [10 minutes ago]
- you can most definitely have those; it’s not number of years. sure, someone like me, i’ve just made a huge huge pile of mistakes to learn from, but there’s a lot of sr people who do not bother to learn
-
- R5
- [10 minutes ago]
- it’s a false label  /  dichotomy
-
- R5
- [9 minutes ago]
- but it’s one that is so entrenched it’s hard to deal with. so again, do not put that label on yourself
-
- R5
- [9 minutes ago]
- we need to have another meetup this week so we can have all these great conversations LOL
-
-
- R2 [9 minutes ago]
- yep yep yep - hard when that’s often tied to salary, recognition, opportunities, responsibility, etc.
-
- R1 [9 minutes ago]
- do it!
-
- R2 [8 minutes ago]
- RIGHT?!
-
- R1 [8 minutes ago]
- that’s a conversation i would love to be a part of
-
-    #+END_QUOTE
-
-
-
-*** Discussion on GDIMPLS Slack
-    CAPTURE_DATE: [2017-03-06 Mon 16:17]
-    TOPIC:    Y U No Hire Jr Devs?
-
-    OP started off a discussion in the #general chat in
-    GDIMpls.slack.com team.
-
-    #+BEGIN_QUOTE
-    OP [Today at 1:51 PM]
-    question for everybody: have you ever worked at a place that “doesn’t hire jr devs”, spoken to a place/person that “doesn’t hire jr devs”, or do you personally not like jr devs (i won’t be hurt/offended)?
-
-    R1 [1 hour ago]
-    so, personally, you gotta know i love jr. devs, otherwise i wouldn&#39;t be trying to help make some :slightly_smiling_face:
-
-    OP [1 hour ago]
-    true true
-
-    R1 [1 hour ago]
-    but the &quot;we don&#39;t hire jr. devs&quot; is so fucking real
-
-    R1 [1 hour ago]
-    i have long convos with recruiters and companies about this alla time. The problem, and I think know it, is that when everyone is hiring sr. devs, that means no one is creating new sr. devs, and you have to hire jr. devs to make sr. devs
-
-    R1 [1 hour ago]
-    sorry, I think *everyone* knows it
-
-    R1 [1 hour ago]
-    (thinking too fast to type)
-
-    R2 [1 hour ago]
-    Yep not many people are willing to put the time in to make the senior devs they truly want by training jr devs.
-
-    R1 [1 hour ago]
-    and yet the complaint is that they can&#39;t afford to train jr. devs
-
-    R1 [1 hour ago]
-    the typical mindset for tech companies is that they don&#39;t have the time, can&#39;t take the risk, and so on, because they don&#39;t fundamentally understand what they&#39;re trying to make
-
-    R2 [1 hour ago]
-    Yep
-
-    R1 [1 hour ago]
-    there&#39;s a tremendous lack of mindfulness about developing software, in pretty much any form
-
-    R1 [1 hour ago]
-    a lot of this is historical, of course, but that really doesn&#39;t excuse the lack of introspection about what the software industry is
-
-    OP [1 hour ago]
-    this is great! I hadn’t thought about that.
-
-    R1 [1 hour ago]
-    this also ties into the latest very visible reports of misogyny, we&#39;ve seen, but cuts across all the -isms; where you do not see diversity happening, just talked about and much handwringing
-
-    R1 [1 hour ago]
-    you notice women, poc, pwd, etc., when they get someplace primarily because it is so fucking rare
-
-    OP [1 hour ago]
-    Diversity &amp; Inclusion -Buzzwords of 2016/17
-
-    R1 [1 hour ago]
-    sadly, just buzzwords
-
-    OP [1 hour ago]
-    EXACTLY
-
-    R1 [1 hour ago]
-    fill out your bingo card!
-
-
-    R1 [1 hour ago]
-    this is not new; i don&#39;t see it changing, i see it getting more lip service, and no real change
-
-    R1 [1 hour ago]
-    i don&#39;t think it&#39;s any better
-
-    R1 [1 hour ago]
-    and this pisses me off to no end
-
-    R2 [1 hour ago]
-    This really has my mind running now. Why arent more companies open to jr devs? Seriously, they have the skills to learn, they have the want, and they require less compensation, why not let them work on your smaller projects until they are your senior dev you want. (edited)
-
-    R1 [1 hour ago]
-    and even more, how i have been unable to make and change, and how i&#39;ve been totally complicite
-
-    R1 [1 hour ago]
-    i had a phone intreview this morning, and we talked about exactly that, R2
-
-    R2 [45 minutes ago]
-    Train the senior devs you want. Why is that so hard?!
-
-    R1 [45 minutes ago]
-    how this company *had* hired a bunch of jr. devs, but they had no direction, and no idea of what they should be doing
-
-    R2 [44 minutes ago]
-    Yeah thats the opposite problem
-
-    R2 [44 minutes ago]
-    they need a leader that wants to and is a good mentor too
-
-
-    R1 [44 minutes ago]
-    and so now they&#39;re looking at getting more sr. people to help with that
-
-    R2 [44 minutes ago]
-    Thats good
-
-    R1 [44 minutes ago]
-    it&#39;s just another huge example of mindlessness
-
-    R2 [44 minutes ago]
-    Yep
-
-    R2 [44 minutes ago]
-    Lack of proper planning
-
-    R1 [43 minutes ago]
-    what i would love to do, most of all, is help jr. devs become sr. devs
-
-
-    R1 [43 minutes ago]
-    the companies that do hire jr. devs, then proceed to never give them any guidance.
-
-    OP [43 minutes ago]
-    I’m interested in why you feel you’ve been complicit @R1
-
-    R2 [42 minutes ago]
-    Me too Tamara.
-
-    R2 [42 minutes ago]
-    I wish there was a sustainable way to do that. My only idea was winning the lottery so money wasnt a concern, hahaha.
-
-    R1 [41 minutes ago]
-    because i fall prey to the same thinking that everyone else does; we had this long convo this weekend at lunch about diversity as it relates to women in tech, and NOT ONCE did anyone, including myself, ever mention the intersectionalities
-
-    R1 [41 minutes ago]
-    not. once.
-
-    R3 [41 minutes ago]
-    &quot;the companies that do hire jr. devs, then proceed to never give them any guidance.&quot; &lt;-- this is super interesting. (i mean all of this is)
-
-    R1 [40 minutes ago]
-    my blue sky pipe dream is that we can open a coop / collective, that isn&#39;t a for profit, and people who participate also have to give back in time and resources
-
-    R3 [40 minutes ago]
-    I think that might be part of the hesitation for many. They may want to do it _right_ and convince themselves they don&#39;t have the bandwidth to take on an individual that will need guidance/mentoring/support.
-
-    R1 [40 minutes ago]
-    Do understand I am way overgeneralising that
-
-    R2 [40 minutes ago]
-    Agreed. I think that is a lot of it. It seems to overwhelming so they just avoid it.
-
-    R3 [40 minutes ago]
-    We did this at W______, _very_ intentionally this past year.
-
-    R3 [40 minutes ago]
-    Our goal was to hire a &quot;junior&quot; dev
-
-    R1 [40 minutes ago]
-    some place have done that, some places do do that
-
-    R2 [39 minutes ago]
-    Your pipe dream sounds great R1.
-
-    R3 [38 minutes ago]
-    Companies want to make money, and as we discussed at lunch this weekend, assembling and creating a safe place for a diverse team will always create a higher quality product.
-
-    R1 [38 minutes ago]
-    what i heard talking with LP last week and this, is an interesting model of organization. A team is 5 people, a lead dev, two jr or other devs, a product mgr, and a UI/UX &quot;specialist&quot; (their term, could be a dev, dunno for sure yet)
-
-    R3 [38 minutes ago]
-    I wonder if people don&#39;t actualy believe that, or if they just don&#39;t know how to get there
-
-    R1 [38 minutes ago]
-    it&#39;s an interesting model
-
-    R1 [38 minutes ago]
-    i think the latter, R3
-
-    R1 [37 minutes ago]
-    don&#39;t know, don&#39;t know how to find out, and that&#39;s a huge risk to take
-
-    R3 [37 minutes ago]
-    Mhm
-
-    R2 [37 minutes ago]
-    That is the perfect team mix, R1, in my mind.
-
-    R1 [37 minutes ago]
-    mine to; i hope it&#39;s not just words
-
-    R1 [37 minutes ago]
-    i&#39;ve pretty much decided i&#39;ll take their offer if they make one
-
-    R1 [37 minutes ago]
-    pls don&#39;t tell
-
-    R2 [36 minutes ago]
-    Oh thats super great. So would you be one of those senior devs helping mentor the jr&#39;s?
-
-    R1 [36 minutes ago]
-    yeah
-
-    R2 [36 minutes ago]
-    My boss mentioned getting a junior &quot;me&quot; (my role, not me specifically) and I was so excited. Mentoring is one of my fave things to do.
-
-    R1 [36 minutes ago]
-    i mean, we were all speaking the same language, right? so now all my red flags are flying....
-
-    OP [36 minutes ago]
-    this is all really good stuff. And I know that the 3 of you (and more) do want to create that space for those like myself. It’s just really disheartening to be told because I’m a jr dev, I can’t add value
-
-    R1 [35 minutes ago]
-    AND THAT IS SO WRONG
-
-    R1 [35 minutes ago]
-    IT IS A LIE
-
-    OP [35 minutes ago]
-    I KNOW!
-
-    R1 [35 minutes ago]
-    spoken by people who are not adding value
-
-    R2 [35 minutes ago]
-    That is so horrible. You are amazing and I know you will not let it get you down, but make sure that you do not take that to heart or find it discouraging. (edited)
-
-    OP [35 minutes ago]
-    I want to learn the way a company codes, their standards, structure, i want to fix all the little things nobody else does, I want to build shit.
-
-
-    R2 [34 minutes ago]
-    You can add TONS of value.
-
-    OP [34 minutes ago]
-    Thank you.
-
-    OP [34 minutes ago]
-    It just adds more fuel to an already huge fire
-
-    R2 [34 minutes ago]
-    :fire:
-
-    R1 [34 minutes ago]
-    i&#39;m not really joking when i say &quot;burn it all down&quot;
-
-    R2 [33 minutes ago]
-    You are a strong person, it makes me sad for the people that are less like you. (edited)
-
-    R2 [33 minutes ago]
-    The ones that wont have that fight in them and will give up and move on.
-
-
-    R1 [33 minutes ago]
-    but this is also back to relying superheroism to make things better
-
-
-    OP [32 minutes ago]
-    right. That’s another reason why I want to do this at Minnebar
-
-    OP [32 minutes ago]
-    because I know that there are so many people that just won’t say anything
-
-    R1 [31 minutes ago]
-    you mean have this conversation at Minnebar?
-
-    OP [30 minutes ago]
-    yeah, i’m writing up a session called “So you don’t hire Jr Devs? Tell me more.&quot;
-
-
-    R1 [29 minutes ago]
-    oh fuck yeah
-
-    OP [29 minutes ago]
-    to speak as a jr dev, how jr devs feel in the market, what can other devs do to support and advocate and our importance
-
-    OP [29 minutes ago]
-    and then Lanice and I are also writing up one on Diversity &amp; Inclusion
-
-    R1 [28 minutes ago]
-    without jr devs there is no future software business
-
-
-    R2 [28 minutes ago]
-    OMG I am sad, I will miss that.
-
-    R2 [28 minutes ago]
-    I will be speaking at WordCamp in San Diego.
-
-    R2 [28 minutes ago]
-    Please definitely do that - the world needs to hear it.
-
-    OP [27 minutes ago]
-    I am sad you’re missing it too!!
-
-    R1 [26 minutes ago]
-    tickets are all gone
-
-    R1 [25 minutes ago]
-    also, i hate super large people events
-
-    R1 [24 minutes ago]
-    so that&#39;s an example of me being complicit
-
-    R1 [23 minutes ago]
-    so, like, what i should say instead, is there anything i can help with?
-
-    R3 [23 minutes ago]
-    ^^^^^^^^^^^
-
-    R3 [23 minutes ago]
-    that
-
-    R3 [23 minutes ago]
-    haha
-
-    R3 [22 minutes ago]
-    ditto
-
-    R1 [21 minutes ago]
-    &quot;The master&#39;s tools will never dismantle the master&#39;s house&quot; so we make our own tools
-
-    R4 [18 minutes ago]
-    This thread just got me really emotional. Thanks to everyone who&#39;s been sharing thoughts and perspectives. As a current junior dev who struggled to find a job and heard from companies that they don&#39;t hire jr, it got really challenging.
-
-
-    R1 [17 minutes ago]
-    This topic is hugely emotional for me as well, cari.tan, it goes into a lot of other things for me as well.
-
-    R1 [16 minutes ago]
-    primarily, i think our failing as sr. devs, mgrs, and so on, i.e., the people that *could* change things, is we just do not become or stay mindful
-
-    R4 [16 minutes ago]
-    One of the things that I kept thinking about was how if you hire junior devs, then they are coming in and learning your systems, your procedures and it might in someways be easier to integrate into the company processes because they are not bringing in past habits, which might be good and bad.
-
-
-    R1 [15 minutes ago]
-    EXACTLY!! and you&#39;ll have more effective devs than if you wait for the perfect sr. dev to show up
-
-    R1 [14 minutes ago]
-    AND! those jr. devs need guidance, attention, (care &amp; feeding?)
-
-
-    R4 [14 minutes ago]
-    I&#39;m currently on a team that doesn&#39;t have any real support for me because I&#39;m the only one working in the area that I work in and I have to go outside of my team when I&#39;m stuck, which can be challenging because of the schedules and workloads of their teams. It gets really hard sometimes.
-
-    R1 [13 minutes ago]
-    does you management listen to such issues well?
-
-    R1 [12 minutes ago]
-    (i was trying to figure out a way to ask in such a way as to not make any assumptions, but i don&#39;t think i can)
-
-    R4 [12 minutes ago]
-    Not really. I&#39;m on contract, which adds some complications. It
-
-    R1 [11 minutes ago]
-    certainly
-
-    R1 [10 minutes ago]
-    this is another place i have a huge advantage as a sr. dev, even, or especially, on contract, i don&#39;t usually have any hesitations in telling management their organization / communication / processes are not working well
-
-    R4 [10 minutes ago]
-    It&#39;s largely due to a restructuring that happened right after I started. I was hired onto a team of six people who all worked on the same parts of the website and then about 3 weeks later we were split across three new teams. I was the only one from the original team that ended up on mine. They are aware, but there&#39;s no real motivation for them to do much about it (add or shift resources, etc).
-
-    R1 [9 minutes ago]
-    but it&#39;s not something that a jr. can do with credibility :disappointed:
-
-    R4 [8 minutes ago]
-    Yeah, exactly.
-
-    R1 [8 minutes ago]
-    start looking for your next contract, maybe
-
-
-    OP [8 minutes ago]
-    i agree.
-
-    R1 [7 minutes ago]
-    because, holy cow, fixing their shit is not on you
-
-    R1 [6 minutes ago]
-    of course, the other side is get the learning you can out of the current situation
-
-    R1 [5 minutes ago]
-    idk, folks, this whole system is not going to solved by waiting for companies to wake up
-
-    R4 [4 minutes ago]
-    I have started looking for the next thing. I&#39;ve learned quite a bit, but am definitely ready for something different with more support.
-
-    R1 [4 minutes ago]
-    and as much fun as it would be for me to train jr. devs into sr. devs, i also don&#39;t want to just create a chain of cannon fodder
-
-    R1 [3 minutes ago]
-    cari.tan : awesome!!
-
-    R4 [3 minutes ago]
-    Thanks @OP for starting this conversation. It needs to be talked about and revisited often.
-
-    R1 [3 minutes ago]
-    :+1:
-
-    R1 [2 minutes ago]
-    i sure want to hear from you all on this
-
-    R1 [2 minutes ago]
-    and i am quite serious about the offers of help
-
-
-    OP [1 minute ago]
-    Thank you ALL for contributing. I am glad to know that sr/mid/lead devs care about this
-
-    R4 [1 minute ago]
-    Thanks @R1, @R3 and @R2 for being in leadership and senior roles and sharing your perspective and helping to work on this issue!
-    #+END_QUOTE
-
 </content>
       <author>
         <name>Tamara Temple</name>

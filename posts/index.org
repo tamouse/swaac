@@ -25,6 +25,7 @@
 - [[./Tech/braintree-notes.org]]
 - [[./Tech/WordPress-notes.org]]
 - [[./Tech/README.md]]
+- [[./2024/2024-09-05-writing-exclusion-files-for-rsync.md]]
 - [[./2024/2024-06-29-removing-dsstore-from-aws-s3.org]]
 - [[./2024/2024-05-31-how-to-force-restart-an-iphone.md]]
 - [[./2023/2023-06-09-make-git-ignore-local-changes-to-tracked-files.md]]
