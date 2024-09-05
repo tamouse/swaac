@@ -2,9 +2,8 @@
 date: 2024-09-05 10:00
 categories: ["CLI"]
 tags: ["rsync", "exclusions"]
-Time-stamp: <2024-09-05 11:54:45 tamouse>
-
-
+Time-stamp: <2024-09-05 11:58:26 tamouse>
+---
 
 # Writing an exclusions file for rsync
 

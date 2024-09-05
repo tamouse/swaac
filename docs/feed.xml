@@ -2,18 +2,17 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://github.com/tamouse/swaac</id>
   <title>Tamouse&#39;s Software as a Craft blog</title>
-  <updated>2024-09-05T11:54:45-05:00</updated>
+  <updated>2024-09-05T11:58:26-05:00</updated>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2024/2024-09-05-writing-exclusion-files-for-rsync.md</id>
-      <updated>2024-09-05T11:54:45-05:00</updated>
+      <updated>2024-09-05T11:58:26-05:00</updated>
       <title>2024-09-05-writing-exclusion-files-for-rsync</title>
       <content>---
 date: 2024-09-05 10:00
 categories: [&quot;CLI&quot;]
 tags: [&quot;rsync&quot;, &quot;exclusions&quot;]
-Time-stamp: &lt;2024-09-05 11:54:45 tamouse&gt;
-
-
+Time-stamp: &lt;2024-09-05 11:58:26 tamouse&gt;
+---
 
 # Writing an exclusions file for rsync
 
