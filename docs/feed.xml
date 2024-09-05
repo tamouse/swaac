@@ -2,21 +2,24 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://github.com/tamouse/swaac</id>
   <title>Tamouse&#39;s Software as a Craft blog</title>
-  <updated>2024-09-05T10:02:05-05:00</updated>
+  <updated>2024-09-05T11:54:45-05:00</updated>
     <entry>
       <id>https://github.com/tamouse/swaac/blob/master/posts/2024/2024-09-05-writing-exclusion-files-for-rsync.md</id>
-      <updated>2024-09-05T10:02:05-05:00</updated>
+      <updated>2024-09-05T11:54:45-05:00</updated>
       <title>2024-09-05-writing-exclusion-files-for-rsync</title>
       <content>---
-layout: post
-title: &quot;Writing an exclusions file for rsync&quot;
 date: 2024-09-05 10:00
 categories: [&quot;CLI&quot;]
 tags: [&quot;rsync&quot;, &quot;exclusions&quot;]
+Time-stamp: &lt;2024-09-05 11:54:45 tamouse&gt;
+
+
+
+# Writing an exclusions file for rsync
 
 To create an exclusions file for `rsync` that excludes several directories across multiple levels of your directory tree, you&#39;ll need to list each pattern you want to exclude in the file. The patterns should match the directories or files you want to exclude, and you can use relative paths or wildcards to specify patterns effectively.
 
-### Steps to Create an Exclusions File
+## Steps to Create an Exclusions File
 
 1. **Create the Exclusions File**:
 
@@ -61,13 +64,13 @@ To create an exclusions file for `rsync` that excludes several directories acros
    - **`--delete`**: Deletes files in the destination that are not present in the source.
    - **`--exclude-from=&#39;/path/to/rsync-exclude.txt&#39;`**: Specifies the file containing patterns to exclude.
 
-### Writing Effective Patterns for `rsync`
+## Writing Effective Patterns for `rsync`
 
 - **Trailing Slash**: To exclude directories, include a trailing slash (e.g., `temp/`).
 - **Wildcards**: Use `*` as a wildcard for any number of characters, `?` for a single character, and `**` for matching any directory level.
 - **Relative Paths**: Patterns are relative to the source directory specified in the `rsync` command. Ensure your patterns match the layout and structure of your source directory.
 
-### Example Exclusions for Specific Directories
+## Example Exclusions for Specific Directories
 
 If you have a source directory structure like:
 

@@ -1,13 +1,16 @@
 ---
-layout: post
-title: "Writing an exclusions file for rsync"
 date: 2024-09-05 10:00
 categories: ["CLI"]
 tags: ["rsync", "exclusions"]
+Time-stamp: <2024-09-05 11:54:45 tamouse>
+
+
+
+# Writing an exclusions file for rsync
 
 To create an exclusions file for `rsync` that excludes several directories across multiple levels of your directory tree, you'll need to list each pattern you want to exclude in the file. The patterns should match the directories or files you want to exclude, and you can use relative paths or wildcards to specify patterns effectively.
 
-### Steps to Create an Exclusions File
+## Steps to Create an Exclusions File
 
 1. **Create the Exclusions File**:
 
@@ -52,13 +55,13 @@ To create an exclusions file for `rsync` that excludes several directories acros
    - **`--delete`**: Deletes files in the destination that are not present in the source.
    - **`--exclude-from='/path/to/rsync-exclude.txt'`**: Specifies the file containing patterns to exclude.
 
-### Writing Effective Patterns for `rsync`
+## Writing Effective Patterns for `rsync`
 
 - **Trailing Slash**: To exclude directories, include a trailing slash (e.g., `temp/`).
 - **Wildcards**: Use `*` as a wildcard for any number of characters, `?` for a single character, and `**` for matching any directory level.
 - **Relative Paths**: Patterns are relative to the source directory specified in the `rsync` command. Ensure your patterns match the layout and structure of your source directory.
 
-### Example Exclusions for Specific Directories
+## Example Exclusions for Specific Directories
 
 If you have a source directory structure like:
 
